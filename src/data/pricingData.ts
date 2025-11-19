@@ -107,7 +107,7 @@ export const canadaPricingPlans: PricingPlan[] = [
     title: "EXECUTIVE",
     tag: "Premium",
     subTitle: "1200+ Applications",
-    description: "For senior professionals & executives",
+    description: "For early professionals & executives",
     price: "CA$839",
     oldPrice: "CA$949",
     features: [
