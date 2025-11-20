@@ -18,7 +18,6 @@ interface SignupModalProps {
 
 export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
   const [formData, setFormData] = useState<FormData>(() => loadFormData());
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
   const prevIsOpenRef = useRef(isOpen);
@@ -153,36 +152,29 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
       return;
     }
 
-    setIsSubmitting(true);
-    setError(""); // Clear any previous errors
-
-    try {
-      if (typeof window !== "undefined") {
-        localStorage.setItem("submitted", "true");
-      }
-
-      // PostHog tracking - form submit
-      trackFormSubmit("signup_form", {
-        full_name: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-        work_authorization: formData.workAuthorization,
-        country_code: formData.countryCode
-      });
-
-      // Always proceed to Calendly after form submission
-      // Backend handles Discord notifications regardless of success/duplicate
-      await SaveDetailsToDB();
-      
-      // Open Calendly modal (always, regardless of backend response)
-      setIsSubmitting(false);
-      setIsCalendlyOpen(true);
-    } catch (error) {
-      console.error("Error during form submission:", error);
-      // Still proceed to Calendly even on error
-      setIsSubmitting(false);
-      setIsCalendlyOpen(true);
+    // Save to localStorage immediately
+    if (typeof window !== "undefined") {
+      localStorage.setItem("submitted", "true");
     }
+
+    // PostHog tracking - form submit (non-blocking)
+    trackFormSubmit("signup_form", {
+      full_name: formData.fullName,
+      email: formData.email,
+      phone: formData.phone,
+      work_authorization: formData.workAuthorization,
+      country_code: formData.countryCode
+    });
+
+    // Open Calendly modal IMMEDIATELY (don't wait for backend)
+    setIsCalendlyOpen(true);
+
+    // Save to DB in the background (non-blocking, fire and forget)
+    // Backend handles Discord notifications regardless of success/duplicate
+    SaveDetailsToDB().catch((error) => {
+      // Silently handle errors - backend call happens in background
+      console.error("Background API call error (non-blocking):", error);
+    });
   };
 
   const handleCalendlyClose = () => {
@@ -312,10 +304,10 @@ export default function SignupModal({ isOpen, onClose }: SignupModalProps) {
 
             <button
               type="submit"
-              disabled={isSubmitting || formData.phone.length !== 10}
+              disabled={formData.phone.length !== 10}
               className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 px-6 rounded-lg font-bold hover:from-orange-600 hover:to-orange-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? "Submitting..." : "Submit"}
+              Submit
             </button>
           </form>
 
