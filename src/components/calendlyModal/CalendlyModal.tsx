@@ -256,7 +256,7 @@ export default function CalendlyModal({
           }
 
           const response = await fetch(
-            `${API_BASE_URL}/api/campaign-bookings/frontend-capture`,
+            `${API_BASE_URL}api/campaign-bookings/frontend-capture`,
             {
               method: "POST",
               headers: {
