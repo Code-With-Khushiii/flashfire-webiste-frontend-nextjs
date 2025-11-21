@@ -65,7 +65,7 @@ const steps = [
   {
     heading: "We build your winning profile.",
     description:
-      "Our AI rewrites your resume and LinkedIn to match top U.S. recruiter searches. Your profile starts showing up where it matters, on the right screens.",
+      "We make your resume from scratch and optimize LinkedIn to match top U.S. recruiter searches. Your profile starts showing up where it matters, on the right screens.",
     image: "/images/step2.png",
   },
   {
