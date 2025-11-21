@@ -26,18 +26,21 @@ const Home = () => {
       <HomePageResultStats />
       <HomePageStatsCards />
       <HomePageOfferLetters />
-      <HomePageSteps />
+     
+      <HomePageMilestones /> 
       <HomePageVideo />
-      <HomePageHappyUsers />
+      <HomePageSteps />
+     
      
       <HomePageWhyChooseFF /> 
+      <HomePageHappyUsers />
       <HomePagePricingPlans />
       <HomePageTestimonialsVideo />
       <HomePageFoundersNote />
       <HomePageCareerCTA />
       <HomePageDemoCTA />
-      
-      <HomePageMilestones /> {/* using useState, so client */}
+
+      {/* using useState, so client */}
      
        {/* using useState, so client */}
       {/* AJ section not so good */}
