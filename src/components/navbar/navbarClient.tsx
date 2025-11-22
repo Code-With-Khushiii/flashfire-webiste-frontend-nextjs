@@ -715,7 +715,7 @@ export default function NavbarClient({ links, ctas }: Props) {
           <button
             {...getBookNowButtonProps()}
             onClick={openCalendly}
-            className="rounded-lg bg-white text-black font-semibold py-2 px-5 sm:px-6 border-b-5 border-b-[#ff4c00] hover:bg-[#ff4c00] hover:text-white hover:border-b-black transition-all shadow-lg hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 text-base sm:text-lg ml-3 max-[500px]:ml-2 cursor-pointer"
+            className="rounded-lg bg-[#ff4c00]   text-white font-semibold py-2 px-5 sm:px-6 border-b-5 border-b-black hover:bg-white hover:text-black hover:border-b-[#ff4c00] transition-all shadow-lg hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 text-base sm:text-lg ml-3 max-[500px]:ml-2 cursor-pointer"
           >
             Book Now
           </button>

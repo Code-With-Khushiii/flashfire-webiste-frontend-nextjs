@@ -684,6 +684,8 @@ import GeoBlockModal from "@/src/components/modals/GeoBlockModal";
 import GeoBypassSuccessModal from "@/src/components/modals/GeoBypassSuccessModal";
 import SignupModal from "@/src/components/signupModal/SignupModal";
 import CalendlyModal from "@/src/components/calendlyModal/CalendlyModal";
+import BlackFridayPopup from "@/src/components/BlackFridayPopup";
+import CursorTrail from "@/src/components/CursorTrail";
 import { loadFormData } from "@/src/utils/LocalStorageUtils";
 
 function ClientLogicWrapperContent({
@@ -1006,6 +1008,8 @@ function ClientLogicWrapperContent({
     return (
         <>
             {children}
+            <CursorTrail />
+            <BlackFridayPopup />
             <GeoBlockModal
                 isVisible={showGeoBlockModal}
                 onClose={handleGeoBlockModalClose}
