@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, RefObject } from "react";
 
 interface TrailBlock {
   id: number;
@@ -10,14 +10,57 @@ interface TrailBlock {
   shade: "light" | "medium" | "dark";
 }
 
-export default function CursorTrail() {
+interface CursorTrailProps {
+  containerRef?: RefObject<HTMLElement | null>;
+}
+
+export default function CursorTrail({ containerRef }: CursorTrailProps) {
   const [trails, setTrails] = useState<TrailBlock[]>([]);
   const trailIdRef = useRef(0);
   const lastTrailTimeRef = useRef(0);
   const shadeCycleRef = useRef<"light" | "medium" | "dark">("light");
+  const containerBoundsRef = useRef<{ left: number; top: number; width: number; height: number } | null>(null);
 
   useEffect(() => {
+    const updateBounds = () => {
+      if (containerRef?.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        containerBoundsRef.current = {
+          left: rect.left,
+          top: rect.top,
+          width: rect.width,
+          height: rect.height,
+        };
+      } else {
+        containerBoundsRef.current = null;
+      }
+    };
+
     const handleMouseMove = (e: MouseEvent) => {
+      // If containerRef is provided, only track within that container
+      if (containerRef) {
+        updateBounds();
+        const bounds = containerBoundsRef.current;
+        
+        if (!bounds) return;
+        
+        // Check if mouse is within container bounds
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        
+        if (
+          mouseX < bounds.left ||
+          mouseX > bounds.left + bounds.width ||
+          mouseY < bounds.top ||
+          mouseY > bounds.top + bounds.height
+        ) {
+          // Mouse is outside container, clear trails and return
+          setTrails([]);
+          lastTrailTimeRef.current = 0;
+          return;
+        }
+      }
+
       const now = Date.now();
       
       // Throttle to create one box at a time (every 80-100ms for fewer boxes)
@@ -32,11 +75,21 @@ export default function CursorTrail() {
       const currentIndex = shadeOrder.indexOf(currentShade);
       shadeCycleRef.current = shadeOrder[(currentIndex + 1) % shadeOrder.length];
 
+      // Calculate position relative to container if containerRef is provided
+      let x = e.clientX;
+      let y = e.clientY;
+      
+      if (containerRef && containerBoundsRef.current) {
+        const bounds = containerBoundsRef.current;
+        x = e.clientX - bounds.left;
+        y = e.clientY - bounds.top;
+      }
+
       // Create one new block
       const newBlock: TrailBlock = {
         id: trailIdRef.current++,
-        x: e.clientX,
-        y: e.clientY,
+        x: x,
+        y: y,
         createdAt: now,
         shade: currentShade,
       };
@@ -54,21 +107,32 @@ export default function CursorTrail() {
       lastTrailTimeRef.current = 0;
     };
 
+    const handleResize = () => {
+      updateBounds();
+    };
+
     // Clean up old trails periodically
     const cleanupInterval = setInterval(() => {
       const now = Date.now();
       setTrails((prev) => prev.filter((trail) => now - trail.createdAt < 300));
     }, 100);
 
+    // Initial bounds update
+    updateBounds();
+
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", updateBounds, true);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", updateBounds, true);
       clearInterval(cleanupInterval);
     };
-  }, []);
+  }, [containerRef]);
 
   // Orange shades matching the image
   const getShadeColor = (shade: "light" | "medium" | "dark") => {
@@ -91,8 +155,22 @@ export default function CursorTrail() {
     }
   };
 
+  // If containerRef is provided, position relative to container, otherwise fixed to viewport
+  const containerStyle = containerRef
+    ? {
+        position: "absolute" as const,
+        inset: "0",
+      }
+    : {
+        position: "fixed" as const,
+        inset: "0",
+      };
+
   return (
-    <div className="fixed inset-0 pointer-events-none z-[9999]">
+    <div
+      className="pointer-events-none z-[9999]"
+      style={containerStyle}
+    >
       {trails.map((trail) => {
         const age = Date.now() - trail.createdAt;
         const fadeDuration = 300; // 0.3 seconds fade out (faster fade = fewer visible boxes)

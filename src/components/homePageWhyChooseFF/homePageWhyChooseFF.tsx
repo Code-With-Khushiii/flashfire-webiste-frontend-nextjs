@@ -2,12 +2,16 @@
 
 import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
+import { useRef } from "react";
 import FlashfireLogo from "@/src/components/FlashfireLogo";
+import CursorTrail from "@/src/components/CursorTrail";
 
 const featureCardBase =
   "flex flex-col justify-between bg-[#fffdfc] border border-[#94959a] rounded-[0.3rem] p-8 text-left h-[21rem] shadow-[0_2px_6px_rgba(0,0,0,0.03)] transition-all duration-200 hover:-translate-y-[3px] hover:shadow-[0_6px_12px_rgba(0,0,0,0.08)] max-[768px]:w-full max-[768px]:h-auto max-[768px]:p-6";
 
 export default function HomePageWhyChooseFF() {
+  const sectionRef = useRef<HTMLElement>(null);
+
   const handleWhatsAppClick = () => {
     const phoneNumber = "919817349846";
     const message = encodeURIComponent(
@@ -19,9 +23,11 @@ export default function HomePageWhyChooseFF() {
 
   return (
     <section
+      ref={sectionRef}
       id="feature"
       className="relative bg-white py-20 px-8 text-center font-['Space_Grotesk',sans-serif] overflow-hidden max-[480px]:py-12 max-[480px]:px-5"
     >
+      <CursorTrail containerRef={sectionRef} />
       <div className="pointer-events-none absolute w-[18rem] h-[18rem] -left-32 top-16 bg-[rgba(245,93,29,1)] blur-[120px] opacity-70"></div>
       <div className="pointer-events-none absolute w-[18rem] h-[18rem] -right-32 top-24 bg-[rgba(245,93,29,1)] blur-[120px] opacity-70"></div>
       {/* === Header === */}

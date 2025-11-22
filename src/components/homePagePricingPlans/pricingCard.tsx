@@ -5,7 +5,7 @@ import { FaBolt } from "react-icons/fa";
 import { trackButtonClick } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 
-interface PricingCardProps {
+interface PricingPlan {
   title: string;
   tag?: string;
   subTitle: string;
@@ -18,12 +18,39 @@ interface PricingCardProps {
   paymentLink?: string;
 }
 
+interface PricingCardProps {
+  title: string;
+  tag?: string;
+  subTitle: string;
+  description: string;
+  price: string;
+  oldPrice?: string;
+  features: string[];
+  addOn?: boolean;
+  highlight?: boolean;
+  paymentLink?: string;
+  allPlans?: PricingPlan[];
+}
+
 interface BoosterOption {
   applications: number;
   price: number;
   label: string;
   paymentUrl: string;
 }
+
+// Upgrade prices configuration
+interface UpgradePrice {
+  from: string;
+  to: string;
+  price: number;
+}
+
+const upgradePrices: UpgradePrice[] = [
+  { from: "IGNITE", to: "PROFESSIONAL", price: 170 },
+  { from: "IGNITE", to: "EXECUTIVE", price: 420 },
+  { from: "PROFESSIONAL", to: "EXECUTIVE", price: 285 },
+];
 
 // Booster options with payment URLs for different plans and countries
 const planBoosterOptions: Record<string, Record<string, BoosterOption[]>> = {
@@ -164,9 +191,44 @@ export default function PricingCard({
   addOn,
   highlight,
   paymentLink,
+  allPlans = [],
 }: PricingCardProps) {
   // Single selection: null means no booster selected, number is the selected booster index
   const [selectedBooster, setSelectedBooster] = useState<number | null>(null);
+  const [selectedUpgrade, setSelectedUpgrade] = useState<string | null>(null);
+  const [showUpgradeOptions, setShowUpgradeOptions] = useState(false);
+
+  // Get upgrade options based on current plan with upgrade prices
+  const upgradeOptions = useMemo(() => {
+    if (!allPlans || allPlans.length === 0) return [];
+    
+    const planHierarchy = ["IGNITE", "PROFESSIONAL", "EXECUTIVE"];
+    const currentPlanIndex = planHierarchy.indexOf(title);
+    
+    if (currentPlanIndex === -1 || currentPlanIndex === planHierarchy.length - 1) {
+      // EXECUTIVE or unknown plan - no upgrades
+      return [];
+    }
+    
+    // Return all plans higher in hierarchy than current with upgrade prices
+    return allPlans
+      .filter(plan => {
+        const planIndex = planHierarchy.indexOf(plan.title);
+        return planIndex > currentPlanIndex;
+      })
+      .map(plan => {
+        // Find upgrade price for this upgrade path
+        const upgradePriceConfig = upgradePrices.find(
+          up => up.from === title && up.to === plan.title
+        );
+        const upgradePrice = upgradePriceConfig?.price || 0;
+        
+        return {
+          ...plan,
+          upgradePrice: upgradePrice, // Add upgrade price to the plan object
+        };
+      });
+  }, [title, allPlans]);
 
   // Parse base price from string (handles "$199" or "CA$279")
   const basePrice = useMemo(() => {
@@ -190,36 +252,62 @@ export default function PricingCard({
     return planBoosterOptions[country]?.[title] || [];
   }, [country, title]);
 
-  // Calculate displayed price: if booster selected, show booster price; otherwise show base price
+  // Calculate displayed price: if upgrade selected, show base price + upgrade price; if booster selected, show booster price; otherwise show base price
   const displayedPrice = useMemo(() => {
+    // Priority: Upgrade > Booster > Base
+    if (selectedUpgrade) {
+      const upgradePlan = upgradeOptions.find(plan => plan.title === selectedUpgrade);
+      if (upgradePlan && (upgradePlan as any).upgradePrice) {
+        // Show total price: base price + upgrade price
+        return basePrice + (upgradePlan as any).upgradePrice;
+      }
+    }
+    
     if (selectedBooster !== null && boosterOptions[selectedBooster]) {
       return boosterOptions[selectedBooster].price;
     }
     return basePrice;
-  }, [basePrice, selectedBooster, boosterOptions]);
+  }, [basePrice, selectedBooster, selectedUpgrade, boosterOptions, upgradeOptions]);
 
   // Format price with currency
   const formattedPrice = useMemo(() => {
     return `${currencySymbol}${displayedPrice.toFixed(0)}`;
   }, [displayedPrice, currencySymbol]);
 
-  // Get payment URL: if booster selected, use booster URL; otherwise use original paymentLink
+  // Get payment URL: if upgrade selected, use upgrade URL; if booster selected, use booster URL; otherwise use original paymentLink
   const currentPaymentLink = useMemo(() => {
+    // Priority: Upgrade > Booster > Original
+    if (selectedUpgrade) {
+      const upgradePlan = upgradeOptions.find(plan => plan.title === selectedUpgrade);
+      if (upgradePlan?.paymentLink) {
+        return upgradePlan.paymentLink;
+      }
+    }
+    
     if (selectedBooster !== null && boosterOptions[selectedBooster]) {
       const boosterUrl = boosterOptions[selectedBooster].paymentUrl;
       // If booster URL is empty (e.g., Canada plans waiting for URLs), fall back to original paymentLink
       return boosterUrl || paymentLink;
     }
     return paymentLink;
-  }, [selectedBooster, paymentLink, boosterOptions]);
+  }, [selectedUpgrade, selectedBooster, paymentLink, boosterOptions, upgradeOptions]);
 
   const handleBoosterToggle = (index: number) => {
     // If clicking the same booster, deselect it; otherwise select the new one
-    setSelectedBooster((prev) => (prev === index ? null : index));
+    setSelectedBooster((prev) => {
+      if (prev === index) {
+        return null;
+      } else {
+        setSelectedUpgrade(null); // Clear upgrade when selecting booster
+        return index;
+      }
+    });
   };
+  
   return (
+    <div className="flex flex-col max-w-[25rem] min-w-[22rem] max-[1024px]:min-w-[20rem] max-[768px]:max-w-[90%] max-[768px]:min-w-0 max-[768px]:w-full">
     <div
-      className={`bg-white border rounded-[0.3rem] p-8 flex-1 max-w-[25rem] min-w-[22rem] text-left relative transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.05)] max-[1024px]:min-w-[20rem] max-[768px]:max-w-[90%] max-[768px]:min-w-0 max-[768px]:w-full max-[768px]:p-6 ${highlight ? "border-2 border-[#ff4c00]" : "border border-black"}`}
+      className={`bg-white border rounded-[0.3rem] p-8 flex-1 text-left relative transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.05)] max-[768px]:p-6 ${highlight ? "border-2 border-[#ff4c00]" : "border border-black"}`}
     >
       {tag && (
         <div
@@ -284,6 +372,15 @@ export default function PricingCard({
         </div>
       )}
 
+      {upgradeOptions.length > 0 && (
+        <button
+          onClick={() => setShowUpgradeOptions(!showUpgradeOptions)}
+          className="bg-[#ff4c00] text-white border-none py-2 px-4 font-semibold text-sm rounded-[0.5rem] w-full cursor-pointer transition-all duration-300 hover:bg-[#e24300] mb-4"
+        >
+          {showUpgradeOptions ? "Hide Upgrade Options" : "Upgrade Plan"}
+        </button>
+      )}
+
       <div className="flex items-baseline gap-2.5 mb-1">
         <h3 className="text-[1.8rem] font-bold text-black max-[768px]:text-[1.6rem]">
           {formattedPrice}
@@ -296,7 +393,9 @@ export default function PricingCard({
       </div>
 
       <p className="text-[0.85rem] text-[#555] mb-5">
-        Total {subTitle.toLowerCase()} included
+        {selectedUpgrade 
+          ? `Total ${upgradeOptions.find(p => p.title === selectedUpgrade)?.subTitle || subTitle} included`
+          : `Total ${subTitle.toLowerCase()} included`}
       </p>
 
       <button
@@ -309,10 +408,16 @@ export default function PricingCard({
             ? localStorage.getItem("utm_medium") || "Pricing_Section"
             : "Pricing_Section";
           
+          const finalPlanName = selectedUpgrade || title;
+          const finalPrice = formattedPrice; // Already includes base + upgrade price if upgrade selected
+          const finalSubtitle = selectedUpgrade
+            ? upgradeOptions.find(p => p.title === selectedUpgrade)?.subTitle || subTitle
+            : subTitle;
+          
           if (typeof window !== "undefined") {
             GTagUTM({
               eventName: "pricing_cta_click",
-              label: `Pricing_${title}_Button`,
+              label: `Pricing_${finalPlanName}_Button${selectedUpgrade ? "_Upgrade" : ""}`,
               utmParams: {
                 utm_source: utmSource,
                 utm_medium: utmMedium,
@@ -322,13 +427,16 @@ export default function PricingCard({
           }
           
           // PostHog tracking
-          trackButtonClick(`Get Me Interview - ${title}`, "pricing_cta", "cta", {
+          trackButtonClick(`Get Me Interview - ${finalPlanName}`, "pricing_cta", "cta", {
             button_location: "pricing_plan",
-            plan_name: title,
-            plan_price: formattedPrice,
-            plan_subtitle: subTitle,
+            plan_name: finalPlanName,
+            original_plan: title,
+            upgraded_from: selectedUpgrade ? title : null,
+            upgraded_to: selectedUpgrade || null,
+            plan_price: finalPrice,
+            plan_subtitle: finalSubtitle,
             selected_booster: selectedBooster !== null && boosterOptions[selectedBooster] ? boosterOptions[selectedBooster].applications : null,
-            total_price: formattedPrice
+            total_price: finalPrice
           });
           
           if (currentPaymentLink) {
@@ -336,8 +444,47 @@ export default function PricingCard({
           }
         }}
       >
-        Get Me Interview →
+        {selectedUpgrade ? `Upgrade to ${selectedUpgrade} →` : "Get Me Interview →"}
       </button>
+    </div>
+
+    {/* Upgrade Options Display - Outside Card */}
+    {showUpgradeOptions && upgradeOptions.length > 0 && (
+      <div className="bg-[#fff4e6] border-2 border-[#ff4c00] rounded-[0.4rem] p-4 mt-4">
+        <h5 className="text-[1.3rem] font-bold mb-1 text-black max-[768px]:text-[1.1rem]">
+          Upgrade Plan
+        </h5>
+        <p className="text-[0.85rem] text-black mb-3">
+          Upgrade to a higher tier for more applications and features.
+        </p>
+        <div className="space-y-2">
+          {upgradeOptions.map((upgradePlan) => (
+            <button
+              key={upgradePlan.title}
+              onClick={() => {
+                setSelectedUpgrade(prev => prev === upgradePlan.title ? null : upgradePlan.title);
+                setSelectedBooster(null); // Clear booster selection when upgrading
+              }}
+              className={`w-full text-left p-3 rounded-lg border-2 transition-all duration-200 ${
+                selectedUpgrade === upgradePlan.title
+                  ? "border-[#ff4c00] bg-[#ff4c00] text-white"
+                  : "border-[#ff4c00] bg-white text-black hover:bg-[#fff4e6]"
+              }`}
+            >
+              <div className="flex justify-between items-center">
+                <div>
+                  <div className="font-semibold text-sm">{upgradePlan.title}</div>
+                  <div className="text-xs opacity-90">{upgradePlan.subTitle}</div>
+                </div>
+                <div className="font-bold text-sm">
+                  +{currencySymbol}{(upgradePlan as any).upgradePrice || 0}
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+    )}
     </div>
   );
 }

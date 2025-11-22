@@ -75,14 +75,6 @@ export default function BlackFridayPopup() {
             className="absolute top-2 right-2 md:top-4 md:right-4 text-black hover:opacity-80 transition-opacity cursor-pointer z-10 px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base"
             style={{
               fontFamily: 'var(--font-space-grotesk), "Space Grotesk", sans-serif',
-              backgroundColor: '#f5f0e8',
-              backgroundImage: `repeating-linear-gradient(
-                135deg,
-                transparent,
-                transparent 3px,
-                rgba(220, 200, 180, 0.25) 3px,
-                rgba(220, 200, 180, 0.25) 6px
-              )`,
             }}
             aria-label="Close"
           >

@@ -41,6 +41,7 @@ export default function HomePagePricingPlans() {
             addOn={plan.addOn}
             highlight={plan.highlight}
             paymentLink={plan.paymentLink}
+            allPlans={pricingPlans}
           />
         ))}
       </div>
