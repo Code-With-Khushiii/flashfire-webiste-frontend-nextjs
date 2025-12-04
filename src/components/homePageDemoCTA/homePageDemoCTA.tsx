@@ -5,7 +5,6 @@ import Image from "next/image";
 import styles from "./homePageDemoCTA.module.css";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
-import { getCurrentUTMParams } from "@/src/utils/UTMUtils";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
 
 export default function HomePageDemoCTA() {
@@ -65,9 +64,8 @@ export default function HomePageDemoCTA() {
               sessionStorage.setItem('preserveScrollPosition', window.scrollY.toString());
             }
             
-            // Navigate to /book-my-demo-call with preserved UTM params
-            const utmParams = getCurrentUTMParams();
-            const targetPath = utmParams ? `/book-my-demo-call?${utmParams}` : '/book-my-demo-call';
+            // Navigate to /book-my-demo-call WITHOUT exposing UTM params in the URL
+            const targetPath = '/book-my-demo-call';
             
             // Dispatch custom event to force show modal (even if already on the route)
             if (typeof window !== 'undefined') {
@@ -137,9 +135,8 @@ export default function HomePageDemoCTA() {
               sessionStorage.setItem('preserveScrollPosition', window.scrollY.toString());
             }
             
-            // Navigate to /book-my-demo-call with preserved UTM params
-            const utmParams = getCurrentUTMParams();
-            const targetPath = utmParams ? `/book-my-demo-call?${utmParams}` : '/book-my-demo-call';
+            // Navigate to /book-my-demo-call WITHOUT exposing UTM params in the URL
+            const targetPath = '/book-my-demo-call';
             
             // Dispatch custom event to force show modal (even if already on the route)
             if (typeof window !== 'undefined') {
