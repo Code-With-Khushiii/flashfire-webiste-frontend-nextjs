@@ -144,19 +144,19 @@ const planBoosterOptions: Record<string, Record<string, BoosterOption[]>> = {
       { 
         applications: 250, 
         price: 170, 
-        label: "+250 Extra Applications",
+        label: "+250 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/PRIME_250_CA_PLACEHOLDER"
       },
       { 
         applications: 500, 
         price: 280, 
-        label: "+500 Extra Applications",
+        label: "+500 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/PRIME_500_CA_PLACEHOLDER"
       },
       { 
         applications: 1000, 
         price: 490, 
-        label: "+1000 Extra Applications",
+        label: "+1000 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/PRIME_1000_CA_PLACEHOLDER"
       },
     ],
@@ -164,19 +164,19 @@ const planBoosterOptions: Record<string, Record<string, BoosterOption[]>> = {
       { 
         applications: 250, 
         price: 180, 
-        label: "+250 Extra Applications",
+        label: "+250 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/VTDKG7AXSJ75Y"
       },
       { 
         applications: 500, 
         price: 305, 
-        label: "+500 Extra Applications",
+        label: "+500 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/EX2YV4CN2WV3L"
       },
       { 
         applications: 1000, 
         price: 530, 
-        label: "+1000 Extra Applications",
+        label: "+1000 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/X4AC3EKGLV4WN"
       },
     ],
@@ -184,19 +184,19 @@ const planBoosterOptions: Record<string, Record<string, BoosterOption[]>> = {
       { 
         applications: 250, 
         price: 170, 
-        label: "+250 Extra Applications",
+        label: "+250 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/GMKAWCJ8TBV4J"
       },
       { 
         applications: 500, 
         price: 280, 
-        label: "+500 Extra Applications",
+        label: "+500 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/MMNRPXCKKLFX8"
       },
       { 
         applications: 1000, 
         price: 490, 
-        label: "+1000 Extra Applications",
+        label: "+1000 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/AA2DZ2ZBUEQSQ"
       },
     ],
@@ -204,19 +204,19 @@ const planBoosterOptions: Record<string, Record<string, BoosterOption[]>> = {
       { 
         applications: 250, 
         price: 155, 
-        label: "+250 Extra Applications",
+        label: "+250 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/S43ZN9SE6ER6U"
       },
       { 
         applications: 500, 
         price: 265, 
-        label: "+500 Extra Applications",
+        label: "+500 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/Y3Q97WGY7HCTW"
       },
       { 
         applications: 1000, 
         price: 460, 
-        label: "+1000 Extra Applications",
+        label: "+1000 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/NM9683EWP7GKG"
       },
     ],
