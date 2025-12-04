@@ -728,7 +728,6 @@ import type { NavLink, NavbarCTA } from "../../types/navbarData";
 import { trackButtonClick, trackModalOpen } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useRouter } from "next/navigation";
-import { getCurrentUTMParams } from "@/src/utils/UTMUtils";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
 
 type Props = {
@@ -768,6 +767,53 @@ export default function NavbarClient({ links, ctas }: Props) {
       return href;
     }
     return `${prefix}${href}`;
+  };
+
+  // Handle section clicks - scroll to section without changing URL
+  const handleSectionClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const sectionMap: { [key: string]: string } = {
+      '/feature': 'feature',
+      '/pricing': 'pricing',
+      '/testimonials': 'testimonials',
+      '/faq': 'faq',
+    };
+
+    const sectionId = sectionMap[href];
+    
+    if (sectionId && (pathname === '/' || pathname === '/en-ca' || pathname === prefix + '/')) {
+      e.preventDefault();
+      
+      setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          let targetElement: HTMLElement | null = section;
+          if (sectionId === 'faq') {
+            const faqHeader = document.getElementById('faq-header');
+            if (faqHeader) {
+              const h2 = faqHeader.querySelector('h2');
+              targetElement = h2 || faqHeader;
+            }
+          }
+          
+          if (targetElement) {
+            const stickyNavbar = document.querySelector('.sticky.top-0');
+            const navbarHeight = stickyNavbar ? stickyNavbar.getBoundingClientRect().height : 0;
+            
+            const rect = targetElement.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const elementTop = rect.top + scrollTop;
+            
+            const offset = navbarHeight + 30;
+            const offsetPosition = Math.max(0, elementTop - offset);
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth',
+            });
+          }
+        }
+      }, 100);
+    }
   };
 
   // Countdown timer - Set end date to 2 days from the moment the user opens the site
@@ -836,9 +882,8 @@ export default function NavbarClient({ links, ctas }: Props) {
       navigation_type: "banner_cta",
     });
     
-    // Navigate to /book-now with preserved UTM params
-    const utmParams = getCurrentUTMParams();
-    const targetPath = utmParams ? `/book-now?${utmParams}` : '/book-now';
+    // Navigate to /book-now WITHOUT exposing UTM params in the URL
+    const targetPath = '/book-now';
     
     // Dispatch custom event to force show modal (even if already on the route)
     if (typeof window !== 'undefined') {
@@ -869,18 +914,51 @@ export default function NavbarClient({ links, ctas }: Props) {
 
         {/* Center Section: Links (Desktop) */}
         <ul className={styles.navLinks}>
-          {links.map((link) => (
-            <li key={link.href} className={styles.navLinkItem}>
-              <a 
-                href={getHref(link.href)} 
-                className={styles.navLinkText}
-                target={link.target}
-                rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
-              >
-                {link.name}
-              </a>
-            </li>
-          ))}
+          {links.map((link) => {
+            const isSectionLink = ['/feature', '/pricing', '/testimonials', '/faq'].includes(link.href);
+            const isOnHomePage = pathname === '/' || pathname === '/en-ca' || pathname === prefix + '/';
+            const isExternal = isExternalHref(link.href) || link.target === "_blank";
+            
+            return (
+              <li key={link.href} className={styles.navLinkItem}>
+                {isSectionLink && isOnHomePage ? (
+                  <a 
+                    href={`#${link.href.replace('/', '')}`}
+                    className={styles.navLinkText}
+                    onClick={(e) => handleSectionClick(e, link.href)}
+                  >
+                    {link.name}
+                  </a>
+                ) : isExternal ? (
+                  <a 
+                    href={getHref(link.href)} 
+                    className={styles.navLinkText}
+                    target={link.target}
+                    rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
+                  >
+                    {link.name}
+                  </a>
+                ) : (
+                  <Link 
+                    href={getHref(link.href)} 
+                    className={styles.navLinkText}
+                    onClick={isSectionLink ? (e) => {
+                      // If not on home page, navigate first then scroll
+                      if (!isOnHomePage) {
+                        e.preventDefault();
+                        router.push(prefix + '/');
+                        setTimeout(() => {
+                          handleSectionClick(e as any, link.href);
+                        }, 500);
+                      }
+                    } : undefined}
+                  >
+                    {link.name}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
         </ul>
 
         {/* Right Section: CTAs (Desktop) */}
@@ -971,18 +1049,56 @@ export default function NavbarClient({ links, ctas }: Props) {
       {isMenuOpen && (
         <div className={styles.navMobileMenu}>
           <ul className={styles.navMobileLinks}>
-            {links.map((link) => (
-              <li key={link.href}>
-                <a 
-                  href={getHref(link.href)} 
-                  className={styles.navMobileLink}
-                  target={link.target}
-                  rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
+            {links.map((link) => {
+              const isSectionLink = ['/feature', '/pricing', '/testimonials', '/faq'].includes(link.href);
+              const isOnHomePage = pathname === '/' || pathname === '/en-ca' || pathname === prefix + '/';
+              const isExternal = isExternalHref(link.href) || link.target === "_blank";
+              
+              return (
+                <li key={link.href}>
+                  {isSectionLink && isOnHomePage ? (
+                    <a
+                      href={`#${link.href.replace('/', '')}`}
+                      className={styles.navMobileLink}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setIsMenuOpen(false);
+                        handleSectionClick(e, link.href);
+                      }}
+                    >
+                      {link.name}
+                    </a>
+                  ) : isExternal ? (
+                    <a 
+                      href={getHref(link.href)} 
+                      className={styles.navMobileLink}
+                      target={link.target}
+                      rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link 
+                      href={getHref(link.href)} 
+                      className={styles.navMobileLink}
+                      onClick={(e) => {
+                        setIsMenuOpen(false);
+                        if (isSectionLink && !isOnHomePage) {
+                          e.preventDefault();
+                          router.push(prefix + '/');
+                          setTimeout(() => {
+                            handleSectionClick(e as any, link.href);
+                          }, 500);
+                        }
+                      }}
+                    >
+                      {link.name}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
           </ul>
           <div className={styles.navMobileButtons}>
             <a

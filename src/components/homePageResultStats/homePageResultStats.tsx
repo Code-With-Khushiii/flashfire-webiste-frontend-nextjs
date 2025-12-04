@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import styles from "./homePageResultStats.module.css";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
-import { getCurrentUTMParams } from "@/src/utils/UTMUtils";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
 
 export default function HomePageResultStats() {
@@ -94,9 +93,8 @@ export default function HomePageResultStats() {
               funnel_stage: "signup_intent"
             });
             
-            // Navigate to /get-me-interview with preserved UTM params
-            const utmParams = getCurrentUTMParams();
-            const targetPath = utmParams ? `/get-me-interview?${utmParams}` : '/get-me-interview';
+            // Navigate to /get-me-interview WITHOUT exposing UTM params in the URL
+            const targetPath = '/get-me-interview';
             
             // Dispatch custom event to force show modal (even if already on the route)
             if (typeof window !== 'undefined') {
