@@ -48,6 +48,8 @@ interface UpgradePrice {
 }
 
 const upgradePrices: UpgradePrice[] = [
+  { from: "PRIME", to: "PROFESSIONAL", price: 240, paymentUrl: "https://www.paypal.com/ncp/payment/PRIME_TO_PRO_PLACEHOLDER" },
+  { from: "PRIME", to: "EXECUTIVE", price: 490, paymentUrl: "https://www.paypal.com/ncp/payment/PRIME_TO_EXEC_PLACEHOLDER" },
   { from: "IGNITE", to: "PROFESSIONAL", price: 170, paymentUrl: "https://www.paypal.com/ncp/payment/7Z7GT5CF75L3A" },
   { from: "IGNITE", to: "EXECUTIVE", price: 420, paymentUrl: "https://www.paypal.com/ncp/payment/AHW9DGNYWABZ4" },
   { from: "PROFESSIONAL", to: "EXECUTIVE", price: 285, paymentUrl: "https://www.paypal.com/ncp/payment/VR5YKZW26JUEL" },
@@ -56,23 +58,43 @@ const upgradePrices: UpgradePrice[] = [
 // Booster options with payment URLs for different plans and countries
 const planBoosterOptions: Record<string, Record<string, BoosterOption[]>> = {
   US: {
+    PRIME: [
+      { 
+        applications: 250, 
+        price: 120, 
+        label: "+250 Add-On",
+        paymentUrl: "https://www.paypal.com/ncp/payment/PRIME_250_US_PLACEHOLDER"
+      },
+      { 
+        applications: 500, 
+        price: 200, 
+        label: "+500 Add-On",
+        paymentUrl: "https://www.paypal.com/ncp/payment/PRIME_500_US_PLACEHOLDER"
+      },
+      { 
+        applications: 1000, 
+        price: 350, 
+        label: "+1000 Add-On",
+        paymentUrl: "https://www.paypal.com/ncp/payment/PRIME_1000_US_PLACEHOLDER"
+      },
+    ],
     IGNITE: [
       { 
         applications: 250, 
         price: 130, 
-        label: "+250 Extra Applications",
+        label: "+250 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/ZTFDFLX4LDXRN"
       },
       { 
         applications: 500, 
         price: 220, 
-        label: "+500 Extra Applications",
+        label: "+500 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/N9UN59NZ4TCZ6"
       },
       { 
         applications: 1000, 
         price: 380, 
-        label: "+1000 Extra Applications",
+        label: "+1000 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/5RLLXWWV7KBL2"
       },
     ],
@@ -80,44 +102,64 @@ const planBoosterOptions: Record<string, Record<string, BoosterOption[]>> = {
       { 
         applications: 250, 
         price: 120, 
-        label: "+250 Extra Applications",
+        label: "+250 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/95X9FAUHTUPM4"
       },
       { 
         applications: 500, 
         price: 200, 
-        label: "+500 Extra Applications",
+        label: "+500 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/58R6C59U8LBMS"
       },
       { 
         applications: 1000, 
         price: 350, 
-        label: "+1000 Extra Applications",
-        paymentUrl: "https://www.paypal.com/ncp/payment/QCQ5JTXK9ZY5L"
+          label: "+1000 Add-On",
+          paymentUrl: "https://www.paypal.com/ncp/payment/QCQ5JTXK9ZY5L"
       },
     ],
     EXECUTIVE: [
       { 
         applications: 250, 
         price: 110, 
-        label: "+250 Extra Applications",
+        label: "+250 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/R3UJGRAV9363A"
       },
       { 
         applications: 500, 
         price: 190, 
-        label: "+500 Extra Applications",
+        label: "+500 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/JNJ7Y36YDSGYW"
       },
       { 
         applications: 1000, 
         price: 330, 
-        label: "+1000 Extra Applications",
+        label: "+1000 Add-On",
         paymentUrl: "https://www.paypal.com/ncp/payment/2RZEKDPESWA5A"
       },
     ],
   },
   CA: {
+    PRIME: [
+      { 
+        applications: 250, 
+        price: 170, 
+        label: "+250 Extra Applications",
+        paymentUrl: "https://www.paypal.com/ncp/payment/PRIME_250_CA_PLACEHOLDER"
+      },
+      { 
+        applications: 500, 
+        price: 280, 
+        label: "+500 Extra Applications",
+        paymentUrl: "https://www.paypal.com/ncp/payment/PRIME_500_CA_PLACEHOLDER"
+      },
+      { 
+        applications: 1000, 
+        price: 490, 
+        label: "+1000 Extra Applications",
+        paymentUrl: "https://www.paypal.com/ncp/payment/PRIME_1000_CA_PLACEHOLDER"
+      },
+    ],
     IGNITE: [
       { 
         applications: 250, 
@@ -203,7 +245,7 @@ export default function PricingCard({
   const upgradeOptions = useMemo(() => {
     if (!allPlans || allPlans.length === 0) return [];
     
-    const planHierarchy = ["IGNITE", "PROFESSIONAL", "EXECUTIVE"];
+    const planHierarchy = ["PRIME", "IGNITE", "PROFESSIONAL", "EXECUTIVE"];
     const currentPlanIndex = planHierarchy.indexOf(title);
     
     if (currentPlanIndex === -1 || currentPlanIndex === planHierarchy.length - 1) {
@@ -312,7 +354,7 @@ export default function PricingCard({
   };
   
   return (
-    <div className="flex flex-col max-w-[25rem] min-w-[22rem] max-[1024px]:min-w-[20rem] max-[768px]:max-w-[90%] max-[768px]:min-w-0 max-[768px]:w-full h-full">
+    <div className="flex flex-col w-full h-full">
     <div
       className={`bg-white border rounded-[0.3rem] p-8 flex-1 flex flex-col text-left relative transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.05)] max-[768px]:p-6 ${highlight ? "border-2 border-[#ff4c00]" : "border border-black"}`}
     >
@@ -350,7 +392,15 @@ export default function PricingCard({
       </ul>
 
       {addOn && (
-        <div className="bg-[#f8f7f6] border border-[#f3dfd5] rounded-[0.4rem] p-4 mb-6">
+        <div
+          className={`bg-[#f8f7f6] border border-[#f3dfd5] rounded-[0.4rem] p-4 mb-6 ${
+            title === "IGNITE" || title === "PRIME"
+              ? "mt-[3.75rem]"
+              : tag === "ECONOMICAL" 
+              ? "mt-9"
+              : ""
+          } `}
+        >
           <h5 className="text-[1.3rem] font-bold mb-1 text-black max-[768px]:text-[1.1rem]">
             Booster Add-On
           </h5>
@@ -388,7 +438,9 @@ export default function PricingCard({
             }
             setShowUpgradeOptions(!showUpgradeOptions);
           }}
-          className="bg-[#ff4c00] text-white border-none py-2 px-4 font-semibold text-sm rounded-[0.5rem] w-full cursor-pointer transition-all duration-300 hover:bg-[#e24300] mb-4"
+          className={`bg-[#ff4c00] text-white border-none py-2 px-4 font-semibold text-sm rounded-[0.5rem] w-full cursor-pointer transition-all duration-300 hover:bg-[#e24300] mb-4 ${
+            title === "IGNITE" || title === "PRIME" ? "mt-[1rem]" : ""
+          }`}
         >
           {showUpgradeOptions ? "Hide Upgrade Options" : "Upgrade Plan"}
         </button>
