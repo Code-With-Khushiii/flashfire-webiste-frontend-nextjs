@@ -257,6 +257,10 @@ export default function PricingCard({
     return allPlans
       .filter(plan => {
         const planIndex = planHierarchy.indexOf(plan.title);
+        // Exclude IGNITE from PRIME upgrade options
+        if (title === "PRIME" && plan.title === "IGNITE") {
+          return false;
+        }
         return planIndex > currentPlanIndex;
       })
       .map(plan => {
@@ -398,6 +402,8 @@ export default function PricingCard({
               ? "mt-[2.3rem]"
               : tag === "ECONOMICAL" 
               ? "mt-9"
+              : title === "EXECUTIVE"
+              ? "mt-[0.5rem]"
               : ""
           } `}
         >
