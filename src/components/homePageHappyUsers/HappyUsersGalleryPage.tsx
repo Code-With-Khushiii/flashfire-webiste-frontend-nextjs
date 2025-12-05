@@ -73,9 +73,8 @@ export default function HappyUsersGalleryPage() {
         <h1 className="mb-6 text-5xl  font-bold text-white">
           All Happy Users' Testimonials
         </h1>
-          <p className="mb-6 text-base md:text-lg text-white">
-            Browse the full wall of screenshots and stories from users who have
-            used Flashfire to land interviews and offers.
+        <p className="mb-6 text-base md:text-lg text-white">
+          We’ve helped hundreds get there — and there’s absolutely no reason you won’t be next.
         </p>
 
         <div className="columns-4 gap-4 max-w-[1100px] mx-auto max-[1200px]:columns-4 max-[900px]:columns-3 max-[600px]:columns-2 max-[400px]:columns-1">
