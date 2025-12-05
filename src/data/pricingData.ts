@@ -463,9 +463,9 @@ export default function PricingCard({
         )}
       </div>
 
-       <p className="text-[0.85rem] text-[#555] mb-5">
+       {/* <p className="text-[0.85rem] text-[#555] mb-5">
         Total {subTitle.toLowerCase()} included
-      </p>
+      </p> */}
 
       <button
         className="bg-black text-white border-none py-[0.9rem] px-4 font-semibold text-[0.95rem] rounded-[0.4rem] w-full cursor-pointer transition-all duration-300 hover:bg-[#111] max-[768px]:text-[0.9rem] max-[768px]:py-3 max-[480px]:text-[0.85rem] max-[480px]:py-[0.7rem] max-[480px]:px-[0.9rem]"
