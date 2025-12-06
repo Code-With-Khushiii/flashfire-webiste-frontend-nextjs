@@ -26,11 +26,7 @@ export const usPricingPlans: PricingPlan[] = [
     ],
     addOn: true,
     highlight: false,
-<<<<<<< HEAD
-    paymentLink: "https://www.paypal.com/ncp/payment/PRIME_US_PLACEHOLDER",
-=======
     paymentLink: "https://www.paypal.com/ncp/payment/H7MMWP8SF27YN",
->>>>>>> 20074651555e1d7d7da308d397ff483b50f918c6
   },
   {
     title: "IGNITE",
