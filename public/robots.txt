@@ -1,14 +1,11 @@
 User-agent: *
 Allow: /
-# Block Next.js image optimization URLs (not content pages)
-Disallow: /_next/image
 # Block API endpoints from being indexed
 Disallow: /api/
 
 # Allow Google to crawl all content pages
 User-agent: Googlebot
 Allow: /
-Disallow: /_next/image
 Disallow: /api/
 
 # Sitemap location
