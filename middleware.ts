@@ -75,7 +75,14 @@ function detectCountryFallback(request: NextRequest): string {
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   
-  // Skip middleware for API routes, static files, and _next
+  // Add noindex header for Next.js image optimization routes (crawlable but not indexable)
+  if (pathname.startsWith('/_next/image')) {
+    const response = NextResponse.next();
+    response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+    return response;
+  }
+  
+  // Skip middleware for API routes, static files, and other _next routes
   if (
     pathname.startsWith('/api') ||
     pathname.startsWith('/_next') ||
@@ -140,10 +147,10 @@ export const config = {
      * Match all request paths except for the ones starting with:
      * - api (API routes)
      * - _next/static (static files)
-     * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
+     * Note: _next/image is included to add noindex headers
      */
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    '/((?!api|_next/static|favicon.ico).*)',
   ],
 };
 
