@@ -407,15 +407,21 @@ export default function HomePagePricingPlans() {
               );
             }
             
-            // When only one is visible, align with pricing card
+            // When only one is visible, center it in the middle
             const planIndex = boosterPlanIndex !== null ? boosterPlanIndex : (upgradePlanIndex !== null ? upgradePlanIndex : 0);
             
             if (planIndex === null) return null;
             
+            // Calculate empty columns to center the section (2 columns wide in a 4-column grid)
+            const totalColumns = 4;
+            const sectionWidth = 2;
+            const emptyColumnsBefore = Math.floor((totalColumns - sectionWidth) / 2);
+            const emptyColumnsAfter = totalColumns - sectionWidth - emptyColumnsBefore;
+            
             return (
               <div className="grid grid-cols-4 gap-6 max-[1200px]:grid-cols-2 max-[768px]:grid-cols-1 max-[768px]:gap-8">
-                {/* Empty columns before the selected card */}
-                {Array.from({ length: planIndex }).map((_, i) => (
+                {/* Empty columns before the section (to center it) */}
+                {Array.from({ length: emptyColumnsBefore }).map((_, i) => (
                   <div key={`empty-before-${i}`} />
                 ))}
                 
@@ -529,9 +535,8 @@ export default function HomePagePricingPlans() {
                   </div>
                 )}
 
-                {/* Empty columns after the selected card */}
-                {/* When showing booster/upgrade section, we need to account for col-span-2 */}
-                {Array.from({ length: Math.max(0, pricingPlans.length - planIndex - 2) }).map((_, i) => (
+                {/* Empty columns after the section (to center it) */}
+                {Array.from({ length: emptyColumnsAfter }).map((_, i) => (
                   <div key={`empty-after-${i}`} />
                 ))}
               </div>
