@@ -118,6 +118,12 @@ export default function HeroSectionClient({ data }: Props) {
             window.dispatchEvent(new CustomEvent('showGetMeInterviewModal'));
           }
           
+          // Save current scroll position before navigation to preserve it
+          if (typeof window !== 'undefined') {
+            const currentScrollY = window.scrollY;
+            sessionStorage.setItem('preserveScrollPosition', currentScrollY.toString());
+          }
+          
           // Only navigate if NOT already on the page
           const targetPath = '/get-me-interview';
           router.push(targetPath);
