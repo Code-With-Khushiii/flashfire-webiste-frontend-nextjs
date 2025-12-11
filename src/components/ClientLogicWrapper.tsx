@@ -187,45 +187,51 @@ function ClientLogicWrapperContent({
             return;
         }
 
+        // If forceShowModal is true (button was clicked from anywhere), always show modal FIRST
+        // This must be checked BEFORE route-specific checks so it works from any page
+        if (forceShowModal) {
+            console.log('forceShowModal is true, showing modal');
+            setForceShowModal(false); // Reset the flag
+            modalDismissedForRouteRef.current = null; // Reset dismissed state
+            
+            // Save scroll position before opening modal to prevent scroll-to-top
+            const currentScrollY = typeof window !== 'undefined' ? window.scrollY : 0;
+            
+            if (isFromIndia && !geoBypassActive) {
+                console.log('User from India, showing geo-block modal');
+                setShowGeoBlockModal(true);
+                setShowSignupModal(false);
+                setShowCalendlyModal(false);
+            } else {
+                console.log('Showing Calendly modal');
+                // Show Calendly modal for demo/book call buttons from any page
+                const savedFormData = loadFormData();
+                setShowCalendlyModal(true);
+                setShowSignupModal(false);
+                setShowGeoBlockModal(false);
+            }
+            
+            // Restore scroll position after modal opens to prevent scroll-to-top
+            if (typeof window !== 'undefined' && currentScrollY > 0) {
+                requestAnimationFrame(() => {
+                    window.scrollTo({ top: currentScrollY, behavior: 'instant' });
+                    requestAnimationFrame(() => {
+                        window.scrollTo({ top: currentScrollY, behavior: 'instant' });
+                        setTimeout(() => {
+                            window.scrollTo({ top: currentScrollY, behavior: 'instant' });
+                        }, 100);
+                    });
+                });
+            }
+            
+            // IMPORTANT: Return early to prevent the else block from closing modals
+            return;
+        }
+
         // Logic for restricted actions (Signup / Booking)
         if (isGetMeInterview || isScheduleCareerCall || isBookMyDemoCall || isSignup || isBookDemo) {
             // Check if user has already submitted the form
             const hasSubmitted = typeof window !== "undefined" && localStorage.getItem("submitted") === "true";
-            
-            // If forceShowModal is true (button was clicked), always show modal
-            if (forceShowModal) {
-                setForceShowModal(false); // Reset the flag
-                modalDismissedForRouteRef.current = null; // Reset dismissed state
-                
-                // Save scroll position before opening modal to prevent scroll-to-top
-                const currentScrollY = typeof window !== 'undefined' ? window.scrollY : 0;
-                
-                if (isFromIndia && !geoBypassActive) {
-                    setShowGeoBlockModal(true);
-                    setShowSignupModal(false);
-                } else {
-                    if (isGetMeInterview || isScheduleCareerCall || isBookMyDemoCall || isSignup) {
-                        const savedFormData = loadFormData();
-                        setShowCalendlyModal(true);
-                        setShowSignupModal(false);
-                    }
-                }
-                
-                // Restore scroll position after modal opens to prevent scroll-to-top
-                if (typeof window !== 'undefined' && currentScrollY > 0) {
-                    requestAnimationFrame(() => {
-                        window.scrollTo({ top: currentScrollY, behavior: 'instant' });
-                        requestAnimationFrame(() => {
-                            window.scrollTo({ top: currentScrollY, behavior: 'instant' });
-                            setTimeout(() => {
-                                window.scrollTo({ top: currentScrollY, behavior: 'instant' });
-                            }, 100);
-                        });
-                    });
-                }
-                
-                return;
-            }
             
             // For /get-me-interview, /schedule-a-free-career-call, and /book-my-demo-call routes: only show modal automatically if URL has query params
             // This prevents modal from showing on refresh when URL is clean (no query params)
@@ -260,12 +266,13 @@ function ClientLogicWrapperContent({
             }
         } else {
             // Close modals if navigating away and reset dismissed state
-            // This ensures that when user navigates back, it's treated as a new visit
-            setShowSignupModal(false);
-            setShowGeoBlockModal(false);
-            setShowCalendlyModal(false);
-            modalDismissedForRouteRef.current = null;
-            lastRouteWithModalRef.current = null;
+            // BUT: Don't close modals if they were just opened via forceShowModal
+            // Only close if modals are already closed (to reset state when navigating)
+            // This prevents closing modals that were just opened from non-route pages
+            if (!showCalendlyModal && !showSignupModal && !showGeoBlockModal) {
+                modalDismissedForRouteRef.current = null;
+                lastRouteWithModalRef.current = null;
+            }
         }
     }, [pathname, searchParams, isFromIndia, geoLoading, forceShowModal, forceShowCalendlyModal]);
 

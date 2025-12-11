@@ -99,6 +99,7 @@ export default function HomePageDemoCTA() {
             const targetPath = '/book-my-demo-call';
             const currentPath = pathname;
             const isAlreadyOnBookMyDemoCall = currentPath === '/book-my-demo-call' || currentPath === '/en-ca/book-my-demo-call';
+            const isOnHomePage = currentPath === '/' || currentPath === '/en-ca';
             
             // Dispatch custom event to force show modal (even if already on the route)
             if (typeof window !== 'undefined') {
@@ -108,6 +109,12 @@ export default function HomePageDemoCTA() {
             // If already on the route, prevent navigation to avoid showing homepage
             if (isAlreadyOnBookMyDemoCall) {
               // Just trigger the modal, don't navigate
+              return;
+            }
+            
+            // If not on homepage (e.g., /image-testimonials), show modal without navigating
+            if (!isOnHomePage) {
+              // Just trigger the modal, don't navigate - stay on current page
               return;
             }
             
@@ -143,7 +150,14 @@ export default function HomePageDemoCTA() {
         <button 
           {...getButtonProps()}
           className={styles.demoButton}
-          onClick={() => {
+          type="button"
+          onClick={(e) => {
+            // Ensure click event is not prevented
+            e.preventDefault();
+            e.stopPropagation();
+            
+            console.log('Demo button clicked on path:', pathname);
+            
             const utmSource = typeof window !== "undefined" 
               ? localStorage.getItem("utm_source") || "WEBSITE"
               : "WEBSITE";
@@ -178,17 +192,31 @@ export default function HomePageDemoCTA() {
             const targetPath = '/book-my-demo-call';
             const currentPath = pathname;
             const isAlreadyOnBookMyDemoCall = currentPath === '/book-my-demo-call' || currentPath === '/en-ca/book-my-demo-call';
+            const isOnHomePage = currentPath === '/' || currentPath === '/en-ca';
+            
+            console.log('Button clicked - currentPath:', currentPath, 'isOnHomePage:', isOnHomePage);
             
             // Dispatch custom event to force show modal (even if already on the route)
             if (typeof window !== 'undefined') {
+              console.log('Dispatching showGetMeInterviewModal event');
               window.dispatchEvent(new CustomEvent('showGetMeInterviewModal'));
             }
             
             // If already on the route, prevent navigation to avoid showing homepage
             if (isAlreadyOnBookMyDemoCall) {
+              console.log('Already on book-my-demo-call route, showing modal only');
               // Just trigger the modal, don't navigate
               return;
             }
+            
+            // If not on homepage (e.g., /image-testimonials), show modal without navigating
+            if (!isOnHomePage) {
+              console.log('Not on homepage, showing modal without navigation');
+              // Just trigger the modal, don't navigate - stay on current page
+              return;
+            }
+            
+            console.log('On homepage, navigating to:', targetPath);
             
             // Save current scroll position to sessionStorage before navigation
             if (typeof window !== 'undefined') {
