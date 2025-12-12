@@ -178,6 +178,12 @@
   margin: 0 auto;
 }
 
+/* Ensure consistent card sizes even with 1 or 2 cards */
+.blogGrid > * {
+  width: 100%;
+  max-width: 24rem;
+}
+
 @media (max-width: 640px) {
   .blogsSection {
     padding: 3rem 1rem;

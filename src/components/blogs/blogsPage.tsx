@@ -127,7 +127,24 @@ export default function BlogsPage({ post }: { post: BlogPost }) {
   useEffect(() => {
     if (!post) return;
 
-    window.scrollTo(0, 0);
+    // Scroll to top with navbar offset to ensure heading is visible
+    const scrollToTopWithOffset = () => {
+      const stickyNavbar = document.querySelector('.sticky.top-0') || 
+                          document.querySelector('nav');
+      const navbarHeight = stickyNavbar ? stickyNavbar.getBoundingClientRect().height : 0;
+      const offset = navbarHeight + 20; // Add extra 20px padding
+      window.scrollTo({ top: offset, behavior: 'instant' });
+    };
+
+    // Use requestAnimationFrame to ensure DOM is ready
+    requestAnimationFrame(() => {
+      scrollToTopWithOffset();
+      // Also scroll after a short delay to catch any late scrolls
+      setTimeout(() => {
+        scrollToTopWithOffset();
+      }, 50);
+    });
+
     const startedAt = Date.now();
 
     try {

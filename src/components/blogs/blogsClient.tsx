@@ -136,6 +136,14 @@ export default function BlogsClient() {
       {/* Category chips */}
       {allCategories.length > 0 && (
         <div className={styles.categoryChips}>
+          <Link
+            href="/blogs"
+            className={`${styles.categoryChip} ${
+              !decodedCategory && !decodedTag ? styles.categoryChipActive : ""
+            }`}
+          >
+            All Blogs
+          </Link>
           {allCategories.map((cat) => {
             const isActive =
               decodedCategory &&
@@ -152,22 +160,6 @@ export default function BlogsClient() {
               </Link>
             );
           })}
-        </div>
-      )}
-
-      {/* Filter Indicator */}
-      {(decodedCategory || decodedTag) && (
-        <div className={styles.tagFilterContainer}>
-          <span className={styles.tagFilterText}>
-            {decodedCategory ? (
-              <>Showing category: <strong>{decodedCategory}</strong></>
-            ) : (
-              <>Showing tag: <strong>{decodedTag}</strong></>
-            )}
-          </span>
-          <Link href="/blogs" className={styles.clearFilterLink}>
-            View all blogs
-          </Link>
         </div>
       )}
 
