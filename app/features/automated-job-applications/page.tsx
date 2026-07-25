@@ -31,50 +31,55 @@ const stats = [
 const features = [
   {
     icon: <FaFileAlt className="h-5 w-5" />,
-    title: "Always First to Apply",
-    desc: "Flashfire analyzes your resume against job descriptions to detect missing keywords, formatting issues, and ATS compatibility problems.",
+    title: "Find Matching Jobs",
+    desc: "FlashFire continuously searches for relevant jobs based on your experience, skills, preferred locations, and career goals.",
   },
   {
     icon: <FaFileAlt className="h-5 w-5" />,
-    title: "ATS-Optimized Applications",
-    desc: "Flashfire analyzes your resume against job descriptions to detect missing keywords, formatting issues, and ATS compatibility problems.",
+    title: "Optimize Every Application",
+    desc: "Your resume is tailored with relevant keywords and ATS-friendly improvements before applications are submitted.",
   },
   {
     icon: <FaFileAlt className="h-5 w-5" />,
-    title: "Consistent Weekly Momentum",
-    desc: "Flashfire analyzes your resume against job descriptions to detect missing keywords, formatting issues, and ATS compatibility problems.",
+    title: "Apply Automatically",
+    desc: "FlashFire submits applications consistently throughout the week so you never miss relevant opportunities.",
+  },
+  {
+    icon: <FaFileAlt className="h-5 w-5" />,
+    title: "Track Progress",
+    desc: "Monitor applications, interview updates, recruiter responses, and overall job search performance from one dashboard.",
   },
 ];
 
 const audienceGroups = [
   {
     title: "Active Job Seekers",
-    desc: "Optimized to fit on a single page, making it easy for recruiters to scan quickly and efficiently.",
+    desc: "Applying regularly but struggling to keep up with hundreds of opportunities.",
     icon: <FaFileAlt className="h-5 w-5" />,
   },
   {
-    title: "High-Volume Applicants",
-    desc: "Quantified achievements and measurable results that showcase your value and impact.",
+    title: "Busy Professionals",
+    desc: "Don't have hours every day to search and apply.",
     icon: <FaBolt className="h-5 w-5" />,
   },
   {
     title: "ATS-Rejected Candidates",
-    desc: "Clean structure and formatting that passes automated screening systems with ease.",
+    desc: "Need better keyword optimization to pass ATS screening.",
     icon: <FaCrosshairs className="h-5 w-5" />,
   },
   {
-    title: "Automation-First Job Seekers",
-    desc: "Perfect spelling and grammar throughout, maintaining a polished, professional appearance.",
+    title: "Career Switchers",
+    desc: "Applying across industries and roles.",
     icon: <FaFileAlt className="h-5 w-5" />,
   },
   {
     title: "International Applicants",
-    desc: "Snapshot your top skills and qualifications at the very beginning.",
+    desc: "Need consistent, high-volume applications in competitive markets.",
     icon: <FaGlobe className="h-5 w-5" />,
   },
   {
-    title: "Career Changers & Recent Graduates",
-    desc: "Use strong action verbs and concise language for maximum impact.",
+    title: "Fresh Graduates",
+    desc: "Applying to many entry-level opportunities with limited experience.",
     icon: <FaRocket className="h-5 w-5" />,
   },
 ];
@@ -83,74 +88,80 @@ const comparisonData = [
   {
     title: "Application Process",
     caption:
-      "Manual: Repetitive, time-consuming, inconsistent | Flashfire: AI-driven job application automation at scale",
+      "Manual: Searching, tailoring, applying one by one | FlashFire: Automatically finds and submits high-quality applications",
   },
   {
-    title: "ATS-Friendly Resume Optimization",
-    caption: "Resumes tailored to each job description with ATS-friendly keywords",
+    title: "Resume Optimization",
+    caption:
+      "Manual: Same resume for every application | FlashFire: Tailors resumes with ATS-friendly keywords",
   },
   {
-    title: "Time Efficiency in Job Search",
-    caption: "150+ hours saved through AI-powered automation",
+    title: "Time Saved",
+    caption: "Manual: 3-5 hours daily | FlashFire: Minutes to review, AI handles the rest",
   },
   {
-    title: "Accuracy & Attention to Detail",
-    caption: "Role-matched applications reviewed by AI + humans",
+    title: "Application Volume",
+    caption:
+      "Manual: 10-20 applications weekly | FlashFire: 100+ targeted applications every week",
   },
   {
-    title: "Automated Applications",
-    caption: "1,200+ smart applications sent strategically - not spam",
+    title: "Tracking",
+    caption:
+      "Manual: Messy spreadsheets | FlashFire: Centralized dashboard with application tracking",
   },
   {
-    title: "Application Tracking & Proof",
-    caption: "Real-time tracking with visible proof and updates",
-  },
-  {
-    title: "Interview Opportunity Rate",
-    caption: "Higher interview conversion rates within weeks",
+    title: "Interview Opportunities",
+    caption:
+      "Manual: Inconsistent | FlashFire: Higher application consistency leads to more interview opportunities",
   },
 ];
 
 const manualProblems = [
-  "Hundreds of candidates apply within hours of posting",
-  "ATS filters reject most resumes before humans see them",
-  "Manual applications can't scale consistently",
-  "There's no feedback loop to improve results",
-  "Why Manual Job applications Fail?",
+  "Misses early applications",
+  "Time-consuming",
+  "Same resume everywhere",
+  "Difficult to stay consistent",
+  "Hard to track progress",
 ];
 
 const aiSolutions = [
-  "Automates job applications instantly when roles go live",
-  "AI Refines Applications for Better Matching",
-  "Scales applications without fatigue or burnout",
-  "How AI changes the game",
-  "Learns from outcomes and continuously improves",
+  "Applies quickly after jobs are posted",
+  "Saves hours every week",
+  "ATS-optimized applications",
+  "Automated daily applications",
+  "Central dashboard and analytics",
 ];
 
 const problemSolutionPairs = [
   {
-    problem: "Jobs get crowded fast",
+    problem: "Misses early applications",
     detail: "Hundreds of candidates can apply within hours of a role going live.",
-    solution: "Flashfire applies early",
-    result: "AI monitors fresh openings and helps you apply when timing matters most.",
+    solution: "Applies quickly after jobs are posted",
+    result: "FlashFire applies as soon as new roles go live, keeping you ahead of the crowd.",
   },
   {
-    problem: "ATS filters block resumes",
-    detail: "Many resumes are rejected before a recruiter ever reads them.",
-    solution: "Applications are ATS-ready",
-    result: "Flashfire refines applications for stronger keyword and role matching.",
+    problem: "Time-consuming",
+    detail: "Searching, tailoring, and applying manually eats hours every day.",
+    solution: "Saves hours every week",
+    result: "FlashFire automates repetitive tasks so you get your time back.",
   },
   {
-    problem: "Manual applying burns time",
-    detail: "Repeating forms and tailoring every application is hard to sustain.",
-    solution: "Automation keeps momentum",
-    result: "You can scale applications without the fatigue of doing it all manually.",
+    problem: "Same resume everywhere",
+    detail: "Using one resume for every role limits your chances with ATS.",
+    solution: "ATS-optimized applications",
+    result: "FlashFire tailors your resume with relevant keywords for each job.",
   },
   {
-    problem: "No feedback loop",
-    detail: "Manual job searches often make it hard to see what is improving.",
-    solution: "AI learns and improves",
-    result: "Flashfire uses outcomes to continuously sharpen future applications.",
+    problem: "Difficult to stay consistent",
+    detail: "Manual applications often slow down or stop altogether over time.",
+    solution: "Automated daily applications",
+    result: "FlashFire keeps applying consistently, day after day.",
+  },
+  {
+    problem: "Hard to track progress",
+    detail: "Spreadsheets make it difficult to see what's working.",
+    solution: "Central dashboard and analytics",
+    result: "FlashFire gives you one dashboard to track every application and outcome.",
   },
 ];
 
@@ -204,6 +215,66 @@ const jobAutomationFAQs = [
     question: "How does automating job applications work with AI-powered job matching and alerts?",
     answer:
       " We use AI to match jobs based on your preferences, optimize your resume, then apply - while keeping you updated via WhatsApp.",
+  },
+  {
+    question: "What is AI job application automation?",
+    answer:
+      " AI job application automation uses artificial intelligence to find relevant job openings, tailor your resume for each role, and submit applications on your behalf, saving you hours of manual work every week.",
+  },
+  {
+    question: "How does FlashFire automatically apply for jobs?",
+    answer:
+      " FlashFire matches your profile with relevant job postings, optimizes your resume for each role, and submits the application for you, keeping you updated every step of the way.",
+  },
+  {
+    question: "Is job application automation safe?",
+    answer:
+      " Yes. FlashFire only applies to genuine, relevant job openings using your real resume and profile details, and every application is reviewed for quality before it's sent.",
+  },
+  {
+    question: "Can I review applications before they are submitted?",
+    answer:
+      " Yes, you can set your preferences upfront and review your resume and application details, so every submission reflects roles you actually want.",
+  },
+  {
+    question: "How many jobs can FlashFire apply to each week?",
+    answer:
+      " FlashFire can submit 100+ targeted applications every week, depending on your job preferences and the number of matching roles available.",
+  },
+  {
+    question: "Does FlashFire optimize my resume for every application?",
+    answer:
+      " Yes. FlashFire tailors your resume with relevant, ATS-friendly keywords for each job description before the application is submitted.",
+  },
+  {
+    question: "Does FlashFire support LinkedIn Easy Apply jobs?",
+    answer:
+      " Yes, FlashFire supports LinkedIn Easy Apply roles along with applications on company career pages and other major job boards.",
+  },
+  {
+    question: "Can I customize job preferences?",
+    answer:
+      " Yes, you can set preferences like job title, location, experience level, and industry, and FlashFire will apply only to roles that match your criteria.",
+  },
+  {
+    question: "How does FlashFire improve interview chances?",
+    answer:
+      " By applying earlier, more consistently, and with ATS-optimized resumes, FlashFire increases your visibility to recruiters and improves your chances of getting interview calls.",
+  },
+  {
+    question: "Can FlashFire help fresh graduates find jobs?",
+    answer:
+      " Yes, FlashFire helps fresh graduates apply to a high volume of entry-level opportunities while optimizing resumes to stand out with limited experience.",
+  },
+  {
+    question: "Is FlashFire suitable for experienced professionals?",
+    answer:
+      " Yes, FlashFire works for professionals at every level, tailoring applications to highlight relevant experience and achievements for each role.",
+  },
+  {
+    question: "How is FlashFire different from other AI job application tools?",
+    answer:
+      " FlashFire combines AI-powered automation with resume optimization and human oversight, ensuring every application is both fast and high-quality, not just mass-submitted.",
   },
 ];
 
@@ -374,16 +445,16 @@ export default function JobApplicationAutomationPage() {
           <div className="mx-auto max-w-[1180px] px-5">
             <div className="relative mx-auto max-w-3xl text-center">
               <div className="mb-5 inline-flex max-w-full rounded-full bg-[#ff4c00] px-3 py-1.5 text-[10px] font-bold text-white sm:px-4 sm:text-[11px]">
-                # AI-Powered Job Automation
+                # AI Job Search Assistant
               </div>
               <h1 className="mx-auto max-w-[760px] text-[31px] font-extrabold leading-[1.12] tracking-normal text-[#0b0b0b] sm:text-5xl lg:text-[54px]">
-                Job Application Automation That Helps You Apply Faster &amp; Get
-                Interviews
+                Automate Your Job Applications &amp; Land More Interviews
               </h1>
               <p className="mx-auto mt-5 max-w-[700px] text-sm font-medium leading-6 text-[#7b8191] sm:mt-7 sm:text-base sm:leading-7">
-                Flashfire is an AI-powered job application automation tool that helps
-                you automate job applications, optimize resumes for ATS, and apply to
-                roles instantly. So you stay ahead in competitive job markets.
+                FlashFire automates your job search by finding relevant jobs,
+                optimizing applications for ATS, and submitting high-quality
+                applications faster, helping you apply earlier, save time, and
+                increase your chances of getting interview calls.
               </p>
               <button
                 {...getButtonProps()}
@@ -480,10 +551,10 @@ export default function JobApplicationAutomationPage() {
           <div className="mx-auto max-w-[960px] px-5">
             <SectionHeader
               badge="How It Works"
-              title="Flashfire AI Job Application Automation Platform"
-              description="ATS-friendly, recruiter-ready, and focused on real improvements that get results."
+              title="How FlashFire Automates Your Job Search in 4 Simple Steps"
+              description="From finding matching jobs to submitting optimized applications, FlashFire automates repetitive tasks so you can spend more time preparing for interviews."
             />
-            <div className="mt-10 grid auto-rows-fr gap-5 sm:mt-16 md:grid-cols-3">
+            <div className="mt-10 grid auto-rows-fr gap-5 sm:mt-16 sm:grid-cols-2 lg:grid-cols-4">
               {features.map((feature) => (
                 <div
                   key={feature.title}
@@ -508,8 +579,8 @@ export default function JobApplicationAutomationPage() {
           <div className="mx-auto max-w-[900px] px-5">
             <SectionHeader
               badge="How It Works"
-              title="Manual Job Search vs Flashfire Automated Job Application System"
-              description="See the difference Flashfire makes in your job search journey"
+              title="Why Job Seekers Choose FlashFire Over Manual Applications"
+              description="Manual applications consume hours every week. FlashFire helps you apply earlier, more consistently, and more strategically."
             />
             <div className="mt-10 overflow-hidden border border-[#9ca3af] bg-white sm:mt-20">
               <div className="h-9 bg-[#ff4c00] sm:h-12" />
@@ -542,8 +613,8 @@ export default function JobApplicationAutomationPage() {
           <div className="mx-auto max-w-[900px] px-5">
             <SectionHeader
               badge="Built For Modern Job Seekers"
-              title="Who Is This Job Application Automation Tool For?"
-              description="ATS-friendly, recruiter-ready, and focused on real improvements that get results."
+              title="Who Benefits From Job Application Automation?"
+              description="Whether you're applying every day or struggling to stay consistent, FlashFire helps automate repetitive work so you can focus on interviews instead."
             />
             <div className="mt-10 grid auto-rows-fr border border-[#111] bg-white shadow-[3px_3px_0_#111] sm:mt-16 sm:grid-cols-2 sm:shadow-[4px_4px_0_#111] lg:grid-cols-3">
               {audienceGroups.map((group, index) => (
@@ -579,8 +650,13 @@ export default function JobApplicationAutomationPage() {
                 The Problem With Modern Job Search
               </span>
               <h2 className="mx-auto mt-5 max-w-[620px] text-[33px] font-extrabold leading-[1.04] tracking-normal text-[#111827] sm:mt-7 sm:text-[42px]">
-                Why job hunting breaks down and how AI fixes it
+                Why Modern Job Search Needs Automation
               </h2>
+              <p className="mx-auto mt-4 max-w-[600px] text-sm font-medium leading-6 text-[#596173] sm:mt-6 sm:text-base sm:leading-7">
+                Finding the right job today isn&apos;t just about qualifications.
+                Speed, consistency, and optimized applications make all the
+                difference.
+              </p>
             </div>
             <div className="mt-9 space-y-4 md:hidden">
               {problemSolutionPairs.map((item, index) => (
@@ -651,7 +727,7 @@ export default function JobApplicationAutomationPage() {
 
         <section id="faq" className={faqStyles.faqSection}>
           <div id="faq-header" className={faqStyles.header}>
-            <h2>Job Application Automation FAQs</h2>
+            <h2>FAQs About AI Job Application Automation</h2>
             <p>
               We get it, job application automation can sound complex. Here&apos;s
               everything explained, plain and simple.
