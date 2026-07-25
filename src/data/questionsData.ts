@@ -1,58 +1,42 @@
 export const questionsData = [
   {
-    question: "Why are we the best job hunting site to find opportunities quickly?",
-    answer: " Because we don't just show jobs — we apply to them for you. You skip browsing, resume editing, and forms. We do it all.",
+    question: "How does Flashfire help me land more interview calls?",
+    answer: "We apply to 1,200+ carefully targeted jobs on your behalf while our team optimizes your resume and LinkedIn for every role. This strategic, not random, approach is why 95% of users get an interview call within their first month.",
   },
   {
-    question: "How does Flashfire help me find the right jobs?",
-    answer: "AI-powered job search uses intelligent matching, resume optimization, and automation to apply only to roles that fit your profile. Flashfire's AI-powered job search ensures higher relevance and better recruiter response rates.",
+    question: "What does the Flashfire team handle for me?",
+    answer: "Your dedicated job search team handles everything — understanding your goals, building a recruiter-ready profile, applying to the right jobs, and tracking every application. You stay focused on interview prep while we handle the process.",
   },
   {
-    question: "How does Flashfire help me apply to jobs faster?",
-    answer: "Yes. Job search automation allows AI to apply for jobs automatically on your behalf, saving time while increasing application volume and accuracy.",
+    question: "How do you choose which jobs to apply for?",
+    answer: "Instead of applying everywhere, we carefully target roles that match your experience, goals, and visa or salary requirements. Every application is optimized before it's submitted — smarter applications, not more applications.",
   },
   {
-    question: "How does Flashfire support me throughout my job search?",
-    answer: "Using AI for job search on FlashFireJobs offers several benefits, including personalized job recommendations, faster applications, and improved recruiter visibility. As an AI-powered job search platform, FlashFireJobs combines intelligent job discovery, AI resume matching, and automated applications to help modern job seekers find opportunities quickly and apply with confidence.",
+    question: "Will I get support from real career experts?",
+    answer: "Yes. Alongside our technology, resume and LinkedIn experts personally review your profile, and a dedicated team stays with you through applications, interview prep, and even offer negotiation.",
   },
   {
-    question: "How is Flashfire different from traditional job boards?",
-    answer: "Flashfire works as an AI job search platform, combining job discovery, AI job matching, and automated applications.",
+    question: "What's included with Flashfire?",
+    answer: "Resume tailoring for every application, LinkedIn profile optimization, 1,200+ strategic job applications, live application tracking, WhatsApp support, interview guidance, and weekly progress updates.",
   },
   {
-    question: "How is Flashfire different from applying for jobs on your own?",
-    answer: "Traditional job searching is manual and time-consuming. AI-powered job search automates resume matching, job applications, and tracking, making job search automation faster and more effective.",
+    question: "How long does it take to start receiving interview calls?",
+    answer: "Many users report interview calls within their first week. Overall, 95% of users land an interview call within one month of starting with Flashfire.",
   },
   {
-    question: "Do I get support from real career experts?",
-    answer: " FlashFireJobs acts as your virtual assistant and team — finding jobs, optimizing your resume, and applying for you every day.",
+    question: "Can Flashfire improve my resume and LinkedIn profile?",
+    answer: "Yes. Our resume experts optimize your resume and LinkedIn profile so recruiters immediately see your strengths, while AI helps tailor every application — with every profile still reviewed for quality.",
   },
   {
-    question: "Who applies to jobs on my behalf?",
-    answer: "Yes. Flashfire is an AI job application platform that can auto-apply to jobs using AI-driven resume matching and role-specific optimization.",
+    question: "How can I track my job search progress?",
+    answer: "You get real-time application tracking plus weekly WhatsApp updates, so you always know exactly where things stand instead of applying and waiting in the dark.",
   },
   {
-    question: "What kind of job search support does Flashfire provide?",
-    answer: " ✔️ Resume optimization ✔️ Cover letter submission ✔️ 1,200+ manual applications ✔️ LinkedIn profile tips ✔️ Live job tracker ✔️ WhatsApp support ✔️ Weekly progress updates",
+    question: "How is Flashfire different from applying on LinkedIn or Indeed?",
+    answer: "LinkedIn and Indeed help you find and apply on your own. Flashfire applies for you — with a dedicated team, tailored resumes for every role, and full tracking — turning your job search into a managed process instead of a solo grind.",
   },
   {
-    question: "Can Flashfire help me find jobs that match my experience?",
-    answer: " FlashFireJobs is ideal if you want results. We don't show jobs — we apply to them with tailored resumes and real human effort.",
-  },
-  {
-    question: "What are the best job searching websites available right now?",
-    answer: " LinkedIn and Indeed are good for research. FlashFireJobs is better if you want action — not just information.",
-  },
-  {
-    question: "How can FlashFireJobs support my career job search goals?",
-    answer: " We help you reach your goals by targeting the right roles and sending tailored, optimized applications at scale — so you focus on interviews.",
-  },
-  {
-    question: "What services are included with Flashfire?",
-    answer: " FlashFireJobs offers: • Resume + LinkedIn optimization • Cover letter submissions • Manual applications • 24/7 job tracking • Human support throughout",
-  },
-  {
-    question: "How do Flashfire's experts and technology work together to help me land interviews?",
-    answer: " Our AI enhances your profile with the right keywords and format so employers' AI systems shortlist you faster, increasing interview chances.",
+    question: "Why do job seekers choose Flashfire?",
+    answer: "A dedicated job search team, strategic (not random) applications, resume and LinkedIn experts, real-time WhatsApp guidance, and AI working quietly behind the scenes — all combined to get you more interviews, faster.",
   },
 ];
