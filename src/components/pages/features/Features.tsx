@@ -475,7 +475,7 @@ function Features() {
           <div id="faq-header" className={faqStyles.header}>
             <h2>Question? We Got You Answers.</h2>
             <p>
-              We get it, AI job search can sound complex. Here&apos;s everything explained, plain and simple.
+              We get it,  job search can sound complex. Here&apos;s everything explained, plain and simple.
             </p>
           </div>
 
