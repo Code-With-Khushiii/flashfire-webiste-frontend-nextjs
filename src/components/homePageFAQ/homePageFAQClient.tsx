@@ -16,9 +16,9 @@ export default function HomePageFAQClient() {
   return (
     <section id="faq" className={styles.faqSection}>
       <div id="faq-header" className={styles.header}>
-        <h2>FAQs About Our AI Job Application Platform & Auto-Apply Features</h2>
+        <h2>FAQs About Our  Job Application Platform</h2>
         <p>
-          We get it, AI job search can sound complex. Here’s everything
+          We get it,  job search can sound complex. Here’s everything
           explained, plain and simple.
         </p>
       </div>
