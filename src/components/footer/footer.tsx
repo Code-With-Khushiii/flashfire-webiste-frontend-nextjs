@@ -4,13 +4,13 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { FaLinkedinIn, FaInstagram, FaYoutube } from "react-icons/fa";
 import { smoothScrollToElement } from "@/src/utils/smoothScroll";
+import { getLocalePrefix, isLocaleHome } from "@/src/utils/locale";
 
 export default function Footer() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const isCanadaContext = pathname.startsWith("/en-ca");
-  const prefix = isCanadaContext ? "/en-ca" : "";
+  const prefix = getLocalePrefix(pathname);
 
   const getHref = (href: string) => {
     if (href.startsWith("http")) return href;
@@ -21,8 +21,7 @@ export default function Footer() {
 
   const handleFAQClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const isHome =
-      pathname === "/" || pathname === "/en-ca" || pathname === `${prefix}/`;
+    const isHome = isLocaleHome(pathname);
 
     if (isHome) {
       setTimeout(() => {

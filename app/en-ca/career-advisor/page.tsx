@@ -15,6 +15,7 @@ export const metadata: Metadata = {
         languages: {
             "en-US": "https://www.flashfirejobs.com/career-advisor",
             "en-CA": "https://www.flashfirejobs.com/en-ca/career-advisor",
+            "en-GB": "https://www.flashfirejobs.com/en-uk/career-advisor",
             "x-default": "https://www.flashfirejobs.com/career-advisor",
         },
     },

@@ -5,6 +5,7 @@ import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
 import { Target, Rocket, Handshake, Trophy, ArrowRight, Check } from "lucide-react";
+import { stripLocalePrefix, localizeHref } from "@/src/utils/locale";
 
 const steps = [
   {
@@ -123,11 +124,9 @@ export default function JobSearch() {
         (typeof window !== "undefined" ? window.location.pathname : "");
       const normalizedPath = currentPath.split("?")[0];
       const isAlreadyOnGetMeInterview =
-        normalizedPath === "/get-me-interview" ||
-        normalizedPath === "/en-ca/get-me-interview";
+        stripLocalePrefix(normalizedPath) === "/get-me-interview";
       const isOnJobSearchPage =
-        normalizedPath === "/job-search" ||
-        normalizedPath === "/en-ca/job-search";
+        stripLocalePrefix(normalizedPath) === "/job-search";
 
       // If already on the route, save scroll position and prevent navigation
       if (isAlreadyOnGetMeInterview) {
@@ -170,9 +169,7 @@ export default function JobSearch() {
           );
         }
 
-        const targetPath = normalizedPath.startsWith("/en-ca")
-          ? "/en-ca/get-me-interview"
-          : "/get-me-interview";
+        const targetPath = localizeHref("/get-me-interview", normalizedPath);
         router.replace(targetPath);
         return;
       }

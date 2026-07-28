@@ -140,5 +140,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/en-ca/talk-to-an-expert`, lastModified: new Date('2025-11-01'), changeFrequency: 'monthly' as const, priority: 0.5 },
   ]
 
-  return [...staticRoutes, ...canadaRoutes, ...blogUrls]
+  // The UK tree mirrors the Canada tree exactly, so derive it rather than
+  // maintaining a second hand-written list that can drift.
+  const ukRoutes: MetadataRoute.Sitemap = canadaRoutes.map((route) => ({
+    ...route,
+    url: route.url.replace(`${baseUrl}/en-ca`, `${baseUrl}/en-uk`),
+  }))
+
+  return [...staticRoutes, ...canadaRoutes, ...ukRoutes, ...blogUrls]
 }

@@ -8,6 +8,7 @@ export const metadata: Metadata = {
     languages: {
       "en-US": "https://www.flashfirejobs.com/features/dashboard-analytics",
       "en-CA": "https://www.flashfirejobs.com/en-ca/features/dashboard-analytics",
+      "en-GB": "https://www.flashfirejobs.com/en-uk/features/dashboard-analytics",
       "x-default": "https://www.flashfirejobs.com/features/dashboard-analytics",
     },
   },

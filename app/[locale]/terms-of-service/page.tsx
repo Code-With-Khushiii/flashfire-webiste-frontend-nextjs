@@ -12,9 +12,12 @@ interface LocaleTermsOfServicePageProps {
 export async function generateMetadata({ params }: LocaleTermsOfServicePageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
+  const isUK = locale === "en-uk";
   
   return {
-    title: isCanada 
+    title: isUK
+      ? "Terms of Service | Flashfire (UK)"
+      : isCanada
       ? "Terms of Service | Flashfire (Canada)"
       : "Terms of Service | Flashfire",
     description:
@@ -24,17 +27,21 @@ export async function generateMetadata({ params }: LocaleTermsOfServicePageProps
       follow: false,
     },
     alternates: {
-      canonical: isCanada 
-        ? "https://www.flashfirejobs.com/en-ca/terms-of-service"
-        : "https://www.flashfirejobs.com/terms-of-service",
+      canonical: isUK
+      ? "https://www.flashfirejobs.com/en-uk/terms-of-service"
+      : isCanada
+      ? "https://www.flashfirejobs.com/en-ca/terms-of-service"
+      : "https://www.flashfirejobs.com/terms-of-service",
     },
     openGraph: {
       title: "Terms of Service | Flashfire",
       description:
         "Read Flashfire's Terms of Service to understand our terms and conditions.",
-      url: isCanada 
-        ? "https://www.flashfirejobs.com/en-ca/terms-of-service"
-        : "https://www.flashfirejobs.com/terms-of-service",
+      url: isUK
+      ? "https://www.flashfirejobs.com/en-uk/terms-of-service"
+      : isCanada
+      ? "https://www.flashfirejobs.com/en-ca/terms-of-service"
+      : "https://www.flashfirejobs.com/terms-of-service",
       type: "website",
     },
   };

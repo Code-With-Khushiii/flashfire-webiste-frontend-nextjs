@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     languages: {
       "en-US": "https://www.flashfirejobs.com/ai-career-assessment-skill-gap-analysis",
       "en-CA": "https://www.flashfirejobs.com/en-ca/ai-career-assessment-skill-gap-analysis",
+      "en-GB": "https://www.flashfirejobs.com/en-uk/ai-career-assessment-skill-gap-analysis",
       "x-default": "https://www.flashfirejobs.com/ai-career-assessment-skill-gap-analysis",
     },
   },

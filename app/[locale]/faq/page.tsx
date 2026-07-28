@@ -10,9 +10,12 @@ interface LocaleFAQPageProps {
 export async function generateMetadata({ params }: LocaleFAQPageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
+  const isUK = locale === "en-uk";
   
   return {
-    title: isCanada 
+    title: isUK
+      ? "FAQ - Frequently Asked Questions | Flashfire (UK)"
+      : isCanada
       ? "FAQ - Frequently Asked Questions | Flashfire (Canada)"
       : "FAQ - Frequently Asked Questions | Flashfire",
     description:
@@ -22,17 +25,21 @@ export async function generateMetadata({ params }: LocaleFAQPageProps): Promise<
       follow: false,
     },
     alternates: {
-      canonical: isCanada 
-        ? "https://www.flashfirejobs.com/en-ca/faq"
-        : "https://www.flashfirejobs.com/faq",
+      canonical: isUK
+      ? "https://www.flashfirejobs.com/en-uk/faq"
+      : isCanada
+      ? "https://www.flashfirejobs.com/en-ca/faq"
+      : "https://www.flashfirejobs.com/faq",
     },
     openGraph: {
       title: "FAQ - Frequently Asked Questions",
       description:
         "Find answers to common questions about Flashfire's job search automation service.",
-      url: isCanada 
-        ? "https://www.flashfirejobs.com/en-ca/faq"
-        : "https://www.flashfirejobs.com/faq",
+      url: isUK
+      ? "https://www.flashfirejobs.com/en-uk/faq"
+      : isCanada
+      ? "https://www.flashfirejobs.com/en-ca/faq"
+      : "https://www.flashfirejobs.com/faq",
       type: "website",
     },
   };

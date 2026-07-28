@@ -8,6 +8,7 @@ import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
 import { FaPlus, FaTimes } from "react-icons/fa";
+import { stripLocalePrefix, localizeHref } from "@/src/utils/locale";
 
 export default function AboutUs() {
   const router = useRouter();
@@ -115,9 +116,8 @@ export default function AboutUs() {
       
         const currentPath = pathname || (typeof window !== 'undefined' ? window.location.pathname : '');
         const normalizedPath = currentPath.split('?')[0];
-        const isAboutUsPage = normalizedPath === '/about-us' || normalizedPath === '/en-ca/about-us';
-        const isAlreadyOnGetMeInterview = normalizedPath === '/get-me-interview' ||
-          normalizedPath === '/en-ca/get-me-interview';
+        const isAboutUsPage = stripLocalePrefix(normalizedPath) === '/about-us';
+        const isAlreadyOnGetMeInterview = stripLocalePrefix(normalizedPath) === '/get-me-interview';
       
         if (isAlreadyOnGetMeInterview) {
           const currentScrollY = typeof window !== 'undefined' ? window.scrollY : 0;
@@ -144,7 +144,7 @@ export default function AboutUs() {
           if (typeof window !== 'undefined') {
             sessionStorage.setItem('preserveScrollPosition', currentScrollY.toString());
           }
-          const targetPath = normalizedPath.startsWith('/en-ca') ? '/en-ca/get-me-interview' : '/get-me-interview';
+          const targetPath = localizeHref('/get-me-interview', normalizedPath);
           if (typeof window !== 'undefined') {
             window.history.pushState({}, '', targetPath);
           }

@@ -8,6 +8,7 @@ import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
 import { useEffect, useState } from "react";
+import { stripLocalePrefix } from "@/src/utils/locale";
 
 export default function HomePageCareerCTA() {
   const router = useRouter();
@@ -96,8 +97,7 @@ export default function HomePageCareerCTA() {
                 // Check current path first
                 const currentPath = pathname || (typeof window !== 'undefined' ? window.location.pathname : '');
                 const normalizedPath = currentPath.split('?')[0]; // Remove query params
-                const isAlreadyOnScheduleACareerCall = normalizedPath === '/schedule-a-free-career-call' ||
-                  normalizedPath === '/en-ca/schedule-a-free-career-call';
+                const isAlreadyOnScheduleACareerCall = stripLocalePrefix(normalizedPath) === '/schedule-a-free-career-call';
 
                 // Navigate to /schedule-a-free-career-call WITHOUT exposing UTM params in the URL
                 const targetPath = '/schedule-a-free-career-call';

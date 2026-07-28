@@ -15,9 +15,12 @@ interface LocalePricingPageProps {
 export async function generateMetadata({ params }: LocalePricingPageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
+  const isUK = locale === "en-uk";
   
   return {
-    title: isCanada 
+    title: isUK
+      ? "Pricing - Affordable Job Search Automation Plans | Flashfire UK"
+      : isCanada
       ? "Pricing - Affordable Job Search Automation Plans | Flashfire CA"
       : "Pricing - Affordable Job Search Automation Plans | Flashfire",
     description:
@@ -27,17 +30,21 @@ export async function generateMetadata({ params }: LocalePricingPageProps): Prom
       follow: false,
     },
     alternates: {
-      canonical: isCanada 
-        ? "https://www.flashfirejobs.com/en-ca/pricing"
-        : "https://www.flashfirejobs.com/pricing",
+      canonical: isUK
+      ? "https://www.flashfirejobs.com/en-uk/pricing"
+      : isCanada
+      ? "https://www.flashfirejobs.com/en-ca/pricing"
+      : "https://www.flashfirejobs.com/pricing",
     },
     openGraph: {
       title: "Pricing - Affordable Job Search Automation Plans",
       description:
         "Choose the perfect Flashfire plan for your job search automation.",
-      url: isCanada 
-        ? "https://www.flashfirejobs.com/en-ca/pricing"
-        : "https://www.flashfirejobs.com/pricing",
+      url: isUK
+      ? "https://www.flashfirejobs.com/en-uk/pricing"
+      : isCanada
+      ? "https://www.flashfirejobs.com/en-ca/pricing"
+      : "https://www.flashfirejobs.com/pricing",
       type: "website",
     },
   };

@@ -18,6 +18,7 @@ import Image from "next/image";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
+import { localizeHref } from "@/src/utils/locale";
 
 export default function SalaryNegotiationUI() {
     const { getButtonProps } = useGeoBypass({
@@ -28,10 +29,7 @@ export default function SalaryNegotiationUI() {
 
     const pushCustomUrl = (path?: string) => {
         if (typeof window === "undefined" || !path) return;
-        const isCanada = window.location.pathname.startsWith("/en-ca");
-        const normalized = path.startsWith("/en-ca")
-            ? path
-            : isCanada ? `/en-ca${path}` : path;
+        const normalized = localizeHref(path, window.location.pathname);
         window.history.pushState({}, "", normalized);
     };
 

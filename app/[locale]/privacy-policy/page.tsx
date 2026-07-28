@@ -12,9 +12,12 @@ interface LocalePrivacyPolicyPageProps {
 export async function generateMetadata({ params }: LocalePrivacyPolicyPageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
+  const isUK = locale === "en-uk";
   
   return {
-    title: isCanada 
+    title: isUK
+      ? "Privacy Policy | Flashfire (UK)"
+      : isCanada
       ? "Privacy Policy | Flashfire (Canada)"
       : "Privacy Policy | Flashfire",
     description:
@@ -24,17 +27,21 @@ export async function generateMetadata({ params }: LocalePrivacyPolicyPageProps)
       follow: false,
     },
     alternates: {
-      canonical: isCanada 
-        ? "https://www.flashfirejobs.com/en-ca/privacy-policy"
-        : "https://www.flashfirejobs.com/privacy-policy",
+      canonical: isUK
+      ? "https://www.flashfirejobs.com/en-uk/privacy-policy"
+      : isCanada
+      ? "https://www.flashfirejobs.com/en-ca/privacy-policy"
+      : "https://www.flashfirejobs.com/privacy-policy",
     },
     openGraph: {
       title: "Privacy Policy | Flashfire",
       description:
         "Read Flashfire's Privacy Policy to understand how we protect your personal information.",
-      url: isCanada 
-        ? "https://www.flashfirejobs.com/en-ca/privacy-policy"
-        : "https://www.flashfirejobs.com/privacy-policy",
+      url: isUK
+      ? "https://www.flashfirejobs.com/en-uk/privacy-policy"
+      : isCanada
+      ? "https://www.flashfirejobs.com/en-ca/privacy-policy"
+      : "https://www.flashfirejobs.com/privacy-policy",
       type: "website",
     },
   };

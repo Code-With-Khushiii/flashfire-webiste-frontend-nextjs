@@ -1,18 +1,24 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { heroSectionData, heroSectionDataCA } from "@/src/data/herosection";
+import { heroSectionData, heroSectionDataCA, heroSectionDataUK } from "@/src/data/herosection";
 import HeroSectionClient from "./heroSectionClient";
+import { getLocale, type Locale } from "@/src/utils/locale";
 
 type Props = {
-  country?: "us" | "ca";
+  country?: Locale;
 };
 
 export default function HeroSection({ country }: Props) {
   const pathname = usePathname();
-  const isCanadaContext =
-    country === "ca" || (country !== "us" && pathname?.startsWith("/en-ca"));
-  const data = isCanadaContext ? heroSectionDataCA : heroSectionData;
+  // An explicit `country` prop wins; otherwise infer it from the route.
+  const locale: Locale = country ?? getLocale(pathname);
+  const data =
+    locale === "uk"
+      ? heroSectionDataUK
+      : locale === "ca"
+        ? heroSectionDataCA
+        : heroSectionData;
   const heroImageSrc = "/images/landingpageImg.png";
 
   return (

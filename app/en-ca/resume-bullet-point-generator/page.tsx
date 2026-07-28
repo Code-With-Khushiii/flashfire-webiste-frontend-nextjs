@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     languages: {
       "en-US": "https://www.flashfirejobs.com/resume-bullet-point-generator",
       "en-CA": "https://www.flashfirejobs.com/en-ca/resume-bullet-point-generator",
+      "en-GB": "https://www.flashfirejobs.com/en-uk/resume-bullet-point-generator",
       "x-default": "https://www.flashfirejobs.com/resume-bullet-point-generator",
     },
   },

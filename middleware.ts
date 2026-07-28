@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { CANADA_PREFIX, UK_PREFIX, LOCALE_PREFIXES, UK_EU_COUNTRY_CODES } from '@/src/utils/locale';
 
 const CANADA_CODE = 'CA';
-const STORAGE_KEY = 'ff_country_code_v1';
 
 // Cache for country codes (in-memory for server-side)
 const countryCache = new Map<string, { code: string; expiresAt: number }>();
@@ -56,15 +56,31 @@ function getClientIp(request: NextRequest): string | null {
   return null;
 }
 
+/** Language tags that imply a UK/EU visitor when no IP geolocation is available. */
+const UK_EU_LANGUAGE_TAGS = [
+  'en-GB', 'en-IE',
+  'de-DE', 'de-AT', 'fr-FR', 'fr-BE', 'nl-NL', 'nl-BE', 'it-IT', 'es-ES',
+  'pt-PT', 'pl-PL', 'sv-SE', 'da-DK', 'fi-FI', 'el-GR', 'cs-CZ', 'sk-SK',
+  'hu-HU', 'ro-RO', 'bg-BG', 'hr-HR', 'sl-SI', 'et-EE', 'lv-LV', 'lt-LT',
+  'mt-MT', 'ga-IE',
+];
+
 function detectCountryFallback(request: NextRequest): string {
   // Try to detect from Accept-Language header
   const acceptLanguage = request.headers.get('accept-language') || '';
-  
+
   // Check for French Canadian
   if (acceptLanguage.includes('fr-CA')) {
     return 'CA';
   }
-  
+
+  // Check for a UK/EU locale. Return the matching region so the caller's
+  // UK_EU_COUNTRY_CODES lookup routes it to /en-uk.
+  const ukEuTag = UK_EU_LANGUAGE_TAGS.find(tag => acceptLanguage.includes(tag));
+  if (ukEuTag) {
+    return ukEuTag.split('-')[1];
+  }
+
   // Default to US
   return 'US';
 }
@@ -89,8 +105,8 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // If already on /en-ca path, allow it
-  if (pathname.startsWith('/en-ca')) {
+  // If already inside a locale tree (/en-ca, /en-uk), allow it
+  if (LOCALE_PREFIXES.some(prefix => pathname === prefix || pathname.startsWith(`${prefix}/`))) {
     return NextResponse.next();
   }
 
@@ -129,8 +145,16 @@ export async function middleware(request: NextRequest) {
     // Redirect to /en-ca if Canada detected
     if (countryCode === CANADA_CODE) {
       const url = request.nextUrl.clone();
-      url.pathname = '/en-ca';
+      url.pathname = CANADA_PREFIX;
       console.log('[Middleware] Redirecting to /en-ca for Canada user');
+      return NextResponse.redirect(url);
+    }
+
+    // Redirect to /en-uk for the UK and every EU member state
+    if (countryCode && UK_EU_COUNTRY_CODES.has(countryCode)) {
+      const url = request.nextUrl.clone();
+      url.pathname = UK_PREFIX;
+      console.log(`[Middleware] Redirecting to /en-uk for ${countryCode} user`);
       return NextResponse.redirect(url);
     }
   }

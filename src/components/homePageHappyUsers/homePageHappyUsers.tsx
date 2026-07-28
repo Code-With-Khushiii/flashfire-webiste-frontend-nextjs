@@ -6,6 +6,7 @@ import { useState, useEffect, useRef } from "react";
 import React from "react";
 import CachedTestimonialImage from "./CachedTestimonialImage";
 import styles from "./homePageHappyUsers.module.css";
+import { getLocalePrefix } from "@/src/utils/locale";
 
 // Helper function to optimize Cloudinary URLs for fast loading
 const optimizeCloudinaryUrl = (url: string, width: number = 800) => {
@@ -88,8 +89,7 @@ export default function HomePageHappyUsers({
   variant = "default",
 }: HomePageHappyUsersProps) {
   const pathname = usePathname();
-  const isCanadaContext = pathname.startsWith("/en-ca");
-  const prefix = isCanadaContext ? "/en-ca" : "";
+  const prefix = getLocalePrefix(pathname);
 
   const handleTryItYourself = () => {
     if (typeof window === "undefined") {
