@@ -5,6 +5,7 @@ import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
 import { Target, Rocket, Handshake, Trophy } from "lucide-react";
+import { localizeHref, stripLocalePrefix } from "@/src/utils/locale";
 
 const steps = [
   {
@@ -89,12 +90,10 @@ export default function JobSearchNearMeContent() {
         (typeof window !== "undefined" ? window.location.pathname : "");
       const normalizedPath = currentPath.split("?")[0];
       const isAlreadyOnGetMeInterview =
-        normalizedPath === "/get-me-interview" ||
-        normalizedPath === "/en-ca/get-me-interview";
+        stripLocalePrefix(normalizedPath) === "/get-me-interview";
       const isOnJobSearchPage =
-        normalizedPath === "/job-search" ||
-        normalizedPath === "/en-ca/job-search" ||
-        normalizedPath === "/Job-Search-Immediately-near-me";
+        stripLocalePrefix(normalizedPath) === "/job-search" ||
+        stripLocalePrefix(normalizedPath) === "/Job-Search-Immediately-near-me";
 
       // If already on the route, save scroll position and prevent navigation
       if (isAlreadyOnGetMeInterview) {
@@ -137,9 +136,7 @@ export default function JobSearchNearMeContent() {
           );
         }
 
-        const targetPath = normalizedPath.startsWith("/en-ca")
-          ? "/en-ca/get-me-interview"
-          : "/get-me-interview";
+        const targetPath = localizeHref("/get-me-interview", normalizedPath);
         router.replace(targetPath);
         return;
       }

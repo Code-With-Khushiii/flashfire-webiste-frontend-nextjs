@@ -21,6 +21,7 @@ import Footer from "@/src/components/footer/footer";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
+import { localizeHref, stripLocalePrefix } from "@/src/utils/locale";
 
 export default function PrecisionTargetingPage() {
   const router = useRouter();
@@ -72,13 +73,10 @@ export default function PrecisionTargetingPage() {
         pathname || (typeof window !== "undefined" ? window.location.pathname : "");
       const normalizedPath = currentPath.split("?")[0];
       const isAlreadyOnGetMeInterview =
-        normalizedPath === "/get-me-interview" ||
-        normalizedPath === "/en-ca/get-me-interview";
+        stripLocalePrefix(normalizedPath) === "/get-me-interview";
       const isOnPrecisionTargetingPage =
-        normalizedPath === "/features/precision-targeting" ||
-        normalizedPath === "/en-ca/features/precision-targeting" ||
-        normalizedPath === "/features/ai-job-targeting" ||
-        normalizedPath === "/en-ca/features/ai-job-targeting";
+        stripLocalePrefix(normalizedPath) === "/features/precision-targeting" ||
+        stripLocalePrefix(normalizedPath) === "/features/ai-job-targeting";
 
       if (isAlreadyOnGetMeInterview) {
         const currentScrollY = typeof window !== "undefined" ? window.scrollY : 0;
@@ -99,7 +97,7 @@ export default function PrecisionTargetingPage() {
           window.history.pushState(
             {},
             "",
-            normalizedPath.startsWith("/en-ca") ? "/en-ca/get-me-interview" : "/get-me-interview"
+            localizeHref("/get-me-interview", normalizedPath)
           );
         }
         requestAnimationFrame(() => window.scrollTo({ top: currentScrollY, behavior: "instant" }));

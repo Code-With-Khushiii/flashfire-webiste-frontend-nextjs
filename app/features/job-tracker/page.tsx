@@ -8,6 +8,7 @@ import { CheckCircle, Target, BarChart, TrendingUp, Clock, Zap } from "lucide-re
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
+import { localizeHref, stripLocalePrefix } from "@/src/utils/locale";
 
 export default function JobTrackerPage() {
   const router = useRouter();
@@ -59,12 +60,9 @@ export default function JobTrackerPage() {
       // Check current path first
       const currentPath = pathname || (typeof window !== 'undefined' ? window.location.pathname : '');
       const normalizedPath = currentPath.split('?')[0];
-      const isAlreadyOnGetMeInterview = normalizedPath === '/get-me-interview' ||
-        normalizedPath === '/en-ca/get-me-interview';
-      const isOnJobTrackerPage = normalizedPath === '/features/job-tracker' ||
-        normalizedPath === '/en-ca/features/job-tracker' ||
-        normalizedPath === '/features/job-application-tracker' ||
-        normalizedPath === '/en-ca/features/job-application-tracker';
+      const isAlreadyOnGetMeInterview = stripLocalePrefix(normalizedPath) === '/get-me-interview';
+      const isOnJobTrackerPage = stripLocalePrefix(normalizedPath) === '/features/job-tracker' ||
+        stripLocalePrefix(normalizedPath) === '/features/job-application-tracker';
 
       // If already on the route, save scroll position and prevent navigation
       if (isAlreadyOnGetMeInterview) {
@@ -98,7 +96,7 @@ export default function JobTrackerPage() {
 
         // Update URL for tracking without navigation
         if (typeof window !== 'undefined') {
-          const targetPath = normalizedPath.startsWith('/en-ca') ? '/en-ca/get-me-interview' : '/get-me-interview';
+          const targetPath = localizeHref('/get-me-interview', normalizedPath);
           window.history.pushState({}, '', targetPath);
         }
 

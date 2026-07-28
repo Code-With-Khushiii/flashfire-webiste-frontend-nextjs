@@ -168,6 +168,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/en-uk/blogs",
+        destination: "/en-uk/blog",
+        permanent: true,
+      },
+      {
         source: "/feature",
         destination: "/features",
         permanent: true,
@@ -230,6 +235,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/en-uk/features/ats-optimizer",
+        destination: "/en-uk/features/resume-optimizer",
+        permanent: true,
+      },
+      {
         source: "/job-application-automation",
         destination: "/features/job-automation",
         permanent: true,
@@ -252,6 +262,11 @@ const nextConfig: NextConfig = {
       {
         source: "/en-ca/how-it-works",
         destination: "/en-ca/how-flashfire-ai-job-automation-platform-works",
+        permanent: true,
+      },
+      {
+        source: "/en-uk/how-it-works",
+        destination: "/en-uk/how-flashfire-ai-job-automation-platform-works",
         permanent: true,
       },
     ];

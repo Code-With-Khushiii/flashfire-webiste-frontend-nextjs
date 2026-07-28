@@ -25,6 +25,7 @@ import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking
 import { GTagUTM } from "@/src/utils/GTagUTM"
 import { useGeoBypass } from "@/src/utils/useGeoBypass"
 import Script from "next/script"
+import { localizeHref, stripLocalePrefix } from "@/src/utils/locale";
 
 // Minimal UI primitives (local) to avoid missing imports
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -211,14 +212,10 @@ export default function Page() {
       // Check current path first
       const currentPath = pathname || (typeof window !== 'undefined' ? window.location.pathname : '')
       const normalizedPath = currentPath.split('?')[0] // Remove query params
-      const isAlreadyOnGetMeInterview = normalizedPath === '/get-me-interview' ||
-        normalizedPath === '/en-ca/get-me-interview'
-      const isOnATSPage = normalizedPath === '/ats-optimized-resume-checker' ||
-        normalizedPath === '/en-ca/ats-optimized-resume-checker' ||
-        normalizedPath === '/features/resume-optimizer' ||
-        normalizedPath === '/en-ca/features/resume-optimizer' ||
-        normalizedPath === '/features/ats-optimizer' ||
-        normalizedPath === '/en-ca/features/ats-optimizer'
+      const isAlreadyOnGetMeInterview = stripLocalePrefix(normalizedPath) === '/get-me-interview'
+      const isOnATSPage = stripLocalePrefix(normalizedPath) === '/ats-optimized-resume-checker' ||
+        stripLocalePrefix(normalizedPath) === '/features/resume-optimizer' ||
+        stripLocalePrefix(normalizedPath) === '/features/ats-optimizer'
 
       // If already on the route, save scroll position and prevent navigation
       if (isAlreadyOnGetMeInterview) {
@@ -252,7 +249,7 @@ export default function Page() {
         
         // Update URL for tracking without navigation
         if (typeof window !== 'undefined') {
-          const targetPath = normalizedPath.startsWith('/en-ca') ? '/en-ca/get-me-interview' : '/get-me-interview'
+          const targetPath = localizeHref('/get-me-interview', normalizedPath)
           window.history.pushState({}, '', targetPath)
         }
         

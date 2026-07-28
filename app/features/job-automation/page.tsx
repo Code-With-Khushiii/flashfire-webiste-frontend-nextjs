@@ -9,6 +9,7 @@ import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import faqStyles from "@/src/components/homePageFAQ/homePageFAQ.module.css";
+import { localizeHref, stripLocalePrefix } from "@/src/utils/locale";
 
 export default function JobApplicationAutomationPage() {
   const [isMounted, setIsMounted] = useState(false);
@@ -114,14 +115,10 @@ export default function JobApplicationAutomationPage() {
       // Check current path first
       const currentPath = pathname || (typeof window !== 'undefined' ? window.location.pathname : '');
       const normalizedPath = currentPath.split('?')[0];
-      const isAlreadyOnGetMeInterview = normalizedPath === '/get-me-interview' ||
-        normalizedPath === '/en-ca/get-me-interview';
-      const isOnJobAutomationPage = normalizedPath === '/job-application-automation' ||
-        normalizedPath === '/en-ca/job-application-automation' ||
-        normalizedPath === '/features/job-automation' ||
-        normalizedPath === '/en-ca/features/job-automation' ||
-        normalizedPath === '/features/automated-job-applications' ||
-        normalizedPath === '/en-ca/features/automated-job-applications';
+      const isAlreadyOnGetMeInterview = stripLocalePrefix(normalizedPath) === '/get-me-interview';
+      const isOnJobAutomationPage = stripLocalePrefix(normalizedPath) === '/job-application-automation' ||
+        stripLocalePrefix(normalizedPath) === '/features/job-automation' ||
+        stripLocalePrefix(normalizedPath) === '/features/automated-job-applications';
 
       // If already on the route, save scroll position and prevent navigation
       if (isAlreadyOnGetMeInterview) {
@@ -155,7 +152,7 @@ export default function JobApplicationAutomationPage() {
         
         // Update URL for tracking without navigation
         if (typeof window !== 'undefined') {
-          const targetPath = normalizedPath.startsWith('/en-ca') ? '/en-ca/get-me-interview' : '/get-me-interview';
+          const targetPath = localizeHref('/get-me-interview', normalizedPath);
           window.history.pushState({}, '', targetPath);
         }
         

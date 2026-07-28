@@ -7,6 +7,7 @@ import { useState } from "react";
 import { trackButtonClick, trackExternalLink } from "@/src/utils/PostHogTracking";
 import { WHATSAPP_SUPPORT_URL } from "@/src/utils/whatsapp";
 import HomePageHappyUsers from "../homePageHappyUsers/homePageHappyUsers";
+import { getLocalePrefix } from "@/src/utils/locale";
 
 const dispatchCustomEvent = (eventName: string) => {
   if (typeof window !== "undefined") {
@@ -19,7 +20,7 @@ export default function AICopilot() {
 
   const router = useRouter();
   const pathname = usePathname();
-  const prefix = pathname.startsWith("/en-ca") ? "/en-ca" : "";
+  const prefix = getLocalePrefix(pathname);
 
 
   const handleStartApplyingClick = (target: "modal" | "cta" = "modal") => {

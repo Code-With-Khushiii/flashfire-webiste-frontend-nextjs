@@ -38,13 +38,13 @@ function TalkToAnExpertContentUK() {
       button_location: "navbar",
       navigation_type: "primary_cta",
       page: "talk-to-an-expert",
-      locale: "en-ca",
+      locale: "en-uk",
     });
     trackExternalLink(WHATSAPP_SUPPORT_URL, "Talk to an Expert", "navigation", {
       link_type: "whatsapp_support",
       contact_method: "whatsapp",
       source: "navbar_button",
-      locale: "en-ca",
+      locale: "en-uk",
     });
 
     // Open WhatsApp in a new tab
