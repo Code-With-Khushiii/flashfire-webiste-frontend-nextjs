@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "LinkedIn Profile Optimization for Recruiter Visibility | FlashfireJobs",
-  description: "Optimize your LinkedIn profile to boost recruiter visibility. FlashFire optimizes your LinkedIn to rank higher in recruiter searches and get more interview messages.",
+  title: "LinkedIn Profile Optimization for Job Seekers",
+  description: "Optimize your LinkedIn profile for recruiter searches, stronger visibility, and more interview opportunities. Improve your headline, keywords, skills, and profile positioning with Flashfire.",
   alternates: {
     canonical: "https://www.flashfirejobs.com/features/linkedin-profile-optimization-tool",
   },

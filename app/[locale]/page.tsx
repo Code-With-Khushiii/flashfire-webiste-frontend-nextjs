@@ -23,9 +23,9 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
 
   if (!isCanada) {
     return {
-      title: "Flashfire: Automate Job Applications with AI",
+      title: "Flashfire: Job Search Virtual Assistant",
       description:
-        "Flashfire is an AI job application platform that automates job search, auto-applies to jobs using AI, and matches you with the right roles faster.",
+        "Get hired faster with Flashfire. Our team helps optimize your resume, apply to the right jobs, and manage your job search from start to finish.",
       robots: {
         index: true,
         follow: true,
@@ -34,9 +34,9 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
         canonical: "https://www.flashfirejobs.com/",
       },
       openGraph: {
-        title: "Flashfire: Automate Job Applications with AI",
+        title: "Flashfire: Job Search Virtual Assistant",
         description:
-          "Flashfire is an AI job application platform that automates job search, auto-applies to jobs using AI, and matches you with the right roles faster.",
+          "Get hired faster with Flashfire. Our team helps optimize your resume, apply to the right jobs, and manage your job search from start to finish.",
         url: "https://www.flashfirejobs.com/",
         type: "website",
         images: [
@@ -50,9 +50,9 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
       },
       twitter: {
         card: "summary_large_image",
-        title: "Flashfire: Automate Job Applications with AI",
+        title: "Flashfire: Job Search Virtual Assistant",
         description:
-          "Flashfire is an AI job application platform that automates job search, auto-applies to jobs using AI, and matches you with the right roles faster.",
+          "Get hired faster with Flashfire. Our team helps optimize your resume, apply to the right jobs, and manage your job search from start to finish.",
         images: ["https://www.flashfirejobs.com/images/og-image.png"],
       },
     };

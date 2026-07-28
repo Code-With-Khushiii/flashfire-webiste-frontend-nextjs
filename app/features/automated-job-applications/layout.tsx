@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Job Application Automation Tool | AI Job Applications",
-  description: "Flashfire is an AI job application automation tool that helps you automate job applications, beat ATS filters, and land interviews faster.",
+  title: "Automate Job Applications to  Get More Interviews",
+  description: "FlashFire automates your job search by finding relevant jobs, optimizing your resume for ATS, and submitting applications faster to increase interview opportunities.",
   alternates: {
     canonical: "https://www.flashfirejobs.com/features/automated-job-applications",
   },

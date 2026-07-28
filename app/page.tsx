@@ -3,9 +3,9 @@ import HomePage from "@/src/components/pages/home/Home";
 import HomeImagePreloader from "./HomeImagePreloader";
 
 export const metadata: Metadata = {
-  title: "Flashfire: Automate Job Applications with AI",
+  title: "Flashfire: Job Search Virtual Assistant",
   description:
-    "Flashfire is an AI job application platform that automates job search, auto-applies to jobs using AI, and matches you with the right roles faster.",
+    "Get hired faster with Flashfire. Our team helps optimize your resume, apply to the right jobs, and manage your job search from start to finish.",
   robots: {
     index: true,
     follow: true,
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Flashfire: Automate Job Applications with AI",
+    title: "Flashfire: Job Search Virtual Assistant",
     description:
-      "Flashfire is an AI job application platform that automates job search, auto-applies to jobs using AI, and matches you with the right roles faster.",
+      "Get hired faster with Flashfire. Our team helps optimize your resume, apply to the right jobs, and manage your job search from start to finish.",
     url: "https://www.flashfirejobs.com/",
     type: "website",
     images: [
@@ -35,9 +35,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Flashfire: Automate Job Applications with AI",
+    title: "Flashfire: Job Search Virtual Assistant",
     description:
-      "Flashfire is an AI job application platform that automates job search, auto-applies to jobs using AI, and matches you with the right roles faster.",
+      "Get hired faster with Flashfire. Our team helps optimize your resume, apply to the right jobs, and manage your job search from start to finish.",
     images: ["https://www.flashfirejobs.com/images/og-image.png"],
   },
 };
