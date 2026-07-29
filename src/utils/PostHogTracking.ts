@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import posthog from "posthog-js";
 import { apiUrl } from "./apiBase";
+import { getLocale } from "./locale";
 
 // Event naming convention: [action]_[object]_[context]
 // Examples: button_click_hero_cta, form_submit_signup, page_view_home
@@ -45,6 +46,7 @@ export interface PostHogEventProperties {
   country_code?: string;
   country_name?: string;
   is_canada?: boolean;
+  is_uk?: boolean;
   locale?: string;
 
   // Business context
@@ -131,11 +133,14 @@ const getCountryContext = (): Partial<PostHogEventProperties> => {
     return {};
   }
 
-  // Check if user is on Canada page
+  // Work out which country tree the user is on
   const location = safeGetLocation();
-  const isCanada = location.pathname.startsWith("/en-ca");
-  const countryCode = localStorage.getItem("ff_country_code_v1") || (isCanada ? "CA" : "US");
-  
+  const locale = getLocale(location.pathname);
+  const isCanada = locale === "ca";
+  const isUK = locale === "uk";
+  const fallbackCode = isCanada ? "CA" : isUK ? "GB" : "US";
+  const countryCode = localStorage.getItem("ff_country_code_v1") || fallbackCode;
+
   // Map country codes to names
   const countryNames: Record<string, string> = {
     CA: "Canada",
@@ -148,7 +153,8 @@ const getCountryContext = (): Partial<PostHogEventProperties> => {
     country_code: countryCode,
     country_name: countryNames[countryCode] || countryCode,
     is_canada: isCanada,
-    locale: isCanada ? "en-ca" : "en-us",
+    is_uk: isUK,
+    locale: isUK ? "en-uk" : isCanada ? "en-ca" : "en-us",
   };
 };
 

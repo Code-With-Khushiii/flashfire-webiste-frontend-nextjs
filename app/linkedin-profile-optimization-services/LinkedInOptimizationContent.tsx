@@ -9,6 +9,7 @@ import styles from "@/src/components/homePageDemoCTA/homePageDemoCTA.module.css"
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
+import { localizeHref, isLocaleHome, stripLocalePrefix } from "@/src/utils/locale";
 
 export default function LinkedInOptimizationContent() {
   const router = useRouter();
@@ -116,11 +117,9 @@ export default function LinkedInOptimizationContent() {
                     // Check current path first
                     const currentPath = pathname || (typeof window !== 'undefined' ? window.location.pathname : '');
                     const normalizedPath = currentPath.split('?')[0];
-                    const isAlreadyOnGetMeInterview = normalizedPath === '/get-me-interview' ||
-                      normalizedPath === '/en-ca/get-me-interview';
-                    const isOnLinkedInPage = normalizedPath === '/linkedin-profile-optimization-services' ||
-                      normalizedPath === '/en-ca/linkedin-profile-optimization-services' ||
-                      normalizedPath === '/Linkedin-Profile-Optimization-Services';
+                    const isAlreadyOnGetMeInterview = stripLocalePrefix(normalizedPath) === '/get-me-interview';
+                    const isOnLinkedInPage = stripLocalePrefix(normalizedPath) === '/linkedin-profile-optimization-services' ||
+                      stripLocalePrefix(normalizedPath) === '/Linkedin-Profile-Optimization-Services';
 
                     // If already on the route, save scroll position and prevent navigation
                     if (isAlreadyOnGetMeInterview) {
@@ -156,7 +155,7 @@ export default function LinkedInOptimizationContent() {
                         sessionStorage.setItem('preserveScrollPosition', currentScrollY.toString());
                       }
 
-                      const targetPath = normalizedPath.startsWith('/en-ca') ? '/en-ca/get-me-interview' : '/get-me-interview';
+                      const targetPath = localizeHref('/get-me-interview', normalizedPath);
                       router.replace(targetPath);
                       return;
                     }
@@ -204,7 +203,7 @@ export default function LinkedInOptimizationContent() {
                   // Fallback: Navigate to the How It Works page if section not found
                   const currentPath = pathname || (typeof window !== 'undefined' ? window.location.pathname : '');
                   const normalizedPath = currentPath.split('?')[0];
-                  const targetPath = normalizedPath.startsWith('/en-ca') ? '/en-ca/how-it-works' : '/how-it-works';
+                  const targetPath = localizeHref('/how-it-works', normalizedPath);
                   router.push(targetPath);
                 }}
                 className="border-2 border-[#ff4c00] text-[#ff4c00] bg-transparent hover:bg-[#fff2ea] px-6 sm:px-8 py-3 sm:py-4 font-semibold text-base sm:text-lg transition-colors rounded-lg inline-flex items-center justify-center"
@@ -516,11 +515,11 @@ export default function LinkedInOptimizationContent() {
               
               // Check current path
               const currentPath = pathname;
-              const isImageTestimonialsPage = currentPath === '/testimonials' || currentPath === '/en-ca/testimonials' || currentPath === '/image-testimonials' || currentPath === '/en-ca/image-testimonials';
-              const isAboutUsPage = currentPath === '/about-us' || currentPath === '/en-ca/about-us';
-              const isLinkedInPage = currentPath === '/linkedin-profile-optimization-services' || currentPath === '/en-ca/linkedin-profile-optimization-services' || currentPath === '/Linkedin-Profile-Optimization-Services';
-              const isAlreadyOnBookMyDemoCall = currentPath === '/book-my-demo-call' || currentPath === '/en-ca/book-my-demo-call';
-              const isOnHomePage = currentPath === '/' || currentPath === '/en-ca' || currentPath === '';
+              const isImageTestimonialsPage = stripLocalePrefix(currentPath) === '/testimonials' || stripLocalePrefix(currentPath) === '/image-testimonials';
+              const isAboutUsPage = stripLocalePrefix(currentPath) === '/about-us';
+              const isLinkedInPage = stripLocalePrefix(currentPath) === '/linkedin-profile-optimization-services' || stripLocalePrefix(currentPath) === '/Linkedin-Profile-Optimization-Services';
+              const isAlreadyOnBookMyDemoCall = stripLocalePrefix(currentPath) === '/book-my-demo-call';
+              const isOnHomePage = isLocaleHome(currentPath) || currentPath === '';
               
               // If on home page, just show modal without navigating
               if (isOnHomePage) {
@@ -536,7 +535,7 @@ export default function LinkedInOptimizationContent() {
               // If on image-testimonials page, change URL but keep page content visible
               if (isImageTestimonialsPage) {
                 // Change URL to /book-my-demo-call without navigating (keep testimonials page visible)
-                const targetPath = currentPath.startsWith('/en-ca') ? '/en-ca/book-my-demo-call' : '/book-my-demo-call';
+                const targetPath = localizeHref('/book-my-demo-call', currentPath);
                 if (typeof window !== 'undefined') {
                   window.history.pushState({}, '', targetPath);
                 }
@@ -558,7 +557,7 @@ export default function LinkedInOptimizationContent() {
                 }
                 
                 // Change URL to /book-my-demo-call using pushState only (don't use router to prevent scroll)
-                const targetPath = currentPath.startsWith('/en-ca') ? '/en-ca/book-my-demo-call' : '/book-my-demo-call';
+                const targetPath = localizeHref('/book-my-demo-call', currentPath);
                 if (typeof window !== 'undefined') {
                   window.history.pushState({}, '', targetPath);
                 }
@@ -588,7 +587,7 @@ export default function LinkedInOptimizationContent() {
                 }
                 
                 // Change URL to /book-my-demo-call using pushState only (don't use router to prevent scroll)
-                const targetPath = currentPath.startsWith('/en-ca') ? '/en-ca/book-my-demo-call' : '/book-my-demo-call';
+                const targetPath = localizeHref('/book-my-demo-call', currentPath);
                 if (typeof window !== 'undefined') {
                   window.history.pushState({}, '', targetPath);
                 }

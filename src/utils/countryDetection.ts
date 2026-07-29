@@ -1,4 +1,5 @@
 import { apiUrl } from './apiBase';
+import { UK_EU_COUNTRY_CODES } from './locale';
 
 const STORAGE_KEY = 'ff_country_code_v1';
 const CANADA_CODE = 'CA';
@@ -61,20 +62,60 @@ export function detectCountryFallback(): string {
     if (canadaTimezones.some(tz => timezone.includes(tz))) {
       return 'CA';
     }
-    
+
     // Check language for Canada (French Canadian)
     if (language.startsWith('fr-CA')) {
       return 'CA';
     }
-    
+
+    // Check timezone for the UK / EU. Europe/* covers every member state, so
+    // exclude the handful of non-EU Europe/* zones rather than listing all 27.
+    if (timezone.startsWith('Europe/') && !NON_EU_EUROPE_TIMEZONES.has(timezone)) {
+      return 'GB';
+    }
+
+    // Check language for the UK / EU
+    if (UK_EU_LANGUAGE_TAGS.some(tag => language.startsWith(tag))) {
+      return 'GB';
+    }
+
     return 'US';
   } catch {
     return 'US';
   }
 }
 
+/** Europe/* zones that are NOT in the UK or the EU, so they keep the US site. */
+const NON_EU_EUROPE_TIMEZONES = new Set([
+  'Europe/Moscow', 'Europe/Kaliningrad', 'Europe/Samara', 'Europe/Volgograd',
+  'Europe/Saratov', 'Europe/Ulyanovsk', 'Europe/Astrakhan', 'Europe/Kirov',
+  'Europe/Kyiv', 'Europe/Kiev', 'Europe/Uzhgorod', 'Europe/Zaporozhye',
+  'Europe/Minsk', 'Europe/Istanbul', 'Europe/Zurich', 'Europe/Oslo',
+  'Europe/Reykjavik', 'Europe/Vaduz', 'Europe/Belgrade', 'Europe/Sarajevo',
+  'Europe/Skopje', 'Europe/Podgorica', 'Europe/Tirane', 'Europe/Chisinau',
+  'Europe/Gibraltar', 'Europe/Guernsey', 'Europe/Jersey', 'Europe/Isle_of_Man',
+  'Europe/Andorra', 'Europe/Monaco', 'Europe/San_Marino', 'Europe/Vatican',
+  'Europe/Busingen', 'Europe/Mariehamn',
+]);
+
+/** Language tags that imply a UK or EU visitor. */
+const UK_EU_LANGUAGE_TAGS = [
+  'en-GB', 'en-IE',
+  'de-DE', 'de-AT', 'fr-FR', 'fr-BE', 'fr-LU', 'nl-NL', 'nl-BE', 'it-IT',
+  'es-ES', 'pt-PT', 'pl-PL', 'sv-SE', 'da-DK', 'fi-FI', 'el-GR', 'cs-CZ',
+  'sk-SK', 'hu-HU', 'ro-RO', 'bg-BG', 'hr-HR', 'sl-SI', 'et-EE', 'lv-LV',
+  'lt-LT', 'mt-MT', 'ga-IE',
+];
+
 export function shouldRedirectToCanada(pathname: string, countryCode: string | null): boolean {
   if (countryCode === CANADA_CODE && pathname === '/') {
+    return true;
+  }
+  return false;
+}
+
+export function shouldRedirectToUK(pathname: string, countryCode: string | null): boolean {
+  if (countryCode && pathname === '/' && UK_EU_COUNTRY_CODES.has(countryCode)) {
     return true;
   }
   return false;

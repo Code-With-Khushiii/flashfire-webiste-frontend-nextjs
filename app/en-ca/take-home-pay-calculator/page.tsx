@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     languages: {
       "en-US": "https://www.flashfirejobs.com/take-home-pay-calculator",
       "en-CA": "https://www.flashfirejobs.com/en-ca/take-home-pay-calculator",
+      "en-GB": "https://www.flashfirejobs.com/en-uk/take-home-pay-calculator",
       "x-default": "https://www.flashfirejobs.com/take-home-pay-calculator",
     },
   },

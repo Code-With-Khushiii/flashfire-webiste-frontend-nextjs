@@ -20,6 +20,7 @@ import faqStyles from "@/src/components/homePageFAQ/homePageFAQ.module.css";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
+import { localizeHref, stripLocalePrefix } from "@/src/utils/locale";
 
 export default function CoverLetterPage() {
   const router = useRouter();
@@ -151,13 +152,10 @@ export default function CoverLetterPage() {
         pathname || (typeof window !== "undefined" ? window.location.pathname : "");
       const normalizedPath = currentPath.split("?")[0];
       const isAlreadyOnGetMeInterview =
-        normalizedPath === "/get-me-interview" ||
-        normalizedPath === "/en-ca/get-me-interview";
+        stripLocalePrefix(normalizedPath) === "/get-me-interview";
       const isOnCoverLetterPage =
-        normalizedPath === "/features/cover-letter" ||
-        normalizedPath === "/en-ca/features/cover-letter" ||
-        normalizedPath === "/features/ai-cover-letter-generator" ||
-        normalizedPath === "/en-ca/features/ai-cover-letter-generator";
+        stripLocalePrefix(normalizedPath) === "/features/cover-letter" ||
+        stripLocalePrefix(normalizedPath) === "/features/ai-cover-letter-generator";
 
       if (isAlreadyOnGetMeInterview) {
         const currentScrollY = typeof window !== "undefined" ? window.scrollY : 0;
@@ -178,7 +176,7 @@ export default function CoverLetterPage() {
           window.history.pushState(
             {},
             "",
-            normalizedPath.startsWith("/en-ca") ? "/en-ca/get-me-interview" : "/get-me-interview"
+            localizeHref("/get-me-interview", normalizedPath)
           );
         }
         requestAnimationFrame(() => window.scrollTo({ top: currentScrollY, behavior: "instant" }));

@@ -13,9 +13,12 @@ interface LocaleBlogPageProps {
 export async function generateMetadata({ params }: LocaleBlogPageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
+  const isUK = locale === "en-uk";
   
   return {
-    title: isCanada 
+    title: isUK
+      ? "Blog - Career Tips, Job Search Advice & Industry Insights | Flashfire (UK)"
+      : isCanada
       ? "Blog - Career Tips, Job Search Advice & Industry Insights | Flashfire (Canada)"
       : "Blog - Career Tips, Job Search Advice & Industry Insights | Flashfire",
     description:
@@ -25,17 +28,21 @@ export async function generateMetadata({ params }: LocaleBlogPageProps): Promise
       follow: false,
     },
     alternates: {
-      canonical: isCanada 
-        ? "https://www.flashfirejobs.com/en-ca/blog"
-        : "https://www.flashfirejobs.com/blog",
+      canonical: isUK
+      ? "https://www.flashfirejobs.com/en-uk/blog"
+      : isCanada
+      ? "https://www.flashfirejobs.com/en-ca/blog"
+      : "https://www.flashfirejobs.com/blog",
     },
     openGraph: {
       title: "Blog - Career Tips & Job Search Advice",
       description:
         "Discover expert career tips, job search strategies, and industry insights.",
-      url: isCanada 
-        ? "https://www.flashfirejobs.com/en-ca/blog"
-        : "https://www.flashfirejobs.com/blog",
+      url: isUK
+      ? "https://www.flashfirejobs.com/en-uk/blog"
+      : isCanada
+      ? "https://www.flashfirejobs.com/en-ca/blog"
+      : "https://www.flashfirejobs.com/blog",
       type: "website",
       images: [
         {

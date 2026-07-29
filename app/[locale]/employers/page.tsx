@@ -12,9 +12,12 @@ interface LocaleEmployersPageProps {
 export async function generateMetadata({ params }: LocaleEmployersPageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
+  const isUK = locale === "en-uk";
   
   return {
-    title: isCanada 
+    title: isUK
+      ? "Employers - Partner with Flashfire | Hire Top Talent Faster (UK)"
+      : isCanada
       ? "Employers - Partner with Flashfire | Hire Top Talent Faster (Canada)"
       : "Employers - Partner with Flashfire | Hire Top Talent Faster",
     description:
@@ -24,17 +27,21 @@ export async function generateMetadata({ params }: LocaleEmployersPageProps): Pr
       follow: false,
     },
     alternates: {
-      canonical: isCanada 
-        ? "https://www.flashfirejobs.com/en-ca/employers"
-        : "https://www.flashfirejobs.com/employers",
+      canonical: isUK
+      ? "https://www.flashfirejobs.com/en-uk/employers"
+      : isCanada
+      ? "https://www.flashfirejobs.com/en-ca/employers"
+      : "https://www.flashfirejobs.com/employers",
     },
     openGraph: {
       title: "Employers - Partner with Flashfire",
       description:
         "Partner with Flashfire to access pre-screened, qualified candidates.",
-      url: isCanada 
-        ? "https://www.flashfirejobs.com/en-ca/employers"
-        : "https://www.flashfirejobs.com/employers",
+      url: isUK
+      ? "https://www.flashfirejobs.com/en-uk/employers"
+      : isCanada
+      ? "https://www.flashfirejobs.com/en-ca/employers"
+      : "https://www.flashfirejobs.com/employers",
       type: "website",
     },
   };

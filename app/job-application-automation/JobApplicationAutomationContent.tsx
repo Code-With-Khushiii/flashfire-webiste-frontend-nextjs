@@ -4,6 +4,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
+import { localizeHref, stripLocalePrefix } from "@/src/utils/locale";
 
 export default function JobApplicationAutomationContent() {
   const router = useRouter();
@@ -55,11 +56,9 @@ export default function JobApplicationAutomationContent() {
       // Check current path first
       const currentPath = pathname || (typeof window !== 'undefined' ? window.location.pathname : '');
       const normalizedPath = currentPath.split('?')[0];
-      const isAlreadyOnGetMeInterview = normalizedPath === '/get-me-interview' ||
-        normalizedPath === '/en-ca/get-me-interview';
-      const isOnJobAutomationPage = normalizedPath === '/job-application-automation' ||
-        normalizedPath === '/en-ca/job-application-automation' ||
-        normalizedPath === '/Job-application-automation';
+      const isAlreadyOnGetMeInterview = stripLocalePrefix(normalizedPath) === '/get-me-interview';
+      const isOnJobAutomationPage = stripLocalePrefix(normalizedPath) === '/job-application-automation' ||
+        stripLocalePrefix(normalizedPath) === '/Job-application-automation';
 
       // If already on the route, save scroll position and prevent navigation
       if (isAlreadyOnGetMeInterview) {
@@ -95,7 +94,7 @@ export default function JobApplicationAutomationContent() {
           sessionStorage.setItem('preserveScrollPosition', currentScrollY.toString());
         }
 
-        const targetPath = normalizedPath.startsWith('/en-ca') ? '/en-ca/get-me-interview' : '/get-me-interview';
+        const targetPath = localizeHref('/get-me-interview', normalizedPath);
         router.replace(targetPath);
         return;
       }
@@ -137,7 +136,7 @@ export default function JobApplicationAutomationContent() {
     // Fallback: Navigate to the How It Works page if section not found
     const currentPath = pathname || (typeof window !== 'undefined' ? window.location.pathname : '');
     const normalizedPath = currentPath.split('?')[0];
-    const targetPath = normalizedPath.startsWith('/en-ca') ? '/en-ca/how-it-works' : '/how-it-works';
+    const targetPath = localizeHref('/how-it-works', normalizedPath);
     router.push(targetPath);
   };
   

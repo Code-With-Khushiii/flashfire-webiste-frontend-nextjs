@@ -19,6 +19,7 @@ import faqStyles from "@/src/components/homePageFAQ/homePageFAQ.module.css";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
+import { localizeHref, stripLocalePrefix } from "@/src/utils/locale";
 
 export default function JobTrackerPage() {
   const router = useRouter();
@@ -271,13 +272,10 @@ export default function JobTrackerPage() {
         pathname || (typeof window !== "undefined" ? window.location.pathname : "");
       const normalizedPath = currentPath.split("?")[0];
       const isAlreadyOnGetMeInterview =
-        normalizedPath === "/get-me-interview" ||
-        normalizedPath === "/en-ca/get-me-interview";
+        stripLocalePrefix(normalizedPath) === "/get-me-interview";
       const isOnJobTrackerPage =
-        normalizedPath === "/features/job-tracker" ||
-        normalizedPath === "/en-ca/features/job-tracker" ||
-        normalizedPath === "/features/job-application-tracker" ||
-        normalizedPath === "/en-ca/features/job-application-tracker";
+        stripLocalePrefix(normalizedPath) === "/features/job-tracker" ||
+        stripLocalePrefix(normalizedPath) === "/features/job-application-tracker";
 
       if (isAlreadyOnGetMeInterview) {
         const currentScrollY = typeof window !== "undefined" ? window.scrollY : 0;
@@ -307,9 +305,7 @@ export default function JobTrackerPage() {
         const currentScrollY = typeof window !== "undefined" ? window.scrollY : 0;
 
         if (typeof window !== "undefined") {
-          const targetPath = normalizedPath.startsWith("/en-ca")
-            ? "/en-ca/get-me-interview"
-            : "/get-me-interview";
+          const targetPath = localizeHref("/get-me-interview", normalizedPath);
           window.history.pushState({}, "", targetPath);
         }
 

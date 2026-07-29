@@ -6,6 +6,7 @@ export const metadata: Metadata = {
     languages: {
       "en-US": "https://www.flashfirejobs.com/features/cover-letter",
       "en-CA": "https://www.flashfirejobs.com/en-ca/features/cover-letter",
+      "en-GB": "https://www.flashfirejobs.com/en-uk/features/cover-letter",
       "x-default": "https://www.flashfirejobs.com/features/cover-letter",
     },
   },

@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     languages: {
       "en-US": "https://www.flashfirejobs.com/resume-parser",
       "en-CA": "https://www.flashfirejobs.com/en-ca/resume-parser",
+      "en-GB": "https://www.flashfirejobs.com/en-uk/resume-parser",
       "x-default": "https://www.flashfirejobs.com/resume-parser",
     },
   },

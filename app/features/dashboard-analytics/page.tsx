@@ -13,6 +13,7 @@ import faqStyles from "@/src/components/homePageFAQ/homePageFAQ.module.css";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
+import { localizeHref, stripLocalePrefix } from "@/src/utils/locale";
 
 export default function DashboardAnalyticsPage() {
   const router = useRouter();
@@ -182,11 +183,9 @@ export default function DashboardAnalyticsPage() {
         pathname || (typeof window !== "undefined" ? window.location.pathname : "");
       const normalizedPath = currentPath.split("?")[0];
       const isAlreadyOnGetMeInterview =
-        normalizedPath === "/get-me-interview" ||
-        normalizedPath === "/en-ca/get-me-interview";
+        stripLocalePrefix(normalizedPath) === "/get-me-interview";
       const isOnDashboardAnalyticsPage =
-        normalizedPath === "/features/dashboard-analytics" ||
-        normalizedPath === "/en-ca/features/dashboard-analytics";
+        stripLocalePrefix(normalizedPath) === "/features/dashboard-analytics";
 
       if (isAlreadyOnGetMeInterview) {
         const currentScrollY = typeof window !== "undefined" ? window.scrollY : 0;
@@ -207,7 +206,7 @@ export default function DashboardAnalyticsPage() {
           window.history.pushState(
             {},
             "",
-            normalizedPath.startsWith("/en-ca") ? "/en-ca/get-me-interview" : "/get-me-interview"
+            localizeHref("/get-me-interview", normalizedPath)
           );
         }
         requestAnimationFrame(() => window.scrollTo({ top: currentScrollY, behavior: "instant" }));

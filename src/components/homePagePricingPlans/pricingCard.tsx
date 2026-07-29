@@ -85,7 +85,7 @@ export default function PricingCard({
     });
   }, [title, allPlans]);
 
-  // Parse base price from string (handles "$199" or "CA$279")
+  // Parse base price from string (handles "$199", "CA$279" or "£149")
   const basePrice = useMemo(() => {
     const priceMatch = price.match(/[\d.]+/);
     return priceMatch ? parseFloat(priceMatch[0]) : 0;
@@ -105,9 +105,12 @@ export default function PricingCard({
     return Math.round(discount);
   }, [oldBasePrice, basePrice]);
 
-  // Get currency symbol
+  // Get currency symbol. Check the multi-character prefixes first so "CA$" is
+  // not matched as a plain "$".
   const currencySymbol = useMemo(() => {
     if (price.includes("CA$")) return "CA$";
+    if (price.includes("£")) return "£";
+    if (price.includes("€")) return "€";
     if (price.includes("$")) return "$";
     return "$";
   }, [price]);

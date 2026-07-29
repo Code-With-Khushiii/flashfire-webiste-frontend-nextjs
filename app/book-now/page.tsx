@@ -7,6 +7,7 @@ import HowItWorks from "@/src/components/pages/howItWorks/HowItWorks";
 import PricingPageClient from "../pricing/PricingPageClient";
 import Navbar from "@/src/components/navbar/navbar";
 import Footer from "@/src/components/footer/footer";
+import { stripLocalePrefix } from "@/src/utils/locale";
 
 export default function BookNowPage() {
     // Start with null to match server render, then update on client
@@ -59,7 +60,7 @@ export default function BookNowPage() {
     }
 
     // Render based on previous page (client-side only after mount)
-    if (previousPage === '/features' || previousPage === '/en-ca/features') {
+    if (stripLocalePrefix(previousPage) === '/features') {
         return (
             <div className="bg-white text-black min-h-screen">
                 <Navbar />
@@ -71,15 +72,15 @@ export default function BookNowPage() {
         );
     }
     
-    if (previousPage === '/how-it-works' || previousPage === '/en-ca/how-it-works') {
+    if (stripLocalePrefix(previousPage) === '/how-it-works') {
         return <HowItWorks />;
     }
     
-    if (previousPage === '/pricing' || previousPage === '/en-ca/pricing') {
+    if (stripLocalePrefix(previousPage) === '/pricing') {
         return <PricingPageClient />;
     }
     
-    if (previousPage === '/feature' || previousPage === '/en-ca/feature') {
+    if (stripLocalePrefix(previousPage) === '/feature') {
         return <HomePage />;
     }
 

@@ -28,6 +28,7 @@ import styles from "@/src/components/homePageFAQ/homePageFAQ.module.css"
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking"
 import { GTagUTM } from "@/src/utils/GTagUTM"
 import { useGeoBypass } from "@/src/utils/useGeoBypass"
+import { localizeHref, stripLocalePrefix } from "@/src/utils/locale";
 
 const ORANGE = "#ff4c00"
 
@@ -376,16 +377,12 @@ export default function Page() {
       const currentPath = pathname || (typeof window !== "undefined" ? window.location.pathname : "")
       const normalizedPath = currentPath.split("?")[0]
       const isAlreadyOnGetMeInterview =
-        normalizedPath === "/get-me-interview" || normalizedPath === "/en-ca/get-me-interview"
+        stripLocalePrefix(normalizedPath) === "/get-me-interview"
       const isOnATSPage =
-        normalizedPath === "/ats-optimized-resume-checker" ||
-        normalizedPath === "/en-ca/ats-optimized-resume-checker" ||
-        normalizedPath === "/features/resume-optimizer" ||
-        normalizedPath === "/en-ca/features/resume-optimizer" ||
-        normalizedPath === "/features/ats-optimizer" ||
-        normalizedPath === "/en-ca/features/ats-optimizer" ||
-        normalizedPath === "/features/ats-resume-optimizer" ||
-        normalizedPath === "/en-ca/features/ats-resume-optimizer"
+        stripLocalePrefix(normalizedPath) === "/ats-optimized-resume-checker" ||
+        stripLocalePrefix(normalizedPath) === "/features/resume-optimizer" ||
+        stripLocalePrefix(normalizedPath) === "/features/ats-optimizer" ||
+        stripLocalePrefix(normalizedPath) === "/features/ats-resume-optimizer"
 
       if (isAlreadyOnGetMeInterview) {
         const currentScrollY = typeof window !== "undefined" ? window.scrollY : 0
@@ -415,7 +412,7 @@ export default function Page() {
         const currentScrollY = typeof window !== "undefined" ? window.scrollY : 0
 
         if (typeof window !== "undefined") {
-          const targetPath = normalizedPath.startsWith("/en-ca") ? "/en-ca/get-me-interview" : "/get-me-interview"
+          const targetPath = localizeHref("/get-me-interview", normalizedPath)
           window.history.pushState({}, "", targetPath)
         }
 

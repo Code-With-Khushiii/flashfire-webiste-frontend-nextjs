@@ -8,6 +8,7 @@ import { Copy, Check } from "lucide-react";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { FaPlus, FaTimes } from "react-icons/fa";
+import { stripLocalePrefix, localizeHref } from "@/src/utils/locale";
 
 
 
@@ -84,11 +85,9 @@ export default function ContactUsClient() {
         (typeof window !== "undefined" ? window.location.pathname : "");
       const normalizedPath = currentPath.split("?")[0];
       const isAlreadyOnGetMeInterview =
-        normalizedPath === "/schedule-a-demo-with-flashfire" ||
-        normalizedPath === "/en-ca/schedule-a-demo-with-flashfire";
+        stripLocalePrefix(normalizedPath) === "/schedule-a-demo-with-flashfire";
       const isOnContactUsPage =
-        normalizedPath === "/contact-us" ||
-        normalizedPath === "/en-ca/contact-us";
+        stripLocalePrefix(normalizedPath) === "/contact-us";
 
       // If already on get-me-interview, just show modal
       if (isAlreadyOnGetMeInterview) {
@@ -131,9 +130,7 @@ export default function ContactUsClient() {
           );
         }
 
-        const targetPath = normalizedPath.startsWith("/en-ca")
-          ? "/en-ca/schedule-a-demo-with-flashfire"
-          : "/schedule-a-demo-with-flashfire";
+        const targetPath = localizeHref("/schedule-a-demo-with-flashfire", normalizedPath);
         router.replace(targetPath);
         return;
       }

@@ -12,6 +12,7 @@ import demoCtaStyles from "@/src/components/homePageDemoCTA/homePageDemoCTA.modu
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
+import { localizeHref, stripLocalePrefix } from "@/src/utils/locale";
 
 export default function LinkedInOptimizationPage() {
   const router = useRouter();
@@ -93,8 +94,7 @@ export default function LinkedInOptimizationPage() {
       }
 
       const currentPath = pathname || (typeof window !== 'undefined' ? window.location.pathname : '');
-      const isAlreadyOnScheduleACareerCall = currentPath === '/schedule-a-free-career-call' ||
-        currentPath === '/en-ca/schedule-a-free-career-call';
+      const isAlreadyOnScheduleACareerCall = stripLocalePrefix(currentPath) === '/schedule-a-free-career-call';
 
       if (isAlreadyOnScheduleACareerCall) {
         return;
@@ -104,9 +104,7 @@ export default function LinkedInOptimizationPage() {
         sessionStorage.setItem('preserveScrollPosition', window.scrollY.toString());
       }
 
-      const targetPath = currentPath.startsWith('/en-ca')
-        ? '/en-ca/schedule-a-free-career-call'
-        : '/schedule-a-free-career-call';
+      const targetPath = localizeHref('/schedule-a-free-career-call', currentPath);
       router.push(targetPath);
     } catch (error) {
       console.warn('Error in Schedule Call handler:', error);
@@ -335,16 +333,11 @@ export default function LinkedInOptimizationPage() {
                     // Check current path first
                     const currentPath = pathname || (typeof window !== 'undefined' ? window.location.pathname : '');
                     const normalizedPath = currentPath.split('?')[0];
-                    const isAlreadyOnGetMeInterview = normalizedPath === '/get-me-interview' ||
-                      normalizedPath === '/en-ca/get-me-interview';
-                    const isOnLinkedInPage = normalizedPath === '/linkedin-profile-optimization-services' ||
-                      normalizedPath === '/en-ca/linkedin-profile-optimization-services' ||
-                      normalizedPath === '/features/linkedin-profile-optimization-services' ||
-                      normalizedPath === '/en-ca/features/linkedin-profile-optimization-services' ||
-                      normalizedPath === '/features/linkedin-profile-optimization' ||
-                      normalizedPath === '/en-ca/features/linkedin-profile-optimization' ||
-                      normalizedPath === '/features/linkedin-profile-optimization-tool' ||
-                      normalizedPath === '/en-ca/features/linkedin-profile-optimization-tool';
+                    const isAlreadyOnGetMeInterview = stripLocalePrefix(normalizedPath) === '/get-me-interview';
+                    const isOnLinkedInPage = stripLocalePrefix(normalizedPath) === '/linkedin-profile-optimization-services' ||
+                      stripLocalePrefix(normalizedPath) === '/features/linkedin-profile-optimization-services' ||
+                      stripLocalePrefix(normalizedPath) === '/features/linkedin-profile-optimization' ||
+                      stripLocalePrefix(normalizedPath) === '/features/linkedin-profile-optimization-tool';
 
                     // If already on the route, save scroll position and prevent navigation
                     if (isAlreadyOnGetMeInterview) {
@@ -378,7 +371,7 @@ export default function LinkedInOptimizationPage() {
                       
                       // Update URL for tracking without navigation
                       if (typeof window !== 'undefined') {
-                        const targetPath = normalizedPath.startsWith('/en-ca') ? '/en-ca/get-me-interview' : '/get-me-interview';
+                        const targetPath = localizeHref('/get-me-interview', normalizedPath);
                         window.history.pushState({}, '', targetPath);
                       }
                       

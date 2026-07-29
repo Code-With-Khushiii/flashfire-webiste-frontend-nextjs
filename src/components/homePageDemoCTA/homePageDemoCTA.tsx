@@ -8,6 +8,7 @@ import styles from "./homePageDemoCTA.module.css";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
+import { stripLocalePrefix, isLocaleHome, localizeHref } from "@/src/utils/locale";
 
 export default function HomePageDemoCTA() {
   const router = useRouter();
@@ -143,10 +144,10 @@ export default function HomePageDemoCTA() {
 
                   // Check current path
                   const currentPath = pathname;
-                  const isImageTestimonialsPage = currentPath === '/testimonials' || currentPath === '/en-ca/testimonials' || currentPath === '/image-testimonials' || currentPath === '/en-ca/image-testimonials';
-                  const isAboutUsPage = currentPath === '/about-us' || currentPath === '/en-ca/about-us';
-                  const isAlreadyOnScheduleACareerCall = currentPath === '/schedule-a-free-career-call' || currentPath === '/en-ca/schedule-a-free-career-call';
-                  const isOnHomePage = currentPath === '/' || currentPath === '/en-ca' || currentPath === '';
+                  const isImageTestimonialsPage = stripLocalePrefix(currentPath) === '/testimonials' || stripLocalePrefix(currentPath) === '/image-testimonials';
+                  const isAboutUsPage = stripLocalePrefix(currentPath) === '/about-us';
+                  const isAlreadyOnScheduleACareerCall = stripLocalePrefix(currentPath) === '/schedule-a-free-career-call';
+                  const isOnHomePage = isLocaleHome(currentPath) || currentPath === '';
 
                   console.log('Button clicked - currentPath:', currentPath, 'isOnHomePage:', isOnHomePage);
 
@@ -164,7 +165,7 @@ export default function HomePageDemoCTA() {
                   // If on image-testimonials page, change URL but keep page content visible
                   if (isImageTestimonialsPage) {
                     // Change URL to /schedule-a-free-career-call without navigating (keep testimonials page visible)
-                    const targetPath = currentPath.startsWith('/en-ca') ? '/en-ca/schedule-a-free-career-call' : '/schedule-a-free-career-call';
+                    const targetPath = localizeHref('/schedule-a-free-career-call', currentPath);
                     if (typeof window !== 'undefined') {
                       window.history.pushState({}, '', targetPath);
                     }
@@ -186,7 +187,7 @@ export default function HomePageDemoCTA() {
                     }
 
                     // Change URL to /schedule-a-free-career-call using pushState only (don't use router to prevent scroll)
-                    const targetPath = currentPath.startsWith('/en-ca') ? '/en-ca/schedule-a-free-career-call' : '/schedule-a-free-career-call';
+                    const targetPath = localizeHref('/schedule-a-free-career-call', currentPath);
                     if (typeof window !== 'undefined') {
                       window.history.pushState({}, '', targetPath);
                     }

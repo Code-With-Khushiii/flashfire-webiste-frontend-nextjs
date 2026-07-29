@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
+import { localizeHref } from "@/src/utils/locale";
 
 export default function InterviewBuddy() {
     const { getButtonProps } = useGeoBypass({
@@ -16,12 +17,7 @@ export default function InterviewBuddy() {
     });
     const pushCustomUrl = (path?: string) => {
             if (typeof window === "undefined" || !path) return;
-            const isCanada = window.location.pathname.startsWith("/en-ca");
-            const normalized = path.startsWith("/en-ca")
-              ? path
-              : isCanada
-              ? `/en-ca${path}`
-              : path;
+            const normalized = localizeHref(path, window.location.pathname);
             window.history.pushState({}, "", normalized);
           };
     return (

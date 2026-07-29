@@ -6,6 +6,7 @@ export const metadata: Metadata = {
     languages: {
       "en-US": "https://www.flashfirejobs.com/offer-and-salary-negotiation-advisor",
       "en-CA": "https://www.flashfirejobs.com/en-ca/offer-and-salary",
+      "en-GB": "https://www.flashfirejobs.com/en-uk/offer-and-salary",
       "x-default": "https://www.flashfirejobs.com/offer-and-salary-negotiation-advisor",
     },
   },

@@ -20,6 +20,7 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import faqStyles from "@/src/components/homePageFAQ/homePageFAQ.module.css";
+import { localizeHref, stripLocalePrefix } from "@/src/utils/locale";
 
 const stats = [
   { value: "1,200+", label: "Applications Automated" },
@@ -331,15 +332,11 @@ export default function JobApplicationAutomationPage() {
         pathname || (typeof window !== "undefined" ? window.location.pathname : "");
       const normalizedPath = currentPath.split("?")[0];
       const isAlreadyOnGetMeInterview =
-        normalizedPath === "/get-me-interview" ||
-        normalizedPath === "/en-ca/get-me-interview";
+        stripLocalePrefix(normalizedPath) === "/get-me-interview";
       const isOnJobAutomationPage =
-        normalizedPath === "/job-application-automation" ||
-        normalizedPath === "/en-ca/job-application-automation" ||
-        normalizedPath === "/features/job-automation" ||
-        normalizedPath === "/en-ca/features/job-automation" ||
-        normalizedPath === "/features/automated-job-applications" ||
-        normalizedPath === "/en-ca/features/automated-job-applications";
+        stripLocalePrefix(normalizedPath) === "/job-application-automation" ||
+        stripLocalePrefix(normalizedPath) === "/features/job-automation" ||
+        stripLocalePrefix(normalizedPath) === "/features/automated-job-applications";
 
       if (isAlreadyOnGetMeInterview) {
         const currentScrollY = typeof window !== "undefined" ? window.scrollY : 0;
@@ -360,9 +357,7 @@ export default function JobApplicationAutomationPage() {
           window.history.pushState(
             {},
             "",
-            normalizedPath.startsWith("/en-ca")
-              ? "/en-ca/get-me-interview"
-              : "/get-me-interview"
+            localizeHref("/get-me-interview", normalizedPath)
           );
         }
         requestAnimationFrame(() =>

@@ -8,6 +8,7 @@ import { Target, Search, Filter, Zap, CheckCircle, TrendingUp } from "lucide-rea
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
+import { localizeHref, stripLocalePrefix } from "@/src/utils/locale";
 
 export default function PrecisionTargetingPage() {
   const router = useRouter();
@@ -59,12 +60,9 @@ export default function PrecisionTargetingPage() {
       // Check current path first
       const currentPath = pathname || (typeof window !== 'undefined' ? window.location.pathname : '');
       const normalizedPath = currentPath.split('?')[0];
-      const isAlreadyOnGetMeInterview = normalizedPath === '/get-me-interview' ||
-        normalizedPath === '/en-ca/get-me-interview';
-      const isOnPrecisionTargetingPage = normalizedPath === '/features/precision-targeting' ||
-        normalizedPath === '/en-ca/features/precision-targeting' ||
-        normalizedPath === '/features/ai-job-targeting' ||
-        normalizedPath === '/en-ca/features/ai-job-targeting';
+      const isAlreadyOnGetMeInterview = stripLocalePrefix(normalizedPath) === '/get-me-interview';
+      const isOnPrecisionTargetingPage = stripLocalePrefix(normalizedPath) === '/features/precision-targeting' ||
+        stripLocalePrefix(normalizedPath) === '/features/ai-job-targeting';
 
       // If already on the route, save scroll position and prevent navigation
       if (isAlreadyOnGetMeInterview) {
@@ -98,7 +96,7 @@ export default function PrecisionTargetingPage() {
         
         // Update URL for tracking without navigation
         if (typeof window !== 'undefined') {
-          const targetPath = normalizedPath.startsWith('/en-ca') ? '/en-ca/get-me-interview' : '/get-me-interview';
+          const targetPath = localizeHref('/get-me-interview', normalizedPath);
           window.history.pushState({}, '', targetPath);
         }
         

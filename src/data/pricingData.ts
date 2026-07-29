@@ -87,6 +87,91 @@ export const usPricingPlans: PricingPlan[] = [
   },
 ];
 
+/**
+ * UK / EU checkout links.
+ *
+ * TODO(payments): these currently point at the USD Stripe checkouts so the
+ * `/en-uk` pricing page is clickable end to end. Customers reaching them are
+ * charged in USD, not GBP. Replace every value below with the real GBP payment
+ * links before `/en-uk` goes live — this block is the single place to change.
+ */
+export const UK_STRIPE_LINKS = {
+  PRIME: "https://buy.stripe.com/eVq9AV0WY5iGciAegD3AY01",
+  IGNITE: "https://buy.stripe.com/bJe28t7lm12qaasa0n3AY02",
+  PROFESSIONAL: "https://buy.stripe.com/14A6oJcFGfXkgyQfkH3AY03",
+  EXECUTIVE: "https://buy.stripe.com/eVq7sNfRS4eCciAgoL3AY04",
+} as const;
+
+export const ukPricingPlans: PricingPlan[] = [
+  {
+    title: "PRIME",
+    subTitle: "160 Applications",
+    description: "Your starter plan to begin applying",
+    price: "£79",
+    oldPrice: "£189",
+    features: [
+      { title:"No Time Constraint", description: "Until your applications are completed" },
+      { title:"We Find Jobs", description: "We find & apply to jobs for you" },
+      { title:"AI Custom CVs", description: "Tailored CV for every application" },
+      { title:"Expert CV Writing", description: "Our professional team reviews & builds your CV from scratch" },
+    ],
+    addOn: true,
+    highlight: false,
+    paymentLink: UK_STRIPE_LINKS.PRIME,
+  },
+  {
+    title: "IGNITE",
+    subTitle: "250 Applications",
+    description: "For senior professionals & executives",
+    price: "£149",
+    oldPrice: "£229",
+    features: [
+      { title:"No Time Constraint", description: "Until your applications are completed" },
+      { title:"We Find Jobs", description: "We find & apply to jobs for you" },
+      { title:"AI Custom CVs", description: "Tailored CV for every application" },
+      { title:"Expert CV Writing", description: "Our professional team reviews & builds your CV from scratch" },
+    ],
+    addOn: true,
+    highlight: false,
+    paymentLink: UK_STRIPE_LINKS.IGNITE,
+  },
+  {
+    title: "PROFESSIONAL",
+    tag: "ECONOMICAL",
+    subTitle: "500 Applications",
+    description: "Best for mid-level professionals",
+    price: "£299",
+    oldPrice: "£339",
+    inheritsFrom: "IGNITE",
+    features: [
+      { title:"No Time Constraint", description: "Until your applications are completed" },
+      { title:"We Find Jobs", description: "We find & apply to jobs for you" },
+      { title:"LinkedIn Makeover", description: "Let recruiters come to you" },
+      { title:"Interview Prep Material", description: "Resources to help you ace interviews" },
+    ],
+    addOn: true,
+    highlight: false,
+    paymentLink: UK_STRIPE_LINKS.PROFESSIONAL,
+  },
+  {
+    title: "EXECUTIVE",
+    tag: "MOST POPULAR",
+    subTitle: "1200 Applications",
+    description: "For new grads & early professionals",
+    price: "£499",
+    oldPrice: "£529",
+    inheritsFrom: "PROFESSIONAL",
+    features: [
+      { title:"1 Cover Letter", description: "1 cover letter used for all applications" },
+      { title:"Emailing Recruiters", description: "We personally reach out to recruiters for you" },
+      { title:"Portfolio Website", description: "We build a personal site to showcase your projects, skills & achievements" },
+    ],
+    addOn: true,
+    highlight: true,
+    paymentLink: UK_STRIPE_LINKS.EXECUTIVE,
+  },
+];
+
 export const canadaPricingPlans: PricingPlan[] = [
   {
     title: "PRIME",

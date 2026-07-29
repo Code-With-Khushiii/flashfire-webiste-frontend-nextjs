@@ -13,6 +13,7 @@ import MeetingBookedModal from "@/src/components/meetingBooked/MeetingBookedModa
 import * as fbq from "@/lib/metaPixel";
 import * as linkedin from "@/lib/linkedinInsightTag";
 import { warmCalendly } from "@/src/utils/calendlyWarmup";
+import { stripLocalePrefix } from "@/src/utils/locale";
 
 function ClientLogicWrapperContent({
     children,
@@ -269,7 +270,7 @@ function ClientLogicWrapperContent({
         const isBookNow = pathname === '/book-now';
         const isSignup = pathname === '/signup' || pathname.includes('/signup');
         const isBookDemo = pathname === '/book-free-demo' || pathname.includes('/book-free-demo');
-        const isMeetingBooked = pathname === '/meeting-booked' || pathname === '/en-ca/meeting-booked';
+        const isMeetingBooked = stripLocalePrefix(pathname) === '/meeting-booked';
 
         // Create a unique identifier for this route visit (includes query params)
         const currentRouteKey = `${pathname}${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
@@ -401,7 +402,7 @@ function ClientLogicWrapperContent({
         setShowCalendlyModal(false);
         
         // If we came from a specific page (features, pricing, etc.), navigate back to it
-        if (typeof window !== "undefined" && (pathname === '/book-now' || pathname === '/en-ca/book-now')) {
+        if (typeof window !== "undefined" && stripLocalePrefix(pathname) === '/book-now') {
             const previousPage = sessionStorage.getItem('previousPageBeforeBookNow');
             if (previousPage) {
                 // Clear the stored previous page
@@ -414,7 +415,7 @@ function ClientLogicWrapperContent({
         }
         
         // Clean URL by removing query params when on /book-now
-        if ((pathname === '/book-now' || pathname === '/en-ca/book-now') && searchParams.toString()) {
+        if (stripLocalePrefix(pathname) === '/book-now' && searchParams.toString()) {
             router.replace(pathname);
         }
     };

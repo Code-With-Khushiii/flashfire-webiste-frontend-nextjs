@@ -35,12 +35,12 @@ import {
   Rocket
 } from "lucide-react";
 import { useState } from "react";
+import { getLocalePrefix } from "@/src/utils/locale";
 
 const updateCtaUrl = (basePath: string, label: string) => {
   if (typeof window === "undefined") return;
   const slug = label.trim().replace(/\s+/g, "-");
-  const isCanada = window.location.pathname.startsWith("/en-ca");
-  const normalizedBase = isCanada ? `/en-ca${basePath}` : basePath;
+  const normalizedBase = `${getLocalePrefix(window.location.pathname)}${basePath}`;
   const newUrl = `${normalizedBase}/${slug}`;
   window.history.pushState({}, "", newUrl);
   window.dispatchEvent(new CustomEvent("showStrategyCallCard"));

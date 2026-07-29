@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { isLocaleHome } from "@/src/utils/locale";
 import Footer from "@/src/components/footer/footer";
 import HeroSection from "@/src/components/heroSection/heroSection";
 import HomePageCareerCTA from "@/src/components/homePageCareerCTA/homePageCareerCTA";
@@ -27,7 +28,7 @@ const Home = () => {
 
   useEffect(() => {
     // Scroll to top when navigating to homepage (handles back button and direct navigation)
-    const isHomePage = pathname === "/" || pathname === "/en-ca";
+    const isHomePage = isLocaleHome(pathname);
 
     if (isHomePage) {
       // Use requestAnimationFrame to ensure DOM is ready

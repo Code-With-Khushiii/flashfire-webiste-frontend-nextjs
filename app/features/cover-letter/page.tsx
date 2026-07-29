@@ -8,6 +8,7 @@ import { FileText, CheckCircle, Zap, Sparkles, Target, TrendingUp } from "lucide
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
+import { localizeHref, stripLocalePrefix } from "@/src/utils/locale";
 
 export default function CoverLetterPage() {
   const router = useRouter();
@@ -59,12 +60,9 @@ export default function CoverLetterPage() {
       // Check current path first
       const currentPath = pathname || (typeof window !== 'undefined' ? window.location.pathname : '');
       const normalizedPath = currentPath.split('?')[0];
-      const isAlreadyOnGetMeInterview = normalizedPath === '/get-me-interview' ||
-        normalizedPath === '/en-ca/get-me-interview';
-      const isOnCoverLetterPage = normalizedPath === '/features/cover-letter' ||
-        normalizedPath === '/en-ca/features/cover-letter' ||
-        normalizedPath === '/features/ai-cover-letter-generator' ||
-        normalizedPath === '/en-ca/features/ai-cover-letter-generator';
+      const isAlreadyOnGetMeInterview = stripLocalePrefix(normalizedPath) === '/get-me-interview';
+      const isOnCoverLetterPage = stripLocalePrefix(normalizedPath) === '/features/cover-letter' ||
+        stripLocalePrefix(normalizedPath) === '/features/ai-cover-letter-generator';
 
       // If already on the route, save scroll position and prevent navigation
       if (isAlreadyOnGetMeInterview) {
@@ -98,7 +96,7 @@ export default function CoverLetterPage() {
 
         // Update URL for tracking without navigation
         if (typeof window !== 'undefined') {
-          const targetPath = normalizedPath.startsWith('/en-ca') ? '/en-ca/get-me-interview' : '/get-me-interview';
+          const targetPath = localizeHref('/get-me-interview', normalizedPath);
           window.history.pushState({}, '', targetPath);
         }
 
