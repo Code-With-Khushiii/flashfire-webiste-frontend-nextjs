@@ -87,19 +87,12 @@ export const usPricingPlans: PricingPlan[] = [
   },
 ];
 
-/**
- * UK / EU checkout links.
- *
- * TODO(payments): these currently point at the USD Stripe checkouts so the
- * `/en-uk` pricing page is clickable end to end. Customers reaching them are
- * charged in USD, not GBP. Replace every value below with the real GBP payment
- * links before `/en-uk` goes live — this block is the single place to change.
- */
+/** UK / EU checkout links, charged in GBP. */
 export const UK_STRIPE_LINKS = {
-  PRIME: "https://buy.stripe.com/eVq9AV0WY5iGciAegD3AY01",
-  IGNITE: "https://buy.stripe.com/bJe28t7lm12qaasa0n3AY02",
-  PROFESSIONAL: "https://buy.stripe.com/14A6oJcFGfXkgyQfkH3AY03",
-  EXECUTIVE: "https://buy.stripe.com/eVq7sNfRS4eCciAgoL3AY04",
+  PRIME: "https://buy.stripe.com/eVq4gBbBCcL8ciAfkH3AY0L",
+  IGNITE: "https://buy.stripe.com/dRm6oJ5dedPcdmEdcz3AY0P",
+  PROFESSIONAL: "https://buy.stripe.com/6oUeVffRS26ueqI0pN3AY0X",
+  EXECUTIVE: "https://buy.stripe.com/8x23cxfRS9yW6Yg0pN3AY12",
 } as const;
 
 export const ukPricingPlans: PricingPlan[] = [
