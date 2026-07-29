@@ -38,7 +38,7 @@ const upgradePrices: UpgradePrice[] = [
     ukPrice: 220,
     paymentUrl: "https://buy.stripe.com/7sY7sN2128uS1DWdcz3AY08",
     canadaPaymentUrl: "https://buy.stripe.com/bJe28t9tu26u96o5K73AY0q",
-    ukPaymentUrl: "https://buy.stripe.com/7sY7sN2128uS1DWdcz3AY08",
+    ukPaymentUrl: "https://buy.stripe.com/5kQbJ36hi5iG96o3BZ3AY0Q",
   },
   {
     from: "PRIME",
@@ -47,7 +47,7 @@ const upgradePrices: UpgradePrice[] = [
     ukPrice: 420,
     paymentUrl: "https://buy.stripe.com/fZu3cx6hi9yW82k0pN3AY09",
     canadaPaymentUrl: "https://buy.stripe.com/6oU8wRcFG4eC5Uc1tR3AY0r",
-    ukPaymentUrl: "https://buy.stripe.com/fZu3cx6hi9yW82k0pN3AY09",
+    ukPaymentUrl: "https://buy.stripe.com/9B6aEZbBCeTg82k0pN3AY0R",
   },
   {
     from: "IGNITE",
@@ -56,7 +56,7 @@ const upgradePrices: UpgradePrice[] = [
     ukPrice: 150,
     paymentUrl: "https://buy.stripe.com/28E6oJ9tu7qOfuM3BZ3AY0d",
     canadaPaymentUrl: "https://buy.stripe.com/00w9AV212eTg6YgfkH3AY0n",
-    ukPaymentUrl: "https://buy.stripe.com/28E6oJ9tu7qOfuM3BZ3AY0d",
+    ukPaymentUrl: "https://buy.stripe.com/6oU14pdJK26udmE7Sf3AY0V",
   },
   {
     from: "IGNITE",
@@ -65,7 +65,7 @@ const upgradePrices: UpgradePrice[] = [
     ukPrice: 350,
     paymentUrl: "https://buy.stripe.com/5kQcN7eNO7qO2I06Ob3AY0e",
     canadaPaymentUrl: "https://buy.stripe.com/fZu5kF9tueTg82kc8v3AY0v",
-    ukPaymentUrl: "https://buy.stripe.com/5kQcN7eNO7qO2I06Ob3AY0e",
+    ukPaymentUrl: "https://buy.stripe.com/bJe8wRaxy8uS5Uc0pN3AY0W",
   },
   {
     from: "PROFESSIONAL",
@@ -74,7 +74,7 @@ const upgradePrices: UpgradePrice[] = [
     ukPrice: 200,
     paymentUrl: "https://buy.stripe.com/00w7sNgVW4eCbew1tR3AY0f",
     canadaPaymentUrl: "https://buy.stripe.com/5kQ5kF212aD0eqIfkH3AY0x",
-    ukPaymentUrl: "https://buy.stripe.com/00w7sNgVW4eCbew1tR3AY0f",
+    ukPaymentUrl: "https://buy.stripe.com/14A28t8pq26u0zSdcz3AY11",
   },
 ];
 
@@ -346,28 +346,26 @@ export default function HomePagePricingPlans() {
       },
       // GBP add-ons. Rates fall as the bundle grows and are cheapest on
       // EXECUTIVE, mirroring how the US/CA ladders are structured.
-      // TODO(payments): paymentUrl values are the USD checkouts until GBP
-      // links exist — see UK_STRIPE_LINKS in src/data/pricingData.ts.
       UK: {
         PRIME: [
-          { applications: 250, price: 95, label: "+250 Extra Applications", paymentUrl: "https://buy.stripe.com/dRmeVf7lm8uSaas6Ob3AY05" },
-          { applications: 500, price: 160, label: "+500 Extra Applications", paymentUrl: "https://buy.stripe.com/28E5kF3567qObewegD3AY06" },
-          { applications: 1000, price: 275, label: "+1000 Extra Applications", paymentUrl: "https://buy.stripe.com/00w28t35626udmE2xV3AY07" },
+          { applications: 250, price: 95, label: "+250 Extra Applications", paymentUrl: "https://buy.stripe.com/eVq6oJdJK26u6Yg7Sf3AY0M" },
+          { applications: 500, price: 160, label: "+500 Extra Applications", paymentUrl: "https://buy.stripe.com/00w9AVcFGdPcciA6Ob3AY0N" },
+          { applications: 1000, price: 275, label: "+1000 Extra Applications", paymentUrl: "https://buy.stripe.com/eVqbJ38pq5iGeqI2xV3AY0O" },
         ],
         IGNITE: [
-          { applications: 250, price: 105, label: "+250 Extra Applications", paymentUrl: "https://buy.stripe.com/28E7sN9tufXk6Yga0n3AY0a" },
-          { applications: 500, price: 175, label: "+500 Extra Applications", paymentUrl: "https://buy.stripe.com/eVqaEZ5debH4fuM7Sf3AY0b" },
-          { applications: 1000, price: 300, label: "+1000 Extra Applications", paymentUrl: "https://buy.stripe.com/9B69AVfRS6mKdmEgoL3AY0c" },
+          { applications: 250, price: 105, label: "+250 Extra Applications", paymentUrl: "https://buy.stripe.com/8x2bJ3bBC12q2I0dcz3AY0S" },
+          { applications: 500, price: 175, label: "+500 Extra Applications", paymentUrl: "https://buy.stripe.com/aFa5kF8pqdPcgyQb4r3AY0T" },
+          { applications: 1000, price: 300, label: "+1000 Extra Applications", paymentUrl: "https://buy.stripe.com/6oU7sN212fXk3M48Wj3AY0U" },
         ],
         PROFESSIONAL: [
-          { applications: 250, price: 95, label: "+250 Extra Applications", paymentUrl: "https://buy.stripe.com/dRmeVf7lm8uSaas6Ob3AY05" },
-          { applications: 500, price: 160, label: "+500 Extra Applications", paymentUrl: "https://buy.stripe.com/28E5kF3567qObewegD3AY06" },
-          { applications: 1000, price: 275, label: "+1000 Extra Applications", paymentUrl: "https://buy.stripe.com/00w28t35626udmE2xV3AY07" },
+          { applications: 250, price: 95, label: "+250 Extra Applications", paymentUrl: "https://buy.stripe.com/9B6bJ3bBC3ay4Q86Ob3AY0Y" },
+          { applications: 500, price: 160, label: "+500 Extra Applications", paymentUrl: "https://buy.stripe.com/00w7sN8pqaD096ogoL3AY0Z" },
+          { applications: 1000, price: 275, label: "+1000 Extra Applications", paymentUrl: "https://buy.stripe.com/fZucN7gVW12q1DWgoL3AY10" },
         ],
         EXECUTIVE: [
-          { applications: 250, price: 88, label: "+250 Extra Applications", paymentUrl: "https://buy.stripe.com/28EfZj9tu9yW2I0goL3AY0g" },
-          { applications: 500, price: 150, label: "+500 Extra Applications", paymentUrl: "https://buy.stripe.com/fZu6oJdJK7qObew1tR3AY0h" },
-          { applications: 1000, price: 260, label: "+1000 Extra Applications", paymentUrl: "https://buy.stripe.com/4gM5kF9tu6mK1DW3BZ3AY0i" },
+          { applications: 250, price: 88, label: "+250 Extra Applications", paymentUrl: "https://buy.stripe.com/dRm9AV2123ayfuM3BZ3AY13" },
+          { applications: 500, price: 150, label: "+500 Extra Applications", paymentUrl: "https://buy.stripe.com/fZufZj6hi9yW6Yg2xV3AY14" },
+          { applications: 1000, price: 260, label: "+1000 Extra Applications", paymentUrl: "https://buy.stripe.com/28EeVfcFG6mKaas6Ob3AY15" },
         ],
       },
     };
