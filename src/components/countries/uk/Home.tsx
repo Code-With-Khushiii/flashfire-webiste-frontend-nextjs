@@ -52,21 +52,25 @@ export default function UKHome() {
     <>
       <Navbar />
       <HeroSection />
-      <HomePageStatsCards />
-      <HomePageSteps />
-      <HomePageJobMatchingSection />
-      <HomePageCareerCTA />
-      <HomePageBeforeAfter />
-      <HomePageResultStats />
-      <HomePageOfferLetters />
-      <HomePageMilestones />
       <HomePageVideo />
+      <HomePageResultStats />
+      <HomePageStatsCards />
+      <HomePageMilestones />
+      <HomePageSteps />
+      <HomePageOfferLetters
+        heading="60+ Offer letters received"
+        enableLoopControls
+        buttonOnlyScroll
+      />
+      <HomePageJobMatchingSection />
+      <HomePageBeforeAfter />
       <HomePageWhyChooseFF />
       <HomePageHappyUsers />
-      <HomePageFoundersNote />
       <HomePagePTNote />
       <HomePageFAQ />
       <HomePageDemoCTA />
+      <HomePageFoundersNote variant="pricing" />
+      <HomePageCareerCTA />
       <Footer />
     </>
   );

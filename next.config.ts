@@ -168,8 +168,17 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/en-gb/blogs",
+        destination: "/en-gb/blog",
+        permanent: true,
+      },
+      // Legacy /en-uk/* prefix (renamed to /en-gb/* to match the ISO 3166-1 /
+      // BCP-47 standard). These specific ones resolve in a single hop instead
+      // of falling through to the generic /en-uk/:path* rule below and
+      // landing on a since-renamed sub-path.
+      {
         source: "/en-uk/blogs",
-        destination: "/en-uk/blog",
+        destination: "/en-gb/blog",
         permanent: true,
       },
       {
@@ -235,8 +244,13 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/en-gb/features/ats-optimizer",
+        destination: "/en-gb/features/resume-optimizer",
+        permanent: true,
+      },
+      {
         source: "/en-uk/features/ats-optimizer",
-        destination: "/en-uk/features/resume-optimizer",
+        destination: "/en-gb/features/resume-optimizer",
         permanent: true,
       },
       {
@@ -265,8 +279,28 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/en-gb/how-it-works",
+        destination: "/en-gb/how-flashfire-ai-job-automation-platform-works",
+        permanent: true,
+      },
+      {
         source: "/en-uk/how-it-works",
-        destination: "/en-uk/how-flashfire-ai-job-automation-platform-works",
+        destination: "/en-gb/how-flashfire-ai-job-automation-platform-works",
+        permanent: true,
+      },
+      // Catch-all: the UK/EU locale tree was renamed from /en-uk to /en-gb
+      // (GB is the correct ISO 3166-1 code — there is no "UK" country code).
+      // This preserves every indexed /en-uk/* URL and external backlink.
+      // Must stay AFTER the specific /en-uk/* rules above so those resolve
+      // in one hop instead of landing on a since-renamed sub-path.
+      {
+        source: "/en-uk",
+        destination: "/en-gb",
+        permanent: true,
+      },
+      {
+        source: "/en-uk/:path*",
+        destination: "/en-gb/:path*",
         permanent: true,
       },
     ];

@@ -17,13 +17,13 @@ interface UpgradePrice {
   from: string;
   to: string;
   price: number;
-  /** Upgrade price in GBP for `/en-uk`, when different from US */
+  /** Upgrade price in GBP for `/en-gb`, when different from US */
   ukPrice?: number;
   paymentUrl?: string;
   /** Stripe checkout for `/en-ca` when different from US */
   canadaPaymentUrl?: string;
   /**
-   * Stripe checkout for `/en-uk`.
+   * Stripe checkout for `/en-gb`.
    * TODO(payments): points at the USD checkout until GBP links exist.
    */
   ukPaymentUrl?: string;

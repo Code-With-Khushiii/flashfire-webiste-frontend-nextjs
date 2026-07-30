@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     languages: {
       "en-US": "https://www.flashfirejobs.com/gross-pay-calculator",
       "en-CA": "https://www.flashfirejobs.com/en-ca/gross-pay-calculator",
-      "en-GB": "https://www.flashfirejobs.com/en-uk/gross-pay-calculator",
+      "en-GB": "https://www.flashfirejobs.com/en-gb/gross-pay-calculator",
       "x-default": "https://www.flashfirejobs.com/gross-pay-calculator",
     },
   },

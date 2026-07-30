@@ -75,7 +75,7 @@ function detectCountryFallback(request: NextRequest): string {
   }
 
   // Check for a UK/EU locale. Return the matching region so the caller's
-  // UK_EU_COUNTRY_CODES lookup routes it to /en-uk.
+  // UK_EU_COUNTRY_CODES lookup routes it to /en-gb.
   const ukEuTag = UK_EU_LANGUAGE_TAGS.find(tag => acceptLanguage.includes(tag));
   if (ukEuTag) {
     return ukEuTag.split('-')[1];
@@ -105,7 +105,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // If already inside a locale tree (/en-ca, /en-uk), allow it
+  // If already inside a locale tree (/en-ca, /en-gb), allow it
   if (LOCALE_PREFIXES.some(prefix => pathname === prefix || pathname.startsWith(`${prefix}/`))) {
     return NextResponse.next();
   }
@@ -150,11 +150,11 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(url);
     }
 
-    // Redirect to /en-uk for the UK and every EU member state
+    // Redirect to /en-gb for the UK and every EU member state
     if (countryCode && UK_EU_COUNTRY_CODES.has(countryCode)) {
       const url = request.nextUrl.clone();
       url.pathname = UK_PREFIX;
-      console.log(`[Middleware] Redirecting to /en-uk for ${countryCode} user`);
+      console.log(`[Middleware] Redirecting to /en-gb for ${countryCode} user`);
       return NextResponse.redirect(url);
     }
   }

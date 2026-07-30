@@ -15,7 +15,7 @@ interface LocalePricingPageProps {
 export async function generateMetadata({ params }: LocalePricingPageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
-  const isUK = locale === "en-uk";
+  const isUK = locale === "en-gb";
   
   return {
     title: isUK
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: LocalePricingPageProps): Prom
     },
     alternates: {
       canonical: isUK
-      ? "https://www.flashfirejobs.com/en-uk/pricing"
+      ? "https://www.flashfirejobs.com/en-gb/pricing"
       : isCanada
       ? "https://www.flashfirejobs.com/en-ca/pricing"
       : "https://www.flashfirejobs.com/pricing",
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: LocalePricingPageProps): Prom
       description:
         "Choose the perfect Flashfire plan for your job search automation.",
       url: isUK
-      ? "https://www.flashfirejobs.com/en-uk/pricing"
+      ? "https://www.flashfirejobs.com/en-gb/pricing"
       : isCanada
       ? "https://www.flashfirejobs.com/en-ca/pricing"
       : "https://www.flashfirejobs.com/pricing",

@@ -12,7 +12,7 @@ interface LocalePrivacyPolicyPageProps {
 export async function generateMetadata({ params }: LocalePrivacyPolicyPageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
-  const isUK = locale === "en-uk";
+  const isUK = locale === "en-gb";
   
   return {
     title: isUK
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: LocalePrivacyPolicyPageProps)
     },
     alternates: {
       canonical: isUK
-      ? "https://www.flashfirejobs.com/en-uk/privacy-policy"
+      ? "https://www.flashfirejobs.com/en-gb/privacy-policy"
       : isCanada
       ? "https://www.flashfirejobs.com/en-ca/privacy-policy"
       : "https://www.flashfirejobs.com/privacy-policy",
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: LocalePrivacyPolicyPageProps)
       description:
         "Read Flashfire's Privacy Policy to understand how we protect your personal information.",
       url: isUK
-      ? "https://www.flashfirejobs.com/en-uk/privacy-policy"
+      ? "https://www.flashfirejobs.com/en-gb/privacy-policy"
       : isCanada
       ? "https://www.flashfirejobs.com/en-ca/privacy-policy"
       : "https://www.flashfirejobs.com/privacy-policy",
