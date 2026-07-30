@@ -428,8 +428,8 @@ export default function CoverLetterPage() {
 
             <div className="grid border border-black md:grid-cols-2">
               <div>
-                <div className="flex h-[54px] items-center gap-3 border-b border-black bg-[#f0f0f0] px-5 text-[15px] font-extrabold text-[#111827]">
-                  <Zap size={16} fill="#ff4c00" className="text-[#ff4c00]" />
+                <div className="flex min-h-[54px] items-center gap-3 border-b border-black bg-[#f0f0f0] px-4 py-3 text-[15px] font-extrabold text-[#111827] sm:px-5">
+                  <Zap size={16} fill="#ff4c00" className="shrink-0 text-[#ff4c00]" />
                   Why Generic Cover Letters Fail?
                 </div>
                 {[
@@ -448,8 +448,8 @@ export default function CoverLetterPage() {
                 ))}
               </div>
               <div className="border-t border-black md:border-l md:border-t-0">
-                <div className="flex h-[54px] items-center gap-3 bg-[#ff4c00] px-5 text-[15px] font-extrabold text-white">
-                  <Check size={16} strokeWidth={3} />
+                <div className="flex min-h-[54px] items-center gap-3 bg-[#ff4c00] px-4 py-3 text-[15px] font-extrabold text-white sm:px-5">
+                  <Check size={16} strokeWidth={3} className="shrink-0" />
                   How FlashFire Changes the Game
                 </div>
                 {[
