@@ -105,9 +105,16 @@ export default function HomePagePricingPlans() {
       return;
     }
 
-    const checkoutWindow = window.open(paymentUrl, "_blank", "noopener,noreferrer");
+    // Don't pass "noopener"/"noreferrer" here — both force window.open() to
+    // return null even when the tab opens fine, which made the "blocked"
+    // fallback below fire on every click and open a second tab with the same
+    // link. Detect a real block via the null return, then strip
+    // window.opener manually for the same reverse-tabnabbing protection.
+    const checkoutWindow = window.open(paymentUrl, "_blank");
 
-    if (!checkoutWindow) {
+    if (checkoutWindow) {
+      checkoutWindow.opener = null;
+    } else {
       window.location.assign(paymentUrl);
     }
   };
