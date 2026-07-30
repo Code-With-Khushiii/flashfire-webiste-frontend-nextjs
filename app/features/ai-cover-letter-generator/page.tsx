@@ -11,6 +11,7 @@ import {
   Shield,
   Sparkles,
   Target,
+  XCircle,
   Zap,
 } from "lucide-react";
 import { FaPlus, FaTimes } from "react-icons/fa";
@@ -34,39 +35,71 @@ export default function CoverLetterPage() {
 
   const coverLetterFAQs = [
     {
-      question: "What is an AI cover letter builder?",
+      question: "How does FlashFire personalize each cover letter?",
       answer:
-        "An AI cover letter builder uses artificial intelligence to analyze your resume and job description and generate personalized, job-specific cover letters optimized for ATS systems.",
+        "FlashFire reviews your resume and the job description together, then writes a cover letter that highlights the experience and skills most relevant to that specific role.",
     },
     {
-      question: "Are the cover letters ATS-friendly?",
+      question: "Can I edit the generated cover letter?",
       answer:
-        "Yes. Flashfire's AI cover letter generator creates ATS-friendly cover letters using recruiter-approved formatting and keyword optimization.",
+        "Yes. Every generated cover letter is fully editable, so you can adjust tone, wording, and formatting before you apply.",
     },
     {
-      question: "Can I generate a cover letter for every job application?",
+      question: "Will my cover letter match the job description?",
       answer:
-        "Yes. Our cover letter builder allows you to generate a customized, ATS-friendly cover letter for each job application in minutes.",
+        "Yes. FlashFire aligns your cover letter with the language and requirements in the job description to improve keyword and role relevance.",
+    },
+    {
+      question: "Is the cover letter ATS-friendly?",
+      answer:
+        "Yes. Every cover letter uses clean, ATS-friendly formatting so it can be parsed correctly by applicant tracking systems.",
+    },
+    {
+      question: "Can I generate unlimited cover letters?",
+      answer: "Yes. You can create a new, tailored cover letter for as many job applications as you need.",
+    },
+    {
+      question: "Can I use my existing resume?",
+      answer: "Yes. Upload your existing resume and FlashFire will use it as the foundation for your cover letter.",
+    },
+    {
+      question: "How long does it take to create a cover letter?",
+      answer:
+        "Most cover letters are ready to review within minutes of uploading your resume and the job description.",
+    },
+    {
+      question: "Can I create cover letters for different industries?",
+      answer:
+        "Yes. FlashFire tailors each cover letter to the role and industry you're applying to, not a single generic template.",
+    },
+    {
+      question: "Does FlashFire save my cover letters?",
+      answer: "Yes. Your cover letters are saved to your account so you can revisit, reuse, or edit them anytime.",
+    },
+    {
+      question: "Can fresh graduates use this tool?",
+      answer:
+        "Yes. Fresh graduates can use FlashFire to build a strong, professional cover letter even without prior work experience.",
     },
   ];
 
   const benefitCards = [
     {
-      title: "Smart Content Generation",
+      title: "Personalized for Every Job",
       desc:
-        "Our AI analyzes job descriptions and your resume to generate personalized cover letters that highlight relevant skills and experiences.",
+        "Generate unique cover letters based on your resume and the job description instead of using generic templates.",
       icon: Sparkles,
     },
     {
-      title: "ATS-Friendly Formatting",
+      title: "Optimized for Recruiters",
       desc:
-        "Every cover letter is ATS-friendly, helping your application reach real recruiters and hiring managers with greater confidence.",
+        "Use clean formatting and relevant keywords that help your application pass ATS screening and remain easy for recruiters to read.",
       icon: Target,
     },
     {
-      title: "Save Time & Effort",
+      title: "Create Cover Letters Faster",
       desc:
-        "Generate professional cover letters in minutes instead of hours. Customize templates and reuse content across applications.",
+        "Build professional cover letters in minutes, edit them anytime, and reuse your best content across applications.",
       icon: Zap,
     },
   ];
@@ -74,33 +107,69 @@ export default function CoverLetterPage() {
   const builderSteps = [
     {
       eyebrow: "UPLOAD RESUME",
-      title: "Upload Your Resume to Generate an AI Cover Letter",
-      desc:
-        "Upload your resume and let our AI extract your key skills, experiences, and achievements to build your cover letter foundation.",
+      title: "Upload Your Resume",
+      desc: "We'll identify your experience, skills, and achievements.",
       visual: "upload",
     },
     {
-      eyebrow: "MATCH JOB DESCRIPTION",
-      title: "AI Analyzes Job Descriptions for ATS Keywords",
-      desc:
-        "Upload your resume and let our AI extract your key skills, experiences, and achievements to build your cover letter foundation.",
+      eyebrow: "PASTE JOB DESCRIPTION",
+      title: "Paste the Job Description",
+      desc: "We compare your background with the role to identify the most relevant experience.",
       visual: "match",
     },
     {
-      eyebrow: "GENERATE & CUSTOMIZE",
-      title: "Generate and Customize Your ATS-Friendly Cover Letter",
-      desc:
-        "Upload your resume and let our AI extract your key skills, experiences, and achievements to build your cover letter foundation.",
+      eyebrow: "GENERATE & PERSONALIZE",
+      title: "Generate & Personalize",
+      desc: "Receive a professionally written cover letter that you can edit before applying.",
       visual: "generate",
     },
   ];
 
+  const whyFlashfireCards = [
+    { title: "Write Faster", desc: "Generate personalized cover letters within minutes." },
+    { title: "Tailor Every Application", desc: "Match every cover letter to the specific job." },
+    { title: "Increase ATS Compatibility", desc: "Improve keyword relevance and application quality." },
+    { title: "Edit Anytime", desc: "Customize every section before sending." },
+  ];
+
+  const audienceLabels = [
+    "Fresh Graduates",
+    "Career Switchers",
+    "Experienced Professionals",
+    "International Candidates",
+    "High-Volume Job Seekers",
+    "Anyone tired of writing cover letters from scratch",
+  ];
+
+  const comparisonRows = [
+    { generic: "Same content for every job", flashfire: "Personalized for every application" },
+    { generic: "Manual editing", flashfire: "Faster customization" },
+    { generic: "Limited keyword relevance", flashfire: "Better job-specific matching" },
+    { generic: "Difficult to maintain", flashfire: "Easy to reuse and update" },
+    { generic: "Generic structure", flashfire: "Professional formatting" },
+  ];
+
   const audience = [
-    "Active Job Seekers",
-    "Freshers and early-career professionals",
-    "Mid-senior candidates applying to multiple roles",
-    "Anyone who wants a faster, smarter cover letter builder",
-    "Candidates facing ATS rejections",
+    {
+      title: "Job Seekers Applying to Multiple Roles",
+      desc: "Create customized cover letters for every application without rewriting from scratch.",
+    },
+    {
+      title: "Fresh Graduates & Early-Career Professionals",
+      desc: "Build professional cover letters even if you're applying for your first job.",
+    },
+    {
+      title: "Experienced Professionals",
+      desc: "Save time by generating tailored cover letters for different companies and positions.",
+    },
+    {
+      title: "Anyone Looking to Write Better Cover Letters",
+      desc: "Create personalized, recruiter-ready cover letters in minutes.",
+    },
+    {
+      title: "Candidates Looking to Improve ATS Compatibility",
+      desc: "Include relevant job-specific keywords and improve the quality of every application.",
+    },
   ];
 
   const handleFaqToggle = (index: number) => {
@@ -265,34 +334,34 @@ export default function CoverLetterPage() {
 
             <div className="mx-auto max-w-[720px] text-center">
               <span className="mb-5 inline-flex rounded-full bg-[#ff4c00] px-4 py-1.5 text-[9px] font-extrabold uppercase text-white">
-                # Cover Letter Builder
+                Personalized Cover Letters
               </span>
               <h1 className="text-[30px] font-extrabold leading-[1.14] tracking-normal text-[#111827] sm:text-[43px] sm:leading-[1.16]">
-                AI Cover Letter Builder for
+                Create Job-Specific Cover Letters
                 <br className="hidden sm:block" />
-                ATS-Friendly Job Applications
+                That Improve Interview Chances
               </h1>
               <p className="mx-auto mt-6 max-w-[590px] text-[15px] font-medium leading-7 text-[#596273]">
-                Flashfire helps job seekers generate personalized, ATS-friendly cover letters
-                <br className="hidden sm:block" />
-                tailored to each job application using AI.
+                Create personalized cover letters tailored to every job description. Highlight
+                your most relevant skills, improve keyword matching, and send applications with
+                confidence.
               </p>
 
               <button
                 {...getButtonProps()}
                 onClick={handleGetMeInterview}
-                className="mt-8 inline-flex h-[46px] min-w-[160px] items-center justify-center gap-2 rounded-md border-2 border-black bg-white px-7 text-[13px] font-extrabold text-black transition hover:bg-[#ffe8dd] sm:mt-9"
+                className="mt-8 inline-flex h-[46px] min-w-[160px] items-center justify-center gap-2 whitespace-nowrap rounded-md border-2 border-black bg-white px-7 text-[13px] font-extrabold text-black transition hover:bg-[#ffe8dd] sm:mt-9"
                 style={{ boxShadow: "0 4px 0 0 #ff4c00" }}
               >
-                Get Me Interview
+                Create My Cover Letter
                 <ArrowRight size={15} />
               </button>
 
               <div className="mx-auto mt-8 grid w-full max-w-[440px] grid-cols-2 gap-x-4 gap-y-3 text-left text-[10px] sm:text-[12px] font-semibold text-[#111827]">{[
-                  "AI-powered content generation",
-                  "ATS-optimized formatting",
-                  "Job-specific customization",
-                  "Professional templates",
+                  "Personalized for every job",
+                  "ATS-friendly formatting",
+                  "Professional writing in minutes",
+                  "Easy to edit and customize",
                 ].map((item) => (
                   <span
                 key={item}
@@ -314,12 +383,13 @@ export default function CoverLetterPage() {
                 How it works
               </span>
               <h2 className="text-[31px] font-extrabold leading-[1.08] text-[#111827] sm:text-[42px]">
-                Why Flashfire Is the Best AI
+                Everything You Need to
                 <br className="hidden sm:block" />
-                Cover Letter Builder for ATS Success
+                Write Better Cover Letters
               </h2>
               <p className="mx-auto mt-6 max-w-[610px] text-[17px] font-medium leading-7 text-[#596273]">
-                ATS-friendly, recruiter-ready, and focused on real improvements that get results.
+                Create professional cover letters that match every job application without
+                starting from scratch each time.
               </p>
             </div>
 
@@ -350,24 +420,24 @@ export default function CoverLetterPage() {
                 The problem with modern job search
               </span>
               <h2 className="text-[31px] font-extrabold leading-[1.08] text-[#111827] sm:text-[42px]">
-                Why cover letters break down
+                Why Most Cover Letters
                 <br className="hidden sm:block" />
-                and how AI fixes it
+                Don&apos;t Get Responses
               </h2>
             </div>
 
             <div className="grid border border-black md:grid-cols-2">
               <div>
-                <div className="flex h-[54px] items-center gap-3 border-b border-black bg-[#f0f0f0] px-5 text-[15px] font-extrabold text-[#111827]">
-                  <Zap size={16} fill="#ff4c00" className="text-[#ff4c00]" />
+                <div className="flex min-h-[54px] items-center gap-3 border-b border-black bg-[#f0f0f0] px-4 py-3 text-[15px] font-extrabold text-[#111827] sm:px-5">
+                  <Zap size={16} fill="#ff4c00" className="shrink-0 text-[#ff4c00]" />
                   Why Generic Cover Letters Fail?
                 </div>
                 {[
-                  "Generic letters do not match job descriptions",
-                  "ATS keywords are often missing",
-                  "Manual customization takes too long",
-                  "There is no consistent structure",
-                  "Applications feel copied instead of tailored",
+                  "Generic cover letters look identical.",
+                  "Important skills are often missing.",
+                  "Every application takes too long to customize.",
+                  "Recruiters quickly recognize copied content.",
+                  "Valuable opportunities get missed.",
                 ].map((item) => (
                   <div
                     key={item}
@@ -378,16 +448,16 @@ export default function CoverLetterPage() {
                 ))}
               </div>
               <div className="border-t border-black md:border-l md:border-t-0">
-                <div className="flex h-[54px] items-center gap-3 bg-[#ff4c00] px-5 text-[15px] font-extrabold text-white">
-                  <Check size={16} strokeWidth={3} />
-                  How AI changes the game
+                <div className="flex min-h-[54px] items-center gap-3 bg-[#ff4c00] px-4 py-3 text-[15px] font-extrabold text-white sm:px-5">
+                  <Check size={16} strokeWidth={3} className="shrink-0" />
+                  How FlashFire Changes the Game
                 </div>
                 {[
-                  "Generates job-specific cover letters instantly",
-                  "Adds ATS keywords from the job description",
-                  "Highlights relevant skills and achievements",
-                  "Keeps formatting recruiter-ready",
-                  "Learns from edits and improves continuously",
+                  "Personalized for every application",
+                  "Highlights your most relevant experience",
+                  "Matches job descriptions naturally",
+                  "Saves hours of manual editing",
+                  "Helps create stronger first impressions",
                 ].map((item) => (
                   <div
                     key={item}
@@ -406,9 +476,9 @@ export default function CoverLetterPage() {
           <div className="mx-auto max-w-[900px]">
             <div className="mb-12 text-center">
               <h2 className="text-[31px] font-extrabold leading-[1.12] text-[#111827] sm:text-[40px] sm:leading-tight">
-                How Our AI Cover Letter Generator
+                Create a Personalized Cover Letter
                 <br className="hidden sm:block" />
-                Creates ATS-Friendly Cover Letters
+                in 3 Simple Steps
               </h2>
               <p className="mx-auto mt-4 max-w-[560px] text-[15px] font-medium leading-7 text-[#596273]">
                 ATS-friendly, recruiter-ready, and focused on real improvements that get results.
@@ -441,38 +511,110 @@ export default function CoverLetterPage() {
           </div>
         </section>
 
+        <section className="bg-white px-4 py-16 sm:py-24">
+          <div className="mx-auto max-w-[920px]">
+            <h2 className="mb-12 text-center text-[31px] font-extrabold leading-[1.08] text-[#111827] sm:text-[42px]">
+              Why Job Seekers Use FlashFire
+            </h2>
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {whyFlashfireCards.map((item) => (
+                <article
+                  key={item.title}
+                  className="min-h-[150px] rounded-[4px] border border-[#d8d8d8] bg-white p-6 shadow-[0_10px_24px_rgba(17,24,39,0.12)]"
+                >
+                  <h3 className="text-[15px] font-extrabold leading-tight text-[#111827]">{item.title}</h3>
+                  <p className="mt-3 text-[13px] font-medium leading-6 text-[#596273]">{item.desc}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white px-4 py-16 sm:py-24">
+          <div className="mx-auto max-w-[820px]">
+            <div className="mb-9 text-center">
+              <h2 className="text-[30px] font-extrabold leading-[1.08] text-[#111827] sm:text-[36px]">
+                Who Is This Cover Letter Builder For?
+              </h2>
+              <p className="mx-auto mt-5 max-w-[520px] text-[13px] font-medium leading-6 text-[#7a8290]">
+                Whether you&apos;re applying for your first job or your next leadership role,
+                FlashFire helps you write stronger cover letters with less effort.
+              </p>
+            </div>
+            <div className="grid auto-rows-fr gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              {audienceLabels.map((item) => (
+                <article
+                  key={item}
+                  className="flex h-full min-h-[110px] min-w-0 flex-col justify-center overflow-hidden rounded-[4px] border border-[#d8d8d8] bg-white px-6 py-5 shadow-[0_8px_18px_rgba(17,24,39,0.12)]"
+                >
+                  <span className="mb-3 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#ff4c00] text-white">
+                    <CheckCircle size={17} strokeWidth={3} />
+                  </span>
+                  <p className="text-[14px] font-extrabold leading-6 text-[#ff4c00]">{item}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white px-4 py-16 sm:py-24">
+          <div className="mx-auto max-w-[880px]">
+            <h2 className="mb-10 text-center text-[30px] font-extrabold leading-tight text-[#111827] sm:text-[32px]">
+              FlashFire vs Generic Cover Letter Templates
+            </h2>
+            <div className="overflow-hidden border border-[#111827] bg-white shadow-[4px_4px_0_#111827]">
+              <div className="grid grid-cols-2 border-b border-[#111827] bg-[#fff3ee]">
+                <div className="border-r border-[#111827] p-4 text-center text-[14px] font-extrabold text-[#111827]">
+                  Generic Templates
+                </div>
+                <div className="p-4 text-center text-[14px] font-extrabold text-[#ff4c00]">FlashFire</div>
+              </div>
+              {comparisonRows.map((row, index) => (
+                <div
+                  key={row.generic}
+                  className={`grid grid-cols-2 ${index !== comparisonRows.length - 1 ? "border-b border-[#111827]" : ""}`}
+                >
+                  <div className="flex items-center gap-2 border-r border-[#111827] p-4 text-[13px] font-medium text-[#596273]">
+                    <XCircle size={16} className="shrink-0 text-[#c8ccd2]" />
+                    {row.generic}
+                  </div>
+                  <div className="flex items-center gap-2 p-4 text-[13px] font-extrabold text-[#111827]">
+                    <Check size={16} strokeWidth={3} className="shrink-0 text-[#ff4c00]" />
+                    {row.flashfire}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="bg-[#fff3ee] px-4 py-16 sm:py-24">
           <div className="mx-auto grid max-w-[1120px] gap-12 md:grid-cols-[1fr_1.25fr] md:items-center">
             <div>
               <h2 className="text-[31px] font-extrabold leading-tight text-black sm:text-[40px]">
-                How Flashfire&apos;s AI Job
-                <br className="hidden sm:block" />
-                Automation Platform Works in
-                <span className="text-[#ff4c00]"> 4 Simple Steps</span>
+                Create Better Cover Letters
+                <span className="text-[#ff4c00]"> in 3 Simple Steps</span>
               </h2>
               <p className="mt-5 max-w-[520px] text-[15px] font-medium leading-7 text-[#6b7280] sm:mt-6 sm:text-[17px] sm:leading-8">
-                We turn your endless job hunt into a smooth, automated path to interview calls.
-                You set the goal, Flashfire takes care of the journey.
+                Create personalized, job-specific cover letters in minutes. Simply upload your
+                resume, add the job description, and let FlashFire help you write a stronger
+                application.
               </p>
-              <button
-                type="button"
-                className="mt-8 inline-flex h-[44px] items-center justify-center gap-3 bg-black px-5 text-[15px] font-extrabold text-white transition hover:bg-[#ff4c00] sm:mt-12"
-              >
-                Explore
-                <ArrowRight size={18} />
-              </button>
             </div>
 
             <div className="space-y-4">
               {audience.map((item) => (
                 <article
-                  key={item}
-                  className="flex min-h-[52px] items-center gap-3 rounded-md border border-[#d8d8d8] bg-white px-4 py-3 shadow-[0_3px_9px_rgba(0,0,0,0.05)] sm:gap-4 sm:px-5 sm:py-0"
+                  key={item.title}
+                  className="flex min-h-[52px] items-start gap-3 rounded-md border border-[#d8d8d8] bg-white px-4 py-3 shadow-[0_3px_9px_rgba(0,0,0,0.05)] sm:gap-4 sm:px-5 sm:py-4"
                 >
-                  <span className="flex h-7 w-7 items-center justify-center rounded-md bg-[#fff0e8] text-[#ff4c00]">
+                  <span className="mt-[2px] flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-[#fff0e8] text-[#ff4c00]">
                     <CheckCircle size={16} />
                   </span>
-                  <p className="text-[14px] font-extrabold leading-5 text-black sm:text-[15px]">{item}</p>
+                  <div>
+                    <p className="text-[14px] font-extrabold leading-5 text-black sm:text-[15px]">{item.title}</p>
+                    <p className="mt-1 text-[13px] font-medium leading-5 text-[#6b7280]">{item.desc}</p>
+                  </div>
                 </article>
               ))}
             </div>
@@ -482,20 +624,20 @@ export default function CoverLetterPage() {
         <section className="bg-white px-4 py-16 sm:py-24">
           <div className="mx-auto max-w-[760px] text-center">
             <h2 className="text-[31px] font-extrabold leading-[1.15] text-black sm:text-[40px]">
-              Ready to Write Best AI Cover Letters That
+              Ready to Create
               <br className="hidden sm:block" />
-              <span className="text-[#ff4c00]">Get Results?</span>
+              <span className="text-[#ff4c00]">Better Cover Letters?</span>
             </h2>
             <p className="mx-auto mt-6 max-w-[620px] text-[15px] font-medium leading-7 text-[#596273]">
-              Join thousands of job seekers who use FlashFire to create compelling cover letters
-              that increase their interview chances.
+              Build personalized cover letters for every application, save hours of manual
+              writing, and apply with confidence.
             </p>
             <button
               {...getButtonProps()}
               onClick={handleGetMeInterview}
-              className="mt-9 inline-flex h-[44px] min-w-[190px] items-center justify-center rounded-md bg-[#ff4c00] px-7 text-[13px] font-extrabold text-white transition hover:bg-[#e94400]"
+              className="mt-9 inline-flex h-[44px] min-w-[190px] items-center justify-center whitespace-nowrap rounded-md bg-[#ff4c00] px-7 text-[13px] font-extrabold text-white transition hover:bg-[#e94400]"
             >
-              Get Me Interview
+              Create My Cover Letter
               <ArrowRight className="ml-1 inline" size={14} />
             </button>
           </div>
@@ -503,10 +645,10 @@ export default function CoverLetterPage() {
 
         <section id="faq" className={faqStyles.faqSection}>
           <div id="faq-header" className={faqStyles.header}>
-            <h2>Question? We Got You Answers.</h2>
+            <h2>Frequently Asked Questions About Cover Letter Builder</h2>
             <p>
-              We get it, AI cover letter builders can sound complex. Here&apos;s everything
-              explained, plain and simple.
+              We get it, cover letter writing can sound complex. Here&apos;s everything explained,
+              plain and simple.
             </p>
           </div>
 
@@ -553,7 +695,7 @@ function HeroMiniCard({ className }: { className: string }) {
           Cover Letter Builder
         </span>
         <span className="block text-[7px] font-semibold leading-tight text-[#6b7280]">
-          AI-powered writing assistant
+          Personalized writing assistant
         </span>
       </span>
     </div>
