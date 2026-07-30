@@ -12,7 +12,7 @@ interface LocalePaymentPolicyPageProps {
 export async function generateMetadata({ params }: LocalePaymentPolicyPageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
-  const isUK = locale === "en-uk";
+  const isUK = locale === "en-gb";
   
   return {
     title: isUK
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: LocalePaymentPolicyPageProps)
     },
     alternates: {
       canonical: isUK
-      ? "https://www.flashfirejobs.com/en-uk/payment-policy"
+      ? "https://www.flashfirejobs.com/en-gb/payment-policy"
       : isCanada
       ? "https://www.flashfirejobs.com/en-ca/payment-policy"
       : "https://www.flashfirejobs.com/payment-policy",
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: LocalePaymentPolicyPageProps)
       description:
         "Read Flashfire's Payment Policy to understand our payment terms.",
       url: isUK
-      ? "https://www.flashfirejobs.com/en-uk/payment-policy"
+      ? "https://www.flashfirejobs.com/en-gb/payment-policy"
       : isCanada
       ? "https://www.flashfirejobs.com/en-ca/payment-policy"
       : "https://www.flashfirejobs.com/payment-policy",

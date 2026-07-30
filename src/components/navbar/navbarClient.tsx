@@ -46,7 +46,7 @@ export default function NavbarClient({ links, ctas }: Props) {
   const pathname = usePathname();
   const safePathname = pathname || (typeof window !== 'undefined' ? window.location.pathname : '') || '';
   const prefix = getLocalePrefix(safePathname);
-  // Compare against the locale-stripped path so /en-ca and /en-uk behave alike.
+  // Compare against the locale-stripped path so /en-ca and /en-gb behave alike.
   const basePathname = stripLocalePrefix(safePathname);
 
   const isImageTestimonialsPage = basePathname === "/testimonials" || basePathname === "/image-testimonials";

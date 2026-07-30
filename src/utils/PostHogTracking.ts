@@ -154,7 +154,7 @@ const getCountryContext = (): Partial<PostHogEventProperties> => {
     country_name: countryNames[countryCode] || countryCode,
     is_canada: isCanada,
     is_uk: isUK,
-    locale: isUK ? "en-uk" : isCanada ? "en-ca" : "en-us",
+    locale: isUK ? "en-gb" : isCanada ? "en-ca" : "en-us",
   };
 };
 

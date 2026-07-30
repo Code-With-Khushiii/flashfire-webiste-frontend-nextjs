@@ -10,7 +10,7 @@ interface LocaleFeaturePageProps {
 export async function generateMetadata({ params }: LocaleFeaturePageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
-  const isUK = locale === "en-uk";
+  const isUK = locale === "en-gb";
   
   return {
     title: isUK
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: LocaleFeaturePageProps): Prom
     },
     alternates: {
       canonical: isUK
-      ? "https://www.flashfirejobs.com/en-uk/feature"
+      ? "https://www.flashfirejobs.com/en-gb/feature"
       : isCanada
       ? "https://www.flashfirejobs.com/en-ca/feature"
       : "https://www.flashfirejobs.com/feature",
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: LocaleFeaturePageProps): Prom
       description:
         "Discover Flashfire's powerful features for automated job search and resume optimization.",
       url: isUK
-      ? "https://www.flashfirejobs.com/en-uk/feature"
+      ? "https://www.flashfirejobs.com/en-gb/feature"
       : isCanada
       ? "https://www.flashfirejobs.com/en-ca/feature"
       : "https://www.flashfirejobs.com/feature",

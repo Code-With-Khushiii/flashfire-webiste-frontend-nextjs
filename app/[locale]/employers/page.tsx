@@ -12,7 +12,7 @@ interface LocaleEmployersPageProps {
 export async function generateMetadata({ params }: LocaleEmployersPageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
-  const isUK = locale === "en-uk";
+  const isUK = locale === "en-gb";
   
   return {
     title: isUK
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: LocaleEmployersPageProps): Pr
     },
     alternates: {
       canonical: isUK
-      ? "https://www.flashfirejobs.com/en-uk/employers"
+      ? "https://www.flashfirejobs.com/en-gb/employers"
       : isCanada
       ? "https://www.flashfirejobs.com/en-ca/employers"
       : "https://www.flashfirejobs.com/employers",
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: LocaleEmployersPageProps): Pr
       description:
         "Partner with Flashfire to access pre-screened, qualified candidates.",
       url: isUK
-      ? "https://www.flashfirejobs.com/en-uk/employers"
+      ? "https://www.flashfirejobs.com/en-gb/employers"
       : isCanada
       ? "https://www.flashfirejobs.com/en-ca/employers"
       : "https://www.flashfirejobs.com/employers",

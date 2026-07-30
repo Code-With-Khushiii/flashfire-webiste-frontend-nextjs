@@ -10,7 +10,7 @@ interface LocaleFAQPageProps {
 export async function generateMetadata({ params }: LocaleFAQPageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
-  const isUK = locale === "en-uk";
+  const isUK = locale === "en-gb";
   
   return {
     title: isUK
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: LocaleFAQPageProps): Promise<
     },
     alternates: {
       canonical: isUK
-      ? "https://www.flashfirejobs.com/en-uk/faq"
+      ? "https://www.flashfirejobs.com/en-gb/faq"
       : isCanada
       ? "https://www.flashfirejobs.com/en-ca/faq"
       : "https://www.flashfirejobs.com/faq",
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: LocaleFAQPageProps): Promise<
       description:
         "Find answers to common questions about Flashfire's job search automation service.",
       url: isUK
-      ? "https://www.flashfirejobs.com/en-uk/faq"
+      ? "https://www.flashfirejobs.com/en-gb/faq"
       : isCanada
       ? "https://www.flashfirejobs.com/en-ca/faq"
       : "https://www.flashfirejobs.com/faq",

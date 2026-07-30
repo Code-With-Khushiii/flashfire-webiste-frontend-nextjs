@@ -12,7 +12,7 @@ interface LocaleRefundPolicyPageProps {
 export async function generateMetadata({ params }: LocaleRefundPolicyPageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
-  const isUK = locale === "en-uk";
+  const isUK = locale === "en-gb";
   
   return {
     title: isUK
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: LocaleRefundPolicyPageProps):
     },
     alternates: {
       canonical: isUK
-      ? "https://www.flashfirejobs.com/en-uk/refund-policy"
+      ? "https://www.flashfirejobs.com/en-gb/refund-policy"
       : isCanada
       ? "https://www.flashfirejobs.com/en-ca/refund-policy"
       : "https://www.flashfirejobs.com/refund-policy",
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: LocaleRefundPolicyPageProps):
       description:
         "Read Flashfire's Refund Policy to understand our refund terms.",
       url: isUK
-      ? "https://www.flashfirejobs.com/en-uk/refund-policy"
+      ? "https://www.flashfirejobs.com/en-gb/refund-policy"
       : isCanada
       ? "https://www.flashfirejobs.com/en-ca/refund-policy"
       : "https://www.flashfirejobs.com/refund-policy",

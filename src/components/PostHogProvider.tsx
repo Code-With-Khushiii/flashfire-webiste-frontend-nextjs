@@ -59,7 +59,7 @@ function PostHogPageView() {
         country_code: countryCode,
         is_canada: isCanada,
         is_uk: locale === "uk",
-        locale: locale === "uk" ? "en-uk" : isCanada ? "en-ca" : "en-us",
+        locale: locale === "uk" ? "en-gb" : isCanada ? "en-ca" : "en-us",
         utm_source: utmSource || "direct",
         utm_medium: utmMedium || "website",
         utm_campaign: utmCampaign || "organic",

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  return [{ locale: "en-ca" }, { locale: "en-uk" }];
+  return [{ locale: "en-ca" }, { locale: "en-gb" }];
 }
 import HomePage from "@/src/components/pages/home/Home";
 import CanadaHome from "@/src/components/countries/ca/Home";
@@ -19,7 +19,7 @@ interface LocalePageProps {
 export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
-  const isUK = locale === "en-uk";
+  const isUK = locale === "en-gb";
 
   if (isUK) {
     return {
@@ -31,13 +31,13 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
         follow: true,
       },
       alternates: {
-        canonical: "https://www.flashfirejobs.com/en-uk",
+        canonical: "https://www.flashfirejobs.com/en-gb",
       },
       openGraph: {
         title: "FLASHFIRE - AI-Powered Job Search Automation (UK)",
         description:
           "We apply to 1000+ jobs on your behalf with tailored CVs for every role. Save 150+ hours, skip the grunt work, and stay in control with real-time updates.",
-        url: "https://www.flashfirejobs.com/en-uk",
+        url: "https://www.flashfirejobs.com/en-gb",
         type: "website",
         images: [
           {
@@ -139,7 +139,7 @@ export default async function LocalePage({ params }: LocalePageProps) {
   }
 
   // Handle UK / EU locale
-  if (locale === "en-uk") {
+  if (locale === "en-gb") {
     return <UKHome />;
   }
 
