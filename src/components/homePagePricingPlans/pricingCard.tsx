@@ -328,9 +328,17 @@ export default function PricingCard({
               });
 
               if (currentPaymentLink && typeof window !== "undefined") {
-                const checkoutWindow = window.open(currentPaymentLink, "_blank", "noopener,noreferrer");
+                // Don't pass "noopener"/"noreferrer" in the features string here —
+                // both force window.open() to return null even when the tab opens
+                // fine, which made the "blocked" fallback below fire on every
+                // click and open a second tab with the same link. Detect a real
+                // block via the null return, then strip window.opener manually
+                // to get the same reverse-tabnabbing protection.
+                const checkoutWindow = window.open(currentPaymentLink, "_blank");
 
-                if (!checkoutWindow) {
+                if (checkoutWindow) {
+                  checkoutWindow.opener = null;
+                } else {
                   window.location.href = currentPaymentLink;
                 }
               }
