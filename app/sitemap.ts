@@ -144,7 +144,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // maintaining a second hand-written list that can drift.
   const ukRoutes: MetadataRoute.Sitemap = canadaRoutes.map((route) => ({
     ...route,
-    url: route.url.replace(`${baseUrl}/en-ca`, `${baseUrl}/en-uk`),
+    url: route.url.replace(`${baseUrl}/en-ca`, `${baseUrl}/en-gb`),
   }))
 
   return [...staticRoutes, ...canadaRoutes, ...ukRoutes, ...blogUrls]

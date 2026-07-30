@@ -2,7 +2,7 @@
  * Locale routing helpers.
  *
  * The site serves a default (US) tree at `/` and country trees under a locale
- * prefix: `/en-ca` for Canada and `/en-uk` for the United Kingdom & the EU.
+ * prefix: `/en-ca` for Canada and `/en-gb` for the United Kingdom & the EU.
  * Everything that needs to build a country-aware link or pick country-specific
  * content should go through here rather than hard-coding `"/en-ca"` checks, so
  * adding a locale stays a one-line change.
@@ -11,7 +11,7 @@
 export type Locale = "us" | "ca" | "uk";
 
 export const CANADA_PREFIX = "/en-ca";
-export const UK_PREFIX = "/en-uk";
+export const UK_PREFIX = "/en-gb";
 
 /** Every non-default locale prefix, longest-first so matching is unambiguous. */
 export const LOCALE_PREFIXES = [CANADA_PREFIX, UK_PREFIX] as const;
@@ -85,7 +85,7 @@ export function isLocalizedPath(pathname: string | null | undefined): boolean {
   return getLocalePrefix(pathname) !== "";
 }
 
-/** Strips a leading locale prefix, so `/en-uk/pricing` becomes `/pricing`. */
+/** Strips a leading locale prefix, so `/en-gb/pricing` becomes `/pricing`. */
 export function stripLocalePrefix(pathname: string | null | undefined): string {
   if (!pathname) return "/";
   const prefix = getLocalePrefix(pathname);

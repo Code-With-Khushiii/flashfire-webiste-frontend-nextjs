@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     languages: {
       "en-US": "https://www.flashfirejobs.com/ai-interview-answer-generator",
       "en-CA": "https://www.flashfirejobs.com/en-ca/ai-interview-answer-generator",
-      "en-GB": "https://www.flashfirejobs.com/en-uk/ai-interview-answer-generator",
+      "en-GB": "https://www.flashfirejobs.com/en-gb/ai-interview-answer-generator",
       "x-default": "https://www.flashfirejobs.com/ai-interview-answer-generator",
     },
   },

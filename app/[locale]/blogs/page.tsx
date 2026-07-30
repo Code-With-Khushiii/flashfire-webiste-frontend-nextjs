@@ -13,7 +13,7 @@ interface LocaleBlogsPageProps {
 export async function generateMetadata({ params }: LocaleBlogsPageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
-  const isUK = locale === "en-uk";
+  const isUK = locale === "en-gb";
   
   return {
     title: isUK
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: LocaleBlogsPageProps): Promis
     },
     alternates: {
       canonical: isUK
-      ? "https://www.flashfirejobs.com/en-uk/blog"
+      ? "https://www.flashfirejobs.com/en-gb/blog"
       : isCanada
       ? "https://www.flashfirejobs.com/en-ca/blog"
       : "https://www.flashfirejobs.com/blog",
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: LocaleBlogsPageProps): Promis
       description:
         "Discover expert career tips, job search strategies, and industry insights.",
       url: isUK
-      ? "https://www.flashfirejobs.com/en-uk/blog"
+      ? "https://www.flashfirejobs.com/en-gb/blog"
       : isCanada
       ? "https://www.flashfirejobs.com/en-ca/blog"
       : "https://www.flashfirejobs.com/blog",
