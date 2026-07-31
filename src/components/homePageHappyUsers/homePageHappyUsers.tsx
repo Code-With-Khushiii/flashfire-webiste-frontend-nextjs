@@ -83,10 +83,19 @@ export const ALL_REVIEW_IMAGES = [
 
 interface HomePageHappyUsersProps {
   variant?: "default" | "pricing" | "pricingVideos";
+  heading?: string;
+  headingClassName?: string;
+  ctaLabel?: string;
 }
+
+const DEFAULT_PRICING_HEADING_CLASS =
+  "mb-[720px] max-w-[430px] text-[64px] font-black leading-[1.02] tracking-[-0.02em] text-white max-[1024px]:mb-[560px] max-[1024px]:text-[50px] max-[768px]:mb-4 max-[768px]:max-w-[360px] max-[768px]:text-[40px] max-[480px]:text-[34px]";
 
 export default function HomePageHappyUsers({
   variant = "default",
+  heading = "1000+ Happy User’s Love",
+  headingClassName = DEFAULT_PRICING_HEADING_CLASS,
+  ctaLabel = "Book a Demo",
 }: HomePageHappyUsersProps) {
   const pathname = usePathname();
   const prefix = getLocalePrefix(pathname);
@@ -453,8 +462,8 @@ export default function HomePageHappyUsers({
       >
         <div className="relative mx-auto grid min-h-[1560px] w-full grid-cols-[500px_minmax(0,1fr)] overflow-hidden px-[59px] pt-[65px] max-[1024px]:grid-cols-[360px_minmax(0,1fr)] max-[1024px]:px-7 max-[768px]:flex max-[768px]:min-h-0 max-[768px]:flex-col max-[768px]:gap-8 max-[768px]:px-5 max-[768px]:py-10">
           <div className="relative z-[2] flex flex-col items-start pt-[3px] text-left max-[768px]:pt-0">
-            <h2 className="mb-[720px] max-w-[430px] text-[64px] font-black leading-[1.02] tracking-[-0.02em] text-white max-[1024px]:mb-[560px] max-[1024px]:text-[50px] max-[768px]:mb-4 max-[768px]:max-w-[360px] max-[768px]:text-[40px] max-[480px]:text-[34px]">
-              1000+ Happy User&rsquo;s Love
+            <h2 className={headingClassName}>
+              {heading}
             </h2>
 
             <button
@@ -462,7 +471,7 @@ export default function HomePageHappyUsers({
               onClick={handleTryItYourself}
               className="inline-flex h-[56px] items-center gap-4 bg-black px-[24px] text-[20px] font-bold leading-none text-white transition-colors hover:bg-[#1c1c1c]"
             >
-              Book a Demo
+              {ctaLabel}
               <span className="text-[34px] font-normal leading-none" aria-hidden="true">
                 &rarr;
               </span>
