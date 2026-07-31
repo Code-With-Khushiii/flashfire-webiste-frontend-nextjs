@@ -172,6 +172,11 @@ const nextConfig: NextConfig = {
         destination: "/en-gb/blog",
         permanent: true,
       },
+      {
+        source: "/en-us/blogs",
+        destination: "/en-us/blog",
+        permanent: true,
+      },
       // Legacy /en-uk/* prefix (renamed to /en-gb/* to match the ISO 3166-1 /
       // BCP-47 standard). These specific ones resolve in a single hop instead
       // of falling through to the generic /en-uk/:path* rule below and
@@ -184,6 +189,11 @@ const nextConfig: NextConfig = {
       {
         source: "/feature",
         destination: "/features",
+        permanent: true,
+      },
+      {
+        source: "/en-us/feature",
+        destination: "/en-us/features",
         permanent: true,
       },
       {
@@ -286,6 +296,11 @@ const nextConfig: NextConfig = {
       {
         source: "/en-uk/how-it-works",
         destination: "/en-gb/how-flashfire-ai-job-automation-platform-works",
+        permanent: true,
+      },
+      {
+        source: "/en-us/how-it-works",
+        destination: "/en-us/how-flashfire-ai-job-automation-platform-works",
         permanent: true,
       },
       // Catch-all: the UK/EU locale tree was renamed from /en-uk to /en-gb

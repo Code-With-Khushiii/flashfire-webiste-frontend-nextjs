@@ -1,20 +1,30 @@
 /**
  * Locale routing helpers.
  *
- * The site serves a default (US) tree at `/` and country trees under a locale
- * prefix: `/en-ca` for Canada and `/en-gb` for the United Kingdom & the EU.
- * Everything that needs to build a country-aware link or pick country-specific
- * content should go through here rather than hard-coding `"/en-ca"` checks, so
- * adding a locale stays a one-line change.
+ * The site serves its default (US) content at `/` — that stays the canonical,
+ * indexed URL for the US market and is never redirected away from. `/en-us`
+ * is an additional, explicit mirror of the exact same content (every page
+ * re-exports its root counterpart) for parity with `/en-ca` and `/en-gb`;
+ * its pages canonicalize back to the root URL so it never competes with `/`
+ * for search ranking. Everything that needs to build a country-aware link or
+ * pick country-specific content should go through here rather than
+ * hard-coding `"/en-ca"` checks, so adding a locale stays a one-line change.
  */
 
 export type Locale = "us" | "ca" | "uk";
 
+export const US_PREFIX = "/en-us";
 export const CANADA_PREFIX = "/en-ca";
 export const UK_PREFIX = "/en-gb";
 
-/** Every non-default locale prefix, longest-first so matching is unambiguous. */
-export const LOCALE_PREFIXES = [CANADA_PREFIX, UK_PREFIX] as const;
+/**
+ * Every non-default locale prefix, longest-first so matching is unambiguous.
+ * Note: `US_PREFIX` is included so navigation helpers (localizeHref, etc.)
+ * keep a visitor inside `/en-us` once they're there, but the middleware's
+ * geo-redirect never targets it — root stays the default landing page for
+ * US and unmatched visitors, unchanged.
+ */
+export const LOCALE_PREFIXES = [CANADA_PREFIX, UK_PREFIX, US_PREFIX] as const;
 
 export type LocalePrefix = (typeof LOCALE_PREFIXES)[number] | "";
 
@@ -78,6 +88,10 @@ export function isCanadaPath(pathname: string | null | undefined): boolean {
 
 export function isUKPath(pathname: string | null | undefined): boolean {
   return getLocalePrefix(pathname) === UK_PREFIX;
+}
+
+export function isUSPath(pathname: string | null | undefined): boolean {
+  return getLocalePrefix(pathname) === US_PREFIX;
 }
 
 /** True for any non-default locale tree. */
