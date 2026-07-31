@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Cover Letter Builder for ATS-Friendly Job Applications",
-  description: "Flashfire's AI cover letter builder helps you generate job-specific, ATS-friendly cover letters in minutes using AI-powered customization.",
+  title: "Cover Letter Builder for Job Applications",
+  description: "Create personalized, ATS-friendly cover letters tailored to every job application. Save time, match job descriptions, and improve your interview chances.",
   alternates: {
     canonical: "https://www.flashfirejobs.com/features/ai-cover-letter-generator",
   },

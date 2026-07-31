@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Job Search Analytics Dashboard & Application Tracking",
-  description: "Use FlashFire's job search analytics dashboard to track job applications, response rates, and interview conversions. Optimize your job search with data.",
+  title: "Job Search Analytics Dashboard to Improve Interviews",
+  description: "Track job applications, monitor interview rates, and measure your job search performance. FlashFire helps you improve your strategy with actionable insights.",
   alternates: {
     canonical: "https://www.flashfirejobs.com/features/dashboard-analytics",
     languages: {
