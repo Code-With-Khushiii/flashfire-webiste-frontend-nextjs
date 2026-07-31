@@ -472,26 +472,24 @@ export default function FlashFireInterview() {
               FlashFire vs Practicing Alone
             </h2>
             <div className="overflow-hidden rounded-md border border-[#d5d5d5] shadow-[0_8px_18px_rgba(0,0,0,0.12)]">
+              <div className="grid grid-cols-2">
+                <div className="border-r border-[#d5d5d5] bg-[#f7f7f7] px-2 py-3 text-center text-[11px] font-extrabold text-[#6b7280] sm:px-6 sm:py-4 sm:text-[14px]">
+                  Practicing Alone
+                </div>
+                <div className="bg-[#fff3ee] px-2 py-3 text-center text-[11px] font-extrabold text-[#ff4c00] sm:px-6 sm:py-4 sm:text-[14px]">
+                  FlashFire
+                </div>
+              </div>
               <div className="divide-y divide-[#d5d5d5]">
                 {comparisonRows.map((row) => (
-                  <div key={row.alone} className="grid grid-cols-1 sm:grid-cols-2">
-                    <div className="flex flex-col gap-1.5 border-b border-[#d5d5d5] bg-[#f7f7f7] px-5 py-4 sm:border-b-0 sm:border-r">
-                      <span className="text-[10px] font-extrabold uppercase tracking-wide text-[#9ca3af]">
-                        Practicing Alone
-                      </span>
-                      <span className="flex items-center gap-2 text-[13px] font-medium leading-snug text-[#6b7280]">
-                        <X size={16} className="shrink-0 text-red-500" />
-                        {row.alone}
-                      </span>
+                  <div key={row.alone} className="grid grid-cols-2">
+                    <div className="flex items-start gap-1.5 border-r border-[#d5d5d5] px-2 py-3 text-[11px] font-medium leading-snug text-[#6b7280] sm:items-center sm:gap-2 sm:px-6 sm:py-4 sm:text-[13px]">
+                      <X size={14} className="mt-0.5 shrink-0 text-red-500 sm:mt-0 sm:h-4 sm:w-4" />
+                      {row.alone}
                     </div>
-                    <div className="flex flex-col gap-1.5 bg-[#fffaf7] px-5 py-4">
-                      <span className="text-[10px] font-extrabold uppercase tracking-wide text-[#ff4c00]">
-                        FlashFire
-                      </span>
-                      <span className="flex items-center gap-2 text-[13px] font-medium leading-snug text-[#111827]">
-                        <CheckCircle size={16} className="shrink-0 text-[#ff4c00]" />
-                        {row.flashfire}
-                      </span>
+                    <div className="flex items-start gap-1.5 bg-[#fffaf7] px-2 py-3 text-[11px] font-medium leading-snug text-[#111827] sm:items-center sm:gap-2 sm:px-6 sm:py-4 sm:text-[13px]">
+                      <CheckCircle size={14} className="mt-0.5 shrink-0 text-[#ff4c00] sm:mt-0 sm:h-4 sm:w-4" />
+                      {row.flashfire}
                     </div>
                   </div>
                 ))}
