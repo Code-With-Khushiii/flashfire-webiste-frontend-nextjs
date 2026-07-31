@@ -44,8 +44,8 @@ export default function HomePageFoundersNote({
                 even the most talented people begin to lose hope.
               </p>
               <p>
-                Flashfire was born from that same feeling. I watched my sister-
-                smart, capable, and hardworking- apply to hundreds of roles and
+                Flashfire was born from that same feeling. I watched my sister,
+                smart, capable, and hardworking, apply to hundreds of roles and
                 still get no response. It wasn&apos;t her fault. The system had
                 stopped seeing people for who they are.
               </p>
@@ -135,8 +135,8 @@ export default function HomePageFoundersNote({
             </p>
 
             <p>
-              Flashfire was born from that same feeling. I watched my sister—smart,
-              capable, and hardworking—apply to hundreds of roles and still get no
+              Flashfire was born from that same feeling. I watched my sister, smart,
+              capable, and hardworking, apply to hundreds of roles and still get no
               response. It wasn&apos;t her fault. The system had stopped seeing people
               for who they are.
             </p>
@@ -147,7 +147,7 @@ export default function HomePageFoundersNote({
 
             <p>
               That&apos;s when <span className="text-[#ff4c00] font-bold">Pranjal</span>{" "}
-              joined me. He had been through the same struggle—preparing hard,
+              joined me. He had been through the same struggle, preparing hard,
               clearing rounds, yet still falling short. Not because he wasn&apos;t good
               enough, but because the process wasn&apos;t fair.
             </p>

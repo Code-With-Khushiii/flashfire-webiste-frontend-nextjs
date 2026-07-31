@@ -261,13 +261,13 @@ export default function AboutUs() {
                   I know how exhausting the job search can be. You keep sending out applications, waiting for replies, and start to wonder if it&apos;s you. Especially in the U.S., where hundreds apply for the same role, even the most talented people begin to lose hope.
                 </p>
                 <p>
-                  Flashfire was born from that same feeling. I watched my sister—smart, capable, and hardworking—apply to hundreds of roles and still get no response. It wasn&apos;t her fault. The system had stopped seeing people for who they are.
+                  Flashfire was born from that same feeling. I watched my sister, smart, capable, and hardworking, apply to hundreds of roles and still get no response. It wasn&apos;t her fault. The system had stopped seeing people for who they are.
                 </p>
                 <blockquote className="font-semibold italic text-[#F55D1D] border-l-4 border-[#F55D1D] pl-6 my-8 text-lg">
                   The problem was never the people. It was the process.
                 </blockquote>
                 <p>
-                  That&apos;s when Pranjal joined. He&apos;d been through the same struggle—brilliant, qualified, but invisible to the system. We realized the failures weren&apos;t about talent or effort. They were about a process that had stopped working for people.
+                  That&apos;s when Pranjal joined. He&apos;d been through the same struggle, brilliant, qualified, but invisible to the system. We realized the failures weren&apos;t about talent or effort. They were about a process that had stopped working for people.
                 </p>
                 <p>
                   Together, we started building Flashfire with belief, empathy, and persistence. What began as a way to help one person is now helping hundreds find their &apos;yes.&apos;
@@ -389,7 +389,7 @@ export default function AboutUs() {
               },
               {
                 title: "Professionals Targeting US & Canadian Roles",
-                desc: "Flashfire is optimized for North American hiring systems, ATS rules, and recruiter expectations — so your applications actually get seen."
+                desc: "Flashfire is optimized for North American hiring systems, ATS rules, and recruiter expectations, so your applications actually get seen."
               },
               {
                 title: "Candidates Tired of Manual Applications",
@@ -419,7 +419,7 @@ export default function AboutUs() {
             <div className="inline-flex items-center gap-3 bg-[#F55D1D]/10 rounded-full px-8 py-4">
               {/* <div className="w-2 h-2 bg-[#F55D1D] rounded-full" /> */}
               <p className="text-lg font-bold text-gray-900">
-                If you're qualified, motivated, and serious about landing interviews — Flashfire is built for you.
+                If you're qualified, motivated, and serious about landing interviews, Flashfire is built for you.
               </p>
             </div>
           </div>
