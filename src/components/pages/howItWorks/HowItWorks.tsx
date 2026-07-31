@@ -322,12 +322,12 @@ export default function HowItWorks() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navbar />
-
+      
       <main className="w-full overflow-hidden pb-9 lg:pb-14">
         <section className="overflow-hidden rounded-[13px] border border-[#f5ded5] bg-white px-5 py-12 shadow-[0_18px_50px_rgba(50,26,13,0.04)] sm:px-8 md:px-12 lg:px-[54px] lg:py-[58px]">
           <div>
             <h1 className="max-w-[690px] text-[2rem] font-extrabold leading-[1.08] text-[#111827] sm:text-[2.55rem] lg:text-[3.08rem]">
-              Land More Interviews
+              Land More Interview
               <br />
               Without Spending Hours <span className="text-[#ff4c00]">Applying</span>
             </h1>
