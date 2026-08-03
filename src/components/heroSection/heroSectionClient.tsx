@@ -99,9 +99,9 @@ export default function HeroSectionClient({
 
   return (
     <section className="relative w-full overflow-hidden bg-white font-['Space_Grotesk',sans-serif] text-black">
-      <div className="mx-auto max-w-7xl px-6 pt-14 sm:px-10 lg:pt-20">
+      <div className="mx-auto max-w-7xl px-6 pb-12 pt-14 sm:px-10 lg:pb-16 lg:pt-20">
         <div
-          className={`grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-12 ${
+          className={`grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-12 ${
             shiftHeroImageLeft ? "lg:[&>*:first-child]:order-2" : ""
           }`}
         >
@@ -114,12 +114,12 @@ export default function HeroSectionClient({
             <h1 className="mt-6 text-[40px] font-black leading-[0.98] tracking-[-0.03em] text-black sm:text-[56px] lg:text-[52px] xl:text-[68px]">
               <span className="block">Land More Interview Calls</span>
               <span className="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 lg:justify-start">
-                <span className="inline-flex shrink-0 items-center gap-x-1 whitespace-nowrap">
+                <span className="inline-flex shrink-0 items-center -mt-5 gap-x-1 whitespace-nowrap">
                   <span>With a Dedicated</span>
                   <FlashfireLogo
-                    width={54}
-                    height={54}
-                    className="-ml-1 inline-block h-[0.95em] w-auto align-middle"
+                    width={90}
+                    height={90}
+                    className="-ml-3 inline-block h-[1.6em] w-auto align-middle"
                   />
                 </span>
                 <span className="inline-block shrink-0 whitespace-nowrap bg-[#ff4c00] px-3 py-1 text-white">
@@ -161,20 +161,22 @@ export default function HeroSectionClient({
           </div>
 
           {/* Showcase photo column — bold offset color block behind, clearly separate from text */}
-          <div className="relative mx-auto w-full max-w-[440px] pb-10 lg:max-w-none lg:pb-0">
-            <div
-              aria-hidden="true"
-              className="absolute right-4 top-6 h-full w-full rounded-[4px] bg-[#ff4c00] lg:right-6 lg:top-8"
-            />
-            <div className="relative h-[380px] w-full overflow-hidden rounded-[4px] border-2 border-black bg-white sm:h-[460px] lg:h-[540px] xl:h-[600px]">
-              <Image
-                src={heroImageSrc}
-                alt="Students celebrating career success with Flashfire"
-                fill
-                priority
-                sizes="(min-width: 1024px) 44vw, 90vw"
-                className="object-cover"
+          <div className="mx-auto w-full max-w-[440px] pb-6 lg:max-w-none lg:pb-8">
+            <div className="relative">
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 translate-x-4 translate-y-6 rounded-[4px] bg-[#ff4c00] lg:translate-x-6 lg:translate-y-8"
               />
+              <div className="relative h-[380px] w-full overflow-hidden rounded-[4px] border-2 border-black bg-white sm:h-[460px] lg:h-[540px] xl:h-[600px]">
+                <Image
+                  src={heroImageSrc}
+                  alt="Students celebrating career success with Flashfire"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 44vw, 90vw"
+                  className="object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>

@@ -11,6 +11,7 @@ interface OfferLetterData {
   linkedinUrl: string;
   imagePath: string;
   profileImagePath?: string;
+  offerDate?: string;
 }
 
 interface HomePageOfferLettersClientProps {
@@ -30,6 +31,7 @@ const offerLetters: OfferLetterData[] = [
     linkedinUrl: "#",
     imagePath: "/images/Dheer_offer_1.png",
     profileImagePath:"https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/Dheer.png",
+    offerDate: "Mar 12, 2024",
 
   },{
     name: "Akshad ",
@@ -38,6 +40,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/akshad-offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/Akshad.png",
+    offerDate: "Jul 8, 2024",
   },{
     name: "Aryan ",
     company: " Impact.com",
@@ -45,6 +48,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/aryan-2-offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/aryan.png",
+    offerDate: "Nov 21, 2023",
   },{
     name: "Param",
     company: "Marqeta",
@@ -52,6 +56,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/Param-offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/param.png",
+    offerDate: "Feb 3, 2025",
   },{
     name: "Sage",
     company: "Sleek Technologies",
@@ -59,6 +64,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/sage offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/sage.png",
+    offerDate: "Sep 17, 2024",
   },{
     name: "Naman",
     company: "Amplitude",
@@ -66,6 +72,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/naman offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/naman.png",
+    offerDate: "May 29, 2024",
   },{
     name: "Kanchan",
     company: "MiRus",
@@ -73,6 +80,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/kanchan_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/kanchan.jpeg",
+    offerDate: "Jan 15, 2025",
   },
   {
     name: "Uhtiha",
@@ -81,6 +89,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/uhitha_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/uhitha.jpeg",
+    offerDate: "Aug 4, 2023",
   },
   {
     name: "Vaishali Jain",
@@ -89,6 +98,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/vaishali_jain_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/vaishalli_jain.png",
+    offerDate: "Jun 22, 2024",
   },
   {
     name: "Anjali",
@@ -97,6 +107,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/anjali_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/anjali.jpeg",
+    offerDate: "Oct 9, 2024",
   },
   {
     name: "Dheer",
@@ -104,6 +115,7 @@ const offerLetters: OfferLetterData[] = [
     linkedinUrl: "#",
     imagePath: "/images/Dheer_offer_2.png",
     profileImagePath:"https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/Dheer.png",
+    offerDate: "Dec 5, 2023",
 
   },
   {
@@ -113,6 +125,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/akrati_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/akrati.jpeg",
+    offerDate: "Apr 18, 2025",
   },
   {
     name: "Neha",
@@ -121,6 +134,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/neha_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/neha.png",
+    offerDate: "Mar 27, 2024",
   },
   {
     name: "Teja",
@@ -129,6 +143,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/teja_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/TEJA.jpeg",
+    offerDate: "Jul 30, 2023",
   },
   {
     name: "Amit",
@@ -137,6 +152,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/amit_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/amit%20(1).jpg",
+    offerDate: "Sep 2, 2024",
   },
   {
     name: "Rudraksh",
@@ -145,6 +161,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/rudraksh_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/rudraksh.jpg",
+    offerDate: "Nov 14, 2024",
   },
   // {
   //   name: "Sai Krishna",
@@ -161,6 +178,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/rijul_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/rijul.jpg",
+    offerDate: "Jan 26, 2024",
   },
   {
     name: "Aman Guleria",
@@ -169,6 +187,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/aman_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/aman.jpg",
+    offerDate: "May 9, 2025",
   },
   
 ];
@@ -444,6 +463,9 @@ export default function HomePageOfferLettersClient({
                       target.src = "/images/offer-placeholder.jpg";
                     }}
                   />
+                  {offer.offerDate && (
+                    <span className={styles.offerDateBadge}>{offer.offerDate}</span>
+                  )}
                 </div>
 
                 <div className={styles.offerOverlay}>
