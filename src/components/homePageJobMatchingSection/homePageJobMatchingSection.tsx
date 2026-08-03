@@ -1,6 +1,6 @@
 "use client";
 
-import { ClipboardList, HandHeart, Puzzle, Sparkles } from "lucide-react";
+import { ClipboardList, HandHeart, Puzzle, Sparkles, ArrowRight } from "lucide-react";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
@@ -8,21 +8,25 @@ import { useGeoBypass } from "@/src/utils/useGeoBypass";
 const features = [
   {
     icon: Puzzle,
+    number: "01",
     title: "Jobs That Match Your Goals",
     text: "We understand your skills, experience, and career goals to help you target the right opportunities.",
   },
   {
     icon: ClipboardList,
+    number: "02",
     title: "Strategic Job Search",
     text: "We focus on quality opportunities that genuinely fit your profile, not just more applications.",
   },
   {
     icon: HandHeart,
+    number: "03",
     title: "Personalized Career Support",
     text: "Every recommendation is tailored to your experience, interests, and long-term career goals.",
   },
   {
     icon: Sparkles,
+    number: "04",
     title: "Apply With Confidence",
     text: "We help you apply to roles where you're a strong fit, increasing your chances of interview calls.",
   },
@@ -81,58 +85,93 @@ export default function JobMatchingSection() {
   };
 
   return (
-    <section className="w-full bg-white px-4 py-20 sm:px-6 md:px-12 lg:py-24">
+    <section className="w-full bg-[#fafafa] px-4 py-20 sm:px-6 md:px-12 lg:py-28">
       <div className="mx-auto max-w-6xl">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl font-extrabold leading-tight text-black md:text-5xl">
-            More Than a{" "}
-            <span className="text-[#ff4c00]">Job Application</span>
-            <br className="hidden sm:block" />
-            <span className="text-[#ff4c00]"> Service</span>
-          </h2>
+        <div className="grid grid-cols-1 gap-14 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-10">
+          {/* Left column: sticky intro + CTA */}
+          <div className="lg:sticky lg:top-24 lg:self-start">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#ff4c00]/30 bg-[#ff4c00]/5 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#ff4c00]">
+              Why Flashfire
+            </span>
 
-          <p className="mx-auto mt-6 max-w-4xl text-base font-medium leading-8 text-[#7a7a7a] md:text-xl">
-            Landing interviews takes more than clicking &ldquo;Apply.&rdquo; Flashfire
-            combines experienced career experts with intelligent technology to
-            help you find better opportunities, improve your resume, apply
-            strategically, stay organized, and prepare for interviews.
-            Technology helps us move faster. Our people help you get hired.
-          </p>
+            <h2 className="mt-5 text-4xl font-extrabold leading-tight text-black md:text-5xl">
+              More Than a{" "}
+              <span className="relative inline-block">
+                Job Application
+                <svg
+                  className="absolute -bottom-1 left-0 w-full text-[#ff4c00]"
+                  viewBox="0 0 200 8"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M0 5 Q 50 0, 100 4 T 200 3"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    fill="none"
+                  />
+                </svg>
+              </span>{" "}
+              Service
+            </h2>
 
-          <button
-            {...getButtonProps()}
-            onClick={handleStartAIJobSearch}
-            className="mt-12 inline-flex min-h-12 items-center justify-center rounded-[5px] bg-black px-8 text-base font-bold text-white shadow-md transition-colors hover:bg-[#ff4c00] focus:outline-none focus:ring-2 focus:ring-[#ff4c00] focus:ring-offset-2"
-          >
-            Start AI-Powered Job Search
-          </button>
-        </div>
+            <p className="mt-6 max-w-md text-base font-medium leading-8 text-[#7a7a7a] md:text-lg">
+              Landing interviews takes more than clicking &ldquo;Apply.&rdquo;
+              Flashfire combines experienced career experts with intelligent
+              technology to help you find better opportunities, improve your
+              resume, apply strategically, stay organized, and prepare for
+              interviews.
+            </p>
+            <p className="mt-3 max-w-md text-base font-bold leading-8 text-black md:text-lg">
+              Technology helps us move faster. Our people help you get hired.
+            </p>
 
-        <div className="mx-auto mt-7 grid max-w-5xl grid-cols-1 gap-7 md:grid-cols-2">
-          {features.map((item) => {
-            const Icon = item.icon;
+            <button
+              {...getButtonProps()}
+              onClick={handleStartAIJobSearch}
+              className="group mt-10 inline-flex min-h-12 items-center justify-center gap-2 rounded-[5px] bg-black px-8 text-base font-bold text-white shadow-md transition-colors hover:bg-[#ff4c00] focus:outline-none focus:ring-2 focus:ring-[#ff4c00] focus:ring-offset-2"
+            >
+              Start AI-Powered Job Search
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </button>
+          </div>
 
-            return (
-              <article
-                key={item.title}
-                className="flex min-h-[122px] items-center gap-7 rounded-[5px] border border-[#e4e4e4] bg-white px-9 py-7 text-left shadow-[0_4px_14px_rgba(0,0,0,0.12)] transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.14)]"
-              >
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center text-[#ff8a2a]">
-                  <Icon className="h-12 w-12" strokeWidth={1.7} />
-                </div>
+          {/* Right column: numbered feature list */}
+          <div className="divide-y divide-[#e4e4e4] rounded-[5px] border border-[#e4e4e4] bg-white shadow-[0_4px_14px_rgba(0,0,0,0.06)]">
+            {features.map((item) => {
+              const Icon = item.icon;
 
-                <div>
-                  <h3 className="mb-2 text-base font-extrabold text-black md:text-lg">
-                    {item.title}
-                  </h3>
+              return (
+                <article
+                  key={item.title}
+                  className="group relative flex items-start gap-6 overflow-hidden px-7 py-8 transition-colors duration-200 hover:bg-[#fff7f2] sm:px-9"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-0 top-0 h-full w-0 bg-[#ff4c00] transition-all duration-200 group-hover:w-1"
+                  />
 
-                  <p className="text-sm font-medium leading-5 text-[#777] md:text-[15px]">
-                    {item.text}
-                  </p>
-                </div>
-              </article>
-            );
-          })}
+                  <span className="shrink-0 font-mono text-sm font-bold text-[#d0d0d0] transition-colors duration-200 group-hover:text-[#ff4c00] md:text-base">
+                    {item.number}
+                  </span>
+
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#fff1e8] text-[#ff4c00] transition-colors duration-200 group-hover:bg-[#ff4c00] group-hover:text-white">
+                    <Icon className="h-6 w-6" strokeWidth={1.8} />
+                  </div>
+
+                  <div>
+                    <h3 className="mb-1.5 text-base font-extrabold text-black md:text-lg">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-sm font-medium leading-6 text-[#777] md:text-[15px]">
+                      {item.text}
+                    </p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
