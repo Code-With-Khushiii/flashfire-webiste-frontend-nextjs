@@ -264,27 +264,6 @@ export default function PricingCard({
         </ul>
 
         <div className="mt-auto">
-          {(addOn || hasUpgradeOptions) ? (
-            <button
-              onClick={() => {
-                if (onOptionsClick) {
-                  onOptionsClick(title);
-                } else {
-                  // Fallback to individual handlers if combined handler not provided
-                  if (addOn && onBoosterClick) {
-                    onBoosterClick(title);
-                  } else if (hasUpgradeOptions && onUpgradeClick) {
-                    onUpgradeClick(title);
-                  }
-                }
-              }}
-              className="bg-[#ff4c00] text-white border border-[#ff4c00] py-2.5 sm:py-3 px-3 sm:px-4 font-semibold text-xs sm:text-sm rounded-md w-full cursor-pointer transition-all duration-300 hover:bg-[#e24300] mb-3 sm:mb-4"
-            >
-              {addOn && hasUpgradeOptions ? "View Options" : addOn && title === "EXECUTIVE" ? "View Options" : addOn ? "Booster Add-On" : "Upgrade Plan"}
-            </button>
-          ) : (
-            <div className="mb-3 sm:mb-4 h-[2rem] sm:h-[2.5rem]"></div>
-          )}
 
           {/* <p className="text-[0.85rem] text-[#555] mb-5">
         Total {subTitle.toLowerCase()} included
