@@ -1,6 +1,7 @@
 import { Reader } from '@maxmind/geoip2-node';
 import fs from 'fs';
 import path from 'path';
+import { isCloudflareIp, isPrivateIp, normalizeIp, resolveClientIp } from './clientIp';
 
 // Type assertion for Reader with country method
 type GeoIPReader = Reader & {
@@ -15,8 +16,6 @@ type GeoIPReader = Reader & {
 };
 
 let geoReader: GeoIPReader | null = null;
-const ipCache = new Map<string, { countryCode: string; country: string; expiresAt: number }>();
-const TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
 
 function resolveDatabasePath(): string | null {
   const candidates: string[] = [];
@@ -44,7 +43,7 @@ function resolveDatabasePath(): string | null {
       if (p && fs.existsSync(p)) {
         return p;
       }
-    } catch (_) {
+    } catch {
       // ignore
     }
   }
@@ -62,77 +61,74 @@ export async function initGeoIp(): Promise<void> {
     const buffer = fs.readFileSync(dbPath);
     geoReader = (await Reader.openBuffer(buffer)) as GeoIPReader;
     console.log(`✅ [GeoIP] Database loaded from: ${dbPath}`);
-  } catch (error: any) {
-    console.error('❌ [GeoIP] Failed to load database:', error.message);
+  } catch (error) {
+    console.error('❌ [GeoIP] Failed to load database:', error instanceof Error ? error.message : error);
   }
 }
 
+/**
+ * Re-exported from the Edge-safe module so middleware and API routes resolve
+ * the client IP identically. Reading `x-forwarded-for` first — as this
+ * function used to — geolocated Cloudflare's own edge IP on this deployment
+ * (Cloudflare in front of Vercel, which rewrites `x-forwarded-for` to its
+ * connecting peer), producing random NL/SG/GB answers for real visitors.
+ */
 export function getClientIp(headers: Headers): string | null {
-  // Check various headers for IP
-  const forwarded = headers.get('x-forwarded-for');
-  const realIp = headers.get('x-real-ip');
-  const cfIp = headers.get('cf-connecting-ip');
-  
-  if (forwarded) {
-    return forwarded.split(',')[0].trim();
-  }
-  if (realIp) {
-    return realIp;
-  }
-  if (cfIp) {
-    return cfIp;
-  }
-  
-  return null;
+  return resolveClientIp(headers);
 }
 
-export function detectCountryFromIp(ip: string | null): { countryCode: string; country: string } {
+/**
+ * Looks up a country for `ip`.
+ *
+ * Returns `null` when the country genuinely cannot be determined. The old
+ * behaviour of defaulting to `US` was hiding failures: a caller could not
+ * tell "this visitor really is in the US" apart from "the lookup failed", and
+ * the caller in `middleware.ts` needs that distinction to decide whether a
+ * redirect is safe.
+ */
+export function detectCountryFromIp(
+  ip: string | null
+): { countryCode: string; country: string } | null {
   if (!ip) {
-    console.warn('[GeoIP] No IP found on request; returning default US');
-    return { countryCode: 'US', country: 'United States' };
+    console.warn('[GeoIP] No usable client IP on request');
+    return null;
   }
 
-  // Normalize IPv6-mapped IPv4
-  const normalizedIp = ip.replace('::ffff:', '');
+  const normalizedIp = normalizeIp(ip);
 
-  // Cleanup expired cache entries lazily
-  const now = Date.now();
-  const cached = ipCache.get(normalizedIp);
-  if (cached && cached.expiresAt > now) {
-    console.log(`[GeoIP] Cache hit for ${normalizedIp}: ${cached.countryCode}`);
-    return { countryCode: cached.countryCode, country: cached.country };
+  if (isCloudflareIp(normalizedIp)) {
+    // Never geolocate our own proxy — this is the exact bug that sent Indian
+    // visitors to /en-gb.
+    console.warn(`[GeoIP] Refusing to geolocate Cloudflare edge IP ${normalizedIp}`);
+    return null;
   }
 
-  let result: { countryCode: string; country: string } = { countryCode: 'US', country: 'United States' };
+  if (isPrivateIp(normalizedIp)) {
+    return { countryCode: 'US', country: 'United States (Local)' };
+  }
 
-  if (geoReader) {
-    try {
-      const lookup = geoReader.country(normalizedIp);
-      if (lookup?.country) {
-        result = {
-          countryCode: lookup.country.isoCode || 'US',
-          country: lookup.country.names?.en || lookup.country.isoCode || 'United States'
-        };
-        console.log(`[GeoIP] Lookup for ${normalizedIp}: ${result.countryCode}`);
-      }
-    } catch (e: any) {
-      // localhost or unroutable IPs will often throw
-      if (normalizedIp === '127.0.0.1' || normalizedIp === '::1' || normalizedIp === 'localhost') {
-        result = { countryCode: 'US', country: 'United States (Local)' };
-      } else {
-        console.warn('[GeoIP] Lookup error:', normalizedIp, e.message);
-      }
+  if (!geoReader) {
+    console.warn('[GeoIP] Database not loaded; cannot resolve country');
+    return null;
+  }
+
+  try {
+    const lookup = geoReader.country(normalizedIp);
+    const isoCode = lookup?.country?.isoCode;
+    if (!isoCode) {
+      console.warn(`[GeoIP] No country in database for ${normalizedIp}`);
+      return null;
     }
-  } else {
-    // No DB: treat localhost specially
-    if (normalizedIp === '127.0.0.1' || normalizedIp === '::1' || normalizedIp === 'localhost') {
-      result = { countryCode: 'US', country: 'United States (Local)' };
-    }
+    const result = {
+      countryCode: isoCode,
+      country: lookup?.country?.names?.en || isoCode,
+    };
+    console.log(`[GeoIP] Lookup for ${normalizedIp}: ${result.countryCode}`);
+    return result;
+  } catch (e) {
+    console.warn('[GeoIP] Lookup error:', normalizedIp, e instanceof Error ? e.message : e);
+    return null;
   }
-
-  ipCache.set(normalizedIp, { ...result, expiresAt: now + TTL_MS });
-  console.log(`[GeoIP] Cache store ${normalizedIp} -> ${result.countryCode} (ttl ${TTL_MS / (60*60*1000)}h)`);
-  return result;
 }
 
 // Initialize on module load (for API routes)

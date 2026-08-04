@@ -45,8 +45,7 @@ export function detectCountryFallback(): string {
   
   try {
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const language = navigator.language || navigator.languages?.[0] || '';
-    
+
     // Check timezone for Canada
     const canadaTimezones = [
       'America/Toronto', 'America/Vancouver', 'America/Montreal',
@@ -63,21 +62,18 @@ export function detectCountryFallback(): string {
       return 'CA';
     }
 
-    // Check language for Canada (French Canadian)
-    if (language.startsWith('fr-CA')) {
-      return 'CA';
-    }
-
     // Check timezone for the UK / EU. Europe/* covers every member state, so
     // exclude the handful of non-EU Europe/* zones rather than listing all 27.
     if (timezone.startsWith('Europe/') && !NON_EU_EUROPE_TIMEZONES.has(timezone)) {
       return 'GB';
     }
 
-    // Check language for the UK / EU
-    if (UK_EU_LANGUAGE_TAGS.some(tag => language.startsWith(tag))) {
-      return 'GB';
-    }
+    // NOTE: deliberately no `navigator.language` inference here.
+    // Language is not location. `en-GB` is an extremely common browser
+    // language on Android and Chrome in India, and mapping it to `GB` sent
+    // Indian visitors to the UK site. Likewise `fr-CA` does not mean Canada.
+    // The timezone checks above are the only client-side signals that
+    // actually correlate with location.
 
     return 'US';
   } catch {
@@ -97,15 +93,6 @@ const NON_EU_EUROPE_TIMEZONES = new Set([
   'Europe/Andorra', 'Europe/Monaco', 'Europe/San_Marino', 'Europe/Vatican',
   'Europe/Busingen', 'Europe/Mariehamn',
 ]);
-
-/** Language tags that imply a UK or EU visitor. */
-const UK_EU_LANGUAGE_TAGS = [
-  'en-GB', 'en-IE',
-  'de-DE', 'de-AT', 'fr-FR', 'fr-BE', 'fr-LU', 'nl-NL', 'nl-BE', 'it-IT',
-  'es-ES', 'pt-PT', 'pl-PL', 'sv-SE', 'da-DK', 'fi-FI', 'el-GR', 'cs-CZ',
-  'sk-SK', 'hu-HU', 'ro-RO', 'bg-BG', 'hr-HR', 'sl-SI', 'et-EE', 'lv-LV',
-  'lt-LT', 'mt-MT', 'ga-IE',
-];
 
 export function shouldRedirectToCanada(pathname: string, countryCode: string | null): boolean {
   if (countryCode === CANADA_CODE && pathname === '/') {
