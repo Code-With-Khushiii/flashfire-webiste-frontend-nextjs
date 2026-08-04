@@ -1,12 +1,9 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { CANADA_PREFIX, UK_PREFIX, LOCALE_PREFIXES, UK_EU_COUNTRY_CODES } from '@/src/utils/locale';
+import { getCloudflareCountry, resolveClientIp } from '@/src/utils/clientIp';
 
 const CANADA_CODE = 'CA';
-
-// Cache for country codes (in-memory for server-side)
-const countryCache = new Map<string, { code: string; expiresAt: number }>();
-const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
 
 async function fetchCountryFromLocalApi(ip: string, request: NextRequest): Promise<string | null> {
   try {
@@ -36,53 +33,56 @@ async function fetchCountryFromLocalApi(ip: string, request: NextRequest): Promi
   }
 }
 
-function getClientIp(request: NextRequest): string | null {
-  // Check various headers for IP
-  const forwarded = request.headers.get('x-forwarded-for');
-  const realIp = request.headers.get('x-real-ip');
-  const cfIp = request.headers.get('cf-connecting-ip');
-  
-  if (forwarded) {
-    return forwarded.split(',')[0].trim();
-  }
-  if (realIp) {
-    return realIp;
-  }
-  if (cfIp) {
-    return cfIp;
-  }
-  
-  // Fallback - return null if no IP found
-  return null;
-}
-
-/** Language tags that imply a UK/EU visitor when no IP geolocation is available. */
-const UK_EU_LANGUAGE_TAGS = [
-  'en-GB', 'en-IE',
-  'de-DE', 'de-AT', 'fr-FR', 'fr-BE', 'nl-NL', 'nl-BE', 'it-IT', 'es-ES',
-  'pt-PT', 'pl-PL', 'sv-SE', 'da-DK', 'fi-FI', 'el-GR', 'cs-CZ', 'sk-SK',
-  'hu-HU', 'ro-RO', 'bg-BG', 'hr-HR', 'sl-SI', 'et-EE', 'lv-LV', 'lt-LT',
-  'mt-MT', 'ga-IE',
+/**
+ * Search engine / crawler user agents. These must NEVER receive the geo
+ * redirect below — a crawler that gets 307'd from "/" to "/en-gb" or
+ * "/en-ca" will index the redirect target as the canonical page, which is
+ * exactly how Google ended up serving /en-gb for searches that should land
+ * on the plain homepage. Real visitors still get geo-routed; crawlers always
+ * see and index the URL they actually requested.
+ */
+const CRAWLER_USER_AGENTS = [
+  'googlebot', 'google-inspectiontool', 'adsbot-google', 'mediapartners-google',
+  'bingbot', 'yandex', 'baiduspider', 'duckduckbot', 'applebot',
+  'facebookexternalhit', 'twitterbot', 'linkedinbot', 'slackbot', 'discordbot',
+  'whatsapp', 'telegrambot', 'pinterest', 'redditbot',
+  'ahrefsbot', 'semrushbot', 'mj12bot', 'dotbot',
+  'gptbot', 'chatgpt-user', 'claudebot', 'perplexitybot', 'ccbot',
 ];
 
-function detectCountryFallback(request: NextRequest): string {
-  // Try to detect from Accept-Language header
-  const acceptLanguage = request.headers.get('accept-language') || '';
+function isCrawler(request: NextRequest): boolean {
+  const ua = (request.headers.get('user-agent') || '').toLowerCase();
+  if (!ua) return false;
+  return CRAWLER_USER_AGENTS.some((token) => ua.includes(token));
+}
 
-  // Check for French Canadian
-  if (acceptLanguage.includes('fr-CA')) {
-    return 'CA';
+/**
+ * Resolves the visitor's country, or `null` when it cannot be determined.
+ *
+ * Order matters:
+ *  1. `cf-ipcountry` — Cloudflare geolocates the real TCP peer at its edge,
+ *     before any proxy hop can obscure it. Free, instant, and correct.
+ *  2. A MaxMind lookup via `/api/geo`, but ONLY for an IP that survived the
+ *     `resolveClientIp` trust filter. Middleware runs on the Edge runtime and
+ *     cannot read the .mmdb file itself, hence the subrequest.
+ *
+ * There is deliberately NO `Accept-Language` fallback. Language is not
+ * location: Android and Chrome in India very commonly send
+ * `Accept-Language: en-GB`, and the previous fallback turned that straight
+ * into a `/en-gb` redirect. An unknown country must leave the visitor on `/`.
+ */
+async function resolveCountry(request: NextRequest): Promise<string | null> {
+  const cfCountry = getCloudflareCountry(request.headers);
+  if (cfCountry) {
+    return cfCountry;
   }
 
-  // Check for a UK/EU locale. Return the matching region so the caller's
-  // UK_EU_COUNTRY_CODES lookup routes it to /en-gb.
-  const ukEuTag = UK_EU_LANGUAGE_TAGS.find(tag => acceptLanguage.includes(tag));
-  if (ukEuTag) {
-    return ukEuTag.split('-')[1];
+  const ip = resolveClientIp(request.headers);
+  if (!ip) {
+    return null;
   }
 
-  // Default to US
-  return 'US';
+  return fetchCountryFromLocalApi(ip, request);
 }
 
 export async function middleware(request: NextRequest) {
@@ -105,6 +105,13 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Never geo-redirect crawlers — a search engine that gets bounced to
+  // /en-gb or /en-ca will index that URL instead of the page it actually
+  // asked for. Let bots see and index exactly the URL they requested.
+  if (isCrawler(request)) {
+    return NextResponse.next();
+  }
+
   // If already inside a locale tree (/en-ca, /en-gb), allow it
   if (LOCALE_PREFIXES.some(prefix => pathname === prefix || pathname.startsWith(`${prefix}/`))) {
     return NextResponse.next();
@@ -112,54 +119,45 @@ export async function middleware(request: NextRequest) {
 
   // Only check for redirect on root path
   if (pathname === '/') {
-    const ip = getClientIp(request);
-    
-    let countryCode: string | null = null;
-    const now = Date.now();
-    
-    // Only check cache if we have an IP
-    if (ip) {
-      const cached = countryCache.get(ip);
-      
-      if (cached && cached.expiresAt > now) {
-        countryCode = cached.code;
-      } else {
-        // Try to fetch from local Next.js API (faster, no backend dependency)
-        countryCode = await fetchCountryFromLocalApi(ip, request);
-        
-        // Cache the result if we got one
-        if (countryCode) {
-          countryCache.set(ip, {
-            code: countryCode,
-            expiresAt: now + CACHE_TTL_MS
-          });
-        }
-      }
-    }
-    
-    // Fallback to browser detection if no IP or backend failed
-    if (!countryCode) {
-      countryCode = detectCountryFallback(request);
-    }
+    // Always do a fresh lookup — no in-memory cache. The cache Map was
+    // per-server-instance and not shared, so the same visitor could get a
+    // different answer depending on which instance handled their request.
+    const countryCode = await resolveCountry(request);
 
-    // Redirect to /en-ca if Canada detected
+    // Fail safe: an unknown country stays on `/`. `/` is the default (US)
+    // experience and the canonical indexed URL, so leaving someone there is
+    // always harmless — whereas guessing wrong strands an Indian visitor on
+    // the UK pricing page.
     if (countryCode === CANADA_CODE) {
-      const url = request.nextUrl.clone();
-      url.pathname = CANADA_PREFIX;
-      console.log('[Middleware] Redirecting to /en-ca for Canada user');
-      return NextResponse.redirect(url);
+      return localeRedirect(request, CANADA_PREFIX, countryCode);
     }
 
-    // Redirect to /en-gb for the UK and every EU member state
     if (countryCode && UK_EU_COUNTRY_CODES.has(countryCode)) {
-      const url = request.nextUrl.clone();
-      url.pathname = UK_PREFIX;
-      console.log(`[Middleware] Redirecting to /en-gb for ${countryCode} user`);
-      return NextResponse.redirect(url);
+      return localeRedirect(request, UK_PREFIX, countryCode);
     }
   }
 
   return NextResponse.next();
+}
+
+/**
+ * Builds the geo redirect with caching disabled.
+ *
+ * `/` is served from the Vercel/Cloudflare edge cache (`x-vercel-cache: HIT`),
+ * and a redirect whose target depends on the visitor's country must never be
+ * stored in a shared cache — one UK visitor's 307 would otherwise be replayed
+ * to everyone who follows.
+ */
+function localeRedirect(request: NextRequest, prefix: string, countryCode: string) {
+  const url = request.nextUrl.clone();
+  url.pathname = prefix;
+  console.log(`[Middleware] Redirecting to ${prefix} for ${countryCode} visitor`);
+
+  const response = NextResponse.redirect(url);
+  response.headers.set('Cache-Control', 'private, no-store, max-age=0, must-revalidate');
+  response.headers.set('CDN-Cache-Control', 'no-store');
+  response.headers.set('Vary', 'CF-IPCountry');
+  return response;
 }
 
 export const config = {
