@@ -99,7 +99,7 @@ export default function HeroSectionClient({
 
   return (
     <section className="relative w-full overflow-hidden bg-white font-['Space_Grotesk',sans-serif] text-black">
-      <div className="mx-auto max-w-7xl px-6 pb-12 pt-14 sm:px-10 lg:pb-16 lg:pt-20">
+      <div className="mx-auto max-w-[1600px] px-6 pb-12 pt-14 sm:px-10 lg:px-16 lg:pb-16 lg:pt-20">
         <div
           className={`grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-12 ${
             shiftHeroImageLeft ? "lg:[&>*:first-child]:order-2" : ""
@@ -183,24 +183,29 @@ export default function HeroSectionClient({
       </div>
 
       {/* Trusted universities */}
-      <div className="mt-6 border-t-2 border-black bg-white py-9 lg:py-11">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="text-center font-['Satoshi',sans-serif] text-[13px] font-bold uppercase tracking-[0.08em] text-[#8a8a8a] md:text-[14px]">
-            {data.universityHeading}
-          </p>
+      <div className="mt-6 border-t-2 border-black bg-white py-10 lg:py-14">
+        <div className="mx-auto max-w-[1600px] px-6">
+          <div className="flex justify-center">
+            <span className="inline-flex items-center bg-black px-4 py-2 text-[11px] font-bold uppercase tracking-[0.08em] text-white">
+              {data.universityHeading}
+            </span>
+          </div>
 
-          <div className="mx-auto mt-6 flex max-w-4xl flex-wrap items-center justify-center gap-x-10 gap-y-5">
+          <div className="mx-auto mt-8 flex max-w-5xl flex-wrap items-center justify-center gap-4">
             {trustedUniversities.map((university) => (
-              <div key={university.name} className="flex items-center gap-2 opacity-80">
+              <div
+                key={university.name}
+                className="flex items-center gap-2 rounded-[4px] border-2 border-black bg-white px-4 py-2.5 shadow-[3px_3px_0_#000] transition-all duration-150 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[4px_4px_0_#000]"
+              >
                 <Image
                   src={getUniversityLogo(university.domain)}
                   alt=""
-                  width={22}
-                  height={22}
-                  className="h-[22px] w-[22px] object-contain"
+                  width={20}
+                  height={20}
+                  className="h-5 w-5 object-contain"
                   unoptimized
                 />
-                <span className="whitespace-nowrap text-[13px] font-bold text-[#333]">
+                <span className="whitespace-nowrap text-[13px] font-bold text-black">
                   {university.name}
                 </span>
               </div>
