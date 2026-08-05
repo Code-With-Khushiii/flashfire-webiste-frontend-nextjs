@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { CANADA_PREFIX, UK_PREFIX, LOCALE_PREFIXES, UK_EU_COUNTRY_CODES } from '@/src/utils/locale';
+import { CANADA_PREFIX, UK_PREFIX, US_PREFIX, LOCALE_PREFIXES, UK_EU_COUNTRY_CODES } from '@/src/utils/locale';
 import { getCloudflareCountry, resolveClientIp } from '@/src/utils/clientIp';
 
 const CANADA_CODE = 'CA';
+const US_CODE = 'US';
 
 async function fetchCountryFromLocalApi(ip: string, request: NextRequest): Promise<string | null> {
   try {
@@ -124,16 +125,21 @@ export async function middleware(request: NextRequest) {
     // different answer depending on which instance handled their request.
     const countryCode = await resolveCountry(request);
 
-    // Fail safe: an unknown country stays on `/`. `/` is the default (US)
-    // experience and the canonical indexed URL, so leaving someone there is
-    // always harmless — whereas guessing wrong strands an Indian visitor on
-    // the UK pricing page.
+    // Fail safe: an unknown or unmatched country (anything not US/CA/GB/EU —
+    // e.g. India, Australia) stays on `/`. `/` is the canonical indexed URL
+    // and content is identical to /en-us, so leaving someone there is always
+    // harmless — whereas guessing wrong strands an Indian visitor on the UK
+    // pricing page.
     if (countryCode === CANADA_CODE) {
       return localeRedirect(request, CANADA_PREFIX, countryCode);
     }
 
     if (countryCode && UK_EU_COUNTRY_CODES.has(countryCode)) {
       return localeRedirect(request, UK_PREFIX, countryCode);
+    }
+
+    if (countryCode === US_CODE) {
+      return localeRedirect(request, US_PREFIX, countryCode);
     }
   }
 
