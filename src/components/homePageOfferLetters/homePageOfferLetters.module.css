@@ -239,6 +239,21 @@
   width: 100% !important;
 }
 
+.offerDateBadge {
+  background: #080808;
+  border: 1px solid #ff5a18;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 5px 10px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 2;
+}
+
 .offerOverlay {
   align-items: center;
   background: #080808;
