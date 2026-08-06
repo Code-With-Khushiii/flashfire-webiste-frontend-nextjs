@@ -31,7 +31,7 @@ const offerLetters: OfferLetterData[] = [
     linkedinUrl: "#",
     imagePath: "/images/Dheer_offer_1.png",
     profileImagePath:"https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/Dheer.png",
-    offerDate: "Nov 17, 2025",
+    offerDate: "Jun 17, 2026",
 
   },{
     name: "Akshad ",
@@ -40,7 +40,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/akshad-offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/Akshad.png",
-    offerDate: "Jan 29, 2026",
+    offerDate: "Jun 29, 2026",
   },{
     name: "Aryan ",
     company: " Impact.com",
@@ -48,7 +48,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/aryan-2-offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/aryan.png",
-    offerDate: "Sep 9, 2025",
+    offerDate: "May 9, 2026",
   },{
     name: "Param",
     company: "Marqeta",
@@ -56,7 +56,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/Param-offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/param.png",
-    offerDate: "Jun 7, 2026",
+    offerDate: "Apr 7, 2026",
   },{
     name: "Sage",
     company: "Sleek Technologies",
@@ -64,7 +64,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/sage offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/sage.png",
-    offerDate: "Mar 13, 2026",
+    offerDate: "Apr 13, 2026",
   },{
     name: "Naman",
     company: "Amplitude",
@@ -72,7 +72,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/naman offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/naman.png",
-    offerDate: "Jan 4, 2026",
+    offerDate: "May 4, 2026",
   },{
     name: "Kanchan",
     company: "MiRus",
@@ -80,7 +80,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/kanchan_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/kanchan.jpeg",
-    offerDate: "May 26, 2026",
+    offerDate: "Oct 26, 2025",
   },
   {
     name: "Uhtiha",
@@ -89,7 +89,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/uhitha_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/uhitha.jpeg",
-    offerDate: "Jul 4, 2025",
+    offerDate: "Nov 4, 2025",
   },
   {
     name: "Vaishali Jain",
@@ -98,7 +98,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/vaishali_jain_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/vaishalli_jain.png",
-    offerDate: "Jan 19, 2026",
+    offerDate: "Feb 19, 2026",
   },
   {
     name: "Anjali",
@@ -107,7 +107,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/anjali_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/anjali.jpeg",
-    offerDate: "Mar 27, 2026",
+    offerDate: "Dec 27, 2026",
   },
   {
     name: "Dheer",
@@ -115,7 +115,7 @@ const offerLetters: OfferLetterData[] = [
     linkedinUrl: "#",
     imagePath: "/images/Dheer_offer_2.png",
     profileImagePath:"https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/Dheer.png",
-    offerDate: "Sep 17, 2025",
+    offerDate: "Jun 17, 2026",
 
   },
   {
@@ -125,7 +125,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/akrati_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/akrati.jpeg",
-    offerDate: "Jul 23, 2026",
+    offerDate: "Aug 23, 2025",
   },
   {
     name: "Neha",
@@ -134,7 +134,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/neha_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/neha.png",
-    offerDate: "Nov 26, 2025",
+    offerDate: "Sep 26, 2025",
   },
   {
     name: "Teja",
@@ -143,7 +143,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/teja_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/TEJA.jpeg",
-    offerDate: "Jul 1, 2025",
+    offerDate: "Nov 1, 2025",
   },
   {
     name: "Amit",
@@ -152,7 +152,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/amit_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/amit%20(1).jpg",
-    offerDate: "Mar 4, 2026",
+    offerDate: "Jul 4, 2025",
   },
   {
     name: "Rudraksh",
@@ -161,7 +161,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/rudraksh_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/rudraksh.jpg",
-    offerDate: "Apr 18, 2026",
+    offerDate: "Dec 18, 2024",
   },
   // {
   //   name: "Sai Krishna",
@@ -178,7 +178,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/rijul_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/rijul.jpg",
-    offerDate: "Oct 19, 2025",
+    offerDate: "Feb 19, 2025",
   },
   {
     name: "Aman Guleria",
@@ -187,7 +187,7 @@ const offerLetters: OfferLetterData[] = [
     imagePath: "/images/aman_offer.png",
     profileImagePath:
       "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/aman.jpg",
-    offerDate: "Aug 5, 2026",
+    offerDate: "Dec 5, 2024",
   },
   
 ];
