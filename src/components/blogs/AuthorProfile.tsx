@@ -12,6 +12,11 @@ type Author = {
   image?: string;
 };
 
+const DEFAULT_AUTHOR_IMAGES: Record<string, string> = {
+  "Debashri Mandal": "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/1778226526974.png",
+  "Riya": "/images/Riya.png",
+};
+
 type BlogPost = {
   id: number;
   slug?: string;
@@ -57,9 +62,9 @@ export default function AuthorProfile({ author, posts }: AuthorProfileProps) {
           {/* === TOP SECTION WITH PROFILE === */}
           <div ref={authorHeaderRef} className={styles.authorHeader}>
             <div className={styles.authorImageWrapper}>
-              {(author.image || author.name === "Debashri Mandal") ? (
+              {(author.image || DEFAULT_AUTHOR_IMAGES[author.name]) ? (
                 <Image
-                  src={author.image || "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/1778226526974.png"}
+                  src={author.image || DEFAULT_AUTHOR_IMAGES[author.name]}
                   alt={author.name}
                   width={120}
                   height={120}
