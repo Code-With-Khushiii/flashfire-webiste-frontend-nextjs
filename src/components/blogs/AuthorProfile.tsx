@@ -14,6 +14,7 @@ type Author = {
 
 const DEFAULT_AUTHOR_IMAGES: Record<string, string> = {
   "Debashri Mandal": "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/1778226526974.png",
+  "Riya": "/images/Riya.png",
 };
 
 type BlogPost = {
