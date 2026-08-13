@@ -186,7 +186,11 @@ export default function CalendlyModal({
           }).catch((err) => console.error('[Reddit CAPI] Lead call failed:', err));
         }
 
-        // Navigate to meeting-booked page
+        // Close the Calendly booking box first, then navigate so the
+        // thank-you popup on /meeting-booked isn't hidden behind it.
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(new CustomEvent("hideCalendlyModal"));
+        }
         router.push("/meeting-booked");
 
         const meetingUrl =
