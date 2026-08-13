@@ -141,11 +141,6 @@ const nextConfig: NextConfig = {
           source: '/register/:path*',
           destination: `${process.env.REGISTER_APP_URL || 'https://flashfire-register-ads-website.vercel.app'}/register/:path*`,
         },
-        // Proxy /meeting-booked to the register app (it lives there)
-        {
-          source: '/meeting-booked',
-          destination: `${process.env.REGISTER_APP_URL || 'https://flashfire-register-ads-website.vercel.app'}/meeting-booked`,
-        },
       ],
     };
   },

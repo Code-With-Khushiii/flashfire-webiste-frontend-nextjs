@@ -150,6 +150,12 @@ function ClientLogicWrapperContent({
             modalDismissedForRouteRef.current = null;
         };
 
+        // Fired right after a meeting is booked, so the Calendly box closes
+        // immediately instead of sitting on top of the /meeting-booked thank-you popup.
+        const handleHideCalendlyModal = () => {
+            setShowCalendlyModal(false);
+        };
+
         const handleStrategyCallCard = () => {
             // Skip StrategyCallCard pop-up and go directly to Calendly modal
             // The useEffect will handle geo-blocking logic
@@ -160,13 +166,15 @@ function ClientLogicWrapperContent({
         // Listen for custom events
         window.addEventListener('showGetMeInterviewModal', handleButtonClick);
         window.addEventListener('showCalendlyModal', handleCalendlyModal);
+        window.addEventListener('hideCalendlyModal', handleHideCalendlyModal);
         window.addEventListener('bypassGeoBlock', handleGeoBypass);
         window.addEventListener('showGeoBypassSuccess', handleShowBypassSuccess);
         window.addEventListener('showStrategyCallCard', handleStrategyCallCard);
-        
+
         return () => {
             window.removeEventListener('showGetMeInterviewModal', handleButtonClick);
             window.removeEventListener('showCalendlyModal', handleCalendlyModal);
+            window.removeEventListener('hideCalendlyModal', handleHideCalendlyModal);
             window.removeEventListener('bypassGeoBlock', handleGeoBypass);
             window.removeEventListener('showGeoBypassSuccess', handleShowBypassSuccess);
             window.removeEventListener('showStrategyCallCard', handleStrategyCallCard);
