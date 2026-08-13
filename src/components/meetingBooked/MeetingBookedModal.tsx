@@ -222,7 +222,7 @@ export default function MeetingBookedModal({ onClose }: Props) {
                   loop
                   playsInline
                 >
-                  <source src="/videos/ii.mp4" type="video/mp4" />
+                  <source src="/videos/Untitled%20design.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
                 <span />
