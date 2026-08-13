@@ -14,7 +14,7 @@
   max-width: 1400px;
   aspect-ratio: 2074 / 998;
   /* border-radius: 1rem; */
-  padding: 0.3rem;
+  padding: 0;
   overflow: hidden;
   background-color: #fff6f4;
   /* box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); */
@@ -82,7 +82,7 @@
 
   .videoWrapper {
     width: 98%;
-    padding: 0.2rem;
+    padding: 0;
   }
 }
 
@@ -93,7 +93,7 @@
 
   .videoWrapper {
     width: 100%;
-    padding: 0.15rem;
+    padding: 0;
   }
 
   /* Make corner borders slightly smaller on mobile */
