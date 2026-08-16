@@ -41,14 +41,14 @@ const features: FeatureItem[] = [
   {
     title: "Dynamic Resume Optimization",
     description:
-      "We build your base resume from scratch and tailor it for each job, making it ATS-friendly and recruiter-visible.we also provide you with a personalized job strategy for US & Canada roles.",
+      "We build your base resume from scratch and tailor it for each job, making it ATS-friendly and recruiter-visible.we also provide you with a personalized job strategy for US, Canada & UK roles.",
     icon: FaFileAlt,
     href: "/features/ats-resume-optimizer",
   },
   {
     title: "LinkedIn Profile Optimization",
     description:
-      "We professionally optimize your LinkedIn profile to boost recruiter visibility and align with your job search goals.it also includes a personalized job strategy for US & Canada roles.",
+      "We professionally optimize your LinkedIn profile to boost recruiter visibility and align with your job search goals.it also includes a personalized job strategy for US, Canada & UK roles.",
     icon: FaLinkedin,
     href: "/features/linkedin-profile-optimization-tool",
   },
