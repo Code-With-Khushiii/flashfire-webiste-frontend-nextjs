@@ -10,9 +10,12 @@ interface LocaleFeaturePageProps {
 export async function generateMetadata({ params }: LocaleFeaturePageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
+  const isUK = locale === "en-gb";
   
   return {
-    title: isCanada 
+    title: isUK
+      ? "Features - Job Search Automation Tools | Flashfire (UK)"
+      : isCanada
       ? "Features - Job Search Automation Tools | Flashfire (Canada)"
       : "Features - Job Search Automation Tools | Flashfire",
     description:
@@ -22,17 +25,21 @@ export async function generateMetadata({ params }: LocaleFeaturePageProps): Prom
       follow: false,
     },
     alternates: {
-      canonical: isCanada 
-        ? "https://www.flashfirejobs.com/en-ca/feature"
-        : "https://www.flashfirejobs.com/feature",
+      canonical: isUK
+      ? "https://www.flashfirejobs.com/en-gb/feature"
+      : isCanada
+      ? "https://www.flashfirejobs.com/en-ca/feature"
+      : "https://www.flashfirejobs.com/feature",
     },
     openGraph: {
       title: "Features - Job Search Automation Tools",
       description:
         "Discover Flashfire's powerful features for automated job search and resume optimization.",
-      url: isCanada 
-        ? "https://www.flashfirejobs.com/en-ca/feature"
-        : "https://www.flashfirejobs.com/feature",
+      url: isUK
+      ? "https://www.flashfirejobs.com/en-gb/feature"
+      : isCanada
+      ? "https://www.flashfirejobs.com/en-ca/feature"
+      : "https://www.flashfirejobs.com/feature",
       type: "website",
     },
   };

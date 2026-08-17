@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     languages: {
       "en-US": "https://www.flashfirejobs.com/resume-headline-generator",
       "en-CA": "https://www.flashfirejobs.com/en-ca/resume-headline-generator",
+      "en-GB": "https://www.flashfirejobs.com/en-gb/resume-headline-generator",
       "x-default": "https://www.flashfirejobs.com/resume-headline-generator",
     },
   },

@@ -11,6 +11,7 @@ import Navbar from "@/src/components/navbar/navbar";
 import Footer from "@/src/components/footer/footer";
 import AICopilot from "@/src/components/AICopilot/AICopilot";
 import dynamic from "next/dynamic";
+import { stripLocalePrefix } from "@/src/utils/locale";
 
 const ATSPage = dynamic(() => import("@/app/features/resume-optimizer/page"), {
   ssr: false,
@@ -88,8 +89,7 @@ export default function GetMeInterviewPage() {
         return <HomePage />;
     }
 
-    if (previousPage === '/AI-copilot' ||
-        previousPage === '/en-ca/AI-copilot') {
+    if (stripLocalePrefix(previousPage) === '/AI-copilot') {
         return (
             <>
                 <Navbar />
@@ -99,7 +99,7 @@ export default function GetMeInterviewPage() {
         );
     }
 
-    if (previousPage === '/about-us' || previousPage === '/en-ca/about-us') {
+    if (stripLocalePrefix(previousPage) === '/about-us') {
         return (
             <>
                 <Navbar />
@@ -109,8 +109,8 @@ export default function GetMeInterviewPage() {
         );
     }
 
-    if (previousPage === '/features' || previousPage === '/feature' || 
-        previousPage === '/en-ca/features' || previousPage === '/en-ca/feature') {
+    if (stripLocalePrefix(previousPage) === '/features' || stripLocalePrefix(previousPage) === '/feature' || 
+        stripLocalePrefix(previousPage) === '/features' || stripLocalePrefix(previousPage) === '/feature') {
         return (
             <>
                 <Navbar />
@@ -120,58 +120,44 @@ export default function GetMeInterviewPage() {
         );
     }
 
-    if (previousPage === '/features/resume-optimizer' ||
-        previousPage === '/en-ca/features/resume-optimizer' ||
-        previousPage === '/features/ats-optimizer' ||
-        previousPage === '/en-ca/features/ats-optimizer' ||
-        previousPage === '/ats-optimized-resume-checker' || 
-        previousPage === '/en-ca/ats-optimized-resume-checker') {
+    if (stripLocalePrefix(previousPage) === '/features/resume-optimizer' ||
+        stripLocalePrefix(previousPage) === '/features/ats-optimizer' ||
+        stripLocalePrefix(previousPage) === '/ats-optimized-resume-checker') {
         return <ATSPage />;
     }
 
-    if (previousPage === '/features/job-automation' ||
-        previousPage === '/en-ca/features/job-automation' ||
-        previousPage === '/job-application-automation' || 
-        previousPage === '/en-ca/job-application-automation') {
+    if (stripLocalePrefix(previousPage) === '/features/job-automation' ||
+        stripLocalePrefix(previousPage) === '/job-application-automation') {
         return <JobAutomationPage />;
     }
 
-    if (previousPage === '/features/linkedin-profile-optimization' ||
-        previousPage === '/en-ca/features/linkedin-profile-optimization' ||
-        previousPage === '/linkedin-profile-optimization-services' || 
-        previousPage === '/en-ca/linkedin-profile-optimization-services' ||
-        previousPage === '/features/linkedin-profile-optimization-services' ||
-        previousPage === '/en-ca/features/linkedin-profile-optimization-services') {
+    if (stripLocalePrefix(previousPage) === '/features/linkedin-profile-optimization' ||
+        stripLocalePrefix(previousPage) === '/linkedin-profile-optimization-services' ||
+        stripLocalePrefix(previousPage) === '/features/linkedin-profile-optimization-services') {
         return <LinkedInPage />;
     }
 
-    if (previousPage === '/features/job-tracker' ||
-        previousPage === '/en-ca/features/job-tracker') {
+    if (stripLocalePrefix(previousPage) === '/features/job-tracker') {
         return <JobTrackerPage />;
     }
 
-    if (previousPage === '/features/precision-targeting' ||
-        previousPage === '/en-ca/features/precision-targeting') {
+    if (stripLocalePrefix(previousPage) === '/features/precision-targeting') {
         return <PrecisionTargetingPage />;
     }
 
-    if (previousPage === '/features/dashboard-analytics' ||
-        previousPage === '/en-ca/features/dashboard-analytics') {
+    if (stripLocalePrefix(previousPage) === '/features/dashboard-analytics') {
         return <DashboardAnalyticsPage />;
     }
 
-    if (previousPage === '/features/cover-letter' ||
-        previousPage === '/en-ca/features/cover-letter') {
+    if (stripLocalePrefix(previousPage) === '/features/cover-letter') {
         return <CoverLetterPage />;
     }
 
-    if (previousPage === '/job-search' ||
-        previousPage === '/en-ca/job-search') {
+    if (stripLocalePrefix(previousPage) === '/job-search') {
         return <JobSearchPage />;
     }
 
-    if (previousPage === '/contact-us' ||
-        previousPage === '/en-ca/contact-us') {
+    if (stripLocalePrefix(previousPage) === '/contact-us') {
         return (
             <>
                 <Navbar />
@@ -181,8 +167,7 @@ export default function GetMeInterviewPage() {
         );
     }
 
-    if (previousPage === '/career-advisor' ||
-        previousPage === '/en-ca/career-advisor') {
+    if (stripLocalePrefix(previousPage) === '/career-advisor') {
         return (
             <>
                 <Navbar />
@@ -192,8 +177,7 @@ export default function GetMeInterviewPage() {
         );
     }
 
-    if (previousPage === '/interview-buddy' ||
-        previousPage === '/en-ca/interview-buddy') {
+    if (stripLocalePrefix(previousPage) === '/interview-buddy') {
         return (
             <>
                 <Navbar />

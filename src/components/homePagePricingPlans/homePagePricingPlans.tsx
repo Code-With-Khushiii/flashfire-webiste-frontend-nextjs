@@ -4,59 +4,90 @@ import { useState, useMemo, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import PricingCard from "./pricingCard";
 import Image from "next/image";
-import { usPricingPlans, canadaPricingPlans } from "@/src/data/pricingData";
+import { usPricingPlans, canadaPricingPlans, ukPricingPlans, type PricingPlan } from "@/src/data/pricingData";
+import { getLocale } from "@/src/utils/locale";
+
+/** A plan shown in the "Upgrade Plan" panel, priced as the delta from the current tier. */
+type UpgradeOption = PricingPlan & {
+  upgradePrice: number;
+  upgradePaymentUrl?: string;
+};
 
 interface UpgradePrice {
   from: string;
   to: string;
   price: number;
+  /** Upgrade price in GBP for `/en-gb`, when different from US */
+  ukPrice?: number;
   paymentUrl?: string;
   /** Stripe checkout for `/en-ca` when different from US */
   canadaPaymentUrl?: string;
+  /**
+   * Stripe checkout for `/en-gb`.
+   * TODO(payments): points at the USD checkout until GBP links exist.
+   */
+  ukPaymentUrl?: string;
 }
 
+// UK upgrade prices are the exact difference between the GBP tier prices.
 const upgradePrices: UpgradePrice[] = [
   {
     from: "PRIME",
     to: "PROFESSIONAL",
     price: 240,
+    ukPrice: 220,
     paymentUrl: "https://buy.stripe.com/7sY7sN2128uS1DWdcz3AY08",
     canadaPaymentUrl: "https://buy.stripe.com/bJe28t9tu26u96o5K73AY0q",
+    ukPaymentUrl: "https://buy.stripe.com/5kQbJ36hi5iG96o3BZ3AY0Q",
   },
   {
     from: "PRIME",
     to: "EXECUTIVE",
     price: 490,
+    ukPrice: 420,
     paymentUrl: "https://buy.stripe.com/fZu3cx6hi9yW82k0pN3AY09",
     canadaPaymentUrl: "https://buy.stripe.com/6oU8wRcFG4eC5Uc1tR3AY0r",
+    ukPaymentUrl: "https://buy.stripe.com/9B6aEZbBCeTg82k0pN3AY0R",
   },
   {
     from: "IGNITE",
     to: "PROFESSIONAL",
     price: 170,
+    ukPrice: 150,
     paymentUrl: "https://buy.stripe.com/28E6oJ9tu7qOfuM3BZ3AY0d",
     canadaPaymentUrl: "https://buy.stripe.com/00w9AV212eTg6YgfkH3AY0n",
+    ukPaymentUrl: "https://buy.stripe.com/6oU14pdJK26udmE7Sf3AY0V",
   },
   {
     from: "IGNITE",
     to: "EXECUTIVE",
     price: 420,
+    ukPrice: 350,
     paymentUrl: "https://buy.stripe.com/5kQcN7eNO7qO2I06Ob3AY0e",
     canadaPaymentUrl: "https://buy.stripe.com/fZu5kF9tueTg82kc8v3AY0v",
+    ukPaymentUrl: "https://buy.stripe.com/bJe8wRaxy8uS5Uc0pN3AY0W",
   },
   {
     from: "PROFESSIONAL",
     to: "EXECUTIVE",
     price: 285,
+    ukPrice: 200,
     paymentUrl: "https://buy.stripe.com/00w7sNgVW4eCbew1tR3AY0f",
     canadaPaymentUrl: "https://buy.stripe.com/5kQ5kF212aD0eqIfkH3AY0x",
+    ukPaymentUrl: "https://buy.stripe.com/14A28t8pq26u0zSdcz3AY11",
   },
 ];
 
 export default function HomePagePricingPlans() {
   const pathname = usePathname();
-  const isCanadaContext = pathname.startsWith("/en-ca");
-  const pricingPlans = isCanadaContext ? canadaPricingPlans : usPricingPlans;
+  const locale = getLocale(pathname);
+  const isCanadaContext = locale === "ca";
+  const isUKContext = locale === "uk";
+  const pricingPlans = isUKContext
+    ? ukPricingPlans
+    : isCanadaContext
+      ? canadaPricingPlans
+      : usPricingPlans;
   const [selectedPlanForUpgrade, setSelectedPlanForUpgrade] = useState<string | null>(null);
   const [selectedPlanIndex, setSelectedPlanIndex] = useState<number | null>(null);
   const [selectedPlanForBooster, setSelectedPlanForBooster] = useState<string | null>(null);
@@ -67,17 +98,24 @@ export default function HomePagePricingPlans() {
   const shouldScrollBoosterRef = useRef<boolean>(false);
   const shouldScrollUpgradeRef = useRef<boolean>(false);
 
-  const currencySymbol = isCanadaContext ? "CA$" : "$";
+  const currencySymbol = isUKContext ? "£" : isCanadaContext ? "CA$" : "$";
 
   const openCheckout = (paymentUrl?: string) => {
     if (!paymentUrl || typeof window === "undefined") {
       return;
     }
 
-    const checkoutWindow = window.open(paymentUrl, "_blank", "noopener,noreferrer");
+    // Don't pass "noopener"/"noreferrer" here — both force window.open() to
+    // return null even when the tab opens fine, which made the "blocked"
+    // fallback below fire on every click and open a second tab with the same
+    // link. Detect a real block via the null return, then strip
+    // window.opener manually for the same reverse-tabnabbing protection.
+    const checkoutWindow = window.open(paymentUrl, "_blank");
 
-    if (!checkoutWindow) {
-      window.location.href = paymentUrl;
+    if (checkoutWindow) {
+      checkoutWindow.opener = null;
+    } else {
+      window.location.assign(paymentUrl);
     }
   };
 
@@ -152,16 +190,16 @@ export default function HomePagePricingPlans() {
   }, [selectedPlanForUpgrade, selectedPlanIndex]);
 
   // Get upgrade options for the selected plan
-  const upgradeOptions = useMemo(() => {
+  const upgradeOptions = useMemo<UpgradeOption[]>(() => {
     if (!selectedPlanForUpgrade) return [];
-    
+
     const planHierarchy = ["PRIME", "IGNITE", "PROFESSIONAL", "EXECUTIVE"];
     const currentPlanIndex = planHierarchy.indexOf(selectedPlanForUpgrade);
-    
+
     if (currentPlanIndex === -1 || currentPlanIndex === planHierarchy.length - 1) {
       return [];
     }
-    
+
     return pricingPlans
       .filter(plan => {
         const planIndex = planHierarchy.indexOf(plan.title);
@@ -175,18 +213,22 @@ export default function HomePagePricingPlans() {
         const upgradePriceConfig = upgradePrices.find(
           up => up.from === selectedPlanForUpgrade && up.to === plan.title
         );
-        const upgradePrice = upgradePriceConfig?.price || 0;
-        const upgradePaymentUrl = isCanadaContext
-          ? upgradePriceConfig?.canadaPaymentUrl ?? upgradePriceConfig?.paymentUrl
-          : upgradePriceConfig?.paymentUrl;
-        
+        const upgradePrice = isUKContext
+          ? upgradePriceConfig?.ukPrice ?? upgradePriceConfig?.price ?? 0
+          : upgradePriceConfig?.price || 0;
+        const upgradePaymentUrl = isUKContext
+          ? upgradePriceConfig?.ukPaymentUrl ?? upgradePriceConfig?.paymentUrl
+          : isCanadaContext
+            ? upgradePriceConfig?.canadaPaymentUrl ?? upgradePriceConfig?.paymentUrl
+            : upgradePriceConfig?.paymentUrl;
+
         return {
           ...plan,
           upgradePrice: upgradePrice,
           upgradePaymentUrl: upgradePaymentUrl,
         };
       });
-  }, [selectedPlanForUpgrade, pricingPlans, isCanadaContext]);
+  }, [selectedPlanForUpgrade, pricingPlans, isCanadaContext, isUKContext]);
 
   const handleUpgradeClick = (planTitle: string, planIndex: number) => {
     if (selectedPlanForUpgrade === planTitle) {
@@ -258,7 +300,7 @@ export default function HomePagePricingPlans() {
   const boosterOptions = useMemo(() => {
     if (!selectedPlanForBooster) return [];
     
-    const country = isCanadaContext ? "CA" : "US";
+    const country = isUKContext ? "UK" : isCanadaContext ? "CA" : "US";
     const planBoosterOptions: Record<string, Record<string, Array<{
       applications: number;
       price: number;
@@ -309,10 +351,34 @@ export default function HomePagePricingPlans() {
           { applications: 1000, price: 460, label: "+1000 Extra Applications", paymentUrl: "https://buy.stripe.com/eVqaEZ3565iG3M4dcz3AY0A" },
         ],
       },
+      // GBP add-ons. Rates fall as the bundle grows and are cheapest on
+      // EXECUTIVE, mirroring how the US/CA ladders are structured.
+      UK: {
+        PRIME: [
+          { applications: 250, price: 95, label: "+250 Extra Applications", paymentUrl: "https://buy.stripe.com/eVq6oJdJK26u6Yg7Sf3AY0M" },
+          { applications: 500, price: 160, label: "+500 Extra Applications", paymentUrl: "https://buy.stripe.com/00w9AVcFGdPcciA6Ob3AY0N" },
+          { applications: 1000, price: 275, label: "+1000 Extra Applications", paymentUrl: "https://buy.stripe.com/eVqbJ38pq5iGeqI2xV3AY0O" },
+        ],
+        IGNITE: [
+          { applications: 250, price: 105, label: "+250 Extra Applications", paymentUrl: "https://buy.stripe.com/8x2bJ3bBC12q2I0dcz3AY0S" },
+          { applications: 500, price: 175, label: "+500 Extra Applications", paymentUrl: "https://buy.stripe.com/aFa5kF8pqdPcgyQb4r3AY0T" },
+          { applications: 1000, price: 300, label: "+1000 Extra Applications", paymentUrl: "https://buy.stripe.com/6oU7sN212fXk3M48Wj3AY0U" },
+        ],
+        PROFESSIONAL: [
+          { applications: 250, price: 95, label: "+250 Extra Applications", paymentUrl: "https://buy.stripe.com/9B6bJ3bBC3ay4Q86Ob3AY0Y" },
+          { applications: 500, price: 160, label: "+500 Extra Applications", paymentUrl: "https://buy.stripe.com/00w7sN8pqaD096ogoL3AY0Z" },
+          { applications: 1000, price: 275, label: "+1000 Extra Applications", paymentUrl: "https://buy.stripe.com/fZucN7gVW12q1DWgoL3AY10" },
+        ],
+        EXECUTIVE: [
+          { applications: 250, price: 88, label: "+250 Extra Applications", paymentUrl: "https://buy.stripe.com/dRm9AV2123ayfuM3BZ3AY13" },
+          { applications: 500, price: 150, label: "+500 Extra Applications", paymentUrl: "https://buy.stripe.com/fZufZj6hi9yW6Yg2xV3AY14" },
+          { applications: 1000, price: 260, label: "+1000 Extra Applications", paymentUrl: "https://buy.stripe.com/28EeVfcFG6mKaas6Ob3AY15" },
+        ],
+      },
     };
     
     return planBoosterOptions[country]?.[selectedPlanForBooster] || [];
-  }, [selectedPlanForBooster, isCanadaContext]);
+  }, [selectedPlanForBooster, isCanadaContext, isUKContext]);
 
   return (
     <section
@@ -450,7 +516,7 @@ export default function HomePagePricingPlans() {
                         <button
                           key={upgradePlan.title}
                           onClick={() => {
-                            const paymentUrl = (upgradePlan as any).upgradePaymentUrl || upgradePlan.paymentLink;
+                            const paymentUrl = upgradePlan.upgradePaymentUrl || upgradePlan.paymentLink;
                             openCheckout(paymentUrl);
                           }}
                           className="w-full text-left p-3 rounded-md border transition-all duration-200 bg-[#fffaf7] border-[#ffb99d] text-black hover:bg-[#fff1e9] hover:border-[#ff4c00]"
@@ -465,7 +531,7 @@ export default function HomePagePricingPlans() {
                               </div>
                             </div>
                             <div className="font-bold text-xs sm:text-sm flex-shrink-0">
-                              {currencySymbol}{(upgradePlan as any).upgradePrice || 0}
+                              {currencySymbol}{upgradePlan.upgradePrice || 0}
                             </div>
                           </div>
                         </button>
@@ -576,7 +642,7 @@ export default function HomePagePricingPlans() {
                         <button
                           key={upgradePlan.title}
                           onClick={() => {
-                            const paymentUrl = (upgradePlan as any).upgradePaymentUrl || upgradePlan.paymentLink;
+                            const paymentUrl = upgradePlan.upgradePaymentUrl || upgradePlan.paymentLink;
                             openCheckout(paymentUrl);
                           }}
                           className="w-full text-left p-3 rounded-md border transition-all duration-200 bg-[#fffaf7] border-[#ffb99d] text-black hover:bg-[#fff1e9] hover:border-[#ff4c00]"
@@ -591,7 +657,7 @@ export default function HomePagePricingPlans() {
                               </div>
                             </div>
                             <div className="font-bold text-xs sm:text-sm flex-shrink-0">
-                              {currencySymbol}{(upgradePlan as any).upgradePrice || 0}
+                              {currencySymbol}{upgradePlan.upgradePrice || 0}
                             </div>
                           </div>
                         </button>

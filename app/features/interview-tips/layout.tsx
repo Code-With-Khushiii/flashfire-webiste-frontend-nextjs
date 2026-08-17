@@ -1,13 +1,14 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Interview Practice Tool for Mock Interviews & Feedback",
-  description: "Practice mock interviews with FlashFire's AI interview tool. Get instant feedback, improve answers, and prepare confidently for real interviews.",
+  title: "Interview Practice Tool for Mock Interviews",
+  description: "Practice real interview questions, improve your answers with instant feedback, build confidence, and prepare for interviews with FlashFire's interview practice tool.",
   alternates: {
     canonical: "https://www.flashfirejobs.com/features/interview-tips",
     languages: {
       "en-US": "https://www.flashfirejobs.com/features/interview-tips",
       "en-CA": "https://www.flashfirejobs.com/en-ca/features/interview-tips",
+      "en-GB": "https://www.flashfirejobs.com/en-gb/features/interview-tips",
       "x-default": "https://www.flashfirejobs.com/features/interview-tips",
     },
   },

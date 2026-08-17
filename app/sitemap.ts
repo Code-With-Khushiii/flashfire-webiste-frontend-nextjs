@@ -111,6 +111,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly' as const,
       priority: 0.3,
     },
+    {
+      url: `${baseUrl}/product-demo`,
+      lastModified: new Date('2026-08-13'),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
   ]
 
   const canadaRoutes: MetadataRoute.Sitemap = [
@@ -138,7 +144,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/en-ca/image-testimonials`, lastModified: new Date('2025-11-01'), changeFrequency: 'monthly' as const, priority: 0.5 },
     { url: `${baseUrl}/en-ca/see-flashfire-in-action`, lastModified: new Date('2025-11-01'), changeFrequency: 'monthly' as const, priority: 0.5 },
     { url: `${baseUrl}/en-ca/talk-to-an-expert`, lastModified: new Date('2025-11-01'), changeFrequency: 'monthly' as const, priority: 0.5 },
+    { url: `${baseUrl}/en-ca/product-demo`, lastModified: new Date('2026-08-13'), changeFrequency: 'monthly' as const, priority: 0.8 },
   ]
 
-  return [...staticRoutes, ...canadaRoutes, ...blogUrls]
+  // The UK tree mirrors the Canada tree exactly, so derive it rather than
+  // maintaining a second hand-written list that can drift.
+  const ukRoutes: MetadataRoute.Sitemap = canadaRoutes.map((route) => ({
+    ...route,
+    url: route.url.replace(`${baseUrl}/en-ca`, `${baseUrl}/en-gb`),
+  }))
+
+  return [...staticRoutes, ...canadaRoutes, ...ukRoutes, ...blogUrls]
 }

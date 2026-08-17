@@ -19,6 +19,7 @@ import faqStyles from "@/src/components/homePageFAQ/homePageFAQ.module.css";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
+import { localizeHref, stripLocalePrefix } from "@/src/utils/locale";
 
 export default function JobTrackerPage() {
   const router = useRouter();
@@ -33,101 +34,190 @@ export default function JobTrackerPage() {
 
   const jobTrackerFAQs = [
     {
-      question: "What is a job application tracker?",
+      question: "Why should I use a job application tracker?",
       answer:
-        "A job application tracker helps you track job applications, interviews, and recruiter interactions in one place. FlashFire's job application tracker replaces spreadsheets with a smarter, centralized dashboard.",
+        "A job application tracker keeps every job application, recruiter conversation, and interview organized in one place, so you always know what to do next in your job search.",
     },
     {
-      question: "How does a job search tracker help you get more interviews?",
+      question: "How does FlashFire help organize my job search?",
       answer:
-        "A job search tracker shows which applications lead to interviews and which don't. FlashFire helps you track job applications, analyze results, and optimize your job search strategy.",
+        "FlashFire centralizes saved jobs, application stages, recruiter contacts, and interview notes into one dashboard, replacing scattered spreadsheets and notes.",
     },
     {
-      question: "Is FlashFire better than using spreadsheets to track job applications?",
+      question: "Can I import jobs from LinkedIn and Indeed?",
       answer:
-        "Yes. FlashFire is a dedicated job tracking tool that automates tracking, recruiter management, and insights, features spreadsheets can't provide.",
+        "Yes. FlashFire's browser extension lets you save jobs from LinkedIn, Indeed, Wellfound, Google Jobs, and company career pages with one click.",
     },
+    {
+      question: "Can I track interviews and recruiter conversations?",
+      answer:
+        "Yes. You can store recruiter contacts, interview notes, and follow-up reminders alongside every application you track.",
+    },
+    {
+      question: "Does FlashFire replace spreadsheets?",
+      answer:
+        "Yes. FlashFire is built specifically for job searching, offering features like status tracking, recruiter management, and analytics that spreadsheets can't provide.",
+    },
+    {
+      question: "Can I customize application stages?",
+      answer:
+        "Yes. You can move applications through stages like Wishlist, Applied, Interview, Offer, or Rejected to match how you run your job search.",
+    },
+    {
+      question: "Does FlashFire send reminders for follow-ups?",
+      answer:
+        "Yes. FlashFire lets you set follow-up reminders so you never miss a recruiter response or interview deadline.",
+    },
+    {
+      question: "Can I store resumes and interview notes?",
+      answer:
+        "Yes. You can attach documents and notes to each application, keeping resumes, cover letters, and interview notes organized in one place.",
+    },
+    {
+      question: "How does FlashFire help me stay organized?",
+      answer:
+        "By combining job saving, application tracking, recruiter management, and progress insights in a single dashboard, FlashFire keeps your entire job search organized in one place.",
+    },
+    {
+      question: "Is FlashFire suitable for fresh graduates?",
+      answer:
+        "Yes. Fresh graduates can use FlashFire to organize campus placements and entry-level applications alongside recruiter and interview details.",
+    },
+    {
+      question: "Can experienced professionals use FlashFire?",
+      answer:
+        "Yes. Busy professionals can track multiple applications, recruiter conversations, and interviews without relying on spreadsheets.",
+    },
+    {
+      question: "Can I track remote job applications?",
+      answer:
+        "Yes. FlashFire helps you manage applications across multiple job boards, making it easy to track remote opportunities in one place.",
+    },
+    {
+      question: "Is my job search data secure?",
+      answer:
+        "Yes. Your job search data is stored securely within your FlashFire account and is never shared without your permission.",
+    },
+  ];
+
+  const comparisonRows = [
+    { spreadsheet: "Manual updates", flashfire: "One-click job saving" },
+    { spreadsheet: "Separate notes", flashfire: "Recruiters, notes, and documents together" },
+    { spreadsheet: "Hard to filter", flashfire: "Smart search and filters" },
+    { spreadsheet: "No analytics", flashfire: "Application insights and reports" },
+    { spreadsheet: "Easy to forget follow-ups", flashfire: "Built-in reminders" },
+    { spreadsheet: "Difficult to scale", flashfire: "Designed for active job searches" },
+  ];
+
+  const problemRows = [
+    { without: "Multiple spreadsheets", with: "One centralized dashboard" },
+    { without: "Lost recruiter emails", with: "Contact management" },
+    { without: "Missed interview updates", with: "Organized interview tracking" },
+    { without: "No performance visibility", with: "Job search analytics" },
+    { without: "Forgotten follow-ups", with: "Notes and reminders" },
   ];
 
   const standOutCards = [
     {
       icon: Sparkles,
-      title: "One-Click Job Import",
+      title: "Save Jobs Instantly",
       copy:
-        "Instantly save jobs from LinkedIn, Indeed, and company sites using our Chrome extension - no spreadsheets needed.",
+        "Import jobs from LinkedIn, Indeed, Wellfound, and company career pages with one click using the FlashFire browser extension.",
     },
     {
       icon: Target,
-      title: "Job Search Insights",
+      title: "Track Your Progress",
       copy:
-        "Understand how your applications perform using actionable insights from your job search tracker, including interviews, rejections, and offers.",
+        "Monitor applications, interviews, offers, and rejection rates to understand what's working and improve your job search.",
     },
     {
       icon: Zap,
-      title: "Advanced CRM Tools",
+      title: "Manage Recruiter Relationships",
       copy:
-        "Manage recruiters, notes, documents, and skills using a centralized job tracking tool built to support complex job searches.",
+        "Store recruiter contacts, interview notes, referrals, and follow-up reminders alongside every application.",
     },
   ];
 
   const workflowCards = [
     {
       title: "Save jobs instantly",
-      copy: "Save jobs from LinkedIn, Indeed, or company websites with a single click using FlashFire.",
+      copy:
+        "Save interesting job opportunities directly from LinkedIn, Indeed, Wellfound, and company career pages with one click.",
     },
     {
       title: "Organize by status",
       copy:
-        "Categorize jobs as Wishlist, Applied, Interview, or Offer so nothing slips through.",
+        "Move applications through custom stages like Wishlist, Applied, Interview, Offer, or Rejected to stay organized.",
     },
     {
       title: "Track Job Application Progress",
       copy:
-        "Track how many job applications convert into interviews and offers using FlashFire's built-in job application tracker.",
+        "Measure how your applications convert into interviews and offers so you can improve your job search strategy.",
     },
     {
       title: "Manage recruiters",
-      copy: "Store recruiter contacts, notes, and follow-ups linked to each application.",
+      copy:
+        "Keep recruiter contacts, interview notes, follow-up reminders, and documents connected to every application.",
     },
   ];
 
   const audienceItems = [
-    "Active job seekers applying to multiple roles",
-    "Professionals tired of tracking jobs in spreadsheets",
-    "Candidates managing interviews across multiple companies",
-    "Anyone looking for a smarter job tracking tool",
+    {
+      title: "Active Job Seekers",
+      description: "Applying to multiple opportunities every week.",
+    },
+    {
+      title: "Busy Professionals",
+      description: "Need to manage applications without spreadsheets.",
+    },
+    {
+      title: "Career Switchers",
+      description: "Track opportunities across different industries and roles.",
+    },
+    {
+      title: "Fresh Graduates",
+      description: "Organize campus placements and entry-level applications.",
+    },
+    {
+      title: "Remote Job Seekers",
+      description: "Manage applications across multiple job boards.",
+    },
+    {
+      title: "Interviewing Candidates",
+      description: "Keep recruiter conversations and interview schedules organized.",
+    },
   ];
 
   const useSteps = [
     {
       eyebrow: "SAVE JOBS",
-      title: "Save Jobs Effortlessly",
+      title: "Save Job Opportunities",
       copy:
-        "Use the browser extension to save job postings directly from any website. No spreadsheets, no copying links.",
+        "Save jobs from LinkedIn, Indeed, Wellfound, Google Jobs, and company career pages in one click.",
       visual: "source",
       reverse: false,
     },
     {
       eyebrow: "ORGANIZE APPLICATIONS",
-      title: "Organize Your Applications",
+      title: "Track Every Application",
       copy:
-        "Label and categorize saved applications with statuses, tags, and notes so your job search stays structured.",
+        "Categorize applications by stage, add notes, set reminders, and never lose track of where you've applied.",
       visual: "board",
       reverse: true,
     },
     {
       eyebrow: "JOB INSIGHTS",
-      title: "Analyze Your Progress",
+      title: "Measure Your Results",
       copy:
-        "Track trends, see conversion from applied to interview to offer, and improve what's working to land interviews faster.",
+        "Track interview rates, application performance, and offers to identify what helps you land more interviews.",
       visual: "chart",
       reverse: false,
     },
     {
       eyebrow: "TRACK CONTACTS",
-      title: "Manage Contacts and Interviews",
+      title: "Manage Recruiters & Interviews",
       copy:
-        "Store recruiter details, referrals, and interview notes for every application so you're always ready.",
+        "Keep recruiter contacts, interview schedules, follow-ups, and documents organized for every opportunity.",
       visual: "contacts",
       reverse: true,
     },
@@ -182,13 +272,10 @@ export default function JobTrackerPage() {
         pathname || (typeof window !== "undefined" ? window.location.pathname : "");
       const normalizedPath = currentPath.split("?")[0];
       const isAlreadyOnGetMeInterview =
-        normalizedPath === "/get-me-interview" ||
-        normalizedPath === "/en-ca/get-me-interview";
+        stripLocalePrefix(normalizedPath) === "/get-me-interview";
       const isOnJobTrackerPage =
-        normalizedPath === "/features/job-tracker" ||
-        normalizedPath === "/en-ca/features/job-tracker" ||
-        normalizedPath === "/features/job-application-tracker" ||
-        normalizedPath === "/en-ca/features/job-application-tracker";
+        stripLocalePrefix(normalizedPath) === "/features/job-tracker" ||
+        stripLocalePrefix(normalizedPath) === "/features/job-application-tracker";
 
       if (isAlreadyOnGetMeInterview) {
         const currentScrollY = typeof window !== "undefined" ? window.scrollY : 0;
@@ -218,9 +305,7 @@ export default function JobTrackerPage() {
         const currentScrollY = typeof window !== "undefined" ? window.scrollY : 0;
 
         if (typeof window !== "undefined") {
-          const targetPath = normalizedPath.startsWith("/en-ca")
-            ? "/en-ca/get-me-interview"
-            : "/get-me-interview";
+          const targetPath = localizeHref("/get-me-interview", normalizedPath);
           window.history.pushState({}, "", targetPath);
         }
 
@@ -303,7 +388,7 @@ export default function JobTrackerPage() {
         <section className="relative bg-[#fff3ee] px-4 py-12 sm:py-20 lg:py-24">
           <div className="mx-auto grid max-w-[1420px] items-center gap-7 xl:grid-cols-[260px_minmax(0,1fr)_320px] xl:gap-6">
             <div className="order-2 grid gap-2 sm:grid-cols-3 xl:order-1 xl:block xl:space-y-24">
-              <HeroPill label="Track recruiters & contacts" />
+              <HeroPill label="Job Application Tracker" />
               <HeroPill className="xl:ml-12" label="Centralized job tracking" />
               <HeroPill label="Actionable job insights" />
             </div>
@@ -317,17 +402,16 @@ export default function JobTrackerPage() {
                 # Cover Letter Builder
               </button> */}
               <h1 className="mx-auto max-w-[820px] text-[30px] font-extrabold leading-[1.12] tracking-normal text-[#111827] sm:text-[44px] lg:text-[47px]">
-                Job Application Tracker to Track
+                Track Every Job Application
                 <br className="hidden sm:block" />
-                and Manage Your Job Search
+                in One Organized Dashboard
               </h1>
               <p className="mx-auto mt-5 max-w-[720px] text-[15px] font-medium leading-7 text-[#596273] sm:text-[17px] sm:leading-8">
-                FlashFire is a powerful job application tracker that helps you track job applications,
+                FlashFire helps you organize every stage of your job search, from saving job
                 <br className="hidden sm:block" />
-                organize your job search, and manage interviews in one centralized
+                opportunities and tracking applications to managing recruiter conversations
                 <br className="hidden sm:block" />
-                dashboard without
-                spreadsheets.
+                and interview progress, all in one centralized dashboard.
               </p>
             </div>
 
@@ -341,12 +425,11 @@ export default function JobTrackerPage() {
           <div className="mx-auto max-w-[1000px]">
             <div className="mx-auto max-w-[660px] text-center">
               <h2 className="text-[31px] font-extrabold leading-[1.08] tracking-normal text-[#111827] sm:text-[42px]">
-                What Makes FlashFire&apos;s Job ApplicationTracker Stand Out?
+                Everything You Need to Organize Your Job Search
               </h2>
               <p className="mx-auto mt-5 max-w-[650px] text-[17px] font-medium leading-8 text-[#596273]">
-                FlashFire is more than a basic spreadsheet alternative, it&apos;s a modern job tracking
-                tool designed to help you track job applications, recruiters, and interviews in one
-                place..
+                Keep every job application, recruiter conversation, interview, and follow-up
+                organized in one place so you always know what to do next.
               </p>
             </div>
 
@@ -374,10 +457,11 @@ export default function JobTrackerPage() {
           <div className="mx-auto grid max-w-[1220px] gap-12 lg:grid-cols-[420px_1fr] lg:items-start">
             <div className="lg:pl-10">
               <h2 className="max-w-[390px] text-[34px] font-extrabold leading-[1.34] tracking-normal text-[#111827] sm:text-[43px]">
-                A Smarter Way to Track Job Applications and Manage Your Job Search
+                Stay Organized From Your First Application to Your Job Offer
               </h2>
               <p className="mt-6 max-w-[430px] text-[18px] font-medium leading-8 text-[#596273]">
-                From saving jobs to tracking interviews - everything stays organized in one place.
+                FlashFire keeps every opportunity, application, recruiter, and interview
+                organized so nothing gets missed during your job search.
               </p>
               <div className="mt-12 flex gap-4">
                 <button
@@ -425,25 +509,27 @@ export default function JobTrackerPage() {
           <div className="mx-auto max-w-[920px]">
             <div className="mx-auto max-w-[760px] text-center">
               <h2 className="text-[32px] font-extrabold leading-[1.08] tracking-normal text-[#111827] sm:text-[42px]">
-                Who Is This Job Application Tracker For?
+                Who Benefits From FlashFire&apos;s Job Tracker?
               </h2>
               <p className="mx-auto mt-6 max-w-[760px] text-[15px] font-medium leading-7 text-[#6b7280]">
-                FlashFire&apos;s job application tracker is built for job seekers who want to track job
-                applications, manage recruiter conversations, and stay organized throughout their job
-                search..
+                Whether you&apos;re applying to a few roles or hundreds, FlashFire helps you stay
+                organized throughout your job search.
               </p>
             </div>
 
             <div className="mx-auto mt-14 grid max-w-[740px] auto-rows-fr gap-3 sm:grid-cols-2">
               {audienceItems.map((item) => (
                 <article
-                  key={item}
+                  key={item.title}
                   className="h-full min-h-[118px] min-w-0 overflow-hidden rounded-md border border-[#e0e0e0] bg-white px-7 py-6 shadow-[0_8px_22px_rgba(0,0,0,0.10)]"
                 >
                   <span className="mb-5 flex h-9 w-9 items-center justify-center rounded-full bg-[#ff4c00] text-white">
                     <Check size={24} strokeWidth={3} />
                   </span>
-                  <p className="text-[19px] font-bold leading-7 text-[#ff4c00]">{item}</p>
+                  <p className="text-[19px] font-bold leading-7 text-[#ff4c00]">{item.title}</p>
+                  <p className="mt-2 text-[14px] font-medium leading-6 text-[#596273]">
+                    {item.description}
+                  </p>
                 </article>
               ))}
             </div>
@@ -452,11 +538,13 @@ export default function JobTrackerPage() {
 
         <section id="how-it-works" className="bg-white px-4 py-16 sm:py-24 lg:py-28">
           <div className="mx-auto max-w-[1040px]">
-            <h2 className="mb-10 text-center text-[31px] font-extrabold leading-[1.08] text-[#111827] sm:mb-14 sm:text-[46px]">
-              How to Use FlashFire&apos;s
-              <br />
-              Job Application Tracker
+            <h2 className="mb-5 text-center text-[31px] font-extrabold leading-[1.08] text-[#111827] sm:text-[46px]">
+              Organize Your Job Search in 4 Simple Steps
             </h2>
+            <p className="mx-auto mb-10 max-w-[660px] text-center text-[16px] font-medium leading-7 text-[#596273] sm:mb-14 sm:text-[17px]">
+              Save opportunities, organize applications, monitor your progress, and manage
+              recruiter conversations, all from one dashboard.
+            </p>
 
             <div className="space-y-8 sm:space-y-12">
               {useSteps.map((step) => (
@@ -482,9 +570,85 @@ export default function JobTrackerPage() {
           </div>
         </section>
 
+        <section className="bg-[#fff6f3] px-4 py-20 sm:py-24 lg:py-28">
+          <div className="mx-auto max-w-[880px] text-center">
+            <h2 className="text-[31px] font-extrabold leading-[1.08] tracking-normal text-[#111827] sm:text-[42px]">
+              Why FlashFire Beats Tracking Job Applications in Spreadsheets
+            </h2>
+            <p className="mx-auto mt-5 max-w-[650px] text-[17px] font-medium leading-8 text-[#596273]">
+              Spreadsheets become difficult to maintain as your job search grows. FlashFire keeps
+              everything organized automatically.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-12 max-w-[880px] overflow-hidden overflow-x-auto border border-black bg-white shadow-[5px_5px_0_0_rgba(0,0,0,0.65)]">
+            <table className="w-full min-w-[560px] border-collapse text-left">
+              <thead>
+                <tr className="border-b border-black bg-[#111827] text-white">
+                  <th className="px-6 py-4 text-[15px] font-extrabold sm:text-[17px]">Spreadsheet</th>
+                  <th className="px-6 py-4 text-[15px] font-extrabold text-[#ff4c00] sm:text-[17px]">
+                    FlashFire
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonRows.map((row) => (
+                  <tr key={row.spreadsheet} className="border-b border-[#e0e0e0] last:border-b-0">
+                    <td className="px-6 py-4 text-[14px] font-medium text-[#596273] sm:text-[15px]">
+                      {row.spreadsheet}
+                    </td>
+                    <td className="px-6 py-4 text-[14px] font-bold text-[#111827] sm:text-[15px]">
+                      {row.flashfire}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="bg-white px-4 py-20 sm:py-24 lg:py-28">
+          <div className="mx-auto max-w-[880px] text-center">
+            <h2 className="text-[31px] font-extrabold leading-[1.08] tracking-normal text-[#111827] sm:text-[42px]">
+              Why Most Job Searches Become Disorganized
+            </h2>
+            <p className="mx-auto mt-5 max-w-[650px] text-[17px] font-medium leading-8 text-[#596273]">
+              As applications increase, it&apos;s easy to lose track of interviews, recruiter
+              conversations, and follow-ups.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-12 max-w-[880px] overflow-hidden overflow-x-auto border border-black bg-white shadow-[5px_5px_0_0_rgba(0,0,0,0.65)]">
+            <table className="w-full min-w-[560px] border-collapse text-left">
+              <thead>
+                <tr className="border-b border-black bg-[#111827] text-white">
+                  <th className="px-6 py-4 text-[15px] font-extrabold sm:text-[17px]">
+                    Without FlashFire
+                  </th>
+                  <th className="px-6 py-4 text-[15px] font-extrabold text-[#ff4c00] sm:text-[17px]">
+                    With FlashFire
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {problemRows.map((row) => (
+                  <tr key={row.without} className="border-b border-[#e0e0e0] last:border-b-0">
+                    <td className="px-6 py-4 text-[14px] font-medium text-[#596273] sm:text-[15px]">
+                      {row.without}
+                    </td>
+                    <td className="px-6 py-4 text-[14px] font-bold text-[#111827] sm:text-[15px]">
+                      {row.with}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
         <section id="faq" className={faqStyles.faqSection}>
           <div id="faq-header" className={faqStyles.header}>
-            <h2>Question? We Got You Answers.</h2>
+            <h2>Frequently Asked Questions About Job Application Tracking</h2>
             <p>
               We get it, job application tracking can sound complex. Here&apos;s everything explained,
               plain and simple.

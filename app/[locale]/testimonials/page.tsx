@@ -10,9 +10,12 @@ interface LocaleTestimonialsPageProps {
 export async function generateMetadata({ params }: LocaleTestimonialsPageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
+  const isUK = locale === "en-gb";
   
   return {
-    title: isCanada 
+    title: isUK
+      ? "Testimonials - Success Stories from Flashfire Users | Flashfire (UK)"
+      : isCanada
       ? "Testimonials - Success Stories from Flashfire Users | Flashfire (Canada)"
       : "Testimonials - Success Stories from Flashfire Users | Flashfire",
     description:
@@ -22,17 +25,21 @@ export async function generateMetadata({ params }: LocaleTestimonialsPageProps):
       follow: false,
     },
     alternates: {
-      canonical: isCanada 
-        ? "https://www.flashfirejobs.com/en-ca/testimonials"
-        : "https://www.flashfirejobs.com/testimonials",
+      canonical: isUK
+      ? "https://www.flashfirejobs.com/en-gb/testimonials"
+      : isCanada
+      ? "https://www.flashfirejobs.com/en-ca/testimonials"
+      : "https://www.flashfirejobs.com/testimonials",
     },
     openGraph: {
       title: "Testimonials - Success Stories from Flashfire Users",
       description:
         "Read success stories from job seekers who used Flashfire to land their dream jobs.",
-      url: isCanada 
-        ? "https://www.flashfirejobs.com/en-ca/testimonials"
-        : "https://www.flashfirejobs.com/testimonials",
+      url: isUK
+      ? "https://www.flashfirejobs.com/en-gb/testimonials"
+      : isCanada
+      ? "https://www.flashfirejobs.com/en-ca/testimonials"
+      : "https://www.flashfirejobs.com/testimonials",
       type: "website",
     },
   };

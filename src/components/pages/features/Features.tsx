@@ -21,6 +21,7 @@ import { questionsData } from "@/src/data/questionsData"
 import faqStyles from "@/src/components/homePageFAQ/homePageFAQ.module.css"
 import FlashfireLogo from "@/src/components/FlashfireLogo"
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking"
+import { getLocalePrefix, stripLocalePrefix, localizeHref } from "@/src/utils/locale";
 
 type FeatureItem = {
   title: string
@@ -40,14 +41,14 @@ const features: FeatureItem[] = [
   {
     title: "Dynamic Resume Optimization",
     description:
-      "We build your base resume from scratch and tailor it for each job, making it ATS-friendly and recruiter-visible.we also provide you with a personalized job strategy for US & Canada roles.",
+      "We build your base resume from scratch and tailor it for each job, making it ATS-friendly and recruiter-visible.we also provide you with a personalized job strategy for US, Canada & UK roles.",
     icon: FaFileAlt,
     href: "/features/ats-resume-optimizer",
   },
   {
     title: "LinkedIn Profile Optimization",
     description:
-      "We professionally optimize your LinkedIn profile to boost recruiter visibility and align with your job search goals.it also includes a personalized job strategy for US & Canada roles.",
+      "We professionally optimize your LinkedIn profile to boost recruiter visibility and align with your job search goals.it also includes a personalized job strategy for US, Canada & UK roles.",
     icon: FaLinkedin,
     href: "/features/linkedin-profile-optimization-tool",
   },
@@ -134,8 +135,7 @@ function Features() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null)
   const [activePersona, setActivePersona] = useState<number | null>(null)
 
-  const isCanadaContext = pathname.startsWith("/en-ca")
-  const prefix = isCanadaContext ? "/en-ca" : ""
+  const prefix = getLocalePrefix(pathname)
 
   const getHref = (href: string) => {
     if (href.startsWith("http")) return href
@@ -172,13 +172,10 @@ function Features() {
 
     const currentPath = pathname || (typeof window !== "undefined" ? window.location.pathname : "")
     const normalizedPath = currentPath.split("?")[0]
-    const isOnFeatures =
-      normalizedPath === "/feature" ||
-      normalizedPath === "/features" ||
-      normalizedPath === "/en-ca/feature" ||
-      normalizedPath === "/en-ca/features"
+    const basePath = stripLocalePrefix(normalizedPath)
+    const isOnFeatures = basePath === "/feature" || basePath === "/features"
     const isAlreadyOnGetMeInterview =
-      normalizedPath === "/get-me-interview" || normalizedPath === "/en-ca/get-me-interview"
+      stripLocalePrefix(normalizedPath) === "/get-me-interview"
 
     if (isAlreadyOnGetMeInterview) {
       const currentScrollY = typeof window !== "undefined" ? window.scrollY : 0
@@ -210,9 +207,7 @@ function Features() {
         sessionStorage.setItem("preserveScrollPosition", window.scrollY.toString())
       }
 
-      const targetPath = normalizedPath.startsWith("/en-ca")
-        ? "/en-ca/get-me-interview"
-        : "/get-me-interview"
+      const targetPath = localizeHref("/get-me-interview", normalizedPath)
       router.replace(targetPath)
       return
     }
@@ -475,7 +470,7 @@ function Features() {
           <div id="faq-header" className={faqStyles.header}>
             <h2>Question? We Got You Answers.</h2>
             <p>
-              We get it, AI job search can sound complex. Here&apos;s everything explained, plain and simple.
+              We get it,  job search can sound complex. Here&apos;s everything explained, plain and simple.
             </p>
           </div>
 

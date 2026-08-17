@@ -212,7 +212,7 @@ export default function MeetingBookedModal({ onClose }: Props) {
             <div className="p-4 md:p-5 bg-white">
               <div
                 className={videoStyles.videoWrapper}
-                style={{ width: "100%", maxWidth: "100%" }}
+                style={{ width: "100%", maxWidth: "100%", aspectRatio: "16 / 9" }}
               >
                 <video
                   className={videoStyles.videoPlayer}
@@ -222,7 +222,7 @@ export default function MeetingBookedModal({ onClose }: Props) {
                   loop
                   playsInline
                 >
-                  <source src="/videos/ii.mp4" type="video/mp4" />
+                  <source src="/videos/Untitled%20design.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
                 <span />

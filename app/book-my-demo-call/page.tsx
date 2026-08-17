@@ -6,6 +6,7 @@ import HomePage from "@/src/components/pages/home/Home";
 import AboutUs from "@/src/components/pages/aboutUs/AboutUs";
 import Navbar from "@/src/components/navbar/navbar";
 import Footer from "@/src/components/footer/footer";
+import { stripLocalePrefix } from "@/src/utils/locale";
 
 
 export default function BookMyDemoCallPage() {
@@ -47,7 +48,7 @@ export default function BookMyDemoCallPage() {
         return <HomePage />;
     }
 
-    if (previousPage === '/about-us' || previousPage === '/en-ca/about-us') {
+    if (stripLocalePrefix(previousPage) === '/about-us') {
         return (
             <>
                 <Navbar />

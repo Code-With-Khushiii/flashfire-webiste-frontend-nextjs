@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     languages: {
       "en-US": "https://www.flashfirejobs.com/salary-calculator",
       "en-CA": "https://www.flashfirejobs.com/en-ca/salary-calculator",
+      "en-GB": "https://www.flashfirejobs.com/en-gb/salary-calculator",
       "x-default": "https://www.flashfirejobs.com/salary-calculator",
     },
   },

@@ -12,9 +12,12 @@ interface LocalePaymentPolicyPageProps {
 export async function generateMetadata({ params }: LocalePaymentPolicyPageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
+  const isUK = locale === "en-gb";
   
   return {
-    title: isCanada 
+    title: isUK
+      ? "Payment Policy | Flashfire (UK)"
+      : isCanada
       ? "Payment Policy | Flashfire (Canada)"
       : "Payment Policy | Flashfire",
     description:
@@ -24,17 +27,21 @@ export async function generateMetadata({ params }: LocalePaymentPolicyPageProps)
       follow: false,
     },
     alternates: {
-      canonical: isCanada 
-        ? "https://www.flashfirejobs.com/en-ca/payment-policy"
-        : "https://www.flashfirejobs.com/payment-policy",
+      canonical: isUK
+      ? "https://www.flashfirejobs.com/en-gb/payment-policy"
+      : isCanada
+      ? "https://www.flashfirejobs.com/en-ca/payment-policy"
+      : "https://www.flashfirejobs.com/payment-policy",
     },
     openGraph: {
       title: "Payment Policy | Flashfire",
       description:
         "Read Flashfire's Payment Policy to understand our payment terms.",
-      url: isCanada 
-        ? "https://www.flashfirejobs.com/en-ca/payment-policy"
-        : "https://www.flashfirejobs.com/payment-policy",
+      url: isUK
+      ? "https://www.flashfirejobs.com/en-gb/payment-policy"
+      : isCanada
+      ? "https://www.flashfirejobs.com/en-ca/payment-policy"
+      : "https://www.flashfirejobs.com/payment-policy",
       type: "website",
     },
   };

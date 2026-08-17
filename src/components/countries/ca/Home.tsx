@@ -53,37 +53,28 @@ export default function CanadaHome() {
 
   return (
     <>
-     <Navbar />
+      <Navbar />
       <HeroSection />
-      <HomePageStatsCards />
-      <HomePageSteps /> {/* using useState, so client */}
-      <HomePageJobMatchingSection />
-      <HomePageCareerCTA />
-      <HomePageBeforeAfter />
-      <HomePageResultStats />
-     
-      <HomePageOfferLetters />
-     
-      <HomePageMilestones /> 
       <HomePageVideo />
-      
-     
-     
-      <HomePageWhyChooseFF /> 
+      <HomePageResultStats />
+      <HomePageStatsCards />
+      <HomePageMilestones />
+      <HomePageSteps />
+      <HomePageOfferLetters
+        heading="60+ Offer letters received"
+        enableLoopControls
+        buttonOnlyScroll
+      />
+      <HomePageJobMatchingSection />
+      <HomePageBeforeAfter />
+      <HomePageWhyChooseFF />
       <HomePageHappyUsers />
-      <HomePageFoundersNote />
-
-      {/* using useState, so client */}
-     
-       {/* using useState, so client */}
-      {/* AJ section not so good */}
-      
-      <HomePagePTNote /> {/* PT section not so good */}
-     
+      <HomePagePTNote />
       <HomePageFAQ />
       <HomePageDemoCTA />
+      <HomePageFoundersNote variant="pricing" />
+      <HomePageCareerCTA />
       <Footer />
-      
     </>
   );
 }

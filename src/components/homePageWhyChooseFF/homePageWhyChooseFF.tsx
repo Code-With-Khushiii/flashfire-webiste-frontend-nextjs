@@ -27,53 +27,56 @@ export default function HomePageWhyChooseFF() {
       {/* === Header === */}
       <header className="w-[55%] mx-auto mb-12 max-[1024px]:w-4/5 max-[768px]:w-full">
         <h2 className="text-[50.84px] font-bold text-[#02060A] mb-4 leading-[110%] tracking-[-0.03em] font-['Satoshi',sans-serif] max-[1024px]:text-[2.4rem] max-[768px]:text-[1.8rem]">
-        Why Job Seekers Choose Flashfire
+          Why Job Seekers Choose Flashfire
         </h2>
         <p className="text-[20px] font-medium text-[#02060A] leading-[139%] tracking-[-0.03em] font-['Satoshi',sans-serif] max-[1024px]:text-[1.05rem] max-[768px]:text-[1rem]">
-          We don&apos;t just apply, we <strong className="font-bold italic">make you get noticed.</strong>{" "}
+          We don&apos;t just apply, we{" "}
+          <strong className="font-bold italic">make you get noticed.</strong>{" "}
           Flashfire combines{" "}
           <span className="text-[#ff4c00] font-semibold">expert guidance</span>
           <br />
           with{" "}
-          <span className="text-[#d64b00] font-semibold">smart technology</span> to
-          get you interviews that actually convert.
+          <span className="text-[#d64b00] font-semibold">
+            smart technology
+          </span>{" "}
+          to get you interviews that actually convert.
         </p>
       </header>
 
       {/* === Feature Grid === */}
-      <div className="
-          grid 
-          grid-cols-3 
-          gap-4 
-          max-w-[80rem] 
-          w-full 
-          mx-auto 
-          mb-16
-
-          max-[1024px]:grid-cols-2
-          max-[640px]:grid-cols-1
-        ">
-        <article
-          className={`${featureCardBase}`}
-        >
+      <div
+        className="
+                  grid 
+                  grid-cols-3 
+                  gap-4 
+                  max-w-[80rem] 
+                  w-full 
+                  mx-auto 
+                  mb-16
+                  max-[1024px]:grid-cols-2
+                  max-[640px]:grid-cols-1
+                  "
+                   >
+        <article className={`${featureCardBase}`}>
           <h3 className="text-[2rem] font-bold text-[#111] mb-3">
-            A Dedicated Job Search Team
+            AI-Powered Matching
           </h3>
+
           <p className="text-[1.125rem] text-[#333] leading-[1.5]">
-            You're supported by experienced professionals who work on your job
-            search every day.
+            For each and every application, your base resume is automatically
+            optimized to the job description with ATS-friendly keywords and
+            skills.
           </p>
         </article>
 
-        <article
-          className={`${featureCardBase} `}
-        >
+        <article className={`${featureCardBase} `}>
           <h3 className="text-[2rem] font-bold text-[#111] mb-3">
-            Smarter Applications, Not More Applications
+            Dynamic Resume Optimization
           </h3>
+
           <p className="text-[1.125rem] text-[#333] leading-[1.5]">
-            We focus on quality opportunities that match your experience
-            instead of sending random applications.
+            We build your base resume from scratch and tailor it for each job,
+            making it ATS-friendly and recruiter-visible.
           </p>
         </article>
 
@@ -81,11 +84,12 @@ export default function HomePageWhyChooseFF() {
           className={`${featureCardBase} basis-[28.3%] max-[768px]:basis-full`}
         >
           <h3 className="text-[2rem] font-bold text-[#111] mb-3">
-            Resume &amp; LinkedIn Experts
+            LinkedIn Profile Optimization
           </h3>
+
           <p className="text-[1.125rem] text-[#333] leading-[1.5]">
-            Your profile is optimized to improve recruiter visibility and ATS
-            compatibility.
+            We professionally optimize your LinkedIn profile to boost recruiter
+            visibility and align with your job search goals.
           </p>
         </article>
 
@@ -93,11 +97,12 @@ export default function HomePageWhyChooseFF() {
           className={`${featureCardBase} basis-[24.1%] max-[768px]:basis-full`}
         >
           <h3 className="text-[2rem] font-bold text-[#111] mb-3">
-            Real-Time Guidance
+            Precision Targeting
           </h3>
+
           <p className="text-[1.125rem] text-[#333] leading-[1.5]">
-            Questions? Need advice? Your team is always available through
-            WhatsApp with regular updates.
+            We only apply to jobs that fit your pay, location, company size, and
+            career goals — and only to jobs posted in the last 24–48 hours.
           </p>
         </article>
 
@@ -105,48 +110,54 @@ export default function HomePageWhyChooseFF() {
           className={`${featureCardBase} basis-[36.7%] max-[768px]:basis-full`}
         >
           <h3 className="text-[2rem] font-bold text-[#111] mb-3">
-            AI That Works Quietly
+            Lightning Fast Applications
           </h3>
+
           <p className="text-[1.125rem] text-[#333] leading-[1.5]">
-            We use AI to speed up resume tailoring, job matching, and
-            application tracking, so our experts can spend more time helping
-            you succeed.
+            A dedicated team of 4–5 people handles your job hunt, applying to
+            1200+ roles in 6–7 weeks. We'll keep you posted with every update in
+            a WhatsApp group made just for you.
           </p>
         </article>
 
         <article
-          className={`${featureCardBase}`}
+          className={`${featureCardBase} basis-[36.7%] max-[768px]:basis-full`}
         >
           <h3 className="text-[2rem] font-bold text-[#111] mb-3">
-            Support Beyond the Interview
+            Dashboard &amp; Analytics
           </h3>
+
           <p className="text-[1.125rem] text-[#333] leading-[1.5]">
-            From interview prep to offer negotiation, we stay with you until
-            you're confident and ready to start your new role.
+            Access a personalized dashboard to track applications, monitor
+            success rates, and get real-time insights to improve your job search
+            strategy.
           </p>
         </article>
       </div>
 
       {/* === Bottom Section === */}
       <footer className="mt-16 flex justify-center">
-        <div className="
+        <div
+          className="
     flex gap-4 bg-[rgba(251,240,235,1)] border border-[#f1e4df]
     max-w-[80rem] w-full mx-auto overflow-hidden relative
     p-3
 
     max-[1024px]:flex-col
     max-[1024px]:p-5
-  ">
-
+  "
+        >
           {/* ===== Left Card ===== */}
-          <div className="
+          <div
+            className="
       flex-1 bg-white p-8 flex flex-col justify-center relative overflow-hidden
       text-left
 
       max-[768px]:text-center
       max-[768px]:p-2
       rounded-md
-    ">
+    "
+          >
             <h3 className="text-[1.6rem] font-bold text-[#111] mb-3 max-[480px]:text-[1.25rem]">
               Still Confused?
             </h3>
@@ -174,14 +185,15 @@ export default function HomePageWhyChooseFF() {
           </div>
 
           {/* ===== Right Testimonial Card ===== */}
-          <div className="
+          <div
+            className="
   flex-[1.3] bg-black relative overflow-hidden rounded-md
   flex items-center p-8
 
   max-[768px]:flex-col
   max-[768px]:p-5
-">
-
+"
+          >
             {/* Text Content */}
             <div className="z-10 w-[65%] text-left max-[768px]:w-full max-[768px]:text-center">
               <p className="text-[#fffaf8] text-[0.75rem] font-semibold mb-3 tracking-wider">
@@ -189,12 +201,15 @@ export default function HomePageWhyChooseFF() {
               </p>
 
               <blockquote className="text-[1.6rem] font-bold italic text-white mb-5 leading-tight max-[768px]:text-[1.1rem]">
-                I've seen brilliant people lose hope. Flashfire exists so they don't have to.
+                I've seen brilliant people lose hope. Flashfire exists so they
+                don't have to.
               </blockquote>
 
               <div className="flex items-center gap-4 max-[768px]:justify-center">
                 <div>
-                  <p className="text-[0.95rem] font-semibold text-white">Adit Jain</p>
+                  <p className="text-[0.95rem] font-semibold text-white">
+                    Adit Jain
+                  </p>
                   <p className="text-[0.8rem] text-[#aaa]">Partner</p>
                 </div>
 
@@ -207,22 +222,18 @@ export default function HomePageWhyChooseFF() {
 
             {/* Image */}
             {/* Image */}
-<div className="absolute right-0 bottom-0 w-[40%] h-full max-[768px]:relative max-[768px]:w-full max-[768px]:h-[300px] max-[768px]:mt-6">
-  <Image
-    src="https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/adit-jain.png"
-    alt="Adit Jain"
-    fill
-    className="object-cover object-[center_20%] scale-[1.1] max-[768px]:object-[center_30%] max-[768px]:scale-[1.05]"
-    unoptimized
-  />
-</div>
-
+            <div className="absolute right-0 bottom-0 w-[40%] h-full max-[768px]:relative max-[768px]:w-full max-[768px]:h-[300px] max-[768px]:mt-6">
+              <Image
+                src="https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/adit-jain.png"
+                alt="Adit Jain"
+                fill
+                className="object-cover object-[center_20%] scale-[1.1] max-[768px]:object-[center_30%] max-[768px]:scale-[1.05]"
+                unoptimized
+              />
+            </div>
           </div>
-
-
         </div>
       </footer>
-
     </section>
   );
 }

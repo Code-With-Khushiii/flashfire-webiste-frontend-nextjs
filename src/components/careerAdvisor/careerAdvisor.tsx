@@ -8,6 +8,7 @@ import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useState } from "react";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import styles from "@/src/components/homePageFAQ/homePageFAQ.module.css";
+import { localizeHref } from "@/src/utils/locale";
 
 export default function CareerAdvisor() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -67,12 +68,7 @@ export default function CareerAdvisor() {
 
   const pushCustomUrl = (path?: string) => {
     if (typeof window === "undefined" || !path) return;
-    const isCanada = window.location.pathname.startsWith("/en-ca");
-    const normalized = path.startsWith("/en-ca")
-      ? path
-      : isCanada
-        ? `/en-ca${path}`
-        : path;
+    const normalized = localizeHref(path, window.location.pathname);
     window.history.pushState({}, "", normalized);
   };
 

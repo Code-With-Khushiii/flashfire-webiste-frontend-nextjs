@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Precision Job Targeting for Faster Interview Calls | FlashFire",
-  description: "Apply to jobs that actually match your profile. FlashFire's AI targets jobs where your skills, experience, and ATS score give you the highest chance of interviews.",
+  title: "Precision Job Targeting for Better Interview Chances",
+  description: "Find jobs that match your skills, experience, and career goals. FlashFire helps you focus on high-fit opportunities to improve your interview chances.",
   alternates: {
     canonical: "https://www.flashfirejobs.com/features/ai-job-targeting",
   },

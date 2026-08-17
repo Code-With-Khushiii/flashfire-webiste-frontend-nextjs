@@ -4,10 +4,11 @@ import { notFound } from "next/navigation";
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  return [{ locale: "en-ca" }];
+  return [{ locale: "en-ca" }, { locale: "en-gb" }];
 }
 import HomePage from "@/src/components/pages/home/Home";
 import CanadaHome from "@/src/components/countries/ca/Home";
+import UKHome from "@/src/components/countries/uk/Home";
 
 interface LocalePageProps {
   params: Promise<{
@@ -15,17 +16,50 @@ interface LocalePageProps {
   }>;
 }
 
-const validLocales = ["en-ca"];
-
 export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
   const { locale } = await params;
   const isCanada = locale === "en-ca";
+  const isUK = locale === "en-gb";
+
+  if (isUK) {
+    return {
+      title: "FLASHFIRE - AI-Powered Job Search Automation | Land Your Dream Job Faster (UK)",
+      description:
+        "We apply to 1000+ jobs on your behalf with tailored CVs for every role. Save 150+ hours, skip the grunt work, and stay in control with real-time updates. Your job hunt—automated.",
+      robots: {
+        index: true,
+        follow: true,
+      },
+      alternates: {
+        canonical: "https://www.flashfirejobs.com/en-gb",
+      },
+      openGraph: {
+        title: "FLASHFIRE - AI-Powered Job Search Automation (UK)",
+        description:
+          "We apply to 1000+ jobs on your behalf with tailored CVs for every role. Save 150+ hours, skip the grunt work, and stay in control with real-time updates.",
+        url: "https://www.flashfirejobs.com/en-gb",
+        type: "website",
+        images: [
+          {
+            url: "https://www.flashfirejobs.com/images/og-image.png",
+            width: 1200,
+            height: 630,
+            alt: "FLASHFIRE Logo",
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        images: ["https://www.flashfirejobs.com/images/og-image.png"],
+      },
+    };
+  }
 
   if (!isCanada) {
     return {
-      title: "Flashfire: Automate Job Applications with AI",
+      title: "Flashfire: Job Search Virtual Assistant",
       description:
-        "Flashfire is an AI job application platform that automates job search, auto-applies to jobs using AI, and matches you with the right roles faster.",
+        "Get hired faster with Flashfire. Our team helps optimize your resume, apply to the right jobs, and manage your job search from start to finish.",
       robots: {
         index: true,
         follow: true,
@@ -34,9 +68,9 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
         canonical: "https://www.flashfirejobs.com/",
       },
       openGraph: {
-        title: "Flashfire: Automate Job Applications with AI",
+        title: "Flashfire: Job Search Virtual Assistant",
         description:
-          "Flashfire is an AI job application platform that automates job search, auto-applies to jobs using AI, and matches you with the right roles faster.",
+          "Get hired faster with Flashfire. Our team helps optimize your resume, apply to the right jobs, and manage your job search from start to finish.",
         url: "https://www.flashfirejobs.com/",
         type: "website",
         images: [
@@ -50,9 +84,9 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
       },
       twitter: {
         card: "summary_large_image",
-        title: "Flashfire: Automate Job Applications with AI",
+        title: "Flashfire: Job Search Virtual Assistant",
         description:
-          "Flashfire is an AI job application platform that automates job search, auto-applies to jobs using AI, and matches you with the right roles faster.",
+          "Get hired faster with Flashfire. Our team helps optimize your resume, apply to the right jobs, and manage your job search from start to finish.",
         images: ["https://www.flashfirejobs.com/images/og-image.png"],
       },
     };
@@ -102,6 +136,11 @@ export default async function LocalePage({ params }: LocalePageProps) {
   // Handle Canada locale
   if (locale === "en-ca") {
     return <CanadaHome />;
+  }
+
+  // Handle UK / EU locale
+  if (locale === "en-gb") {
+    return <UKHome />;
   }
 
   // Invalid locale - 404

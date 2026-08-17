@@ -141,11 +141,6 @@ const nextConfig: NextConfig = {
           source: '/register/:path*',
           destination: `${process.env.REGISTER_APP_URL || 'https://flashfire-register-ads-website.vercel.app'}/register/:path*`,
         },
-        // Proxy /meeting-booked to the register app (it lives there)
-        {
-          source: '/meeting-booked',
-          destination: `${process.env.REGISTER_APP_URL || 'https://flashfire-register-ads-website.vercel.app'}/meeting-booked`,
-        },
       ],
     };
   },
@@ -168,8 +163,32 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/en-gb/blogs",
+        destination: "/en-gb/blog",
+        permanent: true,
+      },
+      {
+        source: "/en-us/blogs",
+        destination: "/en-us/blog",
+        permanent: true,
+      },
+      // Legacy /en-uk/* prefix (renamed to /en-gb/* to match the ISO 3166-1 /
+      // BCP-47 standard). These specific ones resolve in a single hop instead
+      // of falling through to the generic /en-uk/:path* rule below and
+      // landing on a since-renamed sub-path.
+      {
+        source: "/en-uk/blogs",
+        destination: "/en-gb/blog",
+        permanent: true,
+      },
+      {
         source: "/feature",
         destination: "/features",
+        permanent: true,
+      },
+      {
+        source: "/en-us/feature",
+        destination: "/en-us/features",
         permanent: true,
       },
       {
@@ -230,6 +249,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/en-gb/features/ats-optimizer",
+        destination: "/en-gb/features/resume-optimizer",
+        permanent: true,
+      },
+      {
+        source: "/en-uk/features/ats-optimizer",
+        destination: "/en-gb/features/resume-optimizer",
+        permanent: true,
+      },
+      {
         source: "/job-application-automation",
         destination: "/features/job-automation",
         permanent: true,
@@ -252,6 +281,36 @@ const nextConfig: NextConfig = {
       {
         source: "/en-ca/how-it-works",
         destination: "/en-ca/how-flashfire-ai-job-automation-platform-works",
+        permanent: true,
+      },
+      {
+        source: "/en-gb/how-it-works",
+        destination: "/en-gb/how-flashfire-ai-job-automation-platform-works",
+        permanent: true,
+      },
+      {
+        source: "/en-uk/how-it-works",
+        destination: "/en-gb/how-flashfire-ai-job-automation-platform-works",
+        permanent: true,
+      },
+      {
+        source: "/en-us/how-it-works",
+        destination: "/en-us/how-flashfire-ai-job-automation-platform-works",
+        permanent: true,
+      },
+      // Catch-all: the UK/EU locale tree was renamed from /en-uk to /en-gb
+      // (GB is the correct ISO 3166-1 code — there is no "UK" country code).
+      // This preserves every indexed /en-uk/* URL and external backlink.
+      // Must stay AFTER the specific /en-uk/* rules above so those resolve
+      // in one hop instead of landing on a since-renamed sub-path.
+      {
+        source: "/en-uk",
+        destination: "/en-gb",
+        permanent: true,
+      },
+      {
+        source: "/en-uk/:path*",
+        destination: "/en-gb/:path*",
         permanent: true,
       },
     ];

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import {
   ArrowRight,
@@ -8,24 +8,35 @@ import {
   Briefcase,
   Check,
   CheckCircle,
+  Clock,
   Filter,
+  GraduationCap,
+  Globe,
   Search,
   Shield,
   Target,
   Trophy,
   Users,
+  X,
   Zap,
 } from "lucide-react";
+import { FaPlus, FaTimes } from "react-icons/fa";
 import Navbar from "@/src/components/navbar/navbar";
 import Footer from "@/src/components/footer/footer";
+import faqStyles from "@/src/components/homePageFAQ/homePageFAQ.module.css";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
+import { localizeHref, stripLocalePrefix } from "@/src/utils/locale";
 
 export default function PrecisionTargetingPage() {
   const router = useRouter();
   const pathname = usePathname();
   const { getButtonProps } = useGeoBypass({ onBypass: () => {} });
+  const [activeFaqIndex, setActiveFaqIndex] = useState<number | null>(null);
+  const handleFaqToggle = (index: number) => {
+    setActiveFaqIndex(activeFaqIndex === index ? null : index);
+  };
 
   const handleGetMeInterview = () => {
     try {
@@ -72,13 +83,10 @@ export default function PrecisionTargetingPage() {
         pathname || (typeof window !== "undefined" ? window.location.pathname : "");
       const normalizedPath = currentPath.split("?")[0];
       const isAlreadyOnGetMeInterview =
-        normalizedPath === "/get-me-interview" ||
-        normalizedPath === "/en-ca/get-me-interview";
+        stripLocalePrefix(normalizedPath) === "/get-me-interview";
       const isOnPrecisionTargetingPage =
-        normalizedPath === "/features/precision-targeting" ||
-        normalizedPath === "/en-ca/features/precision-targeting" ||
-        normalizedPath === "/features/ai-job-targeting" ||
-        normalizedPath === "/en-ca/features/ai-job-targeting";
+        stripLocalePrefix(normalizedPath) === "/features/precision-targeting" ||
+        stripLocalePrefix(normalizedPath) === "/features/ai-job-targeting";
 
       if (isAlreadyOnGetMeInterview) {
         const currentScrollY = typeof window !== "undefined" ? window.scrollY : 0;
@@ -99,7 +107,7 @@ export default function PrecisionTargetingPage() {
           window.history.pushState(
             {},
             "",
-            normalizedPath.startsWith("/en-ca") ? "/en-ca/get-me-interview" : "/get-me-interview"
+            localizeHref("/get-me-interview", normalizedPath)
           );
         }
         requestAnimationFrame(() => window.scrollTo({ top: currentScrollY, behavior: "instant" }));
@@ -127,49 +135,158 @@ export default function PrecisionTargetingPage() {
   const targetAudience = [
     {
       title: "International Students",
-      desc: "Apply only to companies that sponsor or consider visa holders.",
+      desc: "Target employers more likely to sponsor international candidates.",
       icon: Users,
     },
     {
       title: "Career Switchers",
-      desc: "Target roles where your transferable skills matter.",
+      desc: "Focus on roles where your transferable skills are valued.",
       icon: Briefcase,
     },
     {
       title: "Experienced Professionals",
-      desc: "Avoid junior roles and low-growth companies.",
+      desc: "Prioritize senior roles that match your expertise.",
       icon: Trophy,
+    },
+    {
+      title: "Fresh Graduates",
+      desc: "Discover entry-level opportunities that fit your education and skills.",
+      icon: GraduationCap,
+    },
+    {
+      title: "Remote Job Seekers",
+      desc: "Find remote jobs that align with your experience.",
+      icon: Globe,
+    },
+    {
+      title: "Professionals Seeking Faster Interviews",
+      desc: "Spend less time applying and more time preparing for interviews.",
+      icon: Clock,
     },
   ];
 
   const howItWorksSteps = [
     {
-      title: "Understand your profile",
-      desc: "We analyze your resume, experience, skills, and past roles to identify where you truly fit.",
+      title: "Analyze Your Experience",
+      desc: "We review your resume, work history, skills, and career preferences to understand which roles fit your background.",
       icon: Search,
     },
     {
-      title: "Filter high-fit jobs",
-      desc: "Jobs are filtered based on ATS score, skill match, role relevance, and hiring patterns.",
+      title: "Identify High-Match Opportunities",
+      desc: "Relevant jobs are shortlisted based on your experience, resume alignment, skills, and hiring requirements.",
       icon: Filter,
     },
     {
-      title: "Apply with intent",
-      desc: "Applications are sent only to roles where your profile ranks competitively.",
+      title: "Focus Your Applications",
+      desc: "Apply only to opportunities where your qualifications closely match employer expectations.",
       icon: Target,
     },
     {
-      title: "Improve continuously",
-      desc: "Feedback, rejections, and responses are used to refine targeting every week.",
+      title: "Continuously Improve Your Results",
+      desc: "Application outcomes help refine future recommendations so your job search becomes more effective over time.",
       icon: BarChart3,
     },
   ];
 
   const stats = [
-    { value: "70%", label: "FEWER REJECTIONS" },
-    { value: "90%", label: "ATS MATCH ACCURACY" },
-    { value: "10x", label: "TIME SAVED" },
-    { value: "3x", label: "HIGHER INTERVIEW RATE" },
+    { label: "Apply to Better-Fit Roles" },
+    { label: "Higher Resume Match" },
+    { label: "Save Hours Every Week" },
+    { label: "More Interview Opportunities" },
+  ];
+
+  const problemComparison = [
+    ["Apply everywhere", "Focus on high-match jobs"],
+    ["Generic applications", "Relevant opportunities"],
+    ["Low interview rates", "Better interview potential"],
+    ["Time-consuming search", "Smarter applications"],
+    ["No clear strategy", "Data-backed recommendations"],
+  ];
+
+  const benefitCards = [
+    {
+      title: "Find Better Opportunities",
+      desc: "Discover jobs aligned with your skills and experience.",
+      icon: Search,
+    },
+    {
+      title: "Avoid Low-Match Roles",
+      desc: "Stop wasting time on opportunities that don't fit your profile.",
+      icon: X,
+    },
+    {
+      title: "Improve Interview Chances",
+      desc: "Focus on applications with stronger alignment to employer requirements.",
+      icon: CheckCircle,
+    },
+    {
+      title: "Save Time Every Week",
+      desc: "Spend less time searching and more time preparing for interviews.",
+      icon: Clock,
+    },
+  ];
+
+  const jobTargetingFAQs = [
+    {
+      question: "What is precision job targeting?",
+      answer:
+        "Precision job targeting is an approach that focuses your applications on roles that closely match your skills, experience, and career goals, instead of applying to every available opening.",
+    },
+    {
+      question: "How does FlashFire identify the best jobs for me?",
+      answer:
+        "FlashFire reviews your resume, work history, skills, and career preferences, then shortlists roles based on how closely they align with your background and hiring requirements.",
+    },
+    {
+      question: "Why is targeted job searching better than mass applying?",
+      answer:
+        "Targeted applications focus your effort on roles where your profile is genuinely competitive, which can lead to better resume alignment and stronger interview potential than sending out applications indiscriminately.",
+    },
+    {
+      question: "Can FlashFire help improve my interview rate?",
+      answer:
+        "By focusing your applications on higher-match opportunities, FlashFire helps you apply where your qualifications align more closely with employer expectations, which can improve your interview potential.",
+    },
+    {
+      question: "Does FlashFire consider my resume and work experience?",
+      answer:
+        "Yes. Your resume, work history, and skills are core inputs FlashFire uses to determine which roles are the best fit for your profile.",
+    },
+    {
+      question: "Can I target remote jobs?",
+      answer:
+        "Yes, FlashFire can help you find remote opportunities that align with your experience and preferences.",
+    },
+    {
+      question: "Is precision targeting suitable for career switchers?",
+      answer:
+        "Yes. FlashFire helps career switchers focus on roles where their transferable skills are valued, rather than applying broadly across unrelated positions.",
+    },
+    {
+      question: "Can international students use FlashFire?",
+      answer:
+        "Yes, FlashFire helps international students target employers who are more likely to sponsor or consider visa holders.",
+    },
+    {
+      question: "How often are job recommendations updated?",
+      answer:
+        "Job recommendations are refreshed regularly as new opportunities become available and as your application outcomes help refine future matches.",
+    },
+    {
+      question: "Does FlashFire help optimize my resume for better matches?",
+      answer:
+        "FlashFire looks at your resume alignment with each role and helps highlight where adjustments could improve your match to a given opportunity.",
+    },
+    {
+      question: "Can I customize the types of jobs I want to target?",
+      answer:
+        "Yes, your career preferences, role interests, and priorities help shape which opportunities are shortlisted for you.",
+    },
+    {
+      question: "How does FlashFire improve my job search over time?",
+      answer:
+        "Application outcomes, including responses and rejections, are used to refine future recommendations so your job search becomes more effective over time.",
+    },
   ];
 
   const productSchema = {
@@ -211,11 +328,22 @@ export default function PrecisionTargetingPage() {
     ],
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: jobTargetingFAQs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
       <main className="min-h-screen overflow-x-hidden bg-white text-[#111827]">
         <section className="relative min-h-[510px] bg-[#fff3ee] px-4 pt-[92px]">
@@ -227,19 +355,17 @@ export default function PrecisionTargetingPage() {
 
             <div className="mx-auto max-w-[640px] text-center">
               <span className="mb-6 inline-flex rounded-full bg-[#ff4c00] px-6 py-1.5 text-[10px] font-extrabold text-white">
-                Precision Targeting
+                Higher Match Job Applications
               </span>
               <h1 className="text-[34px] font-extrabold leading-[1.15] tracking-normal text-[#111827] sm:text-[42px]">
-                Apply to Jobs That
+                Apply to Jobs You&apos;re Most
                 <br className="hidden sm:block" />
-                Actually Match Your Profile.
+                Likely to Get Interviewed For
               </h1>
               <p className="mx-auto mt-6 max-w-[520px] text-[15px] font-medium leading-7 text-[#596273]">
-                Stop wasting applications on low-fit roles. <strong>FlashFire&apos;s AI</strong>
-                <br className="hidden sm:block" />
-                <strong>targets jobs</strong> where your skills, experience, and <strong>ATS score</strong>
-                <br className="hidden sm:block" />
-                <strong>give you</strong> the <strong>highest chance of interviews.</strong>
+                FlashFire identifies the jobs that best match your skills, experience, resume, and
+                career goals, helping you focus your applications on opportunities with a higher
+                likelihood of interview calls.
               </p>
 
               <div className="mt-8 flex flex-row  items-center justify-center gap-4">
@@ -249,7 +375,7 @@ export default function PrecisionTargetingPage() {
                   className="inline-flex h-[42px] min-w-[148px] items-center justify-center gap-2 rounded-md border-2 border-black bg-white px-6 text-[12px] font-extrabold text-black transition hover:bg-[#ffe8dd]"
                   style={{ boxShadow: "0 4px 0 0 #ff4c00" }}
                 >
-                  Get Me Interview
+                  Find My Best-Match Jobs
                   <ArrowRight size={14} />
                 </button>
                 <button
@@ -279,12 +405,62 @@ export default function PrecisionTargetingPage() {
           <div className="mx-auto max-w-[860px]">
             <div className="mb-14 text-center">
               <h2 className="text-[34px] font-extrabold leading-[1.08] text-[#111827] sm:text-[42px]">
-                Precision AI Job Targeting
+                Why Most Job Seekers Don&apos;t
                 <br />
-                vs Mass Applying
+                Get Enough Interviews
               </h2>
-              <p className="mt-5 text-[16px] font-medium text-[#6b7280]">
-                See why targeted applications outperform spray-and-pray approaches
+              <p className="mx-auto mt-5 max-w-[620px] text-[16px] font-medium text-[#6b7280]">
+                Many applicants spend hours applying to every available role without knowing whether
+                they&apos;re actually a good match. The result is more rejections, wasted time, and
+                fewer interview opportunities.
+              </p>
+            </div>
+
+            <div className="grid border border-black md:grid-cols-2">
+              <div>
+                <div className="flex h-[54px] items-center gap-3 border-b border-black bg-[#f0f0f0] px-5 text-[15px] font-extrabold text-[#111827]">
+                  <Zap size={16} fill="#ff4c00" className="text-[#ff4c00]" />
+                  Without FlashFire
+                </div>
+                {problemComparison.map(([without]) => (
+                  <div
+                    key={without}
+                    className="flex h-[54px] items-center border-b border-black px-5 text-[16px] font-medium text-[#6b7280] last:border-b-0 md:last:border-b"
+                  >
+                    {without}
+                  </div>
+                ))}
+              </div>
+              <div className="border-t border-black md:border-l md:border-t-0">
+                <div className="flex h-[54px] items-center gap-3 bg-[#ff4c00] px-5 text-[15px] font-extrabold text-white">
+                  <Check size={16} strokeWidth={3} />
+                  With FlashFire
+                </div>
+                {problemComparison.map(([without, withFlashFire]) => (
+                  <div
+                    key={without}
+                    className="flex h-[54px] items-center gap-3 border-b border-[#ff9a78] bg-[#fff3ee] px-5 text-[16px] font-semibold text-[#111827] last:border-b-0"
+                  >
+                    <Check size={18} strokeWidth={3} className="text-[#ff4c00]" />
+                    {withFlashFire}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white px-4 py-20 sm:py-24">
+          <div className="mx-auto max-w-[860px]">
+            <div className="mb-14 text-center">
+              <h2 className="text-[34px] font-extrabold leading-[1.08] text-[#111827] sm:text-[42px]">
+                Why Targeted Job Applications
+                <br />
+                Beat Mass Applying
+              </h2>
+              <p className="mx-auto mt-5 max-w-[620px] text-[16px] font-medium text-[#6b7280]">
+                Sending hundreds of applications doesn&apos;t guarantee interviews. Applying
+                strategically to the right opportunities delivers better results with less effort.
               </p>
             </div>
 
@@ -295,10 +471,12 @@ export default function PrecisionTargetingPage() {
                   Mass Applying
                 </div>
                 {[
-                  "Low ATS match",
+                  "Apply to every opening",
+                  "Low resume relevance",
                   "High rejection rate",
-                  "Time wasted on poor-fit roles",
-                  "No learning or feedback loop",
+                  "Time-consuming",
+                  "No clear strategy",
+                  "Repetitive applications",
                 ].map((item) => (
                   <div
                     key={item}
@@ -311,13 +489,15 @@ export default function PrecisionTargetingPage() {
               <div className="border-t border-black md:border-l md:border-t-0">
                 <div className="flex h-[54px] items-center gap-3 bg-[#ff4c00] px-5 text-[15px] font-extrabold text-white">
                   <Check size={16} strokeWidth={3} />
-                  Precision Targeting
+                  FlashFire&apos;s Precision Targeting
                 </div>
                 {[
-                  "High skill & ATS match",
-                  "Better interview conversion",
-                  "Focused, quality applications",
-                  "Continuous optimization",
+                  "Focus on high-match opportunities",
+                  "Better resume and role alignment",
+                  "Higher interview potential",
+                  "Faster, more efficient job search",
+                  "Data-driven targeting",
+                  "Quality over quantity",
                 ].map((item) => (
                   <div
                     key={item}
@@ -334,9 +514,16 @@ export default function PrecisionTargetingPage() {
 
         <section className="bg-white px-4 py-20 sm:py-24">
           <div className="mx-auto max-w-[900px]">
-            <h2 className="mb-14 text-center text-[34px] font-extrabold leading-[1.08] text-[#111827] sm:text-[42px]">
-              Who Is Precision Targeting For?
-            </h2>
+            <div className="mb-14 text-center">
+              <h2 className="text-[34px] font-extrabold leading-[1.08] text-[#111827] sm:text-[42px]">
+                Who Benefits From Precision Job Targeting?
+              </h2>
+              <p className="mx-auto mt-5 max-w-[620px] text-[16px] font-medium text-[#6b7280]">
+                Whether you&apos;re applying for your first job or your next leadership role,
+                FlashFire helps you focus on opportunities that match your background and career
+                goals.
+              </p>
+            </div>
             <div className="grid auto-rows-fr gap-6 md:grid-cols-3">
               {targetAudience.map((item) => {
                 const Icon = item.icon;
@@ -361,10 +548,11 @@ export default function PrecisionTargetingPage() {
           <div className="mx-auto max-w-[760px]">
             <div className="mb-12 text-center">
               <h2 className="text-[34px] font-extrabold leading-[1.08] text-[#111827] sm:text-[42px]">
-                Precision targeting, done right
+                How FlashFire Finds Your Best Job Matches
               </h2>
               <p className="mt-6 text-[15px] font-medium text-[#6b7280]">
-                We don&apos;t apply everywhere. We apply where you actually have a chance.
+                Every recommendation is designed to help you spend less time searching and more time
+                interviewing.
               </p>
             </div>
 
@@ -394,10 +582,11 @@ export default function PrecisionTargetingPage() {
           <div className="mx-auto max-w-[960px]">
             <div className="mb-14 text-center">
               <h2 className="text-[34px] font-extrabold leading-[1.08] text-[#111827] sm:text-[42px]">
-                Real Results from Precision Targeting
+                Why Job Seekers Choose Precision Targeting
               </h2>
               <p className="mt-6 text-[16px] font-medium text-[#6b7280]">
-                Our AI-driven targeting strategy focuses your effort where it matters most
+                Applying to better-matched opportunities can improve interview rates while reducing
+                unnecessary applications.
               </p>
             </div>
             <div className="grid auto-rows-fr gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -406,21 +595,83 @@ export default function PrecisionTargetingPage() {
                   key={stat.label}
                   className="flex h-full min-w-0 flex-col items-center justify-center overflow-hidden border border-black bg-white px-8 py-7 text-center shadow-[4px_4px_0_0_rgba(0,0,0,0.85)]"
                 >
-                  <p className="text-[36px] font-extrabold leading-none text-[#ff4c00]">{stat.value}</p>
-                  <p className="mt-4 text-[10px] font-extrabold uppercase text-[#6b7280]">{stat.label}</p>
+                  <CheckCircle size={32} className="text-[#ff4c00]" />
+                  <p className="mt-4 text-[13px] font-extrabold uppercase text-[#6b7280]">{stat.label}</p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
+        <section className="bg-white px-4 py-20 sm:py-24">
+          <div className="mx-auto max-w-[900px]">
+            <div className="mb-14 text-center">
+              <h2 className="text-[34px] font-extrabold leading-[1.08] text-[#111827] sm:text-[42px]">
+                Why Precision Job Targeting Works
+              </h2>
+              <p className="mx-auto mt-5 max-w-[620px] text-[16px] font-medium text-[#6b7280]">
+                Applying to fewer, better-matched jobs often produces stronger results than sending
+                hundreds of applications.
+              </p>
+            </div>
+            <div className="grid auto-rows-fr gap-6 md:grid-cols-2">
+              {benefitCards.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <article
+                    key={item.title}
+                    className="h-full min-h-[160px] min-w-0 overflow-hidden rounded-md border border-[#d5d5d5] bg-white p-7 shadow-[0_8px_18px_rgba(0,0,0,0.12)]"
+                  >
+                    <span className="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-[#ff4c00] text-white">
+                      <Icon size={21} />
+                    </span>
+                    <h3 className="text-[16px] font-extrabold text-[#111827]">{item.title}</h3>
+                    <p className="mt-4 text-[13px] font-medium leading-6 text-[#6b7280]">{item.desc}</p>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section id="faq" className={faqStyles.faqSection}>
+          <div id="faq-header" className={faqStyles.header}>
+            <h2>Frequently Asked Questions About Precision Job Targeting</h2>
+          </div>
+
+          <div className={faqStyles.faqContainer}>
+            {jobTargetingFAQs.map((faq, index) => (
+              <div
+                key={faq.question}
+                className={`${faqStyles.faqItem} ${
+                  activeFaqIndex === index ? faqStyles.active : ""
+                }`}
+              >
+                <button className={faqStyles.faqQuestion} onClick={() => handleFaqToggle(index)}>
+                  <span>{faq.question}</span>
+                  <span className={faqStyles.icon}>
+                    {activeFaqIndex === index ? <FaTimes /> : <FaPlus />}
+                  </span>
+                </button>
+
+                {activeFaqIndex === index && (
+                  <div className={faqStyles.faqAnswer}>
+                    <p>{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className="bg-[#fff3ee] px-4 py-20">
           <div className="mx-auto max-w-[760px] text-center">
             <h2 className="text-[34px] font-extrabold leading-tight text-[#111827]">
-              Ready to Target Smarter?
+              Ready to Focus on the Right Opportunities?
             </h2>
             <p className="mx-auto mt-5 max-w-[600px] text-[16px] font-medium leading-7 text-[#596273]">
-              Join thousands of job seekers who stopped mass applying and started getting interviews.
+              Instead of sending hundreds of applications, start applying to jobs that better match
+              your skills, experience, and career goals.
             </p>
             <button
               {...getButtonProps()}
@@ -428,7 +679,7 @@ export default function PrecisionTargetingPage() {
               className="mt-8 inline-flex h-[52px] items-center justify-center gap-2 rounded-md border-2 border-black bg-white px-8 text-[15px] font-extrabold text-black transition hover:bg-[#ffe8dd]"
               style={{ boxShadow: "0 4px 0 0 #ff4c00" }}
             >
-              Get Me Interview
+              Find My Best-Match Jobs
               <ArrowRight size={17} />
             </button>
             <p className="mt-5 text-[13px] font-medium text-[#6b7280]">

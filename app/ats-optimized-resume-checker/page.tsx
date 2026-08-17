@@ -24,6 +24,7 @@ import {
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking"
 import { GTagUTM } from "@/src/utils/GTagUTM"
 import { useGeoBypass } from "@/src/utils/useGeoBypass"
+import { localizeHref, stripLocalePrefix } from "@/src/utils/locale";
 
 // Minimal UI primitives (local) to avoid missing imports
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -140,10 +141,8 @@ export default function Page() {
       // Check current path first
       const currentPath = pathname || (typeof window !== 'undefined' ? window.location.pathname : '')
       const normalizedPath = currentPath.split('?')[0] // Remove query params
-      const isAlreadyOnGetMeInterview = normalizedPath === '/get-me-interview' ||
-        normalizedPath === '/en-ca/get-me-interview'
-      const isOnATSPage = normalizedPath === '/ats-optimized-resume-checker' ||
-        normalizedPath === '/en-ca/ats-optimized-resume-checker'
+      const isAlreadyOnGetMeInterview = stripLocalePrefix(normalizedPath) === '/get-me-interview'
+      const isOnATSPage = stripLocalePrefix(normalizedPath) === '/ats-optimized-resume-checker'
 
       // If already on the route, save scroll position and prevent navigation
       if (isAlreadyOnGetMeInterview) {
@@ -179,7 +178,7 @@ export default function Page() {
           sessionStorage.setItem('preserveScrollPosition', currentScrollY.toString())
         }
 
-        const targetPath = normalizedPath.startsWith('/en-ca') ? '/en-ca/get-me-interview' : '/get-me-interview'
+        const targetPath = localizeHref('/get-me-interview', normalizedPath)
         router.replace(targetPath)
         return
       }
@@ -212,8 +211,7 @@ export default function Page() {
     // Check current path
     const currentPath = pathname || (typeof window !== 'undefined' ? window.location.pathname : '')
     const normalizedPath = currentPath.split('?')[0]
-    const isOnATSPage = normalizedPath === '/ats-optimized-resume-checker' ||
-      normalizedPath === '/en-ca/ats-optimized-resume-checker'
+    const isOnATSPage = stripLocalePrefix(normalizedPath) === '/ats-optimized-resume-checker'
 
     // If on ATS page, scroll to the "How It Works" section
     if (isOnATSPage && typeof window !== 'undefined') {
@@ -225,7 +223,7 @@ export default function Page() {
     }
 
     // Otherwise, navigate to the How It Works page
-    const targetPath = normalizedPath.startsWith('/en-ca') ? '/en-ca/how-it-works' : '/how-it-works'
+    const targetPath = localizeHref('/how-it-works', normalizedPath)
     router.push(targetPath)
   }
 

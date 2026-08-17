@@ -2,9 +2,9 @@ import { Metadata } from "next";
 import HowItWorks from "@/src/components/pages/howItWorks/HowItWorks";
 
 export const metadata: Metadata = {
-  title: "AI Job Application Software to Apply for Jobs Automatically",
+  title: "Job Search Automation Platform to Land More Interviews",
   description:
-    "Flashfire is an AI job application software that helps you apply for jobs automatically with ATS-optimized resumes and targeted applications.",
+    "Automate your job search with FlashFire. Optimize your resume, apply to relevant jobs, track applications, and land more interview calls faster.",
   robots: {
     index: true,
     follow: true,
@@ -14,13 +14,14 @@ export const metadata: Metadata = {
     languages: {
       "en-US": "https://www.flashfirejobs.com/how-flashfire-ai-job-automation-platform-works",
       "en-CA": "https://www.flashfirejobs.com/en-ca/how-flashfire-ai-job-automation-platform-works",
+      "en-GB": "https://www.flashfirejobs.com/en-gb/how-flashfire-ai-job-automation-platform-works",
       "x-default": "https://www.flashfirejobs.com/how-flashfire-ai-job-automation-platform-works",
     },
   },
   openGraph: {
-    title: "AI Job Application Software to Apply for Jobs Automatically",
+    title: "Job Search Automation Platform to Land More Interviews",
     description:
-      "Flashfire is an AI job application software that helps you apply for jobs automatically with ATS-optimized resumes and targeted applications.",
+      "Automate your job search with FlashFire. Optimize your resume, apply to relevant jobs, track applications, and land more interview calls faster.",
     url: "https://www.flashfirejobs.com/how-flashfire-ai-job-automation-platform-works",
     type: "website",
   },

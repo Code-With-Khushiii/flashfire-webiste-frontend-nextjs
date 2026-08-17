@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     languages: {
       "en-US": "https://www.flashfirejobs.com/features/resume-optimizer",
       "en-CA": "https://www.flashfirejobs.com/en-ca/features/resume-optimizer",
+      "en-GB": "https://www.flashfirejobs.com/en-gb/features/resume-optimizer",
       "x-default": "https://www.flashfirejobs.com/features/resume-optimizer",
     },
   },

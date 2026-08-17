@@ -85,7 +85,7 @@ export default function PricingCard({
     });
   }, [title, allPlans]);
 
-  // Parse base price from string (handles "$199" or "CA$279")
+  // Parse base price from string (handles "$199", "CA$279" or "£149")
   const basePrice = useMemo(() => {
     const priceMatch = price.match(/[\d.]+/);
     return priceMatch ? parseFloat(priceMatch[0]) : 0;
@@ -105,9 +105,12 @@ export default function PricingCard({
     return Math.round(discount);
   }, [oldBasePrice, basePrice]);
 
-  // Get currency symbol
+  // Get currency symbol. Check the multi-character prefixes first so "CA$" is
+  // not matched as a plain "$".
   const currencySymbol = useMemo(() => {
     if (price.includes("CA$")) return "CA$";
+    if (price.includes("£")) return "£";
+    if (price.includes("€")) return "€";
     if (price.includes("$")) return "$";
     return "$";
   }, [price]);
@@ -261,27 +264,6 @@ export default function PricingCard({
         </ul>
 
         <div className="mt-auto">
-          {(addOn || hasUpgradeOptions) ? (
-            <button
-              onClick={() => {
-                if (onOptionsClick) {
-                  onOptionsClick(title);
-                } else {
-                  // Fallback to individual handlers if combined handler not provided
-                  if (addOn && onBoosterClick) {
-                    onBoosterClick(title);
-                  } else if (hasUpgradeOptions && onUpgradeClick) {
-                    onUpgradeClick(title);
-                  }
-                }
-              }}
-              className="bg-[#ff4c00] text-white border border-[#ff4c00] py-2.5 sm:py-3 px-3 sm:px-4 font-semibold text-xs sm:text-sm rounded-md w-full cursor-pointer transition-all duration-300 hover:bg-[#e24300] mb-3 sm:mb-4"
-            >
-              {addOn && hasUpgradeOptions ? "View Options" : addOn && title === "EXECUTIVE" ? "View Options" : addOn ? "Booster Add-On" : "Upgrade Plan"}
-            </button>
-          ) : (
-            <div className="mb-3 sm:mb-4 h-[2rem] sm:h-[2.5rem]"></div>
-          )}
 
           {/* <p className="text-[0.85rem] text-[#555] mb-5">
         Total {subTitle.toLowerCase()} included
@@ -325,9 +307,17 @@ export default function PricingCard({
               });
 
               if (currentPaymentLink && typeof window !== "undefined") {
-                const checkoutWindow = window.open(currentPaymentLink, "_blank", "noopener,noreferrer");
+                // Don't pass "noopener"/"noreferrer" in the features string here —
+                // both force window.open() to return null even when the tab opens
+                // fine, which made the "blocked" fallback below fire on every
+                // click and open a second tab with the same link. Detect a real
+                // block via the null return, then strip window.opener manually
+                // to get the same reverse-tabnabbing protection.
+                const checkoutWindow = window.open(currentPaymentLink, "_blank");
 
-                if (!checkoutWindow) {
+                if (checkoutWindow) {
+                  checkoutWindow.opener = null;
+                } else {
                   window.location.href = currentPaymentLink;
                 }
               }

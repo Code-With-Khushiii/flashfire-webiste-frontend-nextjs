@@ -11,6 +11,7 @@ import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useRouter } from "next/navigation";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
 import { smoothScrollToElement, smoothScrollTo } from "@/src/utils/smoothScroll";
+import { getLocalePrefix, stripLocalePrefix, isLocaleHome } from "@/src/utils/locale";
 
 
 type Props = {
@@ -44,15 +45,14 @@ export default function NavbarClient({ links, ctas }: Props) {
   });
   const pathname = usePathname();
   const safePathname = pathname || (typeof window !== 'undefined' ? window.location.pathname : '') || '';
-  const isCanadaContext = safePathname.startsWith("/en-ca");
-  const prefix = isCanadaContext ? "/en-ca" : "";
+  const prefix = getLocalePrefix(safePathname);
+  // Compare against the locale-stripped path so /en-ca and /en-gb behave alike.
+  const basePathname = stripLocalePrefix(safePathname);
 
-  const isImageTestimonialsPage = safePathname === "/testimonials" || safePathname === "/en-ca/testimonials" || safePathname === "/image-testimonials" || safePathname === "/en-ca/image-testimonials";
+  const isImageTestimonialsPage = basePathname === "/testimonials" || basePathname === "/image-testimonials";
   const isBlogsPage =
-    safePathname.startsWith("/blogs") ||
-    safePathname.startsWith("/blog") ||
-    safePathname.startsWith("/en-ca/blogs") ||
-    safePathname.startsWith("/en-ca/blog");
+    basePathname.startsWith("/blogs") ||
+    basePathname.startsWith("/blog");
 
   const isExternalHref = (href: string) => href.startsWith("http");
 
@@ -127,7 +127,7 @@ export default function NavbarClient({ links, ctas }: Props) {
             easing: 'easeInOutCubic',
           });
         }, 100);
-      } else if (currentPath === '/' || currentPath === '/en-ca') {
+      } else if (isLocaleHome(currentPath)) {
         smoothScrollTo(0, {
           duration: 600,
           easing: 'easeOutCubic',
@@ -185,11 +185,11 @@ export default function NavbarClient({ links, ctas }: Props) {
             {/* Left Section: Logo */}
             <div className={styles.navLeft}>
               <Link
-                href={isCanadaContext ? "/en-ca" : "/"}
+                href={prefix || "/"}
                 className={styles.navLogoText}
                 onClick={(e) => {
                   const currentPath = pathname;
-                  const isOnHomePage = currentPath === "/" || currentPath === "/en-ca" || currentPath === prefix + "/";
+                  const isOnHomePage = isLocaleHome(currentPath);
 
                   if (isOnHomePage) {
                     e.preventDefault();
@@ -210,8 +210,8 @@ export default function NavbarClient({ links, ctas }: Props) {
               {links.map((link) => {
                 const sectionLinks: string[] = [];
                 const isSectionLink = sectionLinks.includes(link.href);
-                const isOnHomePage = pathname === '/' || pathname === '/en-ca' || pathname === prefix + '/';
-                const isOnPricingPage = pathname === '/pricing' || pathname === '/en-ca/pricing' || pathname === prefix + '/pricing';
+                const isOnHomePage = isLocaleHome(pathname);
+                const isOnPricingPage = stripLocalePrefix(pathname) === '/pricing';
                 const isOnSectionPage = pathname === getHref(link.href) || pathname === link.href || pathname === prefix + link.href;
                 const isExternal = isExternalHref(link.href) || link.target === "_blank";
                 const isFeaturesLink = link.name.toLowerCase() === "features";
@@ -425,7 +425,7 @@ export default function NavbarClient({ links, ctas }: Props) {
                             router.push(prefix + '/');
                             const scrollToSectionOnHome = () => {
                               const currentPath = window.location.pathname;
-                              const isNowOnHome = currentPath === '/' || currentPath === '/en-ca' || currentPath === prefix + '/';
+                              const isNowOnHome = isLocaleHome(currentPath);
                               if (isNowOnHome) {
                                 const sectionId = link.href.replace('/', '');
                                 const section = document.getElementById(sectionId);
@@ -499,7 +499,7 @@ export default function NavbarClient({ links, ctas }: Props) {
 
             {/* Right Section: CTAs (Desktop) */}
             <div className={styles.navRight}>
-              {ctas.primary && (ctas.primary.href === "/Get-Started" || ctas.primary.href === "/en-ca/Get-Started") ? (
+              {ctas.primary && (stripLocalePrefix(ctas.primary.href) === "/Get-Started") ? (
                 <Link
                   href={getHref(ctas.primary.href)}
                   className={styles.navPrimaryButton}
@@ -547,8 +547,8 @@ export default function NavbarClient({ links, ctas }: Props) {
                 {links.map((link) => {
                   const sectionLinks: string[] = [];
                   const isSectionLink = sectionLinks.includes(link.href);
-                  const isOnHomePage = safePathname === '/' || safePathname === '/en-ca' || safePathname === prefix + '/';
-                  const isOnPricingPage = safePathname === '/pricing' || safePathname === '/en-ca/pricing' || safePathname === prefix + '/pricing';
+                  const isOnHomePage = isLocaleHome(safePathname);
+                  const isOnPricingPage = stripLocalePrefix(safePathname) === '/pricing';
                   const isOnSectionPage = safePathname === getHref(link.href) || safePathname === link.href || safePathname === prefix + link.href;
                   const isExternal = isExternalHref(link.href) || link.target === "_blank";
                   const isFeaturesLink = link.name.toLowerCase() === "features";
@@ -837,7 +837,7 @@ export default function NavbarClient({ links, ctas }: Props) {
                               router.push(prefix + '/');
                               const scrollToSectionOnHome = () => {
                                 const currentPath = window.location.pathname;
-                                const isNowOnHome = currentPath === '/' || currentPath === '/en-ca' || currentPath === prefix + '/';
+                                const isNowOnHome = isLocaleHome(currentPath);
                                 if (isNowOnHome) {
                                   const sectionId = link.href.replace('/', '');
                                   const section = document.getElementById(sectionId);
@@ -924,8 +924,7 @@ export default function NavbarClient({ links, ctas }: Props) {
         {/* Mobile Bottom Book a Demo CTA */}
         {!isMenuOpen &&
           ctas.primary &&
-          (ctas.primary.href === "/Get-Started" ||
-            ctas.primary.href === "/en-ca/Get-Started") && (
+          stripLocalePrefix(ctas.primary.href) === "/Get-Started" && (
             <div className={styles.navMobileButtonsSticky}>
 
               <Link

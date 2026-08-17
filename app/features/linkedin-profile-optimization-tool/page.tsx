@@ -2,53 +2,163 @@
 
 import { useRef, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import Image from "next/image";
 import Navbar from "@/src/components/navbar/navbar";
 import Footer from "@/src/components/footer/footer";
-import { ArrowLeft, ArrowRight, Check, FileText } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Copy, FileText, Mail } from "lucide-react";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import faqStyles from "@/src/components/homePageFAQ/homePageFAQ.module.css";
-import HomePageDemoCTA from "@/src/components/homePageDemoCTA/homePageDemoCTA";
+import demoCtaStyles from "@/src/components/homePageDemoCTA/homePageDemoCTA.module.css";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
+import { localizeHref, stripLocalePrefix } from "@/src/utils/locale";
 
 export default function LinkedInOptimizationPage() {
   const router = useRouter();
   const pathname = usePathname();
   const [activeFaqIndex, setActiveFaqIndex] = useState<number | null>(null);
+  const [emailCopied, setEmailCopied] = useState(false);
   const stepsRef = useRef<HTMLDivElement | null>(null);
   const { getButtonProps } = useGeoBypass({
     onBypass: () => {},
   });
 
+  const handleCopyEmail = async () => {
+    const email = "support@flashfirejobs.com";
+
+    try {
+      await navigator.clipboard.writeText(email);
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 2000);
+    } catch (err) {
+      const textArea = document.createElement("textarea");
+      textArea.value = email;
+      textArea.style.position = "fixed";
+      textArea.style.opacity = "0";
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand("copy");
+        setEmailCopied(true);
+        setTimeout(() => setEmailCopied(false), 2000);
+      } catch (fallbackErr) {
+        console.error("Failed to copy email:", fallbackErr);
+      }
+      document.body.removeChild(textArea);
+    }
+  };
+
+  const handleScheduleCall = () => {
+    try {
+      const utmSource = typeof window !== "undefined" && window.localStorage
+        ? localStorage.getItem("utm_source") || "WEBSITE"
+        : "WEBSITE";
+      const utmMedium = typeof window !== "undefined" && window.localStorage
+        ? localStorage.getItem("utm_medium") || "LinkedIn_Demo_CTA"
+        : "LinkedIn_Demo_CTA";
+
+      try {
+        GTagUTM({
+          eventName: "sign_up_click",
+          label: "LinkedIn_Schedule_Career_Call_Button",
+          utmParams: {
+            utm_source: utmSource,
+            utm_medium: utmMedium,
+            utm_campaign: typeof window !== "undefined" && window.localStorage
+              ? localStorage.getItem("utm_campaign") || "Website"
+              : "Website",
+          },
+        });
+      } catch (gtagError) {
+        console.warn('GTagUTM error:', gtagError);
+      }
+
+      try {
+        trackButtonClick("Schedule a Free Career Call", "linkedin_demo_cta", "cta", {
+          button_location: "linkedin_demo_cta_button",
+          section: "linkedin_demo_cta",
+          target_url: "/schedule-a-free-career-call"
+        });
+        trackSignupIntent("linkedin_demo_cta", {
+          signup_source: "linkedin_demo_cta_button",
+          funnel_stage: "signup_intent",
+          target_url: "/schedule-a-free-career-call"
+        });
+      } catch (trackError) {
+        console.warn('Tracking error:', trackError);
+      }
+
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('showStrategyCallCard'));
+      }
+
+      const currentPath = pathname || (typeof window !== 'undefined' ? window.location.pathname : '');
+      const isAlreadyOnScheduleACareerCall = stripLocalePrefix(currentPath) === '/schedule-a-free-career-call';
+
+      if (isAlreadyOnScheduleACareerCall) {
+        return;
+      }
+
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('preserveScrollPosition', window.scrollY.toString());
+      }
+
+      const targetPath = localizeHref('/schedule-a-free-career-call', currentPath);
+      router.push(targetPath);
+    } catch (error) {
+      console.warn('Error in Schedule Call handler:', error);
+    }
+  };
+
   const linkedinOptimizationFAQs = [
     {
-      question: "What does it mean to optimise a LinkedIn profile for job search success?",
-      answer: " It means structuring your profile with industry-specific keywords, achievements, and recruiter-friendly formatting to boost visibility."
+      question: "How does Flashfire optimize my LinkedIn profile?",
+      answer: " We improve your headline, About section, skills, keywords, and experience to make your profile easier for recruiters to find and understand."
     },
     {
-      question: "How does optimizing your LinkedIn profile help attract recruiters?",
-      answer: " Optimized profiles rank higher in LinkedIn search results, making it easier for recruiters to find and contact you."
+      question: "How does LinkedIn optimization help me get recruiter messages?",
+      answer: " A keyword-optimized, well-positioned profile ranks higher in recruiter searches, increasing the number of profile views and recruiter messages you receive."
     },
     {
-      question: "What are LinkedIn optimization services, and who should use them?",
-      answer: " They're expert services that rewrite and optimize your profile to increase your chances of getting hired — useful for job seekers at all levels."
+      question: "Who should use Flashfire's LinkedIn optimization service?",
+      answer: " Active job seekers, career switchers, and experienced professionals who want more recruiter visibility and stronger positioning on LinkedIn."
     },
     {
-      question: "How often should I update my LinkedIn profile for better visibility?",
-      answer: " Ideally, every 2–3 months or whenever your role, skills, or job goals change. Frequent updates boost algorithm visibility too."
+      question: "How often should I optimize my LinkedIn profile?",
+      answer: " We recommend revisiting your profile every 2–3 months or whenever your role, skills, or job goals change to keep it aligned with recruiter search trends."
     },
     {
-      question: "What is an ATS optimized resume, and why is it important for hiring systems?",
-      answer: " It's a resume designed to pass Applicant Tracking Systems by using the right format and keywords so recruiters see it."
+      question: "Should my LinkedIn profile match my resume?",
+      answer: " Yes. Keeping your LinkedIn profile and resume consistent in roles, dates, and keywords builds recruiter trust and improves your chances of moving forward."
     },
     {
-      question: "How does resume optimization for ATS improve resume shortlisting?",
-      answer: " It increases match scores with job descriptions, helping your resume appear at the top of recruiter pipelines."
+      question: "How does LinkedIn optimization support my job search?",
+      answer: " An optimized profile works alongside your applications, helping recruiters discover you directly and reach out with opportunities you may not have applied to."
     },
     {
-      question: "Should my LinkedIn profile match my ATS optimized resume for better results?",
-      answer: " Having consistent language, roles, and keywords across both ensures higher trust, better visibility, and more interview calls."
+      question: "Can Flashfire optimize both my resume and LinkedIn profile?",
+      answer: " Yes, Flashfire can optimize your resume and LinkedIn profile together so both are consistent, keyword-aligned, and built to get recruiter attention."
+    },
+    {
+      question: "How long does LinkedIn optimization take?",
+      answer: " Most profiles are optimized within a few days, and you can typically expect visible improvements in recruiter activity within 7–14 days."
+    },
+    {
+      question: "Will I receive more recruiter messages after optimization?",
+      answer: " While results vary, most optimized profiles see increased profile views and a higher volume of recruiter messages within the first few weeks."
+    },
+    {
+      question: "Does Flashfire rewrite my entire LinkedIn profile?",
+      answer: " We rework the key sections that matter most for search visibility and recruiter impact, including your headline, About section, skills, and experience."
+    },
+    {
+      question: "Is LinkedIn optimization useful for experienced professionals?",
+      answer: " Yes, experienced professionals often benefit the most, since stronger positioning helps them appear in searches for senior and leadership roles."
+    },
+    {
+      question: "Can fresh graduates benefit from LinkedIn optimization?",
+      answer: " Yes, an optimized profile helps fresh graduates highlight relevant skills and projects, improving visibility even with limited work experience."
     }
   ];
 
@@ -102,32 +212,14 @@ export default function LinkedInOptimizationPage() {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What does it mean to optimise a LinkedIn profile for job search success?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ans. It means structuring your profile with industry-specific keywords, achievements, and recruiter-friendly formatting to boost visibility."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does optimizing your LinkedIn profile help attract recruiters?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ans. Optimized profiles rank higher in LinkedIn search results, making it easier for recruiters to find and contact you."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What are LinkedIn optimization services, and who should use them?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ans. They're expert services that rewrite and optimize your profile to increase your chances of getting hired—useful for job seekers at all levels."
-        }
+    "mainEntity": linkedinOptimizationFAQs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer.trim()
       }
-    ]
+    }))
   }
 
   const softwareAppSchema = {
@@ -183,25 +275,18 @@ export default function LinkedInOptimizationPage() {
           {/* CENTER CONTENT */}
           <div className="text-center lg:w-[56%]">
             <p className="mb-6 inline-flex items-center rounded-full bg-[#ff4c00] px-4 py-2 text-[11px] font-extrabold uppercase tracking-wide text-white">
-              LINKEDIN OPTIMIZATION - RECRUITER VISIBILITY
+              LinkedIn Profile Optimization
             </p>
 
-            <h1 className="text-4xl font-extrabold leading-tight text-[#111827] md:text-5xl xl:text-[58px]">
-              <span className="block md:whitespace-nowrap">
-                Your LinkedIn profile
-              </span>
-              <span className="block md:whitespace-nowrap">
-                shouldn't be invisible.
-              </span>
+            <h1 className="text-4xl font-extrabold leading-tight text-[#111827] md:text-5xl xl:text-[52px]">
+              Optimize Your LinkedIn Profile to Get More Recruiter Messages
             </h1>
 
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#4b5563]">
-              Recruiters don't scroll endlessly.
-              They search. They filter. They message only the profiles that rank and convert.
-              <br />
-              <span className="font-semibold text-[#111]">
-                FlashFire optimizes your LinkedIn to do both.
-              </span>
+              Your LinkedIn profile should do more than look professional.
+              FlashFire optimizes your headline, keywords, skills, and
+              experience to improve recruiter visibility and increase your
+              chances of getting interview opportunities.
             </p>
 
             <div className="mt-10 flex w-full flex-row flex-nowrap justify-center gap-3 sm:w-auto sm:gap-4">
@@ -248,16 +333,11 @@ export default function LinkedInOptimizationPage() {
                     // Check current path first
                     const currentPath = pathname || (typeof window !== 'undefined' ? window.location.pathname : '');
                     const normalizedPath = currentPath.split('?')[0];
-                    const isAlreadyOnGetMeInterview = normalizedPath === '/get-me-interview' ||
-                      normalizedPath === '/en-ca/get-me-interview';
-                    const isOnLinkedInPage = normalizedPath === '/linkedin-profile-optimization-services' ||
-                      normalizedPath === '/en-ca/linkedin-profile-optimization-services' ||
-                      normalizedPath === '/features/linkedin-profile-optimization-services' ||
-                      normalizedPath === '/en-ca/features/linkedin-profile-optimization-services' ||
-                      normalizedPath === '/features/linkedin-profile-optimization' ||
-                      normalizedPath === '/en-ca/features/linkedin-profile-optimization' ||
-                      normalizedPath === '/features/linkedin-profile-optimization-tool' ||
-                      normalizedPath === '/en-ca/features/linkedin-profile-optimization-tool';
+                    const isAlreadyOnGetMeInterview = stripLocalePrefix(normalizedPath) === '/get-me-interview';
+                    const isOnLinkedInPage = stripLocalePrefix(normalizedPath) === '/linkedin-profile-optimization-services' ||
+                      stripLocalePrefix(normalizedPath) === '/features/linkedin-profile-optimization-services' ||
+                      stripLocalePrefix(normalizedPath) === '/features/linkedin-profile-optimization' ||
+                      stripLocalePrefix(normalizedPath) === '/features/linkedin-profile-optimization-tool';
 
                     // If already on the route, save scroll position and prevent navigation
                     if (isAlreadyOnGetMeInterview) {
@@ -291,7 +371,7 @@ export default function LinkedInOptimizationPage() {
                       
                       // Update URL for tracking without navigation
                       if (typeof window !== 'undefined') {
-                        const targetPath = normalizedPath.startsWith('/en-ca') ? '/en-ca/get-me-interview' : '/get-me-interview';
+                        const targetPath = localizeHref('/get-me-interview', normalizedPath);
                         window.history.pushState({}, '', targetPath);
                       }
                       
@@ -398,14 +478,15 @@ export default function LinkedInOptimizationPage() {
       <section className="bg-white py-24">
         <div className="mx-auto max-w-6xl px-6 text-center">
           <h2 className="mx-auto max-w-4xl text-3xl font-extrabold leading-tight text-[#111827] md:text-4xl">
-            Flashfire's LinkedIn Profile Optimization Service doesn't just look
-            good-it gets replies.
+            LinkedIn optimization isn't about rewriting your profile. It's
+            about helping recruiters find you and giving them a reason to
+            reach out.
           </h2>
 
           <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-[#4b5563]">
-            FlashFire optimizes your LinkedIn profile for recruiter searches,
-            keyword ranking, and conversion -- so your profile shows up and
-            actually gets responses.
+            We optimize your LinkedIn profile with recruiter-friendly
+            keywords, stronger positioning, and compelling messaging so you
+            appear in more searches and attract more recruiter outreach.
           </p>
 
           <div className="mt-14 grid auto-rows-fr gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -439,13 +520,13 @@ export default function LinkedInOptimizationPage() {
         <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6 lg:flex-row lg:items-start">
           <div className="lg:w-2/5">
             <h2 className="max-w-lg text-3xl font-extrabold leading-tight text-[#111827] md:text-4xl">
-              From LinkedIn profile optimization to interview calls, in just 4
-              focused steps.
+              How We Optimize Your LinkedIn Profile in 4 Simple Steps
             </h2>
 
             <p className="mt-8 max-w-lg text-base leading-relaxed text-[#4b5563]">
-              Recruiters don't browse randomly. They search with intent.
-              FlashFire aligns your profile with exactly what they look for.
+              We optimize your LinkedIn profile based on how recruiters
+              search, filter, and evaluate candidates, helping you become
+              more visible for the roles you want.
             </p>
 
             <div className="mt-8 flex gap-3">
@@ -475,23 +556,23 @@ export default function LinkedInOptimizationPage() {
             {[
               {
                 step: "Step 1",
-                title: "Shared Your LinkedIn Profile",
-                desc: "Paste your LinkedIn URL. No login required -- we securely analyze your public profile.",
+                title: "Share Your LinkedIn Profile",
+                desc: "Paste your LinkedIn profile URL. No login required. We'll analyze your public profile and identify opportunities for improvement.",
               },
               {
                 step: "Step 2",
-                title: "Recruiter Search Optimized",
-                desc: "Our experts optimize headlines, keywords, skills, and experience for recruiter searches.",
+                title: "Optimize Your Profile",
+                desc: "We improve your headline, About section, experience, skills, keywords, and profile structure to increase recruiter visibility.",
               },
               {
                 step: "Step 3",
-                title: "Rank higher, get noticed",
-                desc: "Drop your improved profile into recruiter search patterns and relevant role discovery.",
+                title: "Improve Recruiter Visibility",
+                desc: "A stronger, keyword-optimized profile appears in more recruiter searches and attracts more profile views.",
               },
               {
                 step: "Step 4",
-                title: "Receive interview messages",
-                desc: "Better positioning helps turn profile visibility into real recruiter conversations.",
+                title: "Get More Recruiter Conversations",
+                desc: "A well-optimized profile helps generate more recruiter messages, interview invitations, and career opportunities.",
               },
             ].map((item) => (
               <div
@@ -524,15 +605,15 @@ export default function LinkedInOptimizationPage() {
         <div className="mx-auto max-w-5xl px-6">
           <div className="mb-14 text-center">
             <h2 className="text-3xl font-extrabold leading-tight text-[#111827] md:text-4xl">
-              Is FlashFire's LinkedIn
+              Who Can Benefit From
               <br />
-              Optimization Right for You?
+              LinkedIn Profile Optimization?
             </h2>
 
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[#4b5563]">
-              If recruiters aren't reaching out, your LinkedIn profile isn't
-              working. FlashFire fixes visibility, positioning, and conversion
-              -- together.
+              Whether you're actively applying or waiting for recruiters to
+              discover you, an optimized LinkedIn profile helps you stand out
+              in recruiter searches and generate more opportunities.
             </p>
           </div>
 
@@ -540,19 +621,19 @@ export default function LinkedInOptimizationPage() {
             {[
               {
                 title: "Active Job Seekers",
-                desc: "Applying regularly but not getting interview callbacks",
+                desc: "Applying for jobs but receiving few interview invitations.",
               },
               {
                 title: "Career Switchers",
-                desc: "Repositioning skills for a new role or industry",
+                desc: "Transitioning into a new industry or role and needing stronger positioning.",
               },
               {
                 title: "Mid Senior Professionals",
-                desc: "Targeting better roles, pay, or companies",
+                desc: "Looking for better opportunities, leadership roles, or higher compensation.",
               },
               {
                 title: "Low Recruiter Response",
-                desc: "Strong experience but no inbound messages",
+                desc: "Experienced professionals who aren't receiving recruiter messages despite having strong experience.",
               },
             ].map((item) => (
               <div
@@ -585,9 +666,7 @@ export default function LinkedInOptimizationPage() {
       <section className="bg-white pt-20">
         <div className="mx-auto max-w-5xl px-6 text-center">
           <h2 className="text-3xl font-extrabold leading-tight text-[#111827] md:text-4xl">
-            How FlashFire Stands Out
-            <br />
-            Your LinkedIn Profile?
+            Why LinkedIn Optimization Matters
           </h2>
         </div>
 
@@ -595,20 +674,20 @@ export default function LinkedInOptimizationPage() {
           <div className="mx-auto grid max-w-7xl gap-8 px-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                title: "Recruiters search, not scroll",
-                desc: "Most recruiters use keyword-based searches. If your profile doesn't match, it never appears.",
+                title: "Get Found in Recruiter Searches",
+                desc: "Improve keyword relevance so your profile appears for the roles you want.",
               },
               {
-                title: "Ranking alone isn't enough",
-                desc: "Even ranked profiles fail if the headline and experience don't convert interest into action.",
+                title: "Turn Views Into Conversations",
+                desc: "Strong headlines and compelling experience encourage recruiters to contact you.",
               },
               {
-                title: "Generic profiles blend in",
-                desc: "Profiles written for everyone fail to stand out. Specificity drives recruiter engagement.",
+                title: "Stand Out From Similar Candidates",
+                desc: "Position your experience clearly so recruiters immediately understand your value.",
               },
               {
-                title: "Optimized profiles get replies",
-                desc: "Clear positioning + keyword alignment leads to more messages and interview calls.",
+                title: "More Visibility. More Opportunities.",
+                desc: "Better positioning leads to more recruiter messages, profile views, and interview opportunities.",
               },
             ].map((item) => (
               <div
@@ -632,7 +711,7 @@ export default function LinkedInOptimizationPage() {
       {/* ================= FAQ ================= */}
       <section id="faq" className={faqStyles.faqSection}>
         <div id="faq-header" className={faqStyles.header}>
-          <h2>Question? We Got You Answers.</h2>
+          <h2>FAQs About LinkedIn Profile Optimization</h2>
           <p>
             We get it, LinkedIn optimization can sound complex. Here's everything
             explained, plain and simple.
@@ -667,8 +746,84 @@ export default function LinkedInOptimizationPage() {
         </div>
       </section>
 
-      {/* ================= FINAL CTA (same as homepage) ================= */}
-      <HomePageDemoCTA />
+      {/* ================= FINAL CTA ================= */}
+      <section className={demoCtaStyles.demoSectionOuter}>
+        <div className={demoCtaStyles.demoSection}>
+          <div className={demoCtaStyles.dotsPattern} />
+
+          <div className={demoCtaStyles.contentContainer}>
+            <div className={demoCtaStyles.leftContent}>
+              <h5 className={demoCtaStyles.demoSubheading}>Got Questions?</h5>
+
+              <h2 className={demoCtaStyles.demoHeading}>
+                Book a Demo
+                <span className={demoCtaStyles.fireIcon}>
+                  <Image
+                    src="https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/character.png"
+                    alt="Flashfire mascot"
+                    width={80}
+                    height={80}
+                    className="w-16 h-16 md:w-20 md:h-20"
+                  />
+                </span>
+                Call
+              </h2>
+
+              <p className={demoCtaStyles.demoText}>
+                Looking for more recruiter visibility? Schedule a free career
+                call to learn how LinkedIn optimization can help you attract
+                better opportunities and land more interviews.
+              </p>
+
+              <div className={demoCtaStyles.ctaArea}>
+                <button
+                  {...getButtonProps()}
+                  className={demoCtaStyles.demoButton}
+                  onClick={handleScheduleCall}
+                >
+                  Schedule a Free Career Call
+                </button>
+
+                <p className={demoCtaStyles.demoNote}>
+                  Limited slots available. Book your call now!
+                </p>
+              </div>
+            </div>
+
+            <div className={demoCtaStyles.rightContent}>
+              <div className={demoCtaStyles.emailCard}>
+                <div className={demoCtaStyles.emailHeader}>
+                  <Mail className={demoCtaStyles.emailIcon} />
+                  <span>Prefer Email?</span>
+                </div>
+
+                <div className={demoCtaStyles.emailCopyWrapper}>
+                  <input
+                    type="text"
+                    readOnly
+                    value="support@flashfirejobs.com"
+                    className={demoCtaStyles.emailInput}
+                  />
+                  <button
+                    onClick={handleCopyEmail}
+                    className={demoCtaStyles.copyButton}
+                    aria-label="Copy email to clipboard"
+                  >
+                    {emailCopied ? (
+                      <Check className={demoCtaStyles.copyIcon} size={18} />
+                    ) : (
+                      <Copy className={demoCtaStyles.copyIcon} size={18} />
+                    )}
+                  </button>
+                  {emailCopied && (
+                    <div className={demoCtaStyles.copiedTooltip}>Copied!</div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <Footer />
     </div>
   );

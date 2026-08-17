@@ -6,6 +6,7 @@ import { useState, useEffect, useRef } from "react";
 import React from "react";
 import CachedTestimonialImage from "./CachedTestimonialImage";
 import styles from "./homePageHappyUsers.module.css";
+import { getLocalePrefix } from "@/src/utils/locale";
 
 // Helper function to optimize Cloudinary URLs for fast loading
 const optimizeCloudinaryUrl = (url: string, width: number = 800) => {
@@ -82,14 +83,22 @@ export const ALL_REVIEW_IMAGES = [
 
 interface HomePageHappyUsersProps {
   variant?: "default" | "pricing" | "pricingVideos";
+  heading?: string;
+  headingClassName?: string;
+  ctaLabel?: string;
 }
+
+const DEFAULT_PRICING_HEADING_CLASS =
+  "mb-[720px] max-w-[430px] text-[64px] font-black leading-[1.02] tracking-[-0.02em] text-white max-[1024px]:mb-[560px] max-[1024px]:text-[50px] max-[768px]:mb-4 max-[768px]:max-w-[360px] max-[768px]:text-[40px] max-[480px]:text-[34px]";
 
 export default function HomePageHappyUsers({
   variant = "default",
+  heading = "1000+ Happy User’s Love",
+  headingClassName = DEFAULT_PRICING_HEADING_CLASS,
+  ctaLabel = "Book a Demo",
 }: HomePageHappyUsersProps) {
   const pathname = usePathname();
-  const isCanadaContext = pathname.startsWith("/en-ca");
-  const prefix = isCanadaContext ? "/en-ca" : "";
+  const prefix = getLocalePrefix(pathname);
 
   const handleTryItYourself = () => {
     if (typeof window === "undefined") {
@@ -111,7 +120,7 @@ export default function HomePageHappyUsers({
       name: "Anjali Shah",
       company: "Skyworks Solutions, Inc.",
       linkedinUrl: "https://www.linkedin.com/in/anjalishah6198/",
-      profileImage: "https://res.cloudinary.com/drcka8x04/image/upload/f_auto,q_auto:good,w_800,c_limit,dpr_auto/v1766552896/website_thumbnails-19_imnzdt.jpg",
+      profileImage: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/website_thumbnails-19.jpg",
       smallProfileImage: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/anjali.jpeg"
     },
     {
@@ -119,7 +128,7 @@ export default function HomePageHappyUsers({
       name: "Rijul Jain",
       company: "Wise",
       linkedinUrl: "https://www.linkedin.com/in/-rijuljain-/",
-      profileImage: "https://res.cloudinary.com/drcka8x04/image/upload/f_auto,q_auto:good,w_800,c_limit,dpr_auto/v1766552897/website_thumbnails-20_bxnl2z.jpg",
+      profileImage: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/website_thumbnails-20.jpg",
       smallProfileImage: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/rijul.jpg"
     },
     {
@@ -127,7 +136,7 @@ export default function HomePageHappyUsers({
       name: "Aryan Gupta",
       company: "IBM",
       linkedinUrl: "#",
-      profileImage: "https://res.cloudinary.com/drcka8x04/image/upload/f_auto,q_auto:good,w_800,c_limit,dpr_auto/v1766552895/website_thumbnails-18_j1ormv.jpg",
+      profileImage: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/website_thumbnails-18.jpg",
       smallProfileImage: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/aryan.jpg"
     },
   ];
@@ -453,8 +462,8 @@ export default function HomePageHappyUsers({
       >
         <div className="relative mx-auto grid min-h-[1560px] w-full grid-cols-[500px_minmax(0,1fr)] overflow-hidden px-[59px] pt-[65px] max-[1024px]:grid-cols-[360px_minmax(0,1fr)] max-[1024px]:px-7 max-[768px]:flex max-[768px]:min-h-0 max-[768px]:flex-col max-[768px]:gap-8 max-[768px]:px-5 max-[768px]:py-10">
           <div className="relative z-[2] flex flex-col items-start pt-[3px] text-left max-[768px]:pt-0">
-            <h2 className="mb-[720px] max-w-[430px] text-[64px] font-black leading-[1.02] tracking-[-0.02em] text-white max-[1024px]:mb-[560px] max-[1024px]:text-[50px] max-[768px]:mb-4 max-[768px]:max-w-[360px] max-[768px]:text-[40px] max-[480px]:text-[34px]">
-              1000+ Happy User&rsquo;s Love
+            <h2 className={headingClassName}>
+              {heading}
             </h2>
 
             <button
@@ -462,7 +471,7 @@ export default function HomePageHappyUsers({
               onClick={handleTryItYourself}
               className="inline-flex h-[56px] items-center gap-4 bg-black px-[24px] text-[20px] font-bold leading-none text-white transition-colors hover:bg-[#1c1c1c]"
             >
-              Book a Demo
+              {ctaLabel}
               <span className="text-[34px] font-normal leading-none" aria-hidden="true">
                 &rarr;
               </span>
