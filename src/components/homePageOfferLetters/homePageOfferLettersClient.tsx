@@ -26,6 +26,14 @@ interface HomePageOfferLettersClientProps {
 const offerLetters: OfferLetterData[] = [
   
   {
+    name: "Yashvi",
+    company: "Gamer's Choice",
+    linkedinUrl: "#",
+    imagePath: "/images/yashvi-offer.png",
+    profileImagePath:"https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/yashvi.png",
+    offerDate: "Aug 17, 2026",
+
+  },{
     name: "Dheer",
     company: " Illumio",
     linkedinUrl: "#",
