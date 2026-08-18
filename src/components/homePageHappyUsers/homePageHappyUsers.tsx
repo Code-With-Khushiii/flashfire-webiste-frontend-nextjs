@@ -175,10 +175,12 @@ export default function HomePageHappyUsers({
             setLoadedProfileImages(prev => new Set(prev).add(index * 2));
           };
           profileImg.onerror = () => {
-            // Fallback without optimization
-            const fallbackUrl = video.profileImage.replace('f_auto', 'f_jpg');
-            profileImg.src = fallbackUrl;
-            preloadedImageCache.current.add(fallbackUrl);
+            if (video.profileImage.includes('res.cloudinary.com')) {
+              const fallbackUrl = video.profileImage.replace('f_auto', 'f_jpg');
+              profileImg.src = fallbackUrl;
+              preloadedImageCache.current.add(fallbackUrl);
+            }
+            setLoadedProfileImages(prev => new Set(prev).add(index * 2));
           };
         } else {
           // Already cached, mark as loaded immediately
@@ -254,10 +256,12 @@ export default function HomePageHappyUsers({
                     setLoadedProfileImages(prev => new Set(prev).add(index));
                   };
                   img.onerror = () => {
-                    // Fallback without optimization if optimized version fails
-                    const fallbackUrl = imageUrl.replace('f_auto', 'f_jpg');
-                    img.src = fallbackUrl;
-                    preloadedImageCache.current.add(fallbackUrl);
+                    if (imageUrl.includes('res.cloudinary.com')) {
+                      const fallbackUrl = imageUrl.replace('f_auto', 'f_jpg');
+                      img.src = fallbackUrl;
+                      preloadedImageCache.current.add(fallbackUrl);
+                    }
+                    setLoadedProfileImages(prev => new Set(prev).add(index));
                   };
                 }
               }
