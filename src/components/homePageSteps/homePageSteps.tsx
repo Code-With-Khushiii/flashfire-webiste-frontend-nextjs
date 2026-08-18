@@ -79,7 +79,7 @@ export default function HomePageSteps() {
               key={step.number}
               className="flex min-h-[330px] flex-col border-[6px] border-[#f8f0eb] bg-[#f8f0eb]"
             >
-              <div className="bg-white px-5 pb-5 pt-5 md:px-6 md:pb-6">
+              <div className="min-h-[172px] bg-white px-5 pb-5 pt-5 md:min-h-[196px] md:px-6 md:pb-6">
                 <p className="mb-4 text-[26px] font-extrabold leading-none md:text-[32px]">
                   <span className="bg-gradient-to-r from-[#d84a22] via-[#f05a23] to-[#ff7a2a] bg-clip-text text-transparent">
                     \\ STEP {step.number}

@@ -57,10 +57,10 @@ export default function BeforeAfterComparison() {
         {/* Desktop Header */}
         <div className="hidden md:grid grid-cols-3 pb-6 border-b border-gray-300 text-sm font-semibold text-gray-600">
           <div></div>
-          <div className="text-center text-[#ff4c00]">
+          <div className="text-center text-gray-900">
             Without Flashfire
           </div>
-          <div className="text-center text-gray-900">
+          <div className="text-center text-[#ff4c00]">
             With Flashfire
           </div>
         </div>
@@ -85,12 +85,12 @@ export default function BeforeAfterComparison() {
                 </div>
 
                 <div className="flex justify-center">
-                  <FaTimes className="text-[#ff4c00] text-lg" />
+                  <FaTimes className="text-gray-900 text-lg" />
                 </div>
 
                 <div className="flex justify-center">
-                  <div className="w-8 h-8 rounded-full border border-gray-900 flex items-center justify-center">
-                    <FaCheck className="text-gray-900 text-sm" />
+                  <div className="w-8 h-8 rounded-full border border-[#ff4c00] flex items-center justify-center">
+                    <FaCheck className="text-[#ff4c00] text-sm" />
                   </div>
                 </div>
               </div>
@@ -107,15 +107,15 @@ export default function BeforeAfterComparison() {
 
                 <div className="mt-6 space-y-3">
 
-                  <div className="flex items-center justify-between border border-gray-300 rounded-md px-4 py-3">
-                    <div className="flex items-center gap-2 text-[#ff4c00] text-sm">
+                  <div className="flex items-center justify-between border border-gray-900 rounded-md px-4 py-3">
+                    <div className="flex items-center gap-2 text-gray-900 text-sm">
                       <FaTimes />
                       <span className="font-medium">Without Flashfire</span>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between border border-gray-900 rounded-md px-4 py-3">
-                    <div className="flex items-center gap-2 text-gray-900 text-sm font-medium">
+                  <div className="flex items-center justify-between border border-[#ff4c00] rounded-md px-4 py-3">
+                    <div className="flex items-center gap-2 text-[#ff4c00] text-sm font-medium">
                       <FaCheck />
                       <span>With Flashfire</span>
                     </div>

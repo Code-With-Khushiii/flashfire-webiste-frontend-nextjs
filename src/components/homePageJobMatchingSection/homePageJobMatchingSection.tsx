@@ -8,21 +8,29 @@ import { useGeoBypass } from "@/src/utils/useGeoBypass";
 const features = [
   {
     icon: Puzzle,
+    number: "01",
+    category: "MATCH",
     title: "Jobs That Match Your Goals",
     text: "We understand your skills, experience, and career goals to help you target the right opportunities.",
   },
   {
     icon: ClipboardList,
+    number: "02",
+    category: "SEARCH",
     title: "Strategic Job Search",
     text: "We focus on quality opportunities that genuinely fit your profile, not just more applications.",
   },
   {
     icon: HandHeart,
+    number: "03",
+    category: "SUPPORT",
     title: "Personalized Career Support",
     text: "Every recommendation is tailored to your experience, interests, and long-term career goals.",
   },
   {
     icon: Sparkles,
+    number: "04",
+    category: "APPLY",
     title: "Apply With Confidence",
     text: "We help you apply to roles where you're a strong fit, increasing your chances of interview calls.",
   },
@@ -85,10 +93,9 @@ export default function JobMatchingSection() {
       <div className="mx-auto max-w-6xl">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-4xl font-extrabold leading-tight text-black md:text-5xl">
-            More Than a{" "}
-            <span className="text-[#ff4c00]">Job Application</span>
+            More Than a
             <br className="hidden sm:block" />
-            <span className="text-[#ff4c00]"> Service</span>
+            <span> Job Application Service</span>
           </h2>
 
           <p className="mx-auto mt-6 max-w-4xl text-base font-medium leading-8 text-[#7a7a7a] md:text-xl">
@@ -108,31 +115,39 @@ export default function JobMatchingSection() {
           </button>
         </div>
 
-        <div className="mx-auto mt-7 grid max-w-5xl grid-cols-1 gap-7 md:grid-cols-2">
-          {features.map((item) => {
-            const Icon = item.icon;
+        <div className="mx-auto mt-16 max-w-5xl">
+          <div className="flex items-center gap-4">
+            <span className="whitespace-nowrap text-sm font-medium text-[#7a7a7a]">
+              How Flashfire works
+            </span>
+            <div className="h-px flex-1 bg-[#e4e4e4]" />
+          </div>
 
-            return (
-              <article
-                key={item.title}
-                className="flex min-h-[122px] items-center gap-7 rounded-[5px] border border-[#e4e4e4] bg-white px-9 py-7 text-left shadow-[0_4px_14px_rgba(0,0,0,0.12)] transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.14)]"
-              >
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center text-[#ff8a2a]">
-                  <Icon className="h-12 w-12" strokeWidth={1.7} />
-                </div>
+          <div className="mt-6 grid grid-cols-1 divide-y divide-[#e4e4e4] border border-[#e4e4e4] md:grid-cols-4 md:divide-x md:divide-y-0">
+            {features.map((item) => {
+              const Icon = item.icon;
 
-                <div>
-                  <h3 className="mb-2 text-base font-extrabold text-black md:text-lg">
+              return (
+                <div key={item.title} className="px-7 py-8 text-left">
+                  <p className="text-xs font-semibold tracking-wide text-[#9a9a9a]">
+                    {item.number} — {item.category}
+                  </p>
+
+                  <div className="mt-5 flex h-14 w-14 items-center justify-center rounded-full border border-[#e4e4e4] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
+                    <Icon className="h-6 w-6 text-[#ff5a1f]" strokeWidth={2} />
+                  </div>
+
+                  <h3 className="mt-5 text-lg font-extrabold text-black">
                     {item.title}
                   </h3>
 
-                  <p className="text-sm font-medium leading-5 text-[#777] md:text-[15px]">
+                  <p className="mt-2 text-sm font-medium leading-6 text-[#777]">
                     {item.text}
                   </p>
                 </div>
-              </article>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
