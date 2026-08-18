@@ -1,34 +1,34 @@
 "use client";
 
-import { ClipboardList, HandHeart, Puzzle, Sparkles } from "lucide-react";
+import { Handshake, Rocket, Search, Target } from "lucide-react";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
 
 const features = [
   {
-    icon: Puzzle,
+    icon: Target,
     number: "01",
     category: "MATCH",
     title: "Jobs That Match Your Goals",
     text: "We understand your skills, experience, and career goals to help you target the right opportunities.",
   },
   {
-    icon: ClipboardList,
+    icon: Search,
     number: "02",
     category: "SEARCH",
     title: "Strategic Job Search",
     text: "We focus on quality opportunities that genuinely fit your profile, not just more applications.",
   },
   {
-    icon: HandHeart,
+    icon: Handshake,
     number: "03",
     category: "SUPPORT",
     title: "Personalized Career Support",
     text: "Every recommendation is tailored to your experience, interests, and long-term career goals.",
   },
   {
-    icon: Sparkles,
+    icon: Rocket,
     number: "04",
     category: "APPLY",
     title: "Apply With Confidence",
