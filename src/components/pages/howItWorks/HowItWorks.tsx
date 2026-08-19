@@ -3,118 +3,95 @@
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 import HomePageHappyUsers from "@/src/components/homePageHappyUsers/homePageHappyUsers";
-import styles from "@/src/components/homePageFAQ/homePageFAQ.module.css";
 import { useCallback, useState } from "react";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { trackButtonClick, trackExternalLink, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { WHATSAPP_SUPPORT_URL } from "@/src/utils/whatsapp";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
 import {
+  ArrowDown,
   ArrowRight,
-  BriefcaseBusiness,
-  Bot,
   Check,
-  CheckCircle,
   Clock3,
-  Handshake,
-  LayoutDashboard,
+  CreditCard,
+  FileText,
+  MapPin,
   Minus,
   PhoneCall,
   Plus,
-  Rocket,
-  ShieldCheck,
-  Sparkles,
+  SquarePen,
   Target,
-  Trophy,
-  Users,
+  User,
   X,
 } from "lucide-react";
 
-const stats = [
-  { value: "300K+", label: "Applications Submitted", icon: BriefcaseBusiness },
-  { value: "95%", label: "Users Receive Interview Calls", icon: Users },
-  { value: "7-10", label: "Average Interview Invitations", icon: PhoneCall },
-  { value: "1 Week", label: "First Interviews in as Little as One Week", icon: Clock3 },
-];
-
 const steps = [
   {
-    heading: "Tell Us About Your Ideal Job",
+    tag: "Setup",
+    heading: "Tell us about your ideal job",
     description:
       "Choose your target role, preferred locations, salary expectations, and experience level so we can focus on opportunities that match your goals.",
-    whiteIcon: Users,
-    orangeIcon: Target,
+    icon: Target,
   },
   {
+    tag: "Optimize",
     heading: "Optimize Your Resume & LinkedIn",
     description:
       "We improve your resume for ATS systems and strengthen your LinkedIn profile to increase recruiter visibility.",
-    whiteIcon: BriefcaseBusiness,
-    orangeIcon: Trophy,
+    icon: SquarePen,
   },
   {
+    tag: "Apply",
     heading: "We Apply to the Right Jobs for You",
     description:
       "Your applications are customized, targeted, and submitted automatically using optimized resumes and tailored responses.",
-    whiteIcon: Bot,
-    orangeIcon: Rocket,
+    icon: MapPin,
   },
   {
+    tag: "Track",
     heading: "Start Receiving Interview Calls",
     description:
       "Track every application, monitor recruiter responses, and continue improving your job search while preparing for interviews.",
-    whiteIcon: PhoneCall,
-    orangeIcon: Handshake,
+    icon: PhoneCall,
   },
 ];
 
 const differentiators = [
   {
+    num: "01",
     title: "Visa-Aware Job Matching",
     desc: "Visa-aware matching for international students on OPT, CPT, STEM OPT, and H-1B timelines.",
+    icon: CreditCard,
   },
   {
+    num: "02",
     title: "Automated Applications",
     desc: "Full-stack automation handles form filling, custom answers, and ATS-tailored resumes.",
+    icon: SquarePen,
   },
   {
+    num: "03",
     title: "Human + Technology",
     desc: "Hybrid AI and human review so your profile is truly hire-ready.",
+    icon: User,
   },
   {
+    num: "04",
     title: "Complete Job Search Dashboard",
     desc: "Transparent dashboard with success probabilities and recruiter response signals.",
+    icon: FileText,
   },
   {
+    num: "05",
     title: "Daily Job Discovery",
     desc: "Daily sourcing across boards, company pages, and unlisted recruiter roles.",
+    icon: Clock3,
   },
   {
+    num: "06",
     title: "Interview Preparation Included",
     desc: "Built-in interview prep once calls start coming in.",
-  },
-];
-
-const whyChooseFlashfire = [
-  {
-    icon: Clock3,
-    title: "Save Hours Every Week",
-    desc: "Stop searching and applying manually.",
-  },
-  {
-    icon: Sparkles,
-    title: "Better Quality Applications",
-    desc: "Each application is optimized for the role.",
-  },
-  {
-    icon: LayoutDashboard,
-    title: "Stay Organized",
-    desc: "Track every application in one dashboard.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Interview Ready",
-    desc: "Resume optimization, applications, tracking, and interview preparation, all in one place.",
+    icon: PhoneCall,
   },
 ];
 
@@ -122,7 +99,7 @@ const personas = [
   {
     num: "01",
     title: "International Students (OPT, CPT & H-1B)",
-    desc: "OPT, CPT, and STEM OPT candidates applying under strict visa timelines.",
+    desc: "Visa-aware matching for OPT, CPT, STEM OPT, and H-1B timelines, so every application is one you can actually accept.",
   },
   {
     num: "02",
@@ -161,10 +138,10 @@ const comparisonRows = [
 ];
 
 const resultsStats = [
-  { value: "300K+", label: "Applications Submitted", icon: BriefcaseBusiness },
-  { value: "50K+", label: "Interview Calls Generated", icon: PhoneCall },
-  { value: "10+", label: "Hours Saved Every Week", icon: Clock3 },
-  { value: "95%", label: "Resume Match Score", icon: Target },
+  { tag: "Volume", value: "300K+", label: "Applications Submitted", type: "spark" as const },
+  { tag: "Outcome", value: "50K+", label: "Interview Calls Generated", type: "spark" as const },
+  { tag: "Efficiency", value: "10+", label: "Hours Saved Every Week", type: "ring" as const, percent: 62, note: "per user, avg" },
+  { tag: "Quality", value: "95%", label: "Resume Match Score", type: "ring" as const, percent: 95 },
 ];
 
 const faqs = [
@@ -230,9 +207,46 @@ const faqs = [
   },
 ];
 
+function Sparkline({ color = "#ff4c00" }: { color?: string }) {
+  return (
+    <svg viewBox="0 0 100 36" className="mt-2 h-9 w-full" preserveAspectRatio="none" aria-hidden="true">
+      <polyline
+        points="0,32 18,26 34,28 50,16 66,19 82,7 100,4"
+        fill="none"
+        stroke={color}
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function RingStat({ percent, color = "#ff4c00" }: { percent: number; color?: string }) {
+  const r = 20;
+  const c = 2 * Math.PI * r;
+  return (
+    <svg width="48" height="48" viewBox="0 0 48 48" className="mt-1" aria-hidden="true">
+      <circle cx="24" cy="24" r={r} fill="none" stroke="#eee1da" strokeWidth="5" />
+      <circle
+        cx="24"
+        cy="24"
+        r={r}
+        fill="none"
+        stroke={color}
+        strokeWidth="5"
+        strokeDasharray={c}
+        strokeDashoffset={c * (1 - percent / 100)}
+        strokeLinecap="round"
+        transform="rotate(-90 24 24)"
+      />
+    </svg>
+  );
+}
+
 export default function HowItWorks() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
-  const [activePersona, setActivePersona] = useState<number | null>(null);
+  const [activePersona, setActivePersona] = useState<number>(0);
   const { getButtonProps } = useGeoBypass({
     onBypass: () => {
       // handled globally
@@ -322,64 +336,136 @@ export default function HowItWorks() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navbar />
-      
+
       <main className="w-full overflow-hidden pb-9 lg:pb-14">
-        <section className="overflow-hidden rounded-[13px] border border-[#f5ded5] bg-white px-5 py-12 shadow-[0_18px_50px_rgba(50,26,13,0.04)] sm:px-8 md:px-12 lg:px-[54px] lg:py-[58px]">
-          <div>
-            <h1 className="max-w-[690px] text-[2rem] font-extrabold leading-[1.08] text-[#111827] sm:text-[2.55rem] lg:text-[3.08rem]">
-              Land More Interview
-              <br />
-              Without Spending Hours <span className="text-[#ff4c00]">Applying</span>
-            </h1>
-            <p className="mt-4 max-w-[710px] text-[0.95rem] font-semibold leading-6 text-[#4f596a]">
-              FlashFire helps you find relevant jobs, optimize your resume, submit high-quality
-              applications, and track every opportunity, so you spend less time applying and more
-              time preparing for interviews.
-            </p>
+        <section className="overflow-hidden rounded-[13px] bg-[#fbe4da] px-5 py-12 sm:px-8 md:px-12 lg:px-[54px] lg:py-[70px]">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-14">
+            <div>
+              <h1 className="max-w-[560px] text-[2rem] font-extrabold leading-[1.08] text-[#111827] sm:text-[2.55rem] lg:text-[3.08rem]">
+                Land More Interview
+                <br />
+                Without Spending Hours
+                <br />
+                <span className="text-[#ff4c00]">Applying</span>
+              </h1>
+              <p className="mt-4 max-w-[560px] text-[0.95rem] font-semibold leading-6 text-[#4f596a]">
+                FlashFire helps you find relevant jobs, optimize your resume, submit high-quality
+                applications, and track every opportunity, so you spend less time applying and more
+                time preparing for interviews.
+              </p>
 
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <button
-                {...getButtonProps()}
-                onClick={() => handleGetStarted("hero_primary")}
-                className="inline-flex min-h-[46px] w-full items-center justify-center gap-2 rounded-[8px] bg-[#ff4c00] px-6 text-sm font-extrabold text-white shadow-[0_12px_20px_rgba(255,76,0,0.22)] transition hover:bg-[#e84400] focus:outline-none focus:ring-2 focus:ring-[#ff4c00] focus:ring-offset-2 sm:min-h-[50px] sm:w-auto sm:px-7 sm:text-base"
-              >
-                Get Started Free
-                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
-              </button>
-              <button
-                onClick={() => handleTalkToExpertClick("hero_secondary")}
-                className="inline-flex min-h-[46px] w-full items-center justify-center gap-2 rounded-[8px] border-2 border-[#ff4c00] bg-transparent px-6 text-sm font-extrabold text-[#ff4c00] transition hover:bg-[#fff2ea] sm:min-h-[50px] sm:w-auto sm:px-7 sm:text-base"
-              >
-                Book a Free Career Call
-              </button>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <button
+                  {...getButtonProps()}
+                  onClick={() => handleGetStarted("hero_primary")}
+                  className="inline-flex min-h-[46px] w-full items-center justify-center gap-2 rounded-[8px] bg-[#ff4c00] px-6 text-sm font-extrabold text-white shadow-[0_12px_20px_rgba(255,76,0,0.22)] transition hover:bg-[#e84400] focus:outline-none focus:ring-2 focus:ring-[#ff4c00] focus:ring-offset-2 sm:min-h-[50px] sm:w-auto sm:px-7 sm:text-base"
+                >
+                  Get Started Free
+                  <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                </button>
+                <button
+                  onClick={() => handleTalkToExpertClick("hero_secondary")}
+                  className="inline-flex min-h-[46px] w-full items-center justify-center gap-2 rounded-[8px] bg-white px-6 text-sm font-extrabold text-[#111827] shadow-[0_4px_12px_rgba(0,0,0,0.06)] transition hover:bg-[#fff2ea] sm:min-h-[50px] sm:w-auto sm:px-7 sm:text-base"
+                >
+                  Book a Free Career Call
+                </button>
+              </div>
             </div>
 
-            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
-              {stats.map((stat) => {
-                const Icon = stat.icon;
+            <div>
+              <div className="relative mx-auto aspect-[3/2] w-full max-w-[440px] overflow-hidden rounded-[22px] border border-[#f6c9a8] bg-gradient-to-b from-[#ffc79b] via-[#fff2e8] to-white p-5 shadow-[0_18px_40px_rgba(255,76,0,0.14)]">
+                <span className="text-[11px] font-semibold text-[#4b4541]">Application flow</span>
 
-                return (
-                  <div
-                    key={stat.label}
-                    className="rounded-[8px] border border-[#ffcdbd] bg-white px-6 py-5 shadow-[0_6px_16px_rgba(255,76,0,0.09)] sm:min-h-[154px]"
-                  >
-                    <div className="flex h-[62px] w-[62px] items-center justify-center rounded-[6px] bg-[#ffe4bf] text-[#ff4c00]">
-                      <Icon className="h-[27px] w-[27px]" />
-                    </div>
-                    <div className="mt-[21px] text-[2.15rem] font-extrabold leading-none text-[#5f6062]">
-                      {stat.value}
-                    </div>
-                    <div className="mt-2 text-xs font-medium leading-4 text-[#737987]">
-                      {stat.label}
-                    </div>
-                  </div>
-                );
-              })}
+                <span
+                  className="absolute -translate-x-1/2 text-[10px] font-bold uppercase tracking-wide text-[#9a938c]"
+                  style={{ left: "82%", top: "4%" }}
+                >
+                  Live
+                </span>
+                <span
+                  className="absolute h-3 w-3 -translate-x-1/2 rounded-full bg-[#ffb020]"
+                  style={{ left: "82%", top: "15%" }}
+                />
+
+                <svg
+                  viewBox="0 0 400 260"
+                  className="absolute inset-0 h-full w-full"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M 44 202.8 C 50 199.77, 58 187.63, 80 184.6 C 102 181.57, 146.67 186.77, 176 184.6 C 205.33 182.43, 236 191.1, 256 171.6 C 272 130, 292 90, 296 67.6 C 300 50, 316 42, 328 39"
+                    fill="none"
+                    stroke="#ffb18a"
+                    strokeWidth="2.5"
+                    strokeDasharray="5 6"
+                    strokeLinecap="round"
+                  />
+                </svg>
+
+                <span
+                  className="absolute h-2 w-2 -translate-x-1/2 rounded-full bg-[#aca39c]"
+                  style={{ left: "11%", top: "78%" }}
+                />
+
+                <span
+                  className="absolute h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-[#ff4c00]"
+                  style={{ left: "20%", top: "71%" }}
+                />
+                <div
+                  className="absolute w-[80px] -translate-x-1/2 text-center text-[11px] font-bold leading-tight text-[#111827]"
+                  style={{ left: "20%", top: "50%" }}
+                >
+                  300K+
+                  <br />
+                  Applied
+                </div>
+
+                <span
+                  className="absolute h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-[#ff4c00]"
+                  style={{ left: "44%", top: "71%" }}
+                />
+                <div
+                  className="absolute w-[80px] -translate-x-1/2 text-center text-[11px] font-bold leading-tight text-[#111827]"
+                  style={{ left: "44%", top: "50%" }}
+                >
+                  AI
+                  <br />
+                  Matched
+                </div>
+
+                <span
+                  className="absolute h-2.5 w-2.5 rounded-full bg-[#ff4c00]"
+                  style={{ left: "63%", top: "65%" }}
+                />
+                <div
+                  className="absolute w-[70px] text-[11px] font-bold leading-tight text-[#111827]"
+                  style={{ left: "67%", top: "59%" }}
+                >
+                  95%
+                  <br />
+                  Called
+                </div>
+
+                <div
+                  className="absolute w-[80px] text-[11px] font-bold leading-tight text-[#111827]"
+                  style={{ left: "80%", top: "59%" }}
+                >
+                  1wk
+                  <br />
+                  Interview
+                </div>
+
+                <span
+                  className="absolute h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-[#ff4c00]"
+                  style={{ left: "74%", top: "26%" }}
+                />
+              </div>
+
+              <p className="mx-auto mt-5 max-w-[440px] text-xs font-bold text-[#8b94a3]">
+                No manual searching. No repetitive forms.
+              </p>
             </div>
-
-            <p className="mt-7 text-xs font-bold text-[#8b94a3]">
-              No manual searching. No repetitive forms.
-            </p>
           </div>
         </section>
 
@@ -396,61 +482,41 @@ export default function HowItWorks() {
             </p>
           </div>
 
-          <div className="mx-auto mt-9 grid max-w-[710px] gap-4 sm:mt-[64px] sm:gap-[28px]">
-            {steps.map((step, index) => {
-              const WhiteIcon = step.whiteIcon;
-              const OrangeIcon = step.orangeIcon;
-              const isEven = index % 2 === 1;
+          <div className="relative mx-auto mt-9 max-w-[820px] sm:mt-[64px]">
+            <div
+              className="absolute left-[27px] top-2 bottom-2 w-px bg-[#f3c7ae] sm:left-[35px]"
+              aria-hidden="true"
+            />
+            <div className="space-y-5 sm:space-y-8">
+              {steps.map((step, index) => {
+                const Icon = step.icon;
 
-              return (
-                <div
-                  key={step.heading}
-                  className={`grid gap-2 sm:gap-5 md:justify-center ${
-                    isEven
-                      ? "grid-cols-[92px_minmax(0,1fr)] md:grid-cols-[170px_345px] lg:grid-cols-[226px_460px]"
-                      : "grid-cols-[minmax(0,1fr)_92px] md:grid-cols-[345px_170px] lg:grid-cols-[460px_226px]"
-                  }`}
-                >
-                  <article
-                    className={`min-h-[124px] rounded-[8px] border border-[#f3ded4] bg-white px-4 py-5 shadow-[0_10px_18px_rgba(24,24,27,0.12)] sm:min-h-[150px] sm:px-[38px] sm:py-[43px] lg:min-h-[170px] lg:px-[54px] lg:py-[56px] ${
-                      isEven ? "order-2" : ""
-                    }`}
-                  >
-                    <div className="flex items-start justify-between gap-3 sm:gap-6">
-                      <div>
-                        <p className="text-[0.68rem] font-semibold leading-none text-[#111827] sm:text-[0.98rem]">
-                          Step {index + 1}
-                        </p>
-                        <h3 className="mt-1.5 max-w-[330px] text-[0.82rem] font-extrabold leading-[1.08] text-[#111827] sm:mt-2 sm:text-[1.25rem] sm:leading-[1.02] lg:text-[1.32rem]">
-                          {step.heading}
-                        </h3>
-                      </div>
-                      <WhiteIcon
-                        className="h-7 w-7 shrink-0 text-[#ffe8c9] sm:h-[58px] sm:w-[58px]"
-                        strokeWidth={3}
-                      />
-                    </div>
-                    <p className="mt-3 max-w-[360px] text-[0.6rem] font-medium leading-[1.25] text-[#596273] sm:mt-5 sm:text-[0.82rem] sm:leading-[1.22]">
-                      {step.description}
-                    </p>
-                  </article>
-
-                  <div
-                    className={`relative min-h-[124px] overflow-hidden rounded-[8px] bg-[#ff5018] p-3 text-white shadow-[0_10px_18px_rgba(255,80,24,0.18)] sm:min-h-[150px] sm:p-5 lg:min-h-[170px] ${
-                      isEven ? "order-1" : ""
-                    }`}
-                  >
-                    <OrangeIcon
-                      className="absolute right-3 top-3 h-8 w-8 text-[#ffc8a6] sm:right-[22px] sm:top-[21px] sm:h-[58px] sm:w-[58px]"
-                      strokeWidth={2.5}
-                    />
-                    <div className="absolute bottom-3 left-3 text-[2.7rem] font-extrabold leading-none tracking-[-0.03em] sm:bottom-[20px] sm:left-[20px] sm:text-[4.85rem]">
+                return (
+                  <div key={step.heading} className="relative flex items-stretch gap-4 sm:gap-7">
+                    <div className="relative z-10 flex h-[54px] w-[54px] shrink-0 items-center justify-center self-center rounded-[10px] bg-gradient-to-br from-[#ff7a3d] to-[#ff4c00] text-lg font-extrabold text-white shadow-[0_8px_16px_rgba(255,76,0,0.28)] sm:h-[70px] sm:w-[70px] sm:rounded-[14px] sm:text-xl">
                       {String(index + 1).padStart(2, "0")}
                     </div>
+                    <div className="flex min-h-[110px] flex-1 items-center justify-between gap-4 rounded-[10px] bg-[#fbe4da] px-5 py-5 sm:min-h-[132px] sm:px-8">
+                      <div>
+                        <p className="text-[0.68rem] font-bold uppercase tracking-wide text-[#ff4c00] sm:text-[0.72rem]">
+                          Step {index + 1} &middot; {step.tag}
+                        </p>
+                        <h3 className="mt-1.5 text-[0.92rem] font-extrabold leading-[1.15] text-[#111827] sm:text-[1.2rem]">
+                          {step.heading}
+                        </h3>
+                        <p className="mt-2 max-w-[440px] text-[0.72rem] font-medium leading-[1.35] text-[#596273] sm:text-[0.9rem]">
+                          {step.description}
+                        </p>
+                      </div>
+                      <Icon
+                        className="hidden h-10 w-10 shrink-0 text-[#ff4c00] sm:block"
+                        strokeWidth={2}
+                      />
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </section>
 
@@ -491,23 +557,32 @@ export default function HowItWorks() {
             Everything You Need to Land More Interviews
           </h2>
 
-          <div className="mx-auto mt-8 grid max-w-[1052px] gap-4 sm:mt-14 sm:gap-8 md:grid-cols-2">
-            {differentiators.map((item) => (
-              <div
-                key={item.title}
-                className="min-h-[132px] rounded-[5px] border border-[#d9d9d9] bg-white px-6 py-6 shadow-[0_6px_14px_rgba(0,0,0,0.13)] sm:min-h-[220px] sm:px-12 sm:py-10 sm:shadow-[0_8px_18px_rgba(0,0,0,0.15)]"
-              >
-                <div className="mb-5 flex h-8 w-8 items-center justify-center rounded-[7px] bg-[#ffe9df] text-[#ff4c00] sm:mb-8 sm:h-10 sm:w-10 sm:rounded-[8px]">
-                  <Check className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={3} />
-                </div>
-                <p className="text-[0.98rem] font-extrabold leading-[1.28] text-[#1f2a44] sm:text-[1.28rem] sm:leading-[1.25]">
-                  {item.title}
-                </p>
-                <p className="mt-2 text-[0.85rem] font-medium leading-[1.35] text-[#596273] sm:mt-3 sm:text-[1rem]">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
+          <div className="mx-auto mt-8 max-w-[1052px] overflow-hidden rounded-[10px] border border-[#e5dcd6] bg-white sm:mt-14">
+            <div className="grid sm:grid-cols-3">
+              {differentiators.map((item, index) => {
+                const Icon = item.icon;
+                const isLastCol = (index + 1) % 3 === 0;
+                const isLastRow = index >= differentiators.length - 3;
+
+                return (
+                  <div
+                    key={item.title}
+                    className={`border-b border-[#e5dcd6] px-6 py-7 sm:px-8 sm:py-9 ${
+                      !isLastCol ? "sm:border-r" : ""
+                    } ${isLastRow ? "sm:border-b-0" : ""}`}
+                  >
+                    <Icon className="h-7 w-7 text-[#ff4c00]" strokeWidth={2} />
+                    <p className="mt-4 text-[0.85rem] font-extrabold text-[#ff4c00]">{item.num}</p>
+                    <p className="mt-1 text-[1rem] font-extrabold leading-[1.25] text-[#1f2a44] sm:text-[1.1rem]">
+                      {item.title}
+                    </p>
+                    <p className="mt-2 text-[0.82rem] font-medium leading-[1.4] text-[#596273] sm:text-[0.9rem]">
+                      {item.desc}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           <div className="mt-10 text-center">
@@ -521,27 +596,92 @@ export default function HowItWorks() {
           </div>
         </section>
 
-        <section className="bg-[#fff3f1] px-5 py-14 md:px-8 md:py-[100px]">
-          <h2 className="mx-auto max-w-[420px] text-center text-[2rem] font-extrabold leading-[1.12] text-[#111827] sm:max-w-none sm:text-[2.3rem] md:text-[3.1rem]">
+        <section className="bg-[#ff5018] px-5 py-14 md:px-8 md:py-[100px]">
+          <h2 className="mx-auto max-w-[420px] text-center text-[2rem] font-extrabold leading-[1.12] text-white sm:max-w-none sm:text-[2.3rem] md:text-[3.1rem]">
             Why Job Seekers Choose FlashFire
           </h2>
 
-          <div className="mx-auto mt-9 grid max-w-[1052px] gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-            {whyChooseFlashfire.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.title}
-                  className="h-full min-w-0 rounded-[8px] border border-[#d5d5d5] bg-white p-7 shadow-[0_8px_18px_rgba(0,0,0,0.12)]"
-                >
-                  <span className="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-[#ff4c00] text-white">
-                    <Icon size={21} />
-                  </span>
-                  <h3 className="text-[16px] font-extrabold leading-6 text-[#111827]">{item.title}</h3>
-                  <p className="mt-4 text-[13px] font-medium leading-6 text-[#6b7280]">{item.desc}</p>
+          <div className="mx-auto mt-9 grid max-w-[1052px] gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6">
+            <div className="rounded-[10px] bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] sm:p-8">
+              <div className="mb-6 space-y-3">
+                <div>
+                  <span className="text-[10px] font-semibold text-[#b3aca7]">Manual</span>
+                  <div className="mt-1 h-2 w-full rounded-full bg-[#e9e4e0]">
+                    <div className="h-2 w-[85%] rounded-full bg-[#c9c2bc]" />
+                  </div>
                 </div>
-              );
-            })}
+                <div>
+                  <span className="text-[10px] font-semibold text-[#ff4c00]">Flashfire</span>
+                  <div className="mt-1 h-2 w-full rounded-full bg-[#ffe1d1]">
+                    <div className="h-2 w-[35%] rounded-full bg-gradient-to-r from-[#ff8a3d] to-[#ff4c00]" />
+                  </div>
+                </div>
+              </div>
+              <h3 className="text-[16px] font-extrabold leading-6 text-[#111827]">
+                Save hours every week
+              </h3>
+              <p className="mt-3 text-[13px] font-medium leading-6 text-[#6b7280]">
+                Stop searching and applying manually, we run the repetitive work in the background.
+              </p>
+            </div>
+
+            <div className="rounded-[10px] bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] sm:p-8">
+              <div className="mb-6 flex items-center gap-1">
+                <RingStat percent={55} color="#d9d2cc" />
+                <RingStat percent={80} color="#ff4c00" />
+              </div>
+              <h3 className="text-[16px] font-extrabold leading-6 text-[#111827]">
+                Better Quality Applications
+              </h3>
+              <p className="mt-3 text-[13px] font-medium leading-6 text-[#6b7280]">
+                Every application is optimized for the role, not a generic resume blasted everywhere.
+              </p>
+            </div>
+
+            <div className="rounded-[10px] bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] sm:p-8">
+              <div className="mb-6 grid grid-cols-3 gap-3">
+                {[
+                  { label: "Applied", h: "70%" },
+                  { label: "Review", h: "42%" },
+                  { label: "Interview", h: "88%" },
+                ].map((b) => (
+                  <div key={b.label}>
+                    <span className="text-[9px] font-semibold text-[#b3aca7]">{b.label}</span>
+                    <div className="mt-2 flex h-14 items-end rounded-md bg-[#faf1ec] p-1">
+                      <div
+                        className="w-full rounded bg-gradient-to-t from-[#ff4c00] to-[#ff9a5c]"
+                        style={{ height: b.h }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <h3 className="text-[16px] font-extrabold leading-6 text-[#111827]">Stay organized</h3>
+              <p className="mt-3 text-[13px] font-medium leading-6 text-[#6b7280]">
+                Track every application in one dashboard, sorted by stage, never lose track of a lead.
+              </p>
+            </div>
+
+            <div className="rounded-[10px] bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] sm:p-8">
+              <div className="mb-6 space-y-2.5">
+                <div className="flex items-center gap-2">
+                  <span className="h-3 w-3 shrink-0 rounded-[3px] bg-[#ff4c00]" />
+                  <span className="h-2 flex-1 rounded-full bg-[#ffd9c2]" />
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="h-3 w-3 shrink-0 rounded-[3px] bg-[#ff4c00]" />
+                  <span className="h-2 flex-1 rounded-full bg-[#ffd9c2]" />
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="h-3 w-3 shrink-0 rounded-[3px] bg-[#e9e4e0]" />
+                  <span className="h-2 flex-1 rounded-full bg-[#efe9e4]" />
+                </div>
+              </div>
+              <h3 className="text-[16px] font-extrabold leading-6 text-[#111827]">Interview ready</h3>
+              <p className="mt-3 text-[13px] font-medium leading-6 text-[#6b7280]">
+                Resume optimization, applications, tracking, and interview prep, all in one place.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -561,51 +701,54 @@ export default function HowItWorks() {
                 This isn&apos;t another job board. It&apos;s an execution engine for
                 people who want outcomes.
               </p>
+
+              <div className="mt-8 rounded-[10px] bg-[#ff5018] p-6 text-white shadow-[0_14px_28px_rgba(255,80,24,0.28)] sm:p-8">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-[5px] bg-white/15 text-sm font-extrabold">
+                  {personas[activePersona].num}
+                </span>
+                <h3 className="mt-4 text-[1.1rem] font-extrabold leading-tight sm:text-[1.25rem]">
+                  {personas[activePersona].title}
+                </h3>
+                <p className="mt-2 text-[0.85rem] font-medium leading-[1.45] text-white/90 sm:text-[0.92rem]">
+                  {personas[activePersona].desc}
+                </p>
+              </div>
             </div>
 
-            <div className="w-full space-y-[14px]">
+            <div className="w-full space-y-[10px]">
               {personas.map((persona, index) => {
                 const isActive = activePersona === index;
 
                 return (
-                  <div
+                  <button
                     key={persona.num}
-                    className="overflow-hidden rounded-[5px] border border-[#d8d8d8] bg-white"
+                    type="button"
+                    className={`flex min-h-[59px] w-full items-center gap-4 rounded-[8px] border px-4 py-3 text-left transition ${
+                      isActive
+                        ? "border-[#ff4c00] bg-[#fff3ee]"
+                        : "border-[#e5dcd6] bg-white hover:border-[#ffcdbd]"
+                    }`}
+                    onClick={() => setActivePersona(index)}
+                    aria-pressed={isActive}
                   >
-                    <button
-                      type="button"
-                      className={`flex min-h-[59px] w-full items-center gap-4 px-3 text-left transition ${
-                        isActive ? "bg-[#ff5018] text-white" : "bg-white text-[#111827]"
+                    <span
+                      className={`text-[0.95rem] font-extrabold ${
+                        isActive ? "text-[#ff4c00]" : "text-[#b3aca7]"
                       }`}
-                      onClick={() => setActivePersona(isActive ? null : index)}
-                      aria-expanded={isActive}
                     >
-                      <span
-                        className={`flex h-[32px] w-[32px] shrink-0 items-center justify-center rounded-[3px] text-[1.05rem] font-extrabold ${
-                          isActive ? "bg-white/20 text-white" : "bg-[#ffe9df] text-[#ff4c00]"
-                        }`}
-                      >
-                        {persona.num}
-                      </span>
-                      <span className="min-w-0 flex-1 text-[0.9rem] font-extrabold">
-                        {persona.title}
-                      </span>
-                      <span
-                        className={`flex h-[28px] w-[28px] shrink-0 items-center justify-center rounded-full ${
-                          isActive ? "bg-white text-[#ff5018]" : "bg-[#ffe9df] text-[#ff4c00]"
-                        }`}
-                      >
-                        {isActive ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
-                      </span>
-                    </button>
-                    {isActive && (
-                      <div className="bg-white px-4 py-5">
-                        <p className="text-[0.78rem] font-medium leading-[1.35] text-[#596273]">
-                          {persona.desc}
-                        </p>
-                      </div>
-                    )}
-                  </div>
+                      {persona.num}
+                    </span>
+                    <span
+                      className={`min-w-0 flex-1 text-[0.9rem] font-extrabold ${
+                        isActive ? "text-[#111827]" : "text-[#4b5563]"
+                      }`}
+                    >
+                      {persona.title}
+                    </span>
+                    <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full bg-[#ff4c00] text-white">
+                      <ArrowDown className="h-4 w-4" />
+                    </span>
+                  </button>
                 );
               })}
             </div>
@@ -616,25 +759,32 @@ export default function HowItWorks() {
           <h2 className="mx-auto max-w-[600px] text-center text-[2rem] font-extrabold leading-[1.1] text-[#111827] sm:text-[2.4rem] md:text-[3rem]">
             Applying on Your Own vs FlashFire
           </h2>
-          <div className="mx-auto mt-9 max-w-[900px] overflow-hidden rounded-md border border-[#d5d5d5] shadow-[0_8px_18px_rgba(0,0,0,0.12)] sm:mt-12">
-            <div className="grid grid-cols-2">
-              <div className="border-r border-[#d5d5d5] bg-[#f7f7f7] px-2 py-3 text-center text-[11px] font-extrabold text-[#6b7280] sm:px-6 sm:py-4 sm:text-[14px]">
+          <div className="mx-auto mt-9 max-w-[900px] sm:mt-12">
+            <div className="mb-3 grid grid-cols-[1fr_36px_1fr] items-center gap-2 sm:grid-cols-[1fr_48px_1fr] sm:gap-3">
+              <div className="text-center text-[11px] font-extrabold text-[#6b7280] sm:text-[14px]">
                 Applying Alone
               </div>
-              <div className="bg-[#fff3ee] px-2 py-3 text-center text-[11px] font-extrabold text-[#ff4c00] sm:px-6 sm:py-4 sm:text-[14px]">
+              <div />
+              <div className="text-center text-[11px] font-extrabold text-[#ff4c00] sm:text-[14px]">
                 FlashFire
               </div>
             </div>
-            <div className="divide-y divide-[#d5d5d5]">
+            <div className="space-y-2.5 sm:space-y-3">
               {comparisonRows.map((row) => (
-                <div key={row.alone} className="grid grid-cols-2">
-                  <div className="flex items-start gap-1.5 border-r border-[#d5d5d5] px-2 py-3 text-[11px] font-medium leading-snug text-[#6b7280] sm:items-center sm:gap-2 sm:px-6 sm:py-4 sm:text-[13px]">
-                    <X size={14} className="mt-0.5 shrink-0 text-red-500 sm:mt-0 sm:h-4 sm:w-4" />
+                <div
+                  key={row.alone}
+                  className="grid grid-cols-[1fr_36px_1fr] items-center gap-2 sm:grid-cols-[1fr_48px_1fr] sm:gap-3"
+                >
+                  <div className="flex items-center gap-1.5 rounded-[8px] border border-[#f0d9cc] bg-[#fdf1ea] px-3 py-3 text-[11px] font-medium leading-snug text-[#9a938c] sm:gap-2 sm:px-5 sm:text-[13px]">
+                    <X size={14} className="shrink-0 text-[#b3aca7]" />
                     {row.alone}
                   </div>
-                  <div className="flex items-start gap-1.5 bg-[#fffaf7] px-2 py-3 text-[11px] font-medium leading-snug text-[#111827] sm:items-center sm:gap-2 sm:px-6 sm:py-4 sm:text-[13px]">
-                    <CheckCircle size={14} className="mt-0.5 shrink-0 text-[#ff4c00] sm:mt-0 sm:h-4 sm:w-4" />
-                    {row.flashfire}
+                  <span className="mx-auto flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#ff4c00] text-white sm:h-8 sm:w-8">
+                    <ArrowRight size={14} />
+                  </span>
+                  <div className="flex items-center gap-1.5 rounded-[8px] border border-[#f7c9ab] bg-[#fff1e4] px-3 py-3 text-[11px] font-semibold leading-snug text-[#111827] sm:gap-2 sm:px-5 sm:text-[13px]">
+                    <span className="min-w-0 flex-1">{row.flashfire}</span>
+                    <Check size={14} className="shrink-0 text-[#ff4c00]" />
                   </div>
                 </div>
               ))}
@@ -648,26 +798,30 @@ export default function HowItWorks() {
               Helping Job Seekers Get More Interviews
             </h2>
 
-            <div className="mt-9 grid gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-              {resultsStats.map((stat) => {
-                const Icon = stat.icon;
-                return (
-                  <div
-                    key={stat.label}
-                    className="min-h-[154px] rounded-[8px] border border-black bg-white px-6 py-5 shadow-[4px_4px_0_0_rgba(0,0,0,0.85)]"
-                  >
-                    <div className="flex h-[54px] w-[54px] items-center justify-center rounded-[6px] bg-[#ffe4bf] text-[#ff4c00]">
-                      <Icon className="h-[24px] w-[24px]" />
-                    </div>
-                    <div className="mt-[18px] text-[2rem] font-extrabold leading-none text-[#5f6062]">
+            <div className="mt-9 overflow-hidden rounded-[10px] border border-[#e5dcd6] bg-white sm:mt-12">
+              <div className="grid divide-y divide-[#e5dcd6] sm:grid-cols-4 sm:divide-x sm:divide-y-0">
+                {resultsStats.map((stat) => (
+                  <div key={stat.label} className="p-6 sm:p-7">
+                    <p className="text-[11px] font-semibold text-[#b3aca7]">{stat.tag}</p>
+                    {stat.type === "spark" ? (
+                      <Sparkline />
+                    ) : (
+                      <div className="mt-1 flex items-center gap-2">
+                        <RingStat percent={stat.percent} />
+                        {stat.note && (
+                          <span className="text-[10px] font-medium text-[#b3aca7]">{stat.note}</span>
+                        )}
+                      </div>
+                    )}
+                    <div className="mt-3 text-[1.6rem] font-extrabold leading-none text-[#111827] sm:text-[1.9rem]">
                       {stat.value}
                     </div>
                     <div className="mt-2 text-xs font-medium leading-4 text-[#737987]">
                       {stat.label}
                     </div>
                   </div>
-                );
-              })}
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -679,36 +833,45 @@ export default function HowItWorks() {
           ctaLabel="Start Your Job Search"
         />
 
-        <section id="faq" className={`${styles.faqSection} !bg-white`}>
-          <div className={styles.header}>
-            <h2>
-              Frequently Asked Questions About FlashFire
+        <section id="faq" className="bg-[#fdeee6] px-4 py-14 sm:px-5 md:py-[90px]">
+          <div className="mx-auto max-w-[820px] text-center">
+            <h2 className="text-[1.65rem] font-extrabold leading-[1.15] text-[#111827] sm:text-[2.2rem] md:text-[2.7rem]">
+              FAQs About Our <span className="text-[#ff4c00]">AI Job Application</span>
+              <br className="hidden sm:block" /> Platform &amp; Auto-Apply Features
             </h2>
+            <p className="mx-auto mt-4 max-w-[520px] text-[0.85rem] font-medium leading-[1.4] text-[#596273] sm:text-[0.98rem]">
+              We get it, AI job search can sound complex. Here&apos;s everything explained, plain
+              and simple.
+            </p>
           </div>
 
-          <div className={styles.faqContainer}>
+          <div className="mx-auto mt-9 max-w-[820px] space-y-3 sm:mt-12">
             {faqs.map((faq, index) => {
               const isActive = activeFaq === index;
 
               return (
                 <div
                   key={faq.q}
-                  className={`${styles.faqItem} ${isActive ? styles.active : ""}`}
+                  className="overflow-hidden rounded-[10px] bg-white shadow-[0_4px_14px_rgba(0,0,0,0.06)]"
                 >
                   <button
                     type="button"
-                    className={styles.faqQuestion}
+                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-7 sm:py-5"
                     onClick={() => setActiveFaq(isActive ? null : index)}
                     aria-expanded={isActive}
                   >
-                    <span>{faq.q}</span>
-                    <span className={styles.icon}>
+                    <span className="text-[0.82rem] font-bold text-[#111827] sm:text-[0.98rem]">
+                      {faq.q}
+                    </span>
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#fdeee6] text-[#ff4c00]">
                       {isActive ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
                     </span>
                   </button>
                   {isActive && (
-                    <div className={styles.faqAnswer}>
-                      <p>{faq.a}</p>
+                    <div className="px-5 pb-5 sm:px-7">
+                      <p className="text-[0.78rem] font-medium leading-[1.4] text-[#596273] sm:text-[0.88rem]">
+                        {faq.a}
+                      </p>
                     </div>
                   )}
                 </div>
@@ -718,25 +881,27 @@ export default function HowItWorks() {
         </section>
 
         <section className="bg-white px-5 py-16 text-center md:px-8">
-          <div className="mx-auto max-w-[920px] rounded-[18px] border border-[#ffd3c2] bg-[#fff3ed] px-5 py-11 text-[#111827] shadow-[0_18px_40px_rgba(255,76,0,0.12)] md:px-8">
-            <h2 className="mx-auto max-w-[760px] text-[1.55rem] font-extrabold leading-tight md:text-[2rem]">
-              Ready to Land More Interviews?
-            </h2>
-            <p className="mx-auto mt-5 max-w-[560px] text-sm font-semibold leading-5 text-[#5f5a58]">
-              Optimize your resume, automate job applications, track every opportunity, and
-              prepare for interviews, all from one platform.
-            </p>
-            <button
-              {...getButtonProps()}
-              onClick={() => handleGetStarted("final_cta")}
-              className="mt-6 inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[8px] bg-[#ff4c00] px-6 text-xs font-extrabold text-white shadow-[0_10px_20px_rgba(255,76,0,0.22)] transition hover:bg-[#e84400]"
-            >
-              Get Started Free
-              <ArrowRight className="h-3.5 w-3.5" />
-            </button>
-            <p className="mt-5 text-xs font-medium text-[#7c716d]">
-              Quick onboarding. We handle the rest.
-            </p>
+          <div className="mx-auto max-w-[920px] rounded-[22px] bg-gradient-to-br from-[#ffe6d8] via-[#ffb37a] to-[#ff5a1f] p-[1.5px] shadow-[0_10px_30px_rgba(255,76,0,0.1)]">
+            <div className="rounded-[21px] bg-[#fdeee6] px-5 py-10 text-[#111827] md:px-8 md:py-11">
+              <h2 className="mx-auto max-w-[760px] text-[1.4rem] font-extrabold leading-tight md:text-[1.85rem]">
+                Ready to Land More Interviews?
+              </h2>
+              <p className="mx-auto mt-4 max-w-[560px] text-sm font-semibold leading-5 text-[#5f5a58]">
+                Optimize your resume, automate job applications, track every opportunity, and
+                prepare for interviews, all from one platform.
+              </p>
+              <button
+                {...getButtonProps()}
+                onClick={() => handleGetStarted("final_cta")}
+                className="mt-6 inline-flex min-h-[36px] items-center justify-center gap-1.5 rounded-[7px] bg-[#ff4c00] px-5 text-xs font-extrabold text-white shadow-[0_8px_16px_rgba(255,76,0,0.24)] transition hover:bg-[#e84400]"
+              >
+                Get Started Free
+                <ArrowRight className="h-3 w-3" />
+              </button>
+              <p className="mt-4 text-xs font-medium text-[#7c716d]">
+                Quick onboarding. We handle the rest.
+              </p>
+            </div>
           </div>
         </section>
       </main>
