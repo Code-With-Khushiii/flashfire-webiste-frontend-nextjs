@@ -338,17 +338,17 @@ export default function HowItWorks() {
       <Navbar />
 
       <main className="w-full overflow-hidden pb-9 lg:pb-14">
-        <section className="overflow-hidden rounded-[13px] bg-[#fbe4da] px-5 py-12 sm:px-8 md:px-12 lg:px-[54px] lg:py-[70px]">
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-14">
+        <section className="overflow-hidden rounded-[13px] bg-[#fbe4da] px-5 py-12 sm:px-8 md:px-12 lg:flex lg:min-h-[600px] lg:items-center lg:px-[54px] lg:py-16">
+          <div className="grid w-full gap-9 lg:grid-cols-2 lg:items-center lg:gap-12">
             <div className="min-w-0">
-              <h1 className="max-w-[560px] text-[2rem] font-extrabold leading-[1.08] text-[#111827] sm:text-[2.55rem] lg:text-[3.08rem]">
+              <h1 className="max-w-[540px] text-[2.1rem] font-extrabold leading-[1.08] text-[#111827] sm:text-[2.5rem] lg:text-[3rem]">
                 Land More Interview
                 <br />
                 Without Spending Hours
                 <br />
                 <span className="text-[#ff4c00]">Applying</span>
               </h1>
-              <p className="mt-4 max-w-[560px] text-[0.95rem] font-semibold leading-6 text-[#4f596a]">
+              <p className="mt-4 max-w-[540px] text-[0.95rem] font-semibold leading-6 text-[#4f596a]">
                 FlashFire helps you find relevant jobs, optimize your resume, submit high-quality
                 applications, and track every opportunity, so you spend less time applying and more
                 time preparing for interviews.
@@ -373,7 +373,7 @@ export default function HowItWorks() {
             </div>
 
             <div className="min-w-0">
-              <div className="relative mx-auto aspect-[3/2] w-full max-w-[440px] overflow-hidden rounded-[22px] border border-[#f6c9a8] bg-gradient-to-b from-[#ffc79b] via-[#fff2e8] to-white p-5 shadow-[0_18px_40px_rgba(255,76,0,0.14)]">
+              <div className="relative mx-auto aspect-[3/2] w-full max-w-[430px] overflow-hidden rounded-[22px] border border-[#f6c9a8] bg-gradient-to-b from-[#ffc79b] via-[#fff2e8] to-white p-5 shadow-[0_18px_40px_rgba(255,76,0,0.14)]">
                 <span className="text-[11px] font-semibold text-[#4b4541]">Application flow</span>
 
                 <span
@@ -462,7 +462,7 @@ export default function HowItWorks() {
                 />
               </div>
 
-              <p className="mx-auto mt-5 max-w-[440px] text-xs font-bold text-[#8b94a3]">
+              <p className="mx-auto mt-5 max-w-[430px] text-xs font-bold text-[#8b94a3]">
                 No manual searching. No repetitive forms.
               </p>
             </div>
@@ -597,13 +597,36 @@ export default function HowItWorks() {
           </div>
         </section>
 
-        <section className="bg-[#ff5018] px-5 py-14 md:px-8 md:py-[100px]">
-          <h2 className="mx-auto max-w-[420px] text-center text-[2rem] font-extrabold leading-[1.12] text-white sm:max-w-none sm:text-[2.3rem] md:text-[3.1rem]">
-            Why Job Seekers Choose FlashFire
-          </h2>
+        <section className="relative overflow-hidden bg-[#ff5018] px-5 py-14 md:px-8 md:py-[100px]">
+          <div
+            className="pointer-events-none absolute -top-16 left-[-60px] h-[300px] w-[300px] rounded-full bg-white/10 blur-[100px]"
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute -bottom-24 right-[-40px] h-[280px] w-[280px] rounded-full bg-[#ff8a4d]/40 blur-[100px]"
+            aria-hidden="true"
+          />
 
-          <div className="mx-auto mt-9 grid max-w-[1052px] gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6">
-            <div className="rounded-[10px] border border-white/40 bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(0,0,0,0.18)] sm:p-8">
+          <div className="relative mx-auto max-w-[640px] text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[10px] font-bold uppercase tracking-wide text-white sm:text-[11px]">
+              Why FlashFire
+            </span>
+            <h2 className="mt-4 text-[2rem] font-extrabold leading-[1.12] text-white sm:text-[2.3rem] md:text-[3.1rem]">
+              Why Job Seekers Choose FlashFire
+            </h2>
+            <p className="mx-auto mt-3 max-w-[480px] text-[0.9rem] font-medium leading-6 text-white/75 sm:text-[1rem]">
+              Four ways FlashFire replaces the busywork of a job search with a system that
+              actually gets you interviews.
+            </p>
+          </div>
+
+          <div className="relative mx-auto mt-9 grid max-w-[1160px] gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6">
+            <div className="group rounded-[14px] border border-white/40 bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:border-[#ff4c00]/30 hover:shadow-[0_18px_36px_rgba(0,0,0,0.18)] sm:p-8">
+              <div className="mb-5 flex items-center justify-between">
+                <div className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#fff1e8] transition-colors duration-300 group-hover:bg-[#ffe1d1]">
+                  <Clock3 className="h-5 w-5 text-[#ff4c00]" strokeWidth={2} />
+                </div>
+              </div>
               <div className="mb-6 space-y-3">
                 <div>
                   <span className="text-[10px] font-semibold text-[#b3aca7]">Manual</span>
@@ -626,7 +649,12 @@ export default function HowItWorks() {
               </p>
             </div>
 
-            <div className="rounded-[10px] border border-white/40 bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(0,0,0,0.18)] sm:p-8">
+            <div className="group rounded-[14px] border border-white/40 bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:border-[#ff4c00]/30 hover:shadow-[0_18px_36px_rgba(0,0,0,0.18)] sm:p-8">
+              <div className="mb-5 flex items-center justify-between">
+                <div className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#fff1e8] transition-colors duration-300 group-hover:bg-[#ffe1d1]">
+                  <Target className="h-5 w-5 text-[#ff4c00]" strokeWidth={2} />
+                </div>
+              </div>
               <div className="mb-6 flex items-center gap-1">
                 <RingStat percent={55} color="#d9d2cc" />
                 <RingStat percent={80} color="#ff4c00" />
@@ -639,7 +667,12 @@ export default function HowItWorks() {
               </p>
             </div>
 
-            <div className="rounded-[10px] border border-white/40 bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(0,0,0,0.18)] sm:p-8">
+            <div className="group rounded-[14px] border border-white/40 bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:border-[#ff4c00]/30 hover:shadow-[0_18px_36px_rgba(0,0,0,0.18)] sm:p-8">
+              <div className="mb-5 flex items-center justify-between">
+                <div className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#fff1e8] transition-colors duration-300 group-hover:bg-[#ffe1d1]">
+                  <FileText className="h-5 w-5 text-[#ff4c00]" strokeWidth={2} />
+                </div>
+              </div>
               <div className="mb-6 grid grid-cols-3 gap-3">
                 {[
                   { label: "Applied", h: "70%" },
@@ -663,7 +696,12 @@ export default function HowItWorks() {
               </p>
             </div>
 
-            <div className="rounded-[10px] border border-white/40 bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(0,0,0,0.18)] sm:p-8">
+            <div className="group rounded-[14px] border border-white/40 bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:border-[#ff4c00]/30 hover:shadow-[0_18px_36px_rgba(0,0,0,0.18)] sm:p-8">
+              <div className="mb-5 flex items-center justify-between">
+                <div className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#fff1e8] transition-colors duration-300 group-hover:bg-[#ffe1d1]">
+                  <PhoneCall className="h-5 w-5 text-[#ff4c00]" strokeWidth={2} />
+                </div>
+              </div>
               <div className="mb-6 space-y-2.5">
                 <div className="flex items-center gap-2">
                   <span className="h-3 w-3 shrink-0 rounded-[3px] bg-[#ff4c00]" />
