@@ -340,7 +340,7 @@ export default function HowItWorks() {
       <main className="w-full overflow-hidden pb-9 lg:pb-14">
         <section className="overflow-hidden rounded-[13px] bg-[#fbe4da] px-5 py-12 sm:px-8 md:px-12 lg:px-[54px] lg:py-[70px]">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-14">
-            <div>
+            <div className="min-w-0">
               <h1 className="max-w-[560px] text-[2rem] font-extrabold leading-[1.08] text-[#111827] sm:text-[2.55rem] lg:text-[3.08rem]">
                 Land More Interview
                 <br />
@@ -372,7 +372,7 @@ export default function HowItWorks() {
               </div>
             </div>
 
-            <div>
+            <div className="min-w-0">
               <div className="relative mx-auto aspect-[3/2] w-full max-w-[440px] overflow-hidden rounded-[22px] border border-[#f6c9a8] bg-gradient-to-b from-[#ffc79b] via-[#fff2e8] to-white p-5 shadow-[0_18px_40px_rgba(255,76,0,0.14)]">
                 <span className="text-[11px] font-semibold text-[#4b4541]">Application flow</span>
 
@@ -470,19 +470,19 @@ export default function HowItWorks() {
         </section>
 
         <section className="mt-16 bg-white px-4 py-12 sm:px-5 md:py-14">
-          <div className="mx-auto max-w-[650px] text-center">
-            <h2 className="text-[1.75rem] font-extrabold leading-[1.05] text-[#111827] sm:text-[2rem] md:text-[2.78rem]">
+          <div className="mx-auto max-w-[750px] text-center">
+            <h2 className="text-[2rem] font-extrabold leading-[1.1] text-[#111827] sm:text-[2.4rem] md:text-[3rem]">
               How FlashFire Helps
               <br />
               You Land Interviews
             </h2>
-            <p className="mx-auto mt-3 max-w-[340px] text-[0.82rem] font-medium leading-[1.2] text-[#596273] sm:max-w-[420px] sm:text-[1.05rem] sm:leading-[1.1]">
+            <p className="mx-auto mt-4 max-w-[380px] text-[0.85rem] font-medium leading-[1.3] text-[#596273] sm:max-w-[480px] sm:text-[1.05rem] sm:leading-[1.2]">
               Your dedicated job search workflow, from resume optimization to interview calls, all
               managed in one place.
             </p>
           </div>
 
-          <div className="relative mx-auto mt-9 max-w-[820px] sm:mt-[64px]">
+          <div className="relative mx-auto mt-9 max-w-[1000px] sm:mt-[64px]">
             <div
               className="absolute left-[27px] top-2 bottom-2 w-px bg-[#f3c7ae] sm:left-[35px]"
               aria-hidden="true"
@@ -496,7 +496,7 @@ export default function HowItWorks() {
                     <div className="relative z-10 flex h-[54px] w-[54px] shrink-0 items-center justify-center self-center rounded-[10px] bg-gradient-to-br from-[#ff7a3d] to-[#ff4c00] text-lg font-extrabold text-white shadow-[0_8px_16px_rgba(255,76,0,0.28)] sm:h-[70px] sm:w-[70px] sm:rounded-[14px] sm:text-xl">
                       {String(index + 1).padStart(2, "0")}
                     </div>
-                    <div className="flex min-h-[110px] flex-1 items-center justify-between gap-4 rounded-[10px] bg-[#fbe4da] px-5 py-5 sm:min-h-[132px] sm:px-8">
+                    <div className="flex min-h-[110px] flex-1 items-center justify-between gap-4 rounded-[10px] border border-[#f6c9a8] bg-[#fbe4da] px-5 py-5 shadow-[0_4px_14px_rgba(255,108,42,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_26px_rgba(255,76,0,0.14)] sm:min-h-[132px] sm:px-8">
                       <div>
                         <p className="text-[0.68rem] font-bold uppercase tracking-wide text-[#ff4c00] sm:text-[0.72rem]">
                           Step {index + 1} &middot; {step.tag}
@@ -504,14 +504,13 @@ export default function HowItWorks() {
                         <h3 className="mt-1.5 text-[0.92rem] font-extrabold leading-[1.15] text-[#111827] sm:text-[1.2rem]">
                           {step.heading}
                         </h3>
-                        <p className="mt-2 max-w-[440px] text-[0.72rem] font-medium leading-[1.35] text-[#596273] sm:text-[0.9rem]">
+                        <p className="mt-2 max-w-[600px] text-[0.72rem] font-medium leading-[1.35] text-[#596273] sm:text-[0.9rem]">
                           {step.description}
                         </p>
                       </div>
-                      <Icon
-                        className="hidden h-10 w-10 shrink-0 text-[#ff4c00] sm:block"
-                        strokeWidth={2}
-                      />
+                      <div className="hidden h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white shadow-[0_6px_14px_rgba(255,76,0,0.15)] sm:flex">
+                        <Icon className="h-8 w-8 text-[#ff4c00]" strokeWidth={2} />
+                      </div>
                     </div>
                   </div>
                 );
@@ -535,8 +534,8 @@ export default function HowItWorks() {
             Talk to an Expert
             <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
-          <div className="mx-auto mt-8 max-w-[1135px] rounded-[8px] bg-[#ff5018] px-3 py-3 sm:px-6 sm:py-6 md:mt-10 md:px-[54px] md:py-[48px]">
-            <div className="overflow-hidden bg-white">
+          <div className="mx-auto mt-8 max-w-[1135px] rounded-[16px] bg-[#ff5018] px-3 py-3 shadow-[0_24px_60px_rgba(255,76,0,0.22)] sm:px-6 sm:py-6 md:mt-10 md:px-[54px] md:py-[48px]">
+            <div className="overflow-hidden rounded-[10px] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.18)]">
               <video
                 className="block aspect-video w-full object-cover"
                 controls
@@ -557,7 +556,7 @@ export default function HowItWorks() {
             Everything You Need to Land More Interviews
           </h2>
 
-          <div className="mx-auto mt-8 max-w-[1052px] overflow-hidden rounded-[10px] border border-[#e5dcd6] bg-white sm:mt-14">
+          <div className="mx-auto mt-8 max-w-[1052px] overflow-hidden rounded-[14px] border border-[#e5dcd6] bg-white shadow-[0_16px_40px_rgba(17,24,39,0.06)] sm:mt-14">
             <div className="grid sm:grid-cols-3">
               {differentiators.map((item, index) => {
                 const Icon = item.icon;
@@ -567,11 +566,13 @@ export default function HowItWorks() {
                 return (
                   <div
                     key={item.title}
-                    className={`border-b border-[#e5dcd6] px-6 py-7 sm:px-8 sm:py-9 ${
+                    className={`border-b border-[#e5dcd6] px-6 py-7 transition-colors duration-300 hover:bg-[#fff8f5] sm:px-8 sm:py-9 ${
                       !isLastCol ? "sm:border-r" : ""
                     } ${isLastRow ? "sm:border-b-0" : ""}`}
                   >
-                    <Icon className="h-7 w-7 text-[#ff4c00]" strokeWidth={2} />
+                    <div className="flex h-12 w-12 items-center justify-center rounded-[10px] bg-[#fff1e8]">
+                      <Icon className="h-6 w-6 text-[#ff4c00]" strokeWidth={2} />
+                    </div>
                     <p className="mt-4 text-[0.85rem] font-extrabold text-[#ff4c00]">{item.num}</p>
                     <p className="mt-1 text-[1rem] font-extrabold leading-[1.25] text-[#1f2a44] sm:text-[1.1rem]">
                       {item.title}
@@ -602,7 +603,7 @@ export default function HowItWorks() {
           </h2>
 
           <div className="mx-auto mt-9 grid max-w-[1052px] gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6">
-            <div className="rounded-[10px] bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] sm:p-8">
+            <div className="rounded-[10px] border border-white/40 bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(0,0,0,0.18)] sm:p-8">
               <div className="mb-6 space-y-3">
                 <div>
                   <span className="text-[10px] font-semibold text-[#b3aca7]">Manual</span>
@@ -625,7 +626,7 @@ export default function HowItWorks() {
               </p>
             </div>
 
-            <div className="rounded-[10px] bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] sm:p-8">
+            <div className="rounded-[10px] border border-white/40 bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(0,0,0,0.18)] sm:p-8">
               <div className="mb-6 flex items-center gap-1">
                 <RingStat percent={55} color="#d9d2cc" />
                 <RingStat percent={80} color="#ff4c00" />
@@ -638,7 +639,7 @@ export default function HowItWorks() {
               </p>
             </div>
 
-            <div className="rounded-[10px] bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] sm:p-8">
+            <div className="rounded-[10px] border border-white/40 bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(0,0,0,0.18)] sm:p-8">
               <div className="mb-6 grid grid-cols-3 gap-3">
                 {[
                   { label: "Applied", h: "70%" },
@@ -662,7 +663,7 @@ export default function HowItWorks() {
               </p>
             </div>
 
-            <div className="rounded-[10px] bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] sm:p-8">
+            <div className="rounded-[10px] border border-white/40 bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(0,0,0,0.18)] sm:p-8">
               <div className="mb-6 space-y-2.5">
                 <div className="flex items-center gap-2">
                   <span className="h-3 w-3 shrink-0 rounded-[3px] bg-[#ff4c00]" />
@@ -702,7 +703,7 @@ export default function HowItWorks() {
                 people who want outcomes.
               </p>
 
-              <div className="mt-8 rounded-[10px] bg-[#ff5018] p-6 text-white shadow-[0_14px_28px_rgba(255,80,24,0.28)] sm:p-8">
+              <div className="mt-8 rounded-[12px] bg-gradient-to-br from-[#ff7a3d] to-[#ff5018] p-6 text-white shadow-[0_18px_36px_rgba(255,80,24,0.3)] sm:p-8">
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-[5px] bg-white/15 text-sm font-extrabold">
                   {personas[activePersona].num}
                 </span>
@@ -723,10 +724,10 @@ export default function HowItWorks() {
                   <button
                     key={persona.num}
                     type="button"
-                    className={`flex min-h-[59px] w-full items-center gap-4 rounded-[8px] border px-4 py-3 text-left transition ${
+                    className={`flex min-h-[59px] w-full items-center gap-4 rounded-[8px] border px-4 py-3 text-left transition-all duration-200 ${
                       isActive
-                        ? "border-[#ff4c00] bg-[#fff3ee]"
-                        : "border-[#e5dcd6] bg-white hover:border-[#ffcdbd]"
+                        ? "border-[#ff4c00] bg-[#fff3ee] shadow-[0_8px_20px_rgba(255,76,0,0.12)]"
+                        : "border-[#e5dcd6] bg-white hover:border-[#ffcdbd] hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)]"
                     }`}
                     onClick={() => setActivePersona(index)}
                     aria-pressed={isActive}
@@ -779,10 +780,10 @@ export default function HowItWorks() {
                     <X size={14} className="shrink-0 text-[#b3aca7]" />
                     {row.alone}
                   </div>
-                  <span className="mx-auto flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#ff4c00] text-white sm:h-8 sm:w-8">
+                  <span className="mx-auto flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#ff4c00] text-white shadow-[0_4px_10px_rgba(255,76,0,0.3)] sm:h-8 sm:w-8">
                     <ArrowRight size={14} />
                   </span>
-                  <div className="flex items-center gap-1.5 rounded-[8px] border border-[#f7c9ab] bg-[#fff1e4] px-3 py-3 text-[11px] font-semibold leading-snug text-[#111827] sm:gap-2 sm:px-5 sm:text-[13px]">
+                  <div className="flex items-center gap-1.5 rounded-[8px] border border-[#f7c9ab] bg-[#fff1e4] px-3 py-3 text-[11px] font-semibold leading-snug text-[#111827] shadow-[0_4px_12px_rgba(255,76,0,0.06)] transition-shadow duration-300 hover:shadow-[0_8px_20px_rgba(255,76,0,0.14)] sm:gap-2 sm:px-5 sm:text-[13px]">
                     <span className="min-w-0 flex-1">{row.flashfire}</span>
                     <Check size={14} className="shrink-0 text-[#ff4c00]" />
                   </div>
@@ -798,10 +799,10 @@ export default function HowItWorks() {
               Helping Job Seekers Get More Interviews
             </h2>
 
-            <div className="mt-9 overflow-hidden rounded-[10px] border border-[#e5dcd6] bg-white sm:mt-12">
+            <div className="mt-9 overflow-hidden rounded-[14px] border border-[#e5dcd6] bg-white shadow-[0_16px_40px_rgba(17,24,39,0.06)] sm:mt-12">
               <div className="grid divide-y divide-[#e5dcd6] sm:grid-cols-4 sm:divide-x sm:divide-y-0">
                 {resultsStats.map((stat) => (
-                  <div key={stat.label} className="p-6 sm:p-7">
+                  <div key={stat.label} className="p-6 transition-colors duration-300 hover:bg-[#fff8f5] sm:p-7">
                     <p className="text-[11px] font-semibold text-[#b3aca7]">{stat.tag}</p>
                     {stat.type === "spark" ? (
                       <Sparkline />
@@ -880,27 +881,55 @@ export default function HowItWorks() {
           </div>
         </section>
 
-        <section className="bg-white px-5 py-16 text-center md:px-8">
-          <div className="mx-auto max-w-[920px] rounded-[22px] bg-gradient-to-br from-[#ffe6d8] via-[#ffb37a] to-[#ff5a1f] p-[1.5px] shadow-[0_10px_30px_rgba(255,76,0,0.1)]">
-            <div className="rounded-[21px] bg-[#fdeee6] px-5 py-10 text-[#111827] md:px-8 md:py-11">
-              <h2 className="mx-auto max-w-[760px] text-[1.4rem] font-extrabold leading-tight md:text-[1.85rem]">
-                Ready to Land More Interviews?
-              </h2>
-              <p className="mx-auto mt-4 max-w-[560px] text-sm font-semibold leading-5 text-[#5f5a58]">
-                Optimize your resume, automate job applications, track every opportunity, and
-                prepare for interviews, all from one platform.
-              </p>
+        <section className="relative overflow-hidden bg-[#fff6f1] px-5 py-16 md:px-8 md:py-24">
+          <div
+            className="pointer-events-none absolute -top-20 left-1/2 h-[380px] w-[380px] -translate-x-1/2 rounded-full bg-[#ffcfa8]/50 blur-[110px]"
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute -bottom-24 right-[-40px] h-[280px] w-[280px] rounded-full bg-[#ffe1cf]/70 blur-[100px]"
+            aria-hidden="true"
+          />
+
+          <div className="relative mx-auto max-w-[760px] rounded-[24px] border border-[#ffd9b8] bg-white px-6 py-12 text-center shadow-[0_30px_70px_rgba(255,76,0,0.12)] md:px-14 md:py-16">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#fff1e4] px-4 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#ff4c00] sm:text-[11px]">
+              Start Today
+            </span>
+            <h2 className="mx-auto mt-5 max-w-[560px] text-[1.9rem] font-extrabold leading-[1.1] text-[#111827] md:text-[3rem]">
+              Ready to Land More Interviews?
+            </h2>
+            <p className="mx-auto mt-4 max-w-[500px] text-[0.92rem] font-medium leading-6 text-[#596273] sm:text-base">
+              Optimize your resume, automate job applications, track every opportunity, and
+              prepare for interviews, all from one platform.
+            </p>
+
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <button
                 {...getButtonProps()}
                 onClick={() => handleGetStarted("final_cta")}
-                className="mt-6 inline-flex min-h-[36px] items-center justify-center gap-1.5 rounded-[7px] bg-[#ff4c00] px-5 text-xs font-extrabold text-white shadow-[0_8px_16px_rgba(255,76,0,0.24)] transition hover:bg-[#e84400]"
+                className="inline-flex min-h-[50px] w-full items-center justify-center gap-2 rounded-[8px] bg-[#ff4c00] px-7 text-sm font-extrabold text-white shadow-[0_14px_28px_rgba(255,76,0,0.28)] transition hover:bg-[#e84400] focus:outline-none focus:ring-2 focus:ring-[#ff4c00] focus:ring-offset-2 sm:min-h-[54px] sm:w-auto sm:px-8 sm:text-base"
               >
                 Get Started Free
-                <ArrowRight className="h-3 w-3" />
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
               </button>
-              <p className="mt-4 text-xs font-medium text-[#7c716d]">
-                Quick onboarding. We handle the rest.
-              </p>
+              <button
+                onClick={() => handleTalkToExpertClick("final_cta")}
+                className="inline-flex min-h-[50px] w-full items-center justify-center gap-2 rounded-[8px] border border-[#ff4c00]/25 bg-white px-7 text-sm font-extrabold text-[#ff4c00] transition hover:bg-[#fff1e4] sm:min-h-[54px] sm:w-auto sm:px-8 sm:text-base"
+              >
+                Talk to an Expert
+              </button>
+            </div>
+
+            <div className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+              {["No credit card required", "Free to start", "Quick onboarding"].map((item) => (
+                <span
+                  key={item}
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#596273]"
+                >
+                  <Check className="h-3.5 w-3.5 text-[#ff4c00]" strokeWidth={3} />
+                  {item}
+                </span>
+              ))}
             </div>
           </div>
         </section>
