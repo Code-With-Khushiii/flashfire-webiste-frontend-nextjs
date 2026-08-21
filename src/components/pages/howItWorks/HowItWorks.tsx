@@ -8,6 +8,7 @@ import { GTagUTM } from "@/src/utils/GTagUTM";
 import { trackButtonClick, trackExternalLink, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { WHATSAPP_SUPPORT_URL } from "@/src/utils/whatsapp";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
+import styles from "@/src/components/homePageFAQ/homePageFAQ.module.css";
 import {
   ArrowDown,
   ArrowRight,
@@ -338,10 +339,10 @@ export default function HowItWorks() {
       <Navbar />
 
       <main className="w-full overflow-hidden pb-9 lg:pb-14">
-        <section className="overflow-hidden rounded-[13px] bg-[#fbe4da] px-5 py-12 sm:px-8 md:px-12 lg:flex lg:min-h-[600px] lg:items-center lg:px-[54px] lg:py-16">
+        <section className="overflow-hidden rounded-[13px] bg-[#fbe4da] px-5 py-14 sm:px-8 sm:py-16 md:px-12 md:py-20 lg:flex lg:min-h-[720px] lg:items-center lg:px-[54px] lg:py-24 xl:min-h-[780px]">
           <div className="grid w-full gap-9 lg:grid-cols-2 lg:items-center lg:gap-12">
             <div className="min-w-0">
-              <h1 className="max-w-[540px] text-[2.1rem] font-extrabold leading-[1.08] text-[#111827] sm:text-[2.5rem] lg:text-[3rem]">
+              <h1 className="max-w-[540px] text-[2.1rem] font-extrabold leading-[1.08] text-[#111827] sm:text-[2.5rem] lg:text-[3.4rem]">
                 Land More Interview
                 <br />
                 Without Spending Hours
@@ -373,7 +374,7 @@ export default function HowItWorks() {
             </div>
 
             <div className="min-w-0">
-              <div className="relative mx-auto aspect-[3/2] w-full max-w-[430px] overflow-hidden rounded-[22px] border border-[#f6c9a8] bg-gradient-to-b from-[#ffc79b] via-[#fff2e8] to-white p-5 shadow-[0_18px_40px_rgba(255,76,0,0.14)]">
+              <div className="relative mx-auto aspect-[4/3.2] w-full max-w-[430px] overflow-hidden rounded-[22px] border border-[#f6c9a8] bg-gradient-to-b from-[#ffc79b] via-[#fff2e8] to-white p-5 shadow-[0_18px_40px_rgba(255,76,0,0.14)] lg:max-w-[480px]">
                 <span className="text-[11px] font-semibold text-[#4b4541]">Application flow</span>
 
                 <span
@@ -597,37 +598,36 @@ export default function HowItWorks() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-[#ff5018] px-5 py-14 md:px-8 md:py-[100px]">
+        <section className="relative overflow-hidden bg-[#fffaf7] px-5 py-14 md:px-8 md:py-[100px]">
           <div
-            className="pointer-events-none absolute -top-16 left-[-60px] h-[300px] w-[300px] rounded-full bg-white/10 blur-[100px]"
+            className="pointer-events-none absolute -top-16 left-[-60px] h-[300px] w-[300px] rounded-full bg-[#ffd9b8]/40 blur-[100px]"
             aria-hidden="true"
           />
           <div
-            className="pointer-events-none absolute -bottom-24 right-[-40px] h-[280px] w-[280px] rounded-full bg-[#ff8a4d]/40 blur-[100px]"
+            className="pointer-events-none absolute -bottom-24 right-[-40px] h-[280px] w-[280px] rounded-full bg-[#ffe1cf]/60 blur-[100px]"
             aria-hidden="true"
           />
 
           <div className="relative mx-auto max-w-[640px] text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[10px] font-bold uppercase tracking-wide text-white sm:text-[11px]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#ffcdad] bg-white px-4 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#ff4c00] shadow-[0_4px_12px_rgba(255,76,0,0.08)] sm:text-[11px]">
               Why FlashFire
             </span>
-            <h2 className="mt-4 text-[2rem] font-extrabold leading-[1.12] text-white sm:text-[2.3rem] md:text-[3.1rem]">
+            <h2 className="mt-4 text-[2rem] font-extrabold leading-[1.12] text-[#111827] sm:text-[2.3rem] md:text-[3.1rem]">
               Why Job Seekers Choose FlashFire
             </h2>
-            <p className="mx-auto mt-3 max-w-[480px] text-[0.9rem] font-medium leading-6 text-white/75 sm:text-[1rem]">
+            <p className="mx-auto mt-3 max-w-[480px] text-[0.9rem] font-medium leading-6 text-[#596273] sm:text-[1rem]">
               Four ways FlashFire replaces the busywork of a job search with a system that
               actually gets you interviews.
             </p>
           </div>
 
-          <div className="relative mx-auto mt-9 grid max-w-[1160px] gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6">
-            <div className="group rounded-[14px] border border-white/40 bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:border-[#ff4c00]/30 hover:shadow-[0_18px_36px_rgba(0,0,0,0.18)] sm:p-8">
-              <div className="mb-5 flex items-center justify-between">
-                <div className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#fff1e8] transition-colors duration-300 group-hover:bg-[#ffe1d1]">
-                  <Clock3 className="h-5 w-5 text-[#ff4c00]" strokeWidth={2} />
-                </div>
+          <div className="relative mx-auto mt-9 grid max-w-[1220px] gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="group flex flex-col rounded-[16px] bg-white p-6 shadow-[0_8px_24px_rgba(17,24,39,0.06)] ring-1 ring-[#f0e4dc] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_36px_rgba(255,76,0,0.14)] hover:ring-[#ffcdad]">
+              <div className="h-1 w-10 rounded-full bg-[#ff4c00]" />
+              <div className="mt-5 flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#fff1e8] transition-colors duration-300 group-hover:bg-[#ffe1d1]">
+                <Clock3 className="h-5 w-5 text-[#ff4c00]" strokeWidth={2} />
               </div>
-              <div className="mb-6 space-y-3">
+              <div className="mb-2 mt-6 space-y-3">
                 <div>
                   <span className="text-[10px] font-semibold text-[#b3aca7]">Manual</span>
                   <div className="mt-1 h-2 w-full rounded-full bg-[#e9e4e0]">
@@ -637,11 +637,11 @@ export default function HowItWorks() {
                 <div>
                   <span className="text-[10px] font-semibold text-[#ff4c00]">Flashfire</span>
                   <div className="mt-1 h-2 w-full rounded-full bg-[#ffe1d1]">
-                    <div className="h-2 w-[35%] rounded-full bg-gradient-to-r from-[#ff8a3d] to-[#ff4c00]" />
+                    <div className="h-2 w-[35%] rounded-full bg-[#ff4c00]" />
                   </div>
                 </div>
               </div>
-              <h3 className="text-[16px] font-extrabold leading-6 text-[#111827]">
+              <h3 className="mt-3 text-[16px] font-extrabold leading-6 text-[#111827]">
                 Save hours every week
               </h3>
               <p className="mt-3 text-[13px] font-medium leading-6 text-[#6b7280]">
@@ -649,17 +649,16 @@ export default function HowItWorks() {
               </p>
             </div>
 
-            <div className="group rounded-[14px] border border-white/40 bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:border-[#ff4c00]/30 hover:shadow-[0_18px_36px_rgba(0,0,0,0.18)] sm:p-8">
-              <div className="mb-5 flex items-center justify-between">
-                <div className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#fff1e8] transition-colors duration-300 group-hover:bg-[#ffe1d1]">
-                  <Target className="h-5 w-5 text-[#ff4c00]" strokeWidth={2} />
-                </div>
+            <div className="group flex flex-col rounded-[16px] bg-white p-6 shadow-[0_8px_24px_rgba(17,24,39,0.06)] ring-1 ring-[#f0e4dc] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_36px_rgba(255,76,0,0.14)] hover:ring-[#ffcdad]">
+              <div className="h-1 w-10 rounded-full bg-[#ff4c00]" />
+              <div className="mt-5 flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#fff1e8] transition-colors duration-300 group-hover:bg-[#ffe1d1]">
+                <Target className="h-5 w-5 text-[#ff4c00]" strokeWidth={2} />
               </div>
-              <div className="mb-6 flex items-center gap-1">
+              <div className="mb-2 mt-6 flex items-center gap-1">
                 <RingStat percent={55} color="#d9d2cc" />
                 <RingStat percent={80} color="#ff4c00" />
               </div>
-              <h3 className="text-[16px] font-extrabold leading-6 text-[#111827]">
+              <h3 className="mt-3 text-[16px] font-extrabold leading-6 text-[#111827]">
                 Better Quality Applications
               </h3>
               <p className="mt-3 text-[13px] font-medium leading-6 text-[#6b7280]">
@@ -667,13 +666,12 @@ export default function HowItWorks() {
               </p>
             </div>
 
-            <div className="group rounded-[14px] border border-white/40 bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:border-[#ff4c00]/30 hover:shadow-[0_18px_36px_rgba(0,0,0,0.18)] sm:p-8">
-              <div className="mb-5 flex items-center justify-between">
-                <div className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#fff1e8] transition-colors duration-300 group-hover:bg-[#ffe1d1]">
-                  <FileText className="h-5 w-5 text-[#ff4c00]" strokeWidth={2} />
-                </div>
+            <div className="group flex flex-col rounded-[16px] bg-white p-6 shadow-[0_8px_24px_rgba(17,24,39,0.06)] ring-1 ring-[#f0e4dc] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_36px_rgba(255,76,0,0.14)] hover:ring-[#ffcdad]">
+              <div className="h-1 w-10 rounded-full bg-[#ff4c00]" />
+              <div className="mt-5 flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#fff1e8] transition-colors duration-300 group-hover:bg-[#ffe1d1]">
+                <FileText className="h-5 w-5 text-[#ff4c00]" strokeWidth={2} />
               </div>
-              <div className="mb-6 grid grid-cols-3 gap-3">
+              <div className="mb-2 mt-6 grid grid-cols-3 gap-3">
                 {[
                   { label: "Applied", h: "70%" },
                   { label: "Review", h: "42%" },
@@ -683,26 +681,25 @@ export default function HowItWorks() {
                     <span className="text-[9px] font-semibold text-[#b3aca7]">{b.label}</span>
                     <div className="mt-2 flex h-14 items-end rounded-md bg-[#faf1ec] p-1">
                       <div
-                        className="w-full rounded bg-gradient-to-t from-[#ff4c00] to-[#ff9a5c]"
+                        className="w-full rounded bg-[#ff4c00]"
                         style={{ height: b.h }}
                       />
                     </div>
                   </div>
                 ))}
               </div>
-              <h3 className="text-[16px] font-extrabold leading-6 text-[#111827]">Stay organized</h3>
+              <h3 className="mt-3 text-[16px] font-extrabold leading-6 text-[#111827]">Stay organized</h3>
               <p className="mt-3 text-[13px] font-medium leading-6 text-[#6b7280]">
                 Track every application in one dashboard, sorted by stage, never lose track of a lead.
               </p>
             </div>
 
-            <div className="group rounded-[14px] border border-white/40 bg-gradient-to-br from-white to-[#fff0e8] p-6 shadow-[0_10px_22px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 hover:border-[#ff4c00]/30 hover:shadow-[0_18px_36px_rgba(0,0,0,0.18)] sm:p-8">
-              <div className="mb-5 flex items-center justify-between">
-                <div className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#fff1e8] transition-colors duration-300 group-hover:bg-[#ffe1d1]">
-                  <PhoneCall className="h-5 w-5 text-[#ff4c00]" strokeWidth={2} />
-                </div>
+            <div className="group flex flex-col rounded-[16px] bg-white p-6 shadow-[0_8px_24px_rgba(17,24,39,0.06)] ring-1 ring-[#f0e4dc] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_36px_rgba(255,76,0,0.14)] hover:ring-[#ffcdad]">
+              <div className="h-1 w-10 rounded-full bg-[#ff4c00]" />
+              <div className="mt-5 flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#fff1e8] transition-colors duration-300 group-hover:bg-[#ffe1d1]">
+                <PhoneCall className="h-5 w-5 text-[#ff4c00]" strokeWidth={2} />
               </div>
-              <div className="mb-6 space-y-2.5">
+              <div className="mb-2 mt-6 space-y-2.5">
                 <div className="flex items-center gap-2">
                   <span className="h-3 w-3 shrink-0 rounded-[3px] bg-[#ff4c00]" />
                   <span className="h-2 flex-1 rounded-full bg-[#ffd9c2]" />
@@ -716,7 +713,7 @@ export default function HowItWorks() {
                   <span className="h-2 flex-1 rounded-full bg-[#efe9e4]" />
                 </div>
               </div>
-              <h3 className="text-[16px] font-extrabold leading-6 text-[#111827]">Interview ready</h3>
+              <h3 className="mt-3 text-[16px] font-extrabold leading-6 text-[#111827]">Interview ready</h3>
               <p className="mt-3 text-[13px] font-medium leading-6 text-[#6b7280]">
                 Resume optimization, applications, tracking, and interview prep, all in one place.
               </p>
@@ -832,35 +829,57 @@ export default function HowItWorks() {
         </section>
 
         <section className="bg-[#fff3f1] px-4 py-14 sm:px-5 md:py-[90px]">
-          <div className="mx-auto max-w-[1000px]">
-            <h2 className="text-center text-[2rem] font-extrabold leading-[1.1] text-[#111827] sm:text-[2.4rem] md:text-[3rem]">
-              Helping Job Seekers Get More Interviews
-            </h2>
+          <div className="mx-auto max-w-[1100px]">
+            <div className="text-center">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#ffcdad] bg-white px-4 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#ff4c00] shadow-[0_4px_12px_rgba(255,76,0,0.08)] sm:text-[11px]">
+                Real Results
+              </span>
+              <h2 className="mt-4 text-[2rem] font-extrabold leading-[1.1] text-[#111827] sm:text-[2.4rem] md:text-[3rem]">
+                Helping Job Seekers Get More Interviews
+              </h2>
+            </div>
 
-            <div className="mt-9 overflow-hidden rounded-[14px] border border-[#e5dcd6] bg-white shadow-[0_16px_40px_rgba(17,24,39,0.06)] sm:mt-12">
-              <div className="grid divide-y divide-[#e5dcd6] sm:grid-cols-4 sm:divide-x sm:divide-y-0">
-                {resultsStats.map((stat) => (
-                  <div key={stat.label} className="p-6 transition-colors duration-300 hover:bg-[#fff8f5] sm:p-7">
-                    <p className="text-[11px] font-semibold text-[#b3aca7]">{stat.tag}</p>
-                    {stat.type === "spark" ? (
-                      <Sparkline />
-                    ) : (
-                      <div className="mt-1 flex items-center gap-2">
-                        <RingStat percent={stat.percent} />
-                        {stat.note && (
-                          <span className="text-[10px] font-medium text-[#b3aca7]">{stat.note}</span>
-                        )}
+            <div className="mt-9 grid gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4">
+              {resultsStats.map((stat, index) => {
+                const icons = [FileText, PhoneCall, Clock3, Target];
+                const Icon = icons[index % icons.length];
+
+                return (
+                  <div
+                    key={stat.label}
+                    className="group relative flex flex-col overflow-hidden rounded-[16px] border border-[#e5dcd6] bg-white p-6 shadow-[0_10px_26px_rgba(17,24,39,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#ffcdad] hover:shadow-[0_18px_36px_rgba(255,76,0,0.14)]"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#fff1e8] transition-colors duration-300 group-hover:bg-[#ff4c00]">
+                        <Icon className="h-5 w-5 text-[#ff4c00] transition-colors duration-300 group-hover:text-white" strokeWidth={2} />
                       </div>
-                    )}
-                    <div className="mt-3 text-[1.6rem] font-extrabold leading-none text-[#111827] sm:text-[1.9rem]">
+                      <p className="text-[10px] font-bold uppercase tracking-wide text-[#b3aca7]">
+                        {stat.tag}
+                      </p>
+                    </div>
+
+                    <div className="mt-6 text-[2.1rem] font-extrabold leading-none text-[#111827] sm:text-[2.3rem]">
                       {stat.value}
                     </div>
-                    <div className="mt-2 text-xs font-medium leading-4 text-[#737987]">
+                    <div className="mt-2 text-[13px] font-semibold leading-4 text-[#737987]">
                       {stat.label}
                     </div>
+
+                    <div className="mt-5 flex items-center gap-2 border-t border-[#f0e4dc] pt-4">
+                      {stat.type === "spark" ? (
+                        <Sparkline />
+                      ) : (
+                        <>
+                          <RingStat percent={stat.percent} />
+                          {stat.note && (
+                            <span className="text-[10px] font-medium text-[#b3aca7]">{stat.note}</span>
+                          )}
+                        </>
+                      )}
+                    </div>
                   </div>
-                ))}
-              </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -872,7 +891,7 @@ export default function HowItWorks() {
           ctaLabel="Start Your Job Search"
         />
 
-        <section id="faq" className="bg-[#fdeee6] px-4 py-14 sm:px-5 md:py-[90px]">
+        <section id="faq" className={`${styles.faqSection} !bg-[#fdeee6]`}>
           <div className="mx-auto max-w-[820px] text-center">
             <h2 className="text-[1.65rem] font-extrabold leading-[1.15] text-[#111827] sm:text-[2.2rem] md:text-[2.7rem]">
               FAQs About Our <span className="text-[#ff4c00]">AI Job Application</span>
@@ -884,33 +903,29 @@ export default function HowItWorks() {
             </p>
           </div>
 
-          <div className="mx-auto mt-9 max-w-[820px] space-y-3 sm:mt-12">
+          <div className={`${styles.faqContainer} mt-9 sm:mt-12`}>
             {faqs.map((faq, index) => {
               const isActive = activeFaq === index;
 
               return (
                 <div
                   key={faq.q}
-                  className="overflow-hidden rounded-[10px] bg-white shadow-[0_4px_14px_rgba(0,0,0,0.06)]"
+                  className={`${styles.faqItem} ${isActive ? styles.active : ""}`}
                 >
                   <button
                     type="button"
-                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-7 sm:py-5"
+                    className={styles.faqQuestion}
                     onClick={() => setActiveFaq(isActive ? null : index)}
                     aria-expanded={isActive}
                   >
-                    <span className="text-[0.82rem] font-bold text-[#111827] sm:text-[0.98rem]">
-                      {faq.q}
-                    </span>
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#fdeee6] text-[#ff4c00]">
+                    <span>{faq.q}</span>
+                    <span className={styles.icon}>
                       {isActive ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
                     </span>
                   </button>
                   {isActive && (
-                    <div className="px-5 pb-5 sm:px-7">
-                      <p className="text-[0.78rem] font-medium leading-[1.4] text-[#596273] sm:text-[0.88rem]">
-                        {faq.a}
-                      </p>
+                    <div className={styles.faqAnswer}>
+                      <p>{faq.a}</p>
                     </div>
                   )}
                 </div>
@@ -919,52 +934,52 @@ export default function HowItWorks() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-[#fff6f1] px-5 py-16 md:px-8 md:py-24">
-          <div
-            className="pointer-events-none absolute -top-20 left-1/2 h-[380px] w-[380px] -translate-x-1/2 rounded-full bg-[#ffcfa8]/50 blur-[110px]"
-            aria-hidden="true"
-          />
-          <div
-            className="pointer-events-none absolute -bottom-24 right-[-40px] h-[280px] w-[280px] rounded-full bg-[#ffe1cf]/70 blur-[100px]"
-            aria-hidden="true"
-          />
+        <section className="bg-[#fff6f1] px-5 py-16 md:px-8 md:py-24">
+          <div className="relative mx-auto max-w-[900px] overflow-hidden rounded-[24px] bg-[#ff4c00] px-6 py-12 text-center shadow-[0_30px_70px_rgba(255,76,0,0.22)] md:px-14 md:py-16">
+            <div
+              className="pointer-events-none absolute -right-10 -top-10 h-[220px] w-[220px] rounded-full border border-white/15"
+              aria-hidden="true"
+            />
+            <div
+              className="pointer-events-none absolute -bottom-16 -left-10 h-[180px] w-[180px] rounded-full border border-white/10"
+              aria-hidden="true"
+            />
 
-          <div className="relative mx-auto max-w-[760px] rounded-[24px] border border-[#ffd9b8] bg-white px-6 py-12 text-center shadow-[0_30px_70px_rgba(255,76,0,0.12)] md:px-14 md:py-16">
-            <span className="inline-flex items-center gap-2 rounded-full bg-[#fff1e4] px-4 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#ff4c00] sm:text-[11px]">
+            <span className="relative inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[10px] font-bold uppercase tracking-wide text-white sm:text-[11px]">
               Start Today
             </span>
-            <h2 className="mx-auto mt-5 max-w-[560px] text-[1.9rem] font-extrabold leading-[1.1] text-[#111827] md:text-[3rem]">
+            <h2 className="relative mx-auto mt-5 max-w-[560px] text-[1.9rem] font-extrabold leading-[1.1] text-white md:text-[3rem]">
               Ready to Land More Interviews?
             </h2>
-            <p className="mx-auto mt-4 max-w-[500px] text-[0.92rem] font-medium leading-6 text-[#596273] sm:text-base">
+            <p className="relative mx-auto mt-4 max-w-[500px] text-[0.92rem] font-medium leading-6 text-white/80 sm:text-base">
               Optimize your resume, automate job applications, track every opportunity, and
               prepare for interviews, all from one platform.
             </p>
 
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="relative mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <button
                 {...getButtonProps()}
                 onClick={() => handleGetStarted("final_cta")}
-                className="inline-flex min-h-[50px] w-full items-center justify-center gap-2 rounded-[8px] bg-[#ff4c00] px-7 text-sm font-extrabold text-white shadow-[0_14px_28px_rgba(255,76,0,0.28)] transition hover:bg-[#e84400] focus:outline-none focus:ring-2 focus:ring-[#ff4c00] focus:ring-offset-2 sm:min-h-[54px] sm:w-auto sm:px-8 sm:text-base"
+                className="inline-flex min-h-[50px] w-full items-center justify-center gap-2 rounded-[8px] bg-white px-7 text-sm font-extrabold text-[#ff4c00] shadow-[0_14px_28px_rgba(0,0,0,0.18)] transition hover:bg-[#fff1e4] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#ff4c00] sm:min-h-[54px] sm:w-auto sm:px-8 sm:text-base"
               >
                 Get Started Free
                 <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
               </button>
               <button
                 onClick={() => handleTalkToExpertClick("final_cta")}
-                className="inline-flex min-h-[50px] w-full items-center justify-center gap-2 rounded-[8px] border border-[#ff4c00]/25 bg-white px-7 text-sm font-extrabold text-[#ff4c00] transition hover:bg-[#fff1e4] sm:min-h-[54px] sm:w-auto sm:px-8 sm:text-base"
+                className="inline-flex min-h-[50px] w-full items-center justify-center gap-2 rounded-[8px] border border-white/40 bg-transparent px-7 text-sm font-extrabold text-white transition hover:bg-white/10 sm:min-h-[54px] sm:w-auto sm:px-8 sm:text-base"
               >
                 Talk to an Expert
               </button>
             </div>
 
-            <div className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            <div className="relative mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
               {["No credit card required", "Free to start", "Quick onboarding"].map((item) => (
                 <span
                   key={item}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#596273]"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/85"
                 >
-                  <Check className="h-3.5 w-3.5 text-[#ff4c00]" strokeWidth={3} />
+                  <Check className="h-3.5 w-3.5 text-white" strokeWidth={3} />
                   {item}
                 </span>
               ))}
