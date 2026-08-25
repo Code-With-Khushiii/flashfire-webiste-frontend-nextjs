@@ -146,7 +146,6 @@ function Features() {
   const pathname = usePathname()
   const router = useRouter()
   const [activeFaq, setActiveFaq] = useState<number | null>(null)
-  const [activePersona, setActivePersona] = useState(0)
 
   const prefix = getLocalePrefix(pathname)
 
@@ -429,10 +428,20 @@ function Features() {
           </div>
         </section>
 
-        <section className="bg-white px-4 py-14 sm:px-6 md:px-12 md:py-24">
-          <div className="mx-auto max-w-5xl">
+        <section className="relative overflow-hidden bg-white px-4 py-14 sm:px-6 md:px-12 md:py-24">
+          <div
+            className="pointer-events-none absolute inset-x-0 top-0 -z-0 h-72"
+            style={{
+              background:
+                "radial-gradient(60% 100% at 50% 0%, rgba(255,76,0,0.06) 0%, rgba(255,76,0,0) 70%)",
+            }}
+          />
+          <div className="relative mx-auto max-w-5xl">
             <div className="mx-auto max-w-2xl text-center">
-              <h2 className="text-3xl font-black leading-tight text-[#111827] sm:text-4xl md:text-5xl">
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#fff0e9] px-4 py-1.5 text-xs font-extrabold uppercase tracking-wide text-[#ff4c00]">
+                Built For You
+              </span>
+              <h2 className="mt-4 text-3xl font-black leading-tight text-[#111827] sm:text-4xl md:text-5xl">
                 <span className="text-[#ff4c00]">Who</span> Is This AI Job Application Software For?
               </h2>
               <p className="mt-5 text-sm font-medium leading-7 text-black/60 sm:text-base">
@@ -441,58 +450,29 @@ function Features() {
               </p>
             </div>
 
-            <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-3 lg:grid-cols-[260px_1fr] lg:gap-5">
-              <div className="flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible lg:pb-0">
-                {personas.map((item, index) => {
-                  const isActive = activePersona === index
-                  const PersonaIcon = personaIcons[index]
-                  return (
-                    <button
-                      key={item.title}
-                      type="button"
-                      onClick={() => setActivePersona(index)}
-                      className={`flex flex-shrink-0 items-center gap-3 rounded-xl border px-4 py-3 text-left transition lg:w-full ${
-                        isActive
-                          ? "border-[#ff4c00] bg-[#fff0e9]"
-                          : "border-black/10 bg-white hover:border-[#ff4c00]/40"
-                      }`}
-                    >
-                      <span
-                        className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg transition ${
-                          isActive ? "bg-[#ff4c00] text-white" : "bg-[#fff0e9] text-[#ff4c00]"
-                        }`}
-                      >
-                        <PersonaIcon className="h-4 w-4" />
-                      </span>
-                      <span
-                        className={`whitespace-nowrap text-xs font-black leading-tight lg:whitespace-normal lg:text-sm ${
-                          isActive ? "text-[#ff4c00]" : "text-[#111827]"
-                        }`}
-                      >
-                        {item.title}
-                      </span>
-                    </button>
-                  )
-                })}
-              </div>
-
-              <div className="relative overflow-hidden rounded-2xl border border-black/10 bg-[#fffaf7] p-8 sm:p-10">
-                {(() => {
-                  const PersonaIcon = personaIcons[activePersona]
-                  return (
-                    <PersonaIcon className="pointer-events-none absolute -right-6 -top-6 h-32 w-32 text-[#ff4c00]/[0.06]" />
-                  )
-                })()}
-                <span className="relative mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#fff0e9] text-sm font-black text-[#ff4c00]">
-                  {String(activePersona + 1).padStart(2, "0")}
-                </span>
-                <h3 className="relative text-lg font-black leading-tight text-[#111827] sm:text-xl">
-                  {personas[activePersona].title}
-                </h3>
-                <p className="relative mt-3 max-w-xl text-sm font-medium leading-6 text-black/60">
-                  {personas[activePersona].desc}
-                </p>
-              </div>
+            <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-2">
+              {personas.map((item, index) => {
+                const PersonaIcon = personaIcons[index]
+                return (
+                  <div
+                    key={item.title}
+                    className="group relative overflow-hidden rounded-2xl border border-black/10 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#ff4c00]/30 hover:shadow-[0_16px_32px_rgba(255,76,0,0.1)] sm:p-7"
+                  >
+                    <span className="pointer-events-none absolute right-4 top-4 text-4xl font-black leading-none text-[#ff4c00]/10 transition group-hover:text-[#ff4c00]/15">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-[#fff0e9] text-[#ff4c00] transition duration-300 group-hover:bg-[#ff4c00] group-hover:text-white">
+                      <PersonaIcon className="h-5 w-5" />
+                    </span>
+                    <h3 className="relative mt-4 text-lg font-black leading-tight text-[#111827]">
+                      {item.title}
+                    </h3>
+                    <p className="relative mt-2 text-sm font-medium leading-6 text-black/60">
+                      {item.desc}
+                    </p>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </section>
