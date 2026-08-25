@@ -383,11 +383,11 @@ export default function PrecisionTargetingPage() {
                 likelihood of interview calls.
               </p>
 
-              <div className="mt-8 flex flex-row items-center justify-center gap-4">
+              <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
                 <button
                   {...getButtonProps()}
                   onClick={handleGetMeInterview}
-                  className="inline-flex h-[46px] min-w-[168px] items-center justify-center gap-2 rounded-full bg-[#ff4c00] px-7 text-[13px] font-extrabold text-white shadow-[0_10px_30px_rgba(255,76,0,0.3)] transition duration-300 hover:-translate-y-0.5 hover:bg-black"
+                  className="inline-flex h-[46px] w-full items-center justify-center gap-2 rounded-full bg-[#ff4c00] px-7 text-[13px] font-extrabold text-white shadow-[0_10px_30px_rgba(255,76,0,0.3)] transition duration-300 hover:-translate-y-0.5 hover:bg-black sm:w-auto sm:min-w-[168px]"
                 >
                   Find My Best-Match Jobs
                   <ArrowRight size={14} />
@@ -395,7 +395,7 @@ export default function PrecisionTargetingPage() {
                 <button
                   type="button"
                   onClick={handleHowItWorks}
-                  className="inline-flex h-[46px] min-w-[128px] items-center justify-center rounded-full border border-black/10 bg-white px-7 text-[13px] font-extrabold text-[#111827] transition duration-300 hover:-translate-y-0.5 hover:border-[#ff4c00]/40 hover:text-[#ff4c00]"
+                  className="inline-flex h-[46px] w-full items-center justify-center rounded-full border border-black/10 bg-white px-7 text-[13px] font-extrabold text-[#111827] transition duration-300 hover:-translate-y-0.5 hover:border-[#ff4c00]/40 hover:text-[#ff4c00] sm:w-auto sm:min-w-[128px]"
                 >
                   How It Works
                 </button>

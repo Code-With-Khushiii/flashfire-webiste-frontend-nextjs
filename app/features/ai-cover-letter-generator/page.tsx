@@ -125,10 +125,10 @@ export default function CoverLetterPage() {
   ];
 
   const whyFlashfireCards = [
-    { title: "Write Faster", desc: "Generate personalized cover letters within minutes." },
-    { title: "Tailor Every Application", desc: "Match every cover letter to the specific job." },
-    { title: "Increase ATS Compatibility", desc: "Improve keyword relevance and application quality." },
-    { title: "Edit Anytime", desc: "Customize every section before sending." },
+    { title: "Write Faster", desc: "Generate personalized cover letters within minutes.", icon: Zap },
+    { title: "Tailor Every Application", desc: "Match every cover letter to the specific job.", icon: Target },
+    { title: "Increase ATS Compatibility", desc: "Improve keyword relevance and application quality.", icon: CheckCircle },
+    { title: "Edit Anytime", desc: "Customize every section before sending.", icon: Sparkles },
   ];
 
   const audienceLabels = [
@@ -376,7 +376,7 @@ export default function CoverLetterPage() {
         {/* Everything you need */}
         <section className="bg-white px-4 py-16 sm:py-24">
           <div className="mx-auto max-w-[1080px]">
-            <div className="mb-10 max-w-[600px]">
+            <div className="mx-auto mb-10 max-w-[600px] text-center">
               <span className="inline-flex rounded-full border border-black/10 bg-[#f9fafb] px-4 py-1 text-[11px] font-bold text-[#ff4c00]">
                 How it works
               </span>
@@ -412,7 +412,7 @@ export default function CoverLetterPage() {
         {/* Why cover letters fail vs FlashFire */}
         <section className="bg-[#f9fafb] px-4 py-16 sm:py-24">
           <div className="mx-auto max-w-[1080px]">
-            <div className="mb-10 max-w-[600px]">
+            <div className="mx-auto mb-10 max-w-[600px] text-center">
               <span className="inline-flex rounded-full border border-black/10 bg-white px-4 py-1 text-[11px] font-bold uppercase text-[#ff4c00]">
                 The problem with modern job search
               </span>
@@ -469,7 +469,7 @@ export default function CoverLetterPage() {
         {/* 3 simple steps — split layout with mockups */}
         <section className="bg-white px-4 py-16 sm:py-24">
           <div className="mx-auto max-w-[1000px]">
-            <div className="mb-14 max-w-[600px]">
+            <div className="mx-auto mb-14 max-w-[600px] text-center">
               <h2 className="text-[28px] font-extrabold leading-[1.15] text-[#111827] sm:text-[38px]">
                 Create a Personalized Cover Letter in 3 Simple Steps
               </h2>
@@ -504,47 +504,50 @@ export default function CoverLetterPage() {
         {/* Why job seekers use FlashFire */}
         <section className="bg-[#fff8f2] px-4 py-16 sm:py-24">
           <div className="mx-auto max-w-[1080px]">
-            <h2 className="mb-10 text-[28px] font-extrabold leading-[1.15] text-[#111827] sm:text-[38px]">
-              Why Job Seekers Use FlashFire
-            </h2>
+            <div className="mx-auto mb-12 max-w-[560px] text-center">
+              <h2 className="text-[28px] font-extrabold leading-[1.15] text-[#111827] sm:text-[38px]">
+                Why Job Seekers Use FlashFire
+              </h2>
+            </div>
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {whyFlashfireCards.map((item, index) => (
-                <article
-                  key={item.title}
-                  className="rounded-2xl border border-black/10 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(255,76,0,0.08)]"
-                >
-                  <span className="text-[12px] font-bold text-[#ff4c00]">{String(index + 1).padStart(2, "0")}</span>
-                  <h3 className="mt-3 text-[15px] font-extrabold text-[#111827]">{item.title}</h3>
-                  <p className="mt-2 text-[13px] font-medium leading-6 text-[#6b7280]">{item.desc}</p>
-                </article>
-              ))}
+              {whyFlashfireCards.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <article
+                    key={item.title}
+                    className="group flex flex-col items-center rounded-2xl border border-black/10 bg-white p-7 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#ff4c00]/30 hover:shadow-[0_16px_32px_rgba(255,76,0,0.08)]"
+                  >
+                    <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#fff0e9] text-[#ff4c00] transition duration-300 group-hover:bg-[#ff4c00] group-hover:text-white">
+                      <Icon size={20} />
+                    </span>
+                    <h3 className="text-[15px] font-extrabold leading-tight text-[#111827]">{item.title}</h3>
+                    <p className="mt-2 text-[13px] font-medium leading-6 text-[#6b7280]">{item.desc}</p>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
 
         {/* Who is this for */}
         <section className="bg-white px-4 py-16 sm:py-24">
-          <div className="mx-auto max-w-[1080px]">
-            <div className="mb-10 max-w-[600px]">
-              <h2 className="text-[28px] font-extrabold leading-[1.15] text-[#111827] sm:text-[38px]">
-                Who Is This Cover Letter Builder For?
-              </h2>
-              <p className="mt-4 text-[14px] font-medium leading-6 text-[#7a8290]">
-                Whether you&apos;re applying for your first job or your next leadership role,
-                FlashFire helps you write stronger cover letters with less effort.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto max-w-[860px] text-center">
+            <h2 className="text-[28px] font-extrabold leading-[1.15] text-[#111827] sm:text-[38px]">
+              Who Is This Cover Letter Builder For?
+            </h2>
+            <p className="mx-auto mt-4 max-w-[520px] text-[14px] font-medium leading-6 text-[#7a8290]">
+              Whether you&apos;re applying for your first job or your next leadership role,
+              FlashFire helps you write stronger cover letters with less effort.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               {audienceLabels.map((item) => (
-                <div
+                <span
                   key={item}
-                  className="group flex items-center gap-3 rounded-2xl border border-black/10 bg-white p-5 transition duration-300 hover:-translate-y-1 hover:border-[#ff4c00]/30 hover:shadow-[0_16px_32px_rgba(255,76,0,0.08)]"
+                  className="group inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-5 py-2.5 text-[13px] font-bold text-[#111827] transition duration-300 hover:-translate-y-0.5 hover:border-[#ff4c00]/40 hover:shadow-[0_10px_24px_rgba(255,76,0,0.1)]"
                 >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#fff0e9] text-[#ff4c00] transition duration-300 group-hover:bg-[#ff4c00] group-hover:text-white">
-                    <CheckCircle size={16} strokeWidth={2.5} />
-                  </span>
-                  <p className="text-[14px] font-extrabold leading-5 text-[#111827]">{item}</p>
-                </div>
+                  <CheckCircle size={14} strokeWidth={2.5} className="text-[#ff4c00]" />
+                  {item}
+                </span>
               ))}
             </div>
           </div>
@@ -553,15 +556,15 @@ export default function CoverLetterPage() {
         {/* Comparison table */}
         <section className="bg-[#f9fafb] px-4 py-16 sm:py-24">
           <div className="mx-auto max-w-[900px]">
-            <h2 className="mb-10 text-[28px] font-extrabold leading-[1.15] text-[#111827] sm:text-[38px]">
+            <h2 className="mb-10 text-center text-[28px] font-extrabold leading-[1.15] text-[#111827] sm:text-[38px]">
               FlashFire vs Generic Cover Letter Templates
             </h2>
             <div className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
               <div className="grid grid-cols-2 border-b border-black/10 bg-[#f9fafb]">
-                <div className="border-r border-black/10 p-5 text-center text-[12px] font-extrabold uppercase tracking-wide text-[#9ca3af]">
+                <div className="border-r border-black/10 p-3 text-center text-[11px] font-extrabold uppercase tracking-wide text-[#9ca3af] sm:p-5 sm:text-[12px]">
                   Generic Templates
                 </div>
-                <div className="p-5 text-center text-[12px] font-extrabold uppercase tracking-wide text-[#ff4c00]">
+                <div className="p-3 text-center text-[11px] font-extrabold uppercase tracking-wide text-[#ff4c00] sm:p-5 sm:text-[12px]">
                   FlashFire
                 </div>
               </div>
@@ -570,12 +573,12 @@ export default function CoverLetterPage() {
                   key={row.generic}
                   className={`grid grid-cols-2 ${index !== comparisonRows.length - 1 ? "border-b border-black/10" : ""}`}
                 >
-                  <div className="flex items-center gap-2 border-r border-black/10 p-5 text-[13px] font-medium text-[#6b7280]">
-                    <XCircle size={16} className="shrink-0 text-[#d1d5db]" />
+                  <div className="flex items-start gap-2 border-r border-black/10 p-3 text-[12px] font-medium leading-5 text-[#6b7280] sm:items-center sm:p-5 sm:text-[13px]">
+                    <XCircle size={16} className="mt-0.5 shrink-0 text-[#d1d5db] sm:mt-0" />
                     {row.generic}
                   </div>
-                  <div className="flex items-center gap-2 p-5 text-[13px] font-extrabold text-[#111827]">
-                    <Check size={16} strokeWidth={3} className="shrink-0 text-[#ff4c00]" />
+                  <div className="flex items-start gap-2 p-3 text-[12px] font-extrabold leading-5 text-[#111827] sm:items-center sm:p-5 sm:text-[13px]">
+                    <Check size={16} strokeWidth={3} className="mt-0.5 shrink-0 text-[#ff4c00] sm:mt-0" />
                     {row.flashfire}
                   </div>
                 </div>
@@ -587,12 +590,12 @@ export default function CoverLetterPage() {
         {/* Audience detail list */}
         <section className="bg-white px-4 py-16 sm:py-24">
           <div className="mx-auto grid max-w-[1080px] gap-10 md:grid-cols-[1fr_1.15fr] md:items-start">
-            <div>
+            <div className="text-center">
               <h2 className="text-[28px] font-extrabold leading-[1.15] text-[#111827] sm:text-[38px]">
                 Create Better Cover Letters
                 <span className="text-[#ff4c00]"> in 3 Simple Steps</span>
               </h2>
-              <p className="mt-5 max-w-[420px] text-[15px] font-medium leading-7 text-[#6b7280]">
+              <p className="mx-auto mt-5 max-w-[420px] text-[15px] font-medium leading-7 text-[#6b7280]">
                 Create personalized, job-specific cover letters in minutes. Simply upload your
                 resume, add the job description, and let FlashFire help you write a stronger
                 application.
