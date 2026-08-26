@@ -26,12 +26,28 @@ interface HomePageOfferLettersClientProps {
 const offerLetters: OfferLetterData[] = [
   
   {
+    name: "Sejal",
+    company: "Vanguard",
+    linkedinUrl: "#",
+    imagePath: "/images/sejal-offer.png",
+    profileImagePath:"https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/sejal.png",
+    offerDate: "Aug 17, 2026",
+
+  },{
+    name: "Riya",
+    company: "Southwest Airlines",
+    linkedinUrl: "#",
+    imagePath: "/images/riya-offer.png",
+    profileImagePath:"https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/riya.png",
+    offerDate: "Aug 26, 2026",
+
+  },{
     name: "Yashvi",
     company: "Gamer's Choice",
     linkedinUrl: "#",
     imagePath: "/images/yashvi-offer.png",
     profileImagePath:"https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/yashvi.png",
-    offerDate: "Aug 17, 2026",
+    offerDate: "Aug 26, 2026",
 
   },{
     name: "Dheer",
