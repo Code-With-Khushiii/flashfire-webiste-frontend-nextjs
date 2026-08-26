@@ -385,7 +385,7 @@ export default function JobTrackerPage() {
       />
       <Navbar />
       <main className="min-h-screen overflow-x-hidden bg-white text-[#111827]">
-        <section className="relative bg-[#fff3ee] px-4 py-12 sm:py-20 lg:py-24">
+        <section className="relative bg-gradient-to-b from-orange-50 via-white to-white px-4 py-12 sm:py-20 lg:py-24">
           <div className="mx-auto grid max-w-[1420px] items-center gap-7 xl:grid-cols-[260px_minmax(0,1fr)_320px] xl:gap-6">
             <div className="order-2 grid gap-2 sm:grid-cols-3 xl:order-1 xl:block xl:space-y-24">
               <HeroPill label="Job Application Tracker" />
@@ -394,25 +394,33 @@ export default function JobTrackerPage() {
             </div>
 
             <div className="order-1 min-w-0 text-center xl:order-2">
-              {/* <button
-                {...getButtonProps()}
-                onClick={handleGetMeInterview}
-                className="mb-5 inline-flex items-center rounded-full bg-[#ff4c00] px-4 py-2 text-[11px] font-bold uppercase tracking-normal text-white transition hover:bg-[#e94400]"
-              >
-                # Cover Letter Builder
-              </button> */}
-              <h1 className="mx-auto max-w-[820px] text-[30px] font-extrabold leading-[1.12] tracking-normal text-[#111827] sm:text-[44px] lg:text-[47px]">
+              <h1 className="mx-auto max-w-[820px] text-[30px] font-extrabold leading-[1.12] tracking-normal text-gray-900 sm:text-[44px] lg:text-[47px]">
                 Track Every Job Application
                 <br className="hidden sm:block" />
                 in One Organized Dashboard
               </h1>
-              <p className="mx-auto mt-5 max-w-[720px] text-[15px] font-medium leading-7 text-[#596273] sm:text-[17px] sm:leading-8">
+              <p className="mx-auto mt-5 max-w-[720px] text-[15px] font-medium leading-7 text-gray-600 sm:text-[17px] sm:leading-8">
                 FlashFire helps you organize every stage of your job search, from saving job
                 <br className="hidden sm:block" />
                 opportunities and tracking applications to managing recruiter conversations
                 <br className="hidden sm:block" />
                 and interview progress, all in one centralized dashboard.
               </p>
+              <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <button
+                  {...getButtonProps()}
+                  onClick={handleGetMeInterview}
+                  className="h-14 w-full whitespace-nowrap rounded-full bg-gradient-to-r from-[#ff4c00] to-[#ff7a33] px-8 text-[14px] font-bold text-white shadow-lg shadow-orange-200/60 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl sm:w-auto"
+                >
+                  Get Me Interview <span className="ml-2">&rarr;</span>
+                </button>
+                <button
+                  onClick={handleHowItWorks}
+                  className="h-14 w-full whitespace-nowrap rounded-full border border-orange-200 bg-white px-8 text-[14px] font-bold text-[#ff4c00] transition-all duration-300 hover:-translate-y-0.5 hover:bg-orange-50 hover:shadow-md sm:w-auto"
+                >
+                  How It Works
+                </button>
+              </div>
             </div>
 
             <div className="order-3">
@@ -424,10 +432,10 @@ export default function JobTrackerPage() {
         <section className="bg-white px-4 py-20 sm:py-24 lg:py-28">
           <div className="mx-auto max-w-[1000px]">
             <div className="mx-auto max-w-[660px] text-center">
-              <h2 className="text-[31px] font-extrabold leading-[1.08] tracking-normal text-[#111827] sm:text-[42px]">
+              <h2 className="text-[31px] font-extrabold leading-[1.08] tracking-normal text-gray-900 sm:text-[42px]">
                 Everything You Need to Organize Your Job Search
               </h2>
-              <p className="mx-auto mt-5 max-w-[650px] text-[17px] font-medium leading-8 text-[#596273]">
+              <p className="mx-auto mt-5 max-w-[650px] text-[17px] font-medium leading-8 text-gray-600">
                 Keep every job application, recruiter conversation, interview, and follow-up
                 organized in one place so you always know what to do next.
               </p>
@@ -439,13 +447,13 @@ export default function JobTrackerPage() {
                 return (
                   <article
                     key={card.title}
-                    className="h-full min-h-[198px] min-w-0 overflow-hidden border border-black bg-[#ff4c00] p-6 text-white shadow-[5px_5px_0_0_rgba(0,0,0,0.65)]"
+                    className="h-full min-h-[198px] min-w-0 overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                   >
-                    <span className="mb-8 flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[#ff4c00]">
+                    <span className="mb-8 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#ff4c00] to-[#ff7a33] text-white shadow-md shadow-orange-200">
                       <Icon size={23} strokeWidth={2.3} />
                     </span>
-                    <h3 className="text-[20px] font-extrabold leading-tight">{card.title}</h3>
-                    <p className="mt-4 text-[15px] font-medium leading-7 text-white/90">{card.copy}</p>
+                    <h3 className="text-[20px] font-extrabold leading-tight text-gray-900">{card.title}</h3>
+                    <p className="mt-4 text-[15px] font-medium leading-7 text-gray-600">{card.copy}</p>
                   </article>
                 );
               })}
@@ -453,13 +461,13 @@ export default function JobTrackerPage() {
           </div>
         </section>
 
-        <section className="bg-[#fff6f3] px-4 py-20 sm:py-24 lg:py-28">
+        <section className="bg-orange-50/40 px-4 py-20 sm:py-24 lg:py-28">
           <div className="mx-auto grid max-w-[1220px] gap-12 lg:grid-cols-[420px_1fr] lg:items-start">
             <div className="lg:pl-10">
-              <h2 className="max-w-[390px] text-[34px] font-extrabold leading-[1.34] tracking-normal text-[#111827] sm:text-[43px]">
+              <h2 className="max-w-[390px] text-[34px] font-extrabold leading-[1.34] tracking-normal text-gray-900 sm:text-[43px]">
                 Stay Organized From Your First Application to Your Job Offer
               </h2>
-              <p className="mt-6 max-w-[430px] text-[18px] font-medium leading-8 text-[#596273]">
+              <p className="mt-6 max-w-[430px] text-[18px] font-medium leading-8 text-gray-600">
                 FlashFire keeps every opportunity, application, recruiter, and interview
                 organized so nothing gets missed during your job search.
               </p>
@@ -468,7 +476,7 @@ export default function JobTrackerPage() {
                   type="button"
                   aria-label="Previous workflow card"
                   onClick={() => scrollWorkflow("left")}
-                  className="flex h-12 w-12 items-center justify-center bg-black text-white transition hover:bg-[#ff4c00]"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-[#ff4c00] to-[#ff7a33] text-white shadow-lg shadow-orange-200/60 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
                 >
                   <ArrowLeft size={24} />
                 </button>
@@ -476,7 +484,7 @@ export default function JobTrackerPage() {
                   type="button"
                   aria-label="Next workflow card"
                   onClick={() => scrollWorkflow("right")}
-                  className="flex h-12 w-12 items-center justify-center bg-black text-white transition hover:bg-[#ff4c00]"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-[#ff4c00] to-[#ff7a33] text-white shadow-lg shadow-orange-200/60 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
                 >
                   <ArrowRight size={24} />
                 </button>
@@ -490,15 +498,15 @@ export default function JobTrackerPage() {
               {workflowCards.map((card) => (
                 <article
                   key={card.title}
-                  className="min-h-[205px] w-[min(330px,calc(100vw-3rem))] shrink-0 snap-start overflow-hidden border border-black bg-white p-8 shadow-[5px_5px_0_0_rgba(0,0,0,0.75)] sm:w-[360px]"
+                  className="min-h-[205px] w-[min(330px,calc(100vw-3rem))] shrink-0 snap-start overflow-hidden rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:w-[360px]"
                 >
-                  <span className="mb-10 flex h-12 w-12 items-center justify-center rounded-xl bg-[#ff4c00] text-white">
+                  <span className="mb-10 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#ff4c00] to-[#ff7a33] text-white shadow-md shadow-orange-200">
                     <FileText size={24} />
                   </span>
-                  <h3 className="text-[22px] font-extrabold leading-tight text-[#111827]">
+                  <h3 className="text-[22px] font-extrabold leading-tight text-gray-900">
                     {card.title}
                   </h3>
-                  <p className="mt-4 text-[16px] font-medium leading-7 text-[#596273]">{card.copy}</p>
+                  <p className="mt-4 text-[16px] font-medium leading-7 text-gray-600">{card.copy}</p>
                 </article>
               ))}
             </div>
@@ -508,26 +516,26 @@ export default function JobTrackerPage() {
         <section className="bg-white px-4 py-20 sm:py-24 lg:py-28">
           <div className="mx-auto max-w-[920px]">
             <div className="mx-auto max-w-[760px] text-center">
-              <h2 className="text-[32px] font-extrabold leading-[1.08] tracking-normal text-[#111827] sm:text-[42px]">
+              <h2 className="text-[32px] font-extrabold leading-[1.08] tracking-normal text-gray-900 sm:text-[42px]">
                 Who Benefits From FlashFire&apos;s Job Tracker?
               </h2>
-              <p className="mx-auto mt-6 max-w-[760px] text-[15px] font-medium leading-7 text-[#6b7280]">
+              <p className="mx-auto mt-6 max-w-[760px] text-[15px] font-medium leading-7 text-gray-600">
                 Whether you&apos;re applying to a few roles or hundreds, FlashFire helps you stay
                 organized throughout your job search.
               </p>
             </div>
 
-            <div className="mx-auto mt-14 grid max-w-[740px] auto-rows-fr gap-3 sm:grid-cols-2">
+            <div className="mx-auto mt-14 grid max-w-[740px] auto-rows-fr gap-5 sm:grid-cols-2">
               {audienceItems.map((item) => (
                 <article
                   key={item.title}
-                  className="h-full min-h-[118px] min-w-0 overflow-hidden rounded-md border border-[#e0e0e0] bg-white px-7 py-6 shadow-[0_8px_22px_rgba(0,0,0,0.10)]"
+                  className="h-full min-h-[118px] min-w-0 overflow-hidden rounded-2xl border border-gray-100 bg-white px-7 py-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <span className="mb-5 flex h-9 w-9 items-center justify-center rounded-full bg-[#ff4c00] text-white">
-                    <Check size={24} strokeWidth={3} />
+                  <span className="mb-5 flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-[#ff4c00] to-[#ff7a33] text-white shadow-md shadow-orange-200">
+                    <Check size={22} strokeWidth={3} />
                   </span>
-                  <p className="text-[19px] font-bold leading-7 text-[#ff4c00]">{item.title}</p>
-                  <p className="mt-2 text-[14px] font-medium leading-6 text-[#596273]">
+                  <p className="text-[19px] font-bold leading-7 text-gray-900">{item.title}</p>
+                  <p className="mt-2 text-[14px] font-medium leading-6 text-gray-600">
                     {item.description}
                   </p>
                 </article>
@@ -538,10 +546,10 @@ export default function JobTrackerPage() {
 
         <section id="how-it-works" className="bg-white px-4 py-16 sm:py-24 lg:py-28">
           <div className="mx-auto max-w-[1040px]">
-            <h2 className="mb-5 text-center text-[31px] font-extrabold leading-[1.08] text-[#111827] sm:text-[46px]">
+            <h2 className="mb-5 text-center text-[31px] font-extrabold leading-[1.08] text-gray-900 sm:text-[46px]">
               Organize Your Job Search in 4 Simple Steps
             </h2>
-            <p className="mx-auto mb-10 max-w-[660px] text-center text-[16px] font-medium leading-7 text-[#596273] sm:mb-14 sm:text-[17px]">
+            <p className="mx-auto mb-10 max-w-[660px] text-center text-[16px] font-medium leading-7 text-gray-600 sm:mb-14 sm:text-[17px]">
               Save opportunities, organize applications, monitor your progress, and manage
               recruiter conversations, all from one dashboard.
             </p>
@@ -550,16 +558,16 @@ export default function JobTrackerPage() {
               {useSteps.map((step) => (
                 <article
                   key={step.title}
-                  className="grid min-h-[270px] min-w-0 items-center gap-7 border border-black bg-white p-4 shadow-[4px_4px_0_0_rgba(0,0,0,0.65)] sm:grid-cols-2 sm:gap-12 sm:p-9 sm:shadow-[5px_5px_0_0_rgba(0,0,0,0.65)] lg:p-12"
+                  className="grid min-h-[270px] min-w-0 items-center gap-7 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:grid-cols-2 sm:gap-12 sm:p-9 lg:p-12"
                 >
                   <div className={`min-w-0 ${step.reverse ? "sm:order-2" : ""}`}>
-                    <p className="text-[12px] font-extrabold uppercase tracking-normal text-[#ff4c00]">
+                    <span className="inline-flex rounded-full bg-orange-50 border border-orange-200 text-[#ff4c00] px-4 py-1.5 text-[11px] font-bold uppercase tracking-wide">
                       {step.eyebrow}
-                    </p>
-                    <h3 className="mt-4 text-[23px] font-extrabold leading-tight text-[#ff4c00] sm:mt-5 sm:text-[28px]">
+                    </span>
+                    <h3 className="mt-4 text-[23px] font-extrabold leading-tight text-gray-900 sm:mt-5 sm:text-[28px]">
                       {step.title}
                     </h3>
-                    <p className="mt-3 text-[15px] font-semibold leading-7 text-black sm:mt-4 sm:text-[17px] sm:leading-8">{step.copy}</p>
+                    <p className="mt-3 text-[15px] font-semibold leading-7 text-gray-600 sm:mt-4 sm:text-[17px] sm:leading-8">{step.copy}</p>
                   </div>
                   <div className={`min-w-0 ${step.reverse ? "sm:order-1" : ""}`}>
                     <StepVisual type={step.visual} />
@@ -570,34 +578,39 @@ export default function JobTrackerPage() {
           </div>
         </section>
 
-        <section className="bg-[#fff6f3] px-4 py-20 sm:py-24 lg:py-28">
+        <section className="bg-orange-50/40 px-4 py-20 sm:py-24 lg:py-28">
           <div className="mx-auto max-w-[880px] text-center">
-            <h2 className="text-[31px] font-extrabold leading-[1.08] tracking-normal text-[#111827] sm:text-[42px]">
+            <h2 className="text-[31px] font-extrabold leading-[1.08] tracking-normal text-gray-900 sm:text-[42px]">
               Why FlashFire Beats Tracking Job Applications in Spreadsheets
             </h2>
-            <p className="mx-auto mt-5 max-w-[650px] text-[17px] font-medium leading-8 text-[#596273]">
+            <p className="mx-auto mt-5 max-w-[650px] text-[17px] font-medium leading-8 text-gray-600">
               Spreadsheets become difficult to maintain as your job search grows. FlashFire keeps
               everything organized automatically.
             </p>
           </div>
 
-          <div className="mx-auto mt-12 max-w-[880px] overflow-hidden overflow-x-auto border border-black bg-white shadow-[5px_5px_0_0_rgba(0,0,0,0.65)]">
+          <div className="mx-auto mt-12 max-w-[880px] overflow-hidden overflow-x-auto rounded-2xl border border-gray-200 bg-white shadow-sm">
             <table className="w-full min-w-[560px] border-collapse text-left">
               <thead>
-                <tr className="border-b border-black bg-[#111827] text-white">
+                <tr className="bg-gradient-to-r from-[#ff4c00] to-[#ff7a33] text-white">
                   <th className="px-6 py-4 text-[15px] font-extrabold sm:text-[17px]">Spreadsheet</th>
-                  <th className="px-6 py-4 text-[15px] font-extrabold text-[#ff4c00] sm:text-[17px]">
+                  <th className="px-6 py-4 text-[15px] font-extrabold sm:text-[17px]">
                     FlashFire
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {comparisonRows.map((row) => (
-                  <tr key={row.spreadsheet} className="border-b border-[#e0e0e0] last:border-b-0">
-                    <td className="px-6 py-4 text-[14px] font-medium text-[#596273] sm:text-[15px]">
+                {comparisonRows.map((row, index) => (
+                  <tr
+                    key={row.spreadsheet}
+                    className={`transition-colors hover:bg-orange-50/40 ${
+                      index % 2 === 0 ? "bg-white" : "bg-gray-50/60"
+                    }`}
+                  >
+                    <td className="px-6 py-4 text-[14px] font-medium text-gray-600 sm:text-[15px]">
                       {row.spreadsheet}
                     </td>
-                    <td className="px-6 py-4 text-[14px] font-bold text-[#111827] sm:text-[15px]">
+                    <td className="px-6 py-4 text-[14px] font-bold text-gray-900 sm:text-[15px]">
                       {row.flashfire}
                     </td>
                   </tr>
@@ -609,34 +622,39 @@ export default function JobTrackerPage() {
 
         <section className="bg-white px-4 py-20 sm:py-24 lg:py-28">
           <div className="mx-auto max-w-[880px] text-center">
-            <h2 className="text-[31px] font-extrabold leading-[1.08] tracking-normal text-[#111827] sm:text-[42px]">
+            <h2 className="text-[31px] font-extrabold leading-[1.08] tracking-normal text-gray-900 sm:text-[42px]">
               Why Most Job Searches Become Disorganized
             </h2>
-            <p className="mx-auto mt-5 max-w-[650px] text-[17px] font-medium leading-8 text-[#596273]">
+            <p className="mx-auto mt-5 max-w-[650px] text-[17px] font-medium leading-8 text-gray-600">
               As applications increase, it&apos;s easy to lose track of interviews, recruiter
               conversations, and follow-ups.
             </p>
           </div>
 
-          <div className="mx-auto mt-12 max-w-[880px] overflow-hidden overflow-x-auto border border-black bg-white shadow-[5px_5px_0_0_rgba(0,0,0,0.65)]">
+          <div className="mx-auto mt-12 max-w-[880px] overflow-hidden overflow-x-auto rounded-2xl border border-gray-200 bg-white shadow-sm">
             <table className="w-full min-w-[560px] border-collapse text-left">
               <thead>
-                <tr className="border-b border-black bg-[#111827] text-white">
+                <tr className="bg-gradient-to-r from-[#ff4c00] to-[#ff7a33] text-white">
                   <th className="px-6 py-4 text-[15px] font-extrabold sm:text-[17px]">
                     Without FlashFire
                   </th>
-                  <th className="px-6 py-4 text-[15px] font-extrabold text-[#ff4c00] sm:text-[17px]">
+                  <th className="px-6 py-4 text-[15px] font-extrabold sm:text-[17px]">
                     With FlashFire
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {problemRows.map((row) => (
-                  <tr key={row.without} className="border-b border-[#e0e0e0] last:border-b-0">
-                    <td className="px-6 py-4 text-[14px] font-medium text-[#596273] sm:text-[15px]">
+                {problemRows.map((row, index) => (
+                  <tr
+                    key={row.without}
+                    className={`transition-colors hover:bg-orange-50/40 ${
+                      index % 2 === 0 ? "bg-white" : "bg-gray-50/60"
+                    }`}
+                  >
+                    <td className="px-6 py-4 text-[14px] font-medium text-gray-600 sm:text-[15px]">
                       {row.without}
                     </td>
-                    <td className="px-6 py-4 text-[14px] font-bold text-[#111827] sm:text-[15px]">
+                    <td className="px-6 py-4 text-[14px] font-bold text-gray-900 sm:text-[15px]">
                       {row.with}
                     </td>
                   </tr>
@@ -688,9 +706,9 @@ export default function JobTrackerPage() {
 function HeroPill({ className = "", label }: { className?: string; label: string }) {
   return (
     <div
-      className={`flex min-h-[48px] items-center gap-3 rounded-lg border border-[#f4d9d1] bg-white px-3 text-[12px] font-bold text-[#111827] shadow-[0_14px_35px_rgba(17,24,39,0.08)] sm:min-h-[52px] sm:gap-4 sm:px-4 sm:text-[13px] ${className}`}
+      className={`flex min-h-[48px] items-center gap-3 rounded-full border border-orange-100 bg-white px-3 text-[12px] font-bold text-gray-900 shadow-sm sm:min-h-[52px] sm:gap-4 sm:px-4 sm:text-[13px] ${className}`}
     >
-      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-[#111827] text-[#ff4c00]">
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#ff4c00] to-[#ff7a33] text-white">
         <ClipboardList size={17} />
       </span>
       {label}
@@ -706,16 +724,16 @@ function TrackerMockup({ onAdd }: { onAdd: () => void }) {
   ];
 
   return (
-    <div className="mx-auto w-full max-w-[330px] rounded-lg bg-white p-3 shadow-[0_18px_45px_rgba(0,0,0,0.10)] sm:max-w-[360px] sm:p-4 lg:w-[330px]">
+    <div className="mx-auto w-full max-w-[330px] rounded-2xl border border-gray-100 bg-white p-3 shadow-md sm:max-w-[360px] sm:p-4 lg:w-[330px]">
       <div className="mb-3 flex items-start justify-between">
         <div>
-          <h3 className="text-[12px] font-extrabold text-[#111827]">My job search</h3>
-          <p className="text-[9px] font-semibold text-[#7a8290]">Track everything in one place</p>
+          <h3 className="text-[12px] font-extrabold text-gray-900">My job search</h3>
+          <p className="text-[9px] font-semibold text-gray-500">Track everything in one place</p>
         </div>
         <button
           type="button"
           onClick={onAdd}
-          className="rounded-md bg-[#ff4c00] px-3 py-2 text-[9px] font-bold text-white transition hover:bg-[#e94400]"
+          className="rounded-full bg-gradient-to-r from-[#ff4c00] to-[#ff7a33] px-3 py-2 text-[9px] font-bold text-white shadow-sm shadow-orange-200/60 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
         >
           Add More
         </button>
@@ -724,15 +742,15 @@ function TrackerMockup({ onAdd }: { onAdd: () => void }) {
         {columns.map((column) => (
           <div
             key={column.title}
-            className="min-w-0 rounded-md border border-[#ffd8ca] bg-[#fff0e8] p-2 sm:p-3"
+            className="min-w-0 rounded-xl border border-orange-100 bg-orange-50/60 p-2 sm:p-3"
           >
-            <div className="mb-3 flex justify-between gap-1 text-[7px] font-extrabold text-[#111827] sm:text-[8px]">
+            <div className="mb-3 flex justify-between gap-1 text-[7px] font-extrabold text-gray-900 sm:text-[8px]">
               <span className="truncate">{column.title}</span>
               <span>{column.count}</span>
             </div>
             <div className="space-y-2">
               {[1, 2, 3].map((item) => (
-                <div key={item} className="h-7 rounded-sm border border-[#ffd8ca] bg-white" />
+                <div key={item} className="h-7 rounded-lg border border-orange-100 bg-white" />
               ))}
             </div>
           </div>
@@ -751,7 +769,7 @@ function StepVisual({ type }: { type: string }) {
             {["LinkedIn", "Wellfound", "Google", "Indeed"].map((item) => (
               <div
                 key={item}
-                className="rounded-full border border-[#ffd8ca] bg-[#fff0e8] px-3 py-2 text-center text-[11px] font-extrabold text-black sm:px-4 sm:py-2.5 sm:text-left sm:text-[12px]"
+                className="rounded-full border border-[#ffd8ca] bg-[#fff0e8] px-3 py-2 text-center text-[11px] font-extrabold text-gray-900 sm:px-4 sm:py-2.5 sm:text-left sm:text-[12px]"
               >
                 {item}
               </div>
@@ -769,14 +787,14 @@ function StepVisual({ type }: { type: string }) {
 
   if (type === "board") {
     return (
-      <div className="min-w-0 rounded-md border border-[#ffd8ca] bg-[#fff6f2] p-3 sm:p-5">
-        <div className="grid min-w-0 grid-cols-3 gap-2 rounded-md border border-[#ffd8ca] bg-white p-3 sm:gap-3 sm:p-4">
+      <div className="min-w-0 rounded-2xl border border-orange-100 bg-orange-50/40 p-3 sm:p-5">
+        <div className="grid min-w-0 grid-cols-3 gap-2 rounded-2xl border border-orange-100 bg-white p-3 sm:gap-3 sm:p-4">
           {["Wish", "Apply", "Int"].map((item) => (
-            <div key={item} className="min-w-0 rounded bg-[#fff0e8] p-2 sm:p-3">
-              <div className="mb-3 text-[9px] font-extrabold">{item}</div>
+            <div key={item} className="min-w-0 rounded-xl bg-orange-50/60 p-2 sm:p-3">
+              <div className="mb-3 text-[9px] font-extrabold text-gray-900">{item}</div>
               <div className="space-y-2">
                 {[1, 2, 3].map((row) => (
-                  <div key={row} className="h-7 rounded-sm bg-white" />
+                  <div key={row} className="h-7 rounded-lg bg-white" />
                 ))}
               </div>
             </div>
@@ -788,9 +806,9 @@ function StepVisual({ type }: { type: string }) {
 
   if (type === "chart") {
     return (
-      <div className="min-w-0 rounded-md border border-[#ffd8ca] bg-[#fff6f2] p-3 sm:p-6">
+      <div className="min-w-0 rounded-2xl border border-orange-100 bg-orange-50/40 p-3 sm:p-6">
         <div className="rounded-xl bg-white p-4 sm:p-5">
-          <p className="mb-5 text-[11px] font-extrabold">Job Search Summary</p>
+          <p className="mb-5 text-[11px] font-extrabold text-gray-900">Job Search Summary</p>
           {["Applied", "Interview", "Accepted", "Rejected"].map((item, index) => (
             <div key={item} className="mb-3 flex items-center gap-2 text-[9px] font-bold sm:gap-3 sm:text-[10px]">
               <span className="w-16 sm:w-20">{item}</span>
@@ -820,14 +838,14 @@ function StepVisual({ type }: { type: string }) {
           {["Notes", "Contacts", "Docs", "History"].map((item) => (
             <div
               key={item}
-              className="rounded-full border border-[#ffd8ca] bg-[#fff0e8] px-3 py-2 text-center text-[11px] font-extrabold text-black sm:px-4 sm:py-2.5 sm:text-left sm:text-[12px]"
+              className="rounded-full border border-[#ffd8ca] bg-[#fff0e8] px-3 py-2 text-center text-[11px] font-extrabold text-gray-900 sm:px-4 sm:py-2.5 sm:text-left sm:text-[12px]"
             >
               {item}
             </div>
           ))}
         </div>
         <div className="flex-1 rounded-[16px] border border-[#ffd8ca] bg-white p-5">
-          <p className="mb-4 text-[15px] font-extrabold text-black">Manage Contact</p>
+          <p className="mb-4 text-[15px] font-extrabold text-gray-900">Manage Contact</p>
           <div className="mb-4 h-12 rounded-lg bg-[#f0f1f4]" />
           <div className="h-20 rounded-lg border border-[#ffd8ca] bg-[#fff0e8]" />
         </div>
