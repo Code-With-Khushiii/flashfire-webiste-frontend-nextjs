@@ -409,10 +409,7 @@ function Features() {
                       height={44}
                       className="absolute right-5 top-5 h-9 w-9 object-contain opacity-80"
                     />
-                    <span className="text-4xl font-black leading-none text-[#ffd8c4]">
-                      {String(step.id).padStart(2, "0")}
-                    </span>
-                    <div className="mt-4 flex h-10 w-10 items-center justify-center rounded-lg bg-[#fff0e9] text-[#ff4c00]">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#fff0e9] text-[#ff4c00]">
                       <StepIcon className="h-5 w-5" strokeWidth={2.4} />
                     </div>
                     <h3 className="mt-4 text-base font-black leading-tight text-[#111827]">
@@ -458,9 +455,6 @@ function Features() {
                     key={item.title}
                     className="group relative overflow-hidden rounded-2xl border border-black/10 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#ff4c00]/30 hover:shadow-[0_16px_32px_rgba(255,76,0,0.1)] sm:p-7"
                   >
-                    <span className="pointer-events-none absolute right-4 top-4 text-4xl font-black leading-none text-[#ff4c00]/10 transition group-hover:text-[#ff4c00]/15">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
                     <span className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-[#fff0e9] text-[#ff4c00] transition duration-300 group-hover:bg-[#ff4c00] group-hover:text-white">
                       <PersonaIcon className="h-5 w-5" />
                     </span>
