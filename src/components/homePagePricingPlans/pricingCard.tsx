@@ -214,10 +214,6 @@ export default function PricingCard({
 
 
 
-        <p className={`${cardTextClass} text-sm sm:text-[0.95rem] mb-4 min-h-[2rem]`}>
-          {description}
-        </p>
-
         <hr className={`mb-5 border-t ${dividerClass}`} />
 
         <ul className="list-none p-0 mb-4 sm:mb-5">
