@@ -263,17 +263,25 @@ export default function Footer() {
                   <FaYoutube />
                 </Link>
               </div>
+
+              <div className="mt-5">
+                <h4 className="mb-1.5 text-[0.7rem] font-bold tracking-widest text-[#fff7f4]">
+                  US OFFICE
+                </h4>
+                <address className="not-italic text-[0.72rem] leading-relaxed opacity-90">
+                  Flashfire LLC.<br />
+                  30 N Gould St, STE R<br />
+                  Sheridan, WY 82801, USA
+                </address>
+              </div>
             </div>
 
         </div>
       </div>
 
       {/* BOTTOM */}
-      <div className="flex justify-between items-center text-sm opacity-90 max-[768px]:flex-col max-[768px]:gap-2 max-[768px]:items-center max-[480px]:text-xs max-[480px]:text-center">
+      <div className="flex justify-between text-sm opacity-90 max-[768px]:flex-col max-[768px]:gap-2 max-[768px]:items-center max-[480px]:text-xs max-[480px]:text-center">
         <p className="max-[480px]:mb-1">© Flashfire 2025. All Rights Reserved.</p>
-        <address className="not-italic text-center max-[480px]:text-[0.7rem]">
-          Flashfire LLC., 30 N Gould St, STE R, Sheridan, WY 82801, USA
-        </address>
         <p>Flashfire Pvt. Ltd.</p>
       </div>
 
