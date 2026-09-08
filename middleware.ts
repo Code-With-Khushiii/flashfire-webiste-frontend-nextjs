@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { CANADA_PREFIX, UK_PREFIX, US_PREFIX, LOCALE_PREFIXES, UK_EU_COUNTRY_CODES } from '@/src/utils/locale';
+import { localeHasRoute } from '@/src/utils/localeRoutes.generated';
 import { getCloudflareCountry, resolveClientIp } from '@/src/utils/clientIp';
 
 const CANADA_CODE = 'CA';
@@ -86,6 +87,24 @@ async function resolveCountry(request: NextRequest): Promise<string | null> {
   return fetchCountryFromLocalApi(ip, request);
 }
 
+/** Maps a resolved country to its locale tree, or null when we don't serve one. */
+function localePrefixFor(countryCode: string | null): string | null {
+  if (!countryCode) return null;
+  if (countryCode === CANADA_CODE) return CANADA_PREFIX;
+  if (UK_EU_COUNTRY_CODES.has(countryCode)) return UK_PREFIX;
+  if (countryCode === US_CODE) return US_PREFIX;
+  return null;
+}
+
+/**
+ * Anything with an extension is an asset or a feed (sitemap.xml, robots.txt,
+ * og-image.png) and must never be geo-redirected.
+ */
+function hasFileExtension(pathname: string): boolean {
+  const last = pathname.split('/').pop() || '';
+  return last.includes('.');
+}
+
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   
@@ -118,28 +137,30 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Only check for redirect on root path
-  if (pathname === '/') {
+  // Geo-route EVERY page, not just "/".
+  //
+  // This used to fire only on "/", which meant a UK visitor who landed
+  // straight on /pricing (a shared WhatsApp link, an ad, a Google result)
+  // never got redirected and was quoted in USD. Currency is chosen purely
+  // from the URL prefix, so landing on the wrong URL means the wrong price.
+  //
+  // Only redirect when the destination actually exists: the root tree has
+  // ~85 pages and the locale trees ~67, so a blind rewrite would 404 paths
+  // like /job-application-automation and every /blog/<slug>.
+  if (request.method === 'GET' && !hasFileExtension(pathname)) {
     // Always do a fresh lookup — no in-memory cache. The cache Map was
     // per-server-instance and not shared, so the same visitor could get a
     // different answer depending on which instance handled their request.
     const countryCode = await resolveCountry(request);
+    const prefix = localePrefixFor(countryCode);
 
     // Fail safe: an unknown or unmatched country (anything not US/CA/GB/EU —
-    // e.g. India, Australia) stays on `/`. `/` is the canonical indexed URL
-    // and content is identical to /en-us, so leaving someone there is always
+    // e.g. India, Australia) stays put. "/" is the canonical indexed URL and
+    // content is identical to /en-us, so leaving someone there is always
     // harmless — whereas guessing wrong strands an Indian visitor on the UK
     // pricing page.
-    if (countryCode === CANADA_CODE) {
-      return localeRedirect(request, CANADA_PREFIX, countryCode);
-    }
-
-    if (countryCode && UK_EU_COUNTRY_CODES.has(countryCode)) {
-      return localeRedirect(request, UK_PREFIX, countryCode);
-    }
-
-    if (countryCode === US_CODE) {
-      return localeRedirect(request, US_PREFIX, countryCode);
+    if (prefix && localeHasRoute(prefix, pathname)) {
+      return localeRedirect(request, prefix, countryCode!, pathname);
     }
   }
 
@@ -154,10 +175,12 @@ export async function middleware(request: NextRequest) {
  * stored in a shared cache — one UK visitor's 307 would otherwise be replayed
  * to everyone who follows.
  */
-function localeRedirect(request: NextRequest, prefix: string, countryCode: string) {
+function localeRedirect(request: NextRequest, prefix: string, countryCode: string, pathname = '/') {
   const url = request.nextUrl.clone();
-  url.pathname = prefix;
-  console.log(`[Middleware] Redirecting to ${prefix} for ${countryCode} visitor`);
+  // Keep the page they asked for, and the query string with it, so UTM and
+  // campaign params survive the hop.
+  url.pathname = pathname === '/' ? prefix : `${prefix}${pathname}`;
+  console.log(`[Middleware] Redirecting ${pathname} -> ${url.pathname} for ${countryCode} visitor`);
 
   const response = NextResponse.redirect(url);
   response.headers.set('Cache-Control', 'private, no-store, max-age=0, must-revalidate');

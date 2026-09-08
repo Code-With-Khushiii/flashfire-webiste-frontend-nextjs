@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     "job-search-tips": "Job Search Tips: Proven Ways to Get Hired Faster",
     "best-websites-for-job-search": "Best Websites for Job Search: Top Sites to Get Hired",
     "best-job-search-apps": "Best Job Search Apps in USA for 2026",
-    "apps-like-indeed": "Best Job Search Apps Like Indeed in 2026",
+    "apps-like-indeed": "9 Best Apps Like Indeed for Jobs in 2026",
     "best-job-search-strategies-opt-students": "Best Job Search Strategy for OPT Students USA",
     // LinkedIn
     "linkedin-profile-attractive-to-recruiters": "How to Make Your LinkedIn Profile Attractive to Recruiters",
