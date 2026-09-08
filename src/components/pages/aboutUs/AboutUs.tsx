@@ -40,17 +40,19 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <div className="bg-[#faf8f5] min-h-screen font-['Space_Grotesk',sans-serif] relative overflow-hidden text-[#141414]">
+    <div className="bg-white min-h-screen font-['Space_Grotesk',sans-serif] relative overflow-hidden text-black">
       {/* === HERO === */}
-      <section className="border-b border-black/10 px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
-        <div className="max-w-5xl mx-auto">
+      <section className="relative overflow-hidden bg-[#f7e6df] px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+        <div className="pointer-events-none absolute -left-32 top-10 h-72 w-72 rounded-full bg-[#f55d1d] opacity-25 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-32 bottom-0 h-72 w-72 rounded-full bg-[#f55d1d] opacity-25 blur-[120px]" />
+        <div className="relative max-w-4xl mx-auto text-center">
 
           {/* Badges */}
-          <div className="flex flex-wrap gap-x-8 gap-y-2">
+          <div className="flex flex-wrap justify-center gap-3">
             {["LAND INTERVIEW IN 1 WEEK", "50 USERS LANDED JOB"].map((badge, idx) => (
               <span
                 key={idx}
-                className="border-b-2 border-[#ff4c00] pb-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#141414]"
+                className="inline-flex items-center rounded-full bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.08em] text-[#f55d1d] shadow-sm"
               >
                 {badge}
               </span>
@@ -58,7 +60,7 @@ export default function AboutUs() {
           </div>
 
           {/* Heading */}
-          <h1 className="mt-8 max-w-4xl text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-[#141414]">
+          <h1 className="mt-7 font-['Satoshi',sans-serif] text-[2.2rem] sm:text-4xl lg:text-[3rem] font-bold leading-[1.1] tracking-[-0.02em] text-[#02060A]">
             <span className="text-[#ff4c00]">
               AI Job Application Service
             </span>{" "}
@@ -66,14 +68,14 @@ export default function AboutUs() {
           </h1>
 
           {/* Subtext */}
-          <p className="mt-6 text-lg leading-relaxed max-w-2xl text-[#141414]/70">
+          <p className="mt-5 font-['Satoshi',sans-serif] text-[16px] font-medium leading-[1.6] max-w-2xl mx-auto text-[#3a3a3a]">
             Flashfire is an AI job search platform built for job seekers who want to automate job applications, improve ATS visibility, and land more interviews without manual effort.
           </p>
 
           {/* CTA */}
           <button
             {...getButtonProps()}
-            className="mt-10 inline-flex items-center gap-3 border border-[#ff4c00] bg-[#ff4c00] px-9 py-4 text-sm font-bold uppercase tracking-[0.15em] text-white transition-colors duration-200 hover:bg-[#141414] hover:border-[#141414]"
+            className="mt-8 inline-flex items-center gap-2 rounded-[10px] bg-[#ff4c00] px-7 py-3.5 text-[17px] font-bold text-white shadow-[0_6px_0_#000] transition duration-200 hover:-translate-y-0.5 hover:bg-[#ff5a1f]"
       
       onClick={() => {
         const utmSource = typeof window !== "undefined"
@@ -180,54 +182,52 @@ export default function AboutUs() {
 </section>
 
       {/* === OUR FOUNDERS SECTION === */}
-      <section className="border-b border-black/10 px-4 py-20 sm:px-6 lg:px-8">
+      <section className="bg-white px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <div className="mb-12 border-b border-black/10 pb-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-              Our Founders
-            </h2>
-          </div>
+          <h2 className="mb-12 text-center font-['Satoshi',sans-serif] text-3xl sm:text-4xl font-bold tracking-[-0.03em] text-[#02060A]">
+            Our Founders
+          </h2>
 
-          <div className="grid grid-cols-1 border-l border-t border-black/10 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 max-w-4xl mx-auto">
             {/* Pranjal Tripathi Card */}
-            <div className="group border-b border-r border-black/10">
-              <div className="overflow-hidden bg-[#f0ebe5]">
+            <div className="group overflow-hidden rounded-[0.5rem] border border-[#94959a] bg-[#fffdfc] shadow-[0_2px_6px_rgba(0,0,0,0.03)] transition-all duration-200 hover:-translate-y-[3px] hover:shadow-[0_6px_12px_rgba(0,0,0,0.08)]">
+              <div className="overflow-hidden bg-[#f7e6df]">
                 <Image
                   src="https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/pranjal_cto.png"
                   alt="Pranjal Tripathi"
                   width={400}
                   height={400}
-                  className="h-96 w-full object-cover object-top"
+                  className="h-80 w-full object-cover object-top"
                   priority
                   unoptimized
                 />
               </div>
-              <div className="border-t border-black/10 p-8">
-                <h3 className="text-xl font-bold text-[#141414]">Pranjal Tripathi</h3>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#ff4c00]">CTO, Flashfire</p>
-                <p className="mt-5 text-lg font-medium italic leading-relaxed text-[#141414]/70">
+              <div className="p-6 text-center">
+                <h3 className="text-xl font-bold text-[#111]">Pranjal Tripathi</h3>
+                <p className="mt-1 text-xs font-bold uppercase tracking-[0.15em] text-[#ff4c00]">CTO, Flashfire</p>
+                <p className="mt-4 font-['Satoshi',sans-serif] text-[15px] font-medium italic leading-[1.6] text-[#3a3a3a]">
                   "Every line of code we write is to help someone hear back finally"
                 </p>
               </div>
             </div>
 
             {/* Adit Jain Card */}
-            <div className="group border-b border-r border-black/10">
-              <div className="overflow-hidden bg-[#f0ebe5]">
+            <div className="group overflow-hidden rounded-[0.5rem] border border-[#94959a] bg-[#fffdfc] shadow-[0_2px_6px_rgba(0,0,0,0.03)] transition-all duration-200 hover:-translate-y-[3px] hover:shadow-[0_6px_12px_rgba(0,0,0,0.08)]">
+              <div className="overflow-hidden bg-[#f7e6df]">
                 <Image
                   src="/images/adit-jain-2.png"
                   alt="Adit Jain"
                   width={400}
                   height={400}
-                  className="h-96 w-full object-cover object-top"
+                  className="h-80 w-full object-cover object-top"
                   priority
                   unoptimized
                 />
               </div>
-              <div className="border-t border-black/10 p-8">
-                <h3 className="text-xl font-bold text-[#141414]">Adit Jain</h3>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#ff4c00]">Partner, Flashfire</p>
-                <p className="mt-5 text-lg font-medium italic leading-relaxed text-[#141414]/70">
+              <div className="p-6 text-center">
+                <h3 className="text-xl font-bold text-[#111]">Adit Jain</h3>
+                <p className="mt-1 text-xs font-bold uppercase tracking-[0.15em] text-[#ff4c00]">Partner, Flashfire</p>
+                <p className="mt-4 font-['Satoshi',sans-serif] text-[15px] font-medium italic leading-[1.6] text-[#3a3a3a]">
                   "I've seen brilliant people lose hope. Flashfire exists so they don't have to."
                 </p>
               </div>
@@ -237,37 +237,36 @@ export default function AboutUs() {
       </section>
 
       {/* === THE STORY SECTION === */}
-      <section className="border-b border-black/10 px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl">
-          <div className="mb-10 border-b border-black/10 pb-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-              The Story
-            </h2>
-          </div>
+      <section className="relative overflow-hidden bg-[#f7e6df] px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+        <div className="pointer-events-none absolute -right-32 top-24 h-72 w-72 rounded-full bg-[#f55d1d] opacity-20 blur-[120px]" />
+        <div className="relative mx-auto max-w-3xl">
+          <h2 className="text-center font-['Satoshi',sans-serif] text-3xl sm:text-4xl font-bold tracking-[-0.03em] text-[#02060A]">
+            The Story
+          </h2>
 
-          <div className="mb-8 flex justify-center">
+          <div className="my-8 flex justify-center">
             <Image
               src="/images/character.png"
               alt="Flashfire Character"
               width={320}
               height={320}
-              className="h-40 w-40 object-contain"
+              className="h-40 w-40 object-contain drop-shadow-xl"
               priority
               unoptimized
             />
           </div>
 
-          <p className="text-xl font-semibold text-[#141414]">
+          <p className="font-['Satoshi',sans-serif] text-xl font-bold text-[#02060A]">
             To Every Job Seeker Who&apos;s Ready to Move Forward,
           </p>
-          <div className="mt-6 space-y-5 text-lg leading-relaxed text-[#141414]/80">
+          <div className="mt-6 space-y-5 font-['Satoshi',sans-serif] text-[17px] leading-[1.7] text-[#3a3a3a]">
             <p>
               I know how exhausting the job search can be. You keep sending out applications, waiting for replies, and start to wonder if it&apos;s you. Especially in the U.S., where hundreds apply for the same role, even the most talented people begin to lose hope.
             </p>
             <p>
               Flashfire was born from that same feeling. I watched my sister, smart, capable, and hardworking, apply to hundreds of roles and still get no response. It wasn&apos;t her fault. The system had stopped seeing people for who they are.
             </p>
-            <blockquote className="border-l-2 border-[#ff4c00] py-2 pl-6 text-xl font-semibold italic text-[#ff4c00]">
+            <blockquote className="rounded-[0.5rem] border-l-4 border-[#ff4c00] bg-white/70 py-4 pl-6 pr-4 text-xl font-bold italic text-[#ff4c00]">
               The problem was never the people. It was the process.
             </blockquote>
             <p>
@@ -281,38 +280,36 @@ export default function AboutUs() {
       </section>
 
       {/* === OUR MISSION & VISION SECTION === */}
-      <section className="border-b border-black/10 px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-5xl">
-          <div className="divide-y divide-black/10 border-y border-black/10">
-            <div className="grid gap-4 py-10 md:grid-cols-[minmax(0,260px)_1fr] md:gap-12">
-              <h3 className="text-2xl sm:text-3xl font-bold uppercase tracking-tight text-[#141414]">Our Mission</h3>
-              <p className="text-lg leading-relaxed text-[#141414]/70">
-                To help job seekers land more interviews by automating applications and optimizing visibility using AI.
-              </p>
-            </div>
-            <div className="grid gap-4 py-10 md:grid-cols-[minmax(0,260px)_1fr] md:gap-12">
-              <h3 className="text-2xl sm:text-3xl font-bold uppercase tracking-tight text-[#141414]">Our Vision</h3>
-              <p className="text-lg leading-relaxed text-[#141414]/70">
-                To become the world&apos;s fastest and most intelligent job application engine, enabling anyone to apply to over 1,200 targeted roles and land interviews ten times faster all without wasting time or effort.
-              </p>
-            </div>
+      <section className="bg-white px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+        <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
+          <div className="rounded-[0.5rem] border border-[#94959a] bg-[#fffdfc] p-8 shadow-[0_2px_6px_rgba(0,0,0,0.03)]">
+            <h3 className="text-2xl font-bold uppercase tracking-[-0.02em] text-[#111]">Our Mission</h3>
+            <p className="mt-4 font-['Satoshi',sans-serif] text-[17px] leading-[1.7] text-[#333]">
+              To help job seekers land more interviews by automating applications and optimizing visibility using AI.
+            </p>
+          </div>
+          <div className="rounded-[0.5rem] border border-[#94959a] bg-[#fffdfc] p-8 shadow-[0_2px_6px_rgba(0,0,0,0.03)]">
+            <h3 className="text-2xl font-bold uppercase tracking-[-0.02em] text-[#111]">Our Vision</h3>
+            <p className="mt-4 font-['Satoshi',sans-serif] text-[17px] leading-[1.7] text-[#333]">
+              To become the world&apos;s fastest and most intelligent job application engine, enabling anyone to apply to over 1,200 targeted roles and land interviews ten times faster all without wasting time or effort.
+            </p>
           </div>
         </div>
       </section>
 
       {/* === HOW FLASHFIRE WORKS FOR YOU SECTION === */}
-      <section className="border-b border-black/10 px-4 py-20 sm:px-6 lg:px-8">
+      <section className="bg-white px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <div className="mb-6 border-b border-black/10 pb-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
+          <div className="mx-auto mb-14 max-w-3xl text-center">
+            <h2 className="font-['Satoshi',sans-serif] text-3xl sm:text-4xl font-bold tracking-[-0.03em] text-[#02060A]">
               How Our AI Job Application Service Automates Your Job Search
             </h2>
+            <p className="mt-4 font-['Satoshi',sans-serif] text-lg font-medium text-[#3a3a3a]">
+              Flashfire's AI job application service automates job discovery, resume optimization, and application submission to help job seekers get noticed and land interviews faster.
+            </p>
           </div>
-          <p className="mb-12 max-w-2xl text-lg text-[#141414]/70">
-            Flashfire's AI job application service automates job discovery, resume optimization, and application submission to help job seekers get noticed and land interviews faster.
-          </p>
 
-          <div className="border-t border-black/10">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
               "AI-Powered Matching",
               "LinkedIn Profile Optimization",
@@ -323,15 +320,12 @@ export default function AboutUs() {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="group flex items-center gap-6 border-b border-black/10 py-6 transition-colors duration-200 hover:bg-white"
+                className="flex items-center gap-4 rounded-[0.3rem] border border-[#94959a] bg-[#fffdfc] p-6 shadow-[0_2px_6px_rgba(0,0,0,0.03)] transition-all duration-200 hover:-translate-y-[3px] hover:shadow-[0_6px_12px_rgba(0,0,0,0.08)]"
               >
-                <span className="text-sm font-bold tabular-nums text-[#ff4c00]">
+                <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-[8px] bg-[#ff4c00] text-sm font-black text-white">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <p className="text-lg sm:text-xl font-semibold text-[#141414]">{feature}</p>
-                <span className="ml-auto text-[#ff4c00] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                  &rarr;
-                </span>
+                <p className="text-base font-bold text-[#111]">{feature}</p>
               </div>
             ))}
           </div>
@@ -339,18 +333,19 @@ export default function AboutUs() {
       </section>
 
       {/* === WHO IS THIS FOR SECTION === */}
-      <section className="border-b border-black/10 px-4 py-20 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-6 border-b border-black/10 pb-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight uppercase">
+      <section className="relative overflow-hidden bg-[#f7e6df] px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+        <div className="pointer-events-none absolute -left-32 top-16 h-72 w-72 rounded-full bg-[#f55d1d] opacity-20 blur-[120px]" />
+        <div className="relative max-w-5xl mx-auto">
+          <div className="mx-auto mb-14 max-w-3xl text-center">
+            <h2 className="font-['Satoshi',sans-serif] text-3xl sm:text-4xl font-bold uppercase tracking-[-0.02em] text-[#02060A]">
               Who Is This For?
             </h2>
+            <p className="mt-4 font-['Satoshi',sans-serif] text-lg font-medium text-[#3a3a3a]">
+              Flashfire's AI job application service is built for job seekers who want to stop wasting time, automate applications, and finally start getting interview responses.
+            </p>
           </div>
-          <p className="mb-12 max-w-2xl text-lg text-[#141414]/70">
-            Flashfire's AI job application service is built for job seekers who want to stop wasting time, automate applications, and finally start getting interview responses.
-          </p>
 
-          <div className="grid gap-px border border-black/10 bg-black/10 sm:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             {[
               {
                 title: "Active Job Seekers Applying at Scale",
@@ -371,12 +366,12 @@ export default function AboutUs() {
             ].map((card, idx) => (
               <div
                 key={idx}
-                className="group bg-[#faf8f5] p-8 transition-colors duration-300 hover:bg-white"
+                className="group rounded-[0.5rem] border border-[#94959a] bg-[#fffdfc] p-8 shadow-[0_2px_6px_rgba(0,0,0,0.03)] transition-all duration-200 hover:-translate-y-[3px] hover:shadow-[0_6px_12px_rgba(0,0,0,0.08)]"
               >
-                <h3 className="mb-3 text-xl font-bold text-[#141414] transition-colors duration-300 group-hover:text-[#ff4c00]">
+                <h3 className="mb-3 text-xl font-bold text-[#111] transition-colors duration-200 group-hover:text-[#ff4c00]">
                   {card.title}
                 </h3>
-                <p className="leading-relaxed text-[#141414]/70">
+                <p className="font-['Satoshi',sans-serif] text-[15px] leading-[1.6] text-[#333]">
                   {card.desc}
                 </p>
               </div>
@@ -384,7 +379,7 @@ export default function AboutUs() {
           </div>
 
           {/* Bottom Emphasis Line */}
-          <div className="mt-12 border border-[#ff4c00] bg-[#ff4c00] px-8 py-6">
+          <div className="mx-auto mt-12 max-w-3xl rounded-[10px] bg-[#ff4c00] px-8 py-6 text-center shadow-[0_6px_0_#000]">
             <p className="text-lg font-bold text-white">
               If you're qualified, motivated, and serious about landing interviews, Flashfire is built for you.
             </p>
@@ -393,35 +388,34 @@ export default function AboutUs() {
       </section>
 
       {/* === THE FLASHFIRE STORY TIMELINE SECTION === */}
-      <section className="border-b border-black/10 px-4 py-20 sm:px-6 lg:px-8">
+      <section className="bg-white px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <div className="mb-6 border-b border-black/10 pb-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight uppercase">
-              The Flashfire Story
-            </h2>
-          </div>
-
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
-            <div className="max-w-2xl space-y-4 text-[#141414]/70">
-              <p className="leading-relaxed">
-                Flashfire is an AI job search platform designed to solve modern hiring challenges by automating job applications and improving candidate visibility across ATS-driven hiring systems.
-              </p>
-              <p className="leading-relaxed">
-                Flashfire began in April 2024 with a simple insight: most candidates lose opportunities before they&apos;re even seen. Built to match the speed and precision of modern hiring, Flashfire helps candidates apply at scale across U.S. and Canadian job markets with ATS-optimized applications.
-              </p>
+          <div className="mb-10 flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+            <div className="max-w-2xl">
+              <h2 className="font-['Satoshi',sans-serif] text-3xl sm:text-4xl font-bold uppercase tracking-[-0.02em] text-[#02060A]">
+                The Flashfire Story
+              </h2>
+              <div className="mt-4 space-y-4 font-['Satoshi',sans-serif] text-[16px] leading-[1.7] text-[#3a3a3a]">
+                <p>
+                  Flashfire is an AI job search platform designed to solve modern hiring challenges by automating job applications and improving candidate visibility across ATS-driven hiring systems.
+                </p>
+                <p>
+                  Flashfire began in April 2024 with a simple insight: most candidates lose opportunities before they&apos;re even seen. Built to match the speed and precision of modern hiring, Flashfire helps candidates apply at scale across U.S. and Canadian job markets with ATS-optimized applications.
+                </p>
+              </div>
             </div>
             <Image
               src="/images/flashfire-logo.png"
               alt="Flashfire Logo"
               width={200}
               height={200}
-              className="h-24 w-24 flex-shrink-0 object-contain opacity-80 lg:h-32 lg:w-32"
+              className="h-24 w-24 flex-shrink-0 object-contain opacity-90 lg:h-32 lg:w-32"
               priority
               unoptimized
             />
           </div>
 
-          <div className="mt-14 border-t border-black/10">
+          <div className="relative border-l-2 border-[#ff4c00]/25 pl-8">
             {[
               { date: "April 2024", label: "Founded", desc: "Flashfire was officially founded with a mission to simplify the job application process and remove inefficiencies from large-scale job searching." },
               { date: "May-June 2024", label: "Platform Development", desc: "Core workflows were built to automate job discovery, resume alignment, and application submission while maintaining human oversight for relevance and accuracy." },
@@ -430,12 +424,15 @@ export default function AboutUs() {
               { date: "Jan-Feb 2025", label: "USA & Canada Expansion", desc: "Flashfire expanded its services across the United States and Canada, operating with timezone-agnostic execution aligned with North American hiring cycles and ATS systems." },
               { date: "Mar 2025-Present", label: "Scaling with focus", desc: "Today, Flashfire continues to support candidates globally, with a strong focus on US and Canadian job applications, optimizing continuously for interview outcomes rather than vanity application counts." }
             ].map((item, idx) => (
-              <div key={idx} className="grid gap-2 border-b border-black/10 py-8 md:grid-cols-[minmax(0,220px)_1fr] md:gap-10">
-                <div>
-                  <div className="text-lg font-bold text-[#ff4c00]">{item.date}</div>
-                  <div className="mt-1 text-xs font-medium uppercase tracking-[0.2em] text-[#141414]/50">{item.label}</div>
+              <div key={idx} className="relative pb-10 last:pb-0">
+                <span className="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-4 border-white bg-[#ff4c00]" />
+                <div className="rounded-[0.5rem] border border-[#94959a] bg-[#fffdfc] p-6 shadow-[0_2px_6px_rgba(0,0,0,0.03)]">
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <span className="text-lg font-bold text-[#ff4c00]">{item.date}</span>
+                    <span className="text-xs font-bold uppercase tracking-[0.15em] text-[#78716d]">{item.label}</span>
+                  </div>
+                  <p className="mt-2 font-['Satoshi',sans-serif] text-[15px] leading-[1.6] text-[#333]">{item.desc}</p>
                 </div>
-                <p className="leading-relaxed text-[#141414]/80">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -443,18 +440,14 @@ export default function AboutUs() {
       </section>
 
       {/* === FAQ SECTION === */}
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl">
-          <div className="mb-4 border-b border-black/10 pb-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-              Frequently Asked Questions
-            </h2>
+      <section className="ff-faq-section">
+        <div className="ff-faq-shell">
+          <div className="ff-faq-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>Get answers about our AI job application service.</p>
           </div>
-          <p className="mb-10 text-lg text-[#141414]/70">
-            Get answers about our AI job application service.
-          </p>
 
-          <div className="border-t border-black/10">
+          <div className="ff-faq-list">
             {[
               {
                 question: "What is an AI job application service?",
@@ -471,24 +464,23 @@ export default function AboutUs() {
             ].map((faq, index) => {
               const isOpen = activeFaqIndex === index;
               return (
-                <div key={index} className="border-b border-black/10">
+                <div key={index} className={`ff-faq-item ${isOpen ? "is-active" : ""}`}>
                   <button
+                    type="button"
+                    className="ff-faq-question"
                     onClick={() => setActiveFaqIndex(isOpen ? null : index)}
                     aria-expanded={isOpen}
-                    className="flex w-full items-center justify-between gap-6 py-6 text-left"
                   >
-                    <h3 className="text-lg font-semibold text-[#141414]">
-                      {faq.question}
-                    </h3>
-                    <span className="flex-none text-[#ff4c00]">
+                    <h3 className="ff-faq-question-text">{faq.question}</h3>
+                    <span className="ff-faq-icon">
                       {isOpen ? <FaTimes /> : <FaPlus />}
                     </span>
                   </button>
 
                   {isOpen && (
-                    <p className="pb-6 pr-10 leading-relaxed text-[#141414]/70">
-                      {faq.answer}
-                    </p>
+                    <div className="ff-faq-answer">
+                      <p>{faq.answer}</p>
+                    </div>
                   )}
                 </div>
               );

@@ -209,150 +209,147 @@ export default function JobSearch() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#fdf9f7] text-slate-900">
+    <div className="min-h-screen w-full bg-white font-['Space_Grotesk',sans-serif] text-black">
 
-      {/* ===== Hero: full-width editorial ===== */}
-      <section className="relative border-b border-slate-200/70 px-4 sm:px-6 lg:px-8 pt-20 pb-16 sm:pt-24 sm:pb-20">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#ff4c00]/40 to-transparent" />
+      {/* ===== Hero ===== */}
+      <section className="relative overflow-hidden bg-[#f7e6df] px-4 sm:px-6 lg:px-8 pt-16 pb-20 sm:pt-20 lg:pt-24">
+        <div className="pointer-events-none absolute -left-32 top-10 h-72 w-72 rounded-full bg-[#f55d1d] opacity-25 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-32 top-32 h-72 w-72 rounded-full bg-[#f55d1d] opacity-25 blur-[120px]" />
 
-        <div className="relative mx-auto max-w-5xl text-center">
-          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#ff4c00]">
-            <span className="h-px w-8 bg-[#ff4c00]" />
-            Human-powered automation
-            <span className="h-px w-8 bg-[#ff4c00]" />
-          </span>
+        <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <span className="mb-5 inline-flex items-center rounded-full bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.08em] text-[#f55d1d] shadow-sm">
+              Human-powered automation
+            </span>
 
-          <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
-            Find Jobs Faster With{" "}
-            <span className="italic text-[#ff4c00]">Human-Powered</span>{" "}
-            Automation
-          </h1>
+            <h1 className="font-['Satoshi',sans-serif] text-[2.4rem] font-bold leading-[1.1] tracking-[-0.02em] text-[#02060A] sm:text-5xl lg:text-[3.4rem]">
+              Find Jobs Faster With{" "}
+              <span className="text-[#ff4c00]">Human-Powered</span>{" "}
+              Automation
+            </h1>
 
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-slate-600">
-            Flashfire applies to relevant jobs on your behalf so you don&apos;t have to search manually.
-          </p>
+            <p className="mt-5 max-w-lg font-['Satoshi',sans-serif] text-[16px] font-medium leading-[1.6] text-[#3a3a3a]">
+              Flashfire applies to relevant jobs on your behalf so you don&apos;t have to search manually.
+            </p>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
-            {benefits.map((benefit, index) => (
-              <span
-                key={index}
-                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700"
-              >
-                <Check className="h-3.5 w-3.5 text-[#ff4c00]" strokeWidth={3} />
-                {benefit}
-              </span>
-            ))}
+            <ul className="mt-7 space-y-3">
+              {benefits.map((benefit, index) => (
+                <li key={index} className="flex items-center gap-3">
+                  <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#ff4c00]">
+                    <Check className="h-3.5 w-3.5 text-white" strokeWidth={3} />
+                  </span>
+                  <span className="font-['Satoshi',sans-serif] font-medium text-[#02060A]">{benefit}</span>
+                </li>
+              ))}
+            </ul>
+
+            <button
+              {...getButtonProps()}
+              onClick={handleGetStarted}
+              className="mt-8 inline-flex items-center gap-2 rounded-[10px] bg-[#ff4c00] px-7 py-3.5 text-[17px] font-bold text-white shadow-[0_6px_0_#000] transition duration-200 hover:-translate-y-0.5 hover:bg-[#ff5a1f]"
+            >
+              Get Started With Flashfire
+              <ArrowRight className="h-5 w-5" />
+            </button>
           </div>
 
-          <button
-            {...getButtonProps()}
-            onClick={handleGetStarted}
-            className="group mt-10 inline-flex items-center gap-2 rounded-full bg-[#ff4c00] px-8 py-4 text-lg font-bold text-white shadow-[0_15px_35px_-10px_rgba(255,76,0,0.6)] transition-all hover:-translate-y-0.5 hover:bg-[#e64400]"
-          >
-            Get Started With Flashfire
-            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-          </button>
-        </div>
-
-        {/* Live application feed */}
-        <div className="relative mx-auto mt-14 max-w-5xl">
-          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_30px_70px_-25px_rgba(15,23,42,0.25)]">
-            <div className="flex items-center justify-between border-b border-slate-100 px-5 py-3">
-              <div className="flex items-center gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
-                <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
-                <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
+          {/* Dashboard mock */}
+          <div className="relative">
+            <div className="rounded-2xl border border-[#94959a] bg-[#fffdfc] p-5 shadow-[0_2px_6px_rgba(0,0,0,0.03)]">
+              <div className="mb-5 flex items-center justify-between">
+                <div className="flex items-center gap-1.5">
+                  <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
+                </div>
+                <span className="text-xs font-medium text-[#9d9d9d]">Flashfire Dashboard</span>
               </div>
-              <span className="text-xs font-medium text-slate-400">Flashfire Dashboard — live feed</span>
-            </div>
-            <div className="grid divide-y divide-slate-100 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-              {liveApplications.map((app) => {
-                const scanning = app.status === "Scanning";
-                return (
-                  <div key={app.role} className="p-5">
-                    <div className="flex items-center justify-between">
-                      <span
-                        className={`rounded-full px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide ${
-                          scanning
-                            ? "animate-pulse bg-slate-100 text-slate-500"
-                            : "bg-[#ff4c00]/10 text-[#ff4c00]"
-                        }`}
-                      >
-                        {scanning ? "Scanning…" : "Applied"}
-                      </span>
+              <div className="space-y-3">
+                {liveApplications.map((app) => {
+                  const scanning = app.status === "Scanning";
+                  return (
+                    <div key={app.role} className="rounded-[0.4rem] border border-[#e7ddd6] bg-white p-4">
+                      <div className="flex items-center justify-between gap-3">
+                        <p className="font-bold text-[#111]">{app.role}</p>
+                        <span
+                          className={`flex-none rounded-full px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide ${
+                            scanning
+                              ? "animate-pulse bg-[#f1ece8] text-[#8a8078]"
+                              : "bg-[#ff4c00]/10 text-[#ff4c00]"
+                          }`}
+                        >
+                          {scanning ? "Scanning…" : "Applied"}
+                        </span>
+                      </div>
+                      <p className="mt-1 font-['Satoshi',sans-serif] text-sm text-[#78716d]">
+                        {app.company} • {app.location}
+                      </p>
                     </div>
-                    <p className="mt-3 font-semibold text-slate-900">{app.role}</p>
-                    <p className="mt-0.5 text-sm text-slate-500">
-                      {app.company} • {app.location}
-                    </p>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ===== How It Works: vertical timeline ===== */}
+      {/* ===== How It Works ===== */}
       <section className="bg-white px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
-        <div className="mx-auto max-w-3xl">
-          <div className="mb-14">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto mb-14 max-w-2xl text-center">
+            <h2 className="font-['Satoshi',sans-serif] text-3xl font-bold tracking-[-0.03em] text-[#02060A] sm:text-4xl">
               How It Works
             </h2>
-            <p className="mt-3 text-lg text-slate-500">
+            <p className="mt-3 font-['Satoshi',sans-serif] text-lg font-medium text-[#3a3a3a]">
               Your job search, automated in four simple steps
             </p>
           </div>
 
-          <ol className="relative space-y-10 before:absolute before:left-5 before:top-3 before:bottom-3 before:w-0.5 before:bg-[#ff4c00]/20">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step) => {
               const IconComponent = step.icon;
               return (
-                <li key={step.id} className="relative pl-16">
-                  <span className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#ff4c00] to-[#ff7a3d] text-white shadow-md ring-4 ring-white">
-                    <IconComponent className="h-5 w-5" strokeWidth={2} />
-                  </span>
-                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <span className="text-sm font-bold text-[#ff4c00]">
-                      Step 0{step.id}
-                    </span>
-                    <h3 className="text-xl font-bold text-slate-900">{step.title}</h3>
+                <div
+                  key={step.id}
+                  className="flex flex-col rounded-[0.3rem] border border-[#94959a] bg-[#fffdfc] p-6 shadow-[0_2px_6px_rgba(0,0,0,0.03)] transition-all duration-200 hover:-translate-y-[3px] hover:shadow-[0_6px_12px_rgba(0,0,0,0.08)]"
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-[10px] bg-[#ff4c00] text-white shadow-[0_4px_0_#000]">
+                    <IconComponent className="h-6 w-6" strokeWidth={2} />
                   </div>
-                  <p className="mt-2 max-w-lg leading-relaxed text-slate-600">
+                  <span className="mt-5 text-sm font-bold text-[#ff4c00]">Step 0{step.id}</span>
+                  <h3 className="mt-1 text-lg font-bold text-[#111]">{step.title}</h3>
+                  <p className="mt-2 font-['Satoshi',sans-serif] text-sm leading-[1.5] text-[#333]">
                     {step.description}
                   </p>
-                </li>
+                </div>
               );
             })}
-          </ol>
+          </div>
         </div>
       </section>
 
-      {/* ===== Why Choose: sticky two-column ===== */}
-      <section className="border-y border-slate-200 bg-[#fdf9f7] px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
-        <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-[minmax(0,320px)_1fr] md:gap-16">
-          <div className="md:sticky md:top-24 md:self-start">
-            <h2 className="text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl">
-              Why Job Seekers Choose Flashfire
-            </h2>
-            <div className="mt-5 h-1 w-16 rounded-full bg-[#ff4c00]" />
-          </div>
-
-          <div className="space-y-6 text-lg leading-relaxed text-slate-600">
-            <p className="border-l-2 border-[#ff4c00]/30 pl-5">
+      {/* ===== Why Choose ===== */}
+      <section className="relative overflow-hidden bg-[#f7e6df] px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+        <div className="pointer-events-none absolute -left-32 top-16 h-72 w-72 rounded-full bg-[#f55d1d] opacity-20 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-32 bottom-16 h-72 w-72 rounded-full bg-[#f55d1d] opacity-20 blur-[120px]" />
+        <div className="relative mx-auto max-w-4xl">
+          <h2 className="text-center font-['Satoshi',sans-serif] text-3xl font-bold tracking-[-0.03em] text-[#02060A] sm:text-4xl">
+            Why Job Seekers Choose Flashfire
+          </h2>
+          <div className="mt-8 space-y-5 font-['Satoshi',sans-serif] text-[17px] leading-[1.7] text-[#3a3a3a]">
+            <p>
               Searching for a job while working full-time, studying, or managing a career transition is exhausting.
               Most job seekers spend more time filling out repetitive application forms than actually preparing for
               interviews. Flashfire was built to fix that imbalance by taking the manual, repetitive part of the
               job search off your plate.
             </p>
-            <p className="border-l-2 border-[#ff4c00]/30 pl-5">
+            <p>
               Instead of relying on generic keyword matching, our team looks at your specific goals — the roles
               you want, the industries you're targeting, your location preferences, and your visa or work
               authorization status — before applying to a single job. That means the applications going out under
               your name are relevant, not just high in volume.
             </p>
-            <p className="border-l-2 border-[#ff4c00]/30 pl-5">
+            <p>
               This approach works well for people who already know what they want but don't have the bandwidth to
               apply consistently, as well as for people who are new to the job market and unsure where to start.
               Either way, you keep full visibility into every application through your dashboard, so you're never
@@ -362,82 +359,62 @@ export default function JobSearch() {
         </div>
       </section>
 
-      {/* ===== FAQ: matches site-wide FAQ style ===== */}
-      <section className="w-full bg-[#faf7f2] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="mx-auto mb-12 max-w-[980px] text-center">
-          <h2 className="text-[clamp(1.9rem,4vw,3.1rem)] font-extrabold leading-[1.05] text-[#02050a]">
-            Frequently Asked Questions
-          </h2>
-        </div>
+      {/* ===== FAQ ===== */}
+      <section className="ff-faq-section">
+        <div className="ff-faq-shell">
+          <div className="ff-faq-header">
+            <h2>Frequently Asked Questions</h2>
+          </div>
 
-        <div className="mx-auto max-w-[900px] border border-[#ebdfd7] bg-white">
-          {jobSearchFaqs.map((faq, index) => {
-            const isOpen = openFaq === index;
-            return (
-              <div
-                key={index}
-                className="relative border-b border-[#eee7e1] last:border-b-0"
-              >
-                {isOpen && (
-                  <>
-                    <span className="pointer-events-none absolute -left-px -top-px h-3.5 w-3.5 border-l-[1.5px] border-t-[1.5px] border-[#ff4c00]" />
-                    <span className="pointer-events-none absolute -right-px -top-px h-3.5 w-3.5 border-r-[1.5px] border-t-[1.5px] border-[#ff4c00]" />
-                    <span className="pointer-events-none absolute -bottom-px -left-px h-3.5 w-3.5 border-b-[1.5px] border-l-[1.5px] border-[#ff4c00]" />
-                    <span className="pointer-events-none absolute -bottom-px -right-px h-3.5 w-3.5 border-b-[1.5px] border-r-[1.5px] border-[#ff4c00]" />
-                  </>
-                )}
-
-                <button
-                  type="button"
-                  onClick={() => setOpenFaq(isOpen ? null : index)}
-                  aria-expanded={isOpen}
-                  className={`flex w-full items-center justify-between gap-6 px-5 text-left text-[1rem] font-extrabold leading-[1.25] text-[#05070b] transition-colors hover:bg-[#fffaf7] sm:px-8 sm:text-[1.08rem] ${
-                    isOpen ? "pb-[0.8rem] pt-[1.35rem]" : "py-[1.35rem]"
-                  }`}
-                >
-                  <span>{faq.question}</span>
-                  <span
-                    className={`inline-flex flex-none items-center justify-center text-[0.95rem] ${
-                      isOpen ? "text-[#05070b]" : "text-[#ff4c00]"
-                    }`}
+          <div className="ff-faq-list">
+            {jobSearchFaqs.map((faq, index) => {
+              const isOpen = openFaq === index;
+              return (
+                <div key={index} className={`ff-faq-item ${isOpen ? "is-active" : ""}`}>
+                  <button
+                    type="button"
+                    className="ff-faq-question"
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    aria-expanded={isOpen}
                   >
-                    {isOpen ? <FaTimes /> : <FaPlus />}
-                  </span>
-                </button>
+                    <span className="ff-faq-question-text">{faq.question}</span>
+                    <span className="ff-faq-icon">{isOpen ? <FaTimes /> : <FaPlus />}</span>
+                  </button>
 
-                {isOpen && (
-                  <div className="px-5 pb-[1.3rem] pr-10 text-[0.95rem] leading-[1.35] text-[#6f6965] sm:px-8 sm:pr-[4.5rem] sm:text-[1.03rem]">
-                    <p>{faq.answer}</p>
-                  </div>
-                )}
-              </div>
-            );
-          })}
+                  {isOpen && (
+                    <div className="ff-faq-answer">
+                      <p>{faq.answer}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      {/* ===== CTA: full-bleed orange band ===== */}
-      <section className="bg-gradient-to-br from-[#ff4c00] to-[#ff7a3d] px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+      {/* ===== CTA ===== */}
+      <section className="bg-[#ff4c00] px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
+          <h2 className="font-['Satoshi',sans-serif] text-3xl font-bold tracking-[-0.02em] text-white sm:text-[2.6rem]">
             Ready to Let Flashfire Search &amp; Apply for You?
           </h2>
-          <p className="mt-4 text-lg text-white/85">
+          <p className="mt-4 font-['Satoshi',sans-serif] text-lg font-medium text-white/90">
             Set the goal. Flashfire runs the system.
           </p>
 
-          <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
+          <div className="mt-8 flex justify-center">
             <button
               {...getButtonProps()}
               onClick={handleGetStarted}
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-bold text-[#ff4c00] shadow-lg transition-all hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-[10px] bg-white px-7 py-3.5 text-[17px] font-bold text-[#ff4c00] shadow-[0_6px_0_#000] transition duration-200 hover:-translate-y-0.5"
             >
               Get Started With Flashfire
-              <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="h-5 w-5" />
             </button>
           </div>
 
-          <p className="mt-6 text-sm text-white/75">
+          <p className="mt-6 text-sm text-white/80">
             No credit card required • Setup takes 2 minutes
           </p>
         </div>

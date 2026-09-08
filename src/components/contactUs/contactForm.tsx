@@ -121,7 +121,7 @@ export default function ContactForm() {
             onChange={handleChange}
             placeholder="Enter your First Name"
             required
-            className="block w-full pl-10 pr-3 py-3 border border-black/20 rounded-none focus:ring-2 focus:ring-[#ff4c00] focus:border-[#ff4c00] outline-none transition"
+            className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#ff4c00] focus:border-[#ff4c00] outline-none transition"
           />
           </div>
           </div>
@@ -146,7 +146,7 @@ export default function ContactForm() {
             onChange={handleChange}
             placeholder="Enter your Email"
             required
-            className="block w-full pl-10 pr-3 py-3 border border-black/20 rounded-none focus:ring-2 focus:ring-[#ff4c00] focus:border-[#ff4c00] outline-none transition"
+            className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#ff4c00] focus:border-[#ff4c00] outline-none transition"
           />
         </div>
           </div>
@@ -170,7 +170,7 @@ export default function ContactForm() {
             value={formData.company}
             onChange={handleChange}
             placeholder="Enter your Company / School"
-            className="block w-full pl-10 pr-3 py-3 border border-black/20 rounded-none focus:ring-2 focus:ring-[#ff4c00] focus:border-[#ff4c00] outline-none transition"
+            className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#ff4c00] focus:border-[#ff4c00] outline-none transition"
           />
         </div>
           </div>
@@ -194,7 +194,7 @@ export default function ContactForm() {
             value={formData.phone}
             onChange={handleChange}
             placeholder="Enter your Phone Number"
-            className="block w-full pl-10 pr-3 py-3 border border-black/20 rounded-none focus:ring-2 focus:ring-[#ff4c00] focus:border-[#ff4c00] outline-none transition"
+            className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#ff4c00] focus:border-[#ff4c00] outline-none transition"
           />
         </div>
       </div>
@@ -212,7 +212,7 @@ export default function ContactForm() {
           name="workAuthorization"
           value={formData.workAuthorization}
           onChange={handleChange}
-          className="block w-full px-3 py-3 border border-black/20 rounded-none focus:ring-2 focus:ring-[#ff4c00] focus:border-[#ff4c00] outline-none transition"
+          className="block w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#ff4c00] focus:border-[#ff4c00] outline-none transition"
         >
           <option value="">Select work authorization status</option>
           <option value="yes">Yes</option>
@@ -237,20 +237,20 @@ export default function ContactForm() {
           placeholder="Enter Message Here"
           rows={5}
           required
-          className="block w-full px-3 py-3 border border-black/20 rounded-none focus:ring-2 focus:ring-[#ff4c00] focus:border-[#ff4c00] outline-none transition resize-y"
+          className="block w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#ff4c00] focus:border-[#ff4c00] outline-none transition resize-y"
         />
       </div>
 
       {/* Error Message */}
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-none">
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
           {error}
         </div>
       )}
 
       {/* Success Message */}
       {success && (
-        <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-none">
+        <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg">
           Thank you for contacting us! We'll get back to you soon.
         </div>
       )}
@@ -259,7 +259,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-[#ff4c00] text-white font-bold uppercase tracking-[0.15em] text-sm py-4 px-6 rounded-none border border-[#ff4c00] hover:bg-[#141414] hover:border-[#141414] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full rounded-[10px] bg-[#ff4c00] px-6 py-3.5 text-[17px] font-bold text-white shadow-[0_6px_0_#000] transition duration-200 hover:-translate-y-0.5 hover:bg-[#ff5a1f] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
       >
         {loading ? "Sending..." : "Send Message"}
       </button>

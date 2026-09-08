@@ -164,65 +164,69 @@ export default function ContactUsClient() {
   };
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] font-['Space_Grotesk',sans-serif] text-[#141414]">
+    <div className="min-h-screen bg-white font-['Space_Grotesk',sans-serif] text-black">
 
       {/* === HERO + FORM === */}
-      <div className="border-b border-black/10 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+      <section className="relative overflow-hidden bg-[#f7e6df] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <div className="pointer-events-none absolute -left-32 top-10 h-72 w-72 rounded-full bg-[#f55d1d] opacity-25 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-32 bottom-0 h-72 w-72 rounded-full bg-[#f55d1d] opacity-25 blur-[120px]" />
+        <div className="relative mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
           <div>
-            <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#ff4c00]">
+            <span className="inline-flex items-center rounded-full bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.08em] text-[#f55d1d] shadow-sm">
               Contact
             </span>
-            <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
+            <h1 className="mt-6 font-['Satoshi',sans-serif] text-[2rem] sm:text-4xl lg:text-[2.9rem] font-bold leading-[1.1] tracking-[-0.02em] text-[#02060A]">
               Flashfire Contact – Customer Support, Sales & Enquiries
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#141414]/70">
+            <p className="mt-5 max-w-xl font-['Satoshi',sans-serif] text-[16px] font-medium leading-[1.6] text-[#3a3a3a]">
               Use the Flashfire contact page to reach customer support, sales enquiries, or general assistance. Our team is available via Flashfire email support or demo requests.
             </p>
           </div>
 
           {/* Contact Form */}
-          <div className="border border-black/10 bg-white p-8">
-            <h2 className="mb-6 text-xl font-bold uppercase tracking-tight text-[#141414]">
+          <div className="rounded-2xl border border-[#94959a] bg-[#fffdfc] p-6 shadow-[0_2px_6px_rgba(0,0,0,0.03)] sm:p-8">
+            <h2 className="mb-6 text-xl font-bold text-[#111]">
               Contact Flashfire Customer Support or Sales Team
             </h2>
             <ContactForm />
           </div>
         </div>
-      </div>
+      </section>
 
       {/* === FLASHFIRE CONTACT DETAILS === */}
-      <div className="border-b border-black/10 px-4 py-20 sm:px-6 lg:px-8">
+      <section className="bg-white px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-6 flex flex-wrap items-baseline gap-x-4 gap-y-2 border-b border-black/10 pb-4">
-            <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#ff4c00]">
+          <div className="mx-auto mb-14 max-w-3xl text-center">
+            <span className="inline-flex items-center rounded-full bg-[#f7e6df] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.08em] text-[#f55d1d]">
               Get in touch
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
+            <h2 className="mt-5 font-['Satoshi',sans-serif] text-3xl sm:text-4xl font-bold tracking-[-0.03em] text-[#02060A]">
               Flashfire <span className="text-[#ff4c00]">Contact Details</span>
             </h2>
+            <p className="mt-4 font-['Satoshi',sans-serif] text-lg font-medium text-[#3a3a3a]">
+              Clear, direct ways to reach the Flashfire team.
+            </p>
           </div>
-          <p className="mb-12 max-w-2xl text-lg text-[#141414]/70">
-            Clear, direct ways to reach the Flashfire team.
-          </p>
 
-          <div className="grid gap-px border border-black/10 bg-black/10 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3">
             {/* Support */}
-            <div className="bg-[#faf8f5] p-10 transition-colors duration-300 hover:bg-white">
-              <FaEnvelope className="mb-8 text-2xl text-[#ff4c00]" />
-              <h3 className="mb-4 text-xl font-bold text-[#141414]">
+            <div className="rounded-[0.5rem] border border-[#94959a] bg-[#fffdfc] p-8 shadow-[0_2px_6px_rgba(0,0,0,0.03)] transition-all duration-200 hover:-translate-y-[3px] hover:shadow-[0_6px_12px_rgba(0,0,0,0.08)]">
+              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-[10px] bg-[#ff4c00] text-white shadow-[0_4px_0_#000]">
+                <FaEnvelope className="text-lg" />
+              </div>
+              <h3 className="mb-3 text-xl font-bold text-[#111]">
                 Customer Support
               </h3>
-              <p className="mb-8 leading-relaxed text-[#141414]/70">
+              <p className="mb-6 font-['Satoshi',sans-serif] text-[15px] leading-[1.6] text-[#333]">
                 Need help? Flashfire customer support is available via email to assist with your account, job search, or platform questions.
               </p>
-              <div className="flex flex-wrap items-center gap-4">
-                <span className="font-semibold text-[#ff4c00]">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="font-bold text-[#ff4c00]">
                   Flashfire Email Support: support@flashfirejobs.com
                 </span>
                 <button
                   onClick={handleCopyEmail}
-                  className="inline-flex items-center gap-1.5 text-sm text-[#141414]/50 transition-colors hover:text-[#ff4c00]"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#78716d] transition-colors hover:text-[#ff4c00]"
                 >
                   {copied ? (
                     <>
@@ -240,17 +244,19 @@ export default function ContactUsClient() {
             </div>
 
             {/* Sales */}
-            <div className="bg-[#faf8f5] p-10 transition-colors duration-300 hover:bg-white">
-              <FaUser className="mb-8 text-2xl text-[#ff4c00]" />
-              <h3 className="mb-4 text-xl font-bold text-[#141414]">
+            <div className="rounded-[0.5rem] border border-[#94959a] bg-[#fffdfc] p-8 shadow-[0_2px_6px_rgba(0,0,0,0.03)] transition-all duration-200 hover:-translate-y-[3px] hover:shadow-[0_6px_12px_rgba(0,0,0,0.08)]">
+              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-[10px] bg-[#ff4c00] text-white shadow-[0_4px_0_#000]">
+                <FaUser className="text-lg" />
+              </div>
+              <h3 className="mb-3 text-xl font-bold text-[#111]">
                 Flashfire Sales Enquiry & Demo Requests
               </h3>
-              <p className="mb-8 leading-relaxed text-[#141414]/70">
+              <p className="mb-6 font-['Satoshi',sans-serif] text-[15px] leading-[1.6] text-[#333]">
                 Explore demos, partnerships, or product questions.
               </p>
               <button
                 onClick={handleScheduleDemo}
-                className="group inline-flex items-center gap-2 font-semibold text-[#ff4c00]"
+                className="group inline-flex items-center gap-2 font-bold text-[#ff4c00]"
               >
                 Schedule a Flashfire Demo
                 <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -258,64 +264,63 @@ export default function ContactUsClient() {
             </div>
 
             {/* Company */}
-            <div className="bg-[#faf8f5] p-10 transition-colors duration-300 hover:bg-white">
-              <FaBuilding className="mb-8 text-2xl text-[#ff4c00]" />
-              <h3 className="mb-4 text-xl font-bold text-[#141414]">
+            <div className="rounded-[0.5rem] border border-[#94959a] bg-[#fffdfc] p-8 shadow-[0_2px_6px_rgba(0,0,0,0.03)] transition-all duration-200 hover:-translate-y-[3px] hover:shadow-[0_6px_12px_rgba(0,0,0,0.08)]">
+              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-[10px] bg-[#ff4c00] text-white shadow-[0_4px_0_#000]">
+                <FaBuilding className="text-lg" />
+              </div>
+              <h3 className="mb-3 text-xl font-bold text-[#111]">
                 Company
               </h3>
-              <p className="mb-8 leading-relaxed text-[#141414]/70">
+              <p className="mb-6 font-['Satoshi',sans-serif] text-[15px] leading-[1.6] text-[#333]">
                 Official corporate and business information.
               </p>
-              <p className="font-semibold text-[#141414]">
+              <p className="font-bold text-[#111]">
                 Flashfire Pvt. Ltd.
               </p>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* === FAQ === */}
-      <div className="px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl">
-          <div className="mb-4 border-b border-black/10 pb-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
+      <section className="ff-faq-section">
+        <div className="ff-faq-shell">
+          <div className="ff-faq-header">
+            <h2>
               Frequently Asked
               <span className="block">Questions</span>
             </h2>
+            <p>Get answers about contacting Flashfire.</p>
           </div>
-          <p className="mb-10 text-lg text-[#141414]/70">
-            Get answers about contacting Flashfire.
-          </p>
 
-          <div className="border-t border-black/10">
+          <div className="ff-faq-list">
             {faqs.map((item, i) => {
               const isOpen = activeFaqIndex === i;
               return (
-                <div key={i} className="border-b border-black/10">
+                <div key={i} className={`ff-faq-item ${isOpen ? "is-active" : ""}`}>
                   <button
+                    type="button"
+                    className="ff-faq-question"
                     onClick={() => setActiveFaqIndex(isOpen ? null : i)}
                     aria-expanded={isOpen}
-                    className="flex w-full items-center justify-between gap-6 py-6 text-left"
                   >
-                    <span className="text-lg font-semibold text-[#141414]">
-                      {item.q}
-                    </span>
-                    <span className="flex-none text-[#ff4c00]">
+                    <span className="ff-faq-question-text">{item.q}</span>
+                    <span className="ff-faq-icon">
                       {isOpen ? <FaTimes /> : <FaPlus />}
                     </span>
                   </button>
 
                   {isOpen && (
-                    <p className="pb-6 pr-10 leading-relaxed text-[#141414]/70">
-                      {item.a}
-                    </p>
+                    <div className="ff-faq-answer">
+                      <p>{item.a}</p>
+                    </div>
                   )}
                 </div>
               );
             })}
           </div>
         </div>
-      </div>
+      </section>
 
     </div>
   );
