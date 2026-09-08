@@ -394,9 +394,15 @@ export default function HomePageOfferLettersClient({
             </p>
           ) : (
             <p className={styles.offerSubHeading}>
-              Trusted by job seekers across the U.S. Real applications. Real
+              Trusted by job seekers across the U.S.,U.K. & Canada real applications. Real
               interviews. Real offer letters that turned opportunities into
               successful careers.
+            </p>
+          )}
+
+          {!isAutoVariant && (
+            <p className={styles.offerDisclaimer}>
+              *These are sample offer letters. Original client offer letters are kept private.
             </p>
           )}
 
@@ -422,6 +428,7 @@ export default function HomePageOfferLettersClient({
           )}
         </div>
 
+        <div className={styles.offerRightColumn}>
         {hasContinuousMarquee ? (
           <div className={styles.offerCarouselMarquee}>
             <div className={styles.offerMarqueeTrack}>
@@ -558,6 +565,7 @@ export default function HomePageOfferLettersClient({
             ))}
           </div>
         )}
+        </div>
       </div>
     </section>
   );
