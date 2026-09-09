@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, CheckCircle, Check, GraduationCap, Briefcase, Repeat, BookOpen, TrendingUp } from "lucide-react";
+import { ArrowRight, Check, GraduationCap, Briefcase, Repeat, BookOpen, TrendingUp, RotateCcw } from "lucide-react";
 import Image from "next/image";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
@@ -59,6 +59,12 @@ export default function CareerAdvisor() {
       description:
         "Stay relevant by understanding which roles and skills are growing in the job market.",
     },
+    {
+      icon: RotateCcw,
+      title: "Return-to-Work Candidates",
+      description:
+        "Re-enter the workforce after a break with a refreshed skill set and a clear view of in-demand roles.",
+    },
   ];
   const { getButtonProps } = useGeoBypass({
     onBypass: () => {
@@ -112,66 +118,87 @@ export default function CareerAdvisor() {
     pushCustomUrl("/career-advisor/Get-Career-Advice");
   };
 
+  const dotGrid = {
+    backgroundImage: "radial-gradient(circle, rgba(17,24,39,0.08) 1px, transparent 1px)",
+    backgroundSize: "26px 26px",
+  };
+  const topGlow = {
+    background:
+      "radial-gradient(60% 100% at 50% 0%, rgba(255,76,0,0.06) 0%, rgba(255,76,0,0) 70%)",
+  };
+
   return (
-    <div className="bg-[#fff7f3] text-[#1a1a1a] ">
+    <div className="bg-white font-['Space_Grotesk',sans-serif] text-[#111827]">
 
       {/* HERO */}
-      <section className="max-w-7xl mx-auto px-6 pt-16 pb-16 grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <span className="inline-block bg-[#ff4c00]/10 text-[#ff4c00] px-4 py-1 rounded-full text-sm font-semibold mb-4">
-            AI-Powered Career Guidance
-          </span>
+      <section className="relative overflow-hidden border-b border-black/5 bg-white">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-72" style={topGlow} />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 pt-14 pb-16 sm:px-6 md:grid-cols-2 md:pt-20 md:pb-24 lg:px-8">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#fff0e9] px-4 py-2 text-xs font-extrabold uppercase tracking-wide text-[#ff4c00]">
+              AI-Powered Career Guidance
+            </span>
 
-          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
-            AI Career Advisor for Personalized Career Guidance & Planning
-          </h1>
+            <h1 className="mt-6 text-3xl font-black leading-[1.08] tracking-tight text-black sm:text-4xl md:text-5xl lg:text-6xl">
+              AI Career Advisor for Personalized Career Guidance &amp; Planning
+            </h1>
 
-          <p className="mt-6 text-lg text-gray-600">
-            FlashFire is an AI-powered career guidance platform that analyzes your profile to deliver role recommendations, skill gap insights, resume improvement suggestions, and a clear career development roadmap.
-          </p>
+            <p className="mt-6 max-w-xl text-base font-medium leading-7 text-[#384154] md:text-lg">
+              FlashFire is an AI-powered career guidance platform that analyzes your profile to deliver role recommendations, skill gap insights, resume improvement suggestions, and a clear career development roadmap.
+            </p>
 
-          <div className="mt-8 flex gap-4">
-            <button
-              {...getButtonProps()}
-              onClick={handleGetCareerAdvice}
-              className="bg-[#ff4c00] text-white px-6 py-3 shadow-[0_3px_0_black] rounded-xl font-semibold flex items-center gap-2 hover:opacity-90">
-              Get Career Advice
-              <ArrowRight size={18} />
-            </button>
+            <div className="mt-8 flex gap-4">
+              <button
+                {...getButtonProps()}
+                onClick={handleGetCareerAdvice}
+                className="group inline-flex items-center gap-2 rounded-md bg-[#ff4c00] px-8 py-4 text-sm font-extrabold text-white shadow-[0_4px_0_black] transition hover:-translate-y-0.5 hover:bg-black">
+                Get Career Advice
+                <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+              </button>
 
 
+            </div>
+          </div>
+
+          {/* Right Visual — roadmap */}
+          <div className="relative mx-auto w-full max-w-md">
+            <div className="absolute -inset-3 rounded-[32px] bg-[#fff0e9] rotate-3" />
+            <div className="relative rounded-2xl border border-black/10 bg-white p-6 shadow-[0_20px_40px_rgba(0,0,0,0.12)] sm:p-8">
+              <ol className="relative space-y-6">
+                <span className="pointer-events-none absolute left-[19px] top-3 bottom-3 w-px bg-black/10" aria-hidden="true" />
+                {[
+                  "Role recommendations based on your profile",
+                  "Skill gaps + learning roadmap",
+                  "Resume & ATS improvement suggestions",
+                  "Job market demand insights",
+                  "Next 30-60-90 day action plan",
+                ].map((item, idx) => (
+                  <li key={idx} className="relative flex items-start gap-4">
+                    <span className="relative z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#fff0e9] text-xs font-black text-[#ff4c00]">
+                      {String(idx + 1).padStart(2, "0")}
+                    </span>
+                    <span className="flex items-center pt-1 text-sm font-medium leading-6 text-[#4b5565]">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
         </div>
-
-        {/* Right Visual */}
-        <div className="bg-white rounded-3xl p-8 shadow-xl border border-[#ff4c00]/20">
-          <ul className="space-y-5">
-            {[
-              "Role recommendations based on your profile",
-              "Skill gaps + learning roadmap",
-              "Resume & ATS improvement suggestions",
-              "Job market demand insights",
-              "Next 30-60-90 day action plan",
-            ].map((item, idx) => (
-              <li key={idx} className="flex gap-3 items-start">
-                <CheckCircle className="text-[#ff4c00]" />
-                <span className="text-gray-700">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
       </section>
-      <section className="bg-white py-20">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center">
+
+      <section className="bg-[#fffaf7] py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-center text-3xl font-black leading-tight tracking-tight text-[#172031] sm:text-4xl md:text-5xl">
             Career decisions made simple
           </h2>
 
-          <p className="mt-4 text-center text-gray-600 max-w-2xl mx-auto">
+          <p className="mx-auto mt-4 max-w-2xl text-center text-base font-medium leading-7 text-[#4b5565] md:text-lg">
             No vague advice or generic suggestions. FlashFire's AI career advisor delivers data-backed career guidance and career planning insights tailored to your profile and job market demand.
           </p>
 
-          <div className="mt-14 grid md:grid-cols-3 gap-8">
+          <div className="mt-14 grid gap-5 md:grid-cols-3">
             {[
               {
                 title: "Role clarity",
@@ -186,29 +213,32 @@ export default function CareerAdvisor() {
                 desc: "Get a step-by-step plan instead of generic career advice.",
               },
             ].map((item, i) => (
-              <div
+              <article
                 key={i}
-                className="border border-gray-200 rounded-2xl p-8 hover:border-[#ff4c00] transition"
+                className="group relative rounded-2xl border border-black/5 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(255,76,0,0.1)]"
               >
-                <h3 className="font-bold text-xl">{item.title}</h3>
-                <p className="mt-3 text-gray-600">{item.desc}</p>
-              </div>
+                <span className="absolute right-5 top-4 text-2xl font-black text-black/10 transition group-hover:text-[#ff4c00] sm:text-3xl">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="text-lg font-black leading-tight text-[#111827] sm:text-xl">{item.title}</h3>
+                <p className="mt-3 text-sm font-medium leading-6 text-[#4b5565]">{item.desc}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
       {/* SECTION 1 */}
-      <section className="bg-[#fff7f3] py-20">
-        <div className="max-w-[1280px] mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+      <section className="bg-white py-16 md:py-24">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 md:grid-cols-2 lg:gap-16 lg:px-8">
 
           {/* LEFT TEXT */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#1a1a1a]">
+            <h2 className="text-3xl font-black leading-tight tracking-tight text-[#111827] sm:text-4xl md:text-5xl">
               A Career Development Platform Powered by AI
             </h2>
 
-            <ul className="mt-8 space-y-5 text-gray-700">
+            <ul className="mt-8 space-y-4">
               {[
                 "Personalized career path recommendations using AI",
                 "Skill gap analysis with career planning roadmap",
@@ -216,51 +246,57 @@ export default function CareerAdvisor() {
                 "Job market demand insights",
                 "Next 30-60-90 day action plan",
               ].map((item, i) => (
-                <li key={i} className="flex gap-4">
-                  <span className="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-[#ff4c00]/15 text-[#ff4c00]">
-                    <Check size={16} />
+                <li key={i} className="flex items-start gap-4 group">
+                  <span className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-[#fff0e9] text-[#ff4c00] transition group-hover:bg-[#ff4c00] group-hover:text-white">
+                    <Check size={16} strokeWidth={3} />
                   </span>
-                  <span>{item}</span>
+                  <span className="text-base font-medium leading-7 text-[#4b5565]">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           {/* RIGHT IMAGE */}
-          <div className="bg-white rounded-3xl p-10 shadow-sm border border-gray-200 flex justify-center">
-            <Image
-              src="/images/career1.png"
-              alt="From classroom to career"
-              width={420}
-              height={320}
-              className="object-contain"
-            />
+          <div className="relative mx-auto w-full max-w-md">
+            <div className="absolute -inset-3 rounded-[32px] bg-[#fff0e9] rotate-3" />
+            <div className="relative flex justify-center rounded-2xl border border-black/10 bg-white p-8 shadow-[0_20px_40px_rgba(0,0,0,0.12)] lg:p-10">
+              <Image
+                src="/images/career1.png"
+                alt="From classroom to career"
+                width={420}
+                height={320}
+                className="object-contain"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* SECTION 2 */}
-      <section className="bg-white py-20">
-        <div className="max-w-[1280px] mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+      <section className="bg-[#fffaf7] py-16 md:py-24">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 md:grid-cols-2 lg:gap-16 lg:px-8">
 
           {/* LEFT IMAGE */}
-          <div className="bg-[#fff7f3] rounded-3xl p-10 border border-[#ff4c00]/15 flex justify-center">
-            <Image
-              src="/images/career2.png"
-              alt="Entry level job recommendations"
-              width={420}
-              height={320}
-              className="object-contain"
-            />
+          <div className="relative mx-auto w-full max-w-md">
+            <div className="absolute -inset-3 rounded-[32px] bg-[#fff0e9] -rotate-3" />
+            <div className="relative flex justify-center rounded-2xl border border-black/10 bg-white p-8 shadow-[0_20px_40px_rgba(0,0,0,0.12)] lg:p-10">
+              <Image
+                src="/images/career2.png"
+                alt="Entry level job recommendations"
+                width={420}
+                height={320}
+                className="object-contain"
+              />
+            </div>
           </div>
 
           {/* RIGHT TEXT */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#1a1a1a]">
+            <h2 className="text-3xl font-black leading-tight tracking-tight text-[#111827] sm:text-4xl md:text-5xl">
               Who Is This For?
             </h2>
 
-            <ul className="mt-8 space-y-5 text-gray-700">
+            <ul className="mt-8 space-y-4">
               {[
                 "Recent graduates looking for career direction",
                 "Mid-career professionals seeking new opportunities",
@@ -268,79 +304,74 @@ export default function CareerAdvisor() {
                 "Students mapping coursework to real industry roles",
                 "Job seekers aiming for the top 10% of job market",
               ].map((item, i) => (
-                <li key={i} className="flex gap-4">
-                  <span className="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-[#ff4c00]/15 text-[#ff4c00]">
-                    <Check size={16} />
+                <li key={i} className="flex items-start gap-4 group">
+                  <span className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-white text-[#ff4c00] shadow-sm transition group-hover:bg-[#ff4c00] group-hover:text-white">
+                    <Check size={16} strokeWidth={3} />
                   </span>
-                  <span>{item}</span>
+                  <span className="text-base font-medium leading-7 text-[#4b5565]">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
         </div>
       </section>
-      {/* WHO IS THIS FOR – STRONG EDITORIAL LAYOUT */}
-      <section className="bg-[#fff7f3] py-32">
-        <div className="max-w-[1280px] mx-auto px-6">
 
-          <div className="grid lg:grid-cols-[420px_1fr] gap-20 items-start">
+      {/* WHO IS THIS FOR */}
+      <section className="relative overflow-hidden bg-white py-16 md:py-24">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-72" style={topGlow} />
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
-            {/* LEFT – STICKY INTRO */}
-            <div className="lg:sticky lg:top-32">
-              <span className="inline-block bg-[#ff4c00]/10 text-[#ff4c00] px-4 py-1 rounded-full text-sm font-semibold mb-5">
-                Built for real career decisions
-              </span>
+          {/* CENTERED INTRO */}
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#fff0e9] px-4 py-1.5 text-xs font-extrabold uppercase tracking-wide text-[#ff4c00]">
+              Built for real career decisions
+            </span>
 
-              <h2 className="text-4xl md:text-5xl font-extrabold text-[#1a1a1a] leading-tight">
-                Who Is This AI Career Guidance Platform For?
-              </h2>
+            <h2 className="mt-4 text-3xl font-black leading-tight tracking-tight text-[#111827] sm:text-4xl md:text-5xl">
+              Who Is This AI Career Guidance Platform For?
+            </h2>
 
-              <p className="mt-6 text-lg text-gray-700 leading-relaxed">
-                FlashFire’s AI Career Advisor is designed for people who want clarity,
-                direction, and momentum — not generic advice.
-                <br /><br />
-                Wherever you are in your journey, it adapts to help you move forward
-                with confidence.
-              </p>
-            </div>
-
-            {/* RIGHT – STEPPED AUDIENCE BLOCKS */}
-            <div className="space-y-12">
-              {audiences.map((item, index) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={index}
-                    className={`relative bg-white rounded-3xl border border-[#ff4c00]/20 p-8 md:p-10 
-                shadow-sm transition hover:border-[#ff4c00]
-                ${index % 2 === 0 ? "ml-0 md:ml-12" : "ml-0 md:ml-32"}`}
-                  >
-                    {/* Icon Badge */}
-                    <div className="absolute -top-6 left-8 h-12 w-12 rounded-2xl 
-                              bg-[#ff4c00] flex items-center justify-center shadow-md">
-                      <Icon className="h-6 w-6 text-white" />
-                    </div>
-
-                    <h3 className="mt-6 text-xl font-bold text-[#1a1a1a]">
-                      {item.title}
-                    </h3>
-
-                    <p className="mt-3 text-gray-700 leading-relaxed max-w-xl">
-                      {item.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-
+            <p className="mx-auto mt-6 max-w-2xl text-base font-medium leading-7 text-[#4b5565] md:text-lg">
+              FlashFire’s AI Career Advisor is designed for people who want clarity,
+              direction, and momentum — not generic advice.
+              <br /><br />
+              Wherever you are in your journey, it adapts to help you move forward
+              with confidence.
+            </p>
           </div>
+
+          {/* AUDIENCE GRID */}
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {audiences.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <article
+                  key={index}
+                  className="group flex flex-col rounded-2xl border border-black/10 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#ff4c00]/30 hover:shadow-[0_16px_32px_rgba(255,76,0,0.1)]"
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#fff0e9] text-[#ff4c00] transition duration-300 group-hover:bg-[#ff4c00] group-hover:text-white">
+                    <Icon className="h-5 w-5" strokeWidth={2.4} />
+                  </span>
+
+                  <h3 className="mt-4 text-lg font-black leading-tight text-[#111827]">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm font-medium leading-6 text-black/60">
+                    {item.description}
+                  </p>
+                </article>
+              );
+            })}
+          </div>
+
         </div>
       </section>
 
 
       {/* FAQ Section */}
-      <section className="bg-white py-20">
-        <div className="max-w-5xl mx-auto px-6">
+      <section className="bg-[#f9e8e0] py-16">
+        <div className="mx-auto max-w-5xl px-6">
           <div className={styles.header}>
             <h2>Frequently Asked Questions About AI Career Guidance</h2>
             <p>
@@ -378,52 +409,46 @@ export default function CareerAdvisor() {
         </div>
       </section>
 
-      <section className="relative pt-16 pb-10 bg-[#fff1ea] overflow-hidden">
+      <section className="relative overflow-hidden bg-[#fffaf7] pt-16 pb-16 md:pt-20 md:pb-20">
         {/* Background Glow Effects */}
-        <div className="absolute inset-0">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-[#ff4c00]/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 right-10 w-72 h-72 bg-[#ff4c00]/10 rounded-full blur-3xl"></div>
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-1/2 top-0 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ff4c00]/12 blur-[120px]"></div>
+          <div className="absolute inset-0 opacity-[0.35]" style={dotGrid}></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
+        <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
 
-            {/* Heading */}
-            <h2 className="text-4xl md:text-5xl font-extrabold text-black leading-tight mb-6">
-              Ready to stop manually applying to{" "}
-              <span className="text-[#ff4c00] relative inline-block">
-                Get job calls?
-                <span className="absolute left-0 bottom-0 w-full h-2 bg-[#ff4c00]/20 -z-10 rounded"></span>
-              </span>
-            </h2>
+          {/* Heading */}
+          <h2 className="mb-6 text-3xl font-black leading-tight tracking-tight text-[#111827] sm:text-4xl md:text-5xl">
+            Ready to stop manually applying to{" "}
+            <span className="relative inline-block text-[#ff4c00]">
+              Get job calls?
+              <span className="absolute left-0 bottom-0 -z-10 h-2 w-full rounded bg-[#ff4c00]/20"></span>
+            </span>
+          </h2>
 
-            {/* Subtext */}
-            <p className="text-lg text-gray-800 max-w-2xl mx-auto mb-10 leading-relaxed">
-              Join thousands of job seekers who use FlashFire to create compelling
-              cover letters that increase their interview chances.
-            </p>
+          {/* Subtext */}
+          <p className="mx-auto mb-10 max-w-2xl text-base font-medium leading-7 text-[#4b5565] md:text-lg">
+            Join thousands of job seekers who use FlashFire to create compelling
+            cover letters that increase their interview chances.
+          </p>
 
-            {/* CTA Button */}
-            <button
-              {...getButtonProps()}
-              onClick={handleGetCareerAdvice}
-              className="group relative bg-[#ff4c00] hover:bg-[#e24400] 
-        text-white px-10 py-4 font-semibold text-lg rounded-xl 
-        shadow-[0_6px_0_black] hover:shadow-[0_4px_0_black] 
-        active:translate-y-[2px] active:shadow-[0_2px_0_black]
-        transition-all duration-200 inline-flex items-center gap-2"
-            >
-              Get Career Advice
-              <span className="transition-transform duration-200 group-hover:translate-x-1">
-                →
-              </span>
-            </button>
+          {/* CTA Button */}
+          <button
+            {...getButtonProps()}
+            onClick={handleGetCareerAdvice}
+            className="group inline-flex items-center gap-2 rounded-full bg-[#ff4c00] px-10 py-4 text-lg font-semibold text-white shadow-[0_10px_30px_rgba(255,76,0,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-black"
+          >
+            Get Career Advice
+            <span className="transition-transform duration-200 group-hover:translate-x-1">
+              →
+            </span>
+          </button>
 
-            {/* Trust Line */}
-            <p className="mt-6 text-sm text-gray-600">
-              Trusted by 1000+ job seekers
-            </p>
-          </div>
+          {/* Trust Line */}
+          <p className="mt-6 text-sm font-medium text-[#4b5565]">
+            Trusted by 1000+ job seekers
+          </p>
         </div>
       </section>
 
