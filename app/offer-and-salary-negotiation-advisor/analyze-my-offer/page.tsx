@@ -1,5 +1,1 @@
-import GetMeInterviewPage from "@/app/get-me-interview/page";
-
-export default function OfferAndSalaryNegotiationAdvisorAnalyzeMyOffer() {
-    return <GetMeInterviewPage />;
-}
+export { default, metadata } from "@/app/offer-and-salary/page";
