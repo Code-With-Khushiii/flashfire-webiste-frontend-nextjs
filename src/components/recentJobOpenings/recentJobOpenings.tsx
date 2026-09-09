@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowUpRight, Check, Search, FileText, Send, ShieldCheck, Zap, Eye, Lock, Briefcase, Code2, Repeat, Battery } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Check, Search, FileText, Send, ShieldCheck, Zap, Eye, Lock, Briefcase, Code2, Repeat, Battery } from "lucide-react";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
@@ -63,177 +63,170 @@ export default function RecentJobOpenings() {
         pushCustomUrl(targetPath);
     };
 
-    return (
-        <>
-            {/* Hero Section */}
-            <section className="bg-white pt-16 md:pt-24 lg:pt-32 pb-12 md:pb-16">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                        {/* LEFT: VISUAL STACK */}
-                        <div className="relative flex justify-center order-2 lg:order-1">
-                            {/* Background card */}
-                            <div className="absolute -top-6 -left-4 w-[90%] h-[95%] rounded-2xl lg:rounded-3xl bg-[rgba(251,240,235,1)]" />
+    const dotGrid = {
+        backgroundImage: "radial-gradient(circle, rgba(17,24,39,0.08) 1px, transparent 1px)",
+        backgroundSize: "26px 26px",
+    };
+    const topGlow = {
+        background:
+            "radial-gradient(60% 100% at 50% 0%, rgba(255,76,0,0.06) 0%, rgba(255,76,0,0) 70%)",
+    };
 
-                            {/* Main image */}
-                            <div className="relative z-10 rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl w-full max-w-[400px] lg:max-w-none">
+    const appliedRoles = ["Data Analyst", "Software Engineer", "Product Manager", "Marketing Manager"];
+
+    return (
+        <div className="bg-white font-['Space_Grotesk',sans-serif] text-[#111827]">
+
+            {/* Hero Section */}
+            <section className="relative overflow-hidden border-b border-black/5 bg-white pt-12 pb-16 md:pt-16 md:pb-24">
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-72" style={topGlow} />
+
+                <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+                        {/* LEFT: COPY */}
+                        <div className="text-center lg:text-left">
+                            <span className="inline-flex items-center gap-2 rounded-full bg-[#fff0e9] px-4 py-2 text-xs font-extrabold uppercase tracking-wide text-[#ff4c00]">
+                                AI Job Search Assistant
+                            </span>
+
+                            <h1 className="mt-6 text-3xl font-black leading-[1.08] tracking-tight text-black sm:text-4xl md:text-5xl lg:text-6xl">
+                                AI Job Search Assistant That Automates Job Applications for You
+                            </h1>
+
+                            <p className="mx-auto mt-5 max-w-xl text-base font-medium leading-7 text-[#384154] md:text-lg lg:mx-0">
+                                FlashFire is an AI job search assistant and job application automation software that finds relevant roles, tailors your resume, and automatically submits applications to help you apply faster.
+                            </p>
+
+                            <div className="mt-8 flex justify-center lg:justify-start">
+                                <button
+                                    {...getButtonProps()}
+                                    onClick={() => handleCTAClick("Get Started", "recent_jobs_hero", "/recent-job-openings/Get-started")}
+                                    className="group inline-flex items-center gap-2 rounded-md bg-[#ff4c00] px-8 py-4 text-sm font-extrabold text-white shadow-[0_4px_0_black] transition hover:-translate-y-0.5 hover:bg-black"
+                                >
+                                    Get Started
+                                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* RIGHT: DASHBOARD PANEL */}
+                        <div className="relative mx-auto w-full max-w-md">
+                            <div className="absolute -inset-3 rounded-[32px] bg-[#fff0e9] rotate-3" />
+
+                            <div className="relative overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_30px_60px_rgba(0,0,0,0.15)]">
+                                {/* window header */}
+                                <div className="flex items-center gap-2 border-b border-black/10 bg-[#fffaf7] px-4 py-3">
+                                    <span className="h-2.5 w-2.5 rounded-full bg-black/10" />
+                                    <span className="h-2.5 w-2.5 rounded-full bg-black/10" />
+                                    <span className="h-2.5 w-2.5 rounded-full bg-black/10" />
+                                    <span className="ml-2 text-[11px] font-extrabold uppercase tracking-wide text-[#4b5565]">FlashFire</span>
+                                </div>
+
                                 <Image
                                     src="/images/heroResultImage.jpg"
                                     alt="FlashFire applying to jobs"
                                     width={420}
                                     height={520}
-                                    className="object-cover w-full h-auto"
+                                    className="aspect-[4/3] w-full object-cover object-top"
                                     priority
                                 />
-                            </div>
 
-                            {/* Floating job cards */}
-                            <div className="absolute z-20 left-0 top-12 bg-white rounded-xl shadow-lg px-4 py-3 flex items-center gap-3">
-                                <div className="h-8 w-8 rounded-full bg-[#ff4c00]/10 flex items-center justify-center flex-shrink-0">
-                                    <Check className="h-4 w-4 text-[#ff4c00]" />
-                                </div>
-                                <div>
-                                    <div className="font-semibold text-slate-900 text-sm">Data Analyst</div>
-                                    <div className="text-slate-600 text-xs">Applied</div>
-                                </div>
-                            </div>
-
-                            <div className="absolute z-20 left-[-10px] top-36 bg-white rounded-xl shadow-lg px-4 py-3 flex items-center gap-3">
-                                <div className="h-8 w-8 rounded-full bg-[#ff4c00]/10 flex items-center justify-center flex-shrink-0">
-                                    <Check className="h-4 w-4 text-[#ff4c00]" />
-                                </div>
-                                <div>
-                                    <div className="font-semibold text-slate-900 text-sm">Software Engineer</div>
-                                    <div className="text-slate-600 text-xs">Applied</div>
+                                {/* applied rows */}
+                                <div className="divide-y divide-black/10">
+                                    {appliedRoles.map((role) => (
+                                        <div key={role} className="flex items-center justify-between gap-3 px-4 py-3">
+                                            <div className="flex min-w-0 items-center gap-3">
+                                                <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-[#fff0e9] text-[#ff4c00]">
+                                                    <Check className="h-4 w-4" strokeWidth={2.6} />
+                                                </span>
+                                                <span className="truncate text-sm font-black text-[#111827]">{role}</span>
+                                            </div>
+                                            <span className="flex-shrink-0 rounded-full bg-[#fff0e9] px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wide text-[#ff4c00]">
+                                                Applied
+                                            </span>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
-
-                            <div className="absolute z-20 left-4 bottom-20 bg-white rounded-xl shadow-lg px-4 py-3 flex items-center gap-3">
-                                <div className="h-8 w-8 rounded-full bg-[#ff4c00]/10 flex items-center justify-center flex-shrink-0">
-                                    <Check className="h-4 w-4 text-[#ff4c00]" />
-                                </div>
-                                <div>
-                                    <div className="font-semibold text-slate-900 text-sm">Product Manager</div>
-                                    <div className="text-slate-600 text-xs">Applied</div>
-                                </div>
-                            </div>
-
-                            <div className="absolute z-20 left-0 top-64 bg-white rounded-xl shadow-lg px-4 py-3 flex items-center gap-3">
-                                <div className="h-8 w-8 rounded-full bg-[#ff4c00]/10 flex items-center justify-center flex-shrink-0">
-                                    <Check className="h-4 w-4 text-[#ff4c00]" />
-                                </div>
-                                <div>
-                                    <div className="font-semibold text-slate-900 text-sm">Marketing Manager</div>
-                                    <div className="text-slate-600 text-xs">Applied</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* RIGHT: CONTENT */}
-                        <div className="text-center lg:text-left order-1 lg:order-2">
-                            <span className="inline-block px-4 py-1.5 text-sm font-medium rounded-full bg-[rgba(251,240,235,1)] text-[#ff4c00] mb-6">
-                                AI Job Search Assistant
-                            </span>
-
-                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
-                                AI Job Search Assistant That Automates Job Applications for You
-                            </h1>
-
-                            <p className="text-base md:text-lg text-slate-700 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                                FlashFire is an AI job search assistant and job application automation software that finds relevant roles, tailors your resume, and automatically submits applications to help you apply faster.
-                            </p>
-
-                            <button
-                                {...getButtonProps()}
-                                onClick={() => handleCTAClick("Get Started", "recent_jobs_hero", "/recent-job-openings/Get-started")}
-                                className="inline-flex items-center gap-2 px-8 py-4 bg-[#ff4c00] text-white rounded-xl font-semibold hover:bg-[#e64500] shadow-md text-base"
-                            >
-                                Get Started
-                                <ArrowUpRight className="h-5 w-5" />
-                            </button>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* How It Works Section */}
-            <section className="bg-[rgba(251,240,235,1)] py-16 md:py-24 lg:py-32">
+            <section className="bg-[#fffaf7] py-16 md:py-24">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Heading */}
-                    <div className="max-w-3xl mx-auto text-center mb-16">
-                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6">
+                    <div className="max-w-3xl mx-auto text-center mb-14">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-[#172031] mb-5">
                             How Our AI Job Application Automation Software Works
                         </h2>
-                        <p className="text-base md:text-lg text-slate-700 leading-relaxed">
+                        <p className="text-base md:text-lg font-medium leading-7 text-[#677083]">
                             FlashFire automates your entire job search — from finding roles to submitting applications — without compromising quality.
                         </p>
                     </div>
 
                     {/* Steps */}
-                    <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
-                        {/* Step 1 */}
-                        <div className="flex flex-col items-center text-center bg-white rounded-2xl p-8 shadow-sm border border-[#ff4c00]/10">
-                            <div className="h-14 w-14 rounded-2xl bg-[rgba(251,240,235,1)] flex items-center justify-center mb-6">
-                                <Search className="h-7 w-7 text-[#ff4c00]" />
-                            </div>
-                            <h3 className="text-xl font-semibold text-slate-900 mb-3">
-                                Finds relevant jobs
-                            </h3>
-                            <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-                                FlashFire acts as an AI job finder that scans thousands of listings daily to match your skills, experience, and preferences.
-                            </p>
-                        </div>
-
-                        {/* Step 2 */}
-                        <div className="flex flex-col items-center text-center bg-white rounded-2xl p-8 shadow-sm border border-[#ff4c00]/10">
-                            <div className="h-14 w-14 rounded-2xl bg-[rgba(251,240,235,1)] flex items-center justify-center mb-6">
-                                <FileText className="h-7 w-7 text-[#ff4c00]" />
-                            </div>
-                            <h3 className="text-xl font-semibold text-slate-900 mb-3">
-                                Tailors your resume
-                            </h3>
-                            <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-                                Our AI career assistant customizes every application with optimized keywords to improve ATS matching and recruiter visibility.
-                            </p>
-                        </div>
-
-                        {/* Step 3 */}
-                        <div className="flex flex-col items-center text-center bg-white rounded-2xl p-8 shadow-sm border border-[#ff4c00]/10">
-                            <div className="h-14 w-14 rounded-2xl bg-[rgba(251,240,235,1)] flex items-center justify-center mb-6">
-                                <Send className="h-7 w-7 text-[#ff4c00]" />
-                            </div>
-                            <h3 className="text-xl font-semibold text-slate-900 mb-3">
-                                Applies automatically
-                            </h3>
-                            <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-                                Our job application automation software submits applications daily, helping you scale job searches without manual effort.
-                            </p>
-                        </div>
+                    <div className="grid md:grid-cols-3 gap-5">
+                        {[
+                            {
+                                icon: Search,
+                                title: "Finds relevant jobs",
+                                desc: "FlashFire acts as an AI job finder that scans thousands of listings daily to match your skills, experience, and preferences.",
+                            },
+                            {
+                                icon: FileText,
+                                title: "Tailors your resume",
+                                desc: "Our AI career assistant customizes every application with optimized keywords to improve ATS matching and recruiter visibility.",
+                            },
+                            {
+                                icon: Send,
+                                title: "Applies automatically",
+                                desc: "Our job application automation software submits applications daily, helping you scale job searches without manual effort.",
+                            },
+                        ].map(({ icon: Icon, title, desc }, index) => (
+                            <article
+                                key={title}
+                                className="group relative flex flex-col rounded-2xl border border-black/5 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(255,76,0,0.1)]"
+                            >
+                                <span className="absolute right-5 top-4 text-2xl font-black text-black/10 transition group-hover:text-[#ff4c00] sm:text-3xl">
+                                    {String(index + 1).padStart(2, "0")}
+                                </span>
+                                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#fff0e9] text-[#ff4c00] transition group-hover:bg-[#ff4c00] group-hover:text-white">
+                                    <Icon className="h-5 w-5" strokeWidth={2.4} />
+                                </div>
+                                <h3 className="mt-4 text-base font-black leading-tight text-[#111827] sm:text-xl">
+                                    {title}
+                                </h3>
+                                <p className="mt-2 text-sm font-medium leading-6 text-[#4b5565]">
+                                    {desc}
+                                </p>
+                            </article>
+                        ))}
                     </div>
                 </div>
             </section>
 
             {/* Target Users Section */}
-            <section className="relative bg-[#fff5f0] py-16 md:py-24 lg:py-32 overflow-hidden">
-                {/* ambient background */}
-                <div className="absolute -top-40 -right-40 h-[480px] w-[480px] rounded-full bg-[#ff4c00]/10 blur-[140px]" />
-                <div className="absolute -bottom-40 -left-40 h-[480px] w-[480px] rounded-full bg-[#ff4c00]/10 blur-[140px]" />
+            <section className="relative overflow-hidden bg-white py-16 md:py-24">
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-72" style={topGlow} />
 
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* HEADER */}
-                    <div className="max-w-3xl mb-16">
-                        <span className="text-sm font-semibold tracking-wide text-[#ff4c00] uppercase mb-3 block">
+                    <div className="max-w-2xl mx-auto text-center mb-14">
+                        <span className="inline-flex items-center gap-2 rounded-full bg-[#fff0e9] px-4 py-1.5 text-xs font-extrabold uppercase tracking-wide text-[#ff4c00]">
                             Target Users
                         </span>
-                        <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-5">
+                        <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-[#111827] mb-5">
                             Built for serious job seekers
                         </h2>
-                        <p className="text-base md:text-lg text-slate-700 leading-relaxed">
+                        <p className="text-base md:text-lg font-medium leading-7 text-[#4b5565]">
                             FlashFire is designed for people who care about speed, accuracy, and real hiring results.
                         </p>
                     </div>
 
                     {/* CONTENT */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         {[
                             {
                                 icon: Briefcase,
@@ -258,20 +251,20 @@ export default function RecentJobOpenings() {
                         ].map(({ icon: Icon, title, desc }, idx) => (
                             <div
                                 key={idx}
-                                className="group relative rounded-2xl bg-white/80 border border-[#ff4c00]/20 p-6 lg:p-8 hover:shadow-lg hover:shadow-[#ff4c00]/5 hover:border-[#ff4c00]/40"
+                                className="group rounded-2xl border border-black/10 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#ff4c00]/30 hover:shadow-[0_16px_32px_rgba(255,76,0,0.1)] lg:p-7"
                             >
                                 <div className="flex gap-5 items-start">
                                     {/* ICON */}
-                                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#ff6b2b] to-[#ff4c00] shadow-lg shadow-[#ff4c00]/20 flex-shrink-0">
-                                        <Icon className="h-6 w-6 text-white" />
-                                    </div>
+                                    <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-[#fff0e9] text-[#ff4c00] transition duration-300 group-hover:bg-[#ff4c00] group-hover:text-white">
+                                        <Icon className="h-5 w-5" strokeWidth={2.4} />
+                                    </span>
 
                                     {/* TEXT */}
                                     <div className="min-w-0">
-                                        <h3 className="text-lg lg:text-xl font-semibold text-slate-900 mb-2">
+                                        <h3 className="text-lg lg:text-xl font-black leading-tight text-[#111827] mb-2">
                                             {title}
                                         </h3>
-                                        <p className="text-sm lg:text-base text-slate-700 leading-relaxed">
+                                        <p className="text-sm lg:text-base font-medium leading-6 text-black/60">
                                             {desc}
                                         </p>
                                     </div>
@@ -283,112 +276,92 @@ export default function RecentJobOpenings() {
             </section>
 
             {/* Trust & Safety Section */}
-            <section className="bg-white py-16 md:py-24 lg:py-32">
+            <section className="bg-[#fffaf7] py-16 md:py-24">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                         {/* LEFT: TEXT */}
                         <div>
-                            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-[#111827] mb-6">
                                 Built for trust, safety, and results
                             </h2>
 
-                            <p className="text-base md:text-lg text-slate-700 mb-10 leading-relaxed">
+                            <p className="text-base md:text-lg font-medium leading-7 text-[#4b5565] mb-10">
                                 FlashFire works as a secure job search AI tool designed to automate applications without risking privacy or professionalism.
                             </p>
 
-                            <div className="space-y-8">
-                                {/* Point 1 */}
-                                <div className="flex gap-5">
-                                    <div className="h-12 w-12 rounded-xl bg-[rgba(251,240,235,1)] flex items-center justify-center flex-shrink-0">
-                                        <ShieldCheck className="h-6 w-6 text-[#ff4c00]" />
+                            <div className="space-y-7">
+                                {[
+                                    {
+                                        icon: ShieldCheck,
+                                        title: "Safe & controlled applications",
+                                        desc: "FlashFire only applies to roles aligned with your profile and preferences. You stay in full control.",
+                                    },
+                                    {
+                                        icon: Eye,
+                                        title: "Transparent tracking",
+                                        desc: "See exactly where your applications are sent and track progress from one clean dashboard.",
+                                    },
+                                    {
+                                        icon: Zap,
+                                        title: "Built for speed & scale",
+                                        desc: "Apply to significantly more roles without burnout or manual effort.",
+                                    },
+                                    {
+                                        icon: Lock,
+                                        title: "Privacy-first by design",
+                                        desc: "Your data is encrypted and never shared beyond job applications.",
+                                    },
+                                ].map(({ icon: Icon, title, desc }) => (
+                                    <div key={title} className="flex gap-5 group">
+                                        <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-white text-[#ff4c00] shadow-sm transition group-hover:bg-[#ff4c00] group-hover:text-white">
+                                            <Icon className="h-5 w-5" strokeWidth={2.4} />
+                                        </span>
+                                        <div className="min-w-0">
+                                            <h4 className="text-lg font-black text-[#111827] mb-1">
+                                                {title}
+                                            </h4>
+                                            <p className="text-sm md:text-base font-medium leading-6 text-black/60">
+                                                {desc}
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div className="min-w-0">
-                                        <h4 className="text-lg font-semibold text-slate-900 mb-1">
-                                            Safe & controlled applications
-                                        </h4>
-                                        <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-                                            FlashFire only applies to roles aligned with your profile and preferences. You stay in full control.
-                                        </p>
-                                    </div>
-                                </div>
-
-                                {/* Point 2 */}
-                                <div className="flex gap-5">
-                                    <div className="h-12 w-12 rounded-xl bg-[rgba(251,240,235,1)] flex items-center justify-center flex-shrink-0">
-                                        <Eye className="h-6 w-6 text-[#ff4c00]" />
-                                    </div>
-                                    <div className="min-w-0">
-                                        <h4 className="text-lg font-semibold text-slate-900 mb-1">
-                                            Transparent tracking
-                                        </h4>
-                                        <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-                                            See exactly where your applications are sent and track progress from one clean dashboard.
-                                        </p>
-                                    </div>
-                                </div>
-
-                                {/* Point 3 */}
-                                <div className="flex gap-5">
-                                    <div className="h-12 w-12 rounded-xl bg-[rgba(251,240,235,1)] flex items-center justify-center flex-shrink-0">
-                                        <Zap className="h-6 w-6 text-[#ff4c00]" />
-                                    </div>
-                                    <div className="min-w-0">
-                                        <h4 className="text-lg font-semibold text-slate-900 mb-1">
-                                            Built for speed & scale
-                                        </h4>
-                                        <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-                                            Apply to significantly more roles without burnout or manual effort.
-                                        </p>
-                                    </div>
-                                </div>
-
-                                {/* Point 4 */}
-                                <div className="flex gap-5">
-                                    <div className="h-12 w-12 rounded-xl bg-[rgba(251,240,235,1)] flex items-center justify-center flex-shrink-0">
-                                        <Lock className="h-6 w-6 text-[#ff4c00]" />
-                                    </div>
-                                    <div className="min-w-0">
-                                        <h4 className="text-lg font-semibold text-slate-900 mb-1">
-                                            Privacy-first by design
-                                        </h4>
-                                        <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-                                            Your data is encrypted and never shared beyond job applications.
-                                        </p>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
 
                         {/* RIGHT: VISUAL */}
-                        <div className="bg-[rgba(251,240,235,1)] rounded-2xl lg:rounded-3xl p-8 lg:p-12 shadow-sm flex items-center justify-center">
-                            <Image
-                                src="/images/recentJobOpening.png"
-                                alt="Recent Job Openings"
-                                width={520}
-                                height={420}
-                                className="w-full h-auto object-contain"
-                                priority
-                            />
+                        <div className="relative">
+                            <div className="absolute -inset-3 rounded-[28px] bg-[#fff0e9] rotate-3" />
+                            <div className="relative flex items-center justify-center rounded-2xl border border-black/10 bg-white p-8 shadow-[0_20px_40px_rgba(0,0,0,0.12)] lg:p-12">
+                                <Image
+                                    src="/images/recentJobOpening.png"
+                                    alt="Recent Job Openings"
+                                    width={520}
+                                    height={420}
+                                    className="w-full h-auto object-contain"
+                                    priority
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Why Automation Section */}
-            <section className="py-16 md:py-24 lg:py-32 bg-[rgba(251,240,235,1)]">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+            <section className="bg-white py-16 md:py-24">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                         {/* LEFT */}
                         <div>
-                            <h2 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-[#111827] mb-6">
                                 Why automation beats manual job applications
                             </h2>
 
-                            <p className="text-base md:text-lg text-slate-700 mb-10 leading-relaxed max-w-xl">
+                            <p className="text-base md:text-lg font-medium leading-7 text-[#4b5565] mb-10 max-w-xl">
                                 Manual applications limit how many opportunities you can reach. FlashFire removes that limit — without compromising quality.
                             </p>
 
-                            <div className="space-y-8">
+                            <div className="space-y-7">
                                 {[
                                     {
                                         title: "Apply 10× faster",
@@ -407,15 +380,15 @@ export default function RecentJobOpenings() {
                                         desc: "FlashFire applies continuously in the background.",
                                     },
                                 ].map((item) => (
-                                    <div key={item.title} className="flex gap-5">
-                                        <div className="h-12 w-12 rounded-xl bg-white flex items-center justify-center shadow-sm flex-shrink-0">
-                                            <Zap className="h-6 w-6 text-[#ff4c00]" />
-                                        </div>
+                                    <div key={item.title} className="flex gap-5 group">
+                                        <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-[#fff0e9] text-[#ff4c00] transition group-hover:bg-[#ff4c00] group-hover:text-white">
+                                            <Zap className="h-5 w-5" strokeWidth={2.4} />
+                                        </span>
                                         <div className="min-w-0">
-                                            <h4 className="text-lg font-semibold text-slate-900 mb-1">
+                                            <h4 className="text-lg font-black text-[#111827] mb-1">
                                                 {item.title}
                                             </h4>
-                                            <p className="text-sm md:text-base text-slate-700 leading-relaxed">
+                                            <p className="text-sm md:text-base font-medium leading-6 text-black/60">
                                                 {item.desc}
                                             </p>
                                         </div>
@@ -426,13 +399,13 @@ export default function RecentJobOpenings() {
 
                         {/* RIGHT – DECISION CARD */}
                         <div className="relative">
-                            <div className="absolute -top-6 -right-6 w-full h-full rounded-2xl lg:rounded-3xl bg-[#ff4c00]/20" />
-                            <div className="relative bg-white rounded-2xl lg:rounded-3xl p-8 lg:p-12 shadow-xl border border-slate-100">
-                                <h3 className="text-xl font-semibold text-slate-900 mb-8">
+                            <div className="absolute -top-6 -right-6 w-full h-full rounded-[28px] bg-[#ff4c00]/15" />
+                            <div className="relative rounded-2xl border border-black/10 bg-white p-8 shadow-[0_20px_40px_rgba(0,0,0,0.12)] lg:p-12">
+                                <h3 className="text-xl font-black text-[#111827] mb-8">
                                     Manual vs AI-powered applications
                                 </h3>
 
-                                <div className="space-y-4 text-base text-slate-700 mb-8">
+                                <div className="space-y-4 text-base font-medium text-[#4b5565] mb-8">
                                     <div className="flex items-center gap-3">
                                         <span className="text-red-500 font-bold text-lg">✕</span>
                                         <span>Manual: Slow and repetitive</span>
@@ -447,10 +420,10 @@ export default function RecentJobOpenings() {
                                     </div>
                                 </div>
 
-                                <div className="pt-6 border-t border-slate-200">
+                                <div className="pt-6 border-t border-black/10">
                                     <div className="flex items-center gap-3">
                                         <span className="text-green-600 font-bold text-lg">✓</span>
-                                        <span className="font-semibold text-slate-900">
+                                        <span className="font-black text-[#111827]">
                                             AI-powered: Fast, scalable, ATS-ready
                                         </span>
                                     </div>
@@ -462,28 +435,34 @@ export default function RecentJobOpenings() {
             </section>
 
             {/* CTA Section */}
-            <section className="py-16 md:py-24 lg:py-32 bg-[#fff6f1]">
-                <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6">
+            <section className="relative overflow-hidden bg-[#fffaf7] py-16 md:py-24">
+                <div className="pointer-events-none absolute inset-0">
+                    <div className="absolute left-1/2 top-0 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ff4c00]/12 blur-[120px]" />
+                    <div className="absolute inset-0 opacity-[0.35]" style={dotGrid} />
+                </div>
+
+                <div className="relative z-10 max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-[#111827] mb-6">
                         Ready to stop applying manually?
                     </h2>
 
-                    <p className="text-base md:text-lg text-slate-700 mb-10 leading-relaxed">
+                    <p className="text-base md:text-xl font-medium leading-7 text-[#4b5565] mb-10">
                         Let FlashFire handle job applications while you focus on preparing for interviews.
                     </p>
 
                     <button
                         {...getButtonProps()}
                         onClick={() => handleCTAClick("Start with FlashFire", "recent_jobs_bottom", "/recent-job-openings/Start-with-Flashfire")}
-                        className="inline-flex items-center gap-2 px-10 py-5 bg-[#ff4c00] text-white rounded-xl font-semibold hover:bg-[#e64500] shadow-md text-base"
+                        className="group inline-flex items-center gap-2 rounded-full bg-[#ff4c00] px-8 py-4 text-lg font-semibold text-white shadow-[0_10px_30px_rgba(255,76,0,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-black"
                     >
                         Start with FlashFire
+                        <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
                     </button>
                 </div>
             </section>
 
             {/* FAQ Section */}
-            <section  className={faqStyles.faqSection}>
+            <section className={`${faqStyles.faqSection} relative z-10 bg-[#f9e8e0] py-16`}>
             <div id="faq-header" className={faqStyles.header}>
                 <h2>Frequently Asked Questions</h2>
                 <p>
@@ -534,6 +513,6 @@ export default function RecentJobOpenings() {
                 ))}
             </div>
             </section>
-        </>
+        </div>
     );
 }

@@ -394,12 +394,12 @@ export default function JobSearch() {
       </section>
 
       {/* ===== CTA ===== */}
-      <section className="bg-[#ff4c00] px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+      <section className="bg-[#fdeee6] px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-['Satoshi',sans-serif] text-3xl font-bold tracking-[-0.02em] text-white sm:text-[2.6rem]">
+          <h2 className="font-['Satoshi',sans-serif] text-3xl font-bold tracking-[-0.02em] text-[#02060A] sm:text-[2.6rem]">
             Ready to Let Flashfire Search &amp; Apply for You?
           </h2>
-          <p className="mt-4 font-['Satoshi',sans-serif] text-lg font-medium text-white/90">
+          <p className="mt-4 font-['Satoshi',sans-serif] text-lg font-medium text-[#3a3a3a]">
             Set the goal. Flashfire runs the system.
           </p>
 
@@ -407,14 +407,14 @@ export default function JobSearch() {
             <button
               {...getButtonProps()}
               onClick={handleGetStarted}
-              className="inline-flex items-center gap-2 rounded-[10px] bg-white px-7 py-3.5 text-[17px] font-bold text-[#ff4c00] shadow-[0_6px_0_#000] transition duration-200 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-[10px] bg-[#ff4c00] px-7 py-3.5 text-[17px] font-bold text-white shadow-[0_6px_0_#000] transition duration-200 hover:-translate-y-0.5 hover:bg-[#ff5a1f]"
             >
               Get Started With Flashfire
               <ArrowUpRight className="h-5 w-5" />
             </button>
           </div>
 
-          <p className="mt-6 text-sm text-white/80">
+          <p className="mt-6 text-sm text-[#6b6b6b]">
             No credit card required • Setup takes 2 minutes
           </p>
         </div>
