@@ -83,39 +83,13 @@ export default function TermsOfService() {
             </ul>
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              4. Trial Use & Payment Terms
-            </h2>
-            <p className="text-gray-700 mb-4">
-              We currently offer a limited-time free trial to help new users
-              experience Flashfire&rsquo;s capabilities.
-            </p>
-            <div className="bg-orange-50 border-l-4 border-orange-500 p-4 mb-6">
-              <h3 className="font-semibold text-gray-900 mb-2">
-                Trial Obligation:
-              </h3>
-              <p className="text-gray-700">
-                If you receive any interview call or recruiter response from
-                applications submitted during the free trial period, you agree
-                to pay Flashfire a one-time service fee of $50 per interview
-                call.
-              </p>
-            </div>
-            <p className="text-gray-700 mb-6">
-              We reserve the right to verify the legitimacy of any interview
-              invitation. Payment is expected within 7 business days of
-              confirmation. Failure to comply may result in account suspension,
-              legal action, or collection measures.
-            </p>
-
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              5. Paid Subscriptions
+              4. Paid Subscriptions
             </h2>
             <p className="text-gray-700 mb-4">
               Post-trial, users may subscribe to a paid plan based on their
               needs. All pricing, application quotas, and support tiers are
-              outlined on our Pricing page. All payments are non-refundable
-              unless otherwise stated in a written agreement. Subscription plans
-              automatically renew unless canceled.
+              outlined on our Pricing page. All payments are non-refundable.
+              Subscription plans automatically renew unless canceled.
             </p>
             <div className="bg-orange-50 border-l-4 border-orange-500 p-4 mb-6">
               <h3 className="font-semibold text-gray-900 mb-2">
@@ -128,7 +102,7 @@ export default function TermsOfService() {
             </div>
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              6. Application Validity & Expiry Policy
+              5. Application Validity & Expiry Policy
             </h2>
             <p className="text-gray-700 mb-4">
               All purchased application credits are valid for a period of{" "}
@@ -176,7 +150,7 @@ export default function TermsOfService() {
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              7. Service Limitations
+              6. Service Limitations
             </h2>
             <p className="text-gray-700 mb-6">
               Flashfire does not guarantee job offers, interview calls, hiring
@@ -194,7 +168,7 @@ export default function TermsOfService() {
             </div>
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              8. User Responsibilities
+              7. User Responsibilities
             </h2>
             <p className="text-gray-700 mb-4">
               By using Flashfire, you agree to:
@@ -213,7 +187,7 @@ export default function TermsOfService() {
             </ul>
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              9. Intellectual Property
+              8. Intellectual Property
             </h2>
             <p className="text-gray-700 mb-6">
               All Flashfire branding, content, graphics, designs, and platform
@@ -223,7 +197,7 @@ export default function TermsOfService() {
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              10. Termination
+              9. Termination
             </h2>
             <p className="text-gray-700 mb-6">
               We reserve the right to suspend, restrict, or terminate your
@@ -233,7 +207,7 @@ export default function TermsOfService() {
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              11. Limitation of Liability
+              10. Limitation of Liability
             </h2>
             <p className="text-gray-700 mb-6">
               To the maximum extent permitted by law, Flashfire and its
@@ -244,7 +218,7 @@ export default function TermsOfService() {
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              12. Privacy Policy
+              11. Privacy Policy
             </h2>
             <p className="text-gray-700 mb-4">
               Flashfire respects your privacy. By using the Service, you agree
