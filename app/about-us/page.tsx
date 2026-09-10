@@ -20,6 +20,14 @@ export const metadata: Metadata = {
       "Flashfire is an AI job application service that automates job applications, optimizes resumes, and helps job seekers land interviews faster in the US & Canada.",
     url: "https://www.flashfirejobs.com/about-us",
     type: "website",
+    images: [
+      {
+        url: "https://www.flashfirejobs.com/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "FLASHFIRE Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
