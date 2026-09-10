@@ -435,25 +435,25 @@ export default function RecentJobOpenings() {
             </section>
 
             {/* CTA Section */}
-            <section className="relative overflow-hidden bg-[#fffaf7] py-16 md:py-24">
+            <section className="relative overflow-hidden bg-[#ff4c00] py-16 md:py-24">
                 <div className="pointer-events-none absolute inset-0">
-                    <div className="absolute left-1/2 top-0 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ff4c00]/12 blur-[120px]" />
-                    <div className="absolute inset-0 opacity-[0.35]" style={dotGrid} />
+                    <div className="absolute left-1/2 top-0 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/15 blur-[120px]" />
+                    <div className="absolute inset-0 opacity-[0.15]" style={dotGrid} />
                 </div>
 
                 <div className="relative z-10 max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-[#111827] mb-6">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-white mb-6">
                         Ready to stop applying manually?
                     </h2>
 
-                    <p className="text-base md:text-xl font-medium leading-7 text-[#4b5565] mb-10">
+                    <p className="text-base md:text-xl font-medium leading-7 text-white/90 mb-10">
                         Let FlashFire handle job applications while you focus on preparing for interviews.
                     </p>
 
                     <button
                         {...getButtonProps()}
                         onClick={() => handleCTAClick("Start with FlashFire", "recent_jobs_bottom", "/recent-job-openings/Start-with-Flashfire")}
-                        className="group inline-flex items-center gap-2 rounded-full bg-[#ff4c00] px-8 py-4 text-lg font-semibold text-white shadow-[0_10px_30px_rgba(255,76,0,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-black"
+                        className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-semibold text-[#ff4c00] shadow-[0_10px_30px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-black hover:text-white"
                     >
                         Start with FlashFire
                         <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />

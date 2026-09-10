@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Check, GraduationCap, Briefcase, Repeat, BookOpen, TrendingUp, RotateCcw } from "lucide-react";
+import { ArrowRight, Check, GraduationCap, Briefcase, Repeat, BookOpen, TrendingUp, RotateCcw, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
@@ -409,46 +409,57 @@ export default function CareerAdvisor() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#fffaf7] pt-16 pb-16 md:pt-20 md:pb-20">
-        {/* Background Glow Effects */}
+      <section className="relative overflow-hidden bg-white pt-20 pb-20 md:pt-28 md:pb-28">
+        {/* Background effects */}
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/2 top-0 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ff4c00]/12 blur-[120px]"></div>
-          <div className="absolute inset-0 opacity-[0.35]" style={dotGrid}></div>
+          <div className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ff4c00]/10 blur-[140px]"></div>
+          <div
+            className="absolute inset-0 opacity-[0.5]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(17,24,39,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(17,24,39,0.06) 1px, transparent 1px)",
+              backgroundSize: "64px 64px",
+              maskImage:
+                "radial-gradient(60% 60% at 50% 50%, black 0%, transparent 100%)",
+              WebkitMaskImage:
+                "radial-gradient(60% 60% at 50% 50%, black 0%, transparent 100%)",
+            }}
+          ></div>
         </div>
 
         <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#ff4c00]/20 bg-[#fff0e9] px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.15em] text-[#ff4c00]">
+            <Sparkles className="h-3.5 w-3.5" strokeWidth={2.6} />
+            AI Career Advisor
+          </span>
 
-          {/* Heading */}
-          <h2 className="mb-6 text-3xl font-black leading-tight tracking-tight text-[#111827] sm:text-4xl md:text-5xl">
-            Ready to stop manually applying to{" "}
-            <span className="relative inline-block text-[#ff4c00]">
-              Get job calls?
-              <span className="absolute left-0 bottom-0 -z-10 h-2 w-full rounded bg-[#ff4c00]/20"></span>
+          <h2 className="mt-6 text-4xl font-black leading-[1.05] tracking-tight text-[#111827] sm:text-5xl md:text-6xl">
+            Stop applying manually.
+            <br />
+            <span className="bg-gradient-to-r from-[#ff4c00] to-[#ff8a4c] bg-clip-text text-transparent">
+              Start getting job calls.
             </span>
           </h2>
 
-          {/* Subtext */}
-          <p className="mx-auto mb-10 max-w-2xl text-base font-medium leading-7 text-[#4b5565] md:text-lg">
+          <p className="mx-auto mt-6 max-w-xl text-base font-medium leading-7 text-[#4b5565] md:text-lg">
             Join thousands of job seekers who use FlashFire to create compelling
             cover letters that increase their interview chances.
           </p>
 
-          {/* CTA Button */}
-          <button
-            {...getButtonProps()}
-            onClick={handleGetCareerAdvice}
-            className="group inline-flex items-center gap-2 rounded-full bg-[#ff4c00] px-10 py-4 text-lg font-semibold text-white shadow-[0_10px_30px_rgba(255,76,0,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-black"
-          >
-            Get Career Advice
-            <span className="transition-transform duration-200 group-hover:translate-x-1">
-              →
+          <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <button
+              {...getButtonProps()}
+              onClick={handleGetCareerAdvice}
+              className="group inline-flex items-center gap-2 rounded-full bg-[#ff4c00] px-9 py-4 text-lg font-semibold text-white shadow-[0_10px_30px_rgba(255,76,0,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-black"
+            >
+              Get Career Advice
+              <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
+            </button>
+            <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#4b5565]">
+              <Check className="h-4 w-4 text-[#ff4c00]" strokeWidth={3} />
+              No credit card required
             </span>
-          </button>
-
-          {/* Trust Line */}
-          <p className="mt-6 text-sm font-medium text-[#4b5565]">
-            Trusted by 1000+ job seekers
-          </p>
+          </div>
         </div>
       </section>
 
