@@ -531,45 +531,59 @@ export default function AICopilot() {
         </div>
       </section>
       {/* CTA SECTION */}
-      <section className="w-full bg-white py-28">
+      <section className="w-full bg-[#fffaf6] py-28">
         <div className="max-w-[1200px] mx-auto px-6">
 
-          <div className="relative rounded-[40px] bg-gradient-to-br from-[#ff5b14] via-[#ff4c00] to-[#e13f00] px-8 md:px-16 py-16 md:py-24 text-center shadow-[0_20px_60px_rgba(255,76,0,0.35)] overflow-hidden">
-            {/* Decorative grid + glow */}
-            <div
-              className="absolute inset-0 opacity-[0.08]"
-              style={{
-                backgroundImage:
-                  "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-                backgroundSize: "36px 36px",
-              }}
-            />
-            <div className="absolute -top-24 -left-24 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-black/10 rounded-full blur-3xl"></div>
+          <div className="relative rounded-[40px] bg-white border border-orange-100 px-8 md:px-14 py-14 md:py-16 shadow-[0_20px_60px_rgba(0,0,0,0.06)] overflow-hidden">
+            <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#ff4c00]/5 rounded-full blur-3xl"></div>
 
-            <span className="relative inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white backdrop-blur-sm">
-              Start Today
-            </span>
-
-            <h2 className="relative mt-6 text-[2.2rem] md:text-[3rem] font-extrabold text-white leading-tight max-w-3xl mx-auto">
-              Ready to Automate Your Job Applications?
-            </h2>
-
-            <p className="relative mt-4 text-white/85 text-base md:text-lg max-w-xl mx-auto">
-              Let AI handle repetitive tasks while you focus on what truly matters.
-            </p>
-
-            <div className="relative mt-10 flex justify-center">
-              <button
-                type="button"
-                onClick={() => handleStartApplyingClick("cta")}
-                className="group inline-flex items-center gap-3 bg-white text-[#ff4c00] px-10 py-4 rounded-full text-lg font-bold shadow-[0_10px_30px_rgba(0,0,0,0.25)] hover:shadow-[0_14px_36px_rgba(0,0,0,0.3)] hover:-translate-y-[2px] active:translate-y-0 transition-all duration-200"
-              >
-                Start Applying with AI
-                <span className="group-hover:translate-x-1 transition">
-                  <ArrowRight size={20} />
+            <div className="relative grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+              <div>
+                <span className="inline-flex items-center gap-2 rounded-full bg-[#fff0e8] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#ff4c00]">
+                  Start Today
                 </span>
-              </button>
+
+                <h2 className="mt-6 text-[2.2rem] md:text-[3rem] font-extrabold text-black leading-tight">
+                  Ready to Automate Your Job Applications?
+                </h2>
+
+                <p className="mt-4 text-gray-600 text-base md:text-lg max-w-xl">
+                  Let AI handle repetitive tasks while you focus on what truly matters.
+                </p>
+
+                <div className="mt-9">
+                  <button
+                    type="button"
+                    onClick={() => handleStartApplyingClick("cta")}
+                    className="group inline-flex items-center gap-3 bg-[#ff4c00] text-white px-10 py-4 rounded-full text-lg font-semibold shadow-[0_4px_0_black] hover:shadow-[0_6px_0_black] hover:-translate-y-[2px] active:translate-y-[2px] active:shadow-[0_2px_0_black] transition-all duration-200"
+                  >
+                    Start Applying with AI
+                    <span className="group-hover:translate-x-1 transition">
+                      <ArrowRight size={20} />
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              <div className="rounded-3xl bg-[#fff7f3] border border-orange-100 p-7">
+                <p className="text-sm font-bold uppercase tracking-wide text-[#ff4c00] mb-5">
+                  What you get
+                </p>
+                <div className="space-y-4">
+                  {[
+                    "Daily automated applications",
+                    "ATS-optimized resume for every role",
+                    "Real-time tracking & analytics",
+                  ].map((point) => (
+                    <div key={point} className="flex items-center gap-3">
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#ff4c00] text-white">
+                        <CheckCircle2 size={14} />
+                      </span>
+                      <span className="text-sm font-medium text-gray-800">{point}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
