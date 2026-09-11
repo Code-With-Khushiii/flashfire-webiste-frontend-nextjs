@@ -164,70 +164,70 @@ export default function ContactUsClient() {
   };
 
   return (
-    <section className="bg-gradient-to-b from-[#fff0e6] via-[#fff7f2] to-white min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+    <section className="bg-gradient-to-b from-[#fff0e6] via-[#fff7f2] to-white min-h-screen py-10 sm:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Top Section: Contact Info + Form */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12  mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mb-10 sm:mb-16">
           {/* Left Panel: Contact Information */}
-          <div className="flex flex-col mt-16 ">
-            <h1 className="text-6xl md:text-7xl font-bold mb-4">
+          <div className="flex flex-col lg:mt-16">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4">
               Flashfire Contact – Customer Support, Sales & Enquiries
             </h1>
-            <p className="text-xl text-gray-700 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed">
               Use the Flashfire contact page to reach customer support, sales enquiries, or general assistance. Our team is available via Flashfire email support or demo requests.
             </p>
           </div>
 
           {/* Right Panel: Contact Form */}
-          <div className="bg-white rounded-2xl shadow-lg p-8 border border-orange-100">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6">
+          <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-8 border border-orange-100">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6">
               Contact Flashfire Customer Support or Sales Team
             </h2>
             <ContactForm />
           </div>
         </div>
         {/* === FLASHFIRE CONTACT DETAILS (CLEAN, SPACIOUS, FUNCTIONAL) === */}
-        <section className="py-20 md:py-28">
+        <section className="py-14 sm:py-20 md:py-28">
           <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
 
             {/* Header */}
-            <div className="max-w-3xl mx-auto text-center mb-20">
+            <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16 md:mb-20">
               <span className="block text-xs font-semibold tracking-widest text-[#ff4c00] uppercase mb-4">
                 Get in touch
               </span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900">
                 Flashfire <span className="text-[#ff4c00]">Contact Details</span>
               </h2>
-              <p className="mt-6 text-base md:text-lg text-slate-600">
+              <p className="mt-4 sm:mt-6 text-base md:text-lg text-slate-600">
                 Clear, direct ways to reach the Flashfire team.
               </p>
             </div>
 
             {/* Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
 
 
               {/* Support */}
-              <div className="bg-white border border-orange-500 rounded-2xl p-12 transition-colors hover:border-[#ff4c00] hover:border-2">
-                <FaEnvelope className="text-[#ff4c00] text-2xl mb-10" />
+              <div className="bg-white border border-orange-500 rounded-2xl p-6 sm:p-8 md:p-12 transition-colors hover:border-[#ff4c00] hover:border-2">
+                <FaEnvelope className="text-[#ff4c00] text-2xl mb-6 sm:mb-8 md:mb-10" />
 
                 <h3 className="text-xl font-semibold text-slate-900 mb-4">
                   Customer Support
                 </h3>
 
-                <p className="text-slate-600 leading-relaxed mb-8">
+                <p className="text-slate-600 leading-relaxed mb-6 sm:mb-8">
                   Need help? Flashfire customer support is available via email to assist with your account, job search, or platform questions.
                 </p>
 
-                <div className="flex items-center gap-4">
-                  <span className="font-semibold text-[#ff4c00]">
+                <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-4">
+                  <span className="font-semibold text-[#ff4c00] break-all sm:break-normal">
                     Flashfire Email Support: support@flashfirejobs.com
                   </span>
 
                   {/* Copy clipboard */}
                   <button
                     onClick={handleCopyEmail}
-                    className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-[#ff4c00] transition-colors"
+                    className="flex shrink-0 items-center gap-1.5 text-sm text-slate-500 hover:text-[#ff4c00] transition-colors"
                   >
                     {copied ? (
                       <>
@@ -245,14 +245,14 @@ export default function ContactUsClient() {
               </div>
 
               {/* Sales */}
-              <div className="bg-white border border-orange-500 rounded-2xl p-12 transition-colors hover:border-[#ff4c00] hover:border-2">
-                <FaUser className="text-[#ff4c00] text-2xl mb-10" />
+              <div className="bg-white border border-orange-500 rounded-2xl p-6 sm:p-8 md:p-12 transition-colors hover:border-[#ff4c00] hover:border-2">
+                <FaUser className="text-[#ff4c00] text-2xl mb-6 sm:mb-8 md:mb-10" />
 
                 <h3 className="text-xl font-semibold text-slate-900 mb-4">
                   Flashfire Sales Enquiry & Demo Requests
                 </h3>
 
-                <p className="text-slate-600 leading-relaxed mb-8">
+                <p className="text-slate-600 leading-relaxed mb-6 sm:mb-8">
                   Explore demos, partnerships, or product questions.
                 </p>
 
@@ -266,14 +266,14 @@ export default function ContactUsClient() {
               </div>
 
               {/* Company */}
-              <div className="bg-white border border-orange-500 rounded-2xl p-12 transition-colors hover:border-[#ff4c00] hover:border-2">
-                <FaBuilding className="text-[#ff4c00] text-2xl mb-10" />
+              <div className="bg-white border border-orange-500 rounded-2xl p-6 sm:p-8 md:p-12 transition-colors hover:border-[#ff4c00] hover:border-2">
+                <FaBuilding className="text-[#ff4c00] text-2xl mb-6 sm:mb-8 md:mb-10" />
 
                 <h3 className="text-xl font-semibold text-slate-900 mb-4">
                   Company
                 </h3>
 
-                <p className="text-slate-600 leading-relaxed mb-8">
+                <p className="text-slate-600 leading-relaxed mb-6 sm:mb-8">
                   Official corporate and business information.
                 </p>
 
