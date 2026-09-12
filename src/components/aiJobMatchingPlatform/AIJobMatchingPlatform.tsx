@@ -19,70 +19,64 @@ export default function AIJobMatchingPlatformPage() {
   const [activeFaqIndex, setActiveFaqIndex] = useState<number | null>(null);
 
   return (
-    <div className="bg-[#fff7f2] text-slate-900 min-h-screen">
+    <div className="bg-white text-[#111827] min-h-screen">
 
 
       <main className="mt-0">
         {/* Hero */}
-        <section className="relative bg-gradient-to-br from-[#fff0e6] via-[#fff7f2] to-white min-h-[90vh] flex items-center py-16 md:py-24 overflow-hidden">
-          {/* Subtle Background Pattern */}
-          <div className="absolute inset-0 opacity-[0.03]">
-            <div className="absolute top-20 left-10 w-72 h-72 border border-slate-900 rounded-full"></div>
-            <div className="absolute bottom-20 right-10 w-96 h-96 border border-slate-900 rounded-full"></div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-slate-900 rounded-full"></div>
-          </div>
+        <section className="relative overflow-hidden py-16 md:py-24">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#fff1ea] via-white to-[#fff7f3]" />
 
-          <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 w-full relative z-10">
-            <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          <div className="relative mx-auto grid max-w-[1240px] gap-14 px-4 md:px-6 lg:px-8 lg:grid-cols-12 lg:items-center">
               {/* LEFT CONTENT - 7 cols */}
               <div className="lg:col-span-7 space-y-8">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur border border-[#ffd6c2] rounded-full">
-                  <Sparkles className="w-4 h-4 text-[#ff4c00]" />
-                  <span className="text-sm font-semibold text-slate-700">AI-Powered Job Matching Technology</span>
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#ff4c00]/20 bg-[#fff0e8] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#ff4c00]">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  AI-Powered Job Matching Technology
                 </div>
 
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] text-slate-900 tracking-tight">
+                <h1 className="text-[34px] font-extrabold leading-[1.14] text-black sm:text-[52px] lg:leading-[1.05]">
                   AI Job Matching Platform for{" "}
                   <span className="text-[#ff4c00]">Personalized Job Recommendations</span>
                 </h1>
 
-                <div className="space-y-4 text-lg text-slate-700 leading-relaxed max-w-2xl">
-                  <p className="font-medium text-slate-900">
+                <div className="max-w-2xl space-y-4">
+                  <p className="text-[17px] font-semibold leading-8 text-gray-800">
                     Stop wasting hours scrolling through irrelevant job listings.
                   </p>
-                  <p>
+                  <p className="text-[16px] font-medium leading-8 text-gray-600">
                     Our AI job matching platform uses an advanced job matching algorithm powered by machine learning matching to instantly connect your resume with the most relevant opportunities.
                   </p>
                 </div>
 
                 {/* Highlights Grid */}
-                <div className="grid sm:grid-cols-2 gap-4 pt-4">
+                <div className="grid gap-3 pt-2 sm:grid-cols-2">
                   {[
                     "Get real-time personalized job recommendations",
                     "Eliminate mismatched applications",
                     "Discover better-fit roles faster",
                     "Improve interview success probability",
                   ].map((text) => (
-                    <div key={text} className="flex items-start gap-3 p-3 rounded-lg bg-white/60 border border-[#ffd6c2]/50">
-                      <div className="flex-shrink-0 w-5 h-5 rounded-full bg-[#ff4c00]/10 flex items-center justify-center mt-0.5">
-                        <CheckCircle className="h-3 w-3 text-[#ff4c00]" />
+                    <div key={text} className="flex items-start gap-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+                      <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#ff4c00]/10">
+                        <CheckCircle className="h-3.5 w-3.5 text-[#ff4c00]" />
                       </div>
-                      <span className="text-sm font-semibold text-slate-700">{text}</span>
+                      <span className="text-[13px] font-semibold leading-snug text-gray-700">{text}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* CTA Section */}
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4">
+                <div className="flex flex-col gap-6 pt-2 sm:flex-row sm:items-center">
                   <button
                     type="button"
                     onClick={() => updateCtaUrl("/ai-job-matching-platform", "Start Matching Jobs Now")}
-                    className="inline-flex items-center justify-center rounded-lg bg-[#ff4c00] px-8 py-4 text-base font-bold text-white hover:bg-[#e24400] transition-colors shadow-lg shadow-[#ff4c00]/20"
+                    className="inline-flex h-[52px] items-center justify-center gap-2 rounded-xl bg-[#ff4c00] px-7 text-[14px] font-bold text-white shadow-[0_3px_0_black] transition hover:opacity-90"
                   >
                     Start Matching Jobs Now
-                    <ArrowRight className="ml-2 h-5 w-5" />
+                    <ArrowRight size={14} />
                   </button>
-                  <div className="flex items-center gap-2 text-sm text-slate-600">
+                  <div className="flex items-center gap-2 text-sm font-medium text-gray-600">
                     <Shield className="h-4 w-4 text-[#ff4c00]" />
                     <span>Secure & Confidential</span>
                   </div>
@@ -90,60 +84,58 @@ export default function AIJobMatchingPlatformPage() {
               </div>
 
               {/* RIGHT PREVIEW - 5 cols */}
-              <div className="lg:col-span-5">
-                <div className="relative">
-                  {/* Main Card */}
-                  <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
+              <div className="lg:col-span-5 flex justify-center lg:justify-end">
+                <div className="w-full max-w-[440px] overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-xl">
                     {/* Card Header */}
-                    <div className="bg-slate-900 px-6 py-4 flex items-center justify-between">
+                    <div className="flex items-center justify-between border-b bg-gray-50 px-6 py-5">
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-[#ff4c00]"></div>
-                        <span className="text-sm font-bold text-white uppercase tracking-wider">AI Matching Analysis</span>
+                        <span className="text-sm font-bold text-black uppercase tracking-wider">AI Matching Analysis</span>
                       </div>
-                      <div className="flex items-center gap-1.5">
+                      <div className="flex items-center gap-1.5 rounded-full bg-green-100 px-2.5 py-1">
                         <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
-                        <span className="text-xs text-slate-400">Live</span>
+                        <span className="text-xs font-semibold text-green-700">Live</span>
                       </div>
                     </div>
 
-                    <div className="p-6 space-y-6">
+                    <div className="space-y-5 p-6">
                       {/* Profile Section */}
-                      <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
+                      <div className="rounded-xl border border-gray-200 bg-gray-50 p-4">
                         <div className="flex items-center gap-3 mb-3">
                           <div className="w-10 h-10 rounded-full bg-[#ff4c00]/10 flex items-center justify-center">
                             <UserCheck className="h-5 w-5 text-[#ff4c00]" />
                           </div>
                           <div>
-                            <p className="text-xs font-bold text-slate-500 uppercase tracking-wide">Your Profile</p>
-                            <p className="text-sm font-bold text-slate-900">Senior Frontend Developer</p>
+                            <p className="text-xs font-bold text-gray-500 uppercase tracking-wide">Your Profile</p>
+                            <p className="text-sm font-bold text-black">Senior Frontend Developer</p>
                           </div>
                         </div>
                         <div className="space-y-2">
                           <div className="flex items-center justify-between text-sm">
-                            <span className="text-slate-600">Skills</span>
-                            <span className="font-semibold text-slate-900">React, JavaScript, UI</span>
+                            <span className="text-gray-600">Skills</span>
+                            <span className="font-semibold text-black">React, JavaScript, UI</span>
                           </div>
                           <div className="flex items-center justify-between text-sm">
-                            <span className="text-slate-600">Location</span>
-                            <span className="font-semibold text-slate-900">United States</span>
+                            <span className="text-gray-600">Location</span>
+                            <span className="font-semibold text-black">United States</span>
                           </div>
                           <div className="flex items-center justify-between text-sm">
-                            <span className="text-slate-600">Salary Range</span>
-                            <span className="font-semibold text-slate-900">$70k – $90k</span>
+                            <span className="text-gray-600">Salary Range</span>
+                            <span className="font-semibold text-black">$70k – $90k</span>
                           </div>
                         </div>
                       </div>
 
                       {/* Match Score */}
                       <div className="space-y-3">
-                        <p className="text-xs font-bold text-slate-500 uppercase tracking-wide">Compatibility Analysis</p>
+                        <p className="text-xs font-bold text-gray-500 uppercase tracking-wide">Compatibility Analysis</p>
                         {[
                           ["Skill Match", "High", "95%"],
                           ["Location Fit", "Yes", "100%"],
                           ["Salary Alignment", "Matched", "90%"],
                         ].map(([label, value, percent]) => (
-                          <div key={label} className="flex items-center justify-between p-3 rounded-lg bg-slate-50 border border-slate-100">
-                            <span className="text-sm font-medium text-slate-700">{label}</span>
+                          <div key={label} className="flex items-center justify-between rounded-xl border border-gray-100 bg-white p-3">
+                            <span className="text-sm font-medium text-gray-700">{label}</span>
                             <div className="flex items-center gap-3">
                               <span className="text-xs font-bold text-[#ff4c00]">{percent}</span>
                               <span className="px-3 py-1 rounded-full bg-[#ff4c00]/10 text-[#ff4c00] font-bold text-xs">{value}</span>
@@ -153,41 +145,36 @@ export default function AIJobMatchingPlatformPage() {
                       </div>
 
                       {/* Priority Result */}
-                      <div className="bg-gradient-to-br from-[#fff7f2] to-orange-50 rounded-xl p-4 border-2 border-[#ffd6c2]">
+                      <div className="rounded-xl border border-[#ffd6c2] bg-[#fff7f3] p-4">
                         <div className="flex items-center justify-between mb-2">
-                          <p className="text-xs font-bold text-slate-500 uppercase tracking-wide">Top Recommendation</p>
+                          <p className="text-xs font-bold text-gray-500 uppercase tracking-wide">Top Recommendation</p>
                           <Award className="h-4 w-4 text-[#ff4c00]" />
                         </div>
-                        <p className="text-lg font-bold text-slate-900 mb-1">Frontend Developer</p>
-                        <p className="text-sm text-slate-600 mb-3">TechCorp Inc. • San Francisco, CA</p>
+                        <p className="text-lg font-bold text-black mb-1">Frontend Developer</p>
+                        <p className="text-sm text-gray-600 mb-3">TechCorp Inc. • San Francisco, CA</p>
                         <div className="flex items-center gap-2">
                           <span className="inline-block px-3 py-1 rounded-full bg-[#ff4c00] text-white text-xs font-bold">
                             98% Match
                           </span>
-                          <span className="text-xs text-slate-500">Recommended to apply</span>
+                          <span className="text-xs text-gray-500">Recommended to apply</span>
                         </div>
                       </div>
                     </div>
-                  </div>
-
-
-
                 </div>
               </div>
-            </div>
           </div>
         </section>
 
         {/* Key Benefits at a Glance */}
-        <section className="bg-[#fff7f2] py-24">
-          <div className="max-w-6xl mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+        <section className="bg-[#fffaf6] px-4 py-20 sm:py-28 md:px-6">
+          <div className="mx-auto max-w-[1100px]">
+            <div className="mb-12 text-center">
+              <h2 className="text-[28px] font-extrabold leading-[1.1] text-black sm:text-[34px]">
                 Key Benefits at a <span className="text-[#ff4c00]">Glance</span>
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 {
                   title: "Reduce Job Search Time",
@@ -216,15 +203,15 @@ export default function AIJobMatchingPlatformPage() {
               ].map((benefit, index) => (
                 <div
                   key={index}
-                  className="bg-white border-2 border-[#ffd6c2] rounded-xl p-6 hover:shadow-lg transition-all hover:-translate-y-1"
+                  className="rounded-2xl border border-gray-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#ff4c00]/30 hover:shadow-md"
                 >
                   <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-[#ff4c00]/10 flex items-center justify-center">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#ff4c00]/10">
                       <CheckCircle className="h-5 w-5 text-[#ff4c00]" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg text-slate-900 mb-2">{benefit.title}</h3>
-                      <p className="text-sm text-slate-600">{benefit.desc}</p>
+                      <h3 className="mb-2 text-lg font-bold text-black">{benefit.title}</h3>
+                      <p className="text-[14px] leading-6 text-gray-600">{benefit.desc}</p>
                     </div>
                   </div>
                 </div>
@@ -234,25 +221,25 @@ export default function AIJobMatchingPlatformPage() {
         </section>
 
         {/* How Our AI Job Matching Platform Works */}
-        <section className="bg-white py-24">
-          <div className="max-w-6xl mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="inline-block px-4 py-1 rounded-full bg-slate-100 text-slate-700 text-sm font-bold mb-4">
+        <section className="px-4 py-20 sm:py-28 md:px-6">
+          <div className="mx-auto max-w-[1100px]">
+            <div className="mx-auto mb-16 max-w-[640px] text-center">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#ff4c00]/20 bg-[#fff0e8] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#ff4c00]">
                 Process
               </span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+              <h2 className="mt-5 text-[28px] font-extrabold leading-[1.1] text-black sm:text-[38px]">
                 How Our <span className="text-[#ff4c00]">AI Job Matching Platform</span> Works
               </h2>
-              <p className="text-lg text-slate-600">
+              <p className="mt-4 text-[15px] font-medium leading-7 text-gray-600">
                 Finding the right job should feel effortless — and now it does.
               </p>
             </div>
 
             <div className="relative">
               {/* Connecting Line */}
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#ff4c00] via-[#ff4c00]/50 to-slate-200 hidden md:block"></div>
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#ff4c00] via-[#ff4c00]/30 to-gray-200 hidden md:block"></div>
 
-              <div className="space-y-12">
+              <div className="space-y-8">
                 {[
                   {
                     step: "01",
@@ -289,42 +276,44 @@ export default function AIJobMatchingPlatformPage() {
                     footer: "Powered by predictive job recommendations.",
                   },
                 ].map((section, index) => (
-                  <div key={index} className="relative flex gap-8 md:gap-12">
+                  <div key={index} className="relative flex gap-6 md:gap-8">
                     {/* Step Number */}
                     <div className="hidden md:flex flex-col items-center">
-                      <div className="w-16 h-16 rounded-2xl bg-[#ff4c00] text-white flex items-center justify-center font-bold text-xl shadow-lg shadow-[#ff4c00]/30 shrink-0 z-10">
+                      <div className="w-16 h-16 rounded-2xl bg-[#ff4c00] text-white flex items-center justify-center font-bold text-xl shadow-md shrink-0 z-10">
                         {section.step}
                       </div>
                     </div>
 
                     {/* Content Card */}
-                    <div className="flex-1 bg-slate-50 rounded-2xl p-8 border border-slate-200">
+                    <div className="flex-1 rounded-2xl border border-gray-200 bg-white p-7 shadow-sm sm:p-8">
                       <div className="md:hidden w-12 h-12 rounded-xl bg-[#ff4c00] text-white flex items-center justify-center font-bold mb-4">
                         {section.step}
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3">
+                      <h3 className="text-xl md:text-2xl font-bold text-black mb-3">
                         {section.title}
                       </h3>
-                      <p className="text-slate-700 mb-4">{section.desc}</p>
+                      <p className="text-gray-600 mb-4">{section.desc}</p>
 
                       <ul className="space-y-3 mb-4">
                         {section.items.map((item, i) => (
                           <li key={i} className="flex items-center gap-3">
-                            <div className="w-1.5 h-1.5 rounded-full bg-[#ff4c00]"></div>
-                            <span className="text-slate-600">{item}</span>
+                            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#ff4c00]/10">
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#ff4c00]"></div>
+                            </span>
+                            <span className="text-gray-600">{item}</span>
                           </li>
                         ))}
                       </ul>
 
                       {section.footer && (
-                        <p className="text-slate-900 font-semibold mt-4 pt-4 border-t border-slate-200">
+                        <p className="text-black font-semibold mt-4 pt-4 border-t border-gray-100">
                           {section.footer}
                         </p>
                       )}
 
                       {section.highlight && (
-                        <div className="mt-4 p-4 bg-white rounded-xl border-l-4 border-[#ff4c00] shadow-sm">
-                          <p className="text-slate-700">
+                        <div className="mt-4 rounded-xl border border-[#ff4c00]/15 bg-[#fff7f3] p-4">
+                          <p className="text-gray-700">
                             <span className="font-semibold">Key Advantage:</span>{" "}
                             <span className="text-[#ff4c00] font-bold">{section.highlight}</span>
                           </p>
@@ -336,31 +325,31 @@ export default function AIJobMatchingPlatformPage() {
               </div>
             </div>
             {/* Smart Opportunity Ranking */}
-            <div className="mt-16 bg-gradient-to-br from-[#fff7f2] to-white rounded-2xl p-8 border-2 border-[#ffd6c2]">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">
+            <div className="mt-14 rounded-2xl border border-[#ff4c00]/20 bg-[#fff7f3] p-8">
+              <h3 className="text-2xl font-bold text-black mb-3">
                 Smart Opportunity Ranking
               </h3>
-              <p className="text-lg text-slate-700">
+              <p className="text-lg text-gray-700">
                 Each role receives a <span className="font-semibold text-[#ff4c00]">candidate suitability score</span>
               </p>
-              <p className="text-base text-slate-600 mt-2">
+              <p className="text-base text-gray-600 mt-2">
                 Helping you focus on jobs with the highest success probability.
               </p>
             </div>
 
             {/* Continuous Learning */}
-            <div className="mt-8 bg-white rounded-2xl p-8 border-2 border-slate-200">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+            <div className="mt-6 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+              <h3 className="text-2xl font-bold text-black mb-4">
                 Continuous Learning for Higher Accuracy
               </h3>
-              <p className="text-lg text-slate-700 mb-4">
+              <p className="text-lg text-gray-700 mb-4">
                 Our AI job matching engine continuously improves.
               </p>
               <ul className="space-y-2">
                 {["Learns preferences", "Refines matching patterns", "Increases relevance"].map((item) => (
                   <li key={item} className="flex items-center gap-3">
                     <CheckCircle className="h-5 w-5 text-[#ff4c00] shrink-0" />
-                    <span className="text-slate-700">{item}</span>
+                    <span className="text-gray-700">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -369,66 +358,66 @@ export default function AIJobMatchingPlatformPage() {
         </section>
 
         {/* Why This AI Job Matching Platform Delivers Better Results */}
-        <section className="bg-[#fff7f2] py-24">
-          <div className="max-w-6xl mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
+        <section className="bg-[#fffaf6] px-4 py-20 sm:py-28 md:px-6">
+          <div className="mx-auto max-w-[1100px]">
+            <div className="mx-auto mb-12 max-w-[640px] text-center">
+              <h2 className="text-[28px] font-extrabold leading-[1.1] text-black sm:text-[34px]">
                 Why This AI Job Matching Platform <span className="text-[#ff4c00]">Delivers Better Results</span>
               </h2>
-              <p className="text-lg text-slate-700 mb-4">
+              <p className="mt-5 text-[15px] leading-7 text-gray-600">
                 Traditional job boards show listings.
               </p>
-              <p className="text-lg text-slate-700 font-semibold">
+              <p className="mt-1 text-[15px] font-semibold leading-7 text-gray-700">
                 We deliver intelligent alignment.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <div className="mb-6 grid gap-4 sm:grid-cols-2">
               {[
                 "Understand real job fit — not just keywords",
                 "Prioritize roles based on compatibility",
                 "Reduce irrelevant applications",
                 "Improve decision confidence",
               ].map((item) => (
-                <div key={item} className="flex items-center gap-3 p-4 bg-white rounded-xl border-2 border-[#ffd6c2]">
+                <div key={item} className="flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-4">
                   <CheckCircle className="h-6 w-6 text-[#ff4c00] shrink-0" />
-                  <span className="text-slate-700 font-medium">{item}</span>
+                  <span className="text-[14px] font-semibold text-black">{item}</span>
                 </div>
               ))}
             </div>
 
-            <div className="bg-gradient-to-r from-[#ff4c00] to-[#ff7a45] rounded-2xl p-8 text-white">
-              <h3 className="text-2xl font-bold mb-6">Users typically experience:</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div>
-                  <div className="text-3xl font-bold mb-2">Faster</div>
-                  <div className="text-sm opacity-90">Job discovery</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold mb-2">Better</div>
-                  <div className="text-sm opacity-90">Candidate-job matching accuracy</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold mb-2">Stronger</div>
-                  <div className="text-sm opacity-90">Interview alignment</div>
-                </div>
+            <div className="overflow-hidden rounded-2xl border border-gray-200">
+              <div className="border-b border-gray-100 bg-white px-8 py-5">
+                <h3 className="text-lg font-bold text-black">Users typically experience:</h3>
+              </div>
+              <div className="grid grid-cols-1 divide-y divide-gray-200 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+                {[
+                  ["Faster", "Job discovery"],
+                  ["Better", "Candidate-job matching accuracy"],
+                  ["Stronger", "Interview alignment"],
+                ].map(([stat, label]) => (
+                  <div key={label} className="bg-[#fff7f3] px-6 py-8 text-center">
+                    <div className="mb-1 text-2xl font-extrabold text-[#ff4c00]">{stat}</div>
+                    <div className="text-sm text-gray-600">{label}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
-        <section className="bg-white py-24">
-          <div className="max-w-7xl mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="inline-block px-4 py-1 rounded-full bg-[#ff4c00]/10 text-[#ff4c00] text-sm font-bold mb-4">
+        <section className="px-4 py-20 sm:py-28 md:px-6">
+          <div className="mx-auto max-w-[1100px]">
+            <div className="mx-auto mb-14 max-w-[720px] text-center">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#ff4c00]/20 bg-[#fff0e8] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#ff4c00]">
                 Features
               </span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900">
+              <h2 className="mt-5 text-[28px] font-extrabold leading-[1.1] text-black sm:text-[38px]">
                 Key Features of Our <span className="text-[#ff4c00]">AI-Powered Job Matching Platform</span>
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 {
                   title: "Advanced AI Job Matching Engine",
@@ -472,23 +461,24 @@ export default function AIJobMatchingPlatformPage() {
               ].map((feature, index) => (
                 <div
                   key={index}
-                  className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-[#ff4c00] transition-colors shadow-sm hover:shadow-lg"
+                  className="group rounded-2xl border border-gray-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#ff4c00]/30 hover:shadow-md"
                 >
-                  {/* Top Accent Bar */}
-                  <div className="h-1 w-12 bg-[#ff4c00] rounded-full mb-6 group-hover:w-full transition-all duration-300"></div>
+                  <span className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-[#ff4c00]/10 text-[#ff4c00]">
+                    <CheckCircle size={18} strokeWidth={2.5} />
+                  </span>
 
-                  <h3 className="text-lg font-bold text-slate-900 mb-3">
+                  <h3 className="text-lg font-bold text-black mb-3">
                     {feature.title}
                   </h3>
 
-                  <p className="text-slate-600 text-sm mb-4">
+                  <p className="text-gray-600 text-[14px] leading-6 mb-4">
                     {feature.desc}
                   </p>
 
                   {feature.bullets && (
                     <ul className="space-y-2">
                       {feature.bullets.map((bullet, i) => (
-                        <li key={i} className="flex items-center gap-2 text-sm text-slate-600">
+                        <li key={i} className="flex items-center gap-2 text-sm text-gray-600">
                           <div className="w-1 h-1 rounded-full bg-[#ff4c00]"></div>
                           {bullet}
                         </li>
@@ -503,18 +493,18 @@ export default function AIJobMatchingPlatformPage() {
 
 
         {/* Why Job Seekers Choose Section */}
-        <section className="bg-[#fff7f2] py-24">
-          <div className="max-w-6xl mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+        <section className="bg-[#fff7f3] px-4 py-20 sm:py-28 md:px-6">
+          <div className="mx-auto max-w-[1100px]">
+            <div className="mx-auto mb-12 max-w-[640px] text-center">
+              <h2 className="text-[28px] font-extrabold leading-[1.1] text-black sm:text-[34px]">
                 Why Job Seekers Choose Our <span className="text-[#ff4c00]">AI Job Matcher</span>
               </h2>
-              <p className="text-lg text-slate-700">
+              <p className="mt-4 text-[15px] font-medium leading-7 text-gray-600">
                 Job seekers want outcomes — not endless searching.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 "Save hours of manual filtering",
                 "Receive true personalized job recommendations",
@@ -528,10 +518,10 @@ export default function AIJobMatchingPlatformPage() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="bg-white border-2 border-[#ffd6c2] rounded-xl p-5 flex items-center gap-3 hover:shadow-lg transition"
+                  className="flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-5 transition hover:border-[#ff4c00]/40 hover:shadow-sm"
                 >
                   <CheckCircle className="h-6 w-6 text-[#ff4c00] shrink-0" />
-                  <span className="text-slate-700 font-medium">{item}</span>
+                  <span className="text-[14px] font-semibold text-black">{item}</span>
                 </div>
               ))}
             </div>
@@ -539,80 +529,83 @@ export default function AIJobMatchingPlatformPage() {
         </section>
 
         {/* Comparison Table */}
-        <section className="bg-white py-24">
-          <div className="max-w-6xl mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+        <section className="bg-[#fffaf6] px-4 py-20 sm:py-28 md:px-6">
+          <div className="mx-auto max-w-[1000px]">
+            <div className="mb-12 text-center">
+              <h2 className="text-[26px] font-extrabold leading-tight text-black sm:text-[32px]">
                 AI Job Matching vs <span className="text-[#ff4c00]">Traditional Job Boards</span>
               </h2>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-[#ffd6c2]">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead className="bg-gradient-to-r from-[#ff4c00] to-[#ff7a45] text-white">
-                    <tr>
-                      <th className="px-6 py-4 text-left font-bold">Feature</th>
-                      <th className="px-6 py-4 text-left font-bold">Traditional Job Boards</th>
-                      <th className="px-6 py-4 text-left font-bold">AI-Powered Job Matching Platform</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200">
-                    {[
-                      {
-                        feature: "Search Method",
-                        traditional: "Manual keyword search",
-                        ai: "Intelligent job matching algorithm",
-                      },
-                      {
-                        feature: "Listings",
-                        traditional: "Generic listings",
-                        ai: "Personalized job recommendations",
-                      },
-                      {
-                        feature: "Resume Alignment",
-                        traditional: "No resume alignment",
-                        ai: "AI match resume to a job description",
-                      },
-                      {
-                        feature: "Filtering",
-                        traditional: "Time-consuming filtering",
-                        ai: "Smart suitability ranking",
-                      },
-                      {
-                        feature: "Personalization",
-                        traditional: "Same results for everyone",
-                        ai: "Customized AI job recommendations",
-                      },
-                      {
-                        feature: "Relevance",
-                        traditional: "Limited relevance scoring",
-                        ai: "Context-aware AI-powered job matching",
-                      },
-                    ].map((row, i) => (
-                      <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-orange-50/30"}>
-                        <td className="px-6 py-4 font-semibold text-slate-900">{row.feature}</td>
-                        <td className="px-6 py-4 text-slate-600">{row.traditional}</td>
-                        <td className="px-6 py-4 text-[#ff4c00] font-semibold">{row.ai}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+            <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
+              <div className="hidden grid-cols-[1fr_1.4fr_1.4fr] gap-4 border-b border-gray-100 bg-gray-50 px-6 py-4 sm:grid">
+                <span className="text-xs font-extrabold uppercase tracking-wide text-gray-400">Feature</span>
+                <span className="text-xs font-extrabold uppercase tracking-wide text-gray-400">Traditional Job Boards</span>
+                <span className="text-xs font-extrabold uppercase tracking-wide text-[#ff4c00]">AI-Powered Job Matching Platform</span>
+              </div>
+              <div className="divide-y divide-gray-100">
+                {[
+                  {
+                    feature: "Search Method",
+                    traditional: "Manual keyword search",
+                    ai: "Intelligent job matching algorithm",
+                  },
+                  {
+                    feature: "Listings",
+                    traditional: "Generic listings",
+                    ai: "Personalized job recommendations",
+                  },
+                  {
+                    feature: "Resume Alignment",
+                    traditional: "No resume alignment",
+                    ai: "AI match resume to a job description",
+                  },
+                  {
+                    feature: "Filtering",
+                    traditional: "Time-consuming filtering",
+                    ai: "Smart suitability ranking",
+                  },
+                  {
+                    feature: "Personalization",
+                    traditional: "Same results for everyone",
+                    ai: "Customized AI job recommendations",
+                  },
+                  {
+                    feature: "Relevance",
+                    traditional: "Limited relevance scoring",
+                    ai: "Context-aware AI-powered job matching",
+                  },
+                ].map((row) => (
+                  <div
+                    key={row.feature}
+                    className="grid grid-cols-1 gap-2 px-6 py-5 sm:grid-cols-[1fr_1.4fr_1.4fr] sm:items-center sm:gap-4"
+                  >
+                    <span className="text-[14px] font-extrabold text-black">{row.feature}</span>
+                    <span className="flex items-center gap-2 text-[14px] text-gray-500">
+                      <X size={15} className="shrink-0 text-gray-300" />
+                      {row.traditional}
+                    </span>
+                    <span className="flex items-center gap-2 text-[14px] font-semibold text-[#ff4c00]">
+                      <CheckCircle size={15} className="shrink-0 text-[#ff4c00]" />
+                      {row.ai}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
         {/* Who Can Use Section */}
-        <section className="bg-[#fff7f2] py-24">
-          <div className="max-w-6xl mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+        <section className="px-4 py-20 sm:py-28 md:px-6">
+          <div className="mx-auto max-w-[1100px]">
+            <div className="mx-auto mb-12 max-w-[640px] text-center">
+              <h2 className="text-[28px] font-extrabold leading-[1.1] text-black sm:text-[34px]">
                 Who Can Use This <span className="text-[#ff4c00]">AI Job Matching Platform?</span>
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 "Fresh graduates",
                 "Entry-level professionals",
@@ -625,10 +618,12 @@ export default function AIJobMatchingPlatformPage() {
               ].map((persona) => (
                 <div
                   key={persona}
-                  className="bg-white border-2 border-[#ffd6c2] rounded-xl p-6 text-center hover:shadow-lg transition hover:-translate-y-1"
+                  className="rounded-2xl border border-gray-200 bg-white p-6 text-center transition hover:-translate-y-0.5 hover:border-[#ff4c00]/40 hover:bg-[#fff7f3] hover:shadow-md"
                 >
-                  <CheckCircle className="h-6 w-6 text-[#ff4c00] mx-auto mb-3" />
-                  <p className="font-semibold text-slate-900">{persona}</p>
+                  <span className="mx-auto mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-[#ff4c00]/10 text-[#ff4c00]">
+                    <CheckCircle size={18} strokeWidth={2.5} />
+                  </span>
+                  <p className="font-bold text-black">{persona}</p>
                 </div>
               ))}
             </div>
@@ -636,95 +631,75 @@ export default function AIJobMatchingPlatformPage() {
         </section>
 
         {/* Final CTA Section */}
-        <section className="relative bg-gradient-to-br from-[#fff7f2] via-[#fff7f2] to-white py-24 overflow-hidden">
+        <section className="px-4 py-20 sm:py-28 md:px-6">
+          <div className="mx-auto max-w-[1100px]">
+            <div className="relative overflow-hidden rounded-[40px] bg-[#fff1ea] px-8 py-16 text-center shadow-[0_10px_40px_rgba(0,0,0,0.06)] md:px-16 md:py-20">
+              <div className="absolute -top-20 -left-20 h-72 w-72 rounded-full bg-[#ff4c00]/10 blur-3xl" />
+              <div className="absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-[#ff4c00]/10 blur-3xl" />
 
-          {/* soft glow */}
-          <div className="absolute -top-20 -left-20 w-72 h-72 bg-[#ff4c00]/10 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-[#ff4c00]/10 rounded-full blur-3xl"></div>
+              <h2 className="relative text-[28px] font-extrabold leading-[1.15] text-black sm:text-[40px]">
+                Find the Right Job Faster with <span className="text-[#ff4c00]">AI-Powered Job Matching</span>
+              </h2>
 
-          <div className="max-w-4xl mx-auto px-4 md:px-6 text-center relative z-10">
+              <p className="relative mx-auto mt-5 max-w-[560px] text-[15px] leading-7 text-gray-600">
+                Stop relying on outdated job search methods.
+              </p>
 
-            {/* Heading */}
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 text-slate-900 leading-tight">
-              Find the Right Job Faster with <span className="text-[#ff4c00]">AI-Powered Job Matching</span>
-            </h2>
+              <p className="relative mt-2 text-[15px] leading-7 text-gray-600">
+                With our AI job matching platform, you can:
+              </p>
 
-            {/* Subtext */}
-            <p className="text-lg md:text-xl text-slate-700 mb-6 max-w-2xl mx-auto">
-              Stop relying on outdated job search methods.
-            </p>
-
-            <p className="text-base md:text-lg text-slate-700 mb-10">
-              With our AI job matching platform, you can:
-            </p>
-
-            {/* Benefits */}
-            <div className="grid md:grid-cols-2 gap-4 mb-12 text-left max-w-2xl mx-auto">
-              {[
-                "Access smarter AI job recommendations",
-                "Improve resume-job alignment",
-                "Prioritize high-fit opportunities",
-                "Reduce job search time dramatically",
-                "Apply with confidence",
-                "Get personalized job matches based on your skills",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-3 bg-white/70 backdrop-blur-sm px-4 py-3 rounded-xl border border-[#ffd6c2] shadow-sm hover:shadow-md transition"
-                >
-                  <CheckCircle className="h-5 w-5 text-[#ff4c00] shrink-0" />
-                  <span className="text-slate-700 font-medium">{item}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA */}
-            <div className="flex flex-col items-center gap-5">
-
-              <button
-                type="button"
-                onClick={() => updateCtaUrl("/ai-job-matching-platform", "Start Matching Jobs Now")}
-                className="
-        group
-        inline-flex
-        items-center
-        justify-center
-        rounded-full
-        bg-[#ff4c00]
-        px-12
-        py-5
-        text-lg
-        font-semibold
-        text-white
-        shadow-[0_10px_30px_rgba(255,76,0,0.3)]
-        hover:-translate-y-[3px]
-        hover:shadow-[0_15px_40px_rgba(255,76,0,0.4)]
-        active:translate-y-[2px]
-        transition-all duration-200
-      "
-              >
-                Start Matching Jobs Now
-                <span className="ml-2 group-hover:translate-x-1 transition">→</span>
-              </button>
-
-              {/* Trust badges */}
-              <div className="flex flex-wrap justify-center gap-3 text-sm text-slate-600">
+              {/* Benefits */}
+              <div className="relative mx-auto mt-9 grid max-w-[640px] gap-3 text-left sm:grid-cols-2">
                 {[
-                  "Instant matches",
-                  "No complicated setup",
-                  "Secure & confidential",
+                  "Access smarter AI job recommendations",
+                  "Improve resume-job alignment",
+                  "Prioritize high-fit opportunities",
+                  "Reduce job search time dramatically",
+                  "Apply with confidence",
+                  "Get personalized job matches based on your skills",
                 ].map((item) => (
-                  <span
+                  <div
                     key={item}
-                    className="px-4 py-2 rounded-full bg-white border border-[#ffd6c2] shadow-sm"
+                    className="flex items-center gap-3 rounded-xl border border-[#ffd6c2] bg-white px-4 py-3 shadow-sm"
                   >
-                    • {item}
-                  </span>
+                    <CheckCircle className="h-5 w-5 text-[#ff4c00] shrink-0" />
+                    <span className="text-[14px] font-medium text-gray-700">{item}</span>
+                  </div>
                 ))}
               </div>
 
-            </div>
+              {/* CTA */}
+              <div className="relative mt-9 flex flex-col items-center gap-5">
 
+                <button
+                  type="button"
+                  onClick={() => updateCtaUrl("/ai-job-matching-platform", "Start Matching Jobs Now")}
+                  className="inline-flex h-[52px] items-center justify-center gap-2 rounded-full bg-[#ff4c00] px-8 text-[14px] font-bold text-white shadow-[0_4px_0_black] transition-all duration-200 hover:-translate-y-0.5"
+                >
+                  Start Matching Jobs Now
+                  <ArrowRight size={16} />
+                </button>
+
+                {/* Trust badges */}
+                <div className="flex flex-wrap justify-center gap-3 text-sm text-gray-600">
+                  {[
+                    "Instant matches",
+                    "No complicated setup",
+                    "Secure & confidential",
+                  ].map((item) => (
+                    <span
+                      key={item}
+                      className="px-4 py-2 rounded-full bg-white border border-[#ffd6c2] shadow-sm"
+                    >
+                      • {item}
+                    </span>
+                  ))}
+                </div>
+
+              </div>
+
+            </div>
           </div>
         </section>
 

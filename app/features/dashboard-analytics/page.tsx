@@ -569,7 +569,10 @@ export default function DashboardAnalyticsPage() {
         <section className="px-4 py-20 sm:py-28">
           <div className="mx-auto max-w-[1000px]">
             <div className="mb-12 text-center">
-              <h2 className="text-[26px] font-extrabold leading-tight text-black sm:text-[32px]">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#ff4c00]/20 bg-[#fff0e8] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#ff4c00]">
+                Comparison
+              </span>
+              <h2 className="mt-5 text-[26px] font-extrabold leading-tight text-black sm:text-[32px]">
                 Why Job Search Analytics Beats Tracking Applications in Spreadsheets
               </h2>
               <p className="mx-auto mt-4 max-w-[560px] text-[15px] font-medium leading-7 text-gray-600">
@@ -578,24 +581,51 @@ export default function DashboardAnalyticsPage() {
               </p>
             </div>
 
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div className="rounded-3xl border border-gray-200 bg-white p-7">
-                <h3 className="mb-5 text-sm font-extrabold uppercase tracking-wide text-gray-400">Spreadsheet</h3>
-                <ul className="space-y-4">
+            <div className="relative grid gap-6 sm:grid-cols-2">
+              <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 sm:flex">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-[11px] font-extrabold uppercase tracking-wide text-gray-400 shadow-md">
+                  vs
+                </span>
+              </div>
+
+              <div className="rounded-3xl border border-gray-200 bg-white p-7 shadow-sm transition-shadow duration-300 hover:shadow-md sm:p-8">
+                <div className="mb-6 flex items-center gap-3">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gray-100 text-gray-400">
+                    <XCircle size={17} />
+                  </span>
+                  <h3 className="text-sm font-extrabold uppercase tracking-wide text-gray-400">Spreadsheet</h3>
+                </div>
+                <ul>
                   {comparisonRows.map((row) => (
-                    <li key={row.spreadsheet} className="flex items-center gap-3 text-[14px] font-medium text-gray-500">
-                      <XCircle size={16} className="shrink-0 text-gray-300" />
+                    <li
+                      key={row.spreadsheet}
+                      className="flex items-center gap-3 border-b border-gray-100 py-3.5 text-[14px] font-medium text-gray-500 last:border-0"
+                    >
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gray-100">
+                        <XCircle size={14} className="text-gray-400" />
+                      </span>
                       {row.spreadsheet}
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="rounded-3xl border border-[#ff4c00]/25 bg-[#fff7f3] p-7">
-                <h3 className="mb-5 text-sm font-extrabold uppercase tracking-wide text-[#ff4c00]">FlashFire</h3>
-                <ul className="space-y-4">
+
+              <div className="relative overflow-hidden rounded-3xl border-2 border-[#ff4c00]/20 bg-gradient-to-b from-[#fff7f3] to-white p-7 shadow-[0_10px_30px_rgba(255,76,0,0.08)] transition-shadow duration-300 hover:shadow-[0_14px_40px_rgba(255,76,0,0.14)] sm:p-8">
+                <div className="mb-6 flex items-center gap-3">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#ff4c00] text-white shadow-sm">
+                    <CheckCircle size={17} />
+                  </span>
+                  <h3 className="text-sm font-extrabold uppercase tracking-wide text-[#ff4c00]">FlashFire</h3>
+                </div>
+                <ul>
                   {comparisonRows.map((row) => (
-                    <li key={row.flashfire} className="flex items-center gap-3 text-[14px] font-extrabold text-black">
-                      <CheckCircle size={16} className="shrink-0 text-[#ff4c00]" />
+                    <li
+                      key={row.flashfire}
+                      className="flex items-center gap-3 border-b border-[#ff4c00]/10 py-3.5 text-[14px] font-extrabold text-black last:border-0"
+                    >
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#ff4c00]/15">
+                        <CheckCircle size={14} className="text-[#ff4c00]" />
+                      </span>
                       {row.flashfire}
                     </li>
                   ))}
@@ -609,7 +639,10 @@ export default function DashboardAnalyticsPage() {
         <section className="bg-[#fffaf6] px-4 py-20 sm:py-28">
           <div className="mx-auto max-w-[1000px]">
             <div className="mb-12 text-center">
-              <h2 className="text-[26px] font-extrabold leading-tight text-black sm:text-[32px]">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#ff4c00]/20 bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#ff4c00]">
+                The Problem
+              </span>
+              <h2 className="mt-5 text-[26px] font-extrabold leading-tight text-black sm:text-[32px]">
                 Why Most Job Seekers Don&apos;t Know What&apos;s Working
               </h2>
               <p className="mx-auto mt-4 max-w-[560px] text-[15px] font-medium leading-7 text-gray-600">
@@ -618,24 +651,51 @@ export default function DashboardAnalyticsPage() {
               </p>
             </div>
 
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div className="rounded-3xl border border-gray-200 bg-white p-7">
-                <h3 className="mb-5 text-sm font-extrabold uppercase tracking-wide text-gray-400">Without FlashFire</h3>
-                <ul className="space-y-4">
+            <div className="relative grid gap-6 sm:grid-cols-2">
+              <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 sm:flex">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-[11px] font-extrabold uppercase tracking-wide text-gray-400 shadow-md">
+                  vs
+                </span>
+              </div>
+
+              <div className="rounded-3xl border border-gray-200 bg-white p-7 shadow-sm transition-shadow duration-300 hover:shadow-md sm:p-8">
+                <div className="mb-6 flex items-center gap-3">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gray-100 text-gray-400">
+                    <XCircle size={17} />
+                  </span>
+                  <h3 className="text-sm font-extrabold uppercase tracking-wide text-gray-400">Without FlashFire</h3>
+                </div>
+                <ul>
                   {problemRows.map((row) => (
-                    <li key={row.without} className="flex items-center gap-3 text-[14px] font-medium text-gray-500">
-                      <XCircle size={16} className="shrink-0 text-gray-300" />
+                    <li
+                      key={row.without}
+                      className="flex items-center gap-3 border-b border-gray-100 py-3.5 text-[14px] font-medium text-gray-500 last:border-0"
+                    >
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gray-100">
+                        <XCircle size={14} className="text-gray-400" />
+                      </span>
                       {row.without}
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="rounded-3xl border border-[#ff4c00]/25 bg-[#fff7f3] p-7">
-                <h3 className="mb-5 text-sm font-extrabold uppercase tracking-wide text-[#ff4c00]">With FlashFire</h3>
-                <ul className="space-y-4">
+
+              <div className="relative overflow-hidden rounded-3xl border-2 border-[#ff4c00]/20 bg-gradient-to-b from-[#fff7f3] to-white p-7 shadow-[0_10px_30px_rgba(255,76,0,0.08)] transition-shadow duration-300 hover:shadow-[0_14px_40px_rgba(255,76,0,0.14)] sm:p-8">
+                <div className="mb-6 flex items-center gap-3">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#ff4c00] text-white shadow-sm">
+                    <CheckCircle size={17} />
+                  </span>
+                  <h3 className="text-sm font-extrabold uppercase tracking-wide text-[#ff4c00]">With FlashFire</h3>
+                </div>
+                <ul>
                   {problemRows.map((row) => (
-                    <li key={row.withFlashfire} className="flex items-center gap-3 text-[14px] font-extrabold text-black">
-                      <CheckCircle size={16} className="shrink-0 text-[#ff4c00]" />
+                    <li
+                      key={row.withFlashfire}
+                      className="flex items-center gap-3 border-b border-[#ff4c00]/10 py-3.5 text-[14px] font-extrabold text-black last:border-0"
+                    >
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#ff4c00]/15">
+                        <CheckCircle size={14} className="text-[#ff4c00]" />
+                      </span>
                       {row.withFlashfire}
                     </li>
                   ))}
