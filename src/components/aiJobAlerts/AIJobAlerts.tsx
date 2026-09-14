@@ -15,32 +15,33 @@ const updateCtaUrl = (basePath: string, label: string) => {
   window.dispatchEvent(new CustomEvent("showStrategyCallCard"));
 };
 
+const featureCardBase =
+  "flex flex-col rounded-[0.6rem] border border-[#94959a]/60 bg-[#fffdfc] p-6 text-left shadow-[0_2px_6px_rgba(0,0,0,0.03)] transition-all duration-200 hover:-translate-y-[3px] hover:border-[#ff4c00]/50 hover:shadow-[0_8px_16px_rgba(0,0,0,0.08)]";
+
 export default function AIJobAlertsPage() {
   const ctaLabel = "Get Started";
   const [activeFaqIndex, setActiveFaqIndex] = useState<number | null>(null);
 
   return (
-    <div className="bg-white text-[#111827] min-h-screen font-sans">
+    <div className="bg-white text-[#111827] min-h-screen font-['Space_Grotesk',sans-serif]">
       <main className="mt-0">
         {/* Hero Section */}
-        <section className="relative overflow-hidden py-16 md:py-24">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#fff1ea] via-white to-[#fff7f3]" />
-
+        <section className="relative overflow-hidden bg-[#f7e6df] py-16 md:py-24">
           <div className="relative mx-auto grid max-w-[1240px] gap-14 px-4 sm:px-6 lg:px-8 lg:grid-cols-2 lg:items-center">
 
               {/* LEFT - Content */}
               <div className="max-w-xl space-y-8">
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#ff4c00]/20 bg-[#fff0e8] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#ff4c00]">
+                <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#f55d1d] shadow-sm">
                   <Sparkles size={14} />
                   AI Job Alerts & Smart Job Notification App
                 </div>
 
-                <h1 className="text-[34px] font-extrabold leading-[1.14] text-black sm:text-[52px] lg:leading-[1.05]">
+                <h1 className="text-[34px] font-bold leading-[1.14] tracking-[-0.02em] text-black sm:text-[48px] lg:leading-[1.05]">
                   Stop refreshing job boards and{" "}
-                  <span className="text-[#ff4c00]">missing opportunities</span>
+                  <span className="text-[#f55d1d]">missing opportunities</span>
                 </h1>
 
-                <p className="text-[16px] font-medium leading-8 text-gray-600">
+                <p className="max-w-[500px] font-['Satoshi',sans-serif] text-[16px] font-medium leading-[1.6] text-[#3a3a3a]">
                   With our AI job alerts, you receive instant job alerts the moment relevant roles are posted — allowing you to apply before most candidates even see the listing.
                 </p>
 
@@ -51,11 +52,11 @@ export default function AIJobAlertsPage() {
                     "Eliminate irrelevant alerts",
                     "Reduce job search stress",
                   ].map((text) => (
-                    <div key={text} className="flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+                    <div key={text} className="flex items-center gap-3 rounded-[0.5rem] bg-white p-4 shadow-[0_2px_6px_rgba(0,0,0,0.04)]">
                       <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#ff4c00]/10 flex items-center justify-center">
                         <CheckCircle className="h-3.5 w-3.5 text-[#ff4c00]" />
                       </div>
-                      <span className="text-[13px] font-semibold text-gray-700">{text}</span>
+                      <span className="font-['Satoshi',sans-serif] text-[13px] font-bold text-[#111]">{text}</span>
                     </div>
                   ))}
                 </div>
@@ -64,26 +65,26 @@ export default function AIJobAlertsPage() {
                   <button
                     type="button"
                     onClick={() => updateCtaUrl("/ai-job-alerts", ctaLabel)}
-                    className="inline-flex h-[52px] items-center justify-center gap-2 rounded-xl bg-[#ff4c00] px-7 text-[14px] font-bold text-white shadow-[0_3px_0_black] transition hover:opacity-90"
+                    className="inline-flex h-[54px] touch-manipulation items-center justify-center gap-2 rounded-[10px] bg-[#ff4c00] px-7 text-[16px] font-bold text-white shadow-[0_6px_0_#000] outline-none transition duration-200 hover:-translate-y-0.5 hover:bg-[#ff5a1f] hover:shadow-[0_6px_0_#000] focus-visible:ring-2 focus-visible:ring-[#ff5a1f] focus-visible:ring-offset-2"
                   >
                     {ctaLabel}
-                    <ArrowRight size={14} />
+                    <ArrowRight size={16} />
                   </button>
                 </div>
               </div>
 
               {/* RIGHT - Dashboard mockup card */}
               <div className="flex justify-center lg:justify-end">
-                <div className="w-full max-w-[440px] overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-xl">
+                <div className="w-full max-w-[440px] overflow-hidden rounded-[0.75rem] border border-[#94959a]/40 bg-[#fffdfc] shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
                   {/* Card Header */}
-                  <div className="flex items-center justify-between border-b bg-gray-50 px-6 py-5">
+                  <div className="flex items-center justify-between border-b border-[#94959a]/30 bg-white px-6 py-5">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-[#ff4c00] flex items-center justify-center shadow-sm">
+                      <div className="w-10 h-10 rounded-[10px] bg-[#ff4c00] flex items-center justify-center shadow-[0_3px_0_#000]">
                         <BellRing className="w-5 h-5 text-white" />
                       </div>
                       <div>
                         <p className="text-sm font-bold text-black uppercase tracking-wide">Live Job Alerts</p>
-                        <p className="text-xs text-gray-500">Real-time notifications</p>
+                        <p className="font-['Satoshi',sans-serif] text-xs text-[#78716d]">Real-time notifications</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold">
@@ -102,38 +103,38 @@ export default function AIJobAlertsPage() {
                     ].map((job, idx) => (
                       <div
                         key={idx}
-                        className="rounded-2xl border border-gray-100 bg-white p-4 transition-colors duration-200 hover:border-[#ff4c00]/30"
+                        className="rounded-[0.5rem] border border-[#94959a]/30 bg-white p-4 transition-colors duration-200 hover:border-[#ff4c00]/40"
                       >
                         <div className="flex items-start justify-between mb-2">
-                          <p className="text-sm font-bold text-gray-800">{job.role}</p>
-                          <span className="text-xs font-bold text-[#ff4c00] bg-[#ff4c00]/10 px-2 py-1 rounded-full">NEW</span>
+                          <p className="text-sm font-bold text-[#111]">{job.role}</p>
+                          <span className="text-xs font-bold text-white bg-[#ff4c00] px-2 py-1 rounded-full">NEW</span>
                         </div>
                         <div className="flex items-center gap-2 mb-3">
                           {job.tags.map((tag) => (
-                            <span key={tag} className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-md">{tag}</span>
+                            <span key={tag} className="font-['Satoshi',sans-serif] text-xs text-[#78716d] bg-[#f7e6df] px-2 py-0.5 rounded-md">{tag}</span>
                           ))}
                         </div>
                         <div className="flex items-center justify-between">
                           <span className="text-sm font-bold text-[#ff4c00]">Match: {job.score}</span>
-                          <span className="text-xs text-gray-400">{job.time}</span>
+                          <span className="font-['Satoshi',sans-serif] text-xs text-[#a7a7a7]">{job.time}</span>
                         </div>
                       </div>
                     ))}
                   </div>
 
                   {/* Stats Footer */}
-                  <div className="mt-6 pt-6 border-t border-gray-100 grid grid-cols-3 gap-3 text-center">
-                    <div className="p-3 rounded-xl bg-[#fff7f3]">
-                      <p className="text-2xl font-bold text-black">2.4k</p>
-                      <p className="text-xs text-gray-500 mt-1">Jobs Today</p>
+                  <div className="mt-6 pt-6 border-t border-[#94959a]/30 grid grid-cols-3 gap-3 text-center">
+                    <div className="p-3 rounded-[0.5rem] bg-[#f7e6df]">
+                      <p className="text-2xl font-black text-black">2.4k</p>
+                      <p className="font-['Satoshi',sans-serif] text-xs text-[#78716d] mt-1">Jobs Today</p>
                     </div>
-                    <div className="p-3 rounded-xl bg-[#fff7f3]">
-                      <p className="text-2xl font-bold text-[#ff4c00]">98%</p>
-                      <p className="text-xs text-gray-500 mt-1">Match Rate</p>
+                    <div className="p-3 rounded-[0.5rem] bg-[#f7e6df]">
+                      <p className="text-2xl font-black text-[#ff4c00]">98%</p>
+                      <p className="font-['Satoshi',sans-serif] text-xs text-[#78716d] mt-1">Match Rate</p>
                     </div>
-                    <div className="p-3 rounded-xl bg-[#fff7f3]">
-                      <p className="text-2xl font-bold text-black">&lt;3s</p>
-                      <p className="text-xs text-gray-500 mt-1">Alert Speed</p>
+                    <div className="p-3 rounded-[0.5rem] bg-[#f7e6df]">
+                      <p className="text-2xl font-black text-black">&lt;3s</p>
+                      <p className="font-['Satoshi',sans-serif] text-xs text-[#78716d] mt-1">Alert Speed</p>
                     </div>
                   </div>
                   </div>
@@ -143,23 +144,23 @@ export default function AIJobAlertsPage() {
         </section>
 
         {/* Problem Section */}
-        <section className="bg-[#fffaf6] px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <section className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
           <div className="mx-auto max-w-[1100px]">
             <div className="mx-auto mb-14 max-w-[640px] text-center">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#ff4c00]/20 bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#ff4c00]">The Problem</span>
-              <h2 className="mt-5 text-[28px] font-extrabold leading-[1.1] text-black sm:text-[34px]">
-                Why Job Seekers Struggle with <span className="text-[#ff4c00]">Traditional Job Alerts</span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#f7e6df] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#f55d1d]">The Problem</span>
+              <h2 className="mt-5 text-[28px] font-bold leading-[1.1] tracking-[-0.02em] text-black sm:text-[34px]">
+                Why Job Seekers Struggle with <span className="text-[#f55d1d]">Traditional Job Alerts</span>
               </h2>
-              <p className="mt-4 text-[15px] font-medium leading-7 text-gray-600">
+              <p className="mt-4 font-['Satoshi',sans-serif] text-[15px] font-medium leading-7 text-[#3a3a3a]">
                 Most job alert systems are slow, generic, and overloaded with irrelevant listings.
               </p>
             </div>
 
-            <div className="mx-auto grid max-w-[1000px] items-start gap-8 lg:grid-cols-2">
+            <div className="mx-auto max-w-[1000px] space-y-8">
               {/* Pain Points */}
-              <div className="space-y-4">
-                <p className="mb-4 text-[15px] font-bold text-black">This leads to:</p>
-                <div className="grid gap-3">
+              <div>
+                <p className="mb-4 text-center font-['Satoshi',sans-serif] text-[15px] font-bold text-black">This leads to:</p>
+                <div className="flex flex-wrap justify-center gap-3">
                   {[
                     "Delayed notifications",
                     "Spam job emails",
@@ -167,40 +168,42 @@ export default function AIJobAlertsPage() {
                     "Endless filtering",
                     "Application burnout",
                   ].map((item) => (
-                    <div key={item} className="flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-4 transition-colors duration-200 hover:border-gray-300">
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gray-100">
-                        <X className="h-4 w-4 text-gray-400" />
+                    <div key={item} className="flex items-center gap-2 rounded-full border border-[#94959a]/40 bg-white px-4 py-2.5">
+                      <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-100">
+                        <X className="h-3.5 w-3.5 text-gray-400" />
                       </div>
-                      <span className="text-[14px] font-semibold text-gray-700">{item}</span>
+                      <span className="font-['Satoshi',sans-serif] text-[13px] font-bold text-[#3a3a3a]">{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Solution Cards */}
-              <div className="space-y-5">
-                <div className="rounded-2xl border-l-4 border-[#ff4c00] bg-white p-6 shadow-sm">
-                  <p className="mb-3 text-lg font-bold text-black">
-                    Tired of refreshing LinkedIn every hour?
-                  </p>
-                  <p className="mb-2 text-gray-700">
-                    Frustrated to see &quot;500+ applicants&quot; have already applied?
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    By the time traditional alerts arrive, the opportunity may already be saturated.
-                  </p>
-                </div>
-
-                <div className="rounded-2xl border-2 border-[#ff4c00]/20 bg-[#fff7f3] p-6">
-                  <div className="mb-3 flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#ff4c00] shadow-sm">
-                      <CheckCircle className="w-5 h-5 text-white" />
-                    </div>
-                    <p className="text-lg font-bold text-black">The Solution</p>
+              {/* Solution spotlight — dark card */}
+              <div className="relative overflow-hidden rounded-[0.85rem] bg-black px-8 py-10 sm:px-12 sm:py-12">
+                <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#ff4c00]/20 blur-3xl" />
+                <div className="relative grid gap-8 md:grid-cols-2 md:items-center">
+                  <div>
+                    <p className="mb-3 text-xl font-bold text-white">
+                      Tired of refreshing LinkedIn every hour?
+                    </p>
+                    <p className="mb-2 font-['Satoshi',sans-serif] text-[#e6e0dc]">
+                      Frustrated to see &quot;500+ applicants&quot; have already applied?
+                    </p>
+                    <p className="font-['Satoshi',sans-serif] text-sm text-[#a7a7a7]">
+                      By the time traditional alerts arrive, the opportunity may already be saturated.
+                    </p>
                   </div>
-                  <p className="text-[14px] leading-relaxed text-gray-700">
-                    Our AI job alerts platform solves this using real-time job updates and intelligent filtering.
-                  </p>
+                  <div className="rounded-[0.6rem] border border-white/10 bg-white/5 p-6">
+                    <div className="mb-3 flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-[#ff4c00] shadow-[0_3px_0_#000]">
+                        <CheckCircle className="w-5 h-5 text-white" />
+                      </div>
+                      <p className="text-lg font-bold text-white">The Solution</p>
+                    </div>
+                    <p className="font-['Satoshi',sans-serif] text-[14px] leading-relaxed text-[#e6e0dc]">
+                      Our AI job alerts platform solves this using real-time job updates and intelligent filtering.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -208,12 +211,12 @@ export default function AIJobAlertsPage() {
         </section>
 
         {/* Benefits Section */}
-        <section className="px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <section className="bg-[#fbf0eb] px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
           <div className="mx-auto max-w-[1100px]">
             <div className="mx-auto mb-14 max-w-[640px] text-center">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#ff4c00]/20 bg-[#fff0e8] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#ff4c00]">Benefits</span>
-              <h2 className="mt-5 text-[28px] font-extrabold leading-[1.1] text-black sm:text-[34px]">
-                Key Benefits <span className="text-[#ff4c00]">at a Glance</span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#f55d1d] shadow-sm">Benefits</span>
+              <h2 className="mt-5 text-[28px] font-bold leading-[1.1] tracking-[-0.02em] text-black sm:text-[34px]">
+                Key Benefits <span className="text-[#f55d1d]">at a Glance</span>
               </h2>
             </div>
 
@@ -226,17 +229,14 @@ export default function AIJobAlertsPage() {
                 { title: "Avoid Application Fatigue", desc: "Apply only to high-fit roles that match your skills." },
                 { title: "Smarter Career Discovery", desc: "Powered by AI-powered career alerts and insights." },
               ].map((benefit, index) => (
-                <div
-                  key={index}
-                  className="group rounded-2xl border border-gray-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#ff4c00]/30 hover:shadow-md"
-                >
-                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-[#ff4c00]/10 transition-colors group-hover:bg-[#ff4c00]/20">
+                <div key={index} className={featureCardBase}>
+                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#ff4c00]/10">
                     <CheckCircle className="w-5 h-5 text-[#ff4c00]" />
                   </div>
                   <h3 className="mb-2 text-lg font-bold text-black">
                     {benefit.title}
                   </h3>
-                  <p className="text-[14px] leading-6 text-gray-600">
+                  <p className="font-['Satoshi',sans-serif] text-[14px] leading-6 text-[#3a3a3a]">
                     {benefit.desc}
                   </p>
                 </div>
@@ -246,21 +246,21 @@ export default function AIJobAlertsPage() {
         </section>
 
         {/* How It Works */}
-        <section className="bg-[#fffaf6] px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <section className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
 
   <div className="mx-auto max-w-[900px]">
 
     {/* Heading */}
     <div className="mx-auto mb-16 max-w-[640px] text-center">
-      <span className="inline-flex items-center gap-2 rounded-full border border-[#ff4c00]/20 bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#ff4c00]">
+      <span className="inline-flex items-center gap-2 rounded-full bg-[#f7e6df] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#f55d1d]">
         How It Works
       </span>
 
-      <h2 className="mt-5 text-[28px] font-extrabold leading-[1.1] text-black sm:text-[34px]">
-        How Our <span className="text-[#ff4c00]">AI Job Alerts System Works</span>
+      <h2 className="mt-5 text-[28px] font-bold leading-[1.1] tracking-[-0.02em] text-black sm:text-[34px]">
+        How Our <span className="text-[#f55d1d]">AI Job Alerts System Works</span>
       </h2>
 
-      <p className="mt-4 text-[15px] font-medium leading-7 text-gray-600">
+      <p className="mt-4 font-['Satoshi',sans-serif] text-[15px] font-medium leading-7 text-[#3a3a3a]">
         Setting up your alerts takes less than 2 minutes.
       </p>
     </div>
@@ -286,18 +286,18 @@ export default function AIJobAlertsPage() {
           >
 
             {/* Step circle */}
-            <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#ff4c00] text-lg font-bold text-white shadow-md">
+            <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-[10px] bg-[#ff4c00] text-lg font-bold text-white shadow-[0_4px_0_#000]">
               {item.step}
             </div>
 
             {/* Card */}
-            <div className="flex-1 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-[#ff4c00]/30 hover:shadow-md">
+            <div className="flex-1 rounded-[0.6rem] border border-[#94959a]/40 bg-[#fffdfc] p-6 transition-all duration-300 hover:border-[#ff4c00]/40 hover:-translate-y-[2px] hover:shadow-[0_8px_16px_rgba(0,0,0,0.06)]">
 
               <h3 className="mb-2 text-lg font-bold text-black">
                 {item.title}
               </h3>
 
-              <p className="text-[14px] leading-relaxed text-gray-600">
+              <p className="font-['Satoshi',sans-serif] text-[14px] leading-relaxed text-[#3a3a3a]">
                 {item.desc}
               </p>
 
@@ -311,12 +311,12 @@ export default function AIJobAlertsPage() {
 </section>
 
         {/* Features Section */}
-        <section className="bg-[#fff7f3] px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <section className="bg-[#fbf0eb] px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
           <div className="mx-auto max-w-[1100px]">
             <div className="mx-auto mb-14 max-w-[640px] text-center">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#ff4c00]/20 bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#ff4c00]">Features</span>
-              <h2 className="mt-5 text-[28px] font-extrabold leading-[1.1] text-black sm:text-[34px]">
-                Key Features of Our <span className="text-[#ff4c00]">AI-Powered Job Notification App</span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#f55d1d] shadow-sm">Features</span>
+              <h2 className="mt-5 text-[28px] font-bold leading-[1.1] tracking-[-0.02em] text-black sm:text-[34px]">
+                Key Features of Our <span className="text-[#f55d1d]">AI-Powered Job Notification App</span>
               </h2>
             </div>
 
@@ -334,10 +334,10 @@ export default function AIJobAlertsPage() {
               ].map((feature, index) => (
                 <div
                   key={index}
-                  className="group flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-5 transition-all duration-200 hover:border-[#ff4c00]/40 hover:shadow-sm"
+                  className="group flex items-center gap-4 rounded-[0.6rem] border border-[#94959a]/40 bg-white p-5 transition-all duration-200 hover:border-[#ff4c00]/50 hover:-translate-y-[2px] hover:shadow-[0_6px_14px_rgba(0,0,0,0.06)]"
                 >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#ff4c00]/10 transition-colors group-hover:bg-[#ff4c00]/20">
-                    <Check className="w-5 h-5 text-[#ff4c00]" />
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[10px] bg-[#ff4c00] transition-colors">
+                    <Check className="w-5 h-5 text-white" />
                   </div>
                   <h3 className="text-[14px] font-bold text-black">
                     {feature}
@@ -349,26 +349,26 @@ export default function AIJobAlertsPage() {
         </section>
 
         {/* Comparison Section */}
-        <section className="bg-[#fffaf6] px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <section className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
           <div className="mx-auto max-w-[1000px]">
             <div className="mx-auto mb-14 max-w-[640px] text-center">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#ff4c00]/20 bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#ff4c00]">Comparison</span>
-              <h2 className="mt-5 text-[28px] font-extrabold leading-[1.1] text-black sm:text-[34px]">
-                AI Job Alerts vs <span className="text-[#ff4c00]">Traditional Job Alerts</span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#f7e6df] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#f55d1d]">Comparison</span>
+              <h2 className="mt-5 text-[28px] font-bold leading-[1.1] tracking-[-0.02em] text-black sm:text-[34px]">
+                AI Job Alerts vs <span className="text-[#f55d1d]">Traditional Job Alerts</span>
               </h2>
             </div>
 
             <div className="relative grid gap-6 sm:grid-cols-2">
               <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 sm:flex">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-[11px] font-extrabold uppercase tracking-wide text-gray-400 shadow-md">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#94959a]/40 bg-white text-[11px] font-extrabold uppercase tracking-wide text-gray-400 shadow-md">
                   vs
                 </span>
               </div>
 
               {/* Traditional */}
-              <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-shadow duration-300 hover:shadow-md">
-                <div className="mb-6 flex items-center gap-3 border-b border-gray-100 pb-6">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gray-100">
+              <div className="rounded-[0.85rem] border border-[#94959a]/40 bg-[#fbf0eb] p-8">
+                <div className="mb-6 flex items-center gap-3 border-b border-[#94959a]/30 pb-6">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-white">
                     <X className="w-5 h-5 text-gray-400" />
                   </div>
                   <h3 className="text-lg font-bold text-black">
@@ -385,29 +385,30 @@ export default function AIJobAlertsPage() {
                     "Static filters",
                   ].map((item, index) => (
                     <li key={index} className="flex items-center gap-3 text-gray-500">
-                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gray-100">
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white">
                         <X className="h-3.5 w-3.5 text-gray-400" />
                       </div>
-                      <span className="text-[14px] font-medium">{item}</span>
+                      <span className="font-['Satoshi',sans-serif] text-[14px] font-medium">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              {/* AI Job Alerts */}
-              <div className="relative overflow-hidden rounded-3xl border-2 border-[#ff4c00]/20 bg-gradient-to-b from-[#fff7f3] to-white p-8 shadow-[0_10px_30px_rgba(255,76,0,0.08)] transition-shadow duration-300 hover:shadow-[0_14px_40px_rgba(255,76,0,0.14)]">
-                <div className="absolute top-0 right-0 rounded-bl-2xl bg-[#ff4c00] px-4 py-2 text-xs font-bold text-white">
+              {/* AI Job Alerts — dark spotlight card */}
+              <div className="relative overflow-hidden rounded-[0.85rem] bg-black p-8 shadow-[0_10px_30px_rgba(0,0,0,0.25)]">
+                <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#ff4c00]/20 blur-3xl" />
+                <div className="absolute top-0 right-0 rounded-bl-[0.6rem] bg-[#ff4c00] px-4 py-2 text-xs font-bold text-white">
                   RECOMMENDED
                 </div>
-                <div className="mb-6 flex items-center gap-3 border-b border-[#ff4c00]/10 pb-6">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#ff4c00] shadow-sm">
+                <div className="relative mb-6 flex items-center gap-3 border-b border-white/10 pb-6">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#ff4c00] shadow-[0_3px_0_#000]">
                     <CheckCircle className="w-5 h-5 text-white" />
                   </div>
-                  <h3 className="text-lg font-bold text-black">
+                  <h3 className="text-lg font-bold text-white">
                     AI Job Alerts Platform
                   </h3>
                 </div>
-                <ul className="space-y-4">
+                <ul className="relative space-y-4">
                   {[
                     "Personalized job recommendations",
                     "Instant job alerts",
@@ -416,11 +417,11 @@ export default function AIJobAlertsPage() {
                     "Precision-based targeting",
                     "Adaptive AI matching",
                   ].map((item, index) => (
-                    <li key={index} className="flex items-center gap-3 text-black">
-                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#ff4c00]/15">
+                    <li key={index} className="flex items-center gap-3 text-white">
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#ff4c00]/20">
                         <Check className="h-3.5 w-3.5 text-[#ff4c00]" />
                       </div>
-                      <span className="text-[14px] font-extrabold">{item}</span>
+                      <span className="font-['Satoshi',sans-serif] text-[14px] font-bold">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -430,18 +431,18 @@ export default function AIJobAlertsPage() {
         </section>
 
         {/* Stats Section */}
-        <section className="px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <section className="bg-black px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-[1100px]">
-            <div className="grid grid-cols-2 divide-x divide-y divide-gray-200 overflow-hidden rounded-3xl border border-gray-200 lg:grid-cols-4 lg:divide-y-0">
+            <div className="grid grid-cols-2 divide-x divide-white/10 lg:grid-cols-4">
               {[
                 { value: "50k+", label: "Active Users" },
                 { value: "1M+", label: "Jobs Matched" },
                 { value: "94%", label: "Success Rate" },
                 { value: "<3s", label: "Avg. Alert Time" },
               ].map((stat, idx) => (
-                <div key={idx} className="bg-[#fff7f3] px-4 py-10 text-center">
-                  <p className="mb-2 text-3xl font-extrabold text-[#ff4c00] md:text-4xl">{stat.value}</p>
-                  <p className="text-sm font-medium text-gray-600">{stat.label}</p>
+                <div key={idx} className="px-4 py-6 text-center">
+                  <p className="mb-2 text-3xl font-black text-[#ff4c00] md:text-4xl">{stat.value}</p>
+                  <p className="font-['Satoshi',sans-serif] text-sm font-medium text-[#e6e0dc]">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -449,12 +450,12 @@ export default function AIJobAlertsPage() {
         </section>
 
         {/* Who Can Use - Tag Cloud Style */}
-        <section className="px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        <section className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
           <div className="mx-auto max-w-[1000px]">
             <div className="mx-auto mb-14 max-w-[640px] text-center">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#ff4c00]/20 bg-[#fff0e8] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#ff4c00]">For Everyone</span>
-              <h2 className="mt-5 text-[28px] font-extrabold leading-[1.1] text-black sm:text-[34px]">
-                Who Can Use This <span className="text-[#ff4c00]">Job Notification App?</span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#f7e6df] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#f55d1d]">For Everyone</span>
+              <h2 className="mt-5 text-[28px] font-bold leading-[1.1] tracking-[-0.02em] text-black sm:text-[34px]">
+                Who Can Use This <span className="text-[#f55d1d]">Job Notification App?</span>
               </h2>
             </div>
 
@@ -472,10 +473,10 @@ export default function AIJobAlertsPage() {
               ].map((item, idx) => (
                 <div
                   key={item}
-                  className="flex items-center gap-2 rounded-full border border-gray-200 bg-white px-5 py-3 transition-all duration-200 hover:border-[#ff4c00]/40 hover:bg-[#fff7f3]"
+                  className="flex items-center gap-2 rounded-full border border-[#94959a]/40 bg-white px-5 py-3 transition-all duration-200 hover:border-[#ff4c00]/50 hover:bg-[#fbf0eb]"
                 >
                   <div className="w-2 h-2 rounded-full bg-[#ff4c00]"></div>
-                  <span className="text-sm font-semibold text-gray-700">{item}</span>
+                  <span className="font-['Satoshi',sans-serif] text-sm font-bold text-[#3a3a3a]">{item}</span>
                 </div>
               ))}
             </div>
@@ -533,20 +534,20 @@ export default function AIJobAlertsPage() {
         <section className="px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
   <div className="mx-auto max-w-[1100px]">
 
-    <div className="relative overflow-hidden rounded-[40px] bg-[#fff1ea] px-8 py-16 text-center shadow-[0_10px_40px_rgba(0,0,0,0.06)] md:px-16 md:py-20">
+    <div className="relative overflow-hidden rounded-[0.9rem] bg-black px-8 py-16 text-center md:px-16 md:py-20">
 
-      <div className="absolute -top-20 -left-20 h-72 w-72 rounded-full bg-[#ff4c00]/10 blur-3xl"></div>
-      <div className="absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-[#ff4c00]/10 blur-3xl"></div>
+      <div className="pointer-events-none absolute -top-20 -left-20 h-72 w-72 rounded-full bg-[#ff4c00]/20 blur-3xl"></div>
+      <div className="pointer-events-none absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-[#ff4c00]/20 blur-3xl"></div>
 
       <div className="relative z-10">
 
         {/* Heading */}
-        <h2 className="mx-auto mb-4 max-w-2xl text-[28px] font-extrabold leading-tight text-black sm:text-[40px]">
+        <h2 className="mx-auto mb-4 max-w-2xl text-[28px] font-bold leading-tight tracking-[-0.02em] text-white sm:text-[40px]">
           Ready to Get Instant Job Alerts?
         </h2>
 
         {/* Subtext */}
-        <p className="mx-auto mb-10 max-w-lg text-[15px] leading-7 text-gray-600">
+        <p className="mx-auto mb-10 max-w-lg font-['Satoshi',sans-serif] text-[15px] leading-7 text-[#e6e0dc]">
           Stop missing opportunities. Start applying before the crowd.
         </p>
 
@@ -556,7 +557,7 @@ export default function AIJobAlertsPage() {
           <button
             type="button"
             onClick={() => updateCtaUrl("/ai-job-alerts", ctaLabel)}
-            className="inline-flex h-[52px] items-center justify-center gap-2 rounded-full bg-[#ff4c00] px-8 text-[14px] font-bold text-white shadow-[0_4px_0_black] transition-all duration-200 hover:-translate-y-0.5"
+            className="inline-flex h-[54px] touch-manipulation items-center justify-center gap-2 rounded-[10px] bg-[#ff4c00] px-8 text-[16px] font-bold text-white shadow-[0_6px_0_#e64400] outline-none transition duration-200 hover:-translate-y-0.5 hover:bg-[#ff5a1f]"
           >
             {ctaLabel}
             <ArrowRight size={16} />
@@ -571,10 +572,10 @@ export default function AIJobAlertsPage() {
             ].map((item) => (
               <div
                 key={item}
-                className="flex items-center gap-2 rounded-full border border-[#ffd6c2] bg-white px-4 py-2 shadow-sm"
+                className="flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2"
               >
                 <CheckCircle className="w-4 h-4 text-[#ff4c00]" />
-                <span className="text-sm font-medium text-gray-600">{item}</span>
+                <span className="font-['Satoshi',sans-serif] text-sm font-medium text-[#e6e0dc]">{item}</span>
               </div>
             ))}
           </div>
