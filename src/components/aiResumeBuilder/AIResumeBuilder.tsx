@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle, FileText, Sparkles, Briefcase, Target, TrendingUp, Award, BarChart3, Users } from "lucide-react";
+import { CheckCircle, FileText, Sparkles, Briefcase, Target, TrendingUp, Award, BarChart3, Users, XCircle, ArrowRight } from "lucide-react";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import { useState } from "react";
 import { getLocalePrefix } from "@/src/utils/locale";
@@ -18,97 +18,91 @@ export default function AIResumeBuilderPage() {
   const [activeFaqIndex, setActiveFaqIndex] = useState<number | null>(null);
 
   return (
-    <div className="bg-[#fff7f2] text-slate-900 min-h-screen">
+    <div className="bg-white text-[#111827] min-h-screen">
 
 
       <main className="mt-0">
 
         {/* HERO */}
-        <section className="relative bg-gradient-to-br from-[#fff0e6] via-[#fff7f2] to-[#ffefe6] min-h-[95vh] flex items-center py-16 md:py-24 overflow-hidden">
-  {/* Background decorative elements */}
-  <div className="absolute top-20 left-10 w-72 h-72 bg-[#ff4c00]/5 rounded-full blur-3xl"></div>
-  <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-300/10 rounded-full blur-3xl"></div>
-  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-[#ff4c00]/5 to-transparent rounded-full blur-3xl"></div>
-  
-  <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 w-full relative z-10">
-    <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <section className="relative overflow-hidden py-16 md:py-24">
+  <div className="absolute inset-0 bg-gradient-to-br from-[#fff1ea] via-white to-[#fff7f3]" />
 
-      {/* LEFT - Asymmetric typography */}
+  <div className="relative mx-auto grid max-w-[1240px] gap-14 px-4 md:px-6 lg:px-8 lg:grid-cols-12 lg:items-center">
+
+      {/* LEFT */}
       <div className="lg:col-span-7 space-y-8">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#ffd6c2] shadow-sm">
-          <Sparkles className="h-4 w-4 text-[#ff4c00]" />
-          <span className="text-sm font-semibold text-[#ff4c00]">AI-Powered Resume Builder</span>
+        <div className="inline-flex items-center gap-2 rounded-full border border-[#ff4c00]/20 bg-[#fff0e8] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#ff4c00]">
+          <Sparkles className="h-3.5 w-3.5" />
+          AI-Powered Resume Builder
         </div>
 
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[0.95] text-slate-900 tracking-tight">
+        <h1 className="text-[34px] font-extrabold leading-[1.14] text-black sm:text-[52px] lg:leading-[1.05]">
           AI Resume Builder for <span className="text-[#ff4c00]">Job Seekers</span>
         </h1>
 
-        <div className="space-y-4 max-w-xl">
-          <p className="text-xl text-slate-700 leading-relaxed font-medium">
+        <div className="max-w-xl space-y-4">
+          <p className="text-[17px] font-semibold leading-8 text-gray-800">
             Stop wasting hours writing resumes that never get responses.
           </p>
-          <p className="text-lg text-slate-600 leading-relaxed">
+          <p className="text-[16px] font-medium leading-8 text-gray-600">
             With our AI resume builder, you can create a recruiter-ready, ATS-optimized resume in minutes — even if you have zero writing experience.
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
           <button
             type="button"
             onClick={() => updateCtaUrl("/ai-resume-builder", "It's Free to Start")}
-            className="inline-flex items-center justify-center rounded-2xl bg-[#ff4c00] px-8 py-4 text-lg font-bold text-white hover:bg-[#e24400] transition-colors shadow-xl hover:shadow-2xl"
+            className="inline-flex h-[52px] items-center justify-center gap-2 rounded-xl bg-[#ff4c00] px-7 text-[14px] font-bold text-white shadow-[0_3px_0_black] transition hover:opacity-90"
           >
             It's Free to Start
+            <ArrowRight size={14} />
           </button>
-         
         </div>
 
-        <div className="grid grid-cols-3 gap-4 pt-4">
+        <div className="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-3">
           {[
             "Get noticed by recruiters faster",
             "Improve your ATS match score instantly",
             "Turn your experience into powerful achievements",
           ].map((text) => (
-            <div key={text} className="flex items-start gap-3 p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-[#ffd6c2]/50">
-              <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#ff4c00]/10 flex items-center justify-center mt-0.5">
+            <div key={text} className="flex items-start gap-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+              <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#ff4c00]/10">
                 <CheckCircle className="h-3.5 w-3.5 text-[#ff4c00]" />
               </div>
-              <span className="text-sm text-slate-700 font-medium leading-snug">{text}</span>
+              <span className="text-[13px] font-semibold leading-snug text-gray-700">{text}</span>
             </div>
           ))}
         </div>
       </div>
 
-      {/* RIGHT - Glassmorphism floating card */}
-      <div className="lg:col-span-5 relative">
-        <div className="relative bg-white/70 backdrop-blur-xl rounded-3xl border border-white/50 shadow-2xl p-6 md:p-8">
-          {/* Inner glow effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent rounded-3xl pointer-events-none"></div>
-          
-          <div className="relative">
-            <div className="flex items-center justify-between mb-6">
+      {/* RIGHT - Dashboard mockup card */}
+      <div className="lg:col-span-5 flex justify-center lg:justify-end">
+      <div className="relative w-full max-w-[440px]">
+        <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-xl">
+          <div className="flex items-center justify-between border-b bg-gray-50 px-6 py-5">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#ff4c00] to-[#ff7a45] flex items-center justify-center shadow-lg">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#ff4c00] shadow-sm">
                   <FileText className="h-5 w-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-slate-900">AI Resume Optimization</p>
-                  <p className="text-xs text-slate-500">Real-time analysis</p>
+                  <p className="text-sm font-bold text-black">AI Resume Optimization</p>
+                  <p className="text-xs text-gray-500">Real-time analysis</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 px-3 py-1 bg-green-100 rounded-full">
-                <div className="w-2 h-2 rounded-full bg-green-500"></div>
+              <div className="flex items-center gap-2 rounded-full bg-green-100 px-3 py-1">
+                <div className="h-2 w-2 rounded-full bg-green-500"></div>
                 <span className="text-xs font-semibold text-green-700">Live</span>
               </div>
-            </div>
+          </div>
 
-            <div className="rounded-2xl bg-gradient-to-br from-[#fff7f2] to-orange-50/80 border border-[#ffd6c2] p-5 mb-6 shadow-inner">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-2 h-2 rounded-full bg-[#ff4c00]"></div>
-                <p className="text-xs font-bold text-slate-800 uppercase tracking-wider">Resume Summary</p>
+          <div className="px-6 py-6">
+            <div className="mb-5 rounded-2xl border border-[#ffd6c2] bg-[#fff7f3] p-5">
+              <div className="mb-3 flex items-center gap-2">
+                <div className="h-2 w-2 rounded-full bg-[#ff4c00]"></div>
+                <p className="text-xs font-bold uppercase tracking-wider text-gray-800">Resume Summary</p>
               </div>
-              <p className="text-sm text-slate-700 leading-relaxed">
+              <p className="text-sm leading-relaxed text-gray-700">
                 Frontend Developer with experience in React, JavaScript, and modern UI development.
               </p>
             </div>
@@ -119,121 +113,127 @@ export default function AIResumeBuilderPage() {
                 ["Keyword Match", "Strong", "88%"],
                 ["Role Relevance", "High", "92%"],
               ].map(([label, value, score]) => (
-                <div key={label} className="flex items-center justify-between p-3 rounded-xl bg-white/80 border border-slate-100">
+                <div key={label} className="flex items-center justify-between rounded-xl border border-gray-100 bg-white p-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-[#ff4c00]/10 flex items-center justify-center">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#ff4c00]/10">
                       <CheckCircle className="h-4 w-4 text-[#ff4c00]" />
                     </div>
-                    <span className="text-sm font-medium text-slate-600">{label}</span>
+                    <span className="text-sm font-medium text-gray-600">{label}</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="text-xs font-bold text-slate-400">{score}</span>
-                    <span className="px-3 py-1 rounded-full bg-[#ff4c00]/10 text-[#ff4c00] font-bold text-sm">{value}</span>
+                    <span className="text-xs font-bold text-gray-400">{score}</span>
+                    <span className="rounded-full bg-[#ff4c00]/10 px-3 py-1 text-sm font-bold text-[#ff4c00]">{value}</span>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Progress bars */}
-            <div className="mt-6 pt-6 border-t border-slate-100">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-semibold text-slate-600">Overall Score</span>
+            <div className="mt-6 border-t border-gray-100 pt-5">
+              <div className="mb-2 flex items-center justify-between">
+                <span className="text-xs font-semibold text-gray-600">Overall Score</span>
                 <span className="text-lg font-bold text-[#ff4c00]">91%</span>
               </div>
-              <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-                <div className="h-full w-[91%] bg-gradient-to-r from-[#ff4c00] to-[#ff7a45] rounded-full"></div>
+              <div className="h-2 overflow-hidden rounded-full bg-gray-100">
+                <div className="h-full w-[91%] rounded-full bg-gradient-to-r from-[#ff4c00] to-[#ff7a33]"></div>
               </div>
             </div>
           </div>
         </div>
-        
+
         {/* Floating badges */}
-        <div className="absolute -top-4 -right-4 bg-white rounded-xl p-3 shadow-xl border border-[#ffd6c2]">
+        <div className="absolute -top-4 -right-4 rounded-xl border border-gray-200 bg-white p-3 shadow-md">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-green-100">
               <CheckCircle className="h-4 w-4 text-green-600" />
             </div>
-            <span className="text-xs font-bold text-slate-700">ATS Ready</span>
+            <span className="text-xs font-bold text-gray-700">ATS Ready</span>
           </div>
         </div>
-        
-        <div className="absolute -bottom-4 -left-4 bg-white rounded-xl p-3 shadow-xl border border-[#ffd6c2]">
+
+        <div className="absolute -bottom-4 -left-4 rounded-xl border border-gray-200 bg-white p-3 shadow-md">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-[#ff4c00]/10 flex items-center justify-center">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#ff4c00]/10">
               <Sparkles className="h-4 w-4 text-[#ff4c00]" />
             </div>
-            <span className="text-xs font-bold text-slate-700">AI Enhanced</span>
+            <span className="text-xs font-bold text-gray-700">AI Enhanced</span>
           </div>
         </div>
       </div>
+      </div>
 
-    </div>
   </div>
 </section>
 
 
         {/* Real-Time Resume Score Section */}
-        <section className="bg-white py-20">
-          <div className="max-w-6xl mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+        <section className="px-4 py-20 sm:py-28 md:px-6">
+          <div className="mx-auto max-w-[1100px]">
+            <div className="mb-14 max-w-[640px]">
+              <h2 className="text-[32px] font-extrabold leading-[1.1] text-black sm:text-[42px]">
                 Real-Time Resume Score & <span className="text-[#ff4c00]">Improvements</span>
               </h2>
-              <p className="text-lg text-slate-700">
+              <p className="mt-5 text-[17px] font-medium leading-8 text-gray-600">
                 Our system continuously evaluates your resume.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                {
-                  title: "Resume strength scoring",
-                  desc: "Get instant feedback on your resume's overall quality and competitiveness.",
-                  icon: <BarChart3 className="h-8 w-8 text-[#ff4c00]" />,
-                },
-                {
-                  title: "Keyword effectiveness analysis",
-                  desc: "See how well your resume matches job descriptions and ATS requirements.",
-                  icon: <Target className="h-8 w-8 text-[#ff4c00]" />,
-                },
-                {
-                  title: "Optimization suggestions",
-                  desc: "Receive actionable recommendations to improve your resume's performance.",
-                  icon: <TrendingUp className="h-8 w-8 text-[#ff4c00]" />,
-                },
-              ].map((item) => (
-                <div
-                  key={item.title}
-                  className="bg-gradient-to-br from-white to-orange-50 border-2 border-[#ffd6c2] rounded-2xl p-8 hover:shadow-xl transition-all hover:-translate-y-1"
-                >
-                  <div className="mb-4">{item.icon}</div>
-                  <h3 className="font-bold text-lg mb-3 text-slate-900">{item.title}</h3>
-                  <p className="text-sm text-slate-700">{item.desc}</p>
+            <div className="grid gap-5">
+              <article className="rounded-3xl border border-[#ff4c00]/20 bg-[#fff7f3] p-8 sm:flex sm:items-start sm:gap-8">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#ff4c00] text-white">
+                  <BarChart3 size={22} strokeWidth={2.5} />
+                </span>
+                <div className="mt-6 sm:mt-0">
+                  <h3 className="text-xl font-bold text-black">Resume strength scoring</h3>
+                  <p className="mt-3 max-w-[560px] text-[15px] leading-7 text-gray-600">
+                    Get instant feedback on your resume&apos;s overall quality and competitiveness.
+                  </p>
                 </div>
-              ))}
+              </article>
+              <div className="grid gap-5 sm:grid-cols-2">
+                {[
+                  {
+                    title: "Keyword effectiveness analysis",
+                    desc: "See how well your resume matches job descriptions and ATS requirements.",
+                    icon: <Target size={20} strokeWidth={2.5} />,
+                  },
+                  {
+                    title: "Optimization suggestions",
+                    desc: "Receive actionable recommendations to improve your resume's performance.",
+                    icon: <TrendingUp size={20} strokeWidth={2.5} />,
+                  },
+                ].map((item) => (
+                  <article key={item.title} className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#fff0e8] text-[#ff4c00]">
+                      {item.icon}
+                    </span>
+                    <h3 className="mt-6 text-lg font-bold text-black">{item.title}</h3>
+                    <p className="mt-3 text-[14px] leading-7 text-gray-600">{item.desc}</p>
+                  </article>
+                ))}
+              </div>
             </div>
-            <p className="text-center mt-8 text-slate-600 font-medium">
+            <p className="mt-8 text-center font-medium text-gray-600">
               Helping you compete with top candidates.
             </p>
           </div>
         </section>
 
         {/* Outcomes Section */}
-        <section className="bg-gradient-to-br from-[#fff7f2] to-white py-24">
-          <div className="max-w-6xl mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+        <section className="bg-[#fffaf6] px-4 py-20 sm:py-28 md:px-6">
+          <div className="mx-auto max-w-[1100px]">
+            <div className="mb-12 text-center">
+              <h2 className="text-[28px] font-extrabold leading-[1.1] text-black sm:text-[34px]">
                 Outcomes You Can <span className="text-[#ff4c00]">Expect</span>
               </h2>
-              <p className="text-lg text-slate-700">
-                This isn't just another resume maker online.
+              <p className="mx-auto mt-4 max-w-[560px] text-[15px] font-medium leading-7 text-gray-600">
+                This isn&apos;t just another resume maker online.
               </p>
-              <p className="text-base text-slate-600 mt-2">
+              <p className="mx-auto mt-2 max-w-[560px] text-[15px] leading-7 text-gray-500">
                 Job seekers use our professional resume builder to achieve real results:
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 "Create resumes 80% faster",
                 "Improve ATS match instantly",
@@ -244,10 +244,12 @@ export default function AIResumeBuilderPage() {
               ].map((outcome) => (
                 <div
                   key={outcome}
-                  className="bg-white border-2 border-[#ff4c00] rounded-xl p-6 shadow-md hover:shadow-lg transition flex items-center gap-4"
+                  className="flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-5 transition hover:border-[#ff4c00]/40 hover:bg-[#fff7f3]"
                 >
-                  <CheckCircle className="h-6 w-6 text-[#ff4c00] shrink-0" />
-                  <span className="font-semibold text-slate-900">{outcome}</span>
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#ff4c00]/10 text-[#ff4c00]">
+                    <CheckCircle size={18} strokeWidth={2.5} />
+                  </span>
+                  <span className="text-[14px] font-bold text-black">{outcome}</span>
                 </div>
               ))}
             </div>
@@ -255,15 +257,15 @@ export default function AIResumeBuilderPage() {
         </section>
 
         {/* Key Benefits Section */}
-        <section className="bg-white py-24">
-          <div className="max-w-6xl mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+        <section className="px-4 py-20 sm:py-28 md:px-6">
+          <div className="mx-auto max-w-[1100px]">
+            <div className="mx-auto mb-14 max-w-[720px] text-center">
+              <h2 className="text-[28px] font-extrabold leading-[1.1] text-black sm:text-[34px]">
                 Key Benefits of Our <span className="text-[#ff4c00]">ATS-Friendly Resume Builder</span>
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 {
                   num: "1",
@@ -313,13 +315,13 @@ export default function AIResumeBuilderPage() {
               ].map((benefit) => (
                 <div
                   key={benefit.num}
-                  className="relative bg-gradient-to-br from-[#fffaf7] to-white border-2 border-[#ffd6c2] rounded-2xl p-6 hover:shadow-xl transition-all hover:-translate-y-1"
+                  className="rounded-2xl border border-gray-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#ff4c00]/30 hover:shadow-md"
                 >
-                  <div className="absolute -top-4 -left-4 h-10 w-10 rounded-full bg-[#ff4c00] text-white flex items-center justify-center font-bold text-lg shadow-lg">
-                    {benefit.num}
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3 mt-2">{benefit.title}</h3>
-                  <p className="text-sm text-slate-700">{benefit.desc}</p>
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#ff4c00]/10 text-sm font-extrabold text-[#ff4c00]">
+                    {benefit.num.padStart(2, "0")}
+                  </span>
+                  <h3 className="mb-2.5 mt-5 text-lg font-bold text-black">{benefit.title}</h3>
+                  <p className="text-[14px] leading-6 text-gray-600">{benefit.desc}</p>
                 </div>
               ))}
             </div>
@@ -327,18 +329,18 @@ export default function AIResumeBuilderPage() {
         </section>
 
         {/* Features Section */}
-        <section className="bg-[#fffaf7] py-24">
-          <div className="max-w-6xl mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+        <section className="bg-[#fff7f3] px-4 py-20 sm:py-28 md:px-6">
+          <div className="mx-auto max-w-[1100px]">
+            <div className="mb-12 text-center">
+              <h2 className="text-[28px] font-extrabold leading-[1.1] text-black sm:text-[34px]">
                 Features Designed for <span className="text-[#ff4c00]">Modern Job Seekers</span>
               </h2>
-              <p className="text-lg text-slate-700">
+              <p className="mx-auto mt-4 max-w-[560px] text-[15px] font-medium leading-7 text-gray-600">
                 Our AI resume builder combines intelligence with simplicity.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 "ATS-friendly formatting",
                 "AI-generated bullet points",
@@ -351,10 +353,12 @@ export default function AIResumeBuilderPage() {
               ].map((feature) => (
                 <div
                   key={feature}
-                  className="bg-white border border-[#ffd6c2] rounded-xl p-5 hover:shadow-md transition flex items-start gap-3"
+                  className="flex items-start gap-3 rounded-xl border border-gray-200 bg-white p-5 transition hover:border-[#ff4c00]/40 hover:shadow-sm"
                 >
-                  <CheckCircle className="h-5 w-5 text-[#ff4c00] shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700 font-medium">{feature}</span>
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#ff4c00]/10">
+                    <CheckCircle className="h-3.5 w-3.5 text-[#ff4c00]" />
+                  </span>
+                  <span className="text-[14px] font-medium text-gray-700">{feature}</span>
                 </div>
               ))}
             </div>
@@ -362,143 +366,144 @@ export default function AIResumeBuilderPage() {
         </section>
 
         {/* Social Proof Section */}
-        <section className="bg-white py-20">
-          <div className="max-w-6xl mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+        <section className="px-4 py-20 sm:py-28 md:px-6">
+          <div className="mx-auto max-w-[1100px]">
+            <div className="mx-auto mb-12 max-w-[640px] text-center">
+              <h2 className="text-[28px] font-extrabold leading-[1.1] text-black sm:text-[34px]">
                 Social Proof & <span className="text-[#ff4c00]">Trust Signals</span>
               </h2>
-              <p className="text-lg text-slate-700">
+              <p className="mt-4 text-[15px] font-medium leading-7 text-gray-600">
                 Thousands of job seekers already use our resume builder online.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="mb-6 grid gap-5 sm:grid-cols-3">
               {[
                 {
                   title: "Trusted by growing numbers of candidates",
-                  icon: <Users className="h-8 w-8 text-[#ff4c00]" />,
+                  icon: <Users size={22} strokeWidth={2.5} />,
                 },
                 {
                   title: "Used across multiple industries",
-                  icon: <Briefcase className="h-8 w-8 text-[#ff4c00]" />,
+                  icon: <Briefcase size={22} strokeWidth={2.5} />,
                 },
                 {
                   title: "Designed for modern hiring systems",
-                  icon: <Award className="h-8 w-8 text-[#ff4c00]" />,
+                  icon: <Award size={22} strokeWidth={2.5} />,
                 },
-                
+
               ].map((item) => (
                 <div
                   key={item.title}
-                  className="bg-gradient-to-br from-orange-50 to-white border-2 border-[#ffd6c2] rounded-2xl p-8 text-center hover:shadow-lg transition"
+                  className="rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm transition hover:shadow-md"
                 >
-                  <div className="flex justify-center mb-4">{item.icon}</div>
-                  <p className="font-semibold text-slate-900">{item.title}</p>
+                  <span className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#fff0e8] text-[#ff4c00]">
+                    {item.icon}
+                  </span>
+                  <p className="font-bold text-black">{item.title}</p>
                 </div>
               ))}
             </div>
 
-            <div className="bg-gradient-to-r from-[#ff4c00] to-[#ff7a45] rounded-2xl p-8 text-white text-center">
-              <div className="grid md:grid-cols-3 gap-6">
-                <div>
-                  <div className="text-4xl font-bold mb-2">500+</div>
-                  <div className="text-sm opacity-90">Job seekers trust us</div>
+            <div className="grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-3xl border border-gray-200 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+              {[
+                ["500+", "Job seekers trust us"],
+                ["90%", "Users finish resumes under 10 minutes"],
+                ["Proven", "ATS optimization engine"],
+              ].map(([stat, label]) => (
+                <div key={label} className="bg-[#fff7f3] px-6 py-10 text-center">
+                  <div className="mb-2 text-4xl font-extrabold text-[#ff4c00]">{stat}</div>
+                  <div className="text-sm font-medium text-gray-600">{label}</div>
                 </div>
-                <div>
-                  <div className="text-4xl font-bold mb-2">90%</div>
-                  <div className="text-sm opacity-90">Users finish resumes under 10 minutes</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold mb-2">Proven</div>
-                  <div className="text-sm opacity-90">ATS optimization engine</div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* Comparison Table Section */}
-        <section className="bg-[#fffaf7] py-24">
-          <div className="max-w-6xl mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+        <section className="bg-[#fffaf6] px-4 py-20 sm:py-28 md:px-6">
+          <div className="mx-auto max-w-[1000px]">
+            <div className="mb-12 text-center">
+              <h2 className="text-[26px] font-extrabold leading-tight text-black sm:text-[32px]">
                 AI Resume Builder vs <span className="text-[#ff4c00]">Traditional Resume Makers</span>
               </h2>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-[#ffd6c2]">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead className="bg-gradient-to-r from-[#ff4c00] to-[#ff7a45] text-white">
-                    <tr>
-                      <th className="px-6 py-4 text-left font-bold">Feature</th>
-                      <th className="px-6 py-4 text-left font-bold">Traditional Resume Tools</th>
-                      <th className="px-6 py-4 text-left font-bold">Our AI Resume Builder</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200">
-                    {[
-                      {
-                        feature: "Content Creation",
-                        traditional: "Manual writing required",
-                        ai: "AI-generated content",
-                      },
-                      {
-                        feature: "Bullet Points",
-                        traditional: "Generic bullet points",
-                        ai: "Achievement-driven statements",
-                      },
-                      {
-                        feature: "Templates",
-                        traditional: "Static templates",
-                        ai: "Dynamic keyword optimization",
-                      },
-                      {
-                        feature: "Formatting",
-                        traditional: "Basic formatting",
-                        ai: "ATS-friendly resume structure",
-                      },
-                      {
-                        feature: "Editing",
-                        traditional: "Time-consuming editing",
-                        ai: "Automated improvements",
-                      },
-                      {
-                        feature: "Job Targeting",
-                        traditional: "One resume for all jobs",
-                        ai: "Tailored resumes for each job",
-                      },
-                    ].map((row, i) => (
-                      <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-orange-50/30"}>
-                        <td className="px-6 py-4 font-semibold text-slate-900">{row.feature}</td>
-                        <td className="px-6 py-4 text-slate-600">{row.traditional}</td>
-                        <td className="px-6 py-4 text-[#ff4c00] font-semibold">{row.ai}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+            <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
+              <div className="hidden grid-cols-[1fr_1.4fr_1.4fr] gap-4 border-b border-gray-100 bg-gray-50 px-6 py-4 sm:grid">
+                <span className="text-xs font-extrabold uppercase tracking-wide text-gray-400">Feature</span>
+                <span className="text-xs font-extrabold uppercase tracking-wide text-gray-400">Traditional Resume Tools</span>
+                <span className="text-xs font-extrabold uppercase tracking-wide text-[#ff4c00]">Our AI Resume Builder</span>
+              </div>
+              <div className="divide-y divide-gray-100">
+                {[
+                  {
+                    feature: "Content Creation",
+                    traditional: "Manual writing required",
+                    ai: "AI-generated content",
+                  },
+                  {
+                    feature: "Bullet Points",
+                    traditional: "Generic bullet points",
+                    ai: "Achievement-driven statements",
+                  },
+                  {
+                    feature: "Templates",
+                    traditional: "Static templates",
+                    ai: "Dynamic keyword optimization",
+                  },
+                  {
+                    feature: "Formatting",
+                    traditional: "Basic formatting",
+                    ai: "ATS-friendly resume structure",
+                  },
+                  {
+                    feature: "Editing",
+                    traditional: "Time-consuming editing",
+                    ai: "Automated improvements",
+                  },
+                  {
+                    feature: "Job Targeting",
+                    traditional: "One resume for all jobs",
+                    ai: "Tailored resumes for each job",
+                  },
+                ].map((row) => (
+                  <div
+                    key={row.feature}
+                    className="grid grid-cols-1 gap-2 px-6 py-5 sm:grid-cols-[1fr_1.4fr_1.4fr] sm:items-center sm:gap-4"
+                  >
+                    <span className="text-[14px] font-extrabold text-black">{row.feature}</span>
+                    <span className="flex items-center gap-2 text-[14px] text-gray-500">
+                      <XCircle size={15} className="shrink-0 text-gray-300" />
+                      {row.traditional}
+                    </span>
+                    <span className="flex items-center gap-2 text-[14px] font-semibold text-[#ff4c00]">
+                      <CheckCircle size={15} className="shrink-0 text-[#ff4c00]" />
+                      {row.ai}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
-            <p className="text-center mt-6 text-lg font-semibold text-slate-700">
+            <p className="mt-6 text-center text-lg font-semibold text-gray-700">
               Modern hiring requires smarter tools.
             </p>
           </div>
         </section>
 
         {/* Who Is This For Section */}
-        <section className="bg-white py-24">
-          <div className="max-w-6xl mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+        <section className="px-4 py-20 sm:py-28 md:px-6">
+          <div className="mx-auto max-w-[1100px]">
+            <div className="mx-auto mb-12 max-w-[640px] text-center">
+              <h2 className="text-[28px] font-extrabold leading-[1.1] text-black sm:text-[34px]">
                 Who Is This <span className="text-[#ff4c00]">ATS-Friendly Resume Builder</span> For?
               </h2>
-              <p className="text-lg text-slate-700">
+              <p className="mt-4 text-[15px] font-medium leading-7 text-gray-600">
                 Our resume builder for job seekers works for:
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 "Fresh graduates",
                 "Entry-level professionals",
@@ -511,96 +516,70 @@ export default function AIResumeBuilderPage() {
               ].map((persona) => (
                 <div
                   key={persona}
-                  className="bg-gradient-to-br from-[#fffaf7] to-white border-2 border-[#ffd6c2] rounded-xl p-6 text-center hover:shadow-lg transition hover:-translate-y-1"
+                  className="rounded-2xl border border-gray-200 bg-white p-6 text-center transition hover:-translate-y-0.5 hover:border-[#ff4c00]/40 hover:bg-[#fff7f3] hover:shadow-md"
                 >
-                  <CheckCircle className="h-6 w-6 text-[#ff4c00] mx-auto mb-3" />
-                  <p className="font-semibold text-slate-900">{persona}</p>
+                  <span className="mx-auto mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-[#ff4c00]/10 text-[#ff4c00]">
+                    <CheckCircle size={18} strokeWidth={2.5} />
+                  </span>
+                  <p className="font-bold text-black">{persona}</p>
                 </div>
               ))}
             </div>
-            <p className="text-center mt-8 text-slate-600 font-medium">
+            <p className="mt-8 text-center font-medium text-gray-600">
               No writing skills required.
             </p>
           </div>
         </section>
 
         {/* Final CTA Section */}
-        <section className="relative bg-gradient-to-br from-[#fff7f2] via-[#fff7f2] to-white py-24 overflow-hidden">
-  
-  {/* soft glow */}
-  <div className="absolute -top-20 -left-20 w-72 h-72 bg-[#ff4c00]/10 rounded-full blur-3xl"></div>
-  <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-[#ff4c00]/10 rounded-full blur-3xl"></div>
+        <section className="px-4 py-20 sm:py-28 md:px-6">
+  <div className="mx-auto max-w-[1100px]">
+    <div className="relative overflow-hidden rounded-[40px] bg-[#fff1ea] px-8 py-16 text-center shadow-[0_10px_40px_rgba(0,0,0,0.06)] md:px-16 md:py-20">
+      <div className="absolute -top-20 -left-20 h-72 w-72 rounded-full bg-[#ff4c00]/10 blur-3xl" />
+      <div className="absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-[#ff4c00]/10 blur-3xl" />
 
-  <div className="max-w-4xl mx-auto px-4 md:px-6 text-center relative z-10">
-    
-    {/* Headline */}
-    <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 text-slate-900 leading-tight">
-      Build Your Resume Smarter with <span className="text-[#ff4c00]">AI</span>
-    </h2>
+      <h2 className="relative text-[28px] font-extrabold leading-[1.15] text-black sm:text-[40px]">
+        Build Your Resume Smarter with <span className="text-[#ff4c00]">AI</span>
+      </h2>
 
-    {/* Subtext */}
-    <p className="text-lg md:text-xl text-slate-700 mb-6 max-w-2xl mx-auto">
-      Stop struggling with formatting, rewriting, and keyword guessing.
-    </p>
+      <p className="relative mx-auto mt-5 max-w-[560px] text-[15px] leading-7 text-gray-600">
+        Stop struggling with formatting, rewriting, and keyword guessing.
+      </p>
 
-    <p className="text-base md:text-lg text-slate-700 mb-10">
-      With our AI resume builder, you can:
-    </p>
+      <p className="relative mt-2 text-[15px] leading-7 text-gray-600">
+        With our AI resume builder, you can:
+      </p>
 
-    {/* Benefits */}
-    <div className="grid md:grid-cols-2 gap-4 mb-12 text-left max-w-2xl mx-auto">
-      {[
-        "Create ATS-optimized resumes",
-        "Generate powerful achievements",
-        "Improve recruiter visibility",
-        "Apply faster & smarter",
-      ].map((item) => (
-        <div
-          key={item}
-          className="flex items-center gap-3 bg-white/70 backdrop-blur-sm px-4 py-3 rounded-xl border border-[#ffd6c2] shadow-sm"
-        >
-          <CheckCircle className="h-5 w-5 text-[#ff4c00] shrink-0" />
-          <span className="text-slate-700 font-medium">{item}</span>
-        </div>
-      ))}
-    </div>
+      <div className="relative mx-auto mt-9 grid max-w-[560px] gap-3 text-left sm:grid-cols-2">
+        {[
+          "Create ATS-optimized resumes",
+          "Generate powerful achievements",
+          "Improve recruiter visibility",
+          "Apply faster & smarter",
+        ].map((item) => (
+          <div
+            key={item}
+            className="flex items-center gap-3 rounded-xl border border-[#ffd6c2] bg-white px-4 py-3 shadow-sm"
+          >
+            <CheckCircle className="h-5 w-5 shrink-0 text-[#ff4c00]" />
+            <span className="text-[14px] font-medium text-gray-700">{item}</span>
+          </div>
+        ))}
+      </div>
 
-    {/* CTA */}
-    <div className="flex flex-col items-center gap-4">
       <button
         type="button"
         onClick={() => updateCtaUrl("/ai-resume-builder", "Create Your Resume Now")}
-        className="
-          group
-          inline-flex
-          items-center
-          justify-center
-          rounded-full
-          bg-[#ff4c00]
-          px-12
-          py-5
-          text-lg
-          font-semibold
-          text-white
-          shadow-[0_10px_30px_rgba(255,76,0,0.3)]
-          hover:-translate-y-[3px]
-          hover:shadow-[0_15px_40px_rgba(255,76,0,0.4)]
-          active:translate-y-[2px]
-          transition-all duration-200
-        "
+        className="relative mt-9 inline-flex h-[52px] items-center justify-center gap-2 rounded-full bg-[#ff4c00] px-8 text-[14px] font-bold text-white shadow-[0_4px_0_black] transition-all duration-200 hover:-translate-y-0.5"
       >
         Create Your Resume Now
-        <span className="ml-2 group-hover:translate-x-1 transition">
-          →
-        </span>
+        <ArrowRight size={16} />
       </button>
 
-      {/* trust line */}
-      <p className="text-sm text-slate-500">
+      <p className="relative mt-5 text-sm text-gray-500">
         Free to start • No credit card required
       </p>
     </div>
-
   </div>
 </section>
 
