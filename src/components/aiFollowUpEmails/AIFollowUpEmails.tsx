@@ -190,10 +190,10 @@ export default function AIFollowUpEmailsPage() {
                         "Create Your Follow-Up Email Instantly"
                       )
                     }
-                    className="inline-flex h-[54px] shrink-0 touch-manipulation items-center justify-center gap-2 rounded-[10px] bg-white px-7 text-[15px] font-bold text-[#ff4c00] shadow-[0_6px_0_rgba(0,0,0,0.25)] transition duration-200 hover:-translate-y-0.5 whitespace-nowrap"
+                    className="inline-flex h-[54px] w-full md:w-auto md:shrink-0 touch-manipulation items-center justify-center gap-2 rounded-[10px] bg-white px-6 text-center text-[15px] font-bold text-[#ff4c00] shadow-[0_6px_0_rgba(0,0,0,0.25)] transition duration-200 hover:-translate-y-0.5"
                   >
-                    Create Your Follow-Up Email
-                    <ArrowRight size={16} />
+                    <span className="whitespace-normal">Create Your Follow-Up Email</span>
+                    <ArrowRight size={16} className="shrink-0" />
                   </button>
                 </div>
               </div>
@@ -517,6 +517,7 @@ export default function AIFollowUpEmailsPage() {
             </div>
 
             <div className="overflow-hidden rounded-[0.85rem] border border-[#94959a]/40 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+              <div className="overflow-x-auto">
               <table className="w-full text-base">
                 <thead>
                   <tr className="bg-[#f7e6df]">
@@ -550,6 +551,7 @@ export default function AIFollowUpEmailsPage() {
                   ))}
                 </tbody>
               </table>
+              </div>
             </div>
 
             <p className="mt-6 text-center font-['Satoshi',sans-serif] text-base text-[#3a3a3a]">
