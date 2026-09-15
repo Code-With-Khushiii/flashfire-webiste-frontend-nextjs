@@ -117,6 +117,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     "remote-job-vs-office-job": "Remote Job vs Office Job: Pros, Cons & Key Differences",
     "how-to-get-a-job-quickly": "How to Get a Job Quickly (Even in a Competitive Market)",
     "what-is-hidden-job-market": "What Is the Hidden Job Market? How It Works in 2026",
+    "how-to-add-publications-on-linkedin": "How to Add Publications to LinkedIn Profile",
   };
   const metaTitle = post.slug ? (metaTitleMap[post.slug] ?? post.metaTitle ?? post.title) : (post.metaTitle ?? post.title);
   
