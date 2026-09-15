@@ -1,6 +1,6 @@
 "use client";
 
-import { MailCheck, Clock, Sparkles, FileText, Mail, Users, CheckCircle2, ArrowRight } from "lucide-react";
+import { MailCheck, Clock, Sparkles, FileText, Mail, Users, CheckCircle2, ArrowRight, X } from "lucide-react";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import { useState } from "react";
 import { getLocalePrefix } from "@/src/utils/locale";
@@ -516,43 +516,88 @@ export default function AIFollowUpEmailsPage() {
               </h2>
             </div>
 
-            <div className="overflow-hidden rounded-[0.85rem] border border-[#94959a]/40 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
-              <div className="overflow-x-auto">
-              <table className="w-full text-base">
-                <thead>
-                  <tr className="bg-[#f7e6df]">
-                    <th className="px-6 py-5 font-bold text-black text-left">Feature</th>
-                    <th className="px-6 py-5 font-bold text-[#f55d1d] text-left">AI Follow-Up Email Generator</th>
-                    <th className="px-6 py-5 font-bold text-gray-500 text-left">Manual Writing</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    { feature: "Time Required", ai: "Under 1 minute", manual: "15–30 minutes" },
-                    { feature: "Personalization", ai: "AI-optimized", manual: "Depends on skill" },
-                    { feature: "Subject Line", ai: "Optimized automatically", manual: "Trial & error" },
-                    { feature: "Tone", ai: "Professionally balanced", manual: "May sound unsure" },
-                    { feature: "Job-Specific Customization", ai: "Dynamic", manual: "Generic" },
-                    { feature: "Automation", ai: "Supports automated follow-up emails", manual: "Not available" },
-                    { feature: "Error-Free", ai: "Built-in checks", manual: "Manual proofreading" },
-                  ].map((row, idx) => (
-                    <tr key={row.feature} className={`border-t border-[#94959a]/20 ${idx % 2 === 0 ? "bg-white" : "bg-[#fffaf7]"}`}>
-                      <td className="px-6 py-4 font-['Satoshi',sans-serif] font-bold text-[#3a3a3a]">{row.feature}</td>
-                      <td className="px-6 py-4 font-['Satoshi',sans-serif] text-[#3a3a3a]">
-                        <span className="inline-flex items-center gap-2">
-                          <div className="w-5 h-5 rounded-full bg-[#ff4c00]/10 flex items-center justify-center flex-shrink-0">
-                            <CheckCircle2 className="h-3 w-3 text-[#ff4c00]" />
+            {(() => {
+              const comparisonRows = [
+                { feature: "Time Required", ai: "Under 1 minute", manual: "15–30 minutes" },
+                { feature: "Personalization", ai: "AI-optimized", manual: "Depends on skill" },
+                { feature: "Subject Line", ai: "Optimized automatically", manual: "Trial & error" },
+                { feature: "Tone", ai: "Professionally balanced", manual: "May sound unsure" },
+                { feature: "Job-Specific Customization", ai: "Dynamic", manual: "Generic" },
+                { feature: "Automation", ai: "Supports automated follow-up emails", manual: "Not available" },
+                { feature: "Error-Free", ai: "Built-in checks", manual: "Manual proofreading" },
+              ];
+
+              return (
+                <>
+                  {/* Desktop / tablet table */}
+                  <div className="hidden overflow-hidden rounded-[0.85rem] border border-[#94959a]/40 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:block">
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-base">
+                        <thead>
+                          <tr className="bg-[#f7e6df]">
+                            <th className="px-6 py-5 font-bold text-black text-left">Feature</th>
+                            <th className="px-6 py-5 font-bold text-[#f55d1d] text-left">AI Follow-Up Email Generator</th>
+                            <th className="px-6 py-5 font-bold text-gray-500 text-left">Manual Writing</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {comparisonRows.map((row, idx) => (
+                            <tr key={row.feature} className={`border-t border-[#94959a]/20 ${idx % 2 === 0 ? "bg-white" : "bg-[#fffaf7]"}`}>
+                              <td className="px-6 py-4 font-['Satoshi',sans-serif] font-bold text-[#3a3a3a]">{row.feature}</td>
+                              <td className="px-6 py-4 font-['Satoshi',sans-serif] text-[#3a3a3a]">
+                                <span className="inline-flex items-center gap-2">
+                                  <div className="w-5 h-5 rounded-full bg-[#ff4c00]/10 flex items-center justify-center flex-shrink-0">
+                                    <CheckCircle2 className="h-3 w-3 text-[#ff4c00]" />
+                                  </div>
+                                  {row.ai}
+                                </span>
+                              </td>
+                              <td className="px-6 py-4 font-['Satoshi',sans-serif] text-gray-500">{row.manual}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* Mobile stacked cards */}
+                  <div className="space-y-4 sm:hidden">
+                    {comparisonRows.map((row) => (
+                      <div
+                        key={row.feature}
+                        className="overflow-hidden rounded-[0.6rem] border border-[#94959a]/40 bg-white shadow-[0_2px_6px_rgba(0,0,0,0.03)]"
+                      >
+                        <div className="bg-[#f7e6df] px-4 py-2.5">
+                          <p className="font-['Satoshi',sans-serif] text-[13px] font-bold uppercase tracking-wide text-black">
+                            {row.feature}
+                          </p>
+                        </div>
+                        <div className="divide-y divide-[#94959a]/20">
+                          <div className="flex items-start gap-2 px-4 py-3">
+                            <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#ff4c00]/10">
+                              <CheckCircle2 className="h-3 w-3 text-[#ff4c00]" />
+                            </div>
+                            <div>
+                              <p className="font-['Satoshi',sans-serif] text-[11px] font-bold uppercase tracking-wide text-[#f55d1d]">AI Follow-Up Email Generator</p>
+                              <p className="font-['Satoshi',sans-serif] text-sm text-[#3a3a3a]">{row.ai}</p>
+                            </div>
                           </div>
-                          {row.ai}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 font-['Satoshi',sans-serif] text-gray-500">{row.manual}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              </div>
-            </div>
+                          <div className="flex items-start gap-2 px-4 py-3 bg-[#fffaf7]">
+                            <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gray-100">
+                              <X className="h-3 w-3 text-gray-400" />
+                            </div>
+                            <div>
+                              <p className="font-['Satoshi',sans-serif] text-[11px] font-bold uppercase tracking-wide text-gray-500">Manual Writing</p>
+                              <p className="font-['Satoshi',sans-serif] text-sm text-gray-500">{row.manual}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              );
+            })()}
 
             <p className="mt-6 text-center font-['Satoshi',sans-serif] text-base text-[#3a3a3a]">
               Modern job search requires smarter communication tools.
