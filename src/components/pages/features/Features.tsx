@@ -23,6 +23,7 @@ import {
   Flame,
   Globe,
   GraduationCap,
+  MapPin,
   Phone,
   Rocket,
   Target,
@@ -127,8 +128,8 @@ const personas = [
     desc: "Students and new graduates who need a faster way to reach relevant companies without spending every night filling out forms.",
   },
   {
-    title: "U.S. & Canada Job Seekers",
-    desc: "Candidates targeting U.S. & Canada-based roles across tech, business, and operations.",
+    title: "U.S., U.K. & Canada Job Seekers",
+    desc: "Candidates targeting U.S., U.K. & Canada-based roles across tech, business, and operations.",
   },
   {
     title: "Burnt-Out Applicants",
@@ -140,7 +141,7 @@ const personas = [
   },
 ]
 
-const personaIcons = [GraduationCap, Globe, Flame, Target]
+const personaIcons = [GraduationCap, Globe, Flame, Target, MapPin]
 
 function Features() {
   const pathname = usePathname()
