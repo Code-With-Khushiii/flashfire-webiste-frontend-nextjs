@@ -1,10 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
-import { Target, Rocket, Handshake, Trophy, ArrowRight, Check } from "lucide-react";
+import {
+  Target,
+  Rocket,
+  Handshake,
+  Trophy,
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+} from "lucide-react";
+import { FaPlus, FaTimes } from "react-icons/fa";
 import { stripLocalePrefix, localizeHref } from "@/src/utils/locale";
 
 const steps = [
@@ -40,6 +50,12 @@ const benefits = [
   "You get updates without lifting a finger"
 ];
 
+const liveApplications = [
+  { role: "Software Engineer", company: "Google", location: "Mountain View, CA", status: "Applied" },
+  { role: "Product Manager", company: "Meta", location: "Menlo Park, CA", status: "Applied" },
+  { role: "Data Scientist", company: "Netflix", location: "Los Gatos, CA", status: "Scanning" },
+];
+
 const jobSearchFaqs = [
   {
     question: "How is Flashfire different from a normal job search?",
@@ -71,6 +87,7 @@ const jobSearchFaqs = [
 export default function JobSearch() {
   const router = useRouter();
   const pathname = usePathname();
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const { getButtonProps } = useGeoBypass({
     onBypass: () => {
       // Bypass will be handled by the event listener
@@ -192,159 +209,134 @@ export default function JobSearch() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#fdf7f4]">
-      
+    <div className="min-h-screen w-full bg-white font-['Space_Grotesk',sans-serif] text-black">
 
-      {/* Hero Section - Two Column Layout */}
-      <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left Column - Content */}
-            <div>
-             
+      {/* ===== Hero ===== */}
+      <section className="relative overflow-hidden bg-[#f7e6df] px-4 sm:px-6 lg:px-8 pt-16 pb-20 sm:pt-20 lg:pt-24">
+        <div className="pointer-events-none absolute -left-32 top-10 h-72 w-72 rounded-full bg-[#f55d1d] opacity-25 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-32 top-32 h-72 w-72 rounded-full bg-[#f55d1d] opacity-25 blur-[120px]" />
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-[1.1] mb-6">
-                Find Jobs Faster With{" "}
-                <span className="text-[#ff4c00]">Human-Powered</span>{" "}
-                Automation
-              </h1>
+        <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <span className="mb-5 inline-flex items-center rounded-full bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.08em] text-[#f55d1d] shadow-sm">
+              Human-powered automation
+            </span>
 
-              <p className="text-lg text-black/70 mb-8 leading-relaxed max-w-lg">
-                Flashfire applies to relevant jobs on your behalf so you don&apos;t have to search manually.
-              </p>
+            <h1 className="font-['Satoshi',sans-serif] text-[2.4rem] font-bold leading-[1.1] tracking-[-0.02em] text-[#02060A] sm:text-5xl lg:text-[3.4rem]">
+              Find Jobs Faster With{" "}
+              <span className="text-[#ff4c00]">Human-Powered</span>{" "}
+              Automation
+            </h1>
 
-              <div className="space-y-3 mb-8">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="w-5 h-5 bg-[#ff4c00] rounded flex items-center justify-center flex-shrink-0">
-                      <Check className="w-3 h-3 text-white" strokeWidth={3} />
-                    </div>
-                    <span className="text-black font-medium">{benefit}</span>
-                  </div>
-                ))}
+            <p className="mt-5 max-w-lg font-['Satoshi',sans-serif] text-[16px] font-medium leading-[1.6] text-[#3a3a3a]">
+              Flashfire applies to relevant jobs on your behalf so you don&apos;t have to search manually.
+            </p>
+
+            <ul className="mt-7 space-y-3">
+              {benefits.map((benefit, index) => (
+                <li key={index} className="flex items-center gap-3">
+                  <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#ff4c00]">
+                    <Check className="h-3.5 w-3.5 text-white" strokeWidth={3} />
+                  </span>
+                  <span className="font-['Satoshi',sans-serif] font-medium text-[#02060A]">{benefit}</span>
+                </li>
+              ))}
+            </ul>
+
+            <button
+              {...getButtonProps()}
+              onClick={handleGetStarted}
+              className="mt-8 inline-flex items-center gap-2 rounded-[10px] bg-[#ff4c00] px-7 py-3.5 text-[17px] font-bold text-white shadow-[0_6px_0_#000] transition duration-200 hover:-translate-y-0.5 hover:bg-[#ff5a1f]"
+            >
+              Get Started With Flashfire
+              <ArrowRight className="h-5 w-5" />
+            </button>
+          </div>
+
+          {/* Dashboard mock */}
+          <div className="relative">
+            <div className="rounded-2xl border border-[#94959a] bg-[#fffdfc] p-5 shadow-[0_2px_6px_rgba(0,0,0,0.03)]">
+              <div className="mb-5 flex items-center justify-between">
+                <div className="flex items-center gap-1.5">
+                  <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
+                </div>
+                <span className="text-xs font-medium text-[#9d9d9d]">Flashfire Dashboard</span>
               </div>
-
-              <button
-                {...getButtonProps()}
-                onClick={handleGetStarted}
-                className="bg-[#ff4c00] text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#e64400] transition-colors inline-flex items-center gap-2"
-              >
-                Get Started With Flashfire
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Right Column - Visual */}
-            <div className="relative">
-              <div className="bg-white rounded-2xl shadow-xl border border-[#ff4c00]/10 p-6">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                  </div>
-                  <span className="text-xs text-gray-400">Flashfire Dashboard</span>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="bg-[#fff0e6] rounded-lg p-4 border-l-4 border-[#ff4c00]">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-semibold text-black">Software Engineer</span>
-                      <span className="text-xs text-[#ff4c00] font-medium">Applied</span>
+              <div className="space-y-3">
+                {liveApplications.map((app) => {
+                  const scanning = app.status === "Scanning";
+                  return (
+                    <div key={app.role} className="rounded-[0.4rem] border border-[#e7ddd6] bg-white p-4">
+                      <div className="flex items-center justify-between gap-3">
+                        <p className="font-bold text-[#111]">{app.role}</p>
+                        <span
+                          className={`flex-none rounded-full px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide ${
+                            scanning
+                              ? "animate-pulse bg-[#f1ece8] text-[#8a8078]"
+                              : "bg-[#ff4c00]/10 text-[#ff4c00]"
+                          }`}
+                        >
+                          {scanning ? "Scanning…" : "Applied"}
+                        </span>
+                      </div>
+                      <p className="mt-1 font-['Satoshi',sans-serif] text-sm text-[#78716d]">
+                        {app.company} • {app.location}
+                      </p>
                     </div>
-                    <span className="text-sm text-black/60">Google • Mountain View, CA</span>
-                  </div>
-
-                  <div className="bg-[#fff0e6] rounded-lg p-4 border-l-4 border-[#ff4c00]">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-semibold text-black">Product Manager</span>
-                      <span className="text-xs text-[#ff4c00] font-medium">Applied</span>
-                    </div>
-                    <span className="text-sm text-black/60">Meta • Menlo Park, CA</span>
-                  </div>
-
-                  <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-gray-300">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-semibold text-black">Data Scientist</span>
-                      <span className="text-xs text-gray-500 font-medium">Scanning...</span>
-                    </div>
-                    <span className="text-sm text-black/60">Netflix • Los Gatos, CA</span>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* How It Works - Timeline Layout */}
-      <section className="  bg-[#fff7f2]">
-  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-    {/* Heading */}
-    <div className="text-center mb-16">
-      <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4">
-        How It Works
-      </h2>
-      <p className="text-black/60 text-lg">
-        Your job search, automated in four simple steps
-      </p>
-    </div>
-
-    {/* Grid */}
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {steps.map((step, index) => {
-        const IconComponent = step.icon;
-
-        return (
-          <div
-            key={step.id}
-            className="relative group bg-white rounded-2xl p-6 shadow-sm border border-[#ff4c00]/10 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden"
-          >
-            
-            {/* Background Number */}
-            <span className="absolute top-4 right-4 text-6xl font-bold text-[#ff4c00]/10 group-hover:text-[#ff4c00]/20 transition">
-              {step.id}
-            </span>
-
-            {/* Glow Effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#ff4c00]/0 via-[#ff4c00]/5 to-[#ff4c00]/10 opacity-0 group-hover:opacity-100 transition"></div>
-
-            {/* Icon */}
-            <div className="w-12 h-12 bg-[#ff4c00] rounded-xl flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition">
-              <IconComponent className="w-6 h-6 text-white" strokeWidth={2} />
-            </div>
-
-            {/* Content */}
-            <h3 className="text-lg font-bold text-black mb-2 relative z-10">
-              {step.title}
-            </h3>
-
-            <p className="text-black/70 text-sm leading-relaxed relative z-10">
-              {step.description}
+      {/* ===== How It Works ===== */}
+      <section className="bg-white px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto mb-14 max-w-2xl text-center">
+            <h2 className="font-['Satoshi',sans-serif] text-3xl font-bold tracking-[-0.03em] text-[#02060A] sm:text-4xl">
+              How It Works
+            </h2>
+            <p className="mt-3 font-['Satoshi',sans-serif] text-lg font-medium text-[#3a3a3a]">
+              Your job search, automated in four simple steps
             </p>
           </div>
-        );
-      })}
-    </div>
 
-    {/* Bottom Flow Line (visual connection) */}
-    <div className="hidden lg:flex justify-between items-center mt-12 px-10">
-      {[1, 2, 3].map((_, i) => (
-        <div key={i} className="flex-1 h-[2px] bg-gradient-to-r from-[#ff4c00]/30 to-transparent"></div>
-      ))}
-    </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((step) => {
+              const IconComponent = step.icon;
+              return (
+                <div
+                  key={step.id}
+                  className="flex flex-col rounded-[0.3rem] border border-[#94959a] bg-[#fffdfc] p-6 shadow-[0_2px_6px_rgba(0,0,0,0.03)] transition-all duration-200 hover:-translate-y-[3px] hover:shadow-[0_6px_12px_rgba(0,0,0,0.08)]"
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-[10px] bg-[#ff4c00] text-white shadow-[0_4px_0_#000]">
+                    <IconComponent className="h-6 w-6" strokeWidth={2} />
+                  </div>
+                  <span className="mt-5 text-sm font-bold text-[#ff4c00]">Step 0{step.id}</span>
+                  <h3 className="mt-1 text-lg font-bold text-[#111]">{step.title}</h3>
+                  <p className="mt-2 font-['Satoshi',sans-serif] text-sm leading-[1.5] text-[#333]">
+                    {step.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-  </div>
-</section>
-
-      {/* Why Choose Flashfire Section */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-black mb-6 text-center">
+      {/* ===== Why Choose ===== */}
+      <section className="relative overflow-hidden bg-[#f7e6df] px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+        <div className="pointer-events-none absolute -left-32 top-16 h-72 w-72 rounded-full bg-[#f55d1d] opacity-20 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-32 bottom-16 h-72 w-72 rounded-full bg-[#f55d1d] opacity-20 blur-[120px]" />
+        <div className="relative mx-auto max-w-4xl">
+          <h2 className="text-center font-['Satoshi',sans-serif] text-3xl font-bold tracking-[-0.03em] text-[#02060A] sm:text-4xl">
             Why Job Seekers Choose Flashfire
           </h2>
-          <div className="space-y-4 text-black/70 text-lg leading-relaxed">
+          <div className="mt-8 space-y-5 font-['Satoshi',sans-serif] text-[17px] leading-[1.7] text-[#3a3a3a]">
             <p>
               Searching for a job while working full-time, studying, or managing a career transition is exhausting.
               Most job seekers spend more time filling out repetitive application forms than actually preparing for
@@ -367,54 +359,66 @@ export default function JobSearch() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#fff7f2]">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-black mb-10 text-center">
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-6">
-            {jobSearchFaqs.map((faq, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl p-6 shadow-sm border border-[#ff4c00]/10"
-              >
-                <h3 className="text-lg font-bold text-black mb-2">{faq.question}</h3>
-                <p className="text-black/70 leading-relaxed">{faq.answer}</p>
-              </div>
-            ))}
+      {/* ===== FAQ ===== */}
+      <section className="ff-faq-section">
+        <div className="ff-faq-shell">
+          <div className="ff-faq-header">
+            <h2>Frequently Asked Questions</h2>
+          </div>
+
+          <div className="ff-faq-list">
+            {jobSearchFaqs.map((faq, index) => {
+              const isOpen = openFaq === index;
+              return (
+                <div key={index} className={`ff-faq-item ${isOpen ? "is-active" : ""}`}>
+                  <button
+                    type="button"
+                    className="ff-faq-question"
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    aria-expanded={isOpen}
+                  >
+                    <span className="ff-faq-question-text">{faq.question}</span>
+                    <span className="ff-faq-icon">{isOpen ? <FaTimes /> : <FaPlus />}</span>
+                  </button>
+
+                  {isOpen && (
+                    <div className="ff-faq-answer">
+                      <p>{faq.answer}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4">
-            Ready to Let Flashfire Search & Apply for You?
+      {/* ===== CTA ===== */}
+      <section className="bg-[#fdeee6] px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-['Satoshi',sans-serif] text-3xl font-bold tracking-[-0.02em] text-[#02060A] sm:text-[2.6rem]">
+            Ready to Let Flashfire Search &amp; Apply for You?
           </h2>
-          <p className="text-lg text-black/60 mb-8">
+          <p className="mt-4 font-['Satoshi',sans-serif] text-lg font-medium text-[#3a3a3a]">
             Set the goal. Flashfire runs the system.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="mt-8 flex justify-center">
             <button
               {...getButtonProps()}
               onClick={handleGetStarted}
-              className="bg-[#ff4c00] text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#e64400] transition-colors inline-flex items-center justify-center gap-2"
+              className="inline-flex items-center gap-2 rounded-[10px] bg-[#ff4c00] px-7 py-3.5 text-[17px] font-bold text-white shadow-[0_6px_0_#000] transition duration-200 hover:-translate-y-0.5 hover:bg-[#ff5a1f]"
             >
               Get Started With Flashfire
-              <ArrowRight className="w-5 h-5" />
+              <ArrowUpRight className="h-5 w-5" />
             </button>
           </div>
 
-          <p className="mt-6 text-sm text-black/50">
+          <p className="mt-6 text-sm text-[#6b6b6b]">
             No credit card required • Setup takes 2 minutes
           </p>
         </div>
       </section>
-
-     
     </div>
   );
 }

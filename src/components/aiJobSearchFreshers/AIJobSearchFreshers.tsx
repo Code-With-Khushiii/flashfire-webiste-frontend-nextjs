@@ -14,6 +14,39 @@ const updateCtaUrl = (basePath: string, label: string) => {
   window.dispatchEvent(new CustomEvent("showStrategyCallCard"));
 };
 
+const comparisonRows = [
+  {
+    feature: "Job Recommendations",
+    ai: "Personalized with AI",
+    traditional: "Generic listings",
+  },
+  {
+    feature: "Skill Matching",
+    ai: "Resume-based matching",
+    traditional: "Manual filtering",
+  },
+  {
+    feature: "Application Speed",
+    ai: "One-click apply",
+    traditional: "Manual form filling",
+  },
+  {
+    feature: "Entry-Level Focus",
+    ai: "Designed for freshers",
+    traditional: "Mixed experience levels",
+  },
+  {
+    feature: "Alerts",
+    ai: "Smart job alerts",
+    traditional: "Basic notifications",
+  },
+  {
+    feature: "Optimization",
+    ai: "AI-based profile suggestions",
+    traditional: "No optimization",
+  },
+];
+
 export default function AIJobSearchFreshersPage() {
   const ctaLabel = "Get Started";
   const [activeFaqIndex, setActiveFaqIndex] = useState<number | null>(null);
@@ -544,9 +577,10 @@ export default function AIJobSearchFreshersPage() {
               </h2>
             </div>
 
-            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
+            {/* Desktop / tablet table */}
+            <div className="hidden md:block overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
               <div className="overflow-x-auto">
-                <table className="w-full text-sm md:text-base min-w-[600px]">
+                <table className="w-full text-base min-w-[600px]">
                   <thead>
                     <tr className="bg-[#fff7f2]">
                       <th className="px-4 md:px-6 py-4 md:py-5 font-bold text-slate-900 text-left">Feature</th>
@@ -555,38 +589,7 @@ export default function AIJobSearchFreshersPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {[
-                      {
-                        feature: "Job Recommendations",
-                        ai: "Personalized with AI",
-                        traditional: "Generic listings",
-                      },
-                      {
-                        feature: "Skill Matching",
-                        ai: "Resume-based matching",
-                        traditional: "Manual filtering",
-                      },
-                      {
-                        feature: "Application Speed",
-                        ai: "One-click apply",
-                        traditional: "Manual form filling",
-                      },
-                      {
-                        feature: "Entry-Level Focus",
-                        ai: "Designed for freshers",
-                        traditional: "Mixed experience levels",
-                      },
-                      {
-                        feature: "Alerts",
-                        ai: "Smart job alerts",
-                        traditional: "Basic notifications",
-                      },
-                      {
-                        feature: "Optimization",
-                        ai: "AI-based profile suggestions",
-                        traditional: "No optimization",
-                      },
-                    ].map((row, idx) => (
+                    {comparisonRows.map((row, idx) => (
                       <tr key={row.feature} className={idx % 2 === 0 ? "bg-white" : "bg-[#fffaf7]/50"}>
                         <td className="px-4 md:px-6 py-3 md:py-4 font-semibold text-slate-700">{row.feature}</td>
                         <td className="px-4 md:px-6 py-3 md:py-4 text-slate-700">
@@ -603,6 +606,30 @@ export default function AIJobSearchFreshersPage() {
                   </tbody>
                 </table>
               </div>
+            </div>
+
+            {/* Mobile stacked cards */}
+            <div className="md:hidden space-y-4">
+              {comparisonRows.map((row) => (
+                <div key={row.feature} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <p className="font-bold text-slate-900 mb-3">{row.feature}</p>
+                  <div className="flex items-start justify-between gap-3 mb-2">
+                    <span className="text-xs font-bold text-[#ff4c00] bg-[#ff4c00]/10 px-2 py-1 rounded-md uppercase tracking-wide flex-shrink-0">
+                      AI Platform
+                    </span>
+                    <p className="text-sm text-slate-700 font-medium text-right flex items-center gap-1.5">
+                      <CheckCircle2 className="h-3.5 w-3.5 text-[#ff4c00] flex-shrink-0" />
+                      {row.ai}
+                    </p>
+                  </div>
+                  <div className="flex items-start justify-between gap-3 pt-2 border-t border-slate-100">
+                    <span className="text-xs font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md uppercase tracking-wide flex-shrink-0">
+                      Traditional
+                    </span>
+                    <p className="text-sm text-slate-500 text-right">{row.traditional}</p>
+                  </div>
+                </div>
+              ))}
             </div>
 
             <p className="mt-6 text-center text-base text-slate-600">
@@ -623,7 +650,7 @@ export default function AIJobSearchFreshersPage() {
               </h2>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="grid grid-cols-1 sm:flex sm:flex-wrap sm:justify-center gap-3">
               {[
                 "Fresh graduates",
                 "College students about to graduate",
@@ -635,7 +662,7 @@ export default function AIJobSearchFreshersPage() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="rounded-full border border-slate-200 bg-white px-5 py-2.5 md:px-6 md:py-3 text-slate-700 font-semibold shadow-sm hover:border-[#ff4c00]/30 hover:shadow-md"
+                  className="rounded-xl sm:rounded-full border border-slate-200 bg-white px-5 py-3 sm:py-2.5 md:px-6 md:py-3 text-center text-slate-700 font-semibold shadow-sm hover:border-[#ff4c00]/30 hover:shadow-md"
                 >
                   {item}
                 </div>
