@@ -22,21 +22,21 @@ export default function AICareerAssessmentPage() {
     <div className="bg-white text-slate-900 min-h-screen">
       <main className="mt-0">
 
-        {/* Hero Section - Premium Glassmorphism Design */}
-        <section className="relative bg-[#fff3ec] py-16 md:py-24 overflow-hidden">
-          {/* Subtle background pattern */}
-          {/* <div className="absolute inset-0 opacity-30">
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,_#ff4c00_0%,_transparent_50%)]"></div>
-            <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_80%,_#ff4c00_0%,_transparent_50%)]"></div>
-          </div> */}
+        {/* Hero Section - Layered Gradient Design */}
+        <section className="relative bg-white py-14 sm:py-20 md:py-24 overflow-hidden">
+          {/* Decorative gradient blobs */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute -top-24 -left-20 w-72 h-72 bg-[#ff4c00]/10 rounded-full blur-3xl"></div>
+            <div className="absolute top-1/3 -right-16 w-80 h-80 bg-[#ff6b33]/10 rounded-full blur-3xl"></div>
+          </div>
 
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
 
               {/* Left Content */}
               <div className="text-center lg:text-left">
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-[#ff4c00]/20 text-[#ff4c00] text-sm font-semibold shadow-sm">
+                <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-gradient-to-r from-[#ff4c00] to-[#ff6b33] text-white text-sm font-semibold shadow-md shadow-[#ff4c00]/20">
                   <Brain className="w-4 h-4" />
                   AI-Powered Career Intelligence
                 </div>
@@ -44,7 +44,7 @@ export default function AICareerAssessmentPage() {
                 {/* Heading */}
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-slate-900 mb-6">
                   AI Career Assessment Test{" "}
-                  <span className="text-[#ff4c00]">for Skill Gap & Career Path</span>
+                  <span className="bg-gradient-to-r from-[#ff4c00] to-[#ff6b33] bg-clip-text text-transparent">for Skill Gap & Career Path</span>
                 </h1>
 
                 {/* Subheading */}
@@ -60,7 +60,7 @@ export default function AICareerAssessmentPage() {
                 </p>
 
                 {/* Feature Pills */}
-                <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-8 text-left">
                   {[
                     "Get accurate career recommendations",
                     "Identify your professional strengths",
@@ -69,9 +69,9 @@ export default function AICareerAssessmentPage() {
                   ].map((item, i) => (
                     <div
                       key={i}
-                      className="flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-2 text-sm text-slate-700 shadow-sm"
+                      className="flex items-center gap-2 bg-[#fff7f2] border border-[#ff4c00]/10 rounded-lg px-3.5 py-2.5 text-sm text-slate-700"
                     >
-                      <CheckCircle2 className="w-4 h-4 text-[#ff4c00]" />
+                      <CheckCircle2 className="w-4 h-4 text-[#ff4c00] flex-shrink-0" />
                       <span>{item}</span>
                     </div>
                   ))}
@@ -83,7 +83,7 @@ export default function AICareerAssessmentPage() {
                   onClick={() =>
                     updateCtaUrl("/ai-career-assessment-skill-gap-analysis", "Start Assessment")
                   }
-                  className="inline-flex items-center justify-center gap-2 bg-[#ff4c00] text-white px-8 py-4 rounded-xl text-base font-semibold shadow-lg hover:bg-[#e64400] transition-colors"
+                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#ff4c00] to-[#ff6b33] text-white px-8 py-4 rounded-xl text-base font-semibold shadow-lg shadow-[#ff4c00]/30 hover:shadow-xl hover:shadow-[#ff4c00]/40 transition-shadow"
                 >
                   Start Assessment
                   <ArrowRight className="w-5 h-5" />
@@ -106,36 +106,54 @@ export default function AICareerAssessmentPage() {
               {/* Right Visual - Stats Card Grid */}
               <div className="hidden lg:block">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 border border-slate-100 shadow-lg">
-                    <div className="w-12 h-12 rounded-xl bg-[#ff4c00]/10 flex items-center justify-center mb-4">
-                      <Target className="w-6 h-6 text-[#ff4c00]" />
+                  <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#ff4c00] to-[#ff6b33] flex items-center justify-center mb-4 shadow-sm">
+                      <Target className="w-6 h-6 text-white" />
                     </div>
                     <div className="text-3xl font-bold text-slate-900 mb-1">10 min</div>
                     <div className="text-sm text-slate-600">Quick Assessment</div>
                   </div>
-                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 border border-slate-100 shadow-lg mt-8">
-                    <div className="w-12 h-12 rounded-xl bg-[#ff4c00]/10 flex items-center justify-center mb-4">
-                      <BarChart3 className="w-6 h-6 text-[#ff4c00]" />
+                  <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all mt-8">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#ff4c00] to-[#ff6b33] flex items-center justify-center mb-4 shadow-sm">
+                      <BarChart3 className="w-6 h-6 text-white" />
                     </div>
                     <div className="text-3xl font-bold text-slate-900 mb-1">AI</div>
                     <div className="text-sm text-slate-600">Powered Analysis</div>
                   </div>
-                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 border border-slate-100 shadow-lg">
-                    <div className="w-12 h-12 rounded-xl bg-[#ff4c00]/10 flex items-center justify-center mb-4">
-                      <FileText className="w-6 h-6 text-[#ff4c00]" />
+                  <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#ff4c00] to-[#ff6b33] flex items-center justify-center mb-4 shadow-sm">
+                      <FileText className="w-6 h-6 text-white" />
                     </div>
                     <div className="text-3xl font-bold text-slate-900 mb-1">PDF</div>
                     <div className="text-sm text-slate-600">Detailed Report</div>
                   </div>
-                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 border border-slate-100 shadow-lg mt-8">
-                    <div className="w-12 h-12 rounded-xl bg-[#ff4c00]/10 flex items-center justify-center mb-4">
-                      <Award className="w-6 h-6 text-[#ff4c00]" />
+                  <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all mt-8">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#ff4c00] to-[#ff6b33] flex items-center justify-center mb-4 shadow-sm">
+                      <Award className="w-6 h-6 text-white" />
                     </div>
                     <div className="text-3xl font-bold text-slate-900 mb-1">100%</div>
                     <div className="text-sm text-slate-600">Personalized</div>
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* Mobile stat strip */}
+            <div className="lg:hidden mt-10 -mx-4 px-4 flex gap-3 overflow-x-auto hide-scrollbar">
+              {[
+                { icon: Target, value: "10 min", label: "Quick Assessment" },
+                { icon: BarChart3, value: "AI", label: "Powered Analysis" },
+                { icon: FileText, value: "PDF", label: "Detailed Report" },
+                { icon: Award, value: "100%", label: "Personalized" },
+              ].map((stat, i) => (
+                <div key={i} className="flex-shrink-0 w-36 bg-white rounded-2xl p-4 border border-slate-200 shadow-sm">
+                  <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#ff4c00] to-[#ff6b33] flex items-center justify-center mb-3">
+                    <stat.icon className="w-[18px] h-[18px] text-white" />
+                  </div>
+                  <div className="text-xl font-bold text-slate-900 mb-0.5">{stat.value}</div>
+                  <div className="text-xs text-slate-600">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -153,28 +171,28 @@ export default function AICareerAssessmentPage() {
               </h2>
             </div>
 
-            <div className="grid sm:grid-cols-3 gap-6">
-              <div className="bg-[#fff7f2] rounded-xl p-6 text-center border border-[#ff4c00]/10">
-                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center mx-auto mb-4 shadow-sm">
-                  <Users className="h-6 w-6 text-[#ff4c00]" />
+            <div className="grid sm:grid-cols-3 gap-px bg-slate-100 rounded-2xl overflow-hidden border border-slate-100">
+              <div className="bg-white p-6 text-center flex flex-col items-center gap-3">
+                <div className="w-11 h-11 rounded-full bg-[#fff7f2] flex items-center justify-center">
+                  <Users className="h-5 w-5 text-[#ff4c00]" />
                 </div>
                 <p className="text-slate-700 font-medium text-sm">
                   Used by professionals across industries
                 </p>
               </div>
 
-              <div className="bg-[#fff7f2] rounded-xl p-6 text-center border border-[#ff4c00]/10">
-                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center mx-auto mb-4 shadow-sm">
-                  <BarChart3 className="h-6 w-6 text-[#ff4c00]" />
+              <div className="bg-white p-6 text-center flex flex-col items-center gap-3">
+                <div className="w-11 h-11 rounded-full bg-[#fff7f2] flex items-center justify-center">
+                  <BarChart3 className="h-5 w-5 text-[#ff4c00]" />
                 </div>
                 <p className="text-slate-700 font-medium text-sm">
                   Designed using real hiring data
                 </p>
               </div>
 
-              <div className="bg-[#fff7f2] rounded-xl p-6 text-center border border-[#ff4c00]/10">
-                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center mx-auto mb-4 shadow-sm">
-                  <Target className="h-6 w-6 text-[#ff4c00]" />
+              <div className="bg-white p-6 text-center flex flex-col items-center gap-3">
+                <div className="w-11 h-11 rounded-full bg-[#fff7f2] flex items-center justify-center">
+                  <Target className="h-5 w-5 text-[#ff4c00]" />
                 </div>
                 <p className="text-slate-700 font-medium text-sm">
                   Built for modern career decision-making
@@ -205,25 +223,18 @@ export default function AICareerAssessmentPage() {
                 "Wasting time on ineffective certifications",
                 "Struggling to align your passion with a practical career",
               ].map((item, i) => (
-                <div key={i} className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-[#ff4c00]/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-[#ff4c00] font-bold text-sm">{i + 1}</span>
-                    </div>
-                    <span className="text-slate-700 font-medium text-sm pt-1">{item}</span>
-                  </div>
+                <div key={i} className="flex items-start gap-3 bg-white rounded-xl p-4 border-l-4 border-l-[#ff4c00] border-y border-r border-slate-200">
+                  <span className="text-[#ff4c00] font-bold text-sm flex-shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="text-slate-700 font-medium text-sm">{item}</span>
                 </div>
               ))}
             </div>
 
             <div className="max-w-3xl mx-auto">
-              <div className="relative bg-white border border-[#ff4c00]/20 rounded-3xl p-6 sm:p-8 shadow-md overflow-hidden">
-
-                {/* Soft Glow Accent */}
-                <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#ff4c00]/10 rounded-full blur-3xl"></div>
+              <div className="bg-white border border-[#ff4c00]/20 rounded-3xl p-6 sm:p-8 overflow-hidden shadow-sm">
 
                 {/* Heading */}
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6">
                   Feeling Stuck in Your Career Path?
                 </h2>
 
@@ -232,11 +243,11 @@ export default function AICareerAssessmentPage() {
 
                   {/* Item */}
                   <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 flex items-center justify-center rounded-full bg-[#ff4c00]/10 text-[#ff4c00] text-sm font-bold">
+                    <div className="w-6 h-6 flex items-center justify-center rounded-full bg-[#ff4c00] text-white text-sm font-bold flex-shrink-0">
                       ?
                     </div>
-                    <p className="text-slate-700 text-base">
-                      <span className="font-semibold text-[#ff4c00]">
+                    <p className="text-base">
+                      <span className="font-semibold text-slate-800">
                         Tired of guessing your next move?
                       </span>
                     </p>
@@ -244,11 +255,11 @@ export default function AICareerAssessmentPage() {
 
                   {/* Item */}
                   <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 flex items-center justify-center rounded-full bg-[#ff4c00]/10 text-[#ff4c00] text-sm font-bold">
+                    <div className="w-6 h-6 flex items-center justify-center rounded-full bg-[#ff4c00] text-white text-sm font-bold flex-shrink-0">
                       ?
                     </div>
-                    <p className="text-slate-700 text-base">
-                      <span className="font-semibold text-[#ff4c00]">
+                    <p className="text-base">
+                      <span className="font-semibold text-slate-800">
                         Unsure if your skills match the job market?
                       </span>
                     </p>
@@ -256,11 +267,11 @@ export default function AICareerAssessmentPage() {
 
                   {/* Item */}
                   <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 flex items-center justify-center rounded-full bg-[#ff4c00]/10 text-[#ff4c00] text-sm font-bold">
+                    <div className="w-6 h-6 flex items-center justify-center rounded-full bg-[#ff4c00] text-white text-sm font-bold flex-shrink-0">
                       ?
                     </div>
-                    <p className="text-slate-700 text-base">
-                      <span className="font-semibold text-[#ff4c00]">
+                    <p className="text-base">
+                      <span className="font-semibold text-slate-800">
                         Afraid of investing in the wrong career path?
                       </span>
                     </p>
@@ -272,8 +283,8 @@ export default function AICareerAssessmentPage() {
                 <div className="my-6 border-t border-slate-100"></div>
 
                 {/* Solution Highlight */}
-                <div className="bg-[#ff4c00]/5 border border-[#ff4c00]/20 rounded-xl p-4 text-center">
-                  <p className="text-base sm:text-lg font-semibold text-[#ff4c00]">
+                <div className="bg-gradient-to-r from-[#ff4c00] to-[#ff6b33] rounded-xl p-4 text-center">
+                  <p className="text-base sm:text-lg font-semibold text-white">
                     Our intelligent career quiz eliminates this uncertainty.
                   </p>
                 </div>
@@ -364,13 +375,13 @@ export default function AICareerAssessmentPage() {
               ].map((item, index) => (
                 <div key={item.step} className="relative">
                   {/* Timeline connector */}
-                  {/* {index !== 5 && (
-                    <div className="absolute left-6 top-16 w-0.5 h-8 bg-[#ff4c00]/20"></div>
-                  )} */}
+                  {index !== 4 && (
+                    <div className="absolute left-6 top-16 w-0.5 h-[calc(100%-2.5rem)] bg-gradient-to-b from-[#ff4c00]/30 to-transparent hidden sm:block"></div>
+                  )}
 
-                  <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                  <div className="relative bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-[#ff4c00] to-[#ff6b33] text-white flex items-center justify-center font-bold text-lg shadow-md">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#ff4c00] to-[#ff6b33] text-white flex items-center justify-center font-bold text-lg shadow-md ring-4 ring-white">
                         {item.step}
                       </div>
                       <div className="flex-grow min-w-0">
@@ -420,7 +431,43 @@ export default function AICareerAssessmentPage() {
               Before vs After Using AI Career Assessment
             </h2>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            {/* ================= DESKTOP TABLE ================= */}
+            <div className="hidden md:block">
+              <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                <table className="w-full">
+                  <thead>
+                    <tr className="bg-gradient-to-r from-[#ff4c00] to-[#ff6b33]">
+                      <th className="text-left p-5 font-bold text-white w-1/2">Before</th>
+                      <th className="text-left p-5 font-bold text-white w-1/2">After</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      {
+                        before: "Confused about career direction",
+                        after: "Clear roadmap + skill improvement plan",
+                      },
+                      {
+                        before: "Guessing which skills to learn",
+                        after: "Precise skill-gap insights",
+                      },
+                      {
+                        before: "Uncertain career decisions",
+                        after: "Data-backed career clarity",
+                      },
+                    ].map((item, i) => (
+                      <tr key={i} className="border-b border-slate-100 last:border-b-0">
+                        <td className="p-5 text-slate-500">{item.before}</td>
+                        <td className="p-5 font-semibold text-slate-900">{item.after}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* ================= MOBILE LIST ================= */}
+            <div className="md:hidden space-y-4">
               {[
                 {
                   before: "Confused about career direction",
@@ -435,17 +482,14 @@ export default function AICareerAssessmentPage() {
                   after: "Data-backed career clarity",
                 },
               ].map((item, i) => (
-                <div key={i} className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
-                  <div className="p-6 bg-slate-50 border-b border-slate-200">
-                    <p className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Before</p>
-                    <p className="text-slate-700 font-medium">{item.before}</p>
+                <div key={i} className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+                  <div className="flex justify-between items-start gap-3 mb-2">
+                    <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-1 rounded">Before</span>
+                    <p className="text-sm text-slate-500 text-right">{item.before}</p>
                   </div>
-                  <div className="p-6 bg-white">
-                    <p className="text-xs font-bold uppercase tracking-wider text-[#ff4c00] mb-2">After</p>
-                    <p className="text-slate-900 font-semibold">{item.after}</p>
-                  </div>
-                  <div className="px-6 pb-6">
-                    <div className="w-full h-1 bg-gradient-to-r from-slate-200 to-[#ff4c00] rounded-full"></div>
+                  <div className="flex justify-between items-start gap-3">
+                    <span className="text-xs font-semibold text-white bg-[#ff4c00] px-2 py-1 rounded">After</span>
+                    <p className="text-sm font-semibold text-slate-900 text-right">{item.after}</p>
                   </div>
                 </div>
               ))}
@@ -477,11 +521,11 @@ export default function AICareerAssessmentPage() {
                 "Get personalized career paths tailored to your profile",
                 "Receive actionable next steps, not just insights",
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3 p-4 bg-[#fff7f2] rounded-xl border border-slate-100">
-                  <div className="w-8 h-8 rounded-lg bg-[#ff4c00]/10 flex items-center justify-center flex-shrink-0">
-                    <CheckCircle2 className="h-4 w-4 text-[#ff4c00]" />
+                <div key={i} className="flex items-start gap-3 p-4 bg-white rounded-xl border border-slate-200 hover:border-[#ff4c00]/30 transition-colors">
+                  <div className="w-7 h-7 rounded-full bg-[#ff4c00] flex items-center justify-center flex-shrink-0">
+                    <CheckCircle2 className="h-4 w-4 text-white" />
                   </div>
-                  <span className="text-sm sm:text-base text-slate-700 font-medium pt-1">{item}</span>
+                  <span className="text-sm sm:text-base text-slate-700 font-medium pt-0.5">{item}</span>
                 </div>
               ))}
             </div>
@@ -522,11 +566,10 @@ export default function AICareerAssessmentPage() {
                   desc: "",
                 },
               ].map((item, i) => (
-                <div key={i} className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#ff4c00] to-[#ff6b33] text-white flex items-center justify-center font-bold text-lg mb-3">
-                    {i + 1}
-                  </div>
-                  <h3 className="text-base font-bold mb-2 text-slate-900">{item.title}</h3>
+                <div key={i} className="relative bg-white rounded-xl border border-slate-200 p-5 pl-6 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+                  <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#ff4c00] to-[#ff6b33]"></div>
+                  <span className="text-xs font-bold text-[#ff4c00] tracking-wider">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="text-base font-bold mt-1 mb-2 text-slate-900">{item.title}</h3>
                   {item.desc && <p className="text-sm text-slate-600">{item.desc}</p>}
                 </div>
               ))}
@@ -541,7 +584,7 @@ export default function AICareerAssessmentPage() {
               Key Features of Our AI Career Assessment Tool
             </h2>
 
-            <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-wrap md:justify-center gap-3 max-w-4xl mx-auto">
               {[
                 "AI-Powered Career Aptitude Test",
                 "Advanced Skill Gap Analysis Tool",
@@ -553,7 +596,8 @@ export default function AICareerAssessmentPage() {
                 "Beginner-Friendly Interface",
                 "Results in Under 10 Minutes",
               ].map((feature, i) => (
-                <div key={i} className="bg-[#fff7f2] border border-[#ff4c00]/20 rounded-full px-5 py-2.5">
+                <div key={i} className="flex items-center gap-2 bg-white border border-slate-200 rounded-xl md:rounded-full px-4 py-2.5 hover:border-[#ff4c00]/40 hover:bg-[#fff7f2] transition-colors">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ff4c00] flex-shrink-0"></span>
                   <p className="text-sm font-medium text-slate-700">{feature}</p>
                 </div>
               ))}
@@ -575,15 +619,15 @@ export default function AICareerAssessmentPage() {
               <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-slate-200 bg-gradient-to-r from-[#fff7f2] to-white">
-                      <th className="text-left p-5 font-bold text-slate-900">Feature</th>
-                      <th className="text-left p-5 font-bold text-[#ff4c00]">
+                    <tr className="bg-gradient-to-r from-[#ff4c00] to-[#ff6b33]">
+                      <th className="text-left p-5 font-bold text-white">Feature</th>
+                      <th className="text-left p-5 font-bold text-white">
                         <div className="flex items-center gap-2">
                           <CheckCircle2 className="w-4 h-4" />
                           AI Career Assessment
                         </div>
                       </th>
-                      <th className="text-left p-5 font-bold text-slate-500">
+                      <th className="text-left p-5 font-bold text-white/70">
                         Traditional Career Tests
                       </th>
                     </tr>
@@ -684,9 +728,9 @@ export default function AICareerAssessmentPage() {
                 "International job seekers",
                 "Professionals returning after a career break",
               ].map((item, i) => (
-                <div key={i} className="bg-[#fff7f2] rounded-xl border border-[#ff4c00]/10 p-4 text-center hover:bg-[#ffefe8] transition-colors">
-                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center mx-auto mb-3 shadow-sm">
-                    <Users className="w-5 h-5 text-[#ff4c00]" />
+                <div key={i} className="bg-white rounded-xl border border-slate-200 p-4 text-center hover:border-[#ff4c00]/40 hover:-translate-y-0.5 transition-all">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff4c00] to-[#ff6b33] flex items-center justify-center mx-auto mb-3">
+                    <Users className="w-5 h-5 text-white" />
                   </div>
                   <p className="text-sm font-medium text-slate-700">{item}</p>
                 </div>
@@ -700,31 +744,28 @@ export default function AICareerAssessmentPage() {
           </div>
         </section>
 
-        {/* Final CTA - Premium Glass Card */}
-        <section className="relative py-20 bg-gradient-to-br from-[#fff7f2] via-white to-[#fff3ec] overflow-hidden">
-          {/* Background decoration */}
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#ff4c00] rounded-full blur-3xl"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#ff4c00] rounded-full blur-3xl"></div>
-          </div>
-
+        {/* Final CTA - Bold Gradient Panel */}
+        <section className="relative py-16 sm:py-20 bg-white overflow-hidden">
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white/90 backdrop-blur-sm border border-slate-100 shadow-2xl rounded-3xl p-8 sm:p-12 text-center">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#ff4c00] to-[#ff6b33] flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <div className="relative bg-gradient-to-br from-[#ff4c00] to-[#e64400] rounded-3xl p-8 sm:p-12 text-center overflow-hidden shadow-xl">
+              <div className="absolute -top-16 -right-16 w-56 h-56 bg-white/10 rounded-full blur-3xl"></div>
+              <div className="absolute -bottom-16 -left-16 w-56 h-56 bg-white/10 rounded-full blur-3xl"></div>
+
+              <div className="relative w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mx-auto mb-6">
                 <Target className="w-8 h-8 text-white" />
               </div>
 
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4 leading-tight">
+              <h2 className="relative text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
                 Discover Your Ideal Career Path with AI
               </h2>
 
-              <p className="text-base sm:text-lg text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+              <p className="relative text-base sm:text-lg text-white/85 mb-8 max-w-2xl mx-auto leading-relaxed">
                 Stop guessing your future. Identify your strengths. Fix your skill gaps.
                 Move forward with confidence.
               </p>
 
               {/* Benefit Pills */}
-              <div className="flex flex-wrap justify-center gap-3 mb-8 max-w-2xl mx-auto">
+              <div className="relative flex flex-wrap justify-center gap-3 mb-8 max-w-2xl mx-auto">
                 {[
                   "Gain instant career clarity",
                   "Detect missing skills",
@@ -733,7 +774,7 @@ export default function AICareerAssessmentPage() {
                 ].map((item, i) => (
                   <div
                     key={i}
-                    className="bg-[#fff7f2] border border-[#ff4c00]/10 rounded-full px-4 py-2 text-sm text-slate-700 font-medium"
+                    className="bg-white/15 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm text-white font-medium"
                   >
                     {item}
                   </div>
@@ -746,14 +787,14 @@ export default function AICareerAssessmentPage() {
                 onClick={() =>
                   updateCtaUrl("/ai-career-assessment-skill-gap-analysis", "Start Assessment")
                 }
-                className="inline-flex items-center justify-center gap-2 bg-[#ff4c00] text-white px-10 py-4 rounded-xl text-base font-semibold shadow-lg hover:bg-[#e64400] transition-colors"
+                className="relative inline-flex items-center justify-center gap-2 bg-white text-[#ff4c00] px-10 py-4 rounded-xl text-base font-semibold shadow-lg hover:bg-[#fff3ec] transition-colors"
               >
                 Start Assessment
                 <ArrowRight className="w-5 h-5" />
               </button>
 
               {/* Trust Badges */}
-              <div className="mt-8 flex flex-wrap justify-center gap-6 text-xs text-slate-500">
+              <div className="relative mt-8 flex flex-wrap justify-center gap-6 text-xs text-white/80">
                 <span className="flex items-center gap-1">
                   <Clock className="w-3 h-3" /> Instant results
                 </span>
