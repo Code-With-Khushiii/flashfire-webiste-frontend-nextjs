@@ -712,11 +712,11 @@ export default function AICareerAssessmentPage() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:flex sm:flex-wrap sm:justify-center gap-3">
+            <div className="flex flex-wrap justify-center gap-2.5 sm:gap-3">
               {whoCanUse.map((item) => (
                 <div
                   key={item.label}
-                  className="flex sm:inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-full border border-slate-200 bg-white px-5 py-3 sm:py-2.5 md:px-6 md:py-3 text-center text-slate-700 font-semibold shadow-sm hover:border-[#ff4c00]/30 hover:shadow-md"
+                  className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base text-slate-700 font-semibold shadow-sm hover:border-[#ff4c00]/30 hover:shadow-md"
                 >
                   <item.icon className="h-4 w-4 text-[#ff4c00] flex-shrink-0" />
                   {item.label}
