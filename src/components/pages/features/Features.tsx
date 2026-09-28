@@ -53,14 +53,14 @@ const features: FeatureItem[] = [
   {
     title: "Dynamic Resume Optimization",
     description:
-      "We build your base resume from scratch and tailor it for each job, making it ATS-friendly and recruiter-visible.we also provide you with a personalized job strategy for US, Canada & UK roles.",
+      "We build your base resume from scratch and tailor it for each job, making it ATS-friendly and recruiter-visible.we also provide you with a personalized job strategy for US, Canada, UK & Australia roles.",
     icon: FaFileAlt,
     href: "/features/ats-resume-optimizer",
   },
   {
     title: "LinkedIn Profile Optimization",
     description:
-      "We professionally optimize your LinkedIn profile to boost recruiter visibility and align with your job search goals.it also includes a personalized job strategy for US, Canada & UK roles.",
+      "We professionally optimize your LinkedIn profile to boost recruiter visibility and align with your job search goals.it also includes a personalized job strategy for US, Canada, UK & Australia roles.",
     icon: FaLinkedin,
     href: "/features/linkedin-profile-optimization-tool",
   },
@@ -128,8 +128,8 @@ const personas = [
     desc: "Students and new graduates who need a faster way to reach relevant companies without spending every night filling out forms.",
   },
   {
-    title: "U.S., U.K. & Canada Job Seekers",
-    desc: "Candidates targeting U.S., U.K. & Canada-based roles across tech, business, and operations.",
+    title: "U.S., U.K., Canada & Australia Job Seekers",
+    desc: "Candidates targeting U.S., U.K., Canada & Australia-based roles across tech, business, and operations.",
   },
   {
     title: "Burnt-Out Applicants",
