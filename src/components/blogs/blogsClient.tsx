@@ -229,20 +229,20 @@ export default function BlogsClient({ categorySlug, tagSlug, heading }: BlogsCli
         const blogCategory = (blog.category || "").toLowerCase();
         const blogTags = (blog.tags || []).map(tag => tag ? tag.toLowerCase() : "").filter(tag => tag.length > 0);
         
-        // Check if any search word matches in any of the fields
-        return searchWords.some(word => {
+        // Require every search word to match somewhere so multi-word queries narrow results
+        return searchWords.every(word => {
           // Search in title (most important for "blog names")
           if (blogTitle.includes(word)) return true;
-          
+
           // Search in excerpt
           if (blogExcerpt.includes(word)) return true;
-          
+
           // Search in category
           if (blogCategory.includes(word)) return true;
-          
+
           // Search in tags
           if (blogTags.some(tag => tag.includes(word))) return true;
-          
+
           return false;
         });
       });
