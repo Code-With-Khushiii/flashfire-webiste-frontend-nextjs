@@ -198,8 +198,8 @@ export const australiaPricingPlans: PricingPlan[] = [
     title: "IGNITE",
     subTitle: "250 Applications",
     description: "For senior professionals & executives",
-    price: "A$299",
-    oldPrice: "A$399",
+    price: "AUD$299",
+    oldPrice: "AUD$399",
     features: [
       { title:"No Time Constraint", description: "Until your applications are completed" },
       { title:"We Find Jobs", description: "We find & apply to jobs for you" },
@@ -215,8 +215,8 @@ export const australiaPricingPlans: PricingPlan[] = [
     tag: "BEST VALUE",
     subTitle: "500 Applications",
     description: "Best for mid-level professionals",
-    price: "A$549",
-    oldPrice: "A$699",
+    price: "AUD$549",
+    oldPrice: "AUD$699",
     inheritsFrom: "IGNITE",
     features: [
       { title:"No Time Constraint", description: "Until your applications are completed" },
@@ -233,8 +233,8 @@ export const australiaPricingPlans: PricingPlan[] = [
     tag: "MOST POPULAR",
     subTitle: "1200 Applications",
     description: "For new grads & early professionals",
-    price: "A$899",
-    oldPrice: "A$1,099",
+    price: "AUD$899",
+    oldPrice: "AUD$1,099",
     inheritsFrom: "PROFESSIONAL",
     features: [
       { title:"1 Cover Letter", description: "1 cover letter used for all applications" },
