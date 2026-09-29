@@ -222,7 +222,40 @@ function convertToHTML(text: string): string {
       continue;
     }
 
-    // ── 13. Default paragraph ──────────────────────────────────────────
+    // ── 13. Implicit list: previous line ended with ":" and this + next lines are short items ──
+    // e.g. "UK employers may use:\nPhone interviews\nVideo interviews\n..."
+    const prevLine = html.length > 0 ? html[html.length - 1] : "";
+    const isAfterColonPara = prevLine.endsWith(":</p>") || prevLine.endsWith(": </p>");
+    const nextFewLines = lines.slice(i + 1, i + 5).map(l => l.trim()).filter(l => l.length > 0);
+    const nextAreLikeItems = nextFewLines.filter(l =>
+      l.length < 60 && !l.endsWith(".") && !/^\d+\.\s/.test(l) && !/^[-•*]\s/.test(l)
+    ).length >= 2;
+
+    if (isAfterColonPara && line.length < 60 && !line.endsWith(".") && !/^\d+\.\s/.test(line) && (nextAreLikeItems || nextFewLines.filter(l => l.length < 60).length >= 1)) {
+      // Remove the previous <p> and re-emit as a list intro
+      html.pop();
+      const introText = prevLine.replace(/<p[^>]*>/, "").replace(/<\/p>$/, "");
+      html.push(`<p style='margin-bottom:8px; line-height:1.7;'>${introText}</p>`);
+      html.push(`<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>`);
+      while (
+        i < lines.length &&
+        lines[i].trim().length > 0 &&
+        lines[i].trim().length < 80 &&
+        !/^\d+\.\s+[A-Z]/.test(lines[i].trim()) &&
+        !/^[-•*]\s/.test(lines[i].trim()) &&
+        !/^faqs?:?$/i.test(lines[i].trim()) &&
+        !lines[i].trim().endsWith(":") &&
+        !isPipeTable(lines[i].trim()) &&
+        !isTabTable(lines[i])
+      ) {
+        html.push(`  <li>${formatInline(lines[i].trim())}</li>`);
+        i++;
+      }
+      html.push(`</ul>`);
+      continue;
+    }
+
+    // ── 14. Default paragraph ──────────────────────────────────────────
     html.push(`<p style='margin-bottom:12px; line-height:1.7;'>${formatInline(line)}</p>`);
     i++;
   }
