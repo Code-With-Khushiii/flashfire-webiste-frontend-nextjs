@@ -78,7 +78,7 @@ function convertToHTML(text: string): string {
 
     // ── 2. FAQ items (numbered questions inside FAQ section) ───────────
     if (inFaqSection && /^\d+\.\s/.test(line)) {
-      const question = line.replace(/^\d+\.\s+/, "");
+      const question = line;
       html.push(`<div style='margin-bottom:16px;'>`);
       html.push(`<h3 class="text-lg font-semibold text-gray-800 mb-1">${formatInline(question)}</h3>`);
       i++;
