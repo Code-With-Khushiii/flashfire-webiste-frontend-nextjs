@@ -290,6 +290,7 @@ export default function NewBlogPage() {
   const [plainText, setPlainText] = useState("");
   const [generatedHTML, setGeneratedHTML] = useState("");
   const [showPreview, setShowPreview] = useState(false);
+  const [converting, setConverting] = useState(false);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>("");
   const [uploading, setUploading] = useState(false);
@@ -310,11 +311,26 @@ export default function NewBlogPage() {
     setForm((prev) => ({ ...prev, imageUrl: "" }));
   }
 
-  function handleGenerateHTML() {
+  async function handleGenerateHTML() {
     if (!plainText.trim()) return;
-    const html = convertToHTML(plainText);
-    setGeneratedHTML(html);
-    setShowPreview(true);
+    if (!form.secretKey) { setStatus({ type: "error", message: "Enter secret key first." }); return; }
+    setConverting(true);
+    setStatus({ type: "", message: "" });
+    try {
+      const res = await fetch("/api/convert-blog-content", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ plainText, secretKey: form.secretKey }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Conversion failed");
+      setGeneratedHTML(data.html);
+      setShowPreview(true);
+    } catch (err: unknown) {
+      setStatus({ type: "error", message: err instanceof Error ? err.message : "Conversion failed" });
+    } finally {
+      setConverting(false);
+    }
   }
 
   async function uploadImage(): Promise<string> {
@@ -543,10 +559,14 @@ export default function NewBlogPage() {
             <button
               type="button"
               onClick={handleGenerateHTML}
-              disabled={!plainText.trim()}
-              className="w-full bg-gray-800 hover:bg-gray-900 disabled:bg-gray-300 text-white font-semibold py-2.5 px-6 rounded-xl transition-colors text-sm"
+              disabled={!plainText.trim() || converting}
+              className="w-full bg-gray-800 hover:bg-gray-900 disabled:bg-gray-400 text-white font-semibold py-2.5 px-6 rounded-xl transition-colors text-sm flex items-center justify-center gap-2"
             >
-              Generate HTML Preview
+              {converting ? (
+                <><span className="animate-spin text-lg">⟳</span> GPT is formatting your content...</>
+              ) : (
+                "Generate HTML Preview"
+              )}
             </button>
 
             {/* Preview */}
