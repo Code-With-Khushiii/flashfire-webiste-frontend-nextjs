@@ -589,7 +589,7 @@ export default function NewBlogPage() {
                   <button type="button" onClick={() => setShowPreview(false)} className="text-xs text-gray-400 hover:text-gray-600">Hide</button>
                 </div>
                 <div
-                  className="border border-gray-200 rounded-xl p-6 bg-white prose max-w-none text-gray-800 text-sm leading-relaxed overflow-y-auto max-h-[500px]"
+                  className="border border-gray-200 rounded-xl p-6 bg-white prose prose-ul:list-disc prose-ol:list-decimal prose-li:ml-4 max-w-none text-gray-800 text-sm leading-relaxed overflow-y-auto max-h-[500px] [&_ul]:list-disc [&_ul]:ml-5 [&_ol]:list-decimal [&_ol]:ml-5 [&_li]:mb-1"
                   dangerouslySetInnerHTML={{ __html: generatedHTML }}
                 />
                 <p className="text-xs text-gray-400 mt-2">This is exactly how the blog content will appear on the website.</p>
