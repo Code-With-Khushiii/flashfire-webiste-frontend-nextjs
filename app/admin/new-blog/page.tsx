@@ -63,11 +63,20 @@ function convertToHTML(text: string): string {
     return wordCount >= 1 && wordCount <= 7 && /^[A-Z]/.test(label);
   }
 
+  // Find first non-empty line index (the blog intro title)
+  const firstContentIndex = lines.findIndex(l => l.trim().length > 0);
+
   while (i < lines.length) {
     const raw = lines[i];
     const line = raw.trim();
 
     if (!line) { i++; continue; }
+
+    // ── 0. First line = blog intro title → bold H2 ────────────────────
+    if (i === firstContentIndex && !/^\d+\.\s/.test(line)) {
+      html.push(`<h2 class="text-2xl font-bold text-gray-900 mt-4 mb-3">${formatInline(line)}</h2>`);
+      i++; continue;
+    }
 
     // ── 1. FAQ section header ──────────────────────────────────────────
     if (/^faqs?:?$/i.test(line)) {
@@ -281,6 +290,7 @@ export default function NewBlogPage() {
   const [plainText, setPlainText] = useState("");
   const [generatedHTML, setGeneratedHTML] = useState("");
   const [showPreview, setShowPreview] = useState(false);
+  const [converting, setConverting] = useState(false);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>("");
   const [uploading, setUploading] = useState(false);
@@ -301,11 +311,26 @@ export default function NewBlogPage() {
     setForm((prev) => ({ ...prev, imageUrl: "" }));
   }
 
-  function handleGenerateHTML() {
+  async function handleGenerateHTML() {
     if (!plainText.trim()) return;
-    const html = convertToHTML(plainText);
-    setGeneratedHTML(html);
-    setShowPreview(true);
+    if (!form.secretKey) { setStatus({ type: "error", message: "Enter secret key first." }); return; }
+    setConverting(true);
+    setStatus({ type: "", message: "" });
+    try {
+      const res = await fetch("/api/convert-blog-content", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ plainText, secretKey: form.secretKey }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Conversion failed");
+      setGeneratedHTML(data.html);
+      setShowPreview(true);
+    } catch (err: unknown) {
+      setStatus({ type: "error", message: err instanceof Error ? err.message : "Conversion failed" });
+    } finally {
+      setConverting(false);
+    }
   }
 
   async function uploadImage(): Promise<string> {
@@ -330,14 +355,26 @@ export default function NewBlogPage() {
 
     if (!form.secretKey) return setStatus({ type: "error", message: "Secret key is required." });
     if (!form.metaTitle || !form.metaDescription || !form.h1 || !form.slug) return setStatus({ type: "error", message: "Meta Title, Meta Description, H1, and Slug are required." });
-    if (!generatedHTML.trim() && !plainText.trim()) return setStatus({ type: "error", message: "Blog content is required." });
+    if (!plainText.trim()) return setStatus({ type: "error", message: "Blog content is required." });
     if (!imageFile && !form.imageUrl) return setStatus({ type: "error", message: "Please upload an image or provide an image URL." });
-
-    const content = generatedHTML || convertToHTML(plainText);
 
     try {
       setPublishing(true);
-      const imageUrl = await uploadImage();
+
+      // Run image upload + GPT conversion in parallel
+      const convertContent = async (): Promise<string> => {
+        if (generatedHTML) return generatedHTML;
+        const res = await fetch("/api/convert-blog-content", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ plainText, secretKey: form.secretKey }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Content conversion failed");
+        return data.html;
+      };
+
+      const [imageUrl, content] = await Promise.all([uploadImage(), convertContent()]);
       const author = AUTHORS.find((a) => a.name === form.authorName) || AUTHORS[0];
       const tagsArray = form.tags.split(",").map((t) => t.trim()).filter(Boolean);
 
@@ -534,10 +571,14 @@ export default function NewBlogPage() {
             <button
               type="button"
               onClick={handleGenerateHTML}
-              disabled={!plainText.trim()}
-              className="w-full bg-gray-800 hover:bg-gray-900 disabled:bg-gray-300 text-white font-semibold py-2.5 px-6 rounded-xl transition-colors text-sm"
+              disabled={!plainText.trim() || converting}
+              className="w-full bg-gray-800 hover:bg-gray-900 disabled:bg-gray-400 text-white font-semibold py-2.5 px-6 rounded-xl transition-colors text-sm flex items-center justify-center gap-2"
             >
-              Generate HTML Preview
+              {converting ? (
+                <><span className="animate-spin text-lg">⟳</span> Formatting your content...</>
+              ) : (
+                "Generate HTML Preview"
+              )}
             </button>
 
             {/* Preview */}
@@ -548,7 +589,7 @@ export default function NewBlogPage() {
                   <button type="button" onClick={() => setShowPreview(false)} className="text-xs text-gray-400 hover:text-gray-600">Hide</button>
                 </div>
                 <div
-                  className="border border-gray-200 rounded-xl p-6 bg-white prose max-w-none text-gray-800 text-sm leading-relaxed overflow-y-auto max-h-[500px]"
+                  className="border border-gray-200 rounded-xl p-6 bg-white prose prose-ul:list-disc prose-ol:list-decimal prose-li:ml-4 max-w-none text-gray-800 text-sm leading-relaxed overflow-y-auto max-h-[500px] [&_ul]:list-disc [&_ul]:ml-5 [&_ol]:list-decimal [&_ol]:ml-5 [&_li]:mb-1"
                   dangerouslySetInnerHTML={{ __html: generatedHTML }}
                 />
                 <p className="text-xs text-gray-400 mt-2">This is exactly how the blog content will appear on the website.</p>
@@ -565,7 +606,7 @@ export default function NewBlogPage() {
             {isLoading ? (
               <>
                 <span className="animate-spin text-lg">⟳</span>
-                {uploading ? "Uploading image..." : "Publishing to GitHub..."}
+                {uploading ? "Uploading image + formatting content..." : "Publishing to GitHub..."}
               </>
             ) : (
               "Publish Blog"
