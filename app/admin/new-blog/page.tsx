@@ -33,6 +33,192 @@ const CATEGORY_COLORS: Record<string, string> = {
   "Networking": "bg-red-100 text-red-600",
 };
 
+function convertToHTML(text: string): string {
+  const lines = text.split("\n");
+  const html: string[] = [];
+  let i = 0;
+
+  // Detect if a line looks like a table row (contains tab or multiple spaces as delimiter)
+  function isTableRow(line: string): boolean {
+    return line.includes("\t") && line.trim().length > 0;
+  }
+
+  // Detect markdown-style table row (pipe separated)
+  function isPipeTableRow(line: string): boolean {
+    return line.trim().startsWith("|") || (line.includes("|") && !line.trim().startsWith("http"));
+  }
+
+  // Check if line is a numbered section heading like "1. How to Get a Job..."
+  function isSectionHeading(line: string): boolean {
+    return /^\d+\.\s+[A-Z]/.test(line.trim()) && line.trim().length > 20;
+  }
+
+  // Check if line is a sub-numbered heading like "1. Build relevant skills"
+  function isSubHeading(line: string): boolean {
+    return /^\d+\.\s+[A-Z]/.test(line.trim()) && line.trim().length <= 60;
+  }
+
+  // Bold **text** or text surrounded by colons
+  function formatInline(line: string): string {
+    // Bold **text**
+    line = line.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+    // STAR method labels like "Situation:", "Task:", "Action:", "Result:"
+    line = line.replace(/^(Situation|Task|Action|Result|Source|Pro Tip|Quick Answer):/g, "<strong>$1:</strong>");
+    // Requirement/What to do style inline
+    return line;
+  }
+
+  while (i < lines.length) {
+    const line = lines[i].trim();
+
+    // Skip empty lines
+    if (!line) {
+      i++;
+      continue;
+    }
+
+    // FAQ section detection
+    if (line.toLowerCase() === "faqs:" || line.toLowerCase() === "faqs" || line.toLowerCase() === "faq:") {
+      html.push(`<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Frequently Asked Questions</h2>`);
+      i++;
+      continue;
+    }
+
+    // FAQ item: starts with number and "?" somewhere
+    if (/^\d+\.\s/.test(line) && lines.slice(i, i + 3).some(l => l.includes("?"))) {
+      const question = line.replace(/^\d+\.\s+/, "");
+      html.push(`<div class="mb-4">`);
+      html.push(`<h3 class="text-lg font-semibold text-gray-800 mb-1">${formatInline(question)}</h3>`);
+      i++;
+      // Collect answer lines
+      while (i < lines.length && lines[i].trim() && !/^\d+\.\s/.test(lines[i].trim())) {
+        html.push(`<p style='margin-bottom:8px; line-height:1.7;'>${formatInline(lines[i].trim())}</p>`);
+        i++;
+      }
+      html.push(`</div>`);
+      continue;
+    }
+
+    // Pipe-separated table detection
+    if (isPipeTableRow(line)) {
+      const tableLines: string[] = [];
+      while (i < lines.length && isPipeTableRow(lines[i].trim())) {
+        if (!/^[\|\-\s]+$/.test(lines[i].trim())) {
+          tableLines.push(lines[i].trim());
+        }
+        i++;
+      }
+      if (tableLines.length > 0) {
+        html.push(`<div class="overflow-x-auto my-6"><table class="w-full border-collapse text-sm">`);
+        tableLines.forEach((row, idx) => {
+          const cells = row.split("|").map(c => c.trim()).filter(c => c.length > 0);
+          const tag = idx === 0 ? "th" : "td";
+          const rowClass = idx === 0
+            ? `class="${tag === "th" ? "bg-blue-600 text-white font-semibold p-3 text-left" : ""}"`
+            : `class="border border-gray-200 p-3 ${idx % 2 === 0 ? "bg-gray-50" : "bg-white"}"`;
+          html.push(`<tr>${cells.map(c => `<${tag} ${rowClass}>${formatInline(c)}</${tag}>`).join("")}</tr>`);
+        });
+        html.push(`</table></div>`);
+      }
+      continue;
+    }
+
+    // Tab-separated table detection
+    if (isTableRow(line)) {
+      const tableLines: string[] = [];
+      while (i < lines.length && isTableRow(lines[i])) {
+        tableLines.push(lines[i].trim());
+        i++;
+      }
+      if (tableLines.length > 0) {
+        html.push(`<div class="overflow-x-auto my-6"><table class="w-full border-collapse text-sm">`);
+        tableLines.forEach((row, idx) => {
+          const cells = row.split("\t").map(c => c.trim()).filter(c => c.length > 0);
+          const tag = idx === 0 ? "th" : "td";
+          const thClass = `class="bg-blue-600 text-white font-semibold p-3 text-left"`;
+          const tdClass = `class="border border-gray-200 p-3 ${idx % 2 === 0 ? "bg-gray-50" : "bg-white"}"`;
+          html.push(`<tr>${cells.map(c => `<${tag} ${idx === 0 ? thClass : tdClass}>${formatInline(c)}</${tag}>`).join("")}</tr>`);
+        });
+        html.push(`</table></div>`);
+      }
+      continue;
+    }
+
+    // Main numbered section heading (e.g. "1. How to Get a Job in the UK: What You Need to Know")
+    if (isSectionHeading(line) && !line.endsWith("?")) {
+      html.push(`<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">${formatInline(line)}</h2>`);
+      i++;
+      continue;
+    }
+
+    // Bullet points starting with - or •
+    if (line.startsWith("- ") || line.startsWith("• ") || line.startsWith("* ")) {
+      html.push(`<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>`);
+      while (i < lines.length && (lines[i].trim().startsWith("- ") || lines[i].trim().startsWith("• ") || lines[i].trim().startsWith("* "))) {
+        const item = lines[i].trim().replace(/^[-•*]\s+/, "");
+        html.push(`  <li>${formatInline(item)}</li>`);
+        i++;
+      }
+      html.push(`</ul>`);
+      continue;
+    }
+
+    // STAR method or "For example:" style labels (short lines ending with colon that are labels)
+    if (/^(Situation|Task|Action|Result|Source|Note|Pro Tip|Quick Answer):/.test(line)) {
+      html.push(`<p style='margin-bottom:8px; line-height:1.7;'><strong>${line.split(":")[0]}:</strong>${line.slice(line.indexOf(":") + 1)}</p>`);
+      i++;
+      continue;
+    }
+
+    // "For example:" block — treat next lines as example until blank line
+    if (line.toLowerCase().startsWith("for example") || line.toLowerCase().startsWith("instead of") || line.toLowerCase().startsWith("write:")) {
+      html.push(`<p style='margin-bottom:8px; line-height:1.7; font-style:italic; color:#4B5563;'>${formatInline(line)}</p>`);
+      i++;
+      // Collect quoted/example lines (indented or short)
+      while (i < lines.length && lines[i].trim() && !lines[i].trim().match(/^\d+\./) && lines[i].trim().length < 200) {
+        html.push(`<p style='margin-left:20px; margin-bottom:8px; line-height:1.7; color:#1F2937; font-style:italic;'>${formatInline(lines[i].trim())}</p>`);
+        i++;
+      }
+      continue;
+    }
+
+    // Sub-numbered list items inside a section (e.g. "1. Build relevant skills")
+    if (/^\d+\.\s/.test(line) && line.length < 80) {
+      html.push(`<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">${formatInline(line)}</h3>`);
+      i++;
+      continue;
+    }
+
+    // "Who can work in the UK?" style question subheadings
+    if (line.endsWith("?") && line.length < 80 && !line.startsWith("http")) {
+      html.push(`<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">${formatInline(line)}</h3>`);
+      i++;
+      continue;
+    }
+
+    // Short lines that look like subheadings (title-case, no period, < 60 chars)
+    if (
+      line.length < 70 &&
+      !line.endsWith(".") &&
+      !line.endsWith(",") &&
+      /^[A-Z]/.test(line) &&
+      !line.includes(" and ") &&
+      line.split(" ").length <= 8 &&
+      !/^(The|A |An |In |If |For |When |Once |After |Before |Don|Use|Check|Create|Apply|Find|Build|Gain|Track|Prepare|Follow|Make|Search|Be |Avoid|Never|Your|This|These|There|Other|Some|Most|Many|Both|Each|With|From|Yes|No|Not)/.test(line)
+    ) {
+      html.push(`<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">${formatInline(line)}</h3>`);
+      i++;
+      continue;
+    }
+
+    // Default: paragraph
+    html.push(`<p style='margin-bottom:12px; line-height:1.7;'>${formatInline(line)}</p>`);
+    i++;
+  }
+
+  return html.join("\n");
+}
+
 export default function NewBlogPage() {
   const [form, setForm] = useState({
     metaTitle: "",
@@ -45,10 +231,12 @@ export default function NewBlogPage() {
     date: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
     readTime: "",
     imageUrl: "",
-    content: "",
     secretKey: "",
   });
 
+  const [plainText, setPlainText] = useState("");
+  const [generatedHTML, setGeneratedHTML] = useState("");
+  const [showPreview, setShowPreview] = useState(false);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>("");
   const [uploading, setUploading] = useState(false);
@@ -69,20 +257,21 @@ export default function NewBlogPage() {
     setForm((prev) => ({ ...prev, imageUrl: "" }));
   }
 
+  function handleGenerateHTML() {
+    if (!plainText.trim()) return;
+    const html = convertToHTML(plainText);
+    setGeneratedHTML(html);
+    setShowPreview(true);
+  }
+
   async function uploadImage(): Promise<string> {
     if (!imageFile) return form.imageUrl;
-
     setUploading(true);
     try {
       const formData = new FormData();
       formData.append("file", imageFile);
       formData.append("secretKey", form.secretKey);
-
-      const res = await fetch("/api/upload-blog-image", {
-        method: "POST",
-        body: formData,
-      });
-
+      const res = await fetch("/api/upload-blog-image", { method: "POST", body: formData });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Image upload failed");
       return data.url;
@@ -95,33 +284,18 @@ export default function NewBlogPage() {
     e.preventDefault();
     setStatus({ type: "", message: "" });
 
-    if (!form.secretKey) {
-      setStatus({ type: "error", message: "Secret key is required." });
-      return;
-    }
-    if (!form.metaTitle || !form.metaDescription || !form.h1 || !form.slug) {
-      setStatus({ type: "error", message: "Meta Title, Meta Description, H1, and Slug are required." });
-      return;
-    }
-    if (!form.content.trim()) {
-      setStatus({ type: "error", message: "Blog content is required." });
-      return;
-    }
-    if (!imageFile && !form.imageUrl) {
-      setStatus({ type: "error", message: "Please upload an image or provide an image URL." });
-      return;
-    }
+    if (!form.secretKey) return setStatus({ type: "error", message: "Secret key is required." });
+    if (!form.metaTitle || !form.metaDescription || !form.h1 || !form.slug) return setStatus({ type: "error", message: "Meta Title, Meta Description, H1, and Slug are required." });
+    if (!generatedHTML.trim() && !plainText.trim()) return setStatus({ type: "error", message: "Blog content is required." });
+    if (!imageFile && !form.imageUrl) return setStatus({ type: "error", message: "Please upload an image or provide an image URL." });
+
+    const content = generatedHTML || convertToHTML(plainText);
 
     try {
       setPublishing(true);
-
       const imageUrl = await uploadImage();
-
       const author = AUTHORS.find((a) => a.name === form.authorName) || AUTHORS[0];
-      const tagsArray = form.tags
-        .split(",")
-        .map((t) => t.trim())
-        .filter(Boolean);
+      const tagsArray = form.tags.split(",").map((t) => t.trim()).filter(Boolean);
 
       const payload = {
         slug: form.slug.trim(),
@@ -135,7 +309,7 @@ export default function NewBlogPage() {
         author,
         image: imageUrl,
         categoryColor: CATEGORY_COLORS[form.category] || "bg-gray-100 text-gray-600",
-        content: form.content,
+        content,
         secretKey: form.secretKey,
       };
 
@@ -148,8 +322,11 @@ export default function NewBlogPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Publish failed");
 
-      setStatus({ type: "success", message: `Blog published! It will be live after GitHub deploys. Slug: /blog/${form.slug}` });
-      setForm((prev) => ({ ...prev, metaTitle: "", metaDescription: "", h1: "", slug: "", tags: "", readTime: "", imageUrl: "", content: "" }));
+      setStatus({ type: "success", message: `Blog published! It will be live after GitHub deploys. URL: /blog/${form.slug}` });
+      setForm((prev) => ({ ...prev, metaTitle: "", metaDescription: "", h1: "", slug: "", tags: "", readTime: "", imageUrl: "" }));
+      setPlainText("");
+      setGeneratedHTML("");
+      setShowPreview(false);
       setImageFile(null);
       setImagePreview("");
     } catch (err: unknown) {
@@ -166,7 +343,7 @@ export default function NewBlogPage() {
       <div className="max-w-3xl mx-auto">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Publish New Blog</h1>
-          <p className="text-gray-500 mt-1">Fill in the details below and click Publish. The blog will go live after auto-deploy.</p>
+          <p className="text-gray-500 mt-1">Paste plain text content — HTML is auto-generated. Click Publish to go live.</p>
         </div>
 
         {status.message && (
@@ -180,14 +357,8 @@ export default function NewBlogPage() {
           {/* Auth */}
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">Secret Key <span className="text-red-500">*</span></label>
-            <input
-              type="password"
-              name="secretKey"
-              value={form.secretKey}
-              onChange={handleChange}
-              placeholder="Enter the admin secret key"
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+            <input type="password" name="secretKey" value={form.secretKey} onChange={handleChange} placeholder="Enter the admin secret key"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
           </div>
 
           <hr className="border-gray-100" />
@@ -198,54 +369,31 @@ export default function NewBlogPage() {
 
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">Meta Title <span className="text-red-500">*</span></label>
-              <input
-                type="text"
-                name="metaTitle"
-                value={form.metaTitle}
-                onChange={handleChange}
-                placeholder="e.g. How to Get a Job in the UK: A Complete Guide"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+              <input type="text" name="metaTitle" value={form.metaTitle} onChange={handleChange} placeholder="e.g. How to Get a Job in the UK: A Complete Guide"
+                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
               <p className="text-xs text-gray-400 mt-1">{form.metaTitle.length}/60 chars recommended</p>
             </div>
 
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">Meta Description <span className="text-red-500">*</span></label>
-              <textarea
-                name="metaDescription"
-                value={form.metaDescription}
-                onChange={handleChange}
-                rows={3}
+              <textarea name="metaDescription" value={form.metaDescription} onChange={handleChange} rows={3}
                 placeholder="e.g. Learn how to get a job in the UK, including where to find jobs, visa requirements, CV tips..."
-                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-              />
+                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" />
               <p className="text-xs text-gray-400 mt-1">{form.metaDescription.length}/160 chars recommended</p>
             </div>
 
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">H1 (Blog Page Title) <span className="text-red-500">*</span></label>
-              <input
-                type="text"
-                name="h1"
-                value={form.h1}
-                onChange={handleChange}
-                placeholder="e.g. How to Get a Job in the UK"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+              <input type="text" name="h1" value={form.h1} onChange={handleChange} placeholder="e.g. How to Get a Job in the UK"
+                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
 
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">Slug <span className="text-red-500">*</span></label>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-400 whitespace-nowrap">/blog/</span>
-                <input
-                  type="text"
-                  name="slug"
-                  value={form.slug}
-                  onChange={handleChange}
-                  placeholder="how-to-get-a-job-in-the-uk"
-                  className="flex-1 border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
+                <input type="text" name="slug" value={form.slug} onChange={handleChange} placeholder="how-to-get-a-job-in-the-uk"
+                  className="flex-1 border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
               </div>
             </div>
           </div>
@@ -259,65 +407,37 @@ export default function NewBlogPage() {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1">Category</label>
-                <select
-                  name="category"
-                  value={form.category}
-                  onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
+                <select name="category" value={form.category} onChange={handleChange}
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                   {CATEGORIES.map((c) => <option key={c}>{c}</option>)}
                 </select>
               </div>
-
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1">Read Time</label>
-                <input
-                  type="text"
-                  name="readTime"
-                  value={form.readTime}
-                  onChange={handleChange}
-                  placeholder="e.g. 8 min"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
+                <input type="text" name="readTime" value={form.readTime} onChange={handleChange} placeholder="e.g. 10 min"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1">Author</label>
-                <select
-                  name="authorName"
-                  value={form.authorName}
-                  onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
+                <select name="authorName" value={form.authorName} onChange={handleChange}
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                   {AUTHORS.map((a) => <option key={a.name} value={a.name}>{a.name}</option>)}
                 </select>
               </div>
-
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1">Publish Date</label>
-                <input
-                  type="text"
-                  name="date"
-                  value={form.date}
-                  onChange={handleChange}
-                  placeholder="e.g. Jan 15, 2025"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
+                <input type="text" name="date" value={form.date} onChange={handleChange} placeholder="e.g. Jan 15, 2025"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
               </div>
             </div>
 
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">Tags <span className="text-gray-400 font-normal">(comma separated)</span></label>
-              <input
-                type="text"
-                name="tags"
-                value={form.tags}
-                onChange={handleChange}
-                placeholder="e.g. Job Search, UK Jobs, Work Visa, CV Tips"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+              <input type="text" name="tags" value={form.tags} onChange={handleChange} placeholder="e.g. Job Search, UK Jobs, Work Visa, CV Tips"
+                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
           </div>
 
@@ -326,11 +446,8 @@ export default function NewBlogPage() {
           {/* Image */}
           <div className="space-y-3">
             <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider">Blog Thumbnail Image</h2>
-
-            <div
-              onClick={() => fileInputRef.current?.click()}
-              className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center cursor-pointer hover:border-blue-400 hover:bg-blue-50 transition-colors"
-            >
+            <div onClick={() => fileInputRef.current?.click()}
+              className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center cursor-pointer hover:border-blue-400 hover:bg-blue-50 transition-colors">
               {imagePreview ? (
                 <img src={imagePreview} alt="Preview" className="max-h-48 mx-auto rounded-lg object-cover" />
               ) : (
@@ -349,40 +466,56 @@ export default function NewBlogPage() {
               <div className="flex-1 h-px bg-gray-200" />
             </div>
 
-            <input
-              type="url"
-              name="imageUrl"
-              value={form.imageUrl}
-              onChange={(e) => {
-                handleChange(e);
-                setImageFile(null);
-                setImagePreview("");
-              }}
+            <input type="url" name="imageUrl" value={form.imageUrl}
+              onChange={(e) => { handleChange(e); setImageFile(null); setImagePreview(""); }}
               placeholder="https://pub-xxxx.r2.dev/blog-images/my-image.jpg"
-              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
           </div>
 
           <hr className="border-gray-100" />
 
-          {/* Content */}
+          {/* Content - Plain Text */}
           <div className="space-y-3">
-            <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider">Blog Content (HTML)</h2>
+            <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider">Blog Content</h2>
+            <p className="text-xs text-gray-500">Paste plain text from Google Doc. HTML will be auto-generated — headings, bullet points, tables, FAQs all detected automatically.</p>
+
             <textarea
-              name="content"
-              value={form.content}
-              onChange={handleChange}
+              value={plainText}
+              onChange={(e) => { setPlainText(e.target.value); setGeneratedHTML(""); setShowPreview(false); }}
               rows={20}
-              placeholder={`<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Your Section Title</h2>\n<p style='margin-bottom:12px; line-height:1.7;'>Your paragraph text here...</p>`}
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y"
+              placeholder={`Paste your plain text blog content here...\n\nExample:\n1. How to Get a Job in the UK\nGetting a job in the UK involves...\n\nWho can work in the UK?\nBritish and Irish citizens: Generally have the right to work.\n\nFAQs:\n1. How can I get a job in the UK?\nCheck your right to work, find suitable UK jobs...`}
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y"
             />
-            <p className="text-xs text-gray-400">Paste the HTML content from Google Doc here. Use the same format as existing blogs.</p>
+
+            <button
+              type="button"
+              onClick={handleGenerateHTML}
+              disabled={!plainText.trim()}
+              className="w-full bg-gray-800 hover:bg-gray-900 disabled:bg-gray-300 text-white font-semibold py-2.5 px-6 rounded-xl transition-colors text-sm"
+            >
+              Generate HTML Preview
+            </button>
+
+            {/* Preview */}
+            {showPreview && generatedHTML && (
+              <div className="mt-4">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-sm font-bold text-gray-700">Preview</h3>
+                  <button type="button" onClick={() => setShowPreview(false)} className="text-xs text-gray-400 hover:text-gray-600">Hide</button>
+                </div>
+                <div
+                  className="border border-gray-200 rounded-xl p-6 bg-white prose max-w-none text-gray-800 text-sm leading-relaxed overflow-y-auto max-h-[500px]"
+                  dangerouslySetInnerHTML={{ __html: generatedHTML }}
+                />
+                <p className="text-xs text-gray-400 mt-2">This is exactly how the blog content will appear on the website.</p>
+              </div>
+            )}
           </div>
 
           {/* Submit */}
           <button
             type="submit"
-            disabled={isLoading}
+            disabled={isLoading || (!generatedHTML && !plainText.trim())}
             className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold py-3 px-6 rounded-xl transition-colors text-sm flex items-center justify-center gap-2"
           >
             {isLoading ? (
