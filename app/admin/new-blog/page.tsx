@@ -63,11 +63,20 @@ function convertToHTML(text: string): string {
     return wordCount >= 1 && wordCount <= 7 && /^[A-Z]/.test(label);
   }
 
+  // Find first non-empty line index (the blog intro title)
+  const firstContentIndex = lines.findIndex(l => l.trim().length > 0);
+
   while (i < lines.length) {
     const raw = lines[i];
     const line = raw.trim();
 
     if (!line) { i++; continue; }
+
+    // ── 0. First line = blog intro title → bold H2 ────────────────────
+    if (i === firstContentIndex && !/^\d+\.\s/.test(line)) {
+      html.push(`<h2 class="text-2xl font-bold text-gray-900 mt-4 mb-3">${formatInline(line)}</h2>`);
+      i++; continue;
+    }
 
     // ── 1. FAQ section header ──────────────────────────────────────────
     if (/^faqs?:?$/i.test(line)) {
