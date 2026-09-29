@@ -575,7 +575,7 @@ export default function NewBlogPage() {
               className="w-full bg-gray-800 hover:bg-gray-900 disabled:bg-gray-400 text-white font-semibold py-2.5 px-6 rounded-xl transition-colors text-sm flex items-center justify-center gap-2"
             >
               {converting ? (
-                <><span className="animate-spin text-lg">⟳</span> GPT is formatting your content...</>
+                <><span className="animate-spin text-lg">⟳</span> Formatting your content...</>
               ) : (
                 "Generate HTML Preview"
               )}
