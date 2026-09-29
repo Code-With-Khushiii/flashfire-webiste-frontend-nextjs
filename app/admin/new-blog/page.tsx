@@ -37,61 +37,52 @@ function convertToHTML(text: string): string {
   const lines = text.split("\n");
   const html: string[] = [];
   let i = 0;
+  let inFaqSection = false;
 
-  // Detect if a line looks like a table row (contains tab or multiple spaces as delimiter)
-  function isTableRow(line: string): boolean {
-    return line.includes("\t") && line.trim().length > 0;
-  }
-
-  // Detect markdown-style table row (pipe separated)
-  function isPipeTableRow(line: string): boolean {
-    return line.trim().startsWith("|") || (line.includes("|") && !line.trim().startsWith("http"));
-  }
-
-  // Check if line is a numbered section heading like "1. How to Get a Job..."
-  function isSectionHeading(line: string): boolean {
-    return /^\d+\.\s+[A-Z]/.test(line.trim()) && line.trim().length > 20;
-  }
-
-  // Check if line is a sub-numbered heading like "1. Build relevant skills"
-  function isSubHeading(line: string): boolean {
-    return /^\d+\.\s+[A-Z]/.test(line.trim()) && line.trim().length <= 60;
-  }
-
-  // Bold **text** or text surrounded by colons
   function formatInline(line: string): string {
     // Bold **text**
     line = line.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
-    // STAR method labels like "Situation:", "Task:", "Action:", "Result:"
-    line = line.replace(/^(Situation|Task|Action|Result|Source|Pro Tip|Quick Answer):/g, "<strong>$1:</strong>");
-    // Requirement/What to do style inline
     return line;
   }
 
+  function isPipeTable(line: string): boolean {
+    return /^\|.+\|/.test(line.trim());
+  }
+
+  function isTabTable(line: string): boolean {
+    return line.includes("\t") && line.trim().length > 0;
+  }
+
+  // Render a colon-item line like "British and Irish citizens: Have the right to work"
+  // as a bold-label paragraph
+  function isColonItem(line: string): boolean {
+    const colonIdx = line.indexOf(":");
+    if (colonIdx === -1 || colonIdx === line.length - 1) return false;
+    const label = line.slice(0, colonIdx).trim();
+    const wordCount = label.split(" ").length;
+    return wordCount >= 1 && wordCount <= 7 && /^[A-Z]/.test(label);
+  }
+
   while (i < lines.length) {
-    const line = lines[i].trim();
+    const raw = lines[i];
+    const line = raw.trim();
 
-    // Skip empty lines
-    if (!line) {
-      i++;
-      continue;
-    }
+    if (!line) { i++; continue; }
 
-    // FAQ section detection
-    if (line.toLowerCase() === "faqs:" || line.toLowerCase() === "faqs" || line.toLowerCase() === "faq:") {
+    // ── 1. FAQ section header ──────────────────────────────────────────
+    if (/^faqs?:?$/i.test(line)) {
+      inFaqSection = true;
       html.push(`<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Frequently Asked Questions</h2>`);
-      i++;
-      continue;
+      i++; continue;
     }
 
-    // FAQ item: starts with number and "?" somewhere
-    if (/^\d+\.\s/.test(line) && lines.slice(i, i + 3).some(l => l.includes("?"))) {
+    // ── 2. FAQ items (numbered questions inside FAQ section) ───────────
+    if (inFaqSection && /^\d+\.\s/.test(line)) {
       const question = line.replace(/^\d+\.\s+/, "");
-      html.push(`<div class="mb-4">`);
+      html.push(`<div style='margin-bottom:16px;'>`);
       html.push(`<h3 class="text-lg font-semibold text-gray-800 mb-1">${formatInline(question)}</h3>`);
       i++;
-      // Collect answer lines
-      while (i < lines.length && lines[i].trim() && !/^\d+\.\s/.test(lines[i].trim())) {
+      while (i < lines.length && lines[i].trim() && !/^\d+\.\s/.test(lines[i].trim()) && !/^faqs?:?$/i.test(lines[i].trim())) {
         html.push(`<p style='margin-bottom:8px; line-height:1.7;'>${formatInline(lines[i].trim())}</p>`);
         i++;
       }
@@ -99,119 +90,139 @@ function convertToHTML(text: string): string {
       continue;
     }
 
-    // Pipe-separated table detection
-    if (isPipeTableRow(line)) {
+    // ── 3. Pipe-separated table ────────────────────────────────────────
+    if (isPipeTable(line)) {
       const tableLines: string[] = [];
-      while (i < lines.length && isPipeTableRow(lines[i].trim())) {
-        if (!/^[\|\-\s]+$/.test(lines[i].trim())) {
-          tableLines.push(lines[i].trim());
-        }
+      while (i < lines.length && (isPipeTable(lines[i].trim()) || /^[\|\-\s:]+$/.test(lines[i].trim()))) {
+        if (!/^[\|\-\s:]+$/.test(lines[i].trim())) tableLines.push(lines[i].trim());
         i++;
       }
       if (tableLines.length > 0) {
         html.push(`<div class="overflow-x-auto my-6"><table class="w-full border-collapse text-sm">`);
         tableLines.forEach((row, idx) => {
           const cells = row.split("|").map(c => c.trim()).filter(c => c.length > 0);
-          const tag = idx === 0 ? "th" : "td";
-          const rowClass = idx === 0
-            ? `class="${tag === "th" ? "bg-blue-600 text-white font-semibold p-3 text-left" : ""}"`
-            : `class="border border-gray-200 p-3 ${idx % 2 === 0 ? "bg-gray-50" : "bg-white"}"`;
-          html.push(`<tr>${cells.map(c => `<${tag} ${rowClass}>${formatInline(c)}</${tag}>`).join("")}</tr>`);
+          if (idx === 0) {
+            html.push(`<tr>${cells.map(c => `<th class="bg-blue-600 text-white font-semibold p-3 text-left">${formatInline(c)}</th>`).join("")}</tr>`);
+          } else {
+            const bg = idx % 2 === 0 ? "bg-white" : "bg-gray-50";
+            html.push(`<tr>${cells.map(c => `<td class="border border-gray-200 p-3 ${bg}">${formatInline(c)}</td>`).join("")}</tr>`);
+          }
         });
         html.push(`</table></div>`);
       }
       continue;
     }
 
-    // Tab-separated table detection
-    if (isTableRow(line)) {
+    // ── 4. Tab-separated table ─────────────────────────────────────────
+    if (isTabTable(line)) {
       const tableLines: string[] = [];
-      while (i < lines.length && isTableRow(lines[i])) {
-        tableLines.push(lines[i].trim());
-        i++;
+      while (i < lines.length && isTabTable(lines[i])) {
+        tableLines.push(lines[i].trim()); i++;
       }
       if (tableLines.length > 0) {
         html.push(`<div class="overflow-x-auto my-6"><table class="w-full border-collapse text-sm">`);
         tableLines.forEach((row, idx) => {
           const cells = row.split("\t").map(c => c.trim()).filter(c => c.length > 0);
-          const tag = idx === 0 ? "th" : "td";
-          const thClass = `class="bg-blue-600 text-white font-semibold p-3 text-left"`;
-          const tdClass = `class="border border-gray-200 p-3 ${idx % 2 === 0 ? "bg-gray-50" : "bg-white"}"`;
-          html.push(`<tr>${cells.map(c => `<${tag} ${idx === 0 ? thClass : tdClass}>${formatInline(c)}</${tag}>`).join("")}</tr>`);
+          if (idx === 0) {
+            html.push(`<tr>${cells.map(c => `<th class="bg-blue-600 text-white font-semibold p-3 text-left">${formatInline(c)}</th>`).join("")}</tr>`);
+          } else {
+            const bg = idx % 2 === 0 ? "bg-white" : "bg-gray-50";
+            html.push(`<tr>${cells.map(c => `<td class="border border-gray-200 p-3 ${bg}">${formatInline(c)}</td>`).join("")}</tr>`);
+          }
         });
         html.push(`</table></div>`);
       }
       continue;
     }
 
-    // Main numbered section heading (e.g. "1. How to Get a Job in the UK: What You Need to Know")
-    if (isSectionHeading(line) && !line.endsWith("?")) {
+    // ── 5. Numbered section heading: "1. Title Here" (long = H2) ───────
+    if (/^\d+\.\s+[A-Z]/.test(line) && line.length > 40 && !inFaqSection) {
       html.push(`<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">${formatInline(line)}</h2>`);
-      i++;
-      continue;
+      i++; continue;
     }
 
-    // Bullet points starting with - or •
-    if (line.startsWith("- ") || line.startsWith("• ") || line.startsWith("* ")) {
+    // ── 6. Numbered sub-heading: "1. Short Title" (short = H3) ─────────
+    if (/^\d+\.\s+[A-Z]/.test(line) && line.length <= 40 && !inFaqSection) {
+      html.push(`<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">${formatInline(line)}</h3>`);
+      i++; continue;
+    }
+
+    // ── 7. Bullet list (-, •, *) ───────────────────────────────────────
+    if (/^[-•*]\s/.test(line)) {
       html.push(`<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>`);
-      while (i < lines.length && (lines[i].trim().startsWith("- ") || lines[i].trim().startsWith("• ") || lines[i].trim().startsWith("* "))) {
-        const item = lines[i].trim().replace(/^[-•*]\s+/, "");
-        html.push(`  <li>${formatInline(item)}</li>`);
+      while (i < lines.length && /^[-•*]\s/.test(lines[i].trim())) {
+        html.push(`  <li>${formatInline(lines[i].trim().replace(/^[-•*]\s+/, ""))}</li>`);
         i++;
       }
       html.push(`</ul>`);
       continue;
     }
 
-    // STAR method or "For example:" style labels (short lines ending with colon that are labels)
-    if (/^(Situation|Task|Action|Result|Source|Note|Pro Tip|Quick Answer):/.test(line)) {
-      html.push(`<p style='margin-bottom:8px; line-height:1.7;'><strong>${line.split(":")[0]}:</strong>${line.slice(line.indexOf(":") + 1)}</p>`);
-      i++;
-      continue;
+    // ── 8. Special callout labels: "Quick Answer:", "Pro Tip:", etc. ───
+    if (/^(Quick Answer|Pro Tip|Source|Note|STAR Method):/.test(line)) {
+      const colonIdx = line.indexOf(":");
+      const label = line.slice(0, colonIdx);
+      const rest = line.slice(colonIdx + 1).trim();
+      html.push(`<div style='background:#EFF6FF; border-left:4px solid #2563EB; padding:12px 16px; margin:16px 0; border-radius:4px;'><p style='margin:0; line-height:1.7;'><strong>${label}:</strong> ${formatInline(rest)}</p></div>`);
+      i++; continue;
     }
 
-    // "For example:" block — treat next lines as example until blank line
-    if (line.toLowerCase().startsWith("for example") || line.toLowerCase().startsWith("instead of") || line.toLowerCase().startsWith("write:")) {
-      html.push(`<p style='margin-bottom:8px; line-height:1.7; font-style:italic; color:#4B5563;'>${formatInline(line)}</p>`);
+    // ── 9. STAR method lines: "Situation:", "Task:", "Action:", "Result:" ─
+    if (/^(Situation|Task|Action|Result):\s/.test(line)) {
+      const colonIdx = line.indexOf(":");
+      const label = line.slice(0, colonIdx);
+      const rest = line.slice(colonIdx + 1).trim();
+      html.push(`<p style='margin-bottom:8px; line-height:1.7;'><strong>${label}:</strong> ${formatInline(rest)}</p>`);
+      i++; continue;
+    }
+
+    // ── 10. Question subheadings: "Who can work in the UK?" ────────────
+    if (line.endsWith("?") && line.length < 100 && !line.startsWith("http")) {
+      html.push(`<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">${formatInline(line)}</h3>`);
+      i++; continue;
+    }
+
+    // ── 11. "For example" / "Instead of" / "Write:" example blocks ─────
+    if (/^(For example|Instead of|Write:|Example:)/i.test(line)) {
+      html.push(`<p style='margin-bottom:8px; line-height:1.7; font-style:italic; color:#6B7280;'>${formatInline(line)}</p>`);
       i++;
-      // Collect quoted/example lines (indented or short)
-      while (i < lines.length && lines[i].trim() && !lines[i].trim().match(/^\d+\./) && lines[i].trim().length < 200) {
-        html.push(`<p style='margin-left:20px; margin-bottom:8px; line-height:1.7; color:#1F2937; font-style:italic;'>${formatInline(lines[i].trim())}</p>`);
+      // Collect the indented or short example lines that follow
+      while (i < lines.length && lines[i].trim() && !/^\d+\./.test(lines[i].trim()) && lines[i].trim().length < 250 && !/^[A-Z][a-z]/.test(lines[i].trim().slice(20))) {
+        html.push(`<p style='margin-left:20px; margin-bottom:8px; line-height:1.7; color:#374151; font-style:italic;'>${formatInline(lines[i].trim())}</p>`);
         i++;
       }
       continue;
     }
 
-    // Sub-numbered list items inside a section (e.g. "1. Build relevant skills")
-    if (/^\d+\.\s/.test(line) && line.length < 80) {
-      html.push(`<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">${formatInline(line)}</h3>`);
-      i++;
+    // ── 12. Colon-label items: "British citizens: Have the right..." ───
+    if (isColonItem(line)) {
+      const colonIdx = line.indexOf(":");
+      const label = line.slice(0, colonIdx).trim();
+      const rest = line.slice(colonIdx + 1).trim();
+
+      // Check if the next few lines are also colon-items — render as a list
+      const nextLines = lines.slice(i + 1, i + 5).filter(l => l.trim());
+      const nextAreAlsoColonItems = nextLines.length > 0 && nextLines.filter(l => isColonItem(l.trim())).length >= 1;
+
+      if (nextAreAlsoColonItems) {
+        // Render as <ul> with bold labels
+        html.push(`<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>`);
+        while (i < lines.length && lines[i].trim() && isColonItem(lines[i].trim())) {
+          const ci = lines[i].trim().indexOf(":");
+          const cl = lines[i].trim().slice(0, ci).trim();
+          const cr = lines[i].trim().slice(ci + 1).trim();
+          html.push(`  <li><strong>${formatInline(cl)}:</strong> ${formatInline(cr)}</li>`);
+          i++;
+        }
+        html.push(`</ul>`);
+      } else {
+        html.push(`<p style='margin-bottom:12px; line-height:1.7;'><strong>${formatInline(label)}:</strong> ${formatInline(rest)}</p>`);
+        i++;
+      }
       continue;
     }
 
-    // "Who can work in the UK?" style question subheadings
-    if (line.endsWith("?") && line.length < 80 && !line.startsWith("http")) {
-      html.push(`<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">${formatInline(line)}</h3>`);
-      i++;
-      continue;
-    }
-
-    // Short lines that look like subheadings (title-case, no period, < 60 chars)
-    if (
-      line.length < 70 &&
-      !line.endsWith(".") &&
-      !line.endsWith(",") &&
-      /^[A-Z]/.test(line) &&
-      !line.includes(" and ") &&
-      line.split(" ").length <= 8 &&
-      !/^(The|A |An |In |If |For |When |Once |After |Before |Don|Use|Check|Create|Apply|Find|Build|Gain|Track|Prepare|Follow|Make|Search|Be |Avoid|Never|Your|This|These|There|Other|Some|Most|Many|Both|Each|With|From|Yes|No|Not)/.test(line)
-    ) {
-      html.push(`<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">${formatInline(line)}</h3>`);
-      i++;
-      continue;
-    }
-
-    // Default: paragraph
+    // ── 13. Default paragraph ──────────────────────────────────────────
     html.push(`<p style='margin-bottom:12px; line-height:1.7;'>${formatInline(line)}</p>`);
     i++;
   }
