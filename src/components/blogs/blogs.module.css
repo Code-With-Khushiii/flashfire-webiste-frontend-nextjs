@@ -6,8 +6,10 @@
 }
 
 /* === Header === */
+.header h1,
 .header h2 {
   font-size: 3rem;
+  line-height: 1.15;
   font-weight: 800;
   color: #111;
   margin-bottom: 1rem;
@@ -181,6 +183,7 @@
 /* Ensure consistent card sizes even with 1 or 2 cards */
 .blogGrid > * {
   width: 100%;
+  min-width: 0;
   max-width: 24rem;
 }
 
@@ -189,9 +192,10 @@
     padding: 3rem 1rem;
   }
 
+  .header h1,
   .header h2 {
-    font-size: 2.1rem;
-    line-height: 1.15;
+    font-size: 2rem;
+    line-height: 1.2;
   }
 
   .header p {
@@ -219,8 +223,30 @@
     width: 100%;
   }
 
+  /* Single scrollable row instead of a tall wall of wrapped chips */
+  .categoryChips {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    margin: 0 -1rem 1.5rem;
+    padding: 0 1rem 0.25rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .categoryChips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .categoryChip {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
   .blogGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.25rem;
     max-width: 100%;
   }
