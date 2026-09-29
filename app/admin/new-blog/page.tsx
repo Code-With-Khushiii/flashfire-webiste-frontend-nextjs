@@ -355,14 +355,26 @@ export default function NewBlogPage() {
 
     if (!form.secretKey) return setStatus({ type: "error", message: "Secret key is required." });
     if (!form.metaTitle || !form.metaDescription || !form.h1 || !form.slug) return setStatus({ type: "error", message: "Meta Title, Meta Description, H1, and Slug are required." });
-    if (!generatedHTML.trim() && !plainText.trim()) return setStatus({ type: "error", message: "Blog content is required." });
+    if (!plainText.trim()) return setStatus({ type: "error", message: "Blog content is required." });
     if (!imageFile && !form.imageUrl) return setStatus({ type: "error", message: "Please upload an image or provide an image URL." });
-
-    const content = generatedHTML || convertToHTML(plainText);
 
     try {
       setPublishing(true);
-      const imageUrl = await uploadImage();
+
+      // Run image upload + GPT conversion in parallel
+      const convertContent = async (): Promise<string> => {
+        if (generatedHTML) return generatedHTML;
+        const res = await fetch("/api/convert-blog-content", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ plainText, secretKey: form.secretKey }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Content conversion failed");
+        return data.html;
+      };
+
+      const [imageUrl, content] = await Promise.all([uploadImage(), convertContent()]);
       const author = AUTHORS.find((a) => a.name === form.authorName) || AUTHORS[0];
       const tagsArray = form.tags.split(",").map((t) => t.trim()).filter(Boolean);
 
@@ -594,7 +606,7 @@ export default function NewBlogPage() {
             {isLoading ? (
               <>
                 <span className="animate-spin text-lg">⟳</span>
-                {uploading ? "Uploading image..." : "Publishing to GitHub..."}
+                {uploading ? "Uploading image + formatting content..." : "Publishing to GitHub..."}
               </>
             ) : (
               "Publish Blog"
