@@ -1073,18 +1073,70 @@
   background: #ea580c;
 }
 
+/* Wide tables in blog content scroll horizontally instead of overflowing */
+.tableScroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.25rem 0;
+}
+
+.tableScroll table {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.content pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.content div,
+.content figure,
+.content iframe,
+.content video {
+  max-width: 100%;
+}
+
 /* === RESPONSIVE === */
 @media (max-width: 1024px) {
+  /* Single column: hero/title/TOC -> article -> sidebar */
   .topSection {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    display: contents;
+  }
+
+  .topLeftContent {
+    order: 1;
+    padding: 0 0 1.5rem;
+  }
+
+  .mainContentWrapper {
+    order: 2;
+    width: auto;
+    margin: 0 0 2rem !important;
   }
 
   .topSidebar {
+    order: 3;
     position: static;
-    order: -1;
+    grid-column: auto;
+    grid-row: auto;
+    margin: 0 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
   }
 
+  .title {
+    max-width: none;
+  }
+
+  .floatingShare {
+    display: none;
+  }
 
   .relatedGrid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1092,74 +1144,56 @@
 }
 
 @media (max-width: 768px) {
-  .topSection {
-    display: flex;
-    flex-direction: column;
-    padding: 0 1rem 1.25rem;
-    gap: 1.5rem;
-  }
-
-  .topLeftContent {
-    order: 1;
-    width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border-left: none;
-    border-right: none;
-  }
-
-  .topSidebar {
-    order: 2;
-    position: static;
-    width: 100%;
-  }
-
   .pageWrapper {
-    padding: 0;
+    padding: 0 0 2rem;
   }
 
   .blogContainer {
     border-radius: 0;
+    border: none;
+    box-shadow: none;
   }
 
   .breadcrumb {
-    padding: 1rem 1.5rem 0.75rem;
+    padding: 0.875rem 1rem 0.75rem;
     font-size: 0.75rem;
+    gap: 0.35rem;
   }
 
   .breadcrumbCurrent {
     max-width: 100%;
   }
 
-  .title {
-    font-size: 1.75rem;
-    padding: 0 1rem 0.75rem;
-    line-height: 1.25;
+  .topSectionWrapper {
+    padding: 0 1rem;
   }
 
-  .mainContentWrapper {
+  .topLeftContent {
     width: 100%;
-    margin-left: 1rem !important;
-    margin-right: 1rem !important;
-    padding: 1.5rem 1.25rem !important;
-    border-radius: 12px;
+    padding: 0 0 1.25rem;
   }
 
   .imageWrapper {
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 1.25rem 0;
+    border-radius: 10px;
   }
 
-  .image {
-    max-height: 280px;
+  .image,
+  .imageWrapper img {
+    max-height: 260px;
+    border-radius: 10px;
+  }
+
+  .title {
+    font-size: 1.625rem;
+    padding: 0 0 0.75rem;
+    line-height: 1.25;
+    overflow-wrap: break-word;
   }
 
   .tagsWrapper {
-    padding: 0 0 0.75rem 0;
-  }
-
-  .contentLayout {
-    padding: 2rem 1.5rem;
-    gap: 2rem;
+    gap: 0.5rem;
+    padding: 0 0 0.875rem;
   }
 
   .tag {
@@ -1168,72 +1202,147 @@
   }
 
   .meta {
-    padding: 0 1rem 1rem;
+    padding: 0.875rem 0 0;
+    gap: 0.625rem;
   }
 
-  .contentLayout {
-    padding: 2rem 1.5rem;
-    gap: 2rem;
+  .authorInfo {
+    gap: 0.75rem;
   }
 
-  .content {
-    font-size: 1.0625rem;
+  .readTime {
+    margin-left: 0;
   }
 
-  .tagsAboveImage {
-    font-size: 0.8rem;
+  .overviewBox {
+    margin: 1rem 0 1.25rem;
+    padding: 1rem 1.125rem;
   }
 
-  .categoryChip {
-    font-size: 0.8rem;
-    padding: 0.35rem 0.75rem;
-  }
-
-  .breadcrumb {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .content h2 {
-    font-size: 1.75rem !important;
-    margin-top: 2.5rem !important;
-    margin-left: -0.5rem !important;
-  }
-
-  .content h3 {
-    font-size: 1.375rem !important;
-    margin-top: 1.5rem !important;
-    margin-left: -0.5rem !important;
-  }
-  
-  .content li {
-    font-size: 1.0625rem !important;
-  }
-
-  .meta {
-    padding: 0 1.5rem 1.5rem;
-  }
-
-  .tagsWrapper {
-    padding: 0 1.5rem 1rem;
+  .overviewText,
+  .overviewText p {
+    font-size: 1rem;
+    text-align: left;
   }
 
   .tableOfContents {
     padding: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  .tocLink {
+    font-size: 0.875rem;
+    padding: 0.3rem 0;
+  }
+
+  .mainContentWrapper {
+    padding: 1.25rem 1rem !important;
+    margin: 0 0 1.5rem !important;
+    border-radius: 10px;
+  }
+
+  /* === ARTICLE CONTENT === */
+  .content {
+    font-size: 1rem;
+    line-height: 1.75;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .content h1,
+  .content h2,
+  .content h3,
+  .content h4,
+  .content h5,
+  .content h6,
+  .content p,
+  .content h3 + p {
+    margin-left: 0 !important;
+  }
+
+  .content h2 {
+    font-size: 1.375rem !important;
+    line-height: 1.35 !important;
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+    scroll-margin-top: 90px;
+  }
+
+  .content h3 {
+    font-size: 1.125rem !important;
+    line-height: 1.4 !important;
+    margin-top: 1.5rem !important;
+  }
+
+  .content p,
+  .content h3 + p {
+    font-size: 1rem !important;
+    line-height: 1.75 !important;
+    margin-bottom: 1.125rem !important;
+    text-align: left;
+  }
+
+  .content li,
+  .content ul li,
+  .content h3 + p strong,
+  .content ul li strong:first-of-type,
+  .content ul li strong:last-of-type {
+    font-size: 1rem !important;
+  }
+
+  .content ul,
+  .content ol {
+    padding-left: 1.25rem !important;
+    margin-left: 0 !important;
+  }
+
+  .content blockquote {
+    padding: 0.875rem 1rem;
+    margin: 1.25rem 0;
+  }
+
+  .content table {
+    font-size: 0.875rem !important;
+  }
+
+  .content th,
+  .content td {
+    padding: 0.5rem 0.625rem !important;
+    min-width: 110px;
+  }
+
+  .content img,
+  .content figure,
+  .content figure img {
+    max-width: 100%;
+    max-height: 200px;
+  }
+
+  /* === SIDEBAR === */
+  .topSidebar {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
   .sidebarSection {
     padding: 1rem;
-    margin-right: 1rem;
+    margin: 0;
+  }
+
+  /* === SHARE / RELATED / CTA === */
+  .bottomShareSection {
+    margin: 1.5rem 1rem;
+    padding: 1rem;
   }
 
   .relatedSection {
-    padding: 1.5rem 1rem;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
   }
 
   .relatedGrid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 
   .relatedTitle {
@@ -1245,65 +1354,73 @@
     height: 180px;
   }
 
-  .relatedSection {
-    padding: 2rem 1rem;
+  .relatedCardTitle {
+    font-size: 1.125rem;
+    min-height: 0;
   }
 
-  .content img {
-    max-width: 100%;
-    max-height: 180px;
+  .relatedContent {
+    padding: 1.125rem;
   }
-
-  .content figure,
-  .content figure img {
-    max-width: 100%;
-    max-height: 180px;
-  }
-
-/* Hide floating share on mobile */
-@media (max-width: 640px) {
-  .floatingShare {
-    display: none;
-  }
-}
 
   .ctaBox {
-    padding: 2rem 1rem;
+    padding: 2rem 1.25rem;
   }
 
   .ctaBox h3 {
     font-size: 1.25rem;
   }
+
+  .ctaBox p {
+    font-size: 0.95rem;
+  }
+
+  .categoryChip {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.75rem;
+  }
+
+  .tagsAboveImage {
+    font-size: 0.8rem;
+  }
 }
 
-@media (max-width: 640px) {
-  .title {
-    font-size: 1.4rem;
-    padding: 0 0.75rem 0.5rem;
-    line-height: 1.15;
-  }
-
-  .topSection {
-    padding: 0 0.75rem 1rem;
+@media (max-width: 768px) {
+  .relatedGridScroll {
+    grid-auto-columns: 85%;
     gap: 1rem;
+    scroll-snap-type: x mandatory;
   }
 
-  .topLeftContent {
+  .relatedGridScroll > * {
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 480px) {
+  .topSectionWrapper {
+    padding: 0 0.75rem;
+  }
+
+  .breadcrumb {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
 
+  .title {
+    font-size: 1.4rem;
+  }
+
   .mainContentWrapper {
-    margin-left: 0.75rem !important;
-    margin-right: 0.75rem !important;
-    padding: 1.25rem 1rem !important;
+    padding: 1rem 0.875rem !important;
   }
 
-  .topSidebar {
-    width: 100%;
+  .image,
+  .imageWrapper img {
+    max-height: 210px;
   }
 
-  .sidebarSection {
-    margin-right: 2rem;
+  .relatedSection {
+    padding: 1.5rem 0.75rem;
   }
 }

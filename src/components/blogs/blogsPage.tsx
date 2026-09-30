@@ -132,6 +132,14 @@ export default function BlogsPage({ post }: { post: BlogPost }) {
         });
       });
 
+      // Wrap tables so wide ones scroll horizontally on small screens
+      doc.querySelectorAll("table").forEach((table) => {
+        const wrapper = doc.createElement("div");
+        wrapper.className = styles.tableScroll;
+        table.parentNode?.insertBefore(wrapper, table);
+        wrapper.appendChild(table);
+      });
+
       // Add Overview at the top of the TOC if overview text exists
       const finalToc =
         overviewText && overviewText.trim().length > 0
