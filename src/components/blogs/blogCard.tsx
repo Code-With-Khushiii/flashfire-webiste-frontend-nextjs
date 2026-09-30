@@ -44,7 +44,8 @@ export default function BlogCard({ blog }: { blog: Blog }) {
   };
 
   return (
-    <section className="border border-gray-200 rounded-[0.1rem] p-[0.3rem] bg-white transition-all duration-300 hover:-translate-y-[0.3rem] hover:shadow-[0_0.4rem_0.8rem_rgba(0,0,0,0.08)]">
+    <section className="border border-gray-200 rounded-[0.1rem] p-[0.3rem] bg-white transition-all duration-300 hover:-translate-y-[0.3rem] hover:shadow-[0_0.4rem_0.8rem_rgba(0,0,0,0.08)] max-[640px]:p-0 max-[640px]:border-0 max-[640px]:hover:translate-y-0">
+
       <Link
         href={`/blog/${blog.slug}`}
         className="block bg-white border border-gray-200 rounded-[0.1rem] overflow-hidden shadow-[0_0.2rem_0.5rem_rgba(0,0,0,0.05)] text-left transition-all duration-300 cursor-pointer max-[768px]:max-w-full"
@@ -62,12 +63,12 @@ export default function BlogCard({ blog }: { blog: Blog }) {
         </div>
 
         {/* === Content === */}
-        <div className="px-6 pt-6 pb-2">
-          <p className="text-[0.9rem] font-bold text-[#f78b5d] uppercase mb-2 bg-transparent">
+        <div className="px-6 pt-6 pb-5 max-[640px]:px-4 max-[640px]:pt-4 max-[640px]:pb-4">
+          <p className="text-[0.9rem] font-bold text-[#f78b5d] uppercase mb-2 bg-transparent max-[640px]:text-[0.8rem]">
             {(blog.category || "").toUpperCase()}
           </p>
 
-          <h3 className="text-[1.2rem] font-bold text-[#111] mb-2.5 leading-[1.4] line-clamp-2">{blog.title}</h3>
+          <h3 className="text-[1.2rem] font-bold text-[#111] mb-2.5 leading-[1.4] line-clamp-2 max-[640px]:text-[1.1rem] max-[640px]:mb-2">{blog.title}</h3>
 
           {/* Author */}
           <p className="text-[0.9rem] text-[#666] mb-2">
@@ -91,18 +92,14 @@ export default function BlogCard({ blog }: { blog: Blog }) {
           </p>
 
 
-          <div className="flex flex-row gap-5 text-[0.95rem] text-[#777] font-medium">
-            <span>
-              <div className="flex flex-row items-center">
-                <BsCalendarEvent className="text-[#ff4c00] mr-1.5 align-middle text-[0.8rem]" />
-                <p>{blog.date}</p>
-              </div>
+          <div className="flex flex-row flex-wrap items-center gap-x-5 gap-y-1 mt-3 text-[0.95rem] text-[#777] font-medium max-[640px]:text-[0.85rem] max-[640px]:gap-x-4">
+            <span className="flex flex-row items-center whitespace-nowrap">
+              <BsCalendarEvent className="shrink-0 text-[#ff4c00] mr-1.5 text-[0.8rem]" />
+              <span>{blog.date}</span>
             </span>
-            <span>
-              <div className="flex flex-row items-center">
-                <FaRegClock className="text-[#ff4c00] mr-1.5 align-middle text-[0.8rem]" />
-                <p>{blog.readTime ? blog.readTime.toUpperCase() : ""} READ</p>
-              </div>
+            <span className="flex flex-row items-center whitespace-nowrap">
+              <FaRegClock className="shrink-0 text-[#ff4c00] mr-1.5 text-[0.8rem]" />
+              <span>{blog.readTime ? blog.readTime.toUpperCase() : ""} READ</span>
             </span>
           </div>
         </div>
