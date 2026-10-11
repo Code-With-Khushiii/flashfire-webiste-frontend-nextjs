@@ -24,6 +24,260 @@ export type BlogPost = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const blogPosts: BlogPost[] = (([] as any[]).concat([
   {
+    id: 442,
+    slug: "how-to-answer-tell-me-about-a-time-you-failed",
+    title: "How to Answer “Tell Me About a Time You Failed”",
+    metaTitle: "How to Answer “Tell Me About a Time You Failed” + Examples",
+    excerpt: "Learn how to answer “Tell me about a time you failed” with a proven structure, sample answers, practical tips, and common mistakes to avoid.",
+    date: "Oct 11, 2026",
+    lastUpdated: "Oct 11, 2026",
+    readTime: "10 min",
+    category: "Interview Tips",
+    tags: ["Interview Tips"],
+    author: {
+      name: "Riya Sharma",
+      bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
+    },
+    image: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/blog-images/cfe0e2d3-b365-41e0-8815-44044d6e622e-1791697346823.png",
+    categoryColor: "bg-purple-100 text-purple-600",
+    content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">How to Answer "Tell Me About a Time You Failed"</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Failure is one of the few things almost every professional experiences, yet talking about it in a job interview can feel surprisingly uncomfortable. You want to be honest without damaging your credibility, demonstrate growth without sounding rehearsed, and explain what went wrong without making excuses. So, how do you answer the interview question, "Tell me about a time you failed," in a way that strengthens your candidacy?</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The good news is that interviewers are not necessarily looking for a perfect employee who has never made a mistake. They want to understand how you respond when things do not go according to plan. Research supports the value of learning from setbacks: a study published in <a href="https://www.nature.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">Nature</a> found that failure can promote learning, although the effect depends on how people respond to the experience.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Your goal is to show that you can take responsibility, reflect on your decisions, and apply what you learned to future situations. This guide explains how to structure your response, choose a strong example, avoid common mistakes, and explore practical sample answers for different roles and experience levels.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Why Do Interviewers Ask "Tell Me About a Time You Failed"?</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>This question is more than an invitation to discuss a professional setback. It helps interviewers understand how you handle challenges, accountability, and unexpected outcomes.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>They may be assessing several qualities:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Self-awareness: Can you recognize your mistakes and understand what caused them?</li>
+    <li>Accountability: Do you take responsibility instead of blaming colleagues or circumstances?</li>
+    <li>Problem-solving: Can you identify what went wrong and develop a better approach?</li>
+    <li>Adaptability: Are you willing to change your methods when something is not working?</li>
+    <li>Resilience: Can you recover from disappointment and continue working toward your goals?</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, a candidate who missed a deadline might explain how poor planning affected the team, how they communicated the problem, and what system they introduced to prevent similar delays.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>That answer demonstrates more than the mistake itself. It shows professional maturity and an ability to improve.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">How to Answer "Tell Me About a Time You Failed"</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A strong answer should be honest, focused, and constructive. The STAR method provides a useful structure, with an additional emphasis on what you learned.</p>
+
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Choose a Real and Relevant Failure</li>
+</ol>
+<p style='margin-bottom:12px; line-height:1.7;'>Start by selecting a genuine situation in which something did not go as expected. It does not have to be a career-defining disaster. A missed deadline, unsuccessful project, communication error, or poor decision can provide a useful example.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Choose an experience that demonstrates a meaningful lesson and relates to the qualities required for the job.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For instance, if you are applying for a project management role, you might discuss underestimating the time required to complete a project. For a customer service position, you could describe a situation in which you misunderstood a customer's concern.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Avoid examples involving serious ethical violations, deliberate dishonesty, or failures that raise unnecessary concerns about your ability to perform the role.</p>
+
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Explain the Situation Briefly</li>
+</ol>
+<p style='margin-bottom:12px; line-height:1.7;'>Give the interviewer enough context to understand what happened. Explain the project, responsibility, or goal involved without spending too much time on background details.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example:</p>
+<p style='margin-bottom:12px; line-height:1.7;'>"During my previous role as a marketing assistant, I was responsible for coordinating a product campaign scheduled to launch at the end of the month."</p>
+<p style='margin-bottom:12px; line-height:1.7;'>This establishes your role and the situation. You can then explain the specific challenge without overwhelming the interviewer with unnecessary information.</p>
+
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Describe What Went Wrong</li>
+</ol>
+<p style='margin-bottom:12px; line-height:1.7;'>Be direct about the failure. Explain what you did, what you overlooked, or which decision contributed to the outcome.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example:</p>
+<p style='margin-bottom:12px; line-height:1.7;'>"I focused heavily on creating the campaign content but underestimated the time needed for approvals. As a result, we missed the original launch date."</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Notice that the candidate acknowledges a specific mistake instead of saying the delay was entirely the team's fault.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>You do not need to criticize yourself excessively. The goal is to demonstrate an accurate understanding of the problem, not to undermine your confidence.</p>
+
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Take Responsibility for Your Actions</li>
+</ol>
+<p style='margin-bottom:12px; line-height:1.7;'>Accountability is one of the most important parts of your response. Even when other factors contributed to the situation, explain what you could have handled differently.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Instead of saying, "My manager did not give me enough time," consider saying, "I should have confirmed the approval timeline earlier and communicated the scheduling risk before it affected the launch."</p>
+<p style='margin-bottom:12px; line-height:1.7;'>This wording acknowledges the circumstances while focusing on your own decisions.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Taking responsibility does not mean accepting blame for everything. It means being honest about your contribution to the outcome.</p>
+
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Explain How You Responded</li>
+</ol>
+<p style='margin-bottom:12px; line-height:1.7;'>Interviewers want to know what you did after recognizing the failure. Describe the steps you took to address the problem, communicate with relevant people, or reduce its impact.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, you might have reorganized the remaining tasks, informed stakeholders about the revised timeline, or worked with colleagues to complete the highest-priority items first.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Whenever possible, include a concrete outcome. Perhaps the delayed campaign launched successfully the following week, or the team avoided further scheduling problems. If the original outcome could not be reversed, explain how you managed the consequences and what you did next.</p>
+
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Highlight What You Learned</li>
+</ol>
+<p style='margin-bottom:12px; line-height:1.7;'>This is where your answer becomes especially valuable. Identify the lesson you took from the experience and explain how it changed your approach.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>A vague statement such as "I learned to manage my time better" is less convincing than a specific explanation.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example:</p>
+<p style='margin-bottom:12px; line-height:1.7;'>"I learned that completing my individual tasks is not enough when a project depends on several approvals. I now build review time into project schedules and confirm dependencies before setting deadlines."</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The second version shows exactly how the experience influenced your behavior.</p>
+
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Show How You Applied the Lesson</li>
+</ol>
+<p style='margin-bottom:12px; line-height:1.7;'>Finish by demonstrating that the lesson made a practical difference. Explain how you used your new approach in a later project or similar situation.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example:</p>
+<p style='margin-bottom:12px; line-height:1.7;'>"On my next campaign, I created a shared timeline, assigned approval deadlines, and scheduled regular progress checks. We completed the campaign assets before the launch date, giving the team more time for final reviews."</p>
+<p style='margin-bottom:12px; line-height:1.7;'>This creates a clear progression: mistake, reflection, action, and improvement.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Use the STAR Method to Structure Your Answer</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>The STAR method helps you organize behavioral interview answers into four parts. For a failure question, use it to keep your response specific while making the learning process clear.</p>
+
+<div class="overflow-x-auto my-6">
+    <table class="w-full border-collapse text-sm">
+        <thead>
+            <tr>
+                <th class="bg-blue-600 text-white font-semibold p-3 text-left">STAR element</th>
+                <th class="bg-blue-600 text-white font-semibold p-3 text-left">What to explain</th>
+                <th class="bg-blue-600 text-white font-semibold p-3 text-left">Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="border border-gray-200 p-3">Situation</td>
+                <td class="border border-gray-200 p-3">What was happening?</td>
+                <td class="border border-gray-200 p-3">A campaign had a fixed launch date.</td>
+            </tr>
+            <tr>
+                <td class="border border-gray-200 p-3">Task</td>
+                <td class="border border-gray-200 p-3">What were you responsible for?</td>
+                <td class="border border-gray-200 p-3">You coordinated content and approvals.</td>
+            </tr>
+            <tr>
+                <td class="border border-gray-200 p-3">Action</td>
+                <td class="border border-gray-200 p-3">What did you do, and what went wrong?</td>
+                <td class="border border-gray-200 p-3">You underestimated review time and missed the deadline.</td>
+            </tr>
+            <tr>
+                <td class="border border-gray-200 p-3">Result</td>
+                <td class="border border-gray-200 p-3">What happened, and what did you learn?</td>
+                <td class="border border-gray-200 p-3">You improved scheduling and introduced approval checkpoints.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p style='margin-bottom:12px; line-height:1.7;'>Although the standard STAR method ends with the result, your answer should also make the lesson and subsequent improvement explicit.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Aim for approximately 60–90 seconds, depending on the complexity of your example. Keep the background short and devote most of your time to your decisions, corrective actions, and learning.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">"Tell Me About a Time You Failed" Sample Answers</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Use the following examples as starting points. Adapt them to your actual experiences rather than memorizing them word for word.</p>
+
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Example 1: Missing a Deadline</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Interview answer:</p>
+<p style='margin-bottom:12px; line-height:1.7;'>"In my previous role, I was responsible for preparing a monthly performance report for our team. I underestimated the time needed to collect and verify information from different departments, so I submitted the report later than planned.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>I took responsibility and informed my manager as soon as I realized the deadline was at risk. I prioritized the outstanding information, completed the report, and reviewed where my planning had fallen short.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>I learned to account for dependencies instead of estimating timelines based only on my own tasks. After that, I started requesting information earlier and setting internal deadlines ahead of the final submission date. This helped me manage reporting work more consistently."</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> The candidate admits the mistake, explains the response, and identifies a practical change without making excuses.</p>
+
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Example 2: Making the Wrong Decision</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Interview answer:</p>
+<p style='margin-bottom:12px; line-height:1.7;'>"While working on a team project, I chose a software tool because it appeared to offer the features we needed. I did not spend enough time checking how easily it would integrate with our existing systems. We later discovered compatibility issues that required additional work.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>I acknowledged that I had made the recommendation without evaluating all the technical requirements. I worked with the team to identify an alternative and helped document the integration criteria we needed to consider.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The experience taught me to evaluate decisions against practical requirements rather than relying on a tool's advertised features. Since then, I have used a more structured comparison process before recommending new software."</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It demonstrates judgment, accountability, collaboration, and a better decision-making process.</p>
+
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Example 3: Failing to Communicate Clearly</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Interview answer:</p>
+<p style='margin-bottom:12px; line-height:1.7;'>"During a group assignment, I assumed that everyone understood their responsibilities after our initial meeting. I did not confirm individual deadlines or check whether team members needed additional information. As a result, two sections overlapped, while another important task was left unfinished.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>I helped reorganize the remaining work and clarified who was responsible for each deliverable. I also acknowledged that I should have confirmed the responsibilities earlier.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>I learned that communication is not complete simply because information has been shared once. In later projects, I used written task assignments, clear deadlines, and short progress updates to keep everyone aligned."</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It shows an ability to recognize a communication gap and improve teamwork.</p>
+
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Example 4: For a Fresher With Limited Work Experience</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Interview answer:</p>
+<p style='margin-bottom:12px; line-height:1.7;'>"During a college presentation, I spent most of my preparation time researching the topic and developing the slides. I did not leave enough time to practice the presentation itself. As a result, I spoke too quickly and struggled to explain some points clearly.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Afterward, I asked for feedback and realized that knowing the material was not the same as communicating it effectively. For my next presentation, I prepared speaking notes, practiced aloud, and timed each section.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>That experience taught me to prepare for how information will be delivered, not just what it contains. I now include practice time when preparing for presentations or important discussions."</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It uses an authentic academic example to demonstrate reflection and improvement, making it appropriate for students and recent graduates.</p>
+
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Example 5: Failing to Meet a Sales or Performance Target</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Interview answer:</p>
+<p style='margin-bottom:12px; line-height:1.7;'>"In my previous sales role, I did not meet my quarterly target. I initially focused on the number of calls I made rather than examining whether I was reaching the right prospects and understanding their needs.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>I reviewed my sales conversations with my manager and identified areas where my discovery questions and follow-up process needed improvement. I then refined my approach, prioritized more relevant prospects, and established a consistent follow-up schedule.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>I learned that activity alone does not guarantee results. I now pay closer attention to the quality of customer interactions and review performance indicators regularly so I can adjust my approach earlier."</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It focuses on learning from performance data rather than offering excuses. Use this example only if it reflects your real experience.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">What if You Cannot Think of a Major Failure?</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>You do not need a dramatic story to answer this question effectively. In fact, a smaller, well-explained setback can be easier to discuss honestly and constructively.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Think about a time when you:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Misjudged how long a task would take.</li>
+    <li>Received critical feedback and needed to change your approach.</li>
+    <li>Misunderstood instructions and had to correct your work.</li>
+    <li>Prepared for an important presentation but performed below expectations.</li>
+    <li>Made an assumption that created extra work for your team.</li>
+    <li>Tried a strategy that did not produce the expected results.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Review your academic projects, internships, volunteer work, extracurricular activities, or previous jobs. Look for situations where you made a decision, encountered a problem, and learned something useful.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The best example is not necessarily the biggest failure. It is the one that allows you to explain your contribution, response, and improvement clearly.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Common Mistakes to Avoid When Answering</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Even a relevant example can become ineffective if you present it poorly. Watch out for these common mistakes.</p>
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Claiming you have never failed. Saying you cannot remember a failure may make you appear unwilling to reflect on your mistakes.</li>
+    <li>Disguising a strength as a weakness. Responses such as "I work too hard" or "I care too much about quality" can sound evasive when they do not describe a genuine setback.</li>
+    <li>Blaming other people. Explain external challenges fairly, but do not make colleagues or managers the villains of your story.</li>
+    <li>Choosing an overly serious example. Avoid stories involving major ethical breaches or unresolved problems that create unnecessary doubts about your suitability for the position.</li>
+    <li>Giving too much background. Spend less time describing the circumstances and more time explaining your decisions and learning.</li>
+    <li>Focusing only on the negative outcome. An effective answer explains what you did afterward and how you improved.</li>
+    <li>Inventing results. Do not claim that you increased productivity, improved performance, or prevented future errors unless you can reasonably support that statement.</li>
+    <li>Memorizing a script. Prepare key points rather than reciting a rigid answer. This helps you sound natural and respond to follow-up questions.</li>
+</ol>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">How to Prepare for This Interview Question</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Preparation helps you answer confidently without sounding rehearsed. Before your interview, take these practical steps.</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Review the job description. Identify the skills the employer values, such as communication, planning, leadership, or problem-solving.</li>
+    <li>Select two possible examples. Prepare one primary story and a backup in case the interviewer asks about a different type of failure.</li>
+    <li>Write down the key details. Note the situation, your responsibility, the mistake, your response, and the lesson.</li>
+    <li>Identify the specific change. Be ready to explain what you do differently today.</li>
+    <li>Practice aloud. Keep your response concise, ideally around 60–90 seconds.</li>
+    <li>Prepare for follow-up questions. You may be asked what you would do differently, how others reacted, or whether the same problem happened again.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Most importantly, make sure your story is consistent with your resume and other interview answers. Your response should demonstrate genuine professional growth, not simply deliver an impressive-sounding lesson.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Final Thoughts</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>The key to answering "Tell me about a time you failed" is to show that a setback became an opportunity to improve. Choose a genuine example, explain your responsibility, describe how you responded, and connect the experience to a practical change in your behavior.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>You do not need to present yourself as someone who never makes mistakes. You need to demonstrate that you can recognize them, learn from them, and make better decisions in the future. A thoughtful, specific answer can help an interviewer understand how you approach challenges and contribute to a team.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Frequently Asked Questions</h2>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">1. What is the best answer to "Tell me about a time you failed"?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Share a real setback, explain your role, describe how you addressed it, and highlight what you learned.</p>
+
+<h3 class="text-lg font-semibold text-gray-800 mb-1">2. Why do interviewers ask about failure?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>They want to assess your accountability, self-awareness, problem-solving skills, and ability to learn from mistakes.</p>
+
+<h3 class="text-lg font-semibold text-gray-800 mb-1">3. How long should my answer be?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Aim for 60–90 seconds, focusing on the failure, your response, and the lesson learned.</p>
+
+<h3 class="text-lg font-semibold text-gray-800 mb-1">4. What is a good example of failure in an interview?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Missing a deadline, making a wrong decision, or miscommunicating expectations can be effective examples.</p>
+
+<h3 class="text-lg font-semibold text-gray-800 mb-1">5. Can I use an academic failure as an example?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. Students and freshers can discuss a college project, presentation, or group assignment.</p>
+
+<h3 class="text-lg font-semibold text-gray-800 mb-1">6. Should I admit that I made a mistake?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. Take responsibility for your actions instead of blaming others or making excuses.</p>
+
+<h3 class="text-lg font-semibold text-gray-800 mb-1">7. What if I have never experienced a major failure?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Choose a smaller setback that taught you a valuable lesson and helped you improve.</p>
+
+<h3 class="text-lg font-semibold text-gray-800 mb-1">8. Should I use the STAR method?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. Structure your answer around the Situation, Task, Action, and Result, then explain what you learned.</p>
+
+<h3 class="text-lg font-semibold text-gray-800 mb-1">9. What should I avoid saying?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Avoid blaming others, claiming you never fail, or choosing an example that raises serious concerns about your integrity.</p>
+
+<h3 class="text-lg font-semibold text-gray-800 mb-1">10. Can I discuss a recent failure?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. Explain what happened, how you responded, and what you are doing differently now.</p>
+
+<h3 class="text-lg font-semibold text-gray-800 mb-1">11. What if the interviewer asks what I would do differently?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Describe the specific action you would change and how you would handle a similar situation today.</p>
+
+<h3 class="text-lg font-semibold text-gray-800 mb-1">12. Should I mention measurable results?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes, when accurate and relevant. Otherwise, explain the practical improvements you made without inventing numbers.</p>`,
+  },
+
+  {
     id: 441,
     slug: "resume-summary-examples",
     title: "Resume Summary Examples",
