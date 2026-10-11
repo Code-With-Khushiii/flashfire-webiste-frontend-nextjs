@@ -24,6 +24,218 @@ export type BlogPost = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const blogPosts: BlogPost[] = (([] as any[]).concat([
   {
+    id: 444,
+    slug: "chatgpt-cover-letter-prompts",
+    title: "ChatGPT Cover Letter Prompts",
+    metaTitle: "ChatGPT Cover Letter Prompts: 12 Best Prompts + Examples",
+    excerpt: "Discover the best ChatGPT cover letter prompts to create tailored cover letters. Get 12 copy-and-paste prompts, examples, and tips for better job applications.",
+    date: "Oct 11, 2026",
+    lastUpdated: "Oct 11, 2026",
+    readTime: "10 min",
+    category: "Networking",
+    tags: ["Networking"],
+    author: {
+      name: "Riya Sharma",
+      bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
+    },
+    image: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/blog-images/3f06eaca-fe9f-4779-b4eb-ed5974321354-1791697553469.png",
+    categoryColor: "bg-red-100 text-red-600",
+    content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">ChatGPT Cover Letter Prompts</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A strong cover letter can help you explain something your resume cannot: why you want a particular job and how your experience makes you a suitable candidate. But when you are applying for multiple positions, writing a fresh, personalized letter for every opportunity can quickly become exhausting. That is where ChatGPT cover letter prompts can make a difference.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Instead of staring at a blank page, you can use ChatGPT to generate a first draft, highlight relevant skills, connect your experience to a job description, and improve your writing. The key is giving the AI clear instructions rather than asking it to write a generic cover letter.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>According to LinkedIn's Future of Recruiting report, recruiting continues to evolve alongside advances in AI and skills-based hiring. For job seekers, this makes it increasingly valuable to communicate relevant skills and experience clearly, while ensuring every application reflects their actual qualifications.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>This guide explores practical ChatGPT cover letter prompts for different career situations, provides copy-and-paste examples, and explains how to personalize AI-generated drafts so your application sounds authentic, relevant, and professional.</p>
+<div style='background:#EFF6FF; border-left:4px solid #2563EB; padding:12px 16px; margin:16px 0; border-radius:4px;'><p style='margin:0; line-height:1.7;'><strong>Source:</strong> <a href="https://business.linkedin.com/talent-solutions/resources/future-of-recruiting" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">LinkedIn's Future of Recruiting report</a></p></div>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">What Are ChatGPT Cover Letter Prompts?</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>ChatGPT <a href="https://www.flashfirejobs.com/blog/how-to-write-cover-letter-for-internship" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">cover letter</a> prompts are instructions you give ChatGPT to help create, customize, edit, or improve a cover letter for a specific job.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>A prompt can be as simple as asking for a professional cover letter or as detailed as providing your resume, the job description, your relevant achievements, and your preferred writing style.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, a basic prompt might be:</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Example Prompt:</strong> "Write a cover letter for a marketing job."</p>
+<p style='margin-bottom:12px; line-height:1.7;'>A more effective prompt would be:</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Example Prompt:</strong> "Act as a professional career-writing assistant. Using my resume and the job description below, write a concise cover letter for a digital marketing specialist position. Highlight my SEO, content strategy, and analytics experience. Connect my achievements to the employer's requirements, use a confident but natural tone, and keep the letter under 300 words. Do not invent qualifications or accomplishments."</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The second prompt provides context, direction, and boundaries. This helps ChatGPT produce a more relevant first draft that requires less editing.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">How to Write Effective ChatGPT Prompts for Cover Letters</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Before exploring specific examples, understand the ingredients of a useful prompt.</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li><strong>Role:</strong> Tell ChatGPT which job you are applying for.</li>
+    <li><strong>Background:</strong> Share relevant experience, skills, education, and achievements.</li>
+    <li><strong>Job description:</strong> Include the employer's requirements and responsibilities.</li>
+    <li><strong>Tone:</strong> Specify whether the letter should sound professional, conversational, enthusiastic, or formal.</li>
+    <li><strong>Length:</strong> Set a word limit, such as 200–300 words.</li>
+    <li><strong>Restrictions:</strong> Tell ChatGPT not to invent experience, certifications, metrics, or personal details.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>A simple formula is:</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Role + Resume + Job Description + Relevant Achievements + Tone + Length + Instructions</strong></p>
+<p style='margin-bottom:12px; line-height:1.7;'>You do not need to include every detail in every prompt. However, the more relevant context you provide, the easier it becomes to produce a focused and personalized draft.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">12 Best ChatGPT Cover Letter Prompts for Job Seekers</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>These ChatGPT prompts for cover letters cover common job-search situations, from applying for your first job to changing careers. Replace the bracketed details with your information before using each prompt.</p>
+
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>
+        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Prompt to Write a Cover Letter From Your Resume</h3>
+        <p style='margin-bottom:12px; line-height:1.7;'>Use this prompt when you have a resume ready but need help turning your experience into a compelling application letter.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Copy-and-paste prompt:</strong></p>
+        <p style='margin-bottom:12px; line-height:1.7;'>Act as an experienced career-writing assistant. Review my resume and write a tailored cover letter for the [Job Title] position at [Company Name]. Highlight my three most relevant skills, experience, and achievements. Explain how my background matches the job requirements, use a professional and natural tone, and keep the letter between 250 and 300 words. Do not repeat my resume word for word or invent any information.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>My resume:</strong> [Paste Resume]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Job description:</strong> [Paste Job Description]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It encourages ChatGPT to select relevant information instead of summarizing your entire work history.</p>
+    </li>
+    <li>
+        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Prompt to Customize a Cover Letter for a Job Description</h3>
+        <p style='margin-bottom:12px; line-height:1.7;'>A generic cover letter may fail to explain why you are suitable for a specific position. This prompt helps connect your qualifications to the employer's stated requirements.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'>Analyze the job description below and identify its five most important skills or qualifications. Compare them with my resume and write a personalized cover letter that highlights my strongest matching qualifications. Include relevant examples, use keywords naturally, and explain how I could contribute to the role. Keep it under 300 words and do not claim experience I do not have.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Job description:</strong> [Paste Job Description]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>My resume:</strong> [Paste Resume]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It gives the letter a clear focus and helps you prioritize the qualifications most relevant to the position.</p>
+    </li>
+    <li>
+        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Prompt for a Cover Letter With No Experience</h3>
+        <p style='margin-bottom:12px; line-height:1.7;'>Students, freshers, and first-time job seekers can use transferable skills, academic projects, volunteering, and internships to demonstrate their potential.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'>Write an entry-level cover letter for a [Job Title] position at [Company Name]. I have limited professional experience, but my background includes [Education], [Academic Projects], and [Relevant Skills]. Highlight my willingness to learn, problem-solving abilities, and relevant accomplishments. Keep the tone confident and genuine, avoid apologizing for my lack of experience, and limit the letter to 250 words. Do not invent achievements.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It shifts the focus from missing work experience to the skills and evidence you can offer.</p>
+    </li>
+    <li>
+        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Prompt for a Career Change Cover Letter</h3>
+        <p style='margin-bottom:12px; line-height:1.7;'>When changing careers, you need to explain why you are moving into a new field and how your existing skills transfer to the role.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'>Help me write a career-change cover letter for a [Target Job Title] position. My previous experience is in [Current Industry or Role], and I want to transition into [Target Industry]. Highlight transferable skills such as [Skills], relevant training, and accomplishments that support my transition. Explain my motivation positively without criticizing my previous career. Keep the letter under 300 words and connect my background to the job description.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Resume:</strong> [Paste Resume]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Job description:</strong> [Paste Job Description]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It creates a clear connection between your previous experience and your new career direction.</p>
+    </li>
+    <li>
+        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Prompt for a Cover Letter That Highlights Achievements</h3>
+        <p style='margin-bottom:12px; line-height:1.7;'>Use this prompt when your resume includes measurable results, successful projects, or examples of your impact.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'>Write a results-focused cover letter for a [Job Title] position at [Company Name]. Use my actual achievements to demonstrate my suitability for the role. Prioritize accomplishments that show measurable impact, leadership, efficiency, revenue growth, customer satisfaction, or problem-solving where relevant. Explain why these results matter to the employer. Use specific evidence rather than vague claims, and keep the letter under 300 words.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>My achievements:</strong> [List Verified Achievements]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Job description:</strong> [Paste Job Description]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> Concrete examples make your qualifications more persuasive than unsupported statements such as "I am a hardworking professional."</p>
+    </li>
+    <li>
+        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Prompt for a Personalized Company-Specific Cover Letter</h3>
+        <p style='margin-bottom:12px; line-height:1.7;'>This prompt helps you explain why you want to work for a particular organization rather than sending the same letter to every employer.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'>Write a personalized cover letter for the [Job Title] position at [Company Name]. Use the company information I provide to identify one or two genuine connections between its work, values, products, or mission and my professional interests. Explain how my skills and experience align with the position. Avoid generic praise and unsupported claims about the company. Keep the letter concise and authentic.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Company information:</strong> [Paste Verified Information]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>My background:</strong> [Paste Relevant Experience]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Job description:</strong> [Paste Job Description]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It helps you communicate a credible reason for applying while keeping the focus on the role.</p>
+    </li>
+    <li>
+        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Prompt for an Internal Promotion Cover Letter</h3>
+        <p style='margin-bottom:12px; line-height:1.7;'>Internal applications require a different approach because the employer already knows something about your performance and experience.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'>Write a cover letter for an internal promotion to [Target Position] at my current company, [Company Name]. Highlight my contributions, relevant achievements, understanding of company processes, and readiness for greater responsibility. Explain how my experience prepares me for the new position without repeating my entire employment history. Use a professional, confident tone and keep it under 300 words.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Current role:</strong> [Current Position]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Target role:</strong> [Target Position]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Key contributions:</strong> [List Examples]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It emphasizes your proven contributions and readiness for advancement.</p>
+    </li>
+    <li>
+        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Prompt for a Career Gap Cover Letter</h3>
+        <p style='margin-bottom:12px; line-height:1.7;'>If you have taken time away from work, you can address the gap briefly when it is relevant to your application.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'>Help me write a cover letter for a [Job Title] position that briefly addresses my career gap from [Time Period], if appropriate. Focus primarily on my relevant skills, previous accomplishments, and readiness to return to work. Use neutral, confident language and do not speculate about personal circumstances. Keep any explanation of the gap brief and include only details I choose to share.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>My background:</strong> [Relevant Experience]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Job description:</strong> [Paste Job Description]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It keeps the focus on your qualifications instead of allowing the employment gap to dominate the letter.</p>
+    </li>
+    <li>
+        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Prompt for a Remote Job Cover Letter</h3>
+        <p style='margin-bottom:12px; line-height:1.7;'>Remote employers may value independent working, written communication, time management, and collaboration across distributed teams.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'>Write a cover letter for a remote [Job Title] position at [Company Name]. Highlight my relevant experience and any verified examples of remote collaboration, independent project management, digital communication, or meeting deadlines. Connect these strengths to the job description and explain how I could contribute to a distributed team. Do not claim remote work experience unless it appears in my background. Keep the letter under 300 words.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It highlights the working habits that are relevant to remote positions without assuming every applicant has previous remote experience.</p>
+    </li>
+    <li>
+        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Prompt for a Short and Professional Cover Letter</h3>
+        <p style='margin-bottom:12px; line-height:1.7;'>Some applications benefit from a concise letter that communicates your fit without unnecessary background.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'>Write a concise cover letter for the [Job Title] position at [Company Name]. Include a strong opening, two relevant qualifications supported by my experience, one sentence explaining my interest in the role, and a professional closing. Keep the letter between 150 and 200 words. Avoid clichés, repetition, exaggerated claims, and overly formal language.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Resume:</strong> [Paste Resume]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Job description:</strong> [Paste Job Description]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It helps you deliver the most important information quickly, particularly when the application calls for a brief introduction.</p>
+    </li>
+    <li>
+        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Prompt to Improve an Existing Cover Letter</h3>
+        <p style='margin-bottom:12px; line-height:1.7;'>If you have already written a draft, use ChatGPT as an editor instead of starting over.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'>Review my cover letter for clarity, relevance, grammar, tone, and readability. Identify generic statements, repeated information, weak openings, and unsupported claims. Rewrite the letter to make it more specific to the [Job Title] position at [Company Name], while preserving my actual experience and personal voice. Keep it under 300 words. After the revised version, briefly explain the three most important improvements.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>My cover letter:</strong> [Paste Draft]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Job description:</strong> [Paste Job Description]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It improves an existing draft while helping you understand what needs to change.</p>
+    </li>
+    <li>
+        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Prompt to Check a Cover Letter Before Submitting</h3>
+        <p style='margin-bottom:12px; line-height:1.7;'>Before sending an application, ask ChatGPT to review the letter against the role's requirements.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'>Act as a cover letter reviewer. Evaluate my draft against the job description for relevance, clarity, evidence of skills, tone, and unnecessary repetition. Flag any unsupported claims, missing details, incorrect company or job titles, and phrases that sound generic. Suggest specific improvements and provide a polished final version without adding facts that are not in my materials.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Cover letter:</strong> [Paste Draft]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Job description:</strong> [Paste Job Description]</p>
+        <p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It provides a final quality check, although you should still verify every detail yourself.</p>
+    </li>
+</ol>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">How to Use ChatGPT to Write a Better Cover Letter</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Having good prompts is only the first step. Follow this process to turn an AI-generated draft into a strong application.</p>
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li><strong>Step 1:</strong> Start With the Actual Job Description</li>
+    <p style='margin-bottom:12px; line-height:1.7;'>Read the posting carefully and identify the main responsibilities, required skills, and preferred qualifications. Paste the relevant sections into ChatGPT so it can tailor the letter to the opportunity.</p>
+    <p style='margin-bottom:12px; line-height:1.7;'>Do not rely on the job title alone. Two companies hiring for the same position may expect different skills.</p>
+    
+    <li><strong>Step 2:</strong> Provide Relevant Resume Details</li>
+    <p style='margin-bottom:12px; line-height:1.7;'>Share the experience, education, projects, and achievements that relate to the role. You do not need to include every line of your resume.</p>
+    <p style='margin-bottom:12px; line-height:1.7;'>For example, a customer success role might benefit from evidence of customer retention, conflict resolution, and account management. A software engineering role might require technical projects, programming languages, and problem-solving examples.</p>
+    
+    <li><strong>Step 3:</strong> Review and Personalize the Draft</li>
+    <p style='margin-bottom:12px; line-height:1.7;'>Read the generated letter aloud. Replace phrases that do not sound like you, add details that demonstrate genuine interest, and remove statements that could apply to any applicant.</p>
+    <p style='margin-bottom:12px; line-height:1.7;'>Ask yourself: Could another candidate send this exact letter? If the answer is yes, add more specific evidence and context.</p>
+    
+    <li><strong>Step 4:</strong> Verify Every Claim</li>
+    <p style='margin-bottom:12px; line-height:1.7;'>AI can misunderstand your resume or introduce details that you never provided. Check job titles, dates, achievements, qualifications, company names, and statistics before submitting.</p>
+    <p style='margin-bottom:12px; line-height:1.7;'>Never include invented metrics or claim expertise you cannot demonstrate in an interview.</p>
+    
+    <li><strong>Step 5:</strong> Keep the Final Letter Focused</li>
+    <p style='margin-bottom:12px; line-height:1.7;'>A useful cover letter generally includes:</p>
+    <ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+        <li><strong>Opening:</strong> State the position and establish your interest.</li>
+        <li><strong>Middle:</strong> Highlight one or two relevant qualifications with supporting evidence.</li>
+        <li><strong>Closing:</strong> Connect your strengths to the opportunity and express interest in discussing your application.</li>
+    </ul>
+    <p style='margin-bottom:12px; line-height:1.7;'>Unless the employer specifies otherwise, aim for a concise letter of around 200–300 words.</p>
+</ol>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Common Mistakes to Avoid When Using ChatGPT Cover Letter Prompts</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Even a well-written AI draft can weaken your application if you rely on it without reviewing the result.</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li><strong>Using the same letter everywhere:</strong> Customize each application to the specific job and employer.</li>
+    <li><strong>Repeating your entire resume:</strong> Focus on the most relevant experience instead of listing every responsibility.</li>
+    <li><strong>Using generic openings:</strong> Replace phrases such as "I am writing to express my interest" with a more specific introduction when appropriate.</li>
+    <li><strong>Inventing achievements:</strong> Verify every claim and use only accurate information.</li>
+    <li><strong>Overloading the letter with keywords:</strong> Include relevant skills naturally rather than forcing every phrase from the job description into the text.</li>
+    <li><strong>Sharing sensitive information:</strong> Remove personal identifiers and confidential employer information before using an AI tool.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Remember, ChatGPT should help you communicate your qualifications, not replace your judgment or create a professional identity that does not reflect who you are.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Final Thoughts</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>ChatGPT cover letter prompts can simplify one of the most time-consuming parts of a job search. With the right instructions, you can create tailored drafts, highlight relevant achievements, and improve your writing without starting from scratch every time.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The most effective approach combines AI assistance with your own judgment. Provide accurate information, personalize each letter, and check every detail before submitting your application. A compelling cover letter should explain not only what you have done but also why your experience matters for the role.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Frequently Asked Questions</h2>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">1. What is the best ChatGPT prompt for a cover letter?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Ask ChatGPT to use your resume and the job description to create a tailored letter highlighting relevant skills and achievements in a natural tone.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">2. Can ChatGPT write a cover letter for free?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. You can use ChatGPT's available free features to draft, customize, and edit cover letters, subject to current usage limits.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">3. Should I include my resume when using ChatGPT?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes, sharing relevant resume details helps ChatGPT create a more accurate and personalized cover letter.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">4. How long should a cover letter be?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Aim for approximately 200–300 words unless the employer specifies a different length.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">5. Can ChatGPT tailor a cover letter to a job description?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. Provide the job description and your resume, then ask ChatGPT to connect your relevant qualifications to the role's requirements.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">6. Can freshers use ChatGPT to write cover letters?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. Freshers can highlight education, academic projects, internships, transferable skills, and relevant extracurricular experience.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">7. Can ChatGPT write a cover letter for a career change?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. It can help explain your transition and connect your previous experience to the skills required in your target industry.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">8. Will an AI-written cover letter sound generic?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>It can if you provide little context. Include specific achievements, relevant skills, and genuine reasons for applying to make it more personal.</p>`,
+  },
+
+  {
     id: 443,
     slug: "how-to-answer-what-are-your-salary-expectations",
     title: "How to Answer “What Are Your Salary Expectations?”",
