@@ -24,6 +24,222 @@ export type BlogPost = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const blogPosts: BlogPost[] = (([] as any[]).concat([
   {
+    id: 443,
+    slug: "how-to-answer-what-are-your-salary-expectations",
+    title: "How to Answer “What Are Your Salary Expectations?”",
+    metaTitle: "How to Answer “What Are Your Salary Expectations?” + Examples",
+    excerpt: "Learn how to answer “What are your salary expectations?” with a step-by-step guide, practical examples, salary research tips, and negotiation strategies.",
+    date: "Oct 11, 2026",
+    lastUpdated: "Oct 11, 2026",
+    readTime: "10 min",
+    category: "Salary",
+    tags: ["Salary"],
+    author: {
+      name: "Riya Sharma",
+      bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
+    },
+    image: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/blog-images/9ee3c523-f72c-4bd7-bb2c-0c0f52f624b4-1791697449799.png",
+    categoryColor: "bg-yellow-100 text-yellow-600",
+    content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">How to Answer "What Are Your Salary Expectations"</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Imagine reaching the final round of an interview, answering every question confidently, and feeling ready to receive an offer. Then the hiring manager asks, “What are your salary expectations?” Suddenly, you have to balance two things: asking for what you deserve and making sure you do not price yourself out of the opportunity. Your answer can influence salary negotiations, your overall compensation, and how the employer understands your expectations. Asking for too little could leave money on the table, while naming an unrealistic figure without research may complicate the conversation.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>According to the <a href="https://www.bls.gov/oes/current/oes_nat.htm" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">U.S. Bureau of Labor Statistics</a>, its Occupational Employment and Wage Statistics program provides employment and wage estimates for hundreds of occupations across the United States. This highlights why researching compensation for your specific role, location, and experience level is a practical starting point before discussing salary.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The good news is that you do not need to guess, reveal your current salary immediately, or give an exact number before understanding the opportunity. With the right preparation, you can communicate your expectations professionally and leave room for negotiation.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>This guide explains how to answer “What are your salary expectations,” research your market value, choose a realistic salary range, handle tricky follow-up questions, and use practical examples to negotiate confidently.</p>
+<div style='background:#EFF6FF; border-left:4px solid #2563EB; padding:12px 16px; margin:16px 0; border-radius:4px;'><p style='margin:0; line-height:1.7;'><strong>Source:</strong> U.S. Bureau of Labor Statistics</p></div>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Why Do Employers Ask About Salary Expectations?</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Employers ask about salary expectations to understand whether your compensation requirements align with their budget and the position's responsibilities. The question also helps them assess whether you and the company are likely to reach an agreement if the interview goes well.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Common reasons include:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+<li>Budget alignment: The recruiter wants to determine whether your expectations fit the approved salary range.</li>
+<li>Understanding your priorities: Your answer can reveal whether you have researched the position and considered the value you bring.</li>
+<li>Saving time: Discussing compensation early can help both parties avoid pursuing an opportunity with incompatible expectations.</li>
+<li>Planning an offer: Your response may help the employer prepare a competitive compensation package.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>However, the question is not necessarily a test. Employers may have a fixed range, some flexibility, or different compensation structures depending on experience and responsibilities.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Your goal is to communicate a well-researched expectation without limiting your options unnecessarily.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">How to Answer "What Are Your Salary Expectations" in 6 Steps</h2>
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+<li>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Research the Market Salary for Your Role</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Before the interview, find out what professionals in comparable positions typically earn. Avoid choosing a number simply because it sounds impressive or matches what a friend earns.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Research salaries using reliable sources, such as:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+<li>U.S. Bureau of Labor Statistics for U.S. occupational wage data.</li>
+<li>Glassdoor for reported salaries and company-specific estimates.</li>
+<li>Indeed Salaries for job-title and location-based salary information.</li>
+<li>Levels.fyi for compensation information, particularly across technology companies and roles.</li>
+<li>If you are applying in India, platforms such as AmbitionBox and Naukri can also help you compare reported salaries and job-market expectations.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Look for positions with similar responsibilities, seniority, location, industry, and company size. A marketing executive at a small business may earn differently from a marketing executive at a multinational company, even when the job titles match.</p>
+<div style='background:#EFF6FF; border-left:4px solid #2563EB; padding:12px 16px; margin:16px 0; border-radius:4px;'><p style='margin:0; line-height:1.7;'><strong>Pro tip:</strong> Compare several sources instead of relying on a single salary estimate. Treat reported figures as benchmarks rather than guaranteed offers.</p></div>
+</li>
+<li>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Consider Your Experience, Skills, and Qualifications</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Market averages provide a starting point, but your personal salary expectations should reflect what you offer the employer.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Consider the following factors:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+<li>Experience: Relevant professional experience may support a higher salary than entry-level benchmarks.</li>
+<li>Specialized skills: Technical expertise, industry knowledge, certifications, or hard-to-find skills may increase your market value.</li>
+<li>Achievements: Measurable results, such as increasing revenue, reducing costs, improving retention, or completing projects efficiently, help demonstrate your contribution.</li>
+<li>Job responsibilities: A role involving team leadership, strategic decisions, or greater accountability may justify a different compensation level.</li>
+<li>Location: Salary levels often vary according to local labor markets and living costs.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, a digital marketer who has managed campaigns that consistently generate qualified leads can use those results to support a salary expectation. Rather than saying, "I am hardworking and deserve more," explain how your experience aligns with the role's requirements.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Your qualifications should support your expectations, but they do not automatically guarantee a particular salary. Focus on relevant evidence and the value you can bring to the new position.</p>
+</li>
+<li>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Decide on Your Ideal Salary and Minimum Acceptable Offer</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Before discussing salary, establish three figures for yourself:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+<li>Target salary: The amount you would ideally like to earn.</li>
+<li>Acceptable range: The compensation range you could reasonably consider, depending on the role and benefits.</li>
+<li>Walk-away point: The minimum package you would accept after considering your financial needs, responsibilities, and alternatives.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Keep your walk-away point private unless there is a specific reason to disclose it.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, suppose your research suggests that similar roles pay between ₹8 lakh and ₹11 lakh annually. Based on your experience and the position's requirements, you might target ₹10 lakh to ₹11 lakh while deciding privately whether an offer below ₹9 lakh would work for you.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>These figures are illustrative, not a universal market benchmark. Also, distinguish between gross salary, take-home pay, fixed compensation, variable pay, and total cost to company (CTC). In India, a ₹10 lakh CTC package does not necessarily mean you will receive ₹10 lakh in cash annually. Employer contributions, insurance, bonuses, and other components may affect the final amount.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Understanding these differences helps you avoid accepting a package that looks attractive on paper but does not meet your actual needs.</p>
+</li>
+<li>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Give a Realistic Salary Range Instead of an Arbitrary Number</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>When an employer asks about salary expectations, a researched range can communicate flexibility while keeping the conversation focused.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example:</p>
+<p style='margin-bottom:12px; line-height:1.7;'>"Based on my research and the responsibilities of this position, I am looking for a salary in the range of ₹10 lakh to ₹12 lakh annually. However, I am open to discussing the overall compensation package and the opportunities for growth."</p>
+<p style='margin-bottom:12px; line-height:1.7;'>This response works because it connects your expectations to research, gives the employer a clear indication of your target, and leaves room for discussion. Choose your range carefully. Your lower figure should be an amount you would genuinely consider accepting, not a number you mention simply to appear flexible.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>A very broad range can also weaken your position. Saying you would accept anywhere between ₹6 lakh and ₹12 lakh may suggest that you have not established a clear target.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>A useful rule: Choose a range that reflects your research and preferences, and be prepared to explain why it is reasonable.</p>
+</li>
+<li>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Connect Your Expectations to the Value You Bring</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Salary discussions are more persuasive when you explain what supports your expectations. For example, a software developer might mention experience building scalable applications, while a sales professional could point to revenue growth or consistently meeting targets.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Instead of saying, "I want ₹12 lakh because that is my expectation," try:</p>
+<p style='margin-bottom:12px; line-height:1.7;'>"Considering my experience in managing client accounts, improving retention, and contributing to revenue growth, I believe a salary between ₹11 lakh and ₹13 lakh would be appropriate for this role."</p>
+<p style='margin-bottom:12px; line-height:1.7;'>You do not need to list every achievement. Choose one or two examples that relate directly to the employer's needs. At the same time, avoid overstating your contribution or treating past results as a guarantee of future performance. Your goal is to establish a credible connection between your capabilities and your compensation expectations.</p>
+</li>
+<li>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Stay Flexible and Consider the Complete Package</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Salary is important, but it is not the only part of a job offer worth evaluating.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Depending on the employer and country, your total package may include:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+<li>Performance bonuses or commissions.</li>
+<li>Health insurance and retirement benefits.</li>
+<li>Paid leave and other allowances.</li>
+<li>Remote or hybrid working arrangements.</li>
+<li>Learning budgets, certifications, or professional development.</li>
+<li>Equity, stock options, or long-term incentives.</li>
+<li>Promotion opportunities and salary reviews.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>For instance, an offer with a slightly lower fixed salary but strong benefits, manageable working hours, and clear career progression might be worth considering. Conversely, a high variable-pay component may be less attractive if your priority is predictable monthly income.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Ask questions to understand the details before comparing offers.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>You can say, "I would be happy to consider the overall package. Could you share more about the fixed salary, variable compensation, benefits, and salary review process?"</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Flexibility does not mean accepting compensation below your needs. It means evaluating the opportunity based on the factors that matter most to you.</p>
+</li>
+</ol>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Best Sample Answers to "What Are Your Salary Expectations"</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your response should reflect your experience, the information available, and the stage of the hiring process. Use these examples as starting points and adapt the figures to your circumstances.</p>
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+<li>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">For Freshers and Entry-Level Candidates</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>"As I am beginning my professional career, I am looking for compensation that aligns with the responsibilities of this role and the market rate for entry-level professionals. I am open to discussing the company's salary range and the overall opportunity."</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It shows flexibility while keeping your expectations connected to the position. If you have researched an appropriate range, including it can make your answer more specific.</p>
+</li>
+<li>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">For Experienced Professionals</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>"Based on my experience in project management, my track record of delivering projects on time, and the responsibilities of this position, I am targeting a salary between ₹15 lakh and ₹18 lakh annually. I am open to discussing the complete compensation package."</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It connects the requested compensation to relevant experience and responsibilities rather than personal expenses.</p>
+</li>
+<li>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">When You Want to Ask About the Budget First</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>“I would like to understand the role's responsibilities and the overall compensation structure before settling on a figure. Could you share the salary range budgeted for this position?”</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It encourages the employer to share useful information before you commit to a number. If the recruiter cannot disclose the range, be ready to provide your own researched estimate.</p>
+</li>
+<li>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">When You Are Changing Careers</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>“My salary expectations are based on the responsibilities of this role and the transferable skills I bring from my previous experience. I am looking for a competitive package that reflects the position's requirements, and I am open to discussing the range.”</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It focuses on relevant skills and the demands of the new role instead of assuming your previous salary must determine your next one.</p>
+</li>
+<li>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">When the Employer Requires an Exact Figure</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>“Based on my research, I would be targeting approximately ₹12 lakh annually, depending on the fixed and variable components of the package. I would be happy to discuss the details as we move forward.”</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It gives a clear answer while making it possible to revisit the package once the responsibilities and benefits are fully understood.</p>
+</li>
+<li>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">When You Are Negotiating a Higher Salary</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>“Thank you for sharing the offer. Based on the responsibilities of the position, my relevant experience, and the market range for comparable roles, I was hoping for something closer to ₹14 lakh annually. Is there flexibility in the budget?”</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It is respectful, explains your reasoning, and invites the employer to explore options without making an ultimatum.</p>
+</li>
+</ol>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Common Mistakes to Avoid When Discussing Salary Expectations</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Even a well-prepared candidate can weaken their position by answering too quickly or focusing on the wrong details.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Avoid these common mistakes:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+<li>Giving a number without research: Base your expectations on comparable positions, experience, and location.</li>
+<li>Undervaluing yourself out of fear: Do not choose an unusually low figure simply because you want the job.</li>
+<li>Naming an unrealistic range: Make sure your target can be supported by the role's requirements and market evidence.</li>
+<li>Revealing your minimum too early: You can share a target range without disclosing the lowest amount you would accept.</li>
+<li>Confusing CTC with take-home pay: Review the package breakdown before evaluating the offer.</li>
+<li>Sounding rigid or apologetic: State your expectations calmly and explain your reasoning.</li>
+<li>Ignoring non-salary benefits: Consider the entire package, not just the headline figure.</li>
+<li>Lying about another offer: Be honest about competing opportunities and compensation discussions.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Remember, a salary conversation is a professional discussion, not a confrontation. Clear reasoning and respectful communication can help both sides determine whether the opportunity is a good fit.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">What If the Employer Asks About Your Current Salary?</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Some recruiters ask about your current compensation before discussing their offer. You can answer honestly when appropriate, but your current salary does not have to define the value of your next role.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>If you prefer to focus on the new position, you could say:</p>
+<p style='margin-bottom:12px; line-height:1.7;'>“I would prefer to focus on the compensation range for this role and how it aligns with my experience and the responsibilities involved. Based on my research, I am targeting a package in the range of ₹12 lakh to ₹14 lakh annually.”</p>
+<p style='margin-bottom:12px; line-height:1.7;'>If you are comfortable sharing your current salary, distinguish between fixed pay, variable pay, and benefits so the comparison is accurate.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Rules and norms around salary-history questions vary by jurisdiction. Check applicable local requirements if you are unsure whether an employer may ask for this information.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">How to Prepare for a Salary Expectations Question Before an Interview</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A few minutes of preparation can help you avoid making a rushed decision during the interview.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Use this checklist before your next conversation:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+<li>Research salary benchmarks for the position and location.</li>
+<li>Compare at least two or three reliable sources.</li>
+<li>Review the job description and identify the responsibilities that justify your target.</li>
+<li>Decide your ideal salary, acceptable range, and private minimum.</li>
+<li>Prepare a concise answer that connects your expectations to your skills and research.</li>
+<li>Practise saying your range aloud so it sounds natural.</li>
+<li>Prepare questions about fixed pay, variable compensation, benefits, and salary reviews.</li>
+<li>Consider what you will say if the employer's budget is lower than your target.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>You do not need to memorise a long speech. A short, confident answer supported by preparation is usually more effective than an overly detailed explanation.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Final Thoughts</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Answering "What are your salary expectations?" becomes easier when you know your market value, understand your priorities, and communicate your expectations clearly. Research comparable roles, choose a realistic range, support your answer with relevant skills and achievements, and evaluate the entire compensation package before making a decision. Most importantly, remember that naming your salary expectations is the beginning of a discussion, not necessarily the final word on your compensation. Prepare well, remain professional, and be ready to explain the value you can bring to the organisation.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Knowing how to discuss salary expectations is important, but getting the right opportunities matters too. <a href="https://www.flashfirejobs.com/" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">FlashFire</a> helps job seekers find relevant jobs, optimize their resumes, submit high-quality applications, and track their applications in one workflow.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>With less time spent managing applications, you can focus more on interview preparation, demonstrating your skills, and approaching salary negotiations with confidence.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Ready to streamline your job search? Explore FlashFire today.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Frequently Asked Questions</h2>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">1. What is the best answer to "What are your salary expectations"?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Share a researched salary range based on your experience, the role, and market rates. Stay open to discussing the overall compensation package.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">2. Should I give a salary range or an exact number?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>A salary range offers more flexibility. Give an exact figure if the employer requires one.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">3. How do I answer salary expectations as a fresher?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Research entry-level salaries for your role and highlight your relevant skills. Provide a realistic range if possible.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">4. What if I do not know the salary range?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Ask the recruiter about the budget for the position. You can also research similar roles to estimate a reasonable range.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">5. Should I mention my current salary?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Only if you are comfortable and it is appropriate. You can redirect the discussion toward your expectations for the new role.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">6. How do I avoid asking for too little?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Research market salaries, assess your skills and experience, and decide your target before the interview.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">7. What if my salary expectations are higher than the employer's budget?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Ask whether the budget is negotiable. Consider benefits, bonuses, flexibility, and career growth before deciding.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">8. Can I say that salary is negotiable?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes, but provide a realistic range when possible to communicate your expectations clearly.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">9. How do I answer salary expectations when changing careers?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Highlight your transferable skills and relevant achievements. Research salaries for your new role rather than relying only on your previous salary.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">10. Should I include bonuses and benefits in my salary expectations?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Consider the complete compensation package, but distinguish guaranteed salary from bonuses and variable pay.</p>`,
+  },
+
+  {
     id: 442,
     slug: "how-to-answer-tell-me-about-a-time-you-failed",
     title: "How to Answer “Tell Me About a Time You Failed”",
