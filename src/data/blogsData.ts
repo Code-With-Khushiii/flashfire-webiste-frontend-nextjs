@@ -24,6 +24,265 @@ export type BlogPost = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const blogPosts: BlogPost[] = (([] as any[]).concat([
   {
+    id: 445,
+    slug: "how-to-research-a-company-before-an-interview",
+    title: "How to Research a Company Before an Interview",
+    metaTitle: "How to Research a Company Before an Interview",
+    excerpt: "Learn how to research a company before an interview, what information to look for, which resources to use, and how to prepare stronger answers and questions.",
+    date: "Oct 11, 2026",
+    lastUpdated: "Oct 11, 2026",
+    readTime: "10 min",
+    category: "Networking",
+    tags: ["Networking"],
+    author: {
+      name: "Riya Sharma",
+      bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
+    },
+    image: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/blog-images/1fb62adf-05d2-405d-8b65-0a17e439f6ff-1791697665438.png",
+    categoryColor: "bg-red-100 text-red-600",
+    content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">How to Research a Company Before an Interview</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Imagine walking into an interview feeling confident about your skills, only to stumble when the hiring manager asks, “What do you know about our company?” You know the job title, have rehearsed your answers, and updated your resume, but you have no clear idea what the company does, who its customers are, or why you want to work there. This is an avoidable mistake. Researching a company before an interview helps you give more relevant answers, ask thoughtful questions, and demonstrate genuine interest in the role.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>According to LinkedIn’s Future of Recruiting research, skills-based hiring is an important focus for recruiters, highlighting the value of understanding how your abilities connect with an employer’s needs. You can explore LinkedIn’s recruiting insights on its <a href="https://business.linkedin.com/talent-solutions/resources/future-of-recruiting" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">Future of Recruiting page</a>. But company research involves more than reading an About Us page. You need to understand the business, its products, its culture, the position you are applying for, and the challenges it may be trying to solve.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>This guide explains how to research a company before an interview, which websites and resources to use, what information to prioritize, and how to turn your findings into confident answers and meaningful questions.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Source:</strong> Future of Recruiting page</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">1. Start With the Company's Official Website</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>The company's website is usually the best starting point because it explains how the organization presents its business, products, services, and goals. However, do not try to memorize every page. Focus on information that helps you understand the company and connect your experience to the position.</p>
+
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">What to look for</h3>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li><strong>About Us:</strong> Understand the company's background, mission, and main business activities.</li>
+    <li><strong>Products and services:</strong> Learn what it sells, what problems it solves, and who its customers are.</li>
+    <li><strong>Leadership team:</strong> Identify key leaders and understand their professional backgrounds.</li>
+    <li><strong>Careers page:</strong> Look for company values, benefits, development opportunities, and hiring priorities.</li>
+    <li><strong>Recent announcements:</strong> Check for new products, partnerships, expansions, or other important developments.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, suppose you are interviewing for a marketing position at a software company. Its website reveals that the company recently introduced a product for small businesses. You could connect that finding to your experience with small-business marketing, customer acquisition, or product launches.</p>
+<div style='background:#EFF6FF; border-left:4px solid #2563EB; padding:12px 16px; margin:16px 0; border-radius:4px;'><p style='margin:0; line-height:1.7;'><strong>Pro tip:</strong> Write a two-sentence summary of the company in your own words. If you cannot explain what it does and whom it serves, continue researching before moving on.</p></div>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">2. Understand the Company's Business Model</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Knowing what a company does is only the beginning. Understanding how it makes money and competes in its market gives you a more complete picture. Research its primary customers, revenue sources, pricing model where available, and major competitors.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, a subscription-based software company may depend on recurring revenue, customer retention, and product adoption. A retail business may focus more heavily on inventory management, sales performance, and customer experience. These differences matter because they influence the challenges employees face and the results employers expect.</p>
+
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Questions to answer</h3>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Who are the company's main customers?</li>
+    <li>What products or services generate its business?</li>
+    <li>How does it distinguish itself from competitors?</li>
+    <li>What industry trends could affect its performance?</li>
+    <li>What business priorities might influence the role?</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>You can find these answers through product pages, customer case studies, investor presentations, industry publications, and credible business news. For publicly traded companies, annual reports and investor relations pages can reveal financial performance, strategic priorities, and business risks.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>You do not need to become an industry expert. Your goal is to understand enough about the business to explain why your skills could contribute to its objectives.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">3. Read the Job Description Carefully</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>The job description is one of the most useful research resources because it tells you what the employer needs from the person hired. Read it more than once. The first time, understand the general responsibilities. The second time, identify recurring skills, expected outcomes, tools, and business priorities.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Look for three categories:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li><strong>Required skills:</strong> The technical abilities, qualifications, or experience essential for the role.</li>
+    <li><strong>Responsibilities:</strong> The tasks you will handle regularly.</li>
+    <li><strong>Expected outcomes:</strong> The results the employer wants, such as improving retention, increasing sales, or reducing processing time.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Suppose a job description repeatedly mentions stakeholder communication, project coordination, and reporting. These requirements suggest that the employer values organization, collaboration, and the ability to communicate progress clearly. Prepare examples from your experience that demonstrate those abilities.</p>
+
+<div class="overflow-x-auto my-6">
+<table class="w-full border-collapse text-sm">
+    <thead>
+        <tr>
+            <th class="bg-blue-600 text-white font-semibold p-3 text-left">Job description requirement</th>
+            <th class="bg-blue-600 text-white font-semibold p-3 text-left">What to prepare for the interview</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="border border-gray-200 p-3">Project management</td>
+            <td class="border border-gray-200 p-3">An example of delivering a project on time</td>
+        </tr>
+        <tr>
+            <td class="border border-gray-200 p-3">Data analysis</td>
+            <td class="border border-gray-200 p-3">A situation where data informed a decision</td>
+        </tr>
+        <tr>
+            <td class="border border-gray-200 p-3">Customer relationship management</td>
+            <td class="border border-gray-200 p-3">An example of resolving a customer issue</td>
+        </tr>
+        <tr>
+            <td class="border border-gray-200 p-3">Team collaboration</td>
+            <td class="border border-gray-200 p-3">A story about working across departments</td>
+        </tr>
+        <tr>
+            <td class="border border-gray-200 p-3">Process improvement</td>
+            <td class="border border-gray-200 p-3">A measurable improvement you helped achieve</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<p style='margin-bottom:12px; line-height:1.7;'>This approach makes your research practical. Instead of simply collecting information, you are preparing evidence that shows why you are a suitable candidate.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">4. Research the Company's Recent News</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Recent developments can help you understand what matters to the organization right now. They may also give you useful talking points during the interview. Search for company announcements and credible news published within the last three to six months. If the company has little recent coverage, expand your search period.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Look for:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>New product or service launches</li>
+    <li>Leadership changes</li>
+    <li>Mergers, acquisitions, or partnerships</li>
+    <li>Market expansion or new office openings</li>
+    <li>Funding announcements or financial results</li>
+    <li>Major customer wins or strategic initiatives</li>
+    <li>Publicly reported challenges affecting the business</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Use sources such as the company's newsroom, reputable business publications, industry news websites, and official regulatory filings where relevant. For example, if a company has announced expansion into a new market, you might ask how the team plans to adapt its product or customer strategy to that market. If it recently launched a new service, you could ask what success looks like for the team responsible for growing adoption. Always verify the date and source before mentioning a development. Avoid repeating rumors, treating speculation as fact, or assuming that an announcement directly affects the position you are interviewing for.</p>
+<div style='background:#EFF6FF; border-left:4px solid #2563EB; padding:12px 16px; margin:16px 0; border-radius:4px;'><p style='margin:0; line-height:1.7;'><strong>Interview tip:</strong> Prepare one recent development you can discuss naturally. A thoughtful observation is more useful than reciting five headlines without understanding their significance.</p></div>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">5. Explore the Company's LinkedIn Page</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>LinkedIn can help you understand the company's professional presence, recent activity, workforce, and hiring patterns. Start with the official company page. Review its description, posts, employee count range, and recent announcements. Then explore relevant employee profiles, particularly those of people working in the department you are joining. Their backgrounds can help you understand the skills, career paths, and responsibilities associated with similar roles.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>You can also research the hiring manager or interviewer if their identity is available. Look for publicly shared professional information, such as their role, career experience, team responsibilities, and published industry insights. Use this information to prepare relevant questions rather than making assumptions about someone's personality or management style.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, if the hiring manager has publicly discussed improving customer onboarding, you might ask how the team measures onboarding success or what challenges the new hire will help address. LinkedIn can also reveal whether the company regularly discusses certain priorities, such as innovation, customer success, or employee development. Treat these posts as clues, not definitive proof of what working there is like.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">6. Investigate Company Culture and Employee Reviews</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A company's official website shows how it wants to present itself. Employee reviews and other independent sources can offer additional perspectives on the actual workplace experience. Explore platforms such as Glassdoor and Indeed, along with employee testimonials, company career pages, and relevant professional communities.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Look for recurring themes rather than focusing on one extremely positive or negative review. Pay attention to comments about:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Management and communication</li>
+    <li>Work-life balance and workload</li>
+    <li>Career development and training</li>
+    <li>Team collaboration</li>
+    <li>Compensation and benefits</li>
+    <li>Performance expectations and promotion processes</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Remember that employee reviews are subjective. Experiences can vary by department, manager, location, and time period. Reviews may also reflect the perspectives of people who feel particularly motivated to share feedback. Use them to identify questions, not to make immediate judgments.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, if multiple recent reviews mention unclear performance expectations, you could ask the interviewer how goals are established and how employees receive feedback. You might also ask, “How does the team support professional development during the first six months?” These questions help you assess whether the work environment aligns with your needs while demonstrating that you are evaluating the opportunity thoughtfully.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">7. Research the Company's Competitors and Industry</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Understanding the company's competitive landscape helps you move beyond basic facts and demonstrate commercial awareness. Identify two or three major competitors. Compare their products, target customers, positioning, and recent developments. You can use company websites, industry reports, trade publications, and credible market analysis.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, if you are interviewing at an online learning platform, investigate how it differs from other platforms in course selection, pricing, learner support, or employer partnerships. Then consider how those differences could affect your role. A sales candidate might focus on competitive positioning and customer objections. A product manager might explore unmet customer needs. A marketing candidate might examine brand differentiation and audience segments.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Avoid claiming that one company is better than another without reliable evidence. The purpose is to understand the market, not to deliver an unsolicited critique. Prepare one observation and one question, such as: “I noticed that your platform emphasizes employer partnerships. How does that influence your product roadmap or customer acquisition strategy?” This demonstrates that you understand the company's position in a broader business context.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">8. Check Financial Performance and Business Stability</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Financial research is particularly useful when interviewing with a publicly traded company, a startup, or an organization experiencing significant change. For public companies, review annual reports, quarterly earnings releases, investor presentations, and official stock exchange filings. For startups, examine official funding announcements, investor updates where publicly available, product launches, and credible reporting about business growth.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Focus on information relevant to the position, including revenue trends where disclosed, expansion plans, operating challenges, and strategic investments. For example, if a company is investing in automation, a technology candidate might ask how that investment will influence the team's priorities. If a business has announced expansion into new markets, a candidate applying for an operations role might ask how the organization plans to scale its processes.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Do not interpret a single financial metric as a complete assessment of the company's health. Revenue growth, profitability, cash flow, and funding have different implications depending on the business model and industry. For private companies, detailed financial information may not be public. That is normal. Use credible available evidence, and avoid treating missing information as proof of financial trouble.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">9. Turn Your Research Into Strong Interview Answers</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Research only becomes valuable when you use it effectively. The goal is not to repeat company facts but to connect them to your experience, skills, and motivation. Prepare answers to three common interview questions.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>“What do you know about our company?”</strong> Give a concise summary of its business, customers, and one relevant recent development.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Example:</p>
+<p style='margin-bottom:12px; line-height:1.7;'>“Your company provides cloud-based tools that help small businesses manage their operations. I noticed that you recently expanded your product offering to support growing teams. That interests me because my experience in customer-focused product development aligns with your emphasis on helping businesses scale.”</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Adjust the details to match verified information about the actual employer.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>“Why do you want to work here?”</strong> Connect the company's work to your professional interests and the specific role.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Example:</p>
+<p style='margin-bottom:12px; line-height:1.7;'>“I am interested in this position because it combines data analysis with customer problem-solving. I was particularly interested to learn about your focus on improving the customer experience, and I would like to contribute my experience analyzing customer feedback and identifying process improvements.”</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Avoid generic answers such as “Your company has a great reputation.” Explain what specifically attracts you.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>“How can you contribute to our team?”</strong> Use the job description to identify a priority, then connect it to a relevant achievement.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Example:</p>
+<p style='margin-bottom:12px; line-height:1.7;'>“I noticed that this role involves improving reporting efficiency. In my previous position, I helped streamline a recurring reporting process, reducing the time required to prepare weekly reports. I would be interested in applying that experience to understand and improve your team's existing workflow.”</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Whenever possible, use accurate numbers and specific outcomes from your own experience. Do not invent achievements to make your answer sound stronger.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">10. Prepare Thoughtful Questions for the Interviewer</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your research should help you ask questions that demonstrate curiosity and clarify what the job involves. Prepare four or five questions, then choose the two or three most relevant to the conversation.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Consider asking:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>What are the most important priorities for this role during the first 90 days?</li>
+    <li>How does this team contribute to the company's broader goals?</li>
+    <li>What challenges would you like the successful candidate to help solve?</li>
+    <li>How do you measure success in this position?</li>
+    <li>What opportunities are available for learning and professional development?</li>
+    <li>How would you describe the team's collaboration and communication style?</li>
+    <li>I noticed your recent product launch. What are the team's priorities for the next stage?</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Avoid questions that are easily answered by the company's homepage. Also, do not feel compelled to ask every prepared question if the interviewer has already addressed it. Remember that an interview is a two-way conversation. Your questions should help you determine whether the role, manager, and organization are right for you.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">11. Use a Simple Company Research Checklist</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>If you have limited preparation time, prioritize the information most likely to influence your interview.</p>
+
+<div class="overflow-x-auto my-6">
+<table class="w-full border-collapse text-sm">
+    <thead>
+        <tr>
+            <th class="bg-blue-600 text-white font-semibold p-3 text-left">Research task</th>
+            <th class="bg-blue-600 text-white font-semibold p-3 text-left">What you should know</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="border border-gray-200 p-3">Official website</td>
+            <td class="border border-gray-200 p-3">What the company does and whom it serves</td>
+        </tr>
+        <tr>
+            <td class="border border-gray-200 p-3">Job description</td>
+            <td class="border border-gray-200 p-3">Required skills, responsibilities, and expected results</td>
+        </tr>
+        <tr>
+            <td class="border border-gray-200 p-3">Recent news</td>
+            <td class="border border-gray-200 p-3">One or two relevant developments</td>
+        </tr>
+        <tr>
+            <td class="border border-gray-200 p-3">LinkedIn</td>
+            <td class="border border-gray-200 p-3">Company updates and relevant team backgrounds</td>
+        </tr>
+        <tr>
+            <td class="border border-gray-200 p-3">Employee reviews</td>
+            <td class="border border-gray-200 p-3">Recurring workplace themes worth clarifying</td>
+        </tr>
+        <tr>
+            <td class="border border-gray-200 p-3">Competitors</td>
+            <td class="border border-gray-200 p-3">Two or three alternatives and key differences</td>
+        </tr>
+        <tr>
+            <td class="border border-gray-200 p-3">Financial information</td>
+            <td class="border border-gray-200 p-3">Relevant business priorities, where available</td>
+        </tr>
+        <tr>
+            <td class="border border-gray-200 p-3"><a href="https://www.flashfirejobs.com/blog/best-ai-interview-tools" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">Interview preparation</a></td>
+            <td class="border border-gray-200 p-3">Three strong answers and four or five questions</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<p style='margin-bottom:12px; line-height:1.7;'>You do not need to spend hours researching every detail. For a typical interview, 45–60 minutes of focused preparation can provide a useful starting point, although complex, senior-level, or technical roles may require more. Prioritize the official website, job description, recent developments, and interview answers first. Use the remaining time to explore culture, competitors, and financial information as needed. Keep your notes to one page if possible. Include the company's business, three relevant facts, your strongest matching skills, and questions you want to ask.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Common Mistakes to Avoid When Researching a Company</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Even thorough research can be ineffective if you approach it the wrong way.</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li><strong>Memorizing the website:</strong> Interviewers want to see understanding, not a rehearsed company description. Connect what you learn to the role.</li>
+    <li><strong>Relying on one source:</strong> Compare official information with credible independent reporting, especially when researching culture or recent developments.</li>
+    <li><strong>Using outdated information:</strong> Check publication dates and confirm that announcements remain relevant.</li>
+    <li><strong>Making unsupported assumptions:</strong> Do not infer a company's financial condition, workplace culture, or internal problems from limited evidence.</li>
+    <li><strong>Researching without preparing answers:</strong> Facts alone will not help if you cannot explain why they matter to you or how you can contribute.</li>
+    <li><strong>Ignoring your own priorities:</strong> Research should help you evaluate the employer, too. Consider whether the responsibilities, working arrangements, compensation, and development opportunities meet your needs.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>The best preparation balances two questions: “Why would this company want to hire me?” and “Why would I want to work here?”</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Final Thoughts</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Researching a company before an interview is not about knowing every detail of its history. It is about understanding its business, recognizing what the role requires, and preparing to explain how your skills can make a difference. Start with the official website and job description, verify recent developments, explore the company's industry and culture, and turn your findings into specific answers and thoughtful questions. Focus on information that helps you make a stronger case for your candidacy.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Most importantly, use your research to have a conversation, not deliver a memorized presentation. When you can explain what interests you about the company and how your experience fits its needs, you can approach the interview with greater clarity and confidence.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Frequently Asked Questions</h2>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">1. Why is it important to research a company before an interview?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>It helps you give relevant answers, show genuine interest, and ask informed questions.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">2. How do I research a company before an interview?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Review its website, job description, recent news, LinkedIn page, employee reviews, and competitors.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">3. How long should I spend researching a company?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Spend around 45–60 minutes preparing for a typical interview.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">4. What should I know about a company before an interview?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Understand its products, customers, goals, culture, recent developments, and job requirements.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">5. Where can I find reliable information about a company?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Check its official website, LinkedIn, annual reports, news releases, and reputable business publications.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">6. Should I research the interviewer before an interview?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. Review their professional background and current role to prepare relevant questions.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">7. How do I research a company's work culture?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Review employee feedback, the careers page, and public employee insights to identify recurring themes.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">8. Should I research a company's competitors?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. It helps you understand the company's market position and competitive advantages.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">9. What should I say when asked, “What do you know about our company?”</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Summarize what the company does, whom it serves, and one relevant recent development.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">10. How can company research help me answer “Why do you want to work here?”</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>It helps you connect the company's goals and work to your skills, interests, and career plans.</p>`,
+  },
+
+  {
     id: 444,
     slug: "chatgpt-cover-letter-prompts",
     title: "ChatGPT Cover Letter Prompts",
