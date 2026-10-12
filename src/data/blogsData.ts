@@ -24,6 +24,219 @@ export type BlogPost = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const blogPosts: BlogPost[] = (([] as any[]).concat([
   {
+    id: 449,
+    slug: "entry-level-resume",
+    title: "Entry Level Resume: How to Write One That Gets Noticed",
+    metaTitle: "Entry Level Resume: How to Write One That Gets Noticed",
+    excerpt: "Learn how to write an entry level resume with examples, formatting tips, key sections, ATS advice, and strategies to highlight skills even without work experience.",
+    date: "Oct 12, 2026",
+    lastUpdated: "Oct 12, 2026",
+    readTime: "10 min",
+    category: "Resume Writing",
+    tags: ["Resume Writing"],
+    author: {
+      name: "Riya Sharma",
+      bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
+    },
+    image: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/blog-images/a4094708-7014-4a42-bb0a-ae471f296857-1791823852457.png",
+    categoryColor: "bg-blue-100 text-blue-600",
+    content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Entry Level Resume: How to Write One That Gets Noticed</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your first job application can feel like a catch-22: employers want experience, but you need a job to gain experience. The good news? You do not need years of professional employment to create a strong entry level resume. Your education, internships, academic projects, volunteer work, certifications, and transferable skills can all demonstrate your potential.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>According to the <a href="https://www.naceweb.org/" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">National Association of Colleges and Employers (NACE)</a>, employers regularly assess candidates based on competencies such as communication, teamwork, critical thinking, and professionalism. These abilities can be developed through college assignments, extracurricular activities, part-time work, and other experiences, not just full-time jobs.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The key is presenting your qualifications in a way that connects with an employer's needs. This guide explains how to structure an entry level resume, choose the right format, highlight relevant skills, write effective bullet points, and use examples to build a resume that helps you compete for your first professional opportunity.</p>
+<div style='background:#EFF6FF; border-left:4px solid #2563EB; padding:12px 16px; margin:16px 0; border-radius:4px;'><p style='margin:0; line-height:1.7;'><strong>Source:</strong> National Association of Colleges and Employers (NACE)</p></div>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">What Is an Entry Level Resume?</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>An entry level resume is a document designed for candidates who are starting their careers, changing professional paths, or have limited full-time work experience. It highlights relevant qualifications rather than relying on an extensive employment history.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>An entry level resume is suitable for:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Recent graduates applying for their first full-time job.</li>
+    <li>Students seeking internships or part-time positions.</li>
+    <li>Freshers entering the job market.</li>
+    <li>Career changers moving into a new industry.</li>
+    <li>Candidates with limited professional experience but relevant projects or training.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Unlike an experienced professional's resume, which often emphasizes career progression and measurable business results, an entry level resume focuses on potential, foundational knowledge, transferable skills, and evidence of practical ability.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The goal is simple: show employers why you are prepared to contribute, even if you are just beginning your career.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">1. Choose the Best Entry Level Resume Format</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>The right format helps recruiters identify your strongest qualifications quickly. For most fresh graduates and first-time job seekers, a reverse-chronological or skills-focused hybrid format works well.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Reverse-chronological format</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Lists your most recent experience first. Choose it if you have internships, part-time jobs, relevant volunteer work, or several projects that demonstrate progression.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Hybrid format</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Combines a prominent skills section with a concise experience history. It works well when you have relevant technical abilities, coursework, projects, and some practical experience.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Avoid choosing a purely functional resume that lists skills without explaining where you used them. Employers benefit from seeing evidence of your abilities, not just a collection of keywords.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Keep your layout simple, use consistent headings, and avoid complex graphics, multiple columns, or decorative elements that could interfere with applicant tracking systems (ATS).</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">2. Include These Essential Resume Sections</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A strong entry level resume does not need to be complicated. Organize it so recruiters can quickly understand your background and suitability for the role.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Contact information</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Place your name and contact details at the top. Include:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Full name</li>
+    <li>Phone number</li>
+    <li>Professional email address</li>
+    <li>City and state or country, as appropriate</li>
+    <li>LinkedIn profile or portfolio link, if relevant</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>You generally do not need your full street address, photograph, date of birth, marital status, or other personal details unless the employer or local application conventions specifically require them.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Resume summary or objective</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>A resume objective explains the position you want and the relevant strengths you bring. It can be useful when you have little professional experience.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Example:</strong> “Recent commerce graduate with foundational knowledge of financial reporting, spreadsheet analysis, and business communication. Seeking an entry level accounting role to apply analytical skills, support accurate recordkeeping, and develop practical finance experience.”</p>
+<p style='margin-bottom:12px; line-height:1.7;'>If you already have relevant internship experience, consider a short professional summary that highlights your experience and accomplishments instead.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Education</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>For fresh graduates, education can appear near the top of the resume. Include your degree, institution, graduation year, and relevant academic details. Add your GPA or percentage if it strengthens your application or the employer requests it.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>You can also mention relevant coursework, academic honors, or certifications that directly support the target role.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Skills</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Include a focused list of skills that match the job description. Separate technical skills from transferable skills when that improves readability.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li><strong>Technical:</strong> Excel, SQL, Python, data visualization</li>
+    <li><strong>Communication:</strong> Report writing, presentations, customer communication</li>
+    <li><strong>Organization:</strong> Time management, documentation, task prioritization</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Only list skills you can confidently discuss or demonstrate during an interview.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Experience and projects</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Include internships, freelance assignments, campus responsibilities, volunteer work, and relevant academic projects. These can demonstrate workplace-ready abilities even when you have never held a full-time position.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Certifications and additional activities</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Add relevant certifications, workshops, awards, or leadership activities if they provide evidence of skills related to the job. Skip unrelated details that take attention away from your strongest qualifications.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">3. How to Write an Entry Level Resume With No Experience</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Not having a formal work history does not mean you have nothing valuable to show. The important step is identifying experiences that demonstrate skills employers need.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Start with the job description</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Read the job posting carefully and identify the main responsibilities, required skills, and qualifications. Then connect those requirements to your education, projects, or activities.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, if a marketing job asks for content creation and social media skills, highlight a college campaign, student club account, or personal content project where you used those abilities.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Turn academic projects into evidence</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Describe what you created, which tools you used, and what the project achieved.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Instead of writing:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>- Completed a college marketing project.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Write:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>- Developed a digital marketing plan for a college project, including audience research, content ideas, and a sample social media calendar.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>The second example gives employers a clearer picture of your capabilities. Add genuine metrics, such as survey responses, content pieces, or project deadlines met, whenever available.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Include transferable experience</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Your experience does not have to come from an office. Part-time work, volunteering, student clubs, competitions, and independent projects can demonstrate organization, communication, problem-solving, and teamwork.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, organizing a college event can show planning and coordination skills. Tutoring classmates can demonstrate communication and subject knowledge.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Choose examples that relate to the job you want rather than listing every activity you have ever done.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">4. Entry Level Resume Example</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Use this sample as a starting point and replace the details with your own qualifications.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>PRIYA SHARMA<br>Pune, India · priya.sharma@email.com · +91 98765 43210</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Professional Summary</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Recent BBA graduate with foundational knowledge of business research, Excel, and data analysis. Experienced in preparing academic reports and collaborating on team projects. Seeking an entry level business analyst role to apply analytical and organizational skills while developing practical industry experience.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Education</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Bachelor of Business Administration (BBA)<br>ABC College, Pune | 2026<br>Relevant coursework: Business Statistics, Financial Management, Business Communication</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Academic Projects</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Retail Sales Analysis Project<br>Organized sample sales data in Excel to identify monthly trends and product performance.<br>Created charts and summarized findings in a presentation for an academic assessment.<br>Collaborated with three classmates to complete the project within the assigned deadline.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Skills</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Technical: Microsoft Excel, PowerPoint, data organization<br>Professional: Research, written communication, teamwork, time management</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Certifications and Activities</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Excel Fundamentals — <strong>[Training Provider]</strong><br>Volunteer, College Event Committee — Supported event planning and participant coordination.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Illustrative example only. The candidate, contact details, education, and experience are fictional. Include only qualifications and achievements that accurately reflect your background.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Notice that this entry level resume example prioritizes relevant education and projects rather than leaving a large blank work experience section. For a different position, change the summary, project descriptions, and skills to match the role.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">5. Write Strong Resume Bullet Points</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Recruiters need more than a list of responsibilities. They need to understand what you did and how you approached the work.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Use this simple structure:</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Action verb + task or skill + outcome or purpose</strong></p>
+<p style='margin-bottom:12px; line-height:1.7;'>Here are examples you can adapt to your actual experience:</p>
+<table class="w-full border-collapse text-sm">
+    <thead>
+        <tr>
+            <th class="bg-blue-600 text-white font-semibold p-3 text-left">Weak bullet point</th>
+            <th class="bg-blue-600 text-white font-semibold p-3 text-left">Stronger bullet point</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="border border-gray-200 p-3">Worked on a college project</td>
+            <td class="border border-gray-200 p-3">Analyzed customer survey responses and presented key findings to a four-member project team.</td>
+        </tr>
+        <tr>
+            <td class="border border-gray-200 p-3">Helped organize an event</td>
+            <td class="border border-gray-200 p-3">Coordinated registrations and schedules for a college event attended by 120 participants.</td>
+        </tr>
+        <tr>
+            <td class="border border-gray-200 p-3">Responsible for social media</td>
+            <td class="border border-gray-200 p-3">Created three weekly social media posts for a student club to promote upcoming activities.</td>
+        </tr>
+        <tr>
+            <td class="border border-gray-200 p-3">Good at Excel</td>
+            <td class="border border-gray-200 p-3">Used Excel formulas and charts to organize project data and summarize trends.</td>
+        </tr>
+    </tbody>
+</table>
+<p style='margin-bottom:12px; line-height:1.7;'>Use action verbs such as analyzed, created, coordinated, researched, designed, presented, and organized.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Do not invent numbers or claim results you cannot verify. If you do not have measurable outcomes, describe the scope of the task, the tools you used, or the purpose of the work.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">6. Optimize Your Entry Level Resume for ATS</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Many employers use applicant tracking systems (ATS) to organize applications and support candidate screening. A clear, relevant resume helps both these systems and human reviewers understand your qualifications.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Follow these practical steps:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Use keywords naturally: Include relevant skills, tools, certifications, and job titles from the posting when they accurately describe your background.</li>
+    <li>Use standard headings: Choose familiar labels such as Education, Projects, Experience, and Skills.</li>
+    <li>Keep formatting simple: Avoid graphics, complicated tables, text boxes, and important details placed in headers or footers.</li>
+    <li>Use readable fonts: Choose a professional font and consistent sizing.</li>
+    <li>Follow file instructions: Submit a PDF or Word document according to the employer's requirements.</li>
+    <li>Customize each application: Prioritize the qualifications most relevant to that specific position.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>An ATS-friendly resume is not about repeating every keyword in the job description. It is about presenting genuine qualifications clearly and in context. No particular resume score or format guarantees an interview.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">7. Common Entry Level Resume Mistakes to Avoid</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Even a well-qualified candidate can weaken their application through avoidable mistakes.</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Using a generic objective: State the type of role you want and the strengths you bring.</li>
+    <li>Listing unsupported skills: Be ready to explain how you have used every skill you mention.</li>
+    <li>Including irrelevant information: Prioritize details that demonstrate suitability for the position.</li>
+    <li>Writing long paragraphs: Use concise bullet points and clear section headings.</li>
+    <li>Exaggerating experience: Describe academic, volunteer, or personal projects honestly.</li>
+    <li>Ignoring proofreading: Check spelling, grammar, dates, contact information, and formatting.</li>
+    <li>Sending the same resume everywhere: Adjust your content for different roles and industries.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>For most recent graduates, a focused one-page resume is a sensible starting point. Expand it only when additional relevant information genuinely improves your application.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">8. Final Entry Level Resume Checklist</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Before submitting your application, review your resume against this checklist.</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Contact details are correct and professional.</li>
+    <li>The summary or objective matches the target role.</li>
+    <li>Education and relevant projects are easy to find.</li>
+    <li>Skills match the job description and reflect your actual abilities.</li>
+    <li>Bullet points begin with strong action verbs.</li>
+    <li>Relevant keywords appear naturally throughout the resume.</li>
+    <li>Formatting is consistent and easy to scan.</li>
+    <li>The document has been proofread and saved in the requested format.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Your entry level resume can open doors, but finding the right opportunities and managing applications requires a plan. <a href="https://www.flashfirejobs.com/" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">FlashFire</a> brings job discovery, resume optimization, application support, and opportunity tracking together in one workflow, helping you manage your job search more efficiently.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Ready to move closer to your first job? Explore FlashFire and make your applications easier to manage.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Frequently Asked Questions</h2>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">1. What should an entry level resume include?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Include contact information, a resume summary or objective, education, relevant skills, projects, experience, and applicable certifications.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">2. How do I write an entry level resume with no experience?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Highlight academic projects, coursework, volunteer activities, extracurricular achievements, and transferable skills relevant to the role.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">3. How long should an entry level resume be?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>One page is generally sufficient for recent graduates and first-time job seekers.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">4. Should I include a resume objective?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes, if it clearly communicates your career goal and relevant strengths. Keep it specific and concise.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">5. What skills should I list on an entry level resume?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Include relevant technical skills, communication, teamwork, problem-solving, research, and organization skills supported by your experience.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">6. Should freshers include internships on their resumes?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. Internships provide practical evidence of your skills, responsibilities, and exposure to a professional environment.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">7. Is a resume summary better than an objective?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>A summary works well when you have relevant experience to highlight. An objective can be useful when you are entering the workforce or changing careers.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">8. Should I include my GPA on an entry level resume?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Include it if it is strong, relevant, or requested by the employer. Otherwise, prioritize more useful qualifications.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">9. How can I make my entry level resume ATS-friendly?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Use standard headings, simple formatting, relevant job-description keywords, and a file format accepted by the employer.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">10. Should I include certifications?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes, when they are relevant to the job and demonstrate useful knowledge or skills.</p>`,
+  },
+
+  {
     id: 448,
     slug: "best-resume-format",
     title: "Best Resume Format: How to Choose the Right One for Your Career",
