@@ -24,6 +24,228 @@ export type BlogPost = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const blogPosts: BlogPost[] = (([] as any[]).concat([
   {
+    id: 447,
+    slug: "how-to-make-a-resume",
+    title: "How to Make a Resume: A Step-by-Step Guide With Examples",
+    metaTitle: "How to Make a Resume: Step-by-Step Guide + Examples",
+    excerpt: "Learn how to make a resume with a step-by-step guide, practical examples, formatting tips, ATS advice, and strategies to create a professional job-ready resume.",
+    date: "Oct 12, 2026",
+    lastUpdated: "Oct 12, 2026",
+    readTime: "10 min",
+    category: "Cover Letter",
+    tags: ["Cover Letter"],
+    author: {
+      name: "Riya Sharma",
+      bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
+    },
+    image: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/blog-images/2cc2a639-f934-40fb-8c96-4a378f06305e-1791823603929.png",
+    categoryColor: "bg-pink-100 text-pink-600",
+    content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">How to Make a Resume: A Step-by-Step Guide With Examples</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your resume is more than a list of qualifications, it's your chance to show employers why you're the right person for the job. But knowing what to include, which skills to highlight, and how to present your experience can feel overwhelming, especially if you're creating your first resume.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>According to CareerOneStop's Resume Guide, a resume helps employers understand your qualifications for a position. That makes it important to focus on relevant experience, skills, and achievements rather than simply listing everything you've done.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Whether you're a fresher, an experienced professional, or someone changing careers, this guide explains how to make a resume step by step, with practical examples, formatting tips, and actionable advice to help you create a professional, job-ready document.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">1. Understand What a Resume Should Accomplish</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A resume is a concise summary of your education, work experience, skills, and relevant achievements. Its purpose is to show an employer how your qualifications match the requirements of a particular job.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Before writing, review the job description and identify three things:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Required skills: The technical abilities, tools, or knowledge mentioned in the listing.</li>
+    <li>Relevant experience: Previous jobs, internships, projects, or volunteer work that demonstrate your suitability.</li>
+    <li>Expected responsibilities: The tasks you may need to perform in the role.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, if you are applying for a digital marketing position, your resume should emphasize campaign management, SEO, content creation, analytics, and measurable results where applicable.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The goal is not to include everything you have ever done. It is to prioritize the information that helps an employer evaluate your fit for the role.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">2. Choose the Right Resume Format</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your <a href="https://www.flashfirejobs.com/blog/australia-resume-format" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">resume format</a> determines how you organize your experience and present your qualifications. Choose one that makes your strengths easy to identify.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Chronological resume</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>A chronological resume, usually presented in reverse chronological order, lists your most recent experience first.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Best for:</strong> Experienced professionals and candidates with a consistent employment history.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Example:</strong> Your current marketing executive position appears above your previous marketing assistant role.</p>
+
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Functional resume</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>A functional resume emphasizes skills rather than organizing the document primarily around employment history.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Best for:</strong> Candidates with limited experience or people transitioning into a new career, although some employers prefer more traditional formats.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Be careful not to obscure employment dates or omit relevant work history. A skills-focused approach should still provide enough context for recruiters to understand your background.</p>
+
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Combination resume</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>A combination resume highlights relevant skills alongside a chronological employment history.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Best for:</strong> Career changers, technical professionals, and candidates whose skills are especially relevant to the target position.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For most job seekers, a reverse-chronological resume is a practical starting point because it makes work history easy to follow. If your experience is limited, you can place education, projects, or relevant skills higher on the page.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">3. Add Your Contact Information</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Place your contact details at the top of your resume so employers can reach you easily.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Include:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Full name</li>
+    <li>Professional phone number</li>
+    <li>Email address</li>
+    <li>City and state or country, where relevant</li>
+    <li>LinkedIn profile or portfolio link, if applicable</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Example:</strong><br>Priya Sharma<br>Digital Marketing Executive<br>Pune, Maharashtra | priya.sharma@email.com | +91-XXXXXXXXXX<br>LinkedIn: linkedin.com/in/priyasharma</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Use a professional email address and ensure your links work. You generally do not need to include your full residential address, photograph, marital status, or date of birth unless the employer or local hiring practices specifically require certain information.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Avoid placing essential contact details only in headers, footers, or graphics, as some applicant tracking systems (ATS) may not interpret these elements reliably.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">4. Write a Strong Resume Summary or Objective</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A resume summary introduces your most relevant qualifications in two to four concise lines. It is especially useful for candidates with professional experience.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>A resume objective focuses on your career direction and the value you hope to contribute. It can be helpful for freshers, students, and career changers.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Resume summary example</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Digital Marketing Executive<br>Digital marketing professional with three years of experience in SEO, content strategy, and campaign reporting. Skilled in Google Analytics, keyword research, and performance tracking, with experience supporting organic traffic growth and content optimization.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Resume objective example for freshers</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Entry-Level Business Analyst<br>Recent business graduate with a foundation in data analysis, Excel, and business reporting. Seeking an entry-level business analyst role to apply analytical skills, support data-driven decisions, and contribute to business improvement projects.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Avoid generic openings such as “I am hardworking and passionate.” Instead, identify your relevant background, strongest skills, and career goal.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">5. Highlight Your Work Experience and Achievements</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your work experience section should demonstrate what you did, how you contributed, and what changed as a result.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>List your roles in reverse chronological order. For each position, include your job title, employer, location where relevant, employment dates, and two to five concise bullet points.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Start each bullet with an action verb such as managed, developed, analyzed, improved, coordinated, or implemented.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Weak versus strong resume bullet points</h3>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Weak:</strong> Responsible for managing social media accounts.<br><strong>Stronger:</strong> Managed Instagram and LinkedIn content calendars, coordinating weekly posts to maintain a consistent publishing schedule.<br><strong>Stronger with a verified result:</strong> Managed Instagram and LinkedIn content calendars, increasing combined engagement by 25% over six months.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The final example is most compelling when the figure is accurate and you can explain how it was measured.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>When describing your achievements, consider:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Revenue generated or costs reduced</li>
+    <li>Time saved or processes improved</li>
+    <li>Projects completed</li>
+    <li>Customers supported</li>
+    <li>Campaign performance</li>
+    <li>Team size or workload managed</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>You do not need a numerical result for every bullet. If you cannot quantify an accomplishment, describe the scope, complexity, or outcome of your work.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">6. Include Education and Relevant Qualifications</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your education section should provide the information employers need to understand your academic background.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Include your degree or qualification, institution, graduation year or expected graduation date, and relevant academic distinctions where appropriate.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Example:</strong><br>Bachelor of Commerce (B.Com.)<br>ABC University, Pune<br>Graduated: 2025</p>
+<p style='margin-bottom:12px; line-height:1.7;'>If you are a fresher, place education above work experience when your academic background is one of your strongest qualifications. You can also include relevant coursework, academic projects, certifications, or extracurricular leadership.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Experienced professionals can generally place education below their employment history unless a specific qualification is essential to the job.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Only include qualifications you have earned or clearly label credentials that are still in progress.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">7. Add Relevant Skills and Certifications</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>The skills section helps recruiters quickly identify whether you have the abilities required for the role.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Divide your skills into categories when doing so improves readability.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Technical skills</h3>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Excel and Google Sheets</li>
+    <li>SQL and data visualization</li>
+    <li>Adobe Creative Suite</li>
+    <li>SEO and web analytics</li>
+</ul>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Professional skills</h3>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Written communication</li>
+    <li>Project coordination</li>
+    <li>Problem-solving</li>
+    <li>Stakeholder management</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Choose skills that match your actual abilities and the job description. Avoid listing every software tool you have encountered or using vague phrases such as “expert in everything.”</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Certifications can strengthen your resume when they are relevant to the position. Include the certification name, issuing organization, and completion date when useful.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>For example:</strong><br>Google Analytics certification — Google<br>Project Management Professional (PMP) — Project Management Institute, if earned<br>Relevant industry or technical certification — issuing organization</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Do not claim a certification before earning it. If you are currently completing a course, label it as in progress.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">8. Create a Resume for Freshers With Limited Experience</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>If you are a fresher, you may not have formal employment history. That does not mean you have nothing valuable to include.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Focus on evidence of your skills through education, internships, projects, volunteering, and extracurricular activities.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, a computer science graduate applying for a junior developer position might include:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Academic Project: Student Attendance Management System</li>
+    <li>Developed a basic attendance management application using Python and SQLite.</li>
+    <li>Created functions to record student attendance and retrieve attendance reports.</li>
+    <li>Tested core functions and documented the setup process.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>This example communicates practical skills more effectively than simply writing “Knowledge of Python.”</p>
+<p style='margin-bottom:12px; line-height:1.7;'>You can also include internships, freelance work, student society responsibilities, and volunteer projects if they demonstrate relevant abilities.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Keep the descriptions factual. A personal project should not be presented as paid professional experience, and group achievements should not be attributed entirely to you.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">9. Optimize Your Resume for ATS Screening</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Many employers use applicant tracking systems to organize applications and help recruiters identify relevant candidates. A well-structured resume makes your qualifications easier for both software and people to review.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Use these practices:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Match relevant keywords: Include skills, qualifications, and job titles from the job description when they accurately describe your background.</li>
+    <li>Use standard headings: Choose familiar labels such as “Work Experience,” “Education,” and “Skills.”</li>
+    <li>Keep formatting simple: Use a clean layout, readable font, and consistent spacing.</li>
+    <li>Avoid unnecessary graphics: Complex tables, decorative icons, and multiple columns can make information harder for some systems to parse.</li>
+    <li>Follow file instructions: Submit a PDF or Word document according to the employer's requirements.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, if a job description asks for “customer relationship management (CRM),” include that phrase if you have the relevant experience. Do not add “Salesforce” or another tool unless you have actually used it.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>An ATS-friendly resume is not about repeating keywords as many times as possible. It is about making your relevant qualifications clear, accurate, and easy to interpret.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">10. Keep Your Resume Clear and Professional</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Good formatting improves readability and helps recruiters locate important details quickly.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Follow these guidelines:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Aim for one page if you are a fresher or have limited experience.</li>
+    <li>Use one or two pages for experienced candidates when needed to communicate relevant qualifications.</li>
+    <li>Choose a readable font, such as Arial, Calibri, or Aptos.</li>
+    <li>Use consistent font sizes, headings, bullet points, and margins.</li>
+    <li>Keep bullet points concise and remove unrelated information.</li>
+    <li>Use past tense for previous roles and present tense for ongoing responsibilities.</li>
+    <li>Proofread spelling, grammar, dates, job titles, and contact details.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Save your file with a professional name, such as Priya_Sharma_Resume.pdf.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Before submitting, open the final file to check the layout. Confirm that links work, text is selectable when appropriate, and no content has shifted or been cut off.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">11. Tailor Your Resume to Every Job Application</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A <a href="https://www.flashfirejobs.com/blog/best-resume-tips-2026" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">general resume</a> is a useful starting point, but a tailored resume can make your most relevant qualifications easier to recognize.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>You do not need to rewrite the entire document for every vacancy. Instead:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Read the job description carefully.</li>
+    <li>Identify the most important required skills and responsibilities.</li>
+    <li>Move the most relevant experience and skills higher in the document.</li>
+    <li>Revise your summary to reflect the role.</li>
+    <li>Adjust bullet points to highlight matching accomplishments.</li>
+    <li>Check that every statement remains accurate.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, a marketing professional applying for an SEO role should emphasize keyword research, content optimization, search performance, and analytics. The same person applying for a social media role may prioritize content calendars, audience engagement, and campaign reporting.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Save separate versions when applying for different types of roles. Use descriptive filenames so you can identify the correct resume later.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">12. Review Your Resume Before Sending It</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A final review can prevent avoidable errors and improve the overall quality of your application.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Use this checklist before submitting your resume:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>My resume reflects the requirements of the target job.</li>
+    <li>My contact information is correct.</li>
+    <li>My summary or objective is specific and relevant.</li>
+    <li>My work experience emphasizes contributions and achievements.</li>
+    <li>My education, skills, and certifications are accurate.</li>
+    <li>Relevant keywords appear naturally.</li>
+    <li>The formatting is consistent and readable.</li>
+    <li>There are no spelling, grammar, or date errors.</li>
+    <li>The document follows the employer's file-format instructions.</li>
+    <li>My resume filename looks professional.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Ask someone you trust to review your resume if possible. A fresh reader may notice unclear descriptions, missing context, or errors you overlooked.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Most importantly, make sure you can explain every skill, achievement, and qualification during an interview. Your resume should represent your actual experience, not an exaggerated version of it.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Final Thoughts</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Learning how to make a resume is about more than arranging your education and work history on a page. It is about presenting relevant skills, credible achievements, and experience in a way that helps employers understand your potential.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Start with a clear format, tailor your content to the job, use specific examples to demonstrate your contributions, and review the final document carefully. Whether you are applying for your first job or moving into a new role, a focused, well-written resume gives you a stronger foundation for your job search.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>A well-written resume can open doors, but finding the right opportunities and applying consistently takes time. <a href="https://www.flashfirejobs.com/" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">FlashFire</a> streamlines your job search by helping you discover relevant roles, optimize your resume, submit high-quality applications, and track your applications in one place.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Ready to take the next step in your career? Explore FlashFire and spend less time managing applications and more time preparing for interviews.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Frequently Asked Questions</h2>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">1. How do I make a resume for the first time?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Use a simple format and include your contact details, objective, education, skills, projects, and relevant experience.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">2. What should a resume include?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Include contact information, a summary or objective, work experience, education, and relevant skills.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">3. How long should a resume be?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>One page is usually sufficient for freshers, while experienced professionals may need two pages.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">4. How do I make a resume without work experience?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Highlight academic projects, internships, certifications, volunteer work, and transferable skills.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">5. Which resume format is best?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>A reverse-chronological format works well for most job seekers by listing the most recent experience first.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">6. How do I make my resume ATS-friendly?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Use standard headings, relevant keywords, simple formatting, and a readable font.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">7. Should I include a photo on my resume?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Usually, no. Include one only if the employer or local hiring practices require it.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">8. Should I include references on my resume?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>No, unless requested. You can provide references separately when needed.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">9. Can I use AI to write my resume?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. AI can improve wording and structure, but always verify accuracy and personalize the content.</p>`,
+  },
+
+  {
     id: 446,
     slug: "cover-letter-examples",
     title: "Cover Letter Examples: Templates for Every Career Stage and Job Type",
