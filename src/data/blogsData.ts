@@ -24,6 +24,238 @@ export type BlogPost = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const blogPosts: BlogPost[] = (([] as any[]).concat([
   {
+    id: 455,
+    slug: "linkedin-profile-tips",
+    title: "LinkedIn Profile Tips: How to Optimize Your Profile for Jobs",
+    metaTitle: "LinkedIn Profile Tips: Optimize Your Profile for Jobs",
+    excerpt: "Learn practical LinkedIn profile tips to optimize your profile for jobs. Improve your headline, About section, skills, experience, visibility, and networking strategy.",
+    date: "Oct 13, 2026",
+    lastUpdated: "Oct 13, 2026",
+    readTime: "10 min",
+    category: "LinkedIn",
+    tags: ["LinkedIn"],
+    author: {
+      name: "Riya Sharma",
+      bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
+    },
+    image: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/blog-images/5750738f-0f81-49fa-9971-ddb5b5139951-1791908042378.png",
+    categoryColor: "bg-sky-100 text-sky-600",
+    content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">LinkedIn Profile Tips: How to Optimize Your Profile for Jobs</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your LinkedIn profile might be the reason a recruiter contacts you or the reason they move on to another candidate. Even if you have the right skills and experience, a vague headline, an incomplete About section, or a list of responsibilities without achievements can make it difficult for employers to understand your value.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>LinkedIn is more than an online resume. It is a professional platform where recruiters discover candidates, hiring managers learn about potential employees, and professionals build connections that can lead to new opportunities. According to <a href="https://news.linkedin.com/about-us#Statistics" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">LinkedIn’s official statistics</a>, the platform has more than one billion members worldwide, making it an important place to establish your professional presence.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>However, simply creating a profile is not enough. You need to communicate what you do, what you bring to the table, and what kind of opportunities interest you. The good news? You do not need years of experience or an impressive job title to create a compelling profile.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>In this guide, you will discover practical LinkedIn profile tips to improve your headline, profile photo, About section, work experience, skills, and networking strategy. You will also learn how to make your profile more searchable, avoid common mistakes, and build a professional presence that supports your job search.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">1. Choose a Professional Profile Photo</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your profile photo helps people recognize you and gives your profile a more personal, professional feel. A clear, recent photograph is usually more effective than a blurry selfie, an old picture, or an image cropped from a group photo.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Follow these simple tips:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Use a clear headshot: Make sure your face is visible and well-lit.</li>
+    <li>Choose a simple background: Avoid distracting objects or busy surroundings.</li>
+    <li>Dress appropriately: Wear something that suits your industry and the roles you want.</li>
+    <li>Look approachable: A natural expression can help your profile feel welcoming.</li>
+    <li>Use a current photo: Your picture should accurately represent how you look today.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>You do not need a professional photographer. A smartphone, natural lighting, and a clean background can be enough.</p>
+<div style='background:#EFF6FF; border-left:4px solid #2563EB; padding:12px 16px; margin:16px 0; border-radius:4px;'>
+    <p style='margin:0; line-height:1.7;'><strong>Pro tip:</strong> Ask yourself whether your photo would look appropriate on a company website, professional portfolio, or virtual interview screen. If the answer is yes, you are on the right track.</p>
+</div>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">2. Write a Keyword-Rich LinkedIn Headline</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your <a href="https://www.flashfirejobs.com/blog/what-should-my-linkedin-headline-be" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">LinkedIn headline</a> appears below your name and in several places across the platform. It is one of the first details people see, so use it to communicate your professional identity rather than simply repeating your current job title.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, instead of writing “Marketing Executive,” try “Digital Marketing Executive | SEO, Content Strategy, and Lead Generation.”</p>
+<p style='margin-bottom:12px; line-height:1.7;'>A stronger headline helps readers understand your expertise and gives you space to include relevant terms recruiters might search for.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">How to write an effective headline</h3>
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Identify your current role or target position.</li>
+    <li>Include two or three relevant skills or areas of expertise.</li>
+    <li>Add a specialization or industry where appropriate.</li>
+    <li>Keep the wording natural and easy to understand.</li>
+</ol>
+<p style='margin-bottom:12px; line-height:1.7;'>Here are examples for different career stages:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Fresh graduate: Recent Graduate | Business Analytics | Excel, SQL, and Data Visualization</li>
+    <li>Experienced professional: Software Engineer | Python, APIs, and Cloud Development</li>
+    <li>Career changer: Customer Service Professional Transitioning into HR | Communication, Recruitment Support, and Employee Engagement</li>
+    <li>Freelancer: Content Writer | SEO Blogs, Website Copy, and Content Strategy</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Avoid headlines filled with generic phrases such as “hardworking professional,” “seeking opportunities,” or “highly motivated individual.” These phrases do not tell recruiters what you can actually do.</p>
+<div style='background:#EFF6FF; border-left:4px solid #2563EB; padding:12px 16px; margin:16px 0; border-radius:4px;'>
+    <p style='margin:0; line-height:1.7;'><strong>Pro tip:</strong> Use the job titles, skills, and industry terminology that genuinely match your experience and target roles. Keywords should help people understand your profile, not misrepresent your qualifications.</p>
+</div>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">3. Create a Compelling LinkedIn About Section</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>The About section is your opportunity to explain your professional story in your own words. Rather than copying your resume summary, use this space to connect your experience, strengths, interests, and career direction.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>A good About section answers three questions:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>What do you do, or what kind of work are you preparing to do?</li>
+    <li>What skills, experiences, or achievements make you valuable?</li>
+    <li>What professional opportunities or challenges interest you?</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>A simple structure to follow:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Opening: Introduce your professional identity or career focus.</li>
+    <li>Middle: Highlight your strongest skills, relevant experience, and measurable achievements.</li>
+    <li>Closing: Explain your interests, goals, or preferred way to connect professionally.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>For example:</p>
+<p style='margin-bottom:8px; line-height:1.7;'><strong>“I am a recent business graduate interested in data analysis and business intelligence. Through academic projects and hands-on practice, I have developed skills in Excel, SQL, data visualization, and reporting. I enjoy turning complex information into clear insights that support better decisions. I am currently building my analytical skills and exploring entry-level opportunities where I can contribute to data-driven projects and continue learning.”</strong></p>
+<p style='margin-bottom:12px; line-height:1.7;'>This example works because it is specific, readable, and appropriate for someone starting a career.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>If you have professional experience, replace general statements with evidence. Instead of saying you are good at project management, describe a project you coordinated, the team you worked with, or a result you helped achieve.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Keep paragraphs short and write in the first person. Avoid unnecessary jargon, exaggerated claims, and long lists of unrelated skills.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">4. Customize Your LinkedIn URL</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A customized LinkedIn URL makes your profile easier to share on resumes, email signatures, portfolios, and applications.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>LinkedIn may assign a URL containing numbers or additional characters. Where customization is available, you can simplify it to something like:</p>
+<p style='margin-bottom:12px; line-height:1.7;'>linkedin.com/in/firstname-lastname</p>
+<p style='margin-bottom:12px; line-height:1.7;'>If that version is unavailable, consider adding a middle initial, a professional specialization, or another simple variation.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>To update it:</p>
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Open your <a href="https://www.flashfirejobs.com/blog/what-should-be-on-my-linkedin-profile" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">LinkedIn profile</a>.</li>
+    <li>Find the option to edit your public profile or public profile URL.</li>
+    <li>Select the edit option next to your profile URL.</li>
+    <li>Enter your preferred available version and save the change.</li>
+</ol>
+<p style='margin-bottom:12px; line-height:1.7;'>Keep the URL professional and easy to remember. Avoid nicknames, random numbers, or unnecessary words.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Once updated, replace your old LinkedIn link on your resume, portfolio, and other professional materials. Check that the new link works before sharing it with recruiters.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">5. Optimize Your Experience Section With Achievements</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your Experience section should show more than where you worked and what your job involved. It should explain how you contributed.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>A common mistake is listing duties without describing outcomes. For example:</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Weak:</strong> Responsible for managing social media accounts and creating posts.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Stronger:</strong> Managed weekly social media content across three platforms, maintained a consistent publishing schedule, and reviewed engagement metrics to improve future posts.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The stronger example describes the work and how it was approached without inventing a result.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">How to improve your work experience</h3>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Start bullet points with action verbs such as managed, developed, analyzed, coordinated, or improved.</li>
+    <li>Include measurable outcomes when you have reliable figures.</li>
+    <li>Mention relevant tools, systems, and technologies.</li>
+    <li>Focus on accomplishments that support your target roles.</li>
+    <li>Remove repetitive responsibilities that add little information.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>For instance, if you work in sales, you might mention revenue generated, client retention, or the number of accounts managed provided those figures are accurate and appropriate to share.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>If you are a fresher, do not leave this section empty simply because you have not held a full-time job. Include internships, academic projects, volunteer work, freelance assignments, or relevant part-time experience. Describe what you did, the skills you applied, and the outcome or learning involved. This gives recruiters evidence of your abilities, even when your professional experience is limited.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">6. Add Relevant Skills to Your Profile</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>The Skills section helps recruiters understand your strengths and can provide additional context for your experience. Instead of adding every skill you have encountered, prioritize the ones most relevant to your career goals.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, a digital marketing professional might highlight:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Search Engine Optimization (SEO)</li>
+    <li>Content Marketing</li>
+    <li>Google Analytics</li>
+    <li>Keyword Research</li>
+    <li>Social Media Marketing</li>
+    <li>Marketing Analytics</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>A software developer might prioritize Python, JavaScript, SQL, Git, and relevant frameworks.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">How to choose the right skills:</h3>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Review job descriptions for your target roles.</li>
+    <li>Identify skills that appear repeatedly.</li>
+    <li>Add the skills you genuinely possess.</li>
+    <li>Prioritize the most relevant ones and keep the list focused.</li>
+    <li>Update your skills as you gain new experience.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>You can also ask colleagues or former managers to endorse skills they have seen you demonstrate. Endorsements can provide supporting context, but they should reflect genuine professional experience.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">7. Use the Featured Section to Showcase Your Work</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your LinkedIn profile becomes more convincing when people can see examples of what you have accomplished. The Featured section lets you highlight selected content, such as projects, articles, presentations, portfolios, and other professional work.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Consider featuring:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>A portfolio demonstrating your best projects</li>
+    <li>A case study explaining a problem you solved</li>
+    <li>An article related to your industry</li>
+    <li>A presentation or project report</li>
+    <li>A personal website or professional certification</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, a graphic designer could feature a design portfolio, while a data analyst could showcase a dashboard or a project explaining how they interpreted a dataset.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Choose work that supports the roles you want. Add a short description explaining the project's purpose, your contribution, and the skills demonstrated.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Before sharing anything, check for confidential information, private client data, and copyrighted material you do not have permission to publish.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">8. Complete Your Education and Certifications</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your education section can strengthen your profile, particularly if you are a student, recent graduate, or professional moving into a new field.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Include your institution, qualification, field of study, and relevant dates. You can also highlight academic projects, achievements, or coursework when they demonstrate skills related to your target position. Certifications can help demonstrate knowledge of specific tools or professional practices. Add relevant credentials with accurate names and issuing organizations.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, someone pursuing data analytics might highlight an applicable analytics certification alongside projects using SQL or spreadsheets.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Do not add courses simply to make your profile look longer. Prioritize qualifications that support your career direction, and make sure the information is accurate.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">9. Build Your Professional Network Strategically</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A strong LinkedIn profile is more useful when you connect with relevant professionals and participate in industry conversations.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Start with people you already know, including colleagues, classmates, former managers, clients, and mentors. Then gradually connect with recruiters, professionals in your target industry, and people working at companies that interest you.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>When sending a connection request, personalize your message whenever possible.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example:</p>
+<p style='margin-bottom:8px; line-height:1.7;'><strong>“Hi Priya, I came across your profile while learning more about product management. I found your experience in product strategy interesting and would be glad to connect and learn from your professional insights.”</strong></p>
+<p style='margin-bottom:12px; line-height:1.7;'>Keep messages brief, respectful, and specific. Avoid sending generic pitches or immediately asking strangers for referrals.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>You can also follow companies, join relevant professional discussions, and engage with posts that genuinely interest you. Thoughtful comments that add useful information are more valuable than repetitive comments such as “Great post!”</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Networking is about building professional relationships over time, not collecting the largest possible number of connections.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">10. Stay Active and Keep Your Profile Updated</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>An updated profile reflects your current skills, responsibilities, and career interests. Review it whenever you complete a significant project, earn a certification, change roles, or develop a new skill.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>You can also strengthen your professional presence by sharing useful insights, commenting on industry discussions, or publishing occasional posts related to your expertise.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>You do not need to post every day. Focus on meaningful participation that fits your schedule and professional goals.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Consider reviewing these details every month:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Current job title and responsibilities</li>
+    <li>New skills and certifications</li>
+    <li>Recent projects and accomplishments</li>
+    <li>Headline and About section keywords</li>
+    <li>Contact details and portfolio links</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>If you are actively job hunting, check that your profile aligns with the positions you are applying for. A recruiter looking for a content marketer should be able to identify your relevant skills without having to interpret unrelated information.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">11. Make Your Profile Easier for Recruiters to Find</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A well-written profile can communicate your value, but recruiters also need to find it. Use relevant keywords naturally across your headline, About section, Experience section, and Skills section.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, if you are targeting SEO roles, relevant terms might include technical SEO, on-page optimization, keyword research, and content strategy—provided they match your actual abilities.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Other practical steps include:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Use recognizable job titles where appropriate.</li>
+    <li>Complete relevant profile sections.</li>
+    <li>Keep your employment history and dates accurate.</li>
+    <li>Check that your public profile displays the information you intend to share.</li>
+    <li>Review LinkedIn's job preferences and visibility settings.</li>
+    <li>Enable the appropriate Open to Work settings if you want to signal your availability.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Do not repeat the same keywords excessively. Recruiters need a clear picture of your experience, not a list of search terms.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Remember that profile visibility, search ranking, and recruiter discovery depend on several factors. No headline, keyword, or profile change can guarantee that you will appear in every relevant search.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">12. Avoid Common LinkedIn Profile Mistakes</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Small mistakes can make a profile feel unfinished or less credible. Before considering yours complete, check for these common problems:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Leaving sections blank: Add relevant information instead of relying on your job title alone.</li>
+    <li>Using a vague headline: Specify your professional focus and relevant skills.</li>
+    <li>Copying your resume word for word: Adapt your writing to LinkedIn's more conversational format.</li>
+    <li>Listing duties without achievements: Explain your contribution and include evidence where available.</li>
+    <li>Adding unsupported claims: Keep skills, metrics, titles, and qualifications accurate.</li>
+    <li>Ignoring grammar and formatting: Use short paragraphs, consistent punctuation, and clear language.</li>
+    <li>Using irrelevant keywords: Include terms connected to your experience and target roles.</li>
+    <li>Forgetting to update your profile: Remove outdated details and add recent accomplishments.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Before publishing changes, read your profile from a recruiter's perspective. Can someone quickly understand your expertise, see evidence of your abilities, and identify the type of work you are suited for? If not, simplify and refine the relevant sections.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Final Thoughts: Turn Your LinkedIn Profile Into a Career Asset</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A strong LinkedIn profile does more than summarize your professional background. It communicates your value, showcases your skills, and helps you build relationships with people who can support your career growth.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Start with the essentials: a clear photo, a keyword-rich headline, a compelling About section, and experience that demonstrates your contributions. Then strengthen your profile with relevant skills, project examples, and meaningful professional connections.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Remember, optimizing your LinkedIn profile is only one part of a successful job search. You also need to identify suitable openings, tailor your resume, submit quality applications, and follow up on opportunities.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Frequently Asked Questions</h2>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">1. How can I improve my LinkedIn profile?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Use a professional photo, a specific headline, a compelling About section, achievement-focused experience, and relevant skills.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">2. What should I write in my LinkedIn headline?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Include your role or target position, key skills, and specialization using natural, relevant keywords.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">3. How do I write a good LinkedIn About section?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Introduce your professional focus, highlight your strengths and achievements, and explain your career interests.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">4. How often should I update my LinkedIn profile?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Review it monthly and update it whenever you gain a new skill, complete a project, or change roles.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">5. Is LinkedIn useful for freshers?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. Freshers can showcase education, internships, projects, certifications, skills, and career interests.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">6. How many skills should I add to LinkedIn?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Prioritize relevant skills you can demonstrate rather than adding unrelated skills just to fill the section.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">7. Does a LinkedIn profile photo matter?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>A clear, professional photo helps people recognize you and makes your profile feel more complete.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">8. How do I make my LinkedIn profile searchable?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Include relevant job titles and skills naturally, complete important sections, and keep your information accurate.</p>`,
+  },
+
+  {
     id: 454,
     slug: "how-to-write-a-cover-letter-with-no-experience",
     title: "How to Write a Cover Letter With No Experience",
