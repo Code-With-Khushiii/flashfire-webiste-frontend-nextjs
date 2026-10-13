@@ -24,6 +24,257 @@ export type BlogPost = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const blogPosts: BlogPost[] = (([] as any[]).concat([
   {
+    id: 452,
+    slug: "resume-tips",
+    title: "Resume Tips: How to Write a Resume That Gets Noticed",
+    metaTitle: "Resume Tips: How to Write a Resume That Gets Noticed",
+    excerpt: "Discover practical resume tips to get noticed. Learn formatting, ATS optimization, tailoring strategies, achievement writing, and advice for every career stage.",
+    date: "Oct 13, 2026",
+    lastUpdated: "Oct 13, 2026",
+    readTime: "10 min",
+    category: "Resume Writing",
+    tags: ["Resume Writing"],
+    author: {
+      name: "Riya Sharma",
+      bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
+    },
+    image: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/blog-images/c85bf1e5-8977-48ce-82f3-82a2ad1cc977-1791907680355.png",
+    categoryColor: "bg-blue-100 text-blue-600",
+    content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Resume Tips: How to Write a Resume That Gets Noticed</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your resume has only a short window to make a strong first impression. Whether you are applying for your first job, changing careers, or aiming for a better position, the way you present your skills and experience can influence whether a recruiter wants to learn more about you.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>According to <a href="https://www.careerbuilder.com/advice" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">CareerBuilder research</a>, recruiters often review resumes quickly, making clarity, relevance, and easy-to-find information essential. A resume filled with unnecessary details can hide your strongest qualifications, while a focused document helps employers understand your value.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The good news? You do not need years of experience or a professionally designed template to create a compelling resume. You need a clear structure, relevant achievements, and a thoughtful approach to presenting your qualifications. This guide covers practical resume tips for students, fresh graduates, experienced professionals, and career changers, along with formatting advice, common mistakes to avoid, and ways to tailor your resume to different job opportunities.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">1. Choose the Right Resume Format</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>The right resume format helps recruiters understand your professional background without searching through unrelated information. Choose a layout that highlights your strongest qualifications.</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li><strong>Reverse-chronological resume:</strong> Lists your most recent experience first. It is suitable for most professionals with a consistent work history.</li>
+    <li><strong>Functional resume:</strong> Emphasizes skills rather than employment history. It may suit certain career changers, although some recruiters prefer seeing a clear employment timeline.</li>
+    <li><strong>Combination resume:</strong> Highlights relevant skills alongside professional experience. It can work well for experienced candidates moving into a different role.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>For most job seekers, a reverse-chronological format is a reliable starting point because it makes career progression easy to follow.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">2. Tailor Your Resume to Every Job Description</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>One of the most useful resume tips is to customize your application for the position instead of sending the same document everywhere.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Start by identifying the employer's main requirements. Look for recurring skills, tools, responsibilities, qualifications, and industry terms. Then reflect the requirements you genuinely meet in your summary, skills section, and work experience.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, if a marketing job emphasizes email campaigns, analytics, and lead generation, prioritize relevant experience in those areas rather than unrelated administrative duties.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Before submitting your resume, ask yourself:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Does my resume reflect the responsibilities of this position?</li>
+    <li>Have I highlighted the most relevant skills?</li>
+    <li>Are the employer's important requirements easy to find?</li>
+    <li>Have I removed details that do not strengthen my application?</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Tailoring your resume does not mean copying the job description. It means demonstrating how your actual experience matches the employer's needs.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">3. Write a Clear and Compelling Resume Summary</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your resume summary introduces your professional value in two to four concise lines. It should explain your background, strongest qualifications, and relevant expertise.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Avoid vague statements such as "Hardworking professional seeking a challenging opportunity." They describe what you want rather than what you offer.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Weak example:</strong> "Motivated professional with good communication skills looking for a suitable position."</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Improved example:</strong> "Customer service professional with three years of experience resolving customer concerns, managing support requests, and maintaining high service standards. Skilled in CRM platforms, complaint resolution, and customer communication."</p>
+<p style='margin-bottom:12px; line-height:1.7;'>If you are a fresher, highlight your degree, relevant projects, internships, and technical skills. If you are changing careers, connect your transferable skills to the target position.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Write your summary after completing the rest of your resume. This makes it easier to identify the qualifications worth emphasizing.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">4. Highlight Achievements Instead of Listing Duties</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Recruiters need to understand not only what you did but also how your work contributed to a team or organization.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Compare these examples:</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Duty-focused:</strong> Responsible for managing social media accounts.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Achievement-focused:</strong> Managed three social media accounts and increased engagement by 28% over six months.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The second example provides context and measurable impact. However, only use figures you can reasonably support.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>If your work does not have obvious numerical results, describe improvements in quality, efficiency, accuracy, customer experience, or collaboration.</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Streamlined invoice tracking to reduce duplicate entries.</li>
+    <li>Trained new team members on internal processes.</li>
+    <li>Coordinated project updates across design and development teams.</li>
+    <li>Improved documentation to make recurring tasks easier to complete.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>A useful formula is action verb + task + result or purpose. Start bullet points with words such as developed, organized, analyzed, implemented, coordinated, improved, or delivered. Avoid repeating the same verbs throughout your experience section.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">5. Optimize Your Resume for ATS Screening</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Many employers use applicant tracking systems (ATS) to collect, organize, and help screen applications. An ATS-friendly resume makes your information easier for software and recruiters to process.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Follow these practices:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Use standard headings such as "Work Experience," "Education," and "Skills."</li>
+    <li>Include relevant keywords from the job description when they accurately describe your qualifications.</li>
+    <li>Choose a simple, readable layout.</li>
+    <li>Avoid placing essential information in images, graphics, or complex text boxes.</li>
+    <li>Use conventional fonts such as Arial, Calibri, or Aptos.</li>
+    <li>Follow the employer's requested file format.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>A simple, well-structured resume is generally safer than one that relies heavily on visual effects. Do not confuse ATS optimization with keyword stuffing. Repeating a phrase unnaturally will not make your qualifications stronger. Use relevant terminology in context and ensure the resume remains readable to a person.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">6. Keep Your Resume Concise and Relevant</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A resume should include enough detail to demonstrate your suitability without overwhelming the reader.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>As a general guideline:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li><strong>One page:</strong> Often appropriate for students, freshers, and professionals with limited experience.</li>
+    <li><strong>Two pages:</strong> Suitable for many experienced professionals with substantial relevant achievements.</li>
+    <li><strong>Longer resumes:</strong> May be appropriate for academic, research, or specialized senior positions where detailed credentials are expected.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>These are guidelines, not strict rules. Relevance matters more than hitting a particular page count.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Prioritize recent and related experience. Older positions can receive less space, particularly when they do not support your current career goals. Remove repeated responsibilities, outdated skills, and personal details that do not belong in a professional application.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>If a bullet point does not demonstrate a relevant skill, achievement, or responsibility, consider shortening or removing it.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">7. Create a Professional Resume Header</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your contact information should be accurate, easy to locate, and consistent with your professional identity.</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Your full name.</li>
+    <li>A professional email address.</li>
+    <li>Your phone number, including the appropriate country code when relevant.</li>
+    <li>Your city and country or general location, where appropriate.</li>
+    <li>A LinkedIn profile or portfolio link if it strengthens your application.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Check every link and contact detail before submitting your resume.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>You usually do not need to include your full street address, marital status, religion, or other unrelated personal information. Requirements can differ by country, so follow local hiring conventions and the employer's instructions.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For creative, technical, or portfolio-based roles, a link to relevant work can be particularly valuable. Make sure the link opens correctly and that the content is current.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">8. Showcase the Right Skills</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your skills section should reflect the capabilities needed for the role, not every skill you have ever used.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Organize your skills into relevant categories where helpful.</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li><strong>Technical skills:</strong> Excel, SQL, Python, CRM software, data visualization, or industry-specific tools.</li>
+    <li><strong>Professional skills:</strong> Communication, problem-solving, project coordination, collaboration, and time management.</li>
+    <li><strong>Role-specific skills:</strong> SEO strategy for digital marketers, financial modeling for analysts, or inventory management for supply chain professionals.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Whenever possible, demonstrate important skills in your work experience or projects rather than relying solely on a list.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, listing "Excel" is less informative than describing how you used Excel to analyze monthly sales, reconcile records, or prepare management reports.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Be honest about your proficiency. Do not list software or technical abilities you cannot discuss confidently in an interview.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">9. Make Your Resume Work Even If You Are a Fresher</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>You do not need a long employment history to create a credible resume. Recruiters may also consider academic projects, internships, volunteering, certifications, and practical work.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>If you are a student or recent graduate, consider including:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Relevant coursework connected to the target role.</li>
+    <li>Academic or personal projects with clear outcomes.</li>
+    <li>Internships, part-time jobs, or volunteer experience.</li>
+    <li>Technical and transferable skills.</li>
+    <li>Relevant certifications or training.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, a computer science graduate applying for a developer role could describe a web application built as a final-year project, including the technologies used and the problem it addressed.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Avoid filling your resume with unrelated school activities simply to make it longer. Choose experiences that demonstrate initiative, relevant knowledge, teamwork, or problem-solving.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">10. Address Career Gaps and Career Changes Honestly</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Career breaks and industry changes do not automatically make a candidate unsuitable. Your resume should help employers understand your relevant experience and current readiness for the role. If you have a career gap, use accurate dates and avoid drawing unnecessary attention to the break. You may briefly explain a significant period away from work if the explanation helps clarify your background.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For a career change, emphasize transferable skills and relevant training. A teacher moving into corporate training, for example, might highlight presentation development, learner assessment, curriculum design, and group facilitation.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>You can also include relevant projects, volunteer assignments, or certifications that demonstrate your preparation for the new field. Never invent employment dates, job titles, qualifications, or experience. An honest account of your background is more useful than a misleading resume that may create problems during verification or interviews.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">11. Use Consistent Formatting and White Space</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Good formatting makes your resume easier to scan. Recruiters should be able to identify your name, experience, education, and skills without struggling to navigate the page.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Use the following formatting checklist:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Keep font styles and sizes consistent.</li>
+    <li>Make section headings easy to distinguish.</li>
+    <li>Use bullet points instead of dense paragraphs for work experience.</li>
+    <li>Align dates, job titles, and organization names consistently.</li>
+    <li>Leave sufficient white space between sections.</li>
+    <li>Use bold formatting selectively.</li>
+    <li>Check that page breaks do not split important information awkwardly.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Choose a professional design that supports the content rather than competing with it. A colorful template is not necessarily better than a simple document.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Save the final version in the format requested by the employer. If submitting a PDF, verify that the text remains selectable and the layout displays correctly.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">12. Proofread Your Resume Before Applying</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Even a strong resume can lose credibility if it contains spelling errors, inconsistent dates, broken links, or inaccurate details.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Proofreading should go beyond running a spell-check tool. Read each sentence carefully and check whether the information is clear, relevant, and consistent.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Before applying, verify:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Job titles, company names, dates, and qualifications.</li>
+    <li>Grammar, punctuation, and spelling.</li>
+    <li>Consistency in tense and formatting.</li>
+    <li>Contact details and clickable links.</li>
+    <li>Accuracy of every achievement and numerical claim.</li>
+    <li>Alignment between the resume and the job description.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Ask someone you trust to review the document if possible. A fresh reader may notice unclear wording or missing information that you overlooked.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Finally, save a master resume containing your complete professional history. Create tailored copies for individual applications so you can customize each version without losing important details.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Common Resume Mistakes to Avoid</h2>
+<div class="overflow-x-auto my-6">
+    <table class="w-full border-collapse text-sm">
+        <thead>
+            <tr>
+                <th class="bg-blue-600 text-white font-semibold p-3 text-left">Mistake</th>
+                <th class="bg-blue-600 text-white font-semibold p-3 text-left">Better approach</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="border border-gray-200 p-3">Sending the same resume for every role</td>
+                <td class="border border-gray-200 p-3">Adjust relevant skills and achievements for each application.</td>
+            </tr>
+            <tr>
+                <td class="border border-gray-200 p-3">Using vague descriptions</td>
+                <td class="border border-gray-200 p-3">Include specific responsibilities and credible outcomes.</td>
+            </tr>
+            <tr>
+                <td class="border border-gray-200 p-3">Adding too many keywords</td>
+                <td class="border border-gray-200 p-3">Use relevant terms naturally and accurately.</td>
+            </tr>
+            <tr>
+                <td class="border border-gray-200 p-3">Using complex layouts</td>
+                <td class="border border-gray-200 p-3">Choose a clean, readable structure.</td>
+            </tr>
+            <tr>
+                <td class="border border-gray-200 p-3">Including outdated or irrelevant details</td>
+                <td class="border border-gray-200 p-3">Prioritize information that supports your current goal.</td>
+            </tr>
+            <tr>
+                <td class="border border-gray-200 p-3">Exaggerating experience</td>
+                <td class="border border-gray-200 p-3">Present your actual skills and accomplishments honestly.</td>
+            </tr>
+            <tr>
+                <td class="border border-gray-200 p-3">Ignoring proofreading</td>
+                <td class="border border-gray-200 p-3">Check content, formatting, links, and dates before submitting.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Resume Tips Checklist Before You Apply</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Use this final checklist to make your next application stronger:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>The resume matches the target job.</li>
+    <li>The summary highlights relevant qualifications.</li>
+    <li>Experience bullets focus on contributions and results.</li>
+    <li>Relevant ATS keywords appear naturally.</li>
+    <li>Formatting is clean and consistent.</li>
+    <li>Contact details and links are correct.</li>
+    <li>All claims are accurate and defensible.</li>
+    <li>Spelling and grammar have been checked.</li>
+    <li>The final file follows the employer's instructions.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Completing these checks helps you submit a more polished and relevant application instead of rushing through the process.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Final Thoughts</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A strong resume is more than a summary of your work history, it is an opportunity to show employers why you are a good fit for the role. By highlighting relevant skills, showcasing measurable achievements, optimizing your resume for ATS screening, and keeping the format clear and professional, you can make your application more effective. Take time to tailor your resume to each opportunity and review it carefully before applying.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Remember, a well-written resume is just one part of a successful job search. Finding suitable openings, managing applications, and tracking progress are equally important for staying organized and moving closer to your career goals.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Frequently Asked Questions</h2>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">1. What are the most important resume tips?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Tailor your resume to the job, highlight achievements, use a clean format, and proofread carefully.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">2. How long should a resume be?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>One page is often ideal for freshers, while experienced professionals may need two pages.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">3. How do I make my resume ATS-friendly?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Use standard headings, relevant keywords, simple formatting, and readable fonts.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">4. Should I include a resume summary?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes, if it highlights your relevant experience, key skills, and professional strengths.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">5. How can freshers improve their resumes?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Highlight academic projects, internships, certifications, relevant skills, and volunteer experience.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">6. Should I customize my resume for every job?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes, tailor your skills, summary, and experience to match each job description.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">7. What skills should I include on my resume?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Include relevant technical and soft skills that match the job requirements.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">8. Is a two-page resume acceptable?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes, if your relevant experience and achievements justify the additional space.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">9. Should I include a photo on my resume?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Follow the hiring conventions of your target country and the employer's instructions.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">10. What file format should I use for my resume?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Use the format requested by the employer. PDF is common when accepted.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">11. How can I describe achievements without numbers?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Describe specific contributions, improvements, projects, or problems you helped solve.</p>`,
+  },
+
+  {
     id: 451,
     slug: "how-to-quit-a-job",
     title: "How to Quit a Job: A Professional Guide to Resigning Gracefully",
