@@ -24,6 +24,191 @@ export type BlogPost = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const blogPosts: BlogPost[] = (([] as any[]).concat([
   {
+    id: 463,
+    slug: "is-a-2-page-resume-ok",
+    title: "Is a 2 Page Resume OK? When to Use Two Pages and How to Get It Right",
+    metaTitle: "Is a 2 Page Resume OK? When to Use Two Pages",
+    excerpt: "Is a 2 page resume OK? Learn when a two-page resume works best, when to use one page, formatting tips, ATS advice, and common mistakes to avoid.",
+    date: "Oct 14, 2026",
+    lastUpdated: "Oct 14, 2026",
+    readTime: "10 min",
+    category: "Resume Writing",
+    tags: ["Resume Writing"],
+    author: {
+      name: "Riya Sharma",
+      bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
+    },
+    image: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/blog-images/61014a8b-8d9b-4d4d-9b26-ccba5089bdde-1792002446511.png",
+    categoryColor: "bg-blue-100 text-blue-600",
+    content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Is a 2 Page Resume OK? When to Use Two Pages and How to Get It Right</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your resume has two pages, and now you're wondering whether a recruiter will reject it before reading the first line. Should you cut valuable achievements to fit everything on one page, or is a longer resume perfectly acceptable?</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The truth is that a two-page resume can be completely appropriate when every section adds relevant value. The right length depends on your experience, the role you're targeting, and how effectively you communicate your qualifications, not simply the number of pages.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>According to <a href="https://careerservices.fas.harvard.edu/resources/create-a-resume-cv-or-cover-letter/" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">Harvard University's Mignone Center for Career Success</a>, resumes should be tailored to the position and communicate relevant qualifications clearly. This reinforces an important principle: your resume should prioritize useful information over an arbitrary page limit.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>So, is a 2 page resume OK for experienced professionals, fresh graduates, or someone changing careers? This guide explains when two pages make sense, when one page is better, how to format a longer resume, and how to decide which details deserve a place on the final document.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Is a 2 Page Resume OK?</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Yes, a two-page resume is acceptable for many job applications, particularly when you have several years of relevant experience, a strong record of achievements, or specialized skills that require more explanation.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>However, a longer resume isn't automatically better. Recruiters need to identify your qualifications quickly, so every bullet point, heading, and section should help them understand why you're suitable for the role.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>A one-page resume often works well for students, recent graduates, and candidates with limited professional experience. A two-page resume may be more useful for experienced professionals, managers, technical specialists, and candidates with several relevant positions or substantial project experience.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The key is to choose the length that presents your strongest qualifications without unnecessary repetition.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">When Is a Two-Page Resume a Good Choice?</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A two-page resume makes sense when one page would force you to remove important information that demonstrates your suitability for a position.</p>
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li style='margin-bottom:12px; line-height:1.7;'><strong>You Have Several Years of Relevant Experience:</strong> If you've worked across multiple roles and developed progressively stronger responsibilities, fitting your experience onto one page can become difficult. For example, a marketing professional with eight years of experience might need space to describe campaign strategy, team leadership, budget management, and measurable business results. Rather than shrinking the font or removing meaningful achievements, use two pages to present the information clearly.</li>
+    <li style='margin-bottom:12px; line-height:1.7;'><strong>You've Achieved Measurable Results:</strong> Your resume should explain not only what you did but also what you accomplished. Consider a sales professional who has increased revenue, improved customer retention, and managed major accounts. Each achievement could demonstrate a different strength relevant to the target role. If those accomplishments are important to the job, a second page can help you explain them without overcrowding the document.</li>
+    <li style='margin-bottom:12px; line-height:1.7;'><strong>Your Role Requires Specialized Expertise:</strong> Some positions require candidates to demonstrate technical depth, industry-specific knowledge, certifications, or complex project experience. For example, an IT professional applying for a senior engineering role might need to include:
+        <ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+            <li>Relevant programming languages and technical tools.</li>
+            <li>Major projects and their business impact.</li>
+            <li>Cloud platforms, systems, or security expertise.</li>
+            <li>Professional certifications.</li>
+            <li>Experience mentoring engineers or leading technical initiatives.</li>
+        </ul>
+        A second page is useful when these details support the job requirements rather than simply making the resume longer.</li>
+    <li style='margin-bottom:12px; line-height:1.7;'><strong>You're Applying for a Senior or Leadership Position:</strong> Senior professionals often need to demonstrate leadership, strategic thinking, budget responsibility, and cross-functional collaboration. A department head, operations manager, or senior consultant may have several relevant achievements across different organizations. Two pages can provide enough room to show career progression and leadership impact while keeping the most important information easy to find.</li>
+    <li style='margin-bottom:12px; line-height:1.7;'><strong>You Have Relevant Projects, Certifications, or Research:</strong> Some candidates have substantial accomplishments outside their formal job descriptions. This may include significant freelance projects, technical portfolios, industry certifications, publications, or research relevant to the position. Include these details when they strengthen your application. If you're applying for an academic or research position, however, a CV may be more appropriate than a standard resume.</li>
+</ol>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">One-Page vs. Two-Page Resume: Which Should You Choose?</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Use this comparison to decide which resume length best fits your current situation.</p>
+<div class="overflow-x-auto my-6">
+    <table class="w-full border-collapse text-sm">
+        <thead>
+            <tr>
+                <th class="bg-blue-600 text-white font-semibold p-3 text-left">Candidate profile</th>
+                <th class="bg-blue-600 text-white font-semibold p-3 text-left">Recommended length</th>
+                <th class="bg-blue-600 text-white font-semibold p-3 text-left">Why</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="border border-gray-200 p-3">Student or recent graduate</td>
+                <td class="border border-gray-200 p-3">1 page</td>
+                <td class="border border-gray-200 p-3">Highlights education, internships, and relevant skills without unnecessary detail.</td>
+            </tr>
+            <tr>
+                <td class="border border-gray-200 p-3">Professional with limited experience</td>
+                <td class="border border-gray-200 p-3">Usually 1 page</td>
+                <td class="border border-gray-200 p-3">Keeps relevant achievements easy to scan.</td>
+            </tr>
+            <tr>
+                <td class="border border-gray-200 p-3">Experienced professional</td>
+                <td class="border border-gray-200 p-3">1–2 pages</td>
+                <td class="border border-gray-200 p-3">Provides room for significant accomplishments and career progression.</td>
+            </tr>
+            <tr>
+                <td class="border border-gray-200 p-3">Senior manager or executive</td>
+                <td class="border border-gray-200 p-3">Often 2 pages</td>
+                <td class="border border-gray-200 p-3">Allows space for leadership results and strategic responsibilities.</td>
+            </tr>
+            <tr>
+                <td class="border border-gray-200 p-3">Technical specialist</td>
+                <td class="border border-gray-200 p-3">1–2 pages</td>
+                <td class="border border-gray-200 p-3">Accommodates relevant projects, tools, and technical expertise.</td>
+            </tr>
+            <tr>
+                <td class="border border-gray-200 p-3">Academic or research candidate</td>
+                <td class="border border-gray-200 p-3">Depends on requirements</td>
+                <td class="border border-gray-200 p-3">Publications, research, and presentations may require additional space.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p style='margin-bottom:12px; line-height:1.7;'>These are guidelines, not strict rules. Indeed's resume-length guidance also emphasizes relevance and readability over an arbitrary page limit.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>A useful test: If removing the second page would mean losing important qualifications, measurable results, or relevant experience, keep it. If the extra page contains repetitive duties and outdated information, edit it down.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">How to Format a Two-Page Resume Properly</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A two-page resume should look intentional, not like a one-page document that accidentally overflowed.</p>
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li style='margin-bottom:12px; line-height:1.7;'><strong>Put Your Strongest Information on Page One:</strong> Your first page should communicate your value quickly. Include your name and contact information, a brief professional summary if useful, key skills, and your most relevant recent experience. For example, a project manager might lead with experience delivering projects on time and within budget rather than starting with an unrelated job from a decade ago. The second page should add supporting evidence, not contain information essential to understanding the first page.</li>
+    <li style='margin-bottom:12px; line-height:1.7;'><strong>Use a Readable Font and Consistent Margins:</strong> Choose a professional font such as Arial, Calibri, or Helvetica. A font size of approximately 10–12 points is a practical starting point for body text. Keep margins consistent and leave enough white space between sections. Avoid shrinking text excessively just to squeeze more information onto the page.</li>
+    <li style='margin-bottom:12px; line-height:1.7;'><strong>Make Page Two Easy to Identify:</strong> Repeat your name in a simple header on the second page. You can also include a page number, such as “2 of 2,” to make the document easier to navigate. Start page two with a clear continuation of your professional experience or another relevant section. Avoid placing only one or two stray lines on the final page.</li>
+    <li style='margin-bottom:12px; line-height:1.7;'><strong>Use Clear Section Headings and Bullet Points:</strong> Organize your resume with familiar headings such as:
+        <ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+            <li>Professional Summary</li>
+            <li>Work Experience</li>
+            <li>Skills</li>
+            <li>Education</li>
+            <li>Certifications</li>
+            <li>Projects</li>
+        </ul>
+        Use concise bullet points instead of lengthy paragraphs. Start each bullet with an action verb and explain the outcome where possible. For instance, replace “Responsible for managing social media accounts” with “Managed four social media channels, increasing engagement by 28% over six months.” Only use numbers you can accurately support.</li>
+    <li style='margin-bottom:12px; line-height:1.7;'><strong>Save and Check the Final File:</strong> Unless the employer requests another format, a PDF is often a practical choice for preserving your layout. Follow the application instructions if a Word document or another file type is required. Before submitting, open the saved file and check that:
+        <ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+            <li>Both pages display correctly.</li>
+            <li>No headings are stranded at the bottom of a page.</li>
+            <li>Dates, bullet points, and margins are consistent.</li>
+            <li>Text can be selected and copied.</li>
+            <li>The document contains no accidental blank pages.</li>
+        </ul>
+    </li>
+</ol>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">What Should You Include on a Two-Page Resume?</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>The purpose of a second page is to provide relevant evidence, not to document every detail of your career. Prioritize the following:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li><strong>Relevant work experience:</strong> Focus on recent positions and roles that demonstrate skills required by the target job. Older positions can receive less space when their relevance is limited.</li>
+    <li><strong>Measurable accomplishments:</strong> Highlight revenue generated, costs reduced, projects completed, customers supported, or processes improved when those outcomes matter to the role.</li>
+    <li><strong>Technical and professional skills:</strong> Include tools, platforms, certifications, and specialist knowledge that match the job description.</li>
+    <li><strong>Projects and leadership:</strong> Explain significant initiatives, team responsibilities, and cross-functional work that demonstrate your ability to handle the position.</li>
+    <li><strong>Education and credentials:</strong> Include relevant qualifications, licenses, and professional certifications. Experienced candidates generally don't need lengthy descriptions of routine coursework.</li>
+</ul>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">What Should You Remove From a Two-Page Resume?</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>If your resume feels too long, edit its content before adjusting the layout.</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li><strong>Repeated responsibilities:</strong> If several roles involved similar tasks, emphasize the most significant achievements instead of repeating identical bullets.</li>
+    <li><strong>Outdated experience:</strong> Remove or shorten older roles that don't strengthen your current application.</li>
+    <li><strong>Generic skills:</strong> Phrases such as “hardworking,” “team player,” and “good communication” add little without supporting evidence.</li>
+    <li><strong>Unnecessary personal details:</strong> Avoid including marital status, family information, or other personal details unrelated to the position.</li>
+    <li><strong>Long introductions:</strong> Keep your professional summary focused on your expertise, relevant experience, and value.</li>
+    <li><strong>Irrelevant hobbies and coursework:</strong> Retain these only when they demonstrate a useful skill or meet a specific job requirement.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Remember, your goal isn't to fill two pages. It's to make your strongest qualifications clear.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Is a Two-Page Resume Good for ATS Screening?</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Yes. A two-page resume can work well with applicant tracking systems (ATS) when its content and formatting are easy to parse.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>An ATS may help employers organize applications and identify relevant qualifications, but systems differ in how they process resumes. Page count alone doesn't determine whether your resume will be parsed correctly or whether you'll be shortlisted.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>To make your resume more ATS-friendly:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Use standard section headings, such as “Work Experience” and “Education.”</li>
+    <li>Include relevant keywords from the job description naturally.</li>
+    <li>Avoid complex layouts, excessive graphics, and information placed in text boxes.</li>
+    <li>Use consistent job titles, dates, and bullet formatting.</li>
+    <li>Check that your PDF or Word document displays correctly and contains searchable text.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, if a job description requests SQL, data visualization, and reporting, highlight those skills where you can demonstrate genuine experience with them. Don't add keywords simply to increase their frequency.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Common Two-Page Resume Mistakes to Avoid</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Even a well-qualified candidate can weaken their application with poor formatting or unnecessary details. Watch out for these mistakes:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li><strong>Filling page two with filler:</strong> Every section should contribute to your suitability for the role.</li>
+    <li><strong>Making page one too crowded:</strong> Prioritize readability instead of squeezing everything into the top half.</li>
+    <li><strong>Repeating your entire contact section:</strong> A simple name header on page two is usually sufficient.</li>
+    <li><strong>Using inconsistent formatting:</strong> Keep headings, fonts, dates, and spacing uniform.</li>
+    <li><strong>Ignoring application instructions:</strong> If an employer explicitly requests a one-page resume, follow that requirement.</li>
+    <li><strong>Sending the same resume everywhere:</strong> Tailor your content to the responsibilities and qualifications of each position.</li>
+</ul>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Final Thoughts</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>So, is a 2 page resume OK? Absolutely, as long as the additional space helps employers understand your experience, skills, and achievements. A concise one-page resume may be ideal for an entry-level candidate, while two pages can give experienced professionals the room to demonstrate their value.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Before submitting your resume, review both pages from a recruiter's perspective. Can they quickly understand your strengths, find relevant experience, and see evidence of your impact? If so, you've chosen a suitable length.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Frequently Asked Questions</h2>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">1. Is a 2 page resume OK for a first job?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Usually, one page is sufficient. However, two pages can work if you have substantial relevant projects, internships, or achievements.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">2. Is a two-page resume too long for 5 years of experience?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Not necessarily. Use two pages if your relevant accomplishments justify the extra space; otherwise, aim for one concise page.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">3. Should a resume be one page or two pages in 2026?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Both formats are acceptable. Choose the length that presents your qualifications clearly and follows the employer's instructions.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">4. Is a two-page resume OK for freshers?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes, if both pages contain relevant information. Most freshers can communicate their qualifications effectively on one page.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">5. Do recruiters read the second page of a resume?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>They may, particularly when the first page establishes a strong fit. Keep your most important qualifications on page one.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">6. Should I put my name on the second page of my resume?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. A simple header with your name helps identify the document if its pages become separated.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">7. Is a two-page resume ATS-friendly?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. Use clear headings, standard formatting, and relevant keywords to improve readability and parsing.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">8. Should I print a two-page resume double-sided?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Follow the employer's instructions. If none are provided, printing each page separately is a practical option.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">9. Is a two-page resume OK for a career change?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>It can be, especially if you have relevant transferable skills and projects. Focus on qualifications that support your new career direction.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">10. Can my resume be two pages if I have only three years of experience?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes, but check whether you can remove repetition and unnecessary details. One page may be more effective if your experience is limited.</p>`,
+  },
+
+  {
     id: 462,
     slug: "signs-you-should-quit-your-job",
     title: "Signs You Should Quit Your Job: 12 Warning Signs to Watch For",
