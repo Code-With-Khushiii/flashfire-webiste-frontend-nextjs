@@ -4,46 +4,34 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "./promoBanner.module.css";
 
-const OFFER_END = new Date(new Date().getFullYear(), 9, 31, 23, 59, 59, 999);
+const HOUR_MS = 3600000;
 
+// Counts down to the top of the next hour, then restarts at 60 minutes.
 function getTimeLeft() {
-  const diff = OFFER_END.getTime() - Date.now();
-  if (diff <= 0) return null;
+  const diff = HOUR_MS - (Date.now() % HOUR_MS);
 
   return {
-    days: Math.floor(diff / 86400000),
-    hours: Math.floor((diff % 86400000) / 3600000),
-    minutes: Math.floor((diff % 3600000) / 60000),
+    minutes: Math.floor(diff / 60000),
     seconds: Math.floor((diff % 60000) / 1000),
   };
 }
-
-type TimeLeft = NonNullable<ReturnType<typeof getTimeLeft>>;
 
 type Props = {
   pricingHref?: string;
 };
 
 export default function PromoBanner({ pricingHref = "/pricing" }: Props) {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
-  const [expired, setExpired] = useState(false);
+  const [countdown, setCountdown] = useState("");
 
   useEffect(() => {
     const tick = () => {
-      const t = getTimeLeft();
-      setTimeLeft(t);
-      setExpired(!t);
+      const { minutes, seconds } = getTimeLeft();
+      setCountdown(`${minutes}m ${seconds}s`);
     };
     tick();
     const interval = setInterval(tick, 1000);
     return () => clearInterval(interval);
   }, []);
-
-  if (expired) return null;
-
-  const countdown = timeLeft
-    ? `${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`
-    : "";
 
   return (
     <Link href={pricingHref} className={styles.promoBar} aria-label="Halloween offer - view pricing">
@@ -55,7 +43,7 @@ export default function PromoBanner({ pricingHref = "/pricing" }: Props) {
         </svg> Halloween Offer ends in{" "}
         <strong className={styles.countdown}>{countdown || "\u00A0"}</strong>.{" "}
         <span className={styles.tail}>
-          Last chance to unlock extra <strong>50%</strong> off
+          Last chance to unlock extra <strong>30%</strong> off
         </span>
       </span>
       <span className={styles.arrow} aria-hidden="true">

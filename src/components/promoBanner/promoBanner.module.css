@@ -52,21 +52,43 @@
 
 @media (max-width: 640px) {
   .promoBar {
+    justify-content: space-between;
     gap: 0.6rem;
+    min-height: 44px;
     padding: 6px 0.75rem;
   }
 
   .promoText {
-    font-size: 0.8rem;
+    flex: 1;
+    min-width: 0;
+    font-size: 0.75rem;
+    line-height: 1.35;
+    text-align: left;
+  }
+
+  .tail {
+    display: block;
+  }
+
+  .pumpkin {
+    width: 16px;
+    height: 16px;
+    vertical-align: -2px;
   }
 
   .arrow {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
   }
 
   .arrow svg {
-    width: 15px;
-    height: 15px;
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .promoText {
+    font-size: 0.7rem;
   }
 }
