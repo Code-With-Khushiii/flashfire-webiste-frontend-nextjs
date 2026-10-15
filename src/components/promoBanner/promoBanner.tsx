@@ -4,24 +4,16 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "./promoBanner.module.css";
 
-const SALE_END = (() => {
-  const end = new Date();
-  end.setHours(23, 59, 59, 999);
-  return end;
-})();
+const HOUR_MS = 3600000;
 
+// Counts down to the top of the next hour, then restarts at 60 minutes.
 function getTimeLeft() {
-  const diff = Math.max(0, SALE_END.getTime() - Date.now());
+  const diff = HOUR_MS - (Date.now() % HOUR_MS);
 
   return {
-    hours: Math.floor(diff / (1000 * 60 * 60)),
-    minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
-    seconds: Math.floor((diff % (1000 * 60)) / 1000),
+    minutes: Math.floor(diff / 60000),
+    seconds: Math.floor((diff % 60000) / 1000),
   };
-}
-
-function pad(n: number) {
-  return n.toString().padStart(2, "0");
 }
 
 type Props = {
@@ -29,36 +21,36 @@ type Props = {
 };
 
 export default function PromoBanner({ pricingHref = "/pricing" }: Props) {
-  const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
+  const [countdown, setCountdown] = useState("");
 
   useEffect(() => {
-    setTimeLeft(getTimeLeft());
-    const interval = setInterval(() => setTimeLeft(getTimeLeft()), 1000);
+    const tick = () => {
+      const { minutes, seconds } = getTimeLeft();
+      setCountdown(`${minutes}m ${seconds}s`);
+    };
+    tick();
+    const interval = setInterval(tick, 1000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className={styles.promoBar}>
-      <svg width="14" height="14" viewBox="0 0 20 20" fill="white">
-        <path d="M10 1l2.39 6.26H19l-5.31 3.86 2.02 6.26L10 13.52l-5.7 3.86 2.02-6.26L1 7.26h6.61L10 1z" />
-      </svg>
-      <span className={styles.promoLabel}>Anniversary Sale</span>
-      <div className={styles.promoDivider} />
+    <Link href={pricingHref} className={styles.promoBar} aria-label="Halloween offer - view pricing">
       <span className={styles.promoText}>
-        Celebrate with us — special anniversary pricing for a limited time.
+        <svg className={styles.pumpkin} width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#0b0b0b" d="M12 6.2c-1-1-2.6-1.4-4.2-1C4.6 6 2.5 9 2.5 12.6c0 4 3.3 7.4 7.1 7.4 1 0 1.8-.3 2.4-.8.6.5 1.4.8 2.4.8 3.8 0 7.1-3.4 7.1-7.4C21.5 9 19.4 6 16.2 5.2c-1.6-.4-3.2 0-4.2 1z" />
+          <path fill="#0b0b0b" d="M11 5.5c0-1.6.6-3 2.2-3.7l.6 1.1c-.9.5-1.2 1.4-1.2 2.6z" />
+          <path fill="#ff8a4c" d="M7.5 10.5l2 3h-4zM16.5 10.5l2 3h-4zM8 16c1.2 1.5 2.6 2 4 2s2.800-.5 4-2c-1.300.6-2.600.8-4 .8s-2.700-.2-4-.8z" />
+        </svg> Halloween Offer ends in{" "}
+        <strong className={styles.countdown}>{countdown || "\u00A0"}</strong>.{" "}
+        <span className={styles.tail}>
+          Last chance to unlock extra <strong>30%</strong> off
+        </span>
       </span>
-      <div className={styles.promoDivider} />
-      <span className={styles.promoEnds}>Ends in</span>
-      <div className={styles.timer}>
-        <div className={styles.tSeg}>{pad(timeLeft.hours)}</div>
-        <span className={styles.tColon}>:</span>
-        <div className={styles.tSeg}>{pad(timeLeft.minutes)}</div>
-        <span className={styles.tColon}>:</span>
-        <div className={styles.tSeg}>{pad(timeLeft.seconds)}</div>
-      </div>
-      <Link href={pricingHref} className={styles.btnPricing}>
-        View Pricing →
-      </Link>
-    </div>
+      <span className={styles.arrow} aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </span>
+    </Link>
   );
 }
