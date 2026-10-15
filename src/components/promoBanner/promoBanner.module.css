@@ -1,109 +1,72 @@
 .promoBar {
-  position: relative;
-  background: #e85d1a;
-  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  padding: 0 20px;
-  height: 44px;
+  gap: 1.25rem;
+  width: 100%;
+  min-height: 48px;
+  padding: 6px 1rem;
+  background: #ff8a4c;
+  color: #0b0b0b;
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  text-decoration: none;
   user-select: none;
-  flex-wrap: wrap;
-}
-
-.promoLabel {
-  font-size: 13.5px;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-.promoDivider {
-  width: 1px;
-  height: 16px;
-  background: rgba(255, 255, 255, 0.35);
-  flex-shrink: 0;
 }
 
 .promoText {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.92);
-  white-space: nowrap;
+  font-size: 1rem;
+  line-height: 1.3;
+  text-align: center;
 }
 
-.promoEnds {
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
-  white-space: nowrap;
+.promoText strong {
+  font-weight: 700;
 }
 
-.timer {
-  display: flex;
-  align-items: center;
-  gap: 3px;
+.pumpkin {
+  display: inline-block;
+  vertical-align: -3px;
+  margin-right: 2px;
 }
 
-.tSeg {
-  background: rgba(0, 0, 0, 0.22);
-  border-radius: 5px;
-  width: 30px;
-  height: 26px;
-  display: flex;
+.countdown {
+  font-variant-numeric: tabular-nums;
+}
+
+.arrow {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.tColon {
-  font-size: 13px;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.btnPricing {
-  padding: 5px 14px;
-  border-radius: 6px;
-  border: 1.5px solid rgba(255, 255, 255, 0.8);
-  background: transparent;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #0b0b0b;
   color: #fff;
-  font-size: 12.5px;
-  font-weight: 700;
-  cursor: pointer;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
-.btnPricing:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
-
-@media (max-width: 900px) {
-  .promoText {
-    display: none;
-  }
-
-  .promoDivider:nth-of-type(2) {
-    display: none;
-  }
+.promoBar:hover .arrow {
+  transform: translateX(3px);
 }
 
 @media (max-width: 640px) {
   .promoBar {
-    height: auto;
-    padding: 8px 12px;
-    gap: 8px;
+    gap: 0.6rem;
+    padding: 6px 0.75rem;
   }
 
-  .btnPricing {
-    padding: 4px 10px;
-    font-size: 12px;
+  .promoText {
+    font-size: 0.8rem;
   }
 
-  .tSeg {
-    width: 26px;
-    height: 22px;
+  .arrow {
+    width: 28px;
+    height: 28px;
+  }
+
+  .arrow svg {
+    width: 15px;
+    height: 15px;
   }
 }
