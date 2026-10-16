@@ -139,6 +139,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         {/* Google AdSense site verification */}
         <meta name="google-adsense-account" content="ca-pub-7803903365456072" />
+        {/* Bing Webmaster Tools site verification — do not remove */}
+        <meta name="msvalidate.01" content="19A03B5E766328EFE94D0E979C33313E" />
         {/* Font Preconnect for Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
