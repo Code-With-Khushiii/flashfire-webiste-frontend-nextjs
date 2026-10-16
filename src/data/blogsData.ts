@@ -24,6 +24,191 @@ export type BlogPost = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const blogPosts: BlogPost[] = (([] as any[]).concat([
   {
+    id: 473,
+    slug: "30-60-90-day-plan",
+    title: "30-60-90 Day Plan: How to Create One With Examples",
+    metaTitle: "30-60-90 Day Plan: How to Create One With Examples",
+    excerpt: "Learn how to create a 30-60-90 day plan with step-by-step guidance, practical examples, SMART goals, and tips to succeed in your first three months.",
+    date: "Oct 16, 2026",
+    lastUpdated: "Oct 16, 2026",
+    readTime: "10 min",
+    category: "Cover Letter",
+    tags: ["Cover Letter"],
+    author: {
+      name: "Riya Sharma",
+      bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
+    },
+    image: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/blog-images/screenshot-2026-10-16-at-11-36-24-pm-1792174305648.png",
+    categoryColor: "bg-pink-100 text-pink-600",
+    content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">30-60-90 Day Plan: How to Create One With Examples</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Starting a new job is exciting, but the first three months can also feel overwhelming. You are learning new systems, meeting colleagues, understanding expectations, and trying to prove that the hiring team made the right decision. Without a clear plan, it is easy to stay busy without knowing whether you are making meaningful progress.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>That is where a 30-60-90 day plan comes in. It helps you turn your first three months into a structured roadmap with specific goals, measurable milestones, and practical actions. Whether you are preparing for a job interview, joining a new company, or stepping into a leadership role, this plan can help you demonstrate initiative and build confidence.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The importance of structured onboarding is supported by research. According to Gallup, only 12% of employees strongly agree that their organization does a great job of onboarding new employees, highlighting an opportunity for employees and employers to create a more intentional start.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>In this guide, you will learn what a 30-60-90 day plan is, how to build one step by step, which goals to set for each phase, and how to use practical examples to create a plan that makes a strong impression.</p>
+<div style='background:#EFF6FF; border-left:4px solid #2563EB; padding:12px 16px; margin:16px 0; border-radius:4px;'><p style='margin:0; line-height:1.7;'><strong>Source:</strong> <a href="https://www.gallup.com/workplace/235121/employee-onboarding.aspx?" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">Gallup — Employee Onboarding</a></p></div>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">What Is a 30-60-90 Day Plan?</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A 30-60-90 day plan is a structured outline of your goals, priorities, and actions for the first three months in a new role. It divides the initial 90 days into three phases, each with a different focus.</p>
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>First 30 days — Learn: Understand the company, team, responsibilities, tools, and expectations.</li>
+    <li>Next 30 days — Contribute: Apply what you have learned, take ownership of tasks, and begin delivering results.</li>
+    <li>Final 30 days — Perform: Work more independently, measure progress, and identify opportunities for improvement.</li>
+</ol>
+<p style='margin-bottom:12px; line-height:1.7;'>The plan is not simply a to-do list. It connects your daily activities to the outcomes your manager or organization expects from you.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>You can create a 30-60-90 day plan for almost any role, including marketing, sales, software engineering, project management, human resources, and senior leadership. The specific goals will vary, but the underlying principle remains the same: learn the role, contribute value, and build sustainable performance.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Why Is a 30-60-90 Day Plan Important?</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A thoughtful plan helps you approach a new role with direction instead of relying on guesswork. It also gives you a framework for communicating progress and identifying challenges early.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Here are four important benefits:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Clarifies expectations: You understand what success looks like and which responsibilities deserve your attention first.</li>
+    <li>Demonstrates initiative: Sharing a plan during an interview or with a new manager shows that you have thought about how to contribute.</li>
+    <li>Makes progress measurable: Defined milestones help you evaluate whether you are moving toward your goals.</li>
+    <li>Encourages regular feedback: Scheduled check-ins allow you to adjust your approach before small problems become bigger obstacles.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>A 30-60-90 day plan should remain flexible. If business priorities change or you need more time to learn a system, adjust your milestones rather than pursuing an unrealistic timeline.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">How to Create a 30-60-90 Day Plan Step by Step</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A useful plan begins with the outcomes your employer expects, not with a long list of activities. Follow these steps to build a realistic roadmap.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">1. Understand the Role and Its Priorities</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Start by reviewing the job description, responsibilities, team structure, and company goals. Identify the main problems you are expected to solve and the skills you need to succeed.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>If you are <a href="https://www.flashfirejobs.com/blog/what-to-say-in-an-interview" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">preparing for an interview</a>, research the company's products, customers, competitors, and recent developments. Look for clues about the team's current priorities.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Ask yourself: What should I understand, improve, or accomplish to become effective in this position?</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">2. Divide Your Goals Into Three Phases</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Give each 30-day period a distinct purpose. Your first month should emphasize learning, the second should focus on contributing, and the third should demonstrate growing independence.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Avoid setting ambitious performance targets before understanding the team's baseline, available resources, and expectations.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">3. Set SMART Goals</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Make your goals specific, measurable, achievable, relevant, and time-bound.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, replace “Improve customer satisfaction” with “Review customer feedback and identify three recurring issues by the end of the first 30 days.”</p>
+<p style='margin-bottom:12px; line-height:1.7;'>A measurable goal makes it easier to track progress and discuss results with your manager.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">4. Identify the Actions Needed</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Break each goal into smaller tasks. If your goal is to understand a sales process, your actions might include reviewing the CRM, shadowing experienced representatives, studying customer profiles, and attending sales calls.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>This turns broad intentions into practical steps you can complete each week.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">5. Define How Success Will Be Measured</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Choose relevant performance indicators, or KPIs, for each goal. These could include project completion, customer response time, qualified leads generated, error rates, or stakeholder feedback.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Confirm your measures with your manager so you are tracking the right outcomes rather than numbers that look impressive but do not reflect business priorities.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">6. Schedule Feedback and Reviews</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Set up regular check-ins with your manager. Use them to review progress, discuss obstacles, and adjust your priorities.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>A simple weekly review can help you identify what is working, where you need support, and what should happen next.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">What to Include in a 30-60-90 Day Plan</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your plan should be easy to read and specific enough to guide your daily work. Include these essential elements:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Goals: The outcomes you want to achieve in each phase.</li>
+    <li>Action steps: The tasks required to reach each goal.</li>
+    <li>Timeline: When you expect to complete each milestone.</li>
+    <li>Success metrics: How you will measure progress.</li>
+    <li>Resources: The tools, training, information, or support you need.</li>
+    <li>Review dates: When you will evaluate progress with your manager.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>You can create the plan in a spreadsheet, document, project management tool, or presentation. The format matters less than the clarity of your goals and the practicality of your actions.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">30-60-90 Day Plan Example</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Consider a marketing specialist joining a company that wants to improve its website traffic and lead generation. Here is how their first 90 days might look.</p>
+<div class="overflow-x-auto my-6">
+    <table class="w-full border-collapse text-sm">
+        <thead>
+            <tr>
+                <th class="bg-blue-600 text-white font-semibold p-3 text-left">Timeline</th>
+                <th class="bg-blue-600 text-white font-semibold p-3 text-left">Primary goal</th>
+                <th class="bg-blue-600 text-white font-semibold p-3 text-left">Example actions</th>
+                <th class="bg-blue-600 text-white font-semibold p-3 text-left">Success indicators</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="border border-gray-200 p-3">Days 1–30</td>
+                <td class="border border-gray-200 p-3">Learn and assess</td>
+                <td class="border border-gray-200 p-3">Meet stakeholders, review analytics, understand the audience, audit existing content</td>
+                <td class="border border-gray-200 p-3">Audit completed; baseline metrics documented</td>
+            </tr>
+            <tr>
+                <td class="border border-gray-200 p-3">Days 31–60</td>
+                <td class="border border-gray-200 p-3">Contribute and implement</td>
+                <td class="border border-gray-200 p-3">Update priority pages, plan content, coordinate with the sales team</td>
+                <td class="border border-gray-200 p-3">Agreed improvements published; content calendar approved</td>
+            </tr>
+            <tr>
+                <td class="border border-gray-200 p-3">Days 61–90</td>
+                <td class="border border-gray-200 p-3">Evaluate and optimize</td>
+                <td class="border border-gray-200 p-3">Review results, identify gaps, recommend next steps</td>
+                <td class="border border-gray-200 p-3">Performance report delivered; next-quarter priorities agreed</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p style='margin-bottom:12px; line-height:1.7;'>Notice that the first month focuses on understanding the situation before making major changes. The second introduces practical contributions, while the third evaluates progress and establishes a direction for continued improvement.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>These milestones are illustrative. Actual targets should reflect the company's starting point, resources, and business objectives.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Sample 30-60-90 Day Plan for Different Roles</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your goals should reflect the work you will actually perform. Here are examples for three common positions.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">1. Sales Representative</h3>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Days 1–30: Learn the product, study the target audience, review the CRM, and shadow experienced sales representatives.</li>
+    <li>Days 31–60: Start prospecting, conduct discovery calls, and manage a small pipeline with guidance.</li>
+    <li>Days 61–90: Manage opportunities more independently, review conversion rates, and develop a pipeline improvement strategy.</li>
+</ul>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">2. Software Engineer</h3>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Days 1–30: Set up the development environment, understand the codebase, review documentation, and learn the team's workflow.</li>
+    <li>Days 31–60: Resolve smaller bugs, contribute code, participate in reviews, and deliver a defined feature.</li>
+    <li>Days 61–90: Own a scoped development task, improve code quality, and contribute to technical planning.</li>
+</ul>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">3. Marketing Manager</h3>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Days 1–30: Understand the brand, audit existing campaigns, meet stakeholders, and review performance data.</li>
+    <li>Days 31–60: Prioritize campaign improvements, align the team around goals, and launch agreed initiatives.</li>
+    <li>Days 61–90: Evaluate campaign results, report on key metrics, and present a roadmap for the next quarter.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>The common thread is a gradual increase in responsibility. You learn the environment first, contribute with context, and then take greater ownership.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">How to Use a 30-60-90 Day Plan in a Job Interview</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A 30-60-90 day plan can help you stand out when an employer asks how you would approach a new role. It demonstrates preparation, structured thinking, and an understanding that results depend on learning the business.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>To make your interview plan effective:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Research the company: Understand its products, customers, market, and likely priorities.</li>
+    <li>Use the job description: Connect your goals directly to the advertised responsibilities.</li>
+    <li>Keep your assumptions realistic: Avoid promising specific results before seeing internal data.</li>
+    <li>Explain your reasoning: Describe why each goal belongs in that particular phase.</li>
+    <li>Invite discussion: Ask the interviewer whether your proposed priorities align with the team's needs.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, you might say, “During my first 30 days, I would focus on understanding the current workflow and identifying the team's biggest bottlenecks. In the next 30 days, I would begin implementing agreed improvements. By day 90, I would aim to evaluate their impact and recommend next steps.”</p>
+<p style='margin-bottom:12px; line-height:1.7;'>You do not need to present an elaborate business strategy. A concise, thoughtful plan that reflects the role is usually more useful than a lengthy document filled with unsupported promises.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Common Mistakes to Avoid</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Even a well-organized plan can fall short if the goals are unrealistic or disconnected from business priorities. Avoid these common mistakes:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Setting too many goals: Focus on a few meaningful priorities instead of trying to accomplish everything immediately.</li>
+    <li>Ignoring company expectations: Confirm your priorities with your manager before committing to major deliverables.</li>
+    <li>Measuring activity instead of outcomes: Track meaningful results, not just the number of meetings attended or tasks completed.</li>
+    <li>Making unrealistic promises: Use the first month to understand the situation before committing to ambitious targets.</li>
+    <li>Failing to adjust: Update the plan when priorities, resources, or expectations change.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Remember, the purpose of a 30-60-90 day plan is to guide your progress, not to create unnecessary pressure.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Final Thoughts</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A well-designed 30-60-90 day plan gives you a practical way to approach a new role with confidence and direction. By focusing on learning during the first month, contributing during the second, and building independence during the third, you can set realistic expectations and demonstrate meaningful progress.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Whether you are preparing for an interview or starting a new position, tailor your plan to the role, seek feedback, and measure results against clearly defined goals. A thoughtful start can help you build stronger working relationships and establish a foundation for long-term success.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Ready to make your job search more efficient? <a href="https://www.flashfirejobs.com/" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">FlashFire</a> helps job seekers find relevant jobs, optimise their resumes, submit high-quality applications, and track opportunities in one workflow. Spend less time managing applications and more time preparing for interviews. Explore FlashFire to streamline your job search and focus on your next career opportunity.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Frequently Asked Questions</h2>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">1. What is a 30-60-90 day plan?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>It is a roadmap outlining your goals, actions, and milestones for the first 90 days in a new role.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">2. Why is a 30-60-90 day plan important?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>It clarifies expectations, tracks progress, demonstrates initiative, and helps you prioritize your work.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">3. What should I include in a 30-60-90 day plan?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Include goals, action steps, timelines, success metrics, required resources, and review dates.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">4. What should I focus on in the first 30 days?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Focus on learning the company's culture, understanding responsibilities, meeting colleagues, and identifying priorities.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">5. What should I achieve in 60 days?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Apply what you have learned, take ownership of tasks, contribute to projects, and demonstrate progress toward agreed goals.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">6. What should I accomplish by day 90?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Aim to handle responsibilities more independently, evaluate your results, and establish priorities for the next quarter.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">7. Can I use a 30-60-90 day plan in an interview?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. It demonstrates preparation and helps explain how you would approach the role during your first three months.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">8. How many goals should a 30-60-90 day plan have?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Start with two to four meaningful goals per phase, adjusting the number to suit the role and workload.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">9. How do I measure success in a 30-60-90 day plan?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Use relevant KPIs, completed milestones, quality standards, project outcomes, and feedback from your manager.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">10. Should I update my 30-60-90 day plan?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. Review it regularly and adjust goals as you learn more about the role and changing business priorities.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">11. Is a 30-60-90 day plan only for new employees?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>No. It can also support promotions, leadership transitions, new projects, and changes in responsibilities.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">12. What is the best format for a 30-60-90 day plan?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>A simple table or spreadsheet works well because it organizes goals, timelines, actions, and success measures in one place.</p>`,
+  },
+
+  {
     id: 472,
     slug: "email-cover-letter",
     title: "Email Cover Letter: How to Write One That Gets Noticed",
