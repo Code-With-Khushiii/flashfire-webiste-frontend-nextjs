@@ -67,11 +67,14 @@
     font-size: clamp(0.72rem, 4.1vw, 1rem);
     line-height: 1.35;
     text-align: center;
+<<<<<<< HEAD
     overflow-wrap: anywhere;
   }
 
   .head {
     white-space: nowrap;
+=======
+>>>>>>> 9eae53a8cb7b3c7990f2d4b0ffd6bc59d21cb17b
   }
 
   .tail {
@@ -85,8 +88,15 @@
   }
 
   .arrow {
+<<<<<<< HEAD
     width: 32px;
     height: 32px;
+=======
+    width: 26px;
+    height: 26px;
+    position: relative;
+    right: 10px;
+>>>>>>> 9eae53a8cb7b3c7990f2d4b0ffd6bc59d21cb17b
   }
 
   .arrow svg {
