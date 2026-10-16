@@ -40,8 +40,17 @@ export default function PromoBanner({ pricingHref = "/pricing" }: Props) {
           <path fill="#0b0b0b" d="M12 6.2c-1-1-2.6-1.4-4.2-1C4.6 6 2.5 9 2.5 12.6c0 4 3.3 7.4 7.1 7.4 1 0 1.8-.3 2.4-.8.6.5 1.4.8 2.4.8 3.8 0 7.1-3.4 7.1-7.4C21.5 9 19.4 6 16.2 5.2c-1.6-.4-3.2 0-4.2 1z" />
           <path fill="#0b0b0b" d="M11 5.5c0-1.6.6-3 2.2-3.7l.6 1.1c-.9.5-1.2 1.4-1.2 2.6z" />
           <path fill="#ff8a4c" d="M7.5 10.5l2 3h-4zM16.5 10.5l2 3h-4zM8 16c1.2 1.5 2.6 2 4 2s2.800-.5 4-2c-1.300.6-2.600.8-4 .8s-2.700-.2-4-.8z" />
-        </svg> Halloween Offer ends in{" "}
-        <strong className={styles.countdown}>{countdown || "\u00A0"}</strong>.{" "}
+        </svg>{" "}
+        <span className={styles.head}>
+          {countdown ? (
+            <>
+              Halloween Offer ends in{" "}
+              <strong className={styles.countdown}>{countdown}</strong>.
+            </>
+          ) : (
+            "Halloween Offer ends soon."
+          )}
+        </span>{" "}
         <span className={styles.tail}>
           Last chance to unlock extra <strong>30%</strong> off
         </span>
