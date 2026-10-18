@@ -1,4 +1,5 @@
 import Navbar from "@/src/components/navbar/navbar";
+import ToolSeoContent from "@/src/components/toolSeo/ToolSeoContent";
 import Footer from "@/src/components/footer/footer";
 import ResumeHeadlineGenerator from "@/src/components/resumeTools/ResumeHeadlineGenerator";
 
@@ -15,6 +16,7 @@ export default function ResumeHeadlineGeneratorPage() {
     <>
       <Navbar />
       <ResumeHeadlineGenerator />
+      <ToolSeoContent slug="resume-headline-generator" />
       <Footer />
     </>
   );

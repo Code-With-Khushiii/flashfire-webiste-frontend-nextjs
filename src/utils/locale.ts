@@ -5,7 +5,7 @@
  * it's what crawlers always see (middleware never geo-redirects bots) and
  * what any visitor whose country can't be determined lands on. `/en-us` is
  * an explicit mirror of the exact same content (every page re-exports its
- * root counterpart) for parity with `/en-ca`, `/en-gb`, `/en-au` and `/en-eu`, and real
+ * root counterpart) for parity with `/en-ca`, `/en-gb`, `/en-au` and the EU trees, and real
  * US visitors ARE redirected there by the middleware, same as CA, UK/EU and
  * AU visitors get sent to their trees. Its pages still canonicalize back to the
  * root URL, so it never competes with `/` for search ranking even though it
@@ -20,20 +20,31 @@ export const US_PREFIX = "/en-us";
 export const CANADA_PREFIX = "/en-ca";
 export const UK_PREFIX = "/en-gb";
 export const AU_PREFIX = "/en-au";
-export const EU_PREFIX = "/en-eu";
+export const IRELAND_PREFIX = "/en-ie";
+export const GERMANY_PREFIX = "/en-de";
+export const NETHERLANDS_PREFIX = "/en-nl";
+export const FRANCE_PREFIX = "/en-fr";
+
+/**
+ * "EU" is not a valid hreflang region, so the Europe content is served from one
+ * tree per country. They share the same EU content and EUR pricing.
+ * `EU_PREFIX` is the default for EU countries without a tree of their own.
+ */
+export const EU_PREFIXES = [IRELAND_PREFIX, GERMANY_PREFIX, NETHERLANDS_PREFIX, FRANCE_PREFIX] as const;
+export const EU_PREFIX = IRELAND_PREFIX;
 
 /**
  * Every non-default locale prefix. Matching is on segment boundaries (see
  * getLocalePrefix), so order does not matter: `/en-ca` never matches `/en-cash`.
  */
-export const LOCALE_PREFIXES = [CANADA_PREFIX, UK_PREFIX, AU_PREFIX, EU_PREFIX, US_PREFIX] as const;
+export const LOCALE_PREFIXES = [CANADA_PREFIX, UK_PREFIX, AU_PREFIX, ...EU_PREFIXES, US_PREFIX] as const;
 
 export type LocalePrefix = (typeof LOCALE_PREFIXES)[number] | "";
 
 /** Country codes served the UK tree (`/en-gb`). */
 export const UK_COUNTRY_CODES = new Set(["GB"]);
 
-/** Country codes served the Europe tree (`/en-eu`): the EU member states other than GB. */
+/** Country codes served the Europe trees (`/en-ie`, `/en-de`, `/en-nl`, `/en-fr`): the EU member states other than GB. */
 export const EU_COUNTRY_CODES = new Set([
   "AT", // Austria
   "BE", // Belgium
@@ -87,7 +98,7 @@ export function getLocale(pathname: string | null | undefined): Locale {
   if (prefix === CANADA_PREFIX) return "ca";
   if (prefix === UK_PREFIX) return "uk";
   if (prefix === AU_PREFIX) return "au";
-  if (prefix === EU_PREFIX) return "eu";
+  if ((EU_PREFIXES as readonly string[]).includes(prefix)) return "eu";
   return "us";
 }
 
@@ -104,7 +115,7 @@ export function isAUPath(pathname: string | null | undefined): boolean {
 }
 
 export function isEUPath(pathname: string | null | undefined): boolean {
-  return getLocalePrefix(pathname) === EU_PREFIX;
+  return (EU_PREFIXES as readonly string[]).includes(getLocalePrefix(pathname));
 }
 
 export function isUSPath(pathname: string | null | undefined): boolean {

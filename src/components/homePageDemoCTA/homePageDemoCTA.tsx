@@ -60,9 +60,9 @@ export default function HomePageDemoCTA() {
         <div className={styles.contentContainer}>
           {/* Left Content */}
           <div className={styles.leftContent}>
-            <h5 className={styles.demoSubheading}>
+            <h2 className={styles.demoSubheading}>
               Got Questions?
-            </h5>
+            </h2>
 
             <h2 className={styles.demoHeading}>
               Book a Demo

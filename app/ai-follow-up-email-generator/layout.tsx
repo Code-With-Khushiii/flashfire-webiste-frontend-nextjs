@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Follow-Up Email Generator for Job Applications | Flashfire",
+  title: "AI Follow-Up Email Generator for Job Seekers | Flashfire",
   description:
     "Generate professional, timely follow-up emails for job applications and interviews using Flashfire's AI follow-up email generator.",
   alternates: {

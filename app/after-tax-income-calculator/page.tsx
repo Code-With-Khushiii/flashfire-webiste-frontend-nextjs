@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import AfterTaxIncomeCalculator from "@/src/components/afterTaxIncomeCalculator/AfterTaxIncomeCalculator";
+import ToolSeoContent from "@/src/components/toolSeo/ToolSeoContent";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 
@@ -22,6 +23,7 @@ export default function AfterTaxIncomeCalculatorPage() {
         <>
             <Navbar />
             <AfterTaxIncomeCalculator />
+            <ToolSeoContent slug="after-tax-income-calculator" />
             <Footer />
         </>
     );

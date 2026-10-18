@@ -169,7 +169,7 @@
   overflow: hidden;
   padding: 0;
   background: #f8fafc;
-  grid-row: 1;
+  grid-row: auto;
 }
 
 .image {
@@ -194,16 +194,16 @@
 
 /* === TITLE === */
 .title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 800;
   color: #0f172a;
   text-align: left;
-  padding: 0 0 1rem 0;
+  padding: 0 0 1.25rem 0;
   line-height: 1.25;
   margin: 0;
   letter-spacing: -0.025em;
-  grid-row: 2;
-  max-width: 42ch;
+  grid-row: auto;
+  max-width: 28ch;
 }
 
 /* === TAGS === */
@@ -1423,4 +1423,24 @@
   .relatedSection {
     padding: 1.5rem 0.75rem;
   }
+}
+
+.leadMagnet {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.leadMagnet p {
+  color: #555;
+  font-size: 0.95rem;
+  margin: 0 0 1rem 0;
+}
+
+.leadMagnet .ctaButton {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
 }

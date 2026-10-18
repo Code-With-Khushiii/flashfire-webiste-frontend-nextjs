@@ -1,15 +1,16 @@
 import { Metadata } from "next";
 import TakeHomePayCalculator from "@/src/components/takeHomePayCalculator/TakeHomePayCalculator";
+import ToolSeoContent from "@/src/components/toolSeo/ToolSeoContent";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 
 export const metadata: Metadata = {
-    title: "Take Home Pay Calculator – Net Paycheck Estimator | Flashfire",
+    title: "Take Home Pay Calculator: Net Paycheck | Flashfire",
     description: "See your actual take-home pay after taxes and deductions. Enter gross pay, frequency, and state tax to get your net paycheck.",
     robots: { index: true, follow: true },
     alternates: { canonical: "https://www.flashfirejobs.com/take-home-pay-calculator" },
     openGraph: {
-        title: "Take Home Pay Calculator – Net Paycheck Estimator | Flashfire",
+        title: "Take Home Pay Calculator: Net Paycheck | Flashfire",
         description: "See your actual take-home pay after taxes and deductions. Enter gross pay, frequency, and state tax to get your net paycheck.",
         url: "https://www.flashfirejobs.com/take-home-pay-calculator",
         type: "website",
@@ -22,6 +23,7 @@ export default function TakeHomePayCalculatorPage() {
         <>
             <Navbar />
             <TakeHomePayCalculator />
+            <ToolSeoContent slug="take-home-pay-calculator" />
             <Footer />
         </>
     );

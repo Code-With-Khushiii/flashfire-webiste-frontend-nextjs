@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { Metadata } from "next";
 import { Suspense } from "react";
 import { blogPosts } from "@/src/data/blogsData";
@@ -7,6 +7,8 @@ import BlogsClient from "@/src/components/blogs/blogsClient";
 import Navbar from "@/src/components/navbar/navbar";
 import Footer from "@/src/components/footer/footer";
 import { slugToCategory, getAllCategorySlugs } from "@/src/utils/blogCategoryUtils";
+import { fitText, getPostsForCategorySlug, getPostsForTagSlug } from "@/src/utils/blogListing";
+import BlogListingSeo from "@/src/components/blogs/BlogListingSeo";
 
 export const dynamicParams = true;
 
@@ -121,11 +123,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     // Women careers
     "best-jobs-for-women": "Best Jobs for Women: 25+ High-Paying Careers for Women in 2026",
   };
-  const metaTitle = post.slug ? (metaTitleMap[post.slug] ?? post.metaTitle ?? post.title) : (post.metaTitle ?? post.title);
-  
+  const rawMetaTitle = post.slug ? (metaTitleMap[post.slug] ?? post.metaTitle ?? post.title) : (post.metaTitle ?? post.title);
+  // Keep search-result snippets inside Google's display limits.
+  const metaTitle = fitText(rawMetaTitle, 60);
+  const metaDescription = fitText(post.excerpt || post.title, 155);
+
   return {
     title: metaTitle,
-    description: post.excerpt,
+    description: metaDescription,
     robots: {
       index: true,
       follow: true,
@@ -135,7 +140,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     openGraph: {
       title: metaTitle,
-      description: post.excerpt,
+      description: metaDescription,
       url: `https://www.flashfirejobs.com/blog/${post.slug}`,
       type: "article",
       images: post.image
@@ -162,7 +167,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: metaTitle,
-      description: post.excerpt,
+      description: metaDescription,
       images: post.image ? [post.image] : ["https://www.flashfirejobs.com/images/og-image.png"],
       },
     };
@@ -170,10 +175,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   // Check if it's a category
   const category = slugToCategory(slug);
-  if (category && category !== slug) {
+  if (category && category !== slug && getPostsForCategorySlug(slug).length > 0) {
     return {
-      title: `${category} - Blog | Flashfire`,
-      description: `Explore ${category} articles, tips, and insights on Flashfire Blog.`,
+      title: fitText(`${category} Articles, Tips & Guides | Flashfire Blog`, 60),
+      description: fitText(
+        `Explore expert ${category} articles, practical tips and step-by-step guides on the Flashfire Blog to help you search smarter, apply faster and get hired.`,
+        155
+      ),
       robots: {
         index: true,
         follow: true,
@@ -235,17 +243,23 @@ export default async function BlogSlugPage({ params }: Props) {
 
   // Check if it's a category
   const category = slugToCategory(slug);
-  if (category && category !== slug) {
+  const categoryPosts = getPostsForCategorySlug(slug);
+  if (category && category !== slug && categoryPosts.length > 0) {
     // It's a category, show filtered blog list
     return (
       <>
         <Navbar />
-        <Suspense fallback={<div style={{ padding: "6rem 2rem", textAlign: "center" }}>Loading blogs...</div>}>
+        <Suspense fallback={<BlogListingSeo kind="category" name={category} posts={categoryPosts} />}>
           <BlogsClient categorySlug={slug} />
         </Suspense>
         <Footer />
       </>
     );
+  }
+
+  // Slugs that are tags rather than categories live under /blog/tag/<slug>.
+  if (getPostsForTagSlug(slug).length > 0) {
+    permanentRedirect(`/blog/tag/${slug}`);
   }
 
   // Not found

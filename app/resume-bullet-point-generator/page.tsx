@@ -1,4 +1,5 @@
 import Navbar from "@/src/components/navbar/navbar";
+import ToolSeoContent from "@/src/components/toolSeo/ToolSeoContent";
 import Footer from "@/src/components/footer/footer";
 import ResumeBulletPointGenerator from "@/src/components/resumeTools/ResumeBulletPointGenerator";
 
@@ -15,6 +16,7 @@ export default function ResumeBulletPointGeneratorPage() {
     <>
       <Navbar />
       <ResumeBulletPointGenerator />
+      <ToolSeoContent slug="resume-bullet-point-generator" />
       <Footer />
     </>
   );

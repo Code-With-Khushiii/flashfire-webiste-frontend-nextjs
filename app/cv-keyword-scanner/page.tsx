@@ -1,4 +1,5 @@
 import Navbar from "@/src/components/navbar/navbar";
+import ToolSeoContent from "@/src/components/toolSeo/ToolSeoContent";
 import Footer from "@/src/components/footer/footer";
 import CVKeywordScanner from "@/src/components/resumeTools/CVKeywordScanner";
 
@@ -15,6 +16,7 @@ export default function CVKeywordScannerPage() {
     <>
       <Navbar />
       <CVKeywordScanner />
+      <ToolSeoContent slug="cv-keyword-scanner" />
       <Footer />
     </>
   );

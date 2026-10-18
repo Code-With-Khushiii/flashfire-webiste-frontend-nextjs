@@ -405,7 +405,7 @@ export default function DashboardAnalyticsPage() {
             <div className="flex justify-center lg:justify-end">
               <div className="w-full max-w-[440px] overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-xl">
                 <div className="border-b bg-gray-50 px-6 py-5">
-                  <h3 className="text-base font-semibold text-black">Your Job Search — At a Glance</h3>
+                  <p className="text-base font-semibold text-black">Your Job Search — At a Glance</p>
                   <p className="mt-1 text-sm text-gray-500">Updated automatically as you apply.</p>
                 </div>
                 <div className="grid grid-cols-2 gap-4 border-b px-6 py-6">

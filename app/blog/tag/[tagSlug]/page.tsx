@@ -5,6 +5,8 @@ import BlogsClient from "@/src/components/blogs/blogsClient";
 import Navbar from "@/src/components/navbar/navbar";
 import Footer from "@/src/components/footer/footer";
 import { slugToTag } from "@/src/utils/blogCategoryUtils";
+import { fitText, getPostsForTagSlug } from "@/src/utils/blogListing";
+import BlogListingSeo from "@/src/components/blogs/BlogListingSeo";
 import { blogPosts } from "@/src/data/blogsData";
 
 export const dynamicParams = true;
@@ -46,8 +48,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const tag = slugToTag(tagSlug);
 
   return {
-    title: `${tag} - Blog Tags | Flashfire`,
-    description: `Explore blog posts tagged with ${tag} on Flashfire Blog.`,
+    title: fitText(`${tag} Articles, Tips & Guides | Flashfire Blog`, 60),
+    description: fitText(
+      `Explore expert ${tag} articles, practical tips and step-by-step guides on the Flashfire Blog to help you search smarter, apply faster and get hired.`,
+      155
+    ),
     robots: {
       index: true,
       follow: true,
@@ -87,10 +92,15 @@ export default async function BlogTagPage({ params }: Props) {
     return notFound();
   }
 
+  const tagPosts = getPostsForTagSlug(tagSlug);
+  if (tagPosts.length === 0) {
+    return notFound();
+  }
+
   return (
     <>
       <Navbar />
-      <Suspense fallback={<div style={{ padding: "6rem 2rem", textAlign: "center" }}>Loading blogs...</div>}>
+      <Suspense fallback={<BlogListingSeo kind="tag" name={slugToTag(tagSlug)} posts={tagPosts} />}>
         <BlogsClient tagSlug={tagSlug} />
       </Suspense>
       <Footer />

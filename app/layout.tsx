@@ -114,6 +114,7 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
+import HtmlLang from "@/src/components/HtmlLang";
 import ClientLogicWrapper from "@/src/components/ClientLogicWrapper";
 import { FB_PIXEL_ID } from "@/lib/metaPixel";
 
@@ -181,6 +182,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </noscript>
         <PHProvider>
           <ClientLogicWrapper>
+            <HtmlLang />
             {children}
             <WhatsAppButton />
           </ClientLogicWrapper>

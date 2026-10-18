@@ -35,7 +35,7 @@ function OfferInput({
 }: OfferInputProps) {
   return (
     <div className="grid gap-4 border border-[#f0ded4] bg-white p-5">
-      <h3 className="text-xl font-black">{label}</h3>
+      <h2 className="text-xl font-black">{label}</h2>
       {[
         ["Base salary", salary, setSalary],
         ["Annual bonus or equity", bonus, setBonus],

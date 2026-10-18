@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Job Search Analytics Dashboard to Improve Interviews",
-  description: "Track job applications, monitor interview rates, and measure your job search performance. FlashFire helps you improve your strategy with actionable insights.",
+  description: "Track job applications, monitor interview rates and measure your job search performance with FlashFire's dashboard and actionable insights.",
   alternates: {
     canonical: "https://www.flashfirejobs.com/features/dashboard-analytics",
     languages: {
@@ -10,7 +10,10 @@ export const metadata: Metadata = {
       "en-CA": "https://www.flashfirejobs.com/en-ca/features/dashboard-analytics",
       "en-GB": "https://www.flashfirejobs.com/en-gb/features/dashboard-analytics",
       "en-AU": "https://www.flashfirejobs.com/en-au/features/dashboard-analytics",
-      "en-EU": "https://www.flashfirejobs.com/en-eu/features/dashboard-analytics",
+      "en-IE": "https://www.flashfirejobs.com/en-ie/features/dashboard-analytics",
+      "en-DE": "https://www.flashfirejobs.com/en-de/features/dashboard-analytics",
+      "en-NL": "https://www.flashfirejobs.com/en-nl/features/dashboard-analytics",
+      "en-FR": "https://www.flashfirejobs.com/en-fr/features/dashboard-analytics",
       "x-default": "https://www.flashfirejobs.com/features/dashboard-analytics",
     },
   },

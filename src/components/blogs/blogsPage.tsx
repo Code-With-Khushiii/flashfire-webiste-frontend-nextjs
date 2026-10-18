@@ -101,19 +101,43 @@ export default function BlogsPage({ post }: { post: BlogPost }) {
     return null;
   }, [overviewText, post.id]);
 
+  // The page template already renders the post title as the single H1, so any
+  // <h1> authored inside the post body is demoted to <h2>.
+  const demotedContent = useMemo(
+    () => {
+      const html = (post?.content || "").replace(/<h1(\b[^>]*)>/gi, "<h2$1>").replace(/<\/h1>/gi, "</h2>");
+      // Never skip a heading level (e.g. H2 -> H4): the H1 is the post title, so
+      // the first heading may be an H2 and each later one at most one level deeper.
+      let prev = 1;
+      const levels: number[] = [];
+      return html
+        .replace(/<(\/?)h([2-6])(\b[^>]*)>/gi, (_m, slash: string, lvl: string, rest: string) => {
+          if (!slash) {
+            const wanted = Number(lvl);
+            const used = Math.min(wanted, prev + 1);
+            levels.push(used);
+            prev = used;
+            return `<h${used}${rest}>`;
+          }
+          return `</h${levels[levels.length - 1] ?? lvl}>`;
+        });
+    },
+    [post?.content]
+  );
+
   // Process content and generate table of contents (client-side only)
-  const [processedContent, setProcessedContent] = useState<string>(post?.content || "");
+  const [processedContent, setProcessedContent] = useState<string>(demotedContent);
   const [tableOfContents, setTableOfContents] = useState<TableOfContentsItem[]>([]);
 
   useEffect(() => {
-    if (!post?.content || typeof window === "undefined") {
-      setProcessedContent(post?.content || "");
+    if (!demotedContent || typeof window === "undefined") {
+      setProcessedContent(demotedContent);
       return;
     }
 
     try {
       const parser = new DOMParser();
-      const doc = parser.parseFromString(post.content, "text/html");
+      const doc = parser.parseFromString(demotedContent, "text/html");
       // Only include H2 headings (main sections), exclude H3 (sub-sections, questions)
       const headings = doc.querySelectorAll("h2");
       const toc: TableOfContentsItem[] = [];
@@ -157,10 +181,10 @@ export default function BlogsPage({ post }: { post: BlogPost }) {
       setTableOfContents(finalToc);
     } catch (error) {
       // Fallback to original content if parsing fails
-      setProcessedContent(post.content);
+      setProcessedContent(demotedContent);
       setTableOfContents([]);
     }
-  }, [post?.content, overviewText]);
+  }, [demotedContent, overviewText]);
 
   // Track active section on scroll
   useEffect(() => {
@@ -330,54 +354,33 @@ export default function BlogsPage({ post }: { post: BlogPost }) {
     }
   };
 
-  // Extract FAQ questions and answers from content (client-side only to avoid hydration issues)
-  const [extractFAQ, setExtractFAQ] = useState<Array<{ question: string; answer: string }>>([]);
-  
-  useEffect(() => {
-    if (!post?.content) {
-      setExtractFAQ([]);
-      return;
-    }
-    
-    try {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(post.content, "text/html");
-      const faqItems: Array<{ question: string; answer: string }> = [];
-      
-      // Look for FAQ section - typically has h2 with "FAQ" and then h3 questions
-      const faqSection = Array.from(doc.querySelectorAll("h2")).find(
-        (h2) => h2.textContent?.toLowerCase().includes("faq")
-      );
-      
-      if (faqSection) {
-        let currentElement = faqSection.nextElementSibling;
-        while (currentElement) {
-          // Check if it's a question (h3 heading)
-          if (currentElement.tagName === "H3") {
-            const question = currentElement.textContent?.trim() || "";
-            // Remove numbering if present (e.g., "1. Question" -> "Question")
-            const cleanQuestion = question.replace(/^\d+\.\s*/, "");
-            
-            // Get the answer from the next paragraph
-            const answerElement = currentElement.nextElementSibling;
-            if (answerElement && answerElement.tagName === "P") {
-              const answer = answerElement.textContent?.trim() || "";
-              if (question && answer) {
-                faqItems.push({ question: cleanQuestion, answer });
-              }
-            }
-          }
-          // Stop if we hit another h2 (next section)
-          if (currentElement.tagName === "H2") break;
-          currentElement = currentElement.nextElementSibling;
+  // Extract FAQ questions and answers from content. Done with plain string
+  // parsing (no DOMParser) so the FAQ schema renders on the server with the
+  // rest of the JSON-LD and is never injected a second time after hydration.
+  const extractFAQ = useMemo(() => {
+    const content = post?.content;
+    if (!content) return [] as Array<{ question: string; answer: string }>;
+    const strip = (html: string) =>
+      html.replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ").trim();
+    const faqItems: Array<{ question: string; answer: string }> = [];
+    const blocks = content.match(/<(h2|h3|p)\b[^>]*>[\s\S]*?<\/\1>/gi) || [];
+    const start = blocks.findIndex(
+      (b) => /^<h2/i.test(b) && strip(b).toLowerCase().includes("faq")
+    );
+    if (start === -1) return faqItems;
+    for (let i = start + 1; i < blocks.length; i++) {
+      const block = blocks[i];
+      if (/^<h2/i.test(block)) break;
+      if (/^<h3/i.test(block)) {
+        const question = strip(block).replace(/^\d+\.\s*/, "");
+        const next = blocks[i + 1];
+        if (question && next && /^<p/i.test(next)) {
+          const answer = strip(next);
+          if (answer) faqItems.push({ question, answer });
         }
       }
-      
-      setExtractFAQ(faqItems);
-    } catch (error) {
-      console.error("Error extracting FAQ:", error);
-      setExtractFAQ([]);
     }
+    return faqItems;
   }, [post?.content]);
 
   // Generate structured data for SEO
@@ -524,6 +527,9 @@ export default function BlogsPage({ post }: { post: BlogPost }) {
               {/* === LEFT: HERO IMAGE AND TITLE === */}
               <div className={styles.topLeftContent}>
               {/* Category chips removed per request */}
+              {/* === TITLE (first, so the H1 leads the first fold) === */}
+              <h1 className={styles.title} itemProp="headline">{post.title}</h1>
+
               {/* === HERO IMAGE === */}
               <div className={styles.imageWrapper}>
                 <CachedBlogImage
@@ -537,9 +543,6 @@ export default function BlogsPage({ post }: { post: BlogPost }) {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
                 />
               </div>
-
-              {/* === TITLE === */}
-              <h1 className={styles.title} itemProp="headline">{post.title}</h1>
 
               {/* === TAGS (clickable to filter blogs by tag) === */}
               {postTags && postTags.length > 0 && (
@@ -591,11 +594,11 @@ export default function BlogsPage({ post }: { post: BlogPost }) {
                   </div>
                 </div>
                 <div className={styles.dateInfo}>
-                  {/* <span className={styles.dateLabel}>Published:</span> */}
-                  {/* <time dateTime={post.date} itemProp="datePublished">{post.date}</time> */}
+                  <span className={styles.dateLabel}>Published:</span>
+                  <time dateTime={post.date} itemProp="datePublished">{post.date}</time>
                   {post.lastUpdated && post.lastUpdated !== post.date && (
                     <>
-                      {/* <span className={styles.dateSeparator}>|</span> */}
+                      <span className={styles.dateSeparator}>|</span>
                       <span className={styles.dateLabel}>Updated:</span>
                       <time dateTime={post.lastUpdated} itemProp="dateModified">{post.lastUpdated}</time>
                     </>
@@ -677,7 +680,7 @@ export default function BlogsPage({ post }: { post: BlogPost }) {
             <aside className={styles.topSidebar}>
               {/* === SOCIAL SHARE === */}
               {/* <div className={styles.sidebarSection}>
-                <h4 className={styles.sidebarTitle}>Share This Article</h4>
+                <h2 className={styles.sidebarTitle}>Share This Article</h2>
                 <div className={styles.socialShare}>
                   <button
                     onClick={() => handleShare("facebook")}
@@ -703,9 +706,18 @@ export default function BlogsPage({ post }: { post: BlogPost }) {
                 </div>
               </div> */}
 
+              {/* === LEAD MAGNET === */}
+              <div className={styles.leadMagnet}>
+                <h2 className={styles.sidebarTitle}>Free ATS Resume Check</h2>
+                <p>See how your resume scores against applicant tracking systems before you apply.</p>
+                <Link href="/ats-score-checker" className={styles.ctaButton}>
+                  Check my resume
+                </Link>
+              </div>
+
               {/* === RECENT POSTS === */}
               <div className={styles.sidebarSection}>
-                <h4 className={styles.sidebarTitle}>Recent Posts</h4>
+                <h2 className={styles.sidebarTitle}>Recent Posts</h2>
                 <ul className={styles.recentPostsList}>
                   {recentPosts.map((recentPost) => (
                     <li key={recentPost.id} className={styles.recentPostItem}>
@@ -724,9 +736,9 @@ export default function BlogsPage({ post }: { post: BlogPost }) {
                           />
                         </div>
                         <div className={styles.recentPostContent}>
-                          <h5 className={styles.recentPostTitle}>
+                          <h3 className={styles.recentPostTitle}>
                             {recentPost.title}
-                          </h5>
+                          </h3>
                           <span className={styles.recentPostDate}>
                             {recentPost.date}
                           </span>
@@ -740,7 +752,7 @@ export default function BlogsPage({ post }: { post: BlogPost }) {
               {/* === MOST VIEWED POSTS === */}
               {mostViewedPosts.length > 0 && (
                 <div className={styles.sidebarSection}>
-                  <h4 className={styles.sidebarTitle}>Most Viewed Blogs</h4>
+                  <h2 className={styles.sidebarTitle}>Most Viewed Blogs</h2>
                   <ul className={styles.recentPostsList}>
                     {mostViewedPosts.map((viewedPost) => (
                       <li key={viewedPost.id} className={styles.recentPostItem}>
@@ -759,9 +771,9 @@ export default function BlogsPage({ post }: { post: BlogPost }) {
                             />
                           </div>
                           <div className={styles.recentPostContent}>
-                            <h5 className={styles.recentPostTitle}>
+                            <h3 className={styles.recentPostTitle}>
                               {viewedPost.title}
-                            </h5>
+                            </h3>
                             <span className={styles.recentPostDate}>
                               {viewedPost.date}
                             </span>
@@ -789,7 +801,7 @@ export default function BlogsPage({ post }: { post: BlogPost }) {
 
         {/* === BOTTOM SOCIAL SHARE === */}
         <div className={styles.bottomShareSection}>
-          <h4 className={styles.sidebarTitle}></h4>
+          <div className={styles.sidebarTitle}></div>
           <div className={styles.socialShare}>
             <button
               onClick={() => handleShare("facebook")}
@@ -871,9 +883,6 @@ export default function BlogsPage({ post }: { post: BlogPost }) {
             </p>
             <a
               href="https://www.flashfirejobs.com"
-              target="_blank"
-
-              rel="noopener noreferrer"
               className={styles.ctaButton}
             >
               Visit FlashFire Jobs

@@ -19,14 +19,14 @@ import HomePageVideo from "@/src/components/homePageVideo/homePageVideo";
 import HomePageWhyChooseFF from "@/src/components/homePageWhyChooseFF/homePageWhyChooseFF";
 import Navbar from "@/src/components/navbar/navbar";
 import HomePageBeforeAfter from "../../homePageBeforeAfter/homePageBeforeAfter";
-import { EU_PREFIX } from "@/src/utils/locale";
+import { getLocalePrefix } from "@/src/utils/locale";
 
 export default function EUHome() {
   const pathname = usePathname();
 
   useEffect(() => {
     // Scroll to top when navigating to the EU home page
-    const isEUHomePage = pathname === EU_PREFIX;
+    const isEUHomePage = pathname === getLocalePrefix(pathname);
 
     if (isEUHomePage) {
       // Use requestAnimationFrame to ensure DOM is ready
