@@ -96,7 +96,7 @@ export default function HomePageSteps() {
               <div className="flex flex-1 items-center justify-center bg-[#f8f0eb] px-6 py-9">
                 <Image
                   src={step.image}
-                  alt={`Step ${step.number}`}
+                  alt={`Step ${step.number}: ${step.title}`}
                   width={130}
                   height={130}
                   className="h-[92px] w-auto object-contain md:h-[112px]"

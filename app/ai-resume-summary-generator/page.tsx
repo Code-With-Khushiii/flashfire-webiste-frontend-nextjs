@@ -1,4 +1,5 @@
 import Navbar from "@/src/components/navbar/navbar";
+import ToolSeoContent from "@/src/components/toolSeo/ToolSeoContent";
 import Footer from "@/src/components/footer/footer";
 import AiResumeSummaryGenerator from "@/src/components/resumeTools/AiResumeSummaryGenerator";
 
@@ -15,6 +16,7 @@ export default function AiResumeSummaryGeneratorPage() {
     <>
       <Navbar />
       <AiResumeSummaryGenerator />
+      <ToolSeoContent slug="ai-resume-summary-generator" />
       <Footer />
     </>
   );

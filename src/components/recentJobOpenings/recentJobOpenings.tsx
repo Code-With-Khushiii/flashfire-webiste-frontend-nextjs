@@ -317,9 +317,9 @@ export default function RecentJobOpenings() {
                                             <Icon className="h-5 w-5" strokeWidth={2.4} />
                                         </span>
                                         <div className="min-w-0">
-                                            <h4 className="text-lg font-black text-[#111827] mb-1">
+                                            <h3 className="text-lg font-black text-[#111827] mb-1">
                                                 {title}
-                                            </h4>
+                                            </h3>
                                             <p className="text-sm md:text-base font-medium leading-6 text-black/60">
                                                 {desc}
                                             </p>
@@ -385,9 +385,9 @@ export default function RecentJobOpenings() {
                                             <Zap className="h-5 w-5" strokeWidth={2.4} />
                                         </span>
                                         <div className="min-w-0">
-                                            <h4 className="text-lg font-black text-[#111827] mb-1">
+                                            <h3 className="text-lg font-black text-[#111827] mb-1">
                                                 {item.title}
-                                            </h4>
+                                            </h3>
                                             <p className="text-sm md:text-base font-medium leading-6 text-black/60">
                                                 {item.desc}
                                             </p>

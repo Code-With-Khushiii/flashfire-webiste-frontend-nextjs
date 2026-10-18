@@ -1,0 +1,52 @@
+# Flashfire
+
+> Flashfire is an AI-powered job search automation service. We apply to 1000+ jobs on your behalf with role-tailored, ATS-optimized resumes, optimize your LinkedIn profile, and keep you updated in real time, so you can focus on interviews. Serving job seekers in the US, Canada, UK, Australia, Ireland, Germany, the Netherlands and France.
+
+## Core pages
+- [Home](https://www.flashfirejobs.com/): Overview of the Flashfire job search automation service
+- [Features](https://www.flashfirejobs.com/features): Everything Flashfire does for your job search
+- [How it works](https://www.flashfirejobs.com/how-flashfire-ai-job-automation-platform-works): The step-by-step process
+- [Pricing](https://www.flashfirejobs.com/pricing): Plans and pricing
+- [FAQ](https://www.flashfirejobs.com/faq): Frequently asked questions
+- [About us](https://www.flashfirejobs.com/about-us): Team and mission
+- [Testimonials](https://www.flashfirejobs.com/testimonials): Results from real users
+- [Contact us](https://www.flashfirejobs.com/contact-us): Get in touch
+- [Book a demo](https://www.flashfirejobs.com/book-a-demo): Schedule a call with the team
+
+## Features
+- [Automated job applications](https://www.flashfirejobs.com/features/automated-job-applications)
+- [Resume optimizer](https://www.flashfirejobs.com/features/resume-optimizer)
+- [LinkedIn profile optimization](https://www.flashfirejobs.com/features/linkedin-profile-optimization)
+- [AI cover letter generator](https://www.flashfirejobs.com/features/ai-cover-letter-generator)
+- [Job application tracker](https://www.flashfirejobs.com/features/job-application-tracker)
+- [Dashboard analytics](https://www.flashfirejobs.com/features/dashboard-analytics)
+- [Interview tips](https://www.flashfirejobs.com/features/interview-tips)
+- [AI job targeting](https://www.flashfirejobs.com/features/ai-job-targeting)
+
+## Free tools
+- [ATS score checker](https://www.flashfirejobs.com/ats-score-checker)
+- [CV keyword scanner](https://www.flashfirejobs.com/cv-keyword-scanner)
+- [Resume headline generator](https://www.flashfirejobs.com/resume-headline-generator)
+- [AI resume summary generator](https://www.flashfirejobs.com/ai-resume-summary-generator)
+- [Resume bullet point generator](https://www.flashfirejobs.com/resume-bullet-point-generator)
+- [Salary estimator](https://www.flashfirejobs.com/salary-estimator)
+- [Gross pay calculator](https://www.flashfirejobs.com/gross-pay-calculator)
+- [Take-home pay calculator](https://www.flashfirejobs.com/take-home-pay-calculator)
+
+## Resources
+- [Blog](https://www.flashfirejobs.com/blog): Guides on resumes, cover letters, interviews, visas and job search strategy
+- [Recent job openings](https://www.flashfirejobs.com/recent-job-openings)
+
+## Regional sites
+- [Canada](https://www.flashfirejobs.com/en-ca)
+- [United Kingdom](https://www.flashfirejobs.com/en-gb)
+- [Australia](https://www.flashfirejobs.com/en-au)
+- [Ireland](https://www.flashfirejobs.com/en-ie)
+- [Germany](https://www.flashfirejobs.com/en-de)
+- [Netherlands](https://www.flashfirejobs.com/en-nl)
+- [France](https://www.flashfirejobs.com/en-fr)
+
+## Policies
+- [Privacy policy](https://www.flashfirejobs.com/privacy-policy)
+- [Terms of service](https://www.flashfirejobs.com/terms-of-service)
+- [Refund policy](https://www.flashfirejobs.com/refund-policy)

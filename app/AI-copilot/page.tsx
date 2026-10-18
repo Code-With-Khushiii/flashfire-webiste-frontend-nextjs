@@ -5,7 +5,7 @@ import Navbar from "@/src/components/navbar/navbar";
 export const metadata: Metadata = {
   title: "AI Job Application Automation Software & Job Search Platform",
   description:
-    "FlashFire is an AI job search platform and automatic job application software that finds jobs, optimizes resumes, and applies daily to help you get interviews faster.",
+    "FlashFire is an AI job search platform that finds jobs, optimizes your resume and applies daily for you, helping you get interviews faster.",
   robots: {
     index: true,
     follow: true,
@@ -17,14 +17,17 @@ export const metadata: Metadata = {
       "en-CA": "https://www.flashfirejobs.com/en-ca/AI-copilot",
       "en-GB": "https://www.flashfirejobs.com/en-gb/AI-copilot",
       "en-AU": "https://www.flashfirejobs.com/en-au/AI-copilot",
-      "en-EU": "https://www.flashfirejobs.com/en-eu/AI-copilot",
+      "en-IE": "https://www.flashfirejobs.com/en-ie/AI-copilot",
+      "en-DE": "https://www.flashfirejobs.com/en-de/AI-copilot",
+      "en-NL": "https://www.flashfirejobs.com/en-nl/AI-copilot",
+      "en-FR": "https://www.flashfirejobs.com/en-fr/AI-copilot",
       "x-default": "https://www.flashfirejobs.com/AI-copilot",
     },
   },
   openGraph: {
     title: "AI Job Application Automation Software & Job Search Platform",
     description:
-      "FlashFire is an AI job search platform and automatic job application software that finds jobs, optimizes resumes, and applies daily to help you get interviews faster.",
+      "FlashFire is an AI job search platform that finds jobs, optimizes your resume and applies daily for you, helping you get interviews faster.",
     url: "https://www.flashfirejobs.com/AI-copilot",
     type: "website",
   },

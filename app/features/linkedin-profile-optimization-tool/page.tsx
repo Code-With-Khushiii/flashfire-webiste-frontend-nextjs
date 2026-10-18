@@ -437,9 +437,9 @@ export default function LinkedInOptimizationPage() {
             {/* Main Card */}
             <div className="relative ml-auto mt-2 right-10 min-h-[205px] w-[260px] rounded-2xl border border-orange-100 bg-white shadow-md xl:w-[300px]">
 
-              <h3 className="border-b border-orange-100 px-5 py-5 text-[15px] font-extrabold leading-tight text-gray-900">
+              <p className="border-b border-orange-100 px-5 py-5 text-[15px] font-extrabold leading-tight text-gray-900">
                 What recruiters actually see
-              </h3>
+              </p>
 
               <div className="space-y-3 px-5 py-4 text-[9px] xl:text-[10px]">
                 <div className="flex min-h-[28px] items-center justify-between rounded-lg border border-orange-100 bg-orange-50/30 px-3">
@@ -581,9 +581,9 @@ export default function LinkedInOptimizationPage() {
                   <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#ff4c00] to-[#ff7a33] text-white shadow-md shadow-orange-200">
                     <FileText className="h-5 w-5" />
                   </div>
-                  <h4 className="text-xl font-extrabold text-gray-900">
+                  <h3 className="text-xl font-extrabold text-gray-900">
                     {item.title}
-                  </h4>
+                  </h3>
                   <p className="mt-5 leading-relaxed text-gray-600">
                     {item.desc}
                   </p>
@@ -641,9 +641,9 @@ export default function LinkedInOptimizationPage() {
                   <Check className="h-6 w-6" />
                 </div>
 
-                <h4 className="text-xl font-extrabold text-[#ff4c00]">
+                <h3 className="text-xl font-extrabold text-[#ff4c00]">
                   {item.title}
-                </h4>
+                </h3>
 
                 <p className="mt-2 text-sm leading-relaxed text-gray-600">
                   {item.desc}
@@ -694,9 +694,9 @@ export default function LinkedInOptimizationPage() {
                 <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#ff4c00] to-[#ff7a33] text-white shadow-md shadow-orange-200">
                   <Check className="h-5 w-5" />
                 </div>
-                <h4 className="text-xl font-extrabold text-gray-900">
+                <h3 className="text-xl font-extrabold text-gray-900">
                   {item.title}
-                </h4>
+                </h3>
                 <p className="mt-4 text-sm leading-relaxed text-gray-600">
                   {item.desc}
                 </p>
@@ -752,7 +752,7 @@ export default function LinkedInOptimizationPage() {
 
           <div className={demoCtaStyles.contentContainer}>
             <div className={demoCtaStyles.leftContent}>
-              <h5 className={demoCtaStyles.demoSubheading}>Got Questions?</h5>
+              <h2 className={demoCtaStyles.demoSubheading}>Got Questions?</h2>
 
               <h2 className={demoCtaStyles.demoHeading}>
                 Book a Demo

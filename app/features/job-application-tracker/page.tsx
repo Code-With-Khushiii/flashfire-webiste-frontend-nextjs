@@ -786,7 +786,7 @@ function HeroTrackerMockup({ onAdd }: { onAdd: () => void }) {
       <div className="rounded-2xl border border-black/10 bg-white p-6 shadow-[0_24px_60px_rgba(17,24,39,0.1)] sm:p-8">
         <div className="mb-6 flex items-start justify-between gap-3">
           <div>
-            <h3 className="text-[14px] font-extrabold text-[#111827]">My job search</h3>
+            <p className="text-[14px] font-extrabold text-[#111827]">My job search</p>
             <p className="text-[11px] font-semibold text-[#7a8290]">Track everything in one place</p>
           </div>
           <button

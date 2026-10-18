@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import AIInterviewAnswerGenerator from "@/src/components/aiInterviewAnswerGenerator/AIInterviewAnswerGenerator";
+import ToolSeoContent from "@/src/components/toolSeo/ToolSeoContent";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 
@@ -22,6 +23,7 @@ export default function AIInterviewAnswerGeneratorPage() {
         <>
             <Navbar />
             <AIInterviewAnswerGenerator />
+            <ToolSeoContent slug="ai-interview-answer-generator" />
             <Footer />
         </>
     );

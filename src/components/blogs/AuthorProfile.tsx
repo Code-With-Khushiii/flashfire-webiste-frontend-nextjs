@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { FaLinkedinIn } from "react-icons/fa";
 import styles from "./AuthorProfile.module.css";
 import BlogCard from "./blogCard";
 
@@ -10,6 +11,15 @@ type Author = {
   name: string;
   bio?: string;
   image?: string;
+  linkedin?: string;
+};
+
+/**
+ * LinkedIn profile per author name. Fill in the real URLs here (or set
+ * `author.linkedin` in blogsData); the icon is only shown when one exists.
+ */
+const AUTHOR_LINKEDIN_URLS: Record<string, string> = {
+  // "Debashri Mandal": "https://www.linkedin.com/in/<profile>/",
 };
 
 const DEFAULT_AUTHOR_IMAGES: Record<string, string> = {
@@ -83,6 +93,17 @@ export default function AuthorProfile({ author, posts }: AuthorProfileProps) {
             <div className={styles.authorHeaderInfo}>
               <h1 className={styles.authorName}>{author.name}</h1>
               <p className={styles.authorTitle}>Content Writer</p>
+              {(author.linkedin || AUTHOR_LINKEDIN_URLS[author.name]) && (
+                <a
+                  href={author.linkedin || AUTHOR_LINKEDIN_URLS[author.name]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${author.name} on LinkedIn`}
+                  style={{ display: "inline-flex", marginTop: 8, fontSize: 20, color: "#0A66C2" }}
+                >
+                  <FaLinkedinIn />
+                </a>
+              )}
             </div>
           </div>
 

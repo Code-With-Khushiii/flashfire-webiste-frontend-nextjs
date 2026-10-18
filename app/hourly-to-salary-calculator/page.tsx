@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import HourlyToSalaryCalculator from "@/src/components/hourlyToSalaryCalculator/HourlyToSalaryCalculator";
+import ToolSeoContent from "@/src/components/toolSeo/ToolSeoContent";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 
@@ -22,6 +23,7 @@ export default function HourlyToSalaryCalculatorPage() {
         <>
             <Navbar />
             <HourlyToSalaryCalculator />
+            <ToolSeoContent slug="hourly-to-salary-calculator" />
             <Footer />
         </>
     );

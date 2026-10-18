@@ -159,10 +159,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: route.url.replace(`${baseUrl}/en-ca`, `${baseUrl}/en-au`),
   }))
 
-  const euRoutes: MetadataRoute.Sitemap = canadaRoutes.map((route) => ({
-    ...route,
-    url: route.url.replace(`${baseUrl}/en-ca`, `${baseUrl}/en-eu`),
-  }))
+  // "en-eu" is not a valid hreflang region; Europe is served per country.
+  const euRoutes: MetadataRoute.Sitemap = ['ie', 'de', 'nl', 'fr'].flatMap((cc) =>
+    canadaRoutes.map((route) => ({
+      ...route,
+      url: route.url.replace(`${baseUrl}/en-ca`, `${baseUrl}/en-${cc}`),
+    }))
+  )
 
   return [...staticRoutes, ...canadaRoutes, ...ukRoutes, ...australiaRoutes, ...euRoutes, ...blogUrls]
 }

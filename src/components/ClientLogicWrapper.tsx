@@ -15,11 +15,8 @@ import * as linkedin from "@/lib/linkedinInsightTag";
 import { warmCalendly } from "@/src/utils/calendlyWarmup";
 import { stripLocalePrefix } from "@/src/utils/locale";
 
-function ClientLogicWrapperContent({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
+/** Modals and route-driven side effects only; page content is rendered outside this Suspense boundary. */
+function ClientLogicWrapperContent() {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -442,7 +439,6 @@ function ClientLogicWrapperContent({
 
     return (
         <>
-            {children}
             <GeoBlockModal
                 isVisible={showGeoBlockModal}
                 onClose={handleGeoBlockModalClose}
@@ -501,8 +497,11 @@ export default function ClientLogicWrapper({
     children: React.ReactNode;
 }) {
     return (
-        <Suspense fallback={<>{children}</>}>
-            <ClientLogicWrapperContent>{children}</ClientLogicWrapperContent>
-        </Suspense>
+        <>
+            {children}
+            <Suspense fallback={null}>
+                <ClientLogicWrapperContent />
+            </Suspense>
+        </>
     );
 }

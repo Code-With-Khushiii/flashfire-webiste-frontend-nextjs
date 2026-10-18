@@ -325,7 +325,7 @@ function Features() {
                 >
                   <Image
                     src={step.image}
-                    alt=""
+                    alt={`Step ${step.id}: ${step.subtitle}`}
                     width={200}
                     height={200}
                     className="h-24 w-full object-contain"
@@ -405,7 +405,7 @@ function Features() {
                   >
                     <Image
                       src={step.image}
-                      alt=""
+                      alt={`Step ${step.id}: ${step.subtitle}`}
                       width={44}
                       height={44}
                       className="absolute right-5 top-5 h-9 w-9 object-contain opacity-80"

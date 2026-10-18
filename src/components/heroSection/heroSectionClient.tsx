@@ -95,7 +95,7 @@ function PlaneTrailScene({
     >
       <Image
         src="/images/element4.png"
-        alt=""
+        alt="Paper plane illustration"
         width={117}
         height={90}
         priority={priority}
@@ -221,7 +221,7 @@ export default function HeroSectionClient({
             {/* Paper plane — above top-right of image */}
             <Image
               src="/images/element4.png"
-              alt=""
+              alt="Paper plane illustration"
               width={117}
               height={90}
               priority
@@ -230,7 +230,7 @@ export default function HeroSectionClient({
             {/* Small spark — left edge, mid-height */}
             <Image
               src="/images/element1.png"
-              alt=""
+              alt="Spark illustration"
               width={83}
               height={99}
               className="pointer-events-none absolute left-[12%] top-[18%] z-20 h-auto w-[29px] select-none"
@@ -238,7 +238,7 @@ export default function HeroSectionClient({
             {/* Cross — upper-left, inside image area */}
             <Image
               src="/images/element3.png"
-              alt=""
+              alt="Cross sparkle illustration"
               width={207}
               height={213}
               className="pointer-events-none absolute left-[60%] top-[100px] z-20 h-auto w-[25px] select-none"
@@ -328,7 +328,7 @@ export default function HeroSectionClient({
         </div>
         <Image
           src="/images/element1.png"
-          alt=""
+          alt="Spark illustration"
           width={83}
           height={99}
           priority
@@ -336,7 +336,7 @@ export default function HeroSectionClient({
         />
         <Image
           src="/images/element3.png"
-          alt=""
+          alt="Cross sparkle illustration"
           width={207}
           height={213}
           priority
@@ -344,14 +344,14 @@ export default function HeroSectionClient({
         />
         <Image
           src="/images/element3.png"
-          alt=""
+          alt="Cross sparkle illustration"
           width={207}
           height={213}
           className="pointer-events-none absolute  z-10 h-auto w-[48px] select-none xl:right-[25.2%] xl:top-[190px]"
         />
         <Image
           src="/images/element3.png"
-          alt=""
+          alt="Cross sparkle illustration"
           width={207}
           height={213}
           className="pointer-events-none absolute  z-10 h-auto w-[35px] select-none xl:right-[23.8%] xl:top-[238px]"
