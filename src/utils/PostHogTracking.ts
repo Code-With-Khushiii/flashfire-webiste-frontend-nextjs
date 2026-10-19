@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import posthog from "posthog-js";
 import { apiUrl } from "./apiBase";
-import { getLocale } from "./locale";
+import { getLocale, getLocaleCountryCode, getLocaleTag } from "./locale";
 
 // Event naming convention: [action]_[object]_[context]
 // Examples: button_click_hero_cta, form_submit_signup, page_view_home
@@ -91,7 +91,7 @@ const safeGetLocation = () => {
       pathname: window.location.pathname,
       search: window.location.search,
     };
-  } catch (e) {
+  } catch {
     // SecurityError can occur in cross-origin contexts
     try {
       return {
@@ -99,7 +99,7 @@ const safeGetLocation = () => {
         pathname: window.location.pathname || '',
         search: window.location.search || '',
       };
-    } catch (e2) {
+    } catch {
       return { href: '', pathname: '', search: '' };
     }
   }
@@ -142,7 +142,7 @@ const getCountryContext = (): Partial<PostHogEventProperties> => {
   const isUK = locale === "uk";
   const isAustralia = locale === "au";
   const isEU = locale === "eu";
-  const fallbackCode = isCanada ? "CA" : isUK ? "GB" : isAustralia ? "AU" : isEU ? "EU" : "US";
+  const fallbackCode = getLocaleCountryCode(location.pathname);
   const countryCode = localStorage.getItem("ff_country_code_v1") || fallbackCode;
 
   // Map country codes to names
@@ -152,6 +152,10 @@ const getCountryContext = (): Partial<PostHogEventProperties> => {
     IN: "India",
     GB: "United Kingdom",
     AU: "Australia",
+    IE: "Ireland",
+    DE: "Germany",
+    NL: "Netherlands",
+    FR: "France",
     EU: "Europe",
   };
 
@@ -162,7 +166,7 @@ const getCountryContext = (): Partial<PostHogEventProperties> => {
     is_uk: isUK,
     is_australia: isAustralia,
     is_eu: isEU,
-    locale: isUK ? "en-gb" : isCanada ? "en-ca" : isAustralia ? "en-au" : isEU ? "en-eu" : "en-us",
+    locale: getLocaleTag(location.pathname),
   };
 };
 
@@ -232,7 +236,7 @@ const sendButtonClickToBackend = async (
         pageUrl: (() => {
           try {
             return typeof window !== 'undefined' && window.location ? window.location.href : '';
-          } catch (e) {
+          } catch {
             // SecurityError can occur in cross-origin contexts
             return typeof window !== 'undefined' && window.location ? window.location.pathname : '';
           }

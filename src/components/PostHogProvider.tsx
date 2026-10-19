@@ -5,7 +5,7 @@ import { useEffect, Suspense } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { captureUTMParams } from "@/src/utils/captureUTMParams";
 import { apiUrl } from "@/src/utils/apiBase";
-import { getLocale } from "@/src/utils/locale";
+import { getLocale, getLocaleCountryCode, getLocaleTag } from "@/src/utils/locale";
 
 // Inner component to handle pageview tracking. Renders nothing itself —
 // mounted alongside (not around) page content so it can suspend on
@@ -31,7 +31,7 @@ function PostHogPageView() {
       // Get country context
       const locale = getLocale(pathname);
       const isCanada = locale === "ca";
-      const localeFallbackCode = isCanada ? "CA" : locale === "uk" ? "GB" : locale === "au" ? "AU" : locale === "eu" ? "EU" : "US";
+      const localeFallbackCode = getLocaleCountryCode(pathname);
       const countryCode = typeof window !== "undefined"
         ? localStorage.getItem("ff_country_code_v1") || localeFallbackCode
         : "US";
@@ -61,7 +61,7 @@ function PostHogPageView() {
         is_uk: locale === "uk",
         is_australia: locale === "au",
         is_eu: locale === "eu",
-        locale: locale === "uk" ? "en-gb" : isCanada ? "en-ca" : locale === "au" ? "en-au" : locale === "eu" ? "en-eu" : "en-us",
+        locale: getLocaleTag(pathname),
         utm_source: utmSource || "direct",
         utm_medium: utmMedium || "website",
         utm_campaign: utmCampaign || "organic",
