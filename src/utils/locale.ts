@@ -109,6 +109,35 @@ export function getLocale(pathname: string | null | undefined): Locale {
   return "us";
 }
 
+/**
+ * The tree a path belongs to as a tag, e.g. "en-de" or "en-eu"; "en-us" for
+ * the root tree. Analytics use this so each EU tree reports separately even
+ * though they all share the "eu" content and pricing locale.
+ */
+export function getLocaleTag(pathname: string | null | undefined): string {
+  const prefix = getLocalePrefix(pathname);
+  return prefix ? prefix.slice(1) : "en-us";
+}
+
+/** Country each tree serves. The pan-European /en-eu tree has no single country. */
+const COUNTRY_BY_PREFIX: Record<Exclude<LocalePrefix, "">, string> = {
+  [US_PREFIX]: "US",
+  [CANADA_PREFIX]: "CA",
+  [UK_PREFIX]: "GB",
+  [AU_PREFIX]: "AU",
+  [IRELAND_PREFIX]: "IE",
+  [GERMANY_PREFIX]: "DE",
+  [NETHERLANDS_PREFIX]: "NL",
+  [FRANCE_PREFIX]: "FR",
+  [EUROPE_PREFIX]: "EU",
+};
+
+/** Fallback country code for a path when the visitor's real country is unknown. */
+export function getLocaleCountryCode(pathname: string | null | undefined): string {
+  const prefix = getLocalePrefix(pathname);
+  return prefix ? COUNTRY_BY_PREFIX[prefix] : "US";
+}
+
 export function isCanadaPath(pathname: string | null | undefined): boolean {
   return getLocalePrefix(pathname) === CANADA_PREFIX;
 }

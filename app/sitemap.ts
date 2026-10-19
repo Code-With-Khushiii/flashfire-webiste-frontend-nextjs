@@ -159,7 +159,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: route.url.replace(`${baseUrl}/en-ca`, `${baseUrl}/en-au`),
   }))
 
-  // "en-eu" is not a valid hreflang region; Europe is served per country.
+  // Europe is listed per country. /en-eu stays live for "Europe" links but is
+  // left out: "en-EU" is not a valid hreflang region and its pages
+  // canonicalize to /en-ie.
   const euRoutes: MetadataRoute.Sitemap = ['ie', 'de', 'nl', 'fr'].flatMap((cc) =>
     canadaRoutes.map((route) => ({
       ...route,
