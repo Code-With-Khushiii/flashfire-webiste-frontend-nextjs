@@ -13,6 +13,8 @@ const LANG_BY_PREFIX: Record<string, string> = {
   "/en-de": "en-DE",
   "/en-nl": "en-NL",
   "/en-fr": "en-FR",
+  // "en-EU" is not a real region tag, so the pan-European tree is plain English.
+  "/en-eu": "en",
 };
 
 /** Keeps <html lang> in step with the page's hreflang region (static HTML stays "en"). */

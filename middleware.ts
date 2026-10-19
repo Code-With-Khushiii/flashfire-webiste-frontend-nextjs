@@ -138,7 +138,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // If already inside a locale tree (/en-ca, /en-gb, /en-au, /en-ie, /en-de, /en-nl, /en-fr, /en-us), allow it
+  // If already inside a locale tree (/en-ca, /en-gb, /en-au, /en-ie, /en-de, /en-nl, /en-fr, /en-eu, /en-us), allow it
   if (LOCALE_PREFIXES.some(prefix => pathname === prefix || pathname.startsWith(`${prefix}/`))) {
     return NextResponse.next();
   }

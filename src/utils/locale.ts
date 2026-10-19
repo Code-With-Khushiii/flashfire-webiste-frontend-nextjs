@@ -24,13 +24,20 @@ export const IRELAND_PREFIX = "/en-ie";
 export const GERMANY_PREFIX = "/en-de";
 export const NETHERLANDS_PREFIX = "/en-nl";
 export const FRANCE_PREFIX = "/en-fr";
+/**
+ * Pan-European tree for links and ads that say "Europe" rather than a country.
+ * Same content and EUR pricing as the country trees, but it sits outside the
+ * hreflang cluster ("en-EU" is not a valid region) and its pages canonicalize
+ * to the matching `/en-ie` page.
+ */
+export const EUROPE_PREFIX = "/en-eu";
 
 /**
  * "EU" is not a valid hreflang region, so the Europe content is served from one
  * tree per country. They share the same EU content and EUR pricing.
  * `EU_PREFIX` is the default for EU countries without a tree of their own.
  */
-export const EU_PREFIXES = [IRELAND_PREFIX, GERMANY_PREFIX, NETHERLANDS_PREFIX, FRANCE_PREFIX] as const;
+export const EU_PREFIXES = [IRELAND_PREFIX, GERMANY_PREFIX, NETHERLANDS_PREFIX, FRANCE_PREFIX, EUROPE_PREFIX] as const;
 export const EU_PREFIX = IRELAND_PREFIX;
 
 /**
