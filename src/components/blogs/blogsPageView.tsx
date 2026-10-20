@@ -12,7 +12,7 @@ import posthog from "posthog-js";
 import Navbar from "../navbar/navbar";
 import Footer from "../footer/footer";
 import Link from "next/link";
-import { FaLinkedinIn, FaFacebookF, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaLinkedinIn, FaFacebookF, FaTwitter } from "react-icons/fa";
 import { categoryToSlug, tagToSlug } from "@/src/utils/blogCategoryUtils";
 
 type BlogPost = {
@@ -436,6 +436,84 @@ export default function BlogsPageView({
     itemListElement: breadcrumbItems,
   };
 
+  const renderShareButtons = () => (
+    <div className={styles.socialShare}>
+      <button
+        onClick={() => handleShare("facebook")}
+        className={styles.socialButton}
+        aria-label="Share on Facebook"
+      >
+        <FaFacebookF />
+      </button>
+      <button
+        onClick={() => handleShare("twitter")}
+        className={styles.socialButton}
+        aria-label="Share on Twitter"
+      >
+        <FaTwitter />
+      </button>
+      <button
+        onClick={() => handleShare("linkedin")}
+        className={styles.socialButton}
+        aria-label="Share on LinkedIn"
+      >
+        <FaLinkedinIn />
+      </button>
+    </div>
+  );
+
+  const renderTocList = () => (
+    <ol className={styles.tocList}>
+      {tableOfContents.map((item, index) => (
+        <li
+          key={index}
+          className={`${styles.tocItem} ${
+            activeSection === item.anchor ? styles.tocItemActive : ""
+          }`}
+        >
+          <button
+            onClick={() => scrollToSection(item.anchor)}
+            className={styles.tocLink}
+          >
+            {item.title}
+          </button>
+        </li>
+      ))}
+    </ol>
+  );
+
+  const renderPostList = (posts: RelatedPost[]) => (
+    <ul className={styles.recentPostsList}>
+      {posts.map((listPost) => (
+        <li key={listPost.id} className={styles.recentPostItem}>
+          <Link
+            href={`/blog/${listPost.slug}`}
+            className={styles.recentPostLink}
+          >
+            <div className={styles.recentPostImage}>
+              <CachedBlogImage
+                src={listPost.image || listPost.coverImage || ""}
+                alt={listPost.title}
+                width={80}
+                height={60}
+                className={styles.recentPostImg}
+                sizes="80px"
+              />
+            </div>
+            <div className={styles.recentPostContent}>
+              <h3 className={styles.recentPostTitle}>
+                {listPost.title}
+              </h3>
+              <span className={styles.recentPostDate}>
+                {listPost.date}
+              </span>
+            </div>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+
   return (
     <>
       {/* Structured Data for SEO */}
@@ -454,83 +532,38 @@ export default function BlogsPageView({
         />
       )}
       <Navbar />
-      {/* Floating Share */}
-      <div className={styles.floatingShare}>
-        <button
-          onClick={() => handleShare("facebook")}
-          className={styles.socialButton}
-          aria-label="Share on Facebook"
-        >
-          <FaFacebookF />
-        </button>
-        <button
-          onClick={() => handleShare("twitter")}
-          className={styles.socialButton}
-          aria-label="Share on Twitter"
-        >
-          <FaTwitter />
-        </button>
-        <button
-          onClick={() => handleShare("linkedin")}
-          className={styles.socialButton}
-          aria-label="Share on LinkedIn"
-        >
-          <FaLinkedinIn />
-        </button>
-      </div>
-      <div className={styles.pageWrapper}>
-        <div className={styles.blogContainer}>
-          {/* === BREADCRUMB === */}
-          <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-            <Link href="/">Home</Link>
-            <span className={styles.breadcrumbSeparator}> &gt; </span>
-            <Link href="/blog">Blog</Link>
-            <span className={styles.breadcrumbSeparator}> &gt; </span>
-            <Link href={`/blog/${categoryToSlug(post.category || "")}`}>{post.category}</Link>
-            <span className={styles.breadcrumbSeparator}> &gt; </span>
-            <span className={styles.breadcrumbCurrent} title={post.title}>{post.title}</span>
-          </nav>
+      <main className={styles.pageWrapper}>
+        {/* === HERO: breadcrumb, date, title, author | cover image === */}
+        <section className={styles.hero}>
+          <div className={styles.heroInner}>
+            <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+              <Link href="/">Home</Link>
+              <span className={styles.breadcrumbSeparator}> &gt; </span>
+              <Link href="/blog">Blog</Link>
+              <span className={styles.breadcrumbSeparator}> &gt; </span>
+              <Link href={`/blog/${categoryToSlug(post.category || "")}`}>{post.category}</Link>
+              <span className={styles.breadcrumbSeparator}> &gt; </span>
+              <span className={styles.breadcrumbCurrent} title={post.title}>{post.title}</span>
+            </nav>
 
-          {/* === TOP SECTION WITH HERO IMAGE AND SIDEBAR === */}
-          <div className={styles.topSectionWrapper}>
-            <div className={styles.topSection}>
-              {/* === LEFT: HERO IMAGE AND TITLE === */}
-              <div className={styles.topLeftContent}>
-              {/* Category chips removed per request */}
-              {/* === TITLE (first, so the H1 leads the first fold) === */}
-              <h1 className={styles.title} itemProp="headline">{post.title}</h1>
-
-              {/* === HERO IMAGE === */}
-              <div className={styles.imageWrapper}>
-                <CachedBlogImage
-                  src={post.image || post.coverImage || ""}
-                  alt={post.title}
-                  width={1200}
-                  height={630}
-                  className={styles.image}
-                  priority
-                  itemProp="image"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-                />
-              </div>
-
-              {/* === TAGS (clickable to filter blogs by tag) === */}
-              {postTags && postTags.length > 0 && (
-                <div className={styles.tagsWrapper}>
-                  {postTags.map((tag, index) => (
-                    <Link
-                      key={index}
-                      href={`/blog/tag/${tagToSlug(tag)}`}
-                      className={styles.tag}
-                    >
-                      {tag}
-                    </Link>
-                  ))}
+            <div className={styles.heroGrid}>
+              <div className={styles.heroText}>
+                <div className={styles.dateInfo}>
+                  <span className={styles.dateLabel}>Published:</span>
+                  <time dateTime={post.date} itemProp="datePublished">{post.date}</time>
+                  {post.lastUpdated && post.lastUpdated !== post.date && (
+                    <>
+                      <span className={styles.dateSeparator}>|</span>
+                      <span className={styles.dateLabel}>Updated:</span>
+                      <time dateTime={post.lastUpdated} itemProp="dateModified">{post.lastUpdated}</time>
+                    </>
+                  )}
+                  <span className={styles.readTime}>⏱️ {post.readTime}</span>
                 </div>
-              )}
 
-              {/* === AUTHOR & DATE === */}
-              <div className={styles.meta}>
+                <h1 className={styles.title} itemProp="headline">{post.title}</h1>
+
+                {/* === AUTHOR === */}
                 <div className={styles.authorInfo} itemScope itemType="https://schema.org/Person">
                   {post.author?.image && (
                     <CachedBlogImage
@@ -563,303 +596,205 @@ export default function BlogsPageView({
                     )}
                   </div>
                 </div>
-                <div className={styles.dateInfo}>
-                  <span className={styles.dateLabel}>Published:</span>
-                  <time dateTime={post.date} itemProp="datePublished">{post.date}</time>
-                  {post.lastUpdated && post.lastUpdated !== post.date && (
-                    <>
-                      <span className={styles.dateSeparator}>|</span>
-                      <span className={styles.dateLabel}>Updated:</span>
-                      <time dateTime={post.lastUpdated} itemProp="dateModified">{post.lastUpdated}</time>
-                    </>
-                  )}
-                  <span className={styles.readTime}>⏱️ {post.readTime}</span>
-                </div>
               </div>
 
-              {/* === BLOG OVERVIEW === */}
-              {overviewText && (
-                <div id="overview-section" className={styles.overviewBox}>
-                  {/* <h3 className={styles.overviewTitle}> Blog Overview</h3> */}
-                  {overviewParagraphs ? (
-                    <div className={styles.overviewText}>
-                      <p
-                        style={{ marginBottom: "0.75rem" }}
-                        dangerouslySetInnerHTML={{ __html: overviewParagraphs[0] }}
-                      />
-                      <p
-                        style={{ marginBottom: "0.75rem" }}
-                        dangerouslySetInnerHTML={{ __html: overviewParagraphs[1] }}
-                      />
-                      <p
-                        style={{ marginBottom: 0 }}
-                        dangerouslySetInnerHTML={{ __html: overviewParagraphs[2] }}
-                      />
-                    </div>
-                  ) : overviewText.includes('\n\n') ? (
-                    <div className={styles.overviewText}>
-                      {overviewText.split('\n\n').map((para, index, array) => (
-                        <p
-                          key={index}
-                          style={{ marginBottom: index < array.length - 1 ? "0.75rem" : 0 }}
-                          dangerouslySetInnerHTML={{ __html: para.trim() }}
-                        />
-                      ))}
-                    </div>
-                  ) : (
+              {/* === HERO IMAGE === */}
+              <div className={styles.imageWrapper}>
+                <CachedBlogImage
+                  src={post.image || post.coverImage || ""}
+                  alt={post.title}
+                  width={1200}
+                  height={630}
+                  className={styles.image}
+                  priority
+                  itemProp="image"
+                  sizes="(max-width: 1024px) 100vw, 600px"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* === BODY: article | sticky sidebar === */}
+        <div className={styles.bodyGrid}>
+          <div className={styles.mainColumn}>
+            {/* === BLOG OVERVIEW === */}
+            {overviewText && (
+              <div id="overview-section" className={styles.overviewBox}>
+                <p className={styles.overviewTitle}>Summary:</p>
+                {overviewParagraphs ? (
+                  <div className={styles.overviewText}>
                     <p
-                      className={styles.overviewText}
-                      dangerouslySetInnerHTML={{ __html: overviewText }}
+                      style={{ marginBottom: "0.75rem" }}
+                      dangerouslySetInnerHTML={{ __html: overviewParagraphs[0] }}
                     />
-                  )}
-                </div>
-              )}
-
-              {/* === TABLE OF CONTENTS === */}
-              {tableOfContents.length > 0 && (
-                <div className={styles.tableOfContents}>
-                  <div className={styles.tocTitleWrapper}>
-                    <span className={styles.tocTitleLine}></span>
-                    <h3 className={styles.tocTitle}>IN THIS ARTICLE</h3>
-                    <span className={styles.tocTitleLine}></span>
+                    <p
+                      style={{ marginBottom: "0.75rem" }}
+                      dangerouslySetInnerHTML={{ __html: overviewParagraphs[1] }}
+                    />
+                    <p
+                      style={{ marginBottom: 0 }}
+                      dangerouslySetInnerHTML={{ __html: overviewParagraphs[2] }}
+                    />
                   </div>
-                  <ul className={styles.tocList}>
-                    {tableOfContents.map((item, index) => (
-                      <li
+                ) : overviewText.includes('\n\n') ? (
+                  <div className={styles.overviewText}>
+                    {overviewText.split('\n\n').map((para, index, array) => (
+                      <p
                         key={index}
-                        className={`${styles.tocItem} ${
-                          item.level === 3 ? styles.tocItemNested : ""
-                        } ${
-                          activeSection === item.anchor ? styles.tocItemActive : ""
-                        }`}
-                      >
-                        <button
-                          onClick={() => scrollToSection(item.anchor)}
-                          className={styles.tocLink}
-                        >
-                          {item.title}
-                        </button>
-                      </li>
+                        style={{ marginBottom: index < array.length - 1 ? "0.75rem" : 0 }}
+                        dangerouslySetInnerHTML={{ __html: para.trim() }}
+                      />
                     ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-
-            {/* === RIGHT: SIDEBAR === */}
-            <aside className={styles.topSidebar}>
-              {/* === SOCIAL SHARE === */}
-              {/* <div className={styles.sidebarSection}>
-                <h2 className={styles.sidebarTitle}>Share This Article</h2>
-                <div className={styles.socialShare}>
-                  <button
-                    onClick={() => handleShare("facebook")}
-                    className={styles.socialButton}
-                    aria-label="Share on Facebook"
-                  >
-                    <FaFacebookF />
-                  </button>
-                  <button
-                    onClick={() => handleShare("twitter")}
-                    className={styles.socialButton}
-                    aria-label="Share on Twitter"
-                  >
-                    <FaTwitter />
-                  </button>
-                  <button
-                    onClick={() => handleShare("linkedin")}
-                    className={styles.socialButton}
-                    aria-label="Share on LinkedIn"
-                  >
-                    <FaLinkedinIn />
-                  </button>
-                </div>
-              </div> */}
-
-              {/* === LEAD MAGNET === */}
-              <div className={styles.leadMagnet}>
-                <h2 className={styles.sidebarTitle}>Free ATS Resume Check</h2>
-                <p>See how your resume scores against applicant tracking systems before you apply.</p>
-                <Link href="/ats-score-checker" className={styles.ctaButton}>
-                  Check my resume
-                </Link>
+                  </div>
+                ) : (
+                  <p
+                    className={styles.overviewText}
+                    dangerouslySetInnerHTML={{ __html: overviewText }}
+                  />
+                )}
               </div>
+            )}
 
-              {/* === RECENT POSTS === */}
-              <div className={styles.sidebarSection}>
-                <h2 className={styles.sidebarTitle}>Recent Posts</h2>
-                <ul className={styles.recentPostsList}>
-                  {recentPosts.map((recentPost) => (
-                    <li key={recentPost.id} className={styles.recentPostItem}>
-                      <Link
-                        href={`/blog/${recentPost.slug}`}
-                        className={styles.recentPostLink}
-                      >
-                        <div className={styles.recentPostImage}>
-                          <CachedBlogImage
-                            src={recentPost.image || recentPost.coverImage || ""}
-                            alt={recentPost.title}
-                            width={80}
-                            height={60}
-                            className={styles.recentPostImg}
-                            sizes="80px"
-                          />
-                        </div>
-                        <div className={styles.recentPostContent}>
-                          <h3 className={styles.recentPostTitle}>
-                            {recentPost.title}
-                          </h3>
-                          <span className={styles.recentPostDate}>
-                            {recentPost.date}
-                          </span>
-                        </div>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            {/* === TABLE OF CONTENTS (mobile/tablet: collapsible, above the article) === */}
+            {tableOfContents.length > 0 && (
+              <details className={styles.mobileToc}>
+                <summary className={styles.mobileTocSummary}>In this article</summary>
+                {renderTocList()}
+              </details>
+            )}
 
-              {/* === MOST VIEWED POSTS === */}
-              {mostViewedPosts.length > 0 && (
-                <div className={styles.sidebarSection}>
-                  <h2 className={styles.sidebarTitle}>Most Viewed Blogs</h2>
-                  <ul className={styles.recentPostsList}>
-                    {mostViewedPosts.map((viewedPost) => (
-                      <li key={viewedPost.id} className={styles.recentPostItem}>
-                        <Link
-                          href={`/blog/${viewedPost.slug}`}
-                          className={styles.recentPostLink}
-                        >
-                          <div className={styles.recentPostImage}>
-                            <CachedBlogImage
-                              src={viewedPost.image || viewedPost.coverImage || ""}
-                              alt={viewedPost.title}
-                              width={80}
-                              height={60}
-                              className={styles.recentPostImg}
-                              sizes="80px"
-                            />
-                          </div>
-                          <div className={styles.recentPostContent}>
-                            <h3 className={styles.recentPostTitle}>
-                              {viewedPost.title}
-                            </h3>
-                            <span className={styles.recentPostDate}>
-                              {viewedPost.date}
-                            </span>
-                          </div>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              </aside>
-            </div>
-
-            {/* === MAIN CONTENT === */}
-            <div className={styles.mainContentWrapper}>
-              {/* === ARTICLE CONTENT === */}
+            {/* === ARTICLE CONTENT === */}
             <article
               className={styles.content}
               itemScope
               itemType="https://schema.org/Article"
               dangerouslySetInnerHTML={{ __html: processedContent }}
             />
+
+            {/* === TAGS (clickable to filter blogs by tag) === */}
+            {postTags && postTags.length > 0 && (
+              <div className={styles.tagsWrapper}>
+                {postTags.map((tag, index) => (
+                  <Link
+                    key={index}
+                    href={`/blog/tag/${tagToSlug(tag)}`}
+                    className={styles.tag}
+                  >
+                    {tag}
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            {/* === BOTTOM SOCIAL SHARE === */}
+            <div className={styles.bottomShareSection}>
+              <span className={styles.shareLabel}>Share this article</span>
+              {renderShareButtons()}
             </div>
           </div>
 
-        {/* === BOTTOM SOCIAL SHARE === */}
-        <div className={styles.bottomShareSection}>
-          <div className={styles.sidebarTitle}></div>
-          <div className={styles.socialShare}>
-            <button
-              onClick={() => handleShare("facebook")}
-              className={styles.socialButton}
-              aria-label="Share on Facebook"
-            >
-              <FaFacebookF />
-            </button>
-            <button
-              onClick={() => handleShare("twitter")}
-              className={styles.socialButton}
-              aria-label="Share on Twitter"
-            >
-              <FaTwitter />
-            </button>
-            <button
-              onClick={() => handleShare("linkedin")}
-              className={styles.socialButton}
-              aria-label="Share on LinkedIn"
-            >
-              <FaLinkedinIn />
-            </button>
-          </div>
+          {/* === RIGHT: STICKY SIDEBAR === */}
+          <aside className={styles.sidebar}>
+            <div className={styles.sidebarShare}>
+              <span className={styles.shareLabel}>Share this article</span>
+              {renderShareButtons()}
+            </div>
+
+            {tableOfContents.length > 0 && (
+              <nav className={styles.tableOfContents} aria-label="In this article">
+                <p className={styles.tocTitle}>In this article</p>
+                {renderTocList()}
+              </nav>
+            )}
+
+            {/* === LEAD MAGNET === */}
+            <div className={styles.leadMagnet}>
+              <h2 className={styles.leadMagnetTitle}>Free ATS Resume Check</h2>
+              <p>See how your resume scores against applicant tracking systems before you apply.</p>
+              <Link href="/ats-score-checker" className={styles.ctaButton}>
+                Check my resume
+              </Link>
+            </div>
+          </aside>
         </div>
 
-          {/* === RELATED ARTICLES === */}
-          {relatedArticles.length > 0 && (
-            <section className={styles.relatedSection}>
-              <h2 className={styles.relatedTitle}>Related Articles</h2>
-              <div
-                className={`${styles.relatedGrid} ${
-                  relatedArticles.length > 3 ? styles.relatedGridScroll : ""
-                }`}
-              >
-                {relatedArticles.map((relatedPost) => (
-                  <article key={relatedPost.id} className={styles.relatedCard}>
-                    <Link href={`/blog/${relatedPost.slug}`}>
-                      <div className={styles.relatedImage}>
-                        <CachedBlogImage
-                          src={relatedPost.image || relatedPost.coverImage || ""}
-                          alt={relatedPost.title}
-                          width={400}
-                          height={250}
-                          className={styles.relatedImg}
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
-                        />
-                      </div>
-                      <div className={styles.relatedContent}>
-                        <span className={styles.relatedCategory}>
-                          {relatedPost.category}
-                        </span>
-                        <h3 className={styles.relatedCardTitle}>
-                          {relatedPost.title}
-                        </h3>
-                        {relatedPost.excerpt && (
-                          <p className={styles.relatedExcerpt}>
-                            {relatedPost.excerpt}
-                          </p>
-                        )}
-                        <div className={styles.relatedMeta}>
-                          <span>{relatedPost.date}</span>
-                          <span>•</span>
-                          <span>{relatedPost.readTime}</span>
-                        </div>
-                      </div>
-                    </Link>
-                  </article>
-                ))}
-              </div>
-            </section>
+        {/* === RECENT + MOST VIEWED POSTS === */}
+        <div className={styles.moreSection}>
+          <div className={styles.sidebarSection}>
+            <h2 className={styles.sidebarTitle}>Recent Posts</h2>
+            {renderPostList(recentPosts)}
+          </div>
+          {mostViewedPosts.length > 0 && (
+            <div className={styles.sidebarSection}>
+              <h2 className={styles.sidebarTitle}>Most Viewed Blogs</h2>
+              {renderPostList(mostViewedPosts)}
+            </div>
           )}
-
-          {/* === CTA === */}
-          <div className={styles.ctaBox}>
-            <h3>Ready to accelerate your job search?</h3>
-            <p>
-              Join thousands of international students landing their dream jobs
-              in the U.S.
-            </p>
-            <a
-              href="https://www.flashfirejobs.com"
-              className={styles.ctaButton}
-            >
-              Visit FlashFire Jobs
-            </a>
-          </div>
         </div>
-      </div>
+
+        {/* === RELATED ARTICLES === */}
+        {relatedArticles.length > 0 && (
+          <section className={styles.relatedSection}>
+            <h2 className={styles.relatedTitle}>Related Articles</h2>
+            <div
+              className={`${styles.relatedGrid} ${
+                relatedArticles.length > 3 ? styles.relatedGridScroll : ""
+              }`}
+            >
+              {relatedArticles.map((relatedPost) => (
+                <article key={relatedPost.id} className={styles.relatedCard}>
+                  <Link href={`/blog/${relatedPost.slug}`}>
+                    <div className={styles.relatedImage}>
+                      <CachedBlogImage
+                        src={relatedPost.image || relatedPost.coverImage || ""}
+                        alt={relatedPost.title}
+                        width={400}
+                        height={250}
+                        className={styles.relatedImg}
+                        sizes="(max-width: 768px) 85vw, 380px"
+                      />
+                    </div>
+                    <div className={styles.relatedContent}>
+                      <span className={styles.relatedCategory}>
+                        {relatedPost.category}
+                      </span>
+                      <h3 className={styles.relatedCardTitle}>
+                        {relatedPost.title}
+                      </h3>
+                      {relatedPost.excerpt && (
+                        <p className={styles.relatedExcerpt}>
+                          {relatedPost.excerpt}
+                        </p>
+                      )}
+                      <div className={styles.relatedMeta}>
+                        <span>{relatedPost.date}</span>
+                        <span>•</span>
+                        <span>{relatedPost.readTime}</span>
+                      </div>
+                    </div>
+                  </Link>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* === CTA === */}
+        <div className={styles.ctaBox}>
+          <h3>Ready to accelerate your job search?</h3>
+          <p>
+            Join thousands of international students landing their dream jobs
+            in the U.S.
+          </p>
+          <a
+            href="https://www.flashfirejobs.com"
+            className={styles.ctaButton}
+          >
+            Visit FlashFire Jobs
+          </a>
+        </div>
+      </main>
       <Footer />
     </>
   );
