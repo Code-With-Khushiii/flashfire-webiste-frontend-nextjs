@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import HomePage from "@/src/components/pages/home/Home";
 import HomeImagePreloader from "./HomeImagePreloader";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export const metadata: Metadata = {
   title: "Flashfire: Job Search Virtual Assistant",
@@ -12,17 +13,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/",
-      "en-CA": "https://www.flashfirejobs.com/en-ca",
-      "en-GB": "https://www.flashfirejobs.com/en-gb",
-      "en-AU": "https://www.flashfirejobs.com/en-au",
-      "en-IE": "https://www.flashfirejobs.com/en-ie",
-      "en-DE": "https://www.flashfirejobs.com/en-de",
-      "en-NL": "https://www.flashfirejobs.com/en-nl",
-      "en-FR": "https://www.flashfirejobs.com/en-fr",
-      "x-default": "https://www.flashfirejobs.com/",
-    },
+    languages: hreflangLanguages("/"),
   },
   openGraph: {
     title: "Flashfire: Job Search Virtual Assistant",

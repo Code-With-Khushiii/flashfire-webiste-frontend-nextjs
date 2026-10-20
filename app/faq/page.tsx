@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Navbar from "@/src/components/navbar/navbar";
 import Footer from "@/src/components/footer/footer";
 import HomePageFAQ from "@/src/components/homePageFAQ/homePageFAQ";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export const metadata: Metadata = {
   title: "Flashfire FAQ: Job Search Automation Questions",
@@ -13,17 +14,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/faq",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/faq",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/faq",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/faq",
-      "en-AU": "https://www.flashfirejobs.com/en-au/faq",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/faq",
-      "en-DE": "https://www.flashfirejobs.com/en-de/faq",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/faq",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/faq",
-      "x-default": "https://www.flashfirejobs.com/faq",
-    },
+    languages: hreflangLanguages("/faq"),
   },
   openGraph: {
     title: "FAQ — Flashfire Job Search Automation",

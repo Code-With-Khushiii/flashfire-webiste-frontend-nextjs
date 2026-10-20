@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import CanadaHome from "@/src/components/countries/ca/Home";
 import ScrollToSection from "@/src/utils/ui/scrollToSection";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export const metadata: Metadata = {
   title: "Flashfire FAQs: AI Job Search Questions Answered",
@@ -12,17 +13,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-ca/faq",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/faq",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/faq",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/faq",
-      "en-AU": "https://www.flashfirejobs.com/en-au/faq",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/faq",
-      "en-DE": "https://www.flashfirejobs.com/en-de/faq",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/faq",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/faq",
-      "x-default": "https://www.flashfirejobs.com/faq",
-    },
+    languages: hreflangLanguages("/faq"),
   },
   openGraph: {
     title: "Flashfire FAQs: AI Job Search Questions Answered",

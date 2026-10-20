@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/ai-career-assessment-skill-gap-analysis/page";
 
@@ -9,16 +10,6 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-au/ai-career-assessment-skill-gap-analysis",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/ai-career-assessment-skill-gap-analysis",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/ai-career-assessment-skill-gap-analysis",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/ai-career-assessment-skill-gap-analysis",
-      "en-AU": "https://www.flashfirejobs.com/en-au/ai-career-assessment-skill-gap-analysis",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/ai-career-assessment-skill-gap-analysis",
-      "en-DE": "https://www.flashfirejobs.com/en-de/ai-career-assessment-skill-gap-analysis",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/ai-career-assessment-skill-gap-analysis",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/ai-career-assessment-skill-gap-analysis",
-      "x-default": "https://www.flashfirejobs.com/ai-career-assessment-skill-gap-analysis",
-    },
+    languages: hreflangLanguages("/ai-career-assessment-skill-gap-analysis"),
   },
 };

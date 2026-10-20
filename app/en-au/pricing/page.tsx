@@ -6,6 +6,7 @@ import HomePageOfferLetters from "@/src/components/homePageOfferLetters/homePage
 import HomePageHappyUsers from "@/src/components/homePageHappyUsers/homePageHappyUsers";
 import HomePageFoundersNote from "@/src/components/homePageFoundersNote/homePageFoundersNote";
 import HomePageFAQ from "@/src/components/homePageFAQ/homePageFAQ";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export const metadata: Metadata = {
   title: "Flashfire AU Pricing: Affordable Job Automation Plans",
@@ -17,17 +18,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-au/pricing",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/pricing",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/pricing",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/pricing",
-      "en-AU": "https://www.flashfirejobs.com/en-au/pricing",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/pricing",
-      "en-DE": "https://www.flashfirejobs.com/en-de/pricing",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/pricing",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/pricing",
-      "x-default": "https://www.flashfirejobs.com/pricing",
-    },
+    languages: hreflangLanguages("/pricing"),
   },
   openGraph: {
     title: "Flashfire AU Pricing: Affordable Job Automation Plans",

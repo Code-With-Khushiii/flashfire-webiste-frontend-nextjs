@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/ai-resume-builder/page";
 
@@ -9,16 +10,6 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-au/ai-resume-builder",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/ai-resume-builder",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/ai-resume-builder",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/ai-resume-builder",
-      "en-AU": "https://www.flashfirejobs.com/en-au/ai-resume-builder",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/ai-resume-builder",
-      "en-DE": "https://www.flashfirejobs.com/en-de/ai-resume-builder",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/ai-resume-builder",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/ai-resume-builder",
-      "x-default": "https://www.flashfirejobs.com/ai-resume-builder",
-    },
+    languages: hreflangLanguages("/ai-resume-builder"),
   },
 };

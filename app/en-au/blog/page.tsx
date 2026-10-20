@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import BlogsClient from "@/src/components/blogs/blogsClient";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export const metadata: Metadata = {
   title: "Flashfire Blog: Australian Career Tips & Job Advice",
@@ -14,17 +15,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-au/blog",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/blog",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/blog",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/blog",
-      "en-AU": "https://www.flashfirejobs.com/en-au/blog",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/blog",
-      "en-DE": "https://www.flashfirejobs.com/en-de/blog",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/blog",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/blog",
-      "x-default": "https://www.flashfirejobs.com/blog",
-    },
+    languages: hreflangLanguages("/blog"),
   },
   openGraph: {
     title: "Flashfire Blog: Australian Career Tips & Job Advice",

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Navbar from "@/src/components/navbar/navbar";
 import Footer from "@/src/components/footer/footer";
 import HomePageVideo from "@/src/components/homePageVideo/homePageVideo";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export const metadata: Metadata = {
   title: "Flashfire Product Demo - See the Platform in Action | Canada",
@@ -13,17 +14,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-ca/product-demo",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/product-demo",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/product-demo",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/product-demo",
-      "en-AU": "https://www.flashfirejobs.com/en-au/product-demo",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/product-demo",
-      "en-DE": "https://www.flashfirejobs.com/en-de/product-demo",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/product-demo",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/product-demo",
-      "x-default": "https://www.flashfirejobs.com/product-demo",
-    },
+    languages: hreflangLanguages("/product-demo"),
   },
   openGraph: {
     title: "Flashfire Product Demo - See the Platform in Action",

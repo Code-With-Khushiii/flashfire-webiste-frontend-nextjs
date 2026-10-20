@@ -2,6 +2,7 @@ import {Metadata} from "next";
 import AICopilot from "@/src/components/AICopilot/AICopilot";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata: Metadata = {
   title: "AI Job Application Automation Software & Job Search Platform",
   description:
@@ -12,17 +13,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/AI-copilot",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/AI-copilot",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/AI-copilot",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/AI-copilot",
-      "en-AU": "https://www.flashfirejobs.com/en-au/AI-copilot",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/AI-copilot",
-      "en-DE": "https://www.flashfirejobs.com/en-de/AI-copilot",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/AI-copilot",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/AI-copilot",
-      "x-default": "https://www.flashfirejobs.com/AI-copilot",
-    },
+    languages: hreflangLanguages("/AI-copilot"),
   },
   openGraph: {
     title: "AI Job Application Automation Software & Job Search Platform",

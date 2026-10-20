@@ -1,21 +1,12 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export const metadata: Metadata = {
   title: "Interview Practice Tool for Mock Interviews",
   description: "Practice real interview questions, improve your answers with instant feedback, build confidence, and prepare for interviews with FlashFire's interview practice tool.",
   alternates: {
     canonical: "https://www.flashfirejobs.com/features/interview-tips",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/features/interview-tips",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/features/interview-tips",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/features/interview-tips",
-      "en-AU": "https://www.flashfirejobs.com/en-au/features/interview-tips",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/features/interview-tips",
-      "en-DE": "https://www.flashfirejobs.com/en-de/features/interview-tips",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/features/interview-tips",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/features/interview-tips",
-      "x-default": "https://www.flashfirejobs.com/features/interview-tips",
-    },
+    languages: hreflangLanguages("/features/interview-tips"),
   },
   twitter: {
     card: "summary_large_image",

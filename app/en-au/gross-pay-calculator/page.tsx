@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/gross-pay-calculator/page";
 
@@ -8,17 +9,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-au/gross-pay-calculator",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/gross-pay-calculator",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/gross-pay-calculator",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/gross-pay-calculator",
-      "en-AU": "https://www.flashfirejobs.com/en-au/gross-pay-calculator",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/gross-pay-calculator",
-      "en-DE": "https://www.flashfirejobs.com/en-de/gross-pay-calculator",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/gross-pay-calculator",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/gross-pay-calculator",
-      "x-default": "https://www.flashfirejobs.com/gross-pay-calculator",
-    },
+    languages: hreflangLanguages("/gross-pay-calculator"),
   },
   openGraph: {
     title: "Gross Pay Calculator – Weekly, Monthly & Annual | Flashfire Australia",

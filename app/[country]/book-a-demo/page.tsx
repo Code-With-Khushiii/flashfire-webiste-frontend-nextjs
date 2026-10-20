@@ -1,0 +1,56 @@
+"use client";
+
+import { useLayoutEffect, useSyncExternalStore } from "react";
+import HomePage from "@/src/components/pages/home/Home";
+import AboutUs from "@/src/components/pages/aboutUs/AboutUs";
+import Navbar from "@/src/components/navbar/navbar";
+import Footer from "@/src/components/footer/footer";
+import { stripLocalePrefix } from "@/src/utils/locale";
+
+
+const subscribeNoop = () => () => {};
+
+export default function BookADemoPage() {
+    // null on the server and during hydration, the saved page once on the client.
+    const previousPage = useSyncExternalStore(
+        subscribeNoop,
+        () => sessionStorage.getItem('previousPageBeforeBookADemo'),
+        () => null
+    );
+
+    useLayoutEffect(() => {
+        const savedScrollY = sessionStorage.getItem('preserveScrollPosition');
+        if (savedScrollY) {
+            const scrollY = parseInt(savedScrollY, 10);
+            
+            window.scrollTo({ top: scrollY, behavior: 'instant' });
+            
+            const restoreScroll = () => {
+                window.scrollTo({ top: scrollY, behavior: 'instant' });
+            };
+            
+            requestAnimationFrame(() => {
+                restoreScroll();
+                requestAnimationFrame(() => {
+                    restoreScroll();
+                    setTimeout(() => {
+                        restoreScroll();
+                        sessionStorage.removeItem('preserveScrollPosition');
+                    }, 100);
+                });
+            });
+        }
+    }, []);
+
+    if (stripLocalePrefix(previousPage) === '/about-us') {
+        return (
+            <>
+                <Navbar />
+                <AboutUs />
+                <Footer />
+            </>
+        );
+    }
+
+    return <HomePage />;
+}

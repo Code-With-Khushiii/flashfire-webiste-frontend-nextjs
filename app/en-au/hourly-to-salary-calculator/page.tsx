@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/hourly-to-salary-calculator/page";
 
@@ -8,17 +9,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-au/hourly-to-salary-calculator",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/hourly-to-salary-calculator",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/hourly-to-salary-calculator",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/hourly-to-salary-calculator",
-      "en-AU": "https://www.flashfirejobs.com/en-au/hourly-to-salary-calculator",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/hourly-to-salary-calculator",
-      "en-DE": "https://www.flashfirejobs.com/en-de/hourly-to-salary-calculator",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/hourly-to-salary-calculator",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/hourly-to-salary-calculator",
-      "x-default": "https://www.flashfirejobs.com/hourly-to-salary-calculator",
-    },
+    languages: hreflangLanguages("/hourly-to-salary-calculator"),
   },
   openGraph: {
     title: "Hourly to Salary Calculator – Convert Hourly Pay | Flashfire Australia",

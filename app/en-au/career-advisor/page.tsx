@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import CareerAdvisor from "@/src/components/careerAdvisor/careerAdvisor";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata: Metadata = {
     title: "AI Career Advisor: Personalized Job Recommendations",
     description:
@@ -12,17 +13,7 @@ export const metadata: Metadata = {
     },
     alternates: {
         canonical: "https://www.flashfirejobs.com/en-au/career-advisor",
-        languages: {
-            "en-US": "https://www.flashfirejobs.com/career-advisor",
-            "en-CA": "https://www.flashfirejobs.com/en-ca/career-advisor",
-            "en-GB": "https://www.flashfirejobs.com/en-gb/career-advisor",
-            "en-AU": "https://www.flashfirejobs.com/en-au/career-advisor",
-            "en-IE": "https://www.flashfirejobs.com/en-ie/career-advisor",
-            "en-DE": "https://www.flashfirejobs.com/en-de/career-advisor",
-            "en-NL": "https://www.flashfirejobs.com/en-nl/career-advisor",
-            "en-FR": "https://www.flashfirejobs.com/en-fr/career-advisor",
-            "x-default": "https://www.flashfirejobs.com/career-advisor",
-        },
+        languages: hreflangLanguages("/career-advisor"),
     },
     openGraph: {
         title: "AI Career Advisor: Personalized Job Recommendations",

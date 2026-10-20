@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import ContactUsClient from "@/src/components/contactUs/contactUsClient";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export const metadata: Metadata = {
   title: "Contact Flashfire: Get in Touch | Flashfire Canada",
@@ -13,17 +14,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-ca/contact-us",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/contact-us",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/contact-us",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/contact-us",
-      "en-AU": "https://www.flashfirejobs.com/en-au/contact-us",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/contact-us",
-      "en-DE": "https://www.flashfirejobs.com/en-de/contact-us",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/contact-us",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/contact-us",
-      "x-default": "https://www.flashfirejobs.com/contact-us",
-    },
+    languages: hreflangLanguages("/contact-us"),
   },
   openGraph: {
     title: "Contact Flashfire: Get in Touch | Flashfire Canada",

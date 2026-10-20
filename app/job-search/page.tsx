@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Navbar from "@/src/components/navbar/navbar";
 import Footer from "@/src/components/footer/footer";
 import JobSearch from "@/src/components/pages/jobSearch/JobSearch";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export const metadata: Metadata = {
   title: "AI Job Search Automation — Apply to Jobs Automatically",
@@ -13,17 +14,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/job-search",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/job-search",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/job-search",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/job-search",
-      "en-AU": "https://www.flashfirejobs.com/en-au/job-search",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/job-search",
-      "en-DE": "https://www.flashfirejobs.com/en-de/job-search",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/job-search",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/job-search",
-      "x-default": "https://www.flashfirejobs.com/job-search",
-    },
+    languages: hreflangLanguages("/job-search"),
   },
   openGraph: {
     title: "AI Job Search — Apply Faster With Flashfire",
