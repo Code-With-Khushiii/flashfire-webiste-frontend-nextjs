@@ -24,6 +24,174 @@ export type BlogPost = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const blogPosts: BlogPost[] = (([] as any[]).concat([
   {
+    id: 485,
+    slug: "salary-negotiation-email-template",
+    title: "Salary Negotiation Email Template: How to Ask for Better Pay With Confidence",
+    metaTitle: "Salary Negotiation Email: 5 Templates & Tips",
+    excerpt: "Learn how to write a salary negotiation email with 5 ready-to-use templates, salary research tips, negotiation strategies, and examples for asking for better pay.",
+    date: "Oct 20, 2026",
+    lastUpdated: "Oct 20, 2026",
+    readTime: "10 min",
+    category: "Salary",
+    tags: ["Salary"],
+    author: {
+      name: "Riya Sharma",
+      bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
+    },
+    image: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/blog-images/screenshot-2026-10-20-at-1-21-14-pm-1792482741062.png",
+    categoryColor: "bg-yellow-100 text-yellow-600",
+    content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Salary Negotiation Email Template: How to Ask for Better Pay With Confidence</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>You’ve made it through the interviews, impressed the hiring manager, and finally received a job offer. There’s just one thing standing between you and your next career move: the salary. You want to ask for more, but you don’t want to sound demanding, risk the offer, or leave money on the table by accepting too quickly.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>That’s where a well-written <a href="https://www.flashfirejobs.com/blog/how-to-negotiate-salary-after-job-offer" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">salary negotiation</a> email can make a difference. Negotiating compensation is a normal part of the hiring process, yet many candidates struggle to find the right words. The secret is to approach the conversation with professionalism, a clear rationale, and a realistic understanding of your market value. You don't need aggressive language or an elaborate explanation. You need a thoughtful message that communicates your expectations while keeping the conversation positive.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>In this guide, you'll find ready-to-use salary negotiation email templates for different situations, including negotiating a new job offer, requesting a higher salary, responding to a low offer, and asking for a raise. You'll also learn how to research your target salary, choose the right timing, avoid common mistakes, and follow up confidently.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Why Salary Negotiation Matters</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Your salary influences more than your monthly paycheck. It can affect future raises, bonuses, retirement contributions, and the financial value of your career over time. That makes it worth considering an offer carefully rather than accepting the first number presented.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Negotiation is not just for senior executives. Candidates at different career stages can discuss compensation, provided they approach the conversation respectfully and understand the employer's constraints.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The Harvard Business Review has published practical guidance on negotiating a job offer, emphasizing the importance of preparing your priorities, understanding the other party's perspective, and approaching the discussion collaboratively.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The takeaway is simple: preparation matters. Before you write your email, establish what you want, why it is reasonable, and which alternatives you would consider if the employer cannot meet your request.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">How to Prepare Before Sending a Salary Negotiation Email</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A strong email begins before you open your inbox. Take these four steps to make your request specific and credible.</p>
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Research the Market Rate
+        <p style='margin-bottom:12px; line-height:1.7;'>Look at salary ranges for comparable roles in your location and industry. Consider your experience, technical skills, certifications, responsibilities, and the size of the employer.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'>Use several sources, such as salary surveys, reputable job listings, professional networks, and industry reports. Compare similar roles rather than relying on a single impressive salary figure.</p>
+    </li>
+    <li>Define Your Target Salary
+        <p style='margin-bottom:12px; line-height:1.7;'>Decide on three numbers before negotiating:</p>
+        <ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+            <li>Target salary: The compensation you would be happy to accept.</li>
+            <li>Opening request: A reasonable figure that gives you room to negotiate.</li>
+            <li>Minimum acceptable package: The lowest overall offer you would realistically consider.</li>
+        </ul>
+        <p style='margin-bottom:12px; line-height:1.7;'>Keep your minimum private. It is a decision-making tool, not a number you need to disclose to the recruiter.</p>
+    </li>
+    <li>Identify Your Value
+        <p style='margin-bottom:12px; line-height:1.7;'>Prepare two or three concrete reasons that support your request. These might include relevant experience, specialized skills, measurable achievements, leadership responsibilities, or the ability to solve a problem the employer needs addressed.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'>For example, instead of writing, "I believe I deserve a higher salary," explain that your five years of relevant experience and background in automating reporting processes align closely with the position's responsibilities.</p>
+    </li>
+    <li>Consider the Entire Compensation Package
+        <p style='margin-bottom:12px; line-height:1.7;'>Base salary is important, but it is not the only negotiable element. Depending on the employer, you may be able to discuss a signing bonus, performance bonus, equity, additional paid leave, flexible working arrangements, professional development funding, or an earlier salary review.</p>
+        <p style='margin-bottom:12px; line-height:1.7;'>Knowing your priorities helps you negotiate intelligently if the employer cannot increase the base salary.</p>
+    </li>
+</ol>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">5 Ready-to-Use Salary Negotiation Email Templates</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Use the following examples as starting points. Replace the bracketed details with accurate information and adjust the tone to match your relationship with the recruiter or hiring manager.</p>
+
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Template 1: Negotiating a Higher Salary for a New Job Offer</h3>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Best for:</strong> Candidates who have received an offer and want to request better compensation.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Subject:</strong> Discussion About the [Job Title] Offer</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Dear [Hiring Manager's Name],</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Thank you for offering me the [Job Title] position at [Company Name]. I'm excited about the opportunity to join the team and contribute to [specific project, goal, or business priority].</p>
+<p style='margin-bottom:12px; line-height:1.7;'>After reviewing the offer and considering the responsibilities of the role, my experience in [relevant skill or area], and current market rates, I wanted to ask whether there is flexibility in the proposed salary.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Based on these factors, I was hoping we could discuss a base salary in the range of [target range]. I believe this would better reflect the value I can bring to the team.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>I'm enthusiastic about the opportunity and would welcome the chance to discuss a compensation package that works for both sides.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Thank you for your time and consideration.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Best regards,<br>[Your Name]</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> The message opens with appreciation, provides a business-related rationale, and makes a clear request without presenting an ultimatum.</p>
+
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Template 2: Asking for a Higher Salary When the Offer Is Below Your Expectations</h3>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Best for:</strong> Candidates whose offer falls short of their researched salary range.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Subject:</strong> Follow-Up on the [Job Title] Offer</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Dear [Recruiter's Name],</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Thank you for sharing the offer for the [Job Title] role. I appreciate the opportunity and am genuinely interested in joining [Company Name].</p>
+<p style='margin-bottom:12px; line-height:1.7;'>After reviewing the proposed compensation, I wanted to discuss whether the base salary could be reconsidered. Given my experience in [relevant area], my skills in [specific skill], and the scope of the position, I was expecting a salary closer to [target salary or range].</p>
+<p style='margin-bottom:12px; line-height:1.7;'>I'm confident that my background in [relevant achievement or responsibility] would allow me to contribute meaningfully to the team.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Would there be room to move closer to this range? I'm happy to discuss the details and explore a mutually suitable arrangement.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Thank you again for the opportunity.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Kind regards,<br>[Your Name]</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It addresses the gap directly while giving the employer a specific figure to consider.</p>
+
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Template 3: Negotiating Salary After Receiving a Verbal Offer</h3>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Best for:</strong> Candidates who have discussed an offer over the phone and want to document their request.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Subject:</strong> Follow-Up on Our Compensation Discussion</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Dear [Hiring Manager's Name],</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Thank you for speaking with me about the [Job Title] opportunity. I'm pleased to hear that the team would like to move forward, and I'm excited about the possibility of joining [Company Name].</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Following our conversation, I wanted to revisit the proposed salary of [offered amount]. Considering my experience in [relevant area] and the responsibilities we've discussed, would it be possible to consider [requested amount]?</p>
+<p style='margin-bottom:12px; line-height:1.7;'>I'm enthusiastic about the position and believe my background in [specific strength] would help me make a strong contribution.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Please let me know if we could discuss this further. I appreciate your consideration and look forward to hearing from you.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Best regards,<br>[Your Name]</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It creates a clear written record of the discussion and keeps the process moving without reopening every aspect of the offer.</p>
+
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Template 4: Negotiating Salary When the Budget Is Limited</h3>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Best for:</strong> Candidates who want better compensation but understand that the employer may have a fixed salary range.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Subject:</strong> Exploring the Compensation Package for [Job Title]</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Dear [Recruiter's Name],</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Thank you for explaining the compensation structure for the [Job Title] role. I'm very interested in joining [Company Name] and appreciate your transparency about the budget.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>If the base salary cannot be increased beyond [offered amount], would it be possible to explore other components of the package, such as a signing bonus, a performance-based bonus, additional paid leave, or a salary review after six months?</p>
+<p style='margin-bottom:12px; line-height:1.7;'>My goal is to find an arrangement that reflects the responsibilities of the position while remaining workable for the company.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>I'm excited about the opportunity and would be happy to discuss which options might be available.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Thank you for your time.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Best regards,<br>[Your Name]</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It demonstrates flexibility without abandoning your compensation goals. Mention only the alternatives that genuinely matter to you.</p>
+
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Template 5: Requesting a Salary Raise in Your Current Job</h3>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Best for:</strong> Employees preparing to discuss a pay increase with their manager.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Subject:</strong> Request to Discuss Compensation Review</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Dear [Manager's Name],</p>
+<p style='margin-bottom:12px; line-height:1.7;'>I'd like to schedule a time to discuss my current compensation and growth within [Company Name].</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Over the past [time period], I've taken on responsibilities including [responsibility one] and [responsibility two]. I've also contributed to [specific achievement or measurable result], which has helped [team, customer, or business outcome].</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Considering these contributions, the scope of my role, and current market benchmarks, I'd appreciate the opportunity to discuss adjusting my salary to [target salary or range].</p>
+<p style='margin-bottom:12px; line-height:1.7;'>I value being part of the team and remain committed to delivering strong results. Please let me know a convenient time to discuss this.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Thank you for your consideration.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Best regards,<br>[Your Name]</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Why it works:</strong> It connects your request to performance and increased responsibilities rather than relying on personal expenses or general dissatisfaction.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">When Should You Send a Salary Negotiation Email?</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Timing can influence how smoothly the conversation goes. For a new job, wait until you have received an offer and understand the proposed compensation. Express your interest first, then raise your request before accepting the offer formally.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For an existing role, request a compensation discussion ahead of a performance review, promotion conversation, or the completion of a significant project.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>A <a href="https://www.pewresearch.org/short-reads/2023/04/05/when-negotiating-starting-salaries-most-us-women-and-men-dont-ask-for-higher-pay/?" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">Pew Research Center survey</a> of U.S. workers found that among those who asked for higher pay during their most recent hiring process, 28% received the amount they requested, while 38% received more than the original offer but less than they asked for. This finding shows why a thoughtful counteroffer can be worth considering, although outcomes vary by employer and individual circumstances.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">5 Tips for Writing an Effective Salary Negotiation Email</h2>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Keep it concise. Aim for a few focused paragraphs that explain your interest, rationale, and request.</li>
+    <li>Use a specific number or range. A researched target gives the recruiter something concrete to discuss.</li>
+    <li>Lead with your contribution. Highlight relevant skills, experience, and measurable results rather than personal financial needs.</li>
+    <li>Stay professional. Avoid threats, ultimatums, or exaggerated claims about competing offers.</li>
+    <li>Proofread carefully. Double-check the salary figure, job title, recipient's name, and tone before sending.</li>
+</ul>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Common Salary Negotiation Email Mistakes to Avoid</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Even a reasonable request can lose impact if the wording is poorly chosen. Avoid these common mistakes:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+    <li>Apologizing excessively: You can be courteous without suggesting that discussing compensation is inappropriate.</li>
+    <li>Making unsupported demands: Base your request on market information and relevant qualifications.</li>
+    <li>Inventing competing offers: Be honest about your alternatives and negotiating position.</li>
+    <li>Accepting before clarifying the details: Confirm salary, benefits, bonuses, and other important terms in writing.</li>
+    <li>Sending repeated follow-ups: Allow a reasonable response period, taking any deadline communicated by the recruiter into account.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Remember, a negotiation is a conversation, not a confrontation. If the employer cannot meet your target, ask whether another component of the package can be adjusted.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Final Thoughts: Make Your Next Career Move Count</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A successful salary negotiation starts with knowing your value and communicating it clearly. Research the market, choose a realistic target, and use a professional salary negotiation email template to make your request confidently.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Whether you're accepting your first job, changing companies, or asking for a raise, preparation gives you a stronger foundation for the conversation.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Frequently Asked Questions</h2>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">1. How do I politely ask for a higher salary by email?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Thank the employer for the offer, express your enthusiasm, explain your relevant qualifications, and ask whether the salary can be adjusted to your researched target.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">2. What is a good subject line for a salary negotiation email?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Use a clear, professional subject such as "Discussion About the [Job Title] Offer" or "Follow-Up on Compensation."</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">3. How much more salary should I ask for?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>There is no universally appropriate percentage. Consider the offered salary, market benchmarks, your experience, the role's responsibilities, and the employer's stated range.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">4. Can I negotiate salary after accepting an offer?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>You can raise the issue, but renegotiating after acceptance may be more difficult. Review the terms carefully and approach the employer transparently if circumstances warrant another discussion.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">5. Is it better to negotiate salary by email or phone?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Email is useful for making a clear, documented request. A phone or video conversation can help resolve questions quickly. You can use email to arrange the conversation and confirm the final terms afterward.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">6. What if the recruiter says the salary is non-negotiable?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Ask whether other benefits, such as a signing bonus, additional leave, or an early compensation review, are available. If nothing can change, evaluate the complete offer.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">7. Should I mention my current salary?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Only when relevant or requested. Focus on the value of the new role and appropriate market compensation rather than treating your current pay as the sole benchmark.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">8. How long should I wait for a response?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Follow any timeline the recruiter provides. If none is given, a polite follow-up after approximately three to five business days is often reasonable.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">9. Can freshers negotiate their first salary?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. Entry-level candidates can discuss compensation using relevant internships, projects, in-demand skills, and published salary ranges. Keep expectations realistic and professional.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">10. What should I do if my salary negotiation is rejected?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Ask whether the employer can offer alternatives or review compensation after a defined period. Then decide whether the overall opportunity meets your needs.</p>`,
+  },
+
+  {
     id: 484,
     slug: "skills-based-resume",
     title: "Skills Based Resume: How to Highlight Your Strengths and Get Noticed by Employers",
