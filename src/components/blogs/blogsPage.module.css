@@ -421,6 +421,17 @@
   margin-top: 0 !important;
 }
 
+/* Items already carry their own "1.", "2." text */
+.content ol.selfNumbered {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+/* Callout boxes (e.g. "Tip:") written with inline padding: no extra gap at the bottom */
+.content div > p:last-child {
+  margin-bottom: 0 !important;
+}
+
 .content strong {
   font-size: inherit !important;
   font-weight: 700 !important;
@@ -964,9 +975,53 @@
     margin-top: 1.5rem !important;
   }
 
+  /* Room for markers (incl. two-digit numbers) inside the text column */
   .content ul,
   .content ol {
+    padding-left: 1.5rem !important;
+  }
+
+  .content ul ul,
+  .content ul ol,
+  .content ol ul,
+  .content ol ol {
+    margin: 0.5rem 0 !important;
     padding-left: 1.25rem !important;
+  }
+
+  .content li {
+    padding-left: 0.125rem;
+  }
+
+  /* Q&A lists: number inline with the question, answers flush with the article text */
+  .content ol.qaList {
+    list-style: none !important;
+    padding-left: 0 !important;
+    counter-reset: qa;
+  }
+
+  .content ol.qaList > li {
+    padding-left: 0;
+    margin-bottom: 1.25rem !important;
+    counter-increment: qa;
+  }
+
+  .content ol.qaList > li > :first-child::before {
+    content: counter(qa) ". ";
+    color: #f97316;
+  }
+
+  .content ol.qaList > li > div {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .content ol.selfNumbered {
+    padding-left: 0 !important;
+  }
+
+  .content ol.selfNumbered > li {
+    padding-left: 0;
   }
 
   .content blockquote {

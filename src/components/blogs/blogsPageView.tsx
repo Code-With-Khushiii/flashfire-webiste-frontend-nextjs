@@ -174,6 +174,19 @@ export default function BlogsPageView({
         wrapper.appendChild(table);
       });
 
+      doc.querySelectorAll("ol").forEach((ol) => {
+        const items = Array.from(ol.children).filter((el) => el.tagName === "LI");
+        if (items.length === 0) return;
+        // Items whose text already starts with "1.", "2." etc. shouldn't get a second number
+        if (items.every((li) => /^\s*\d+[.)]/.test(li.textContent || ""))) {
+          ol.classList.add(styles.selfNumbered);
+        // Question/answer lists (each item opens with a heading) get the number inline
+        // with the heading so the answers can sit flush with the article text
+        } else if (items.every((li) => /^H[3-6]$/.test(li.firstElementChild?.tagName || ""))) {
+          ol.classList.add(styles.qaList);
+        }
+      });
+
       // Add Overview at the top of the TOC if overview text exists
       const finalToc =
         overviewText && overviewText.trim().length > 0
