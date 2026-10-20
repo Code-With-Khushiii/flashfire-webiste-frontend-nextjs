@@ -176,6 +176,12 @@ export const EU_PREFIX_BY_COUNTRY: ReadonlyMap<string, EUPrefix> = new Map(
   EU_TREES.map((tree) => [tree.country, tree.prefix])
 );
 
+/** Country name for the page copy of an EU tree ("France"), or null outside the EU trees. */
+export function getEUCountryName(pathname: string | null | undefined): string | null {
+  const prefix = getLocalePrefix(pathname);
+  return EU_TREES.find((tree) => tree.prefix === prefix)?.name ?? null;
+}
+
 /** Fallback country code for a path when the visitor's real country is unknown. */
 export function getLocaleCountryCode(pathname: string | null | undefined): string {
   const prefix = getLocalePrefix(pathname);

@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { heroSectionData, heroSectionDataAU, heroSectionDataCA, heroSectionDataEU, heroSectionDataUK } from "@/src/data/herosection";
 import HeroSectionClient from "./heroSectionClient";
-import { getLocale, type Locale } from "@/src/utils/locale";
+import { getEUCountryName, getLocale, type Locale } from "@/src/utils/locale";
 
 type Props = {
   country?: Locale;
@@ -23,11 +23,21 @@ export default function HeroSection({ country }: Props) {
           : locale === "eu"
             ? heroSectionDataEU
             : heroSectionData;
+  // EU trees name their own country ("1200 France job applications").
+  const euCountry = locale === "eu" ? getEUCountryName(pathname) : null;
+  const heroData = euCountry
+    ? {
+        ...data,
+        description: [
+          `We apply to 1200 ${euCountry} job applications & track everything while you focus on winning the interview.`,
+        ],
+      }
+    : data;
   const heroImageSrc = "/images/landingpageImg.png";
 
   return (
     <HeroSectionClient
-      data={data}
+      data={heroData}
       heroImageSrc={heroImageSrc}
       shiftHeroImageLeft={false}
     />

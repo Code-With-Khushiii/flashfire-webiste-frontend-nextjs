@@ -2,12 +2,12 @@
 import { Search, FileCheck, Send, MapPin, Briefcase, TrendingUp, ArrowRight, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import { FaPlus, FaTimes } from "react-icons/fa";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { trackButtonClick, trackExternalLink } from "@/src/utils/PostHogTracking";
 import { WHATSAPP_SUPPORT_URL } from "@/src/utils/whatsapp";
 import HomePageHappyUsers from "../homePageHappyUsers/homePageHappyUsers";
-import { getLocalePrefix } from "@/src/utils/locale";
+import { getEUCountryName, getLocalePrefix } from "@/src/utils/locale";
 
 const dispatchCustomEvent = (eventName: string) => {
   if (typeof window !== "undefined") {
@@ -18,7 +18,6 @@ const dispatchCustomEvent = (eventName: string) => {
 export default function AICopilot() {
   const [activeFaqIndex, setActiveFaqIndex] = useState<number | null>(null);
 
-  const router = useRouter();
   const pathname = usePathname();
   const prefix = getLocalePrefix(pathname);
 
@@ -121,7 +120,7 @@ export default function AICopilot() {
                   </div>
                   <div className="flex items-center gap-2 text-gray-700">
                     <MapPin size={16} />
-                    <span>USA, UK & Canada</span>
+                    <span>{getEUCountryName(pathname) ?? "USA, UK & Canada"}</span>
                   </div>
                 </div>
 
