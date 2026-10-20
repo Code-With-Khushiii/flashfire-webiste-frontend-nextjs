@@ -438,6 +438,8 @@
   padding: 0.2rem 0;
   font-size: 0.8125rem;
   transition: color 0.2s;
+  /* Block so wrapped titles keep their bullet aligned on narrow screens */
+  display: block;
   width: 100%;
   line-height: 1.5;
 }

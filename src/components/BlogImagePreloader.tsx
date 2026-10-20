@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { blogPosts } from "@/src/data/blogsData";
 
-export default function BlogImagePreloader() {
+// Receives just the image URLs from the (server) root layout so the full blog
+// dataset is not bundled into every page's JavaScript.
+export default function BlogImagePreloader({ imageUrls }: { imageUrls: string[] }) {
   const hasStartedRef = useRef(false);
 
   useEffect(() => {
@@ -12,16 +13,8 @@ export default function BlogImagePreloader() {
     hasStartedRef.current = true;
 
     const preloadBlogImages = async () => {
-      // Extract all unique blog image URLs (post-level only).
-      // Author objects in blogsData currently don't include images, so we
-      // intentionally do not access author.image here to keep types safe.
-      const blogImageUrls = Array.from(
-        new Set(
-          blogPosts
-            .map((post) => post.image)
-            .filter((img): img is string => !!img)
-        )
-      );
+      // All unique blog image URLs (post-level only), deduped by the layout.
+      const blogImageUrls = imageUrls;
 
       if (blogImageUrls.length === 0) return;
 
@@ -104,7 +97,7 @@ export default function BlogImagePreloader() {
       // Already loaded or interactive
       preloadBlogImages();
     }
-  }, []);
+  }, [imageUrls]);
 
   return null; // This component doesn't render anything
 }

@@ -6,6 +6,7 @@ import Script from "next/script";
 import { PHProvider } from "@/src/components/PostHogProvider";
 import WhatsAppButton from "@/src/components/WhatsAppButton/WhatsAppButton";
 import BlogImagePreloader from "@/src/components/BlogImagePreloader";
+import { blogPosts } from "@/src/data/blogsData";
 import TestimonialImagePreloader from "@/src/components/homePageHappyUsers/TestimonialImagePreloader";
 
 const spaceGrotesk = Space_Grotesk({
@@ -120,6 +121,11 @@ import { FB_PIXEL_ID } from "@/lib/metaPixel";
 
 const GTM_CONTAINER_ID = "GTM-MCS5V3BF";
 
+// Only the image URLs go to the client preloader, not the full blog dataset
+const blogImageUrls = Array.from(
+  new Set(blogPosts.map((post) => post.image).filter((img): img is string => !!img))
+);
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -187,7 +193,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <WhatsAppButton />
           </ClientLogicWrapper>
         </PHProvider>
-        <BlogImagePreloader />
+        <BlogImagePreloader imageUrls={blogImageUrls} />
         <TestimonialImagePreloader />
         {/* Meta Pixel - Load with afterInteractive strategy */}
         <Script
