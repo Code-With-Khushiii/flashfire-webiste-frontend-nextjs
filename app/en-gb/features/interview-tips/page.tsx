@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 export { default } from "@/app/features/interview-tips/page";
 
 export const metadata: Metadata = {
@@ -10,17 +11,7 @@ export const metadata: Metadata = {
     },
     alternates: {
         canonical: "https://www.flashfirejobs.com/en-gb/features/interview-tips",
-        languages: {
-            "en-US": "https://www.flashfirejobs.com/features/interview-tips",
-            "en-CA": "https://www.flashfirejobs.com/en-ca/features/interview-tips",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/features/interview-tips",
-      "en-AU": "https://www.flashfirejobs.com/en-au/features/interview-tips",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/features/interview-tips",
-      "en-DE": "https://www.flashfirejobs.com/en-de/features/interview-tips",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/features/interview-tips",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/features/interview-tips",
-            "x-default": "https://www.flashfirejobs.com/features/interview-tips",
-        },
+        languages: hreflangLanguages("/features/interview-tips"),
     },
     openGraph: {
         title: "Interview Tips for UK Job Seekers | Flashfire",

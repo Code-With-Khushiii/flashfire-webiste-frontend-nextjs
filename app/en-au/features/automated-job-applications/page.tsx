@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/features/automated-job-applications/page";
 
@@ -12,17 +13,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-au/features/automated-job-applications",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/features/automated-job-applications",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/features/automated-job-applications",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/features/automated-job-applications",
-      "en-AU": "https://www.flashfirejobs.com/en-au/features/automated-job-applications",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/features/automated-job-applications",
-      "en-DE": "https://www.flashfirejobs.com/en-de/features/automated-job-applications",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/features/automated-job-applications",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/features/automated-job-applications",
-      "x-default": "https://www.flashfirejobs.com/features/automated-job-applications",
-    },
+    languages: hreflangLanguages("/features/automated-job-applications"),
   },
   openGraph: {
     title: "Job Application Automation Tool | AI Job Applications | Flashfire Australia",

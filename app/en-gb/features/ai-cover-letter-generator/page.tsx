@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/features/ai-cover-letter-generator/page";
 
@@ -12,17 +13,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-gb/features/ai-cover-letter-generator",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/features/ai-cover-letter-generator",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/features/ai-cover-letter-generator",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/features/ai-cover-letter-generator",
-      "en-AU": "https://www.flashfirejobs.com/en-au/features/ai-cover-letter-generator",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/features/ai-cover-letter-generator",
-      "en-DE": "https://www.flashfirejobs.com/en-de/features/ai-cover-letter-generator",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/features/ai-cover-letter-generator",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/features/ai-cover-letter-generator",
-      "x-default": "https://www.flashfirejobs.com/features/ai-cover-letter-generator",
-    },
+    languages: hreflangLanguages("/features/ai-cover-letter-generator"),
   },
   openGraph: {
     title: "AI Cover Letter Builder for ATS-Friendly Job Applications | Flashfire UK",

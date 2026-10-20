@@ -24,6 +24,10 @@ const TREES = fs
   .map((e) => e.name)
   .sort();
 
+// app/[country] is the single tree behind every EU locale (EU_TREES in
+// src/utils/locale.ts); the generated file maps each EU prefix onto it.
+const EU_TREE = "[country]";
+
 function routesFor(tree) {
   const base = path.join(APP, tree);
   const found = new Set();
@@ -50,13 +54,12 @@ function routesFor(tree) {
 }
 
 const entries = TREES.map((tree) => [`/${tree}`, routesFor(tree)]);
+const euRoutes = routesFor(EU_TREE);
 
-const body = entries
-  .map(
-    ([prefix, list]) =>
-      `  "${prefix}": new Set([\n${list.map((r) => `    ${JSON.stringify(r)},`).join("\n")}\n  ]),`
-  )
-  .join("\n");
+const setLiteral = (list, indent) =>
+  `new Set([\n${list.map((r) => `${indent}  ${JSON.stringify(r)},`).join("\n")}\n${indent}])`;
+
+const body = entries.map(([prefix, list]) => `  "${prefix}": ${setLiteral(list, "  ")},`).join("\n");
 
 fs.writeFileSync(
   OUT,
@@ -67,8 +70,14 @@ fs.writeFileSync(
 // The middleware checks this before geo-redirecting so it never sends a
 // visitor to a URL that does not exist.
 
+import { EU_PREFIXES } from "./locale";
+
+/** Every EU prefix is served by the same app/[country] tree. */
+const EU_ROUTES: ReadonlySet<string> = ${setLiteral(euRoutes, "")};
+
 export const LOCALE_ROUTES: Record<string, ReadonlySet<string>> = {
 ${body}
+  ...Object.fromEntries(EU_PREFIXES.map((prefix) => [prefix, EU_ROUTES])),
 };
 
 /** True when \`subPath\` (e.g. "/pricing") has a page under \`prefix\` (e.g. "/en-gb"). */
@@ -81,5 +90,5 @@ export function localeHasRoute(prefix: string, subPath: string): boolean {
 
 console.log(
   `generated ${path.relative(root, OUT)}: ` +
-    entries.map(([p, l]) => `${p}=${l.length}`).join(", ")
+    [...entries.map(([p, l]) => `${p}=${l.length}`), `EU trees=${euRoutes.length}`].join(", ")
 );
