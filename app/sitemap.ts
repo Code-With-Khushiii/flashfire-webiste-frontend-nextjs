@@ -161,8 +161,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   // One entry per EU tree (EU_TREES); they share pages, but each country URL is indexed.
+  // Action and noindex pages stay out of the sitemap (it lists indexable pages only).
+  const EU_NOT_INDEXED = ['/talk-to-an-expert', '/image-testimonials', '/see-flashfire-in-action']
   const euRoutes: MetadataRoute.Sitemap = EU_PREFIXES.flatMap((prefix) =>
-    canadaRoutes.map((route) => ({
+    canadaRoutes.filter((route) => !EU_NOT_INDEXED.some((path) => route.url.endsWith(path))).map((route) => ({
       ...route,
       url: route.url.replace(`${baseUrl}/en-ca`, `${baseUrl}${prefix}`),
     }))
