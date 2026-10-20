@@ -24,6 +24,165 @@ export type BlogPost = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const blogPosts: BlogPost[] = (([] as any[]).concat([
   {
+    id: 484,
+    slug: "skills-based-resume",
+    title: "Skills Based Resume: How to Highlight Your Strengths and Get Noticed by Employers",
+    metaTitle: "Skills Based Resume: Format, Examples & Writing Tips",
+    excerpt: "Learn how to write a skills based resume with the right format, examples, ATS tips, transferable skills, and step-by-step guidance to highlight your strengths.",
+    date: "Oct 20, 2026",
+    lastUpdated: "Oct 20, 2026",
+    readTime: "10 min",
+    category: "Resume Writing",
+    tags: ["Resume Writing"],
+    author: {
+      name: "Riya Sharma",
+      bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
+    },
+    image: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/blog-images/screenshot-2026-10-20-at-1-20-46-pm-1792482661210.png",
+    categoryColor: "bg-blue-100 text-blue-600",
+    content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Skills Based Resume: How to Highlight Your Strengths and Get Noticed by Employers</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>What if your resume could tell employers more about what you can do than where you have worked? For many job seekers, a lack of directly relevant job titles or a nontraditional career path can make it difficult to demonstrate their true potential. A skills based resume offers another way to present your qualifications by putting relevant abilities, practical achievements, and transferable experience front and center.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>This approach is especially useful for fresh graduates, career changers, freelancers, and professionals returning to the workforce. Instead of allowing your employment history to dominate the page, it helps employers connect your strengths with the requirements of the role.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The growing emphasis on this approach is reflected in hiring research. According to the National Association of Colleges and Employers (NACE), 70% of employers participating in its Job Outlook 2026 survey reported using skills-based hiring for entry-level positions.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>So, how do you turn your abilities into a resume that captures attention? This guide explains what a skills based resume is, when to use one, how to structure it, which skills to showcase, and how to create a practical example that aligns with your target job.</p>
+<div style='background:#EFF6FF; border-left:4px solid #2563EB; padding:12px 16px; margin:16px 0; border-radius:4px;'>
+<p style='margin:0; line-height:1.7;'><strong>Source:</strong> <a href="https://naceweb.org/about-us/press/2026/skills-based-hiring-grows-but-college-students-dont-fully-understand-it" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">NACE research</a></p>
+</div>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">What Is a Skills Based Resume?</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A skills based resume is a resume format that emphasizes your relevant abilities, competencies, and accomplishments rather than making your employment history the main focus.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>In a traditional <a href="https://www.flashfirejobs.com/blog/functional-vs-chronological-resume" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">chronological resume</a>, each position typically includes a job title, employer, dates, and responsibilities. A skills-focused version gives greater prominence to categories such as project management, customer service, data analysis, communication, or technical expertise, supported by examples of how you have applied those skills.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For example, someone applying for a marketing position might highlight campaign planning, content creation, SEO, and analytics, even if these capabilities were developed through internships, freelance assignments, academic projects, or volunteer work.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>The objective is not to hide your employment history. It is to make your most relevant qualifications easier to recognize.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Skills Based Resume vs. Traditional Resume</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Both formats can help you secure interviews, but they present your qualifications differently.</p>
+<div class="overflow-x-auto my-6">
+<table class="w-full border-collapse text-sm">
+<thead>
+<tr>
+<th class="bg-blue-600 text-white font-semibold p-3 text-left">Feature</th>
+<th class="bg-blue-600 text-white font-semibold p-3 text-left">Skills Based Resume</th>
+<th class="bg-blue-600 text-white font-semibold p-3 text-left">Traditional Resume</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="border border-gray-200 p-3">Main focus</td>
+<td class="border border-gray-200 p-3">Relevant skills and competencies</td>
+<td class="border border-gray-200 p-3">Work experience and career progression</td>
+</tr>
+<tr>
+<td class="border border-gray-200 p-3">Organization</td>
+<td class="border border-gray-200 p-3">Skill categories supported by examples</td>
+<td class="border border-gray-200 p-3">Jobs listed in reverse chronological order</td>
+</tr>
+<tr>
+<td class="border border-gray-200 p-3">Best suited for</td>
+<td class="border border-gray-200 p-3">Career changers, graduates, and people with employment gaps</td>
+<td class="border border-gray-200 p-3">Candidates with relevant, consistent work experience</td>
+</tr>
+<tr>
+<td class="border border-gray-200 p-3">Experience presentation</td>
+<td class="border border-gray-200 p-3">Organized around demonstrated abilities</td>
+<td class="border border-gray-200 p-3">Organized around previous positions</td>
+</tr>
+<tr>
+<td class="border border-gray-200 p-3">Key advantage</td>
+<td class="border border-gray-200 p-3">Highlights transferable strengths</td>
+<td class="border border-gray-200 p-3">Clearly shows career history and progression</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style='margin-bottom:12px; line-height:1.7;'>A hybrid resume combines these approaches. It highlights key skills near the top while retaining a detailed, reverse-chronological employment section.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>For most experienced professionals, the hybrid format is a practical choice because it showcases relevant competencies without sacrificing the context recruiters need to understand their career history.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">When Should You Use a Skills Based Resume?</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>This format works best when your abilities are more relevant to the vacancy than your previous job titles alone might suggest.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Consider using it if you are:</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+<li>A recent graduate: Highlight academic projects, internships, coursework, and extracurricular activities that demonstrate job-related skills.</li>
+<li>Changing careers: Connect capabilities from your previous industry to the requirements of your target role.</li>
+<li>Returning to work: Showcase recent training, volunteer experience, independent projects, and transferable strengths.</li>
+<li>A freelancer or contractor: Group relevant work by expertise rather than relying exclusively on client names and project dates.</li>
+<li>Entering a new industry: Demonstrate relevant competencies even if you have limited direct experience in the field.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>However, this format is not ideal for every situation. If employers expect a clear record of increasing responsibility, specialized experience, or professional progression, a chronological or hybrid resume may communicate your qualifications more effectively.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Always follow the application instructions and provide accurate dates and employment details when requested.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">How to Write a Skills Based Resume Step by Step</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>A strong resume begins with the employer's needs, not a generic list of everything you can do.</p>
+<ol style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+<li><strong>Analyze the Job Description</strong><br/>Read the vacancy carefully and identify the most important skills, qualifications, tools, and responsibilities.</li>
+<li><strong>Write a Targeted Professional Summary</strong><br/>Start with two to four concise sentences explaining your professional strengths, relevant experience, and career objective.</li>
+<li><strong>Create a Dedicated Skills Section</strong><br/>Group your most relevant abilities under clear headings.</li>
+<li><strong>Prove Each Skill With Evidence</strong><br/>Support each skill with a short example that describes the task, your contribution, and the result.</li>
+<li><strong>Include Your Employment History</strong><br/>A skills-focused resume should still provide context about your background.</li>
+<li><strong>Add Education, Certifications, and Projects</strong><br/>Include your educational qualifications, relevant certifications, and practical projects that strengthen your application.</li>
+<li><strong>Optimize the Resume for Applicant Tracking Systems</strong><br/>Many employers use applicant tracking systems (ATS) to organize applications.</li>
+</ol>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Skills Based Resume Example</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Here is a simplified example for an entry-level digital marketing candidate.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><strong>Aarav Sharma</strong><br/>Email: aarav.example@email.com | Phone: +91-90000-00000 | LinkedIn: linkedin.com/in/example</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Professional Summary</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Entry-level marketing candidate with practical experience in SEO research, content planning, and performance reporting through academic and independent projects. Interested in helping businesses improve organic visibility and audience engagement.</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Core Skills</h3>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+<li>SEO: Keyword research, on-page optimization, content audits</li>
+<li>Analytics: Excel, performance tracking, basic data interpretation</li>
+<li>Content: Blog writing, editorial planning, content briefs</li>
+<li>Communication: Research summaries, presentations, team collaboration</li>
+</ul>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Relevant Projects</h3>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+<li><strong>SEO Content Audit | Independent Project</strong><br/>Reviewed 20 sample website pages for title tags, headings, and content gaps. Organized keyword opportunities in Excel and prioritized pages for improvement. Prepared an optimization checklist for future content updates.</li>
+<li><strong>Marketing Campaign Project | College Assignment</strong><br/>Developed a content calendar for a sample product launch. Coordinated research and presentation tasks with three classmates. Presented audience insights and campaign recommendations to faculty.</li>
+</ul>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Education</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>Bachelor's Degree in Business Administration | XYZ College | 2026</p>
+<h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Additional Training</h3>
+<p style='margin-bottom:12px; line-height:1.7;'>SEO Fundamentals | Relevant Course Provider | 2026</p>
+<p style='margin-bottom:12px; line-height:1.7;'>This is an illustrative example. Replace the sample details with your actual contact information, experience, and verifiable accomplishments.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Common Skills Based Resume Mistakes to Avoid</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Even a well-organized resume can lose impact when its content lacks focus.</p>
+<ul style='margin-left:20px; margin-bottom:12px; line-height:1.6;'>
+<li>Listing skills without proof: Add examples showing where and how you used each important competency.</li>
+<li>Using generic keywords: Replace broad claims with specific tools, responsibilities, and achievements.</li>
+<li>Ignoring employment dates: Keep your career history accurate and transparent.</li>
+<li>Overloading the document: Prioritize information that supports the target position instead of including every activity.</li>
+<li>Using the same resume for every vacancy: Adjust your summary, skills, and examples to reflect each role's requirements.</li>
+<li>Exaggerating your abilities: Be prepared to explain and demonstrate every skill you claim.</li>
+</ul>
+<p style='margin-bottom:12px; line-height:1.7;'>Finally, proofread the document carefully. Spelling errors, inconsistent dates, broken links, and confusing formatting can distract from your strongest qualifications.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Final Thoughts</h2>
+<p style='margin-bottom:12px; line-height:1.7;'>Creating a strong skills based resume is only one part of a successful job search. You also need to find suitable openings, tailor your applications, and keep track of opportunities without losing time to repetitive administrative tasks.</p>
+<p style='margin-bottom:12px; line-height:1.7;'><a href="https://www.flashfirejobs.com/" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800">FlashFire</a> helps job seekers find relevant jobs, optimize their resumes, submit high-quality applications, and track opportunities in one workflow. By bringing these activities together, it helps you spend less time managing applications and more time preparing for interviews.</p>
+<p style='margin-bottom:12px; line-height:1.7;'>Build a resume that shows employers what you can do, focus your search on opportunities that match your strengths, and approach your next application with greater clarity. Your skills deserve to be seen and your resume should make them easy to recognize.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Frequently Asked Questions</h2>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">1. What is a skills based resume?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>It is a resume format that prioritizes relevant abilities and demonstrated competencies, supported by examples, rather than making employment chronology the primary focus.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">2. Is a skills based resume good for freshers?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. Fresh graduates can highlight academic projects, internships, certifications, volunteer work, and practical assignments that demonstrate their suitability for entry-level roles.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">3. Is a skills based resume ATS-friendly?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>It can be, provided it uses clear headings, readable formatting, relevant job-description keywords, and a conventional structure. No format guarantees successful ATS screening.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">4. Should I include work experience in a skills based resume?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. Include relevant positions, employers, dates, and accomplishments so recruiters can understand your background and verify your career progression.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">5. What skills should I include?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Choose skills that directly match the vacancy, such as communication, problem-solving, data analysis, project management, customer service, or role-specific technical abilities.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">6. How long should a skills based resume be?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>One page is often sufficient for students and early-career candidates. Experienced professionals may need two pages if the additional information is relevant and valuable.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">7. Can I use this format for a career change?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Absolutely. Highlight transferable skills from your previous industry and support them with projects, training, and examples relevant to your intended career.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">8. Is a skills based resume suitable for employment gaps?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>It can help emphasize recent learning and relevant achievements, but you should still present your employment history honestly and provide dates when appropriate.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">9. What is the difference between a skills based and a hybrid resume?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>A skills based resume leads with competencies and organizes evidence around them. A hybrid resume combines a prominent skills section with a more detailed chronological work history.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">10. Should I list soft skills on my resume?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes, when they are relevant. Support claims such as teamwork, adaptability, and communication with examples that show how you applied them.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">11. Do I need to customize my resume for every job?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Ideally, yes. Tailor your summary, skills, and achievement examples to the specific vacancy while keeping all information accurate.</p>
+<h3 class="text-lg font-semibold text-gray-800 mb-1">12. Can I include projects instead of professional experience?</h3>
+<p style='margin-bottom:8px; line-height:1.7;'>Yes. Academic, personal, freelance, and volunteer projects can demonstrate relevant abilities, especially when you explain your contribution, tools, and results.</p>`,
+  },
+
+  {
     id: 483,
     slug: "linkedin-cold-message-to-recruiter",
     title: "LinkedIn Cold Message to Recruiter: Templates, Examples, and Best Practices",
