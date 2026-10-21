@@ -52,7 +52,7 @@ export default function Footer() {
     "text-white text-[0.9rem] underline underline-offset-4 hover:opacity-80 transition max-[480px]:text-[0.85rem]";
 
   return (
-    <footer className="bg-[#c94a10] text-white px-8 pt-12 pb-6 max-[768px]:px-6 max-[480px]:px-4">
+    <footer className="bg-[#f55d1d] text-white px-8 pt-12 pb-6 max-[768px]:px-6 max-[480px]:px-4">
 
       {/* TOP SECTION: LOGO + LINKS (SAME ROW) */}
       <div className="flex flex-col max-[768px]:flex-col justify-between border-b border-white pb-8 mb-6 max-[768px]:pb-6 max-[768px]:mb-4">
