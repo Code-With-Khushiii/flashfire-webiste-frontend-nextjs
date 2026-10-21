@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/ai-interview-answer-generator/page";
 
@@ -8,17 +9,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-au/ai-interview-answer-generator",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/ai-interview-answer-generator",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/ai-interview-answer-generator",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/ai-interview-answer-generator",
-      "en-AU": "https://www.flashfirejobs.com/en-au/ai-interview-answer-generator",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/ai-interview-answer-generator",
-      "en-DE": "https://www.flashfirejobs.com/en-de/ai-interview-answer-generator",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/ai-interview-answer-generator",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/ai-interview-answer-generator",
-      "x-default": "https://www.flashfirejobs.com/ai-interview-answer-generator",
-    },
+    languages: hreflangLanguages("/ai-interview-answer-generator"),
   },
   openGraph: {
     title: "AI Interview Answer Generator – STAR Format | Flashfire Australia",

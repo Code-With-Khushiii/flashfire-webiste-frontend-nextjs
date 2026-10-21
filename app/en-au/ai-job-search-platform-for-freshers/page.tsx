@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/ai-job-search-platform-for-freshers/page";
 
@@ -9,17 +10,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-au/ai-job-search-platform-for-freshers",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/ai-job-search-platform-for-freshers",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/ai-job-search-platform-for-freshers",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/ai-job-search-platform-for-freshers",
-      "en-AU": "https://www.flashfirejobs.com/en-au/ai-job-search-platform-for-freshers",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/ai-job-search-platform-for-freshers",
-      "en-DE": "https://www.flashfirejobs.com/en-de/ai-job-search-platform-for-freshers",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/ai-job-search-platform-for-freshers",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/ai-job-search-platform-for-freshers",
-      "x-default": "https://www.flashfirejobs.com/ai-job-search-platform-for-freshers",
-    },
+    languages: hreflangLanguages("/ai-job-search-platform-for-freshers"),
   },
   twitter: {
     card: "summary_large_image",

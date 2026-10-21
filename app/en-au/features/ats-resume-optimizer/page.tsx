@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/features/ats-resume-optimizer/page";
 
@@ -12,17 +13,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-au/features/ats-resume-optimizer",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/features/ats-resume-optimizer",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/features/ats-resume-optimizer",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/features/ats-resume-optimizer",
-      "en-AU": "https://www.flashfirejobs.com/en-au/features/ats-resume-optimizer",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/features/ats-resume-optimizer",
-      "en-DE": "https://www.flashfirejobs.com/en-de/features/ats-resume-optimizer",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/features/ats-resume-optimizer",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/features/ats-resume-optimizer",
-      "x-default": "https://www.flashfirejobs.com/features/ats-resume-optimizer",
-    },
+    languages: hreflangLanguages("/features/ats-resume-optimizer"),
   },
   openGraph: {
     title: "ATS Resume Optimizer & Builder | Flashfire Australia",

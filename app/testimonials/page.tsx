@@ -3,6 +3,7 @@ import Navbar from "@/src/components/navbar/navbar";
 import Footer from "@/src/components/footer/footer";
 import HappyUsersGalleryPage from "@/src/components/homePageHappyUsers/HappyUsersGalleryPage";
 import TestimonialImagePreloader from "@/src/components/homePageHappyUsers/TestimonialImagePreloader";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export const metadata: Metadata = {
   title: "Success Stories & Testimonials | Flashfire",
@@ -14,17 +15,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/testimonials",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/testimonials",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/testimonials",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/testimonials",
-      "en-AU": "https://www.flashfirejobs.com/en-au/testimonials",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/testimonials",
-      "en-DE": "https://www.flashfirejobs.com/en-de/testimonials",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/testimonials",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/testimonials",
-      "x-default": "https://www.flashfirejobs.com/testimonials",
-    },
+    languages: hreflangLanguages("/testimonials"),
   },
   openGraph: {
     title: "Success Stories & Testimonials | Flashfire",

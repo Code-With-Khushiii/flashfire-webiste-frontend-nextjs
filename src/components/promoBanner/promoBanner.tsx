@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { localizeHref } from "@/src/utils/locale";
 import styles from "./promoBanner.module.css";
 
 const HOUR_MS = 3600000;
@@ -22,6 +24,8 @@ type Props = {
 
 export default function PromoBanner({ pricingHref = "/pricing" }: Props) {
   const [countdown, setCountdown] = useState("");
+  // Stay in the visitor's locale tree so the banner never drops them onto USD pricing.
+  const href = localizeHref(pricingHref, usePathname());
 
   useEffect(() => {
     const tick = () => {
@@ -34,7 +38,7 @@ export default function PromoBanner({ pricingHref = "/pricing" }: Props) {
   }, []);
 
   return (
-    <Link href={pricingHref} className={styles.promoBar}>
+    <Link href={href} className={styles.promoBar} aria-label="Halloween offer - view pricing">
       <span className={styles.promoText}>
         <svg className={styles.pumpkin} width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
           <path fill="#0b0b0b" d="M12 6.2c-1-1-2.6-1.4-4.2-1C4.6 6 2.5 9 2.5 12.6c0 4 3.3 7.4 7.1 7.4 1 0 1.8-.3 2.4-.8.6.5 1.4.8 2.4.8 3.8 0 7.1-3.4 7.1-7.4C21.5 9 19.4 6 16.2 5.2c-1.6-.4-3.2 0-4.2 1z" />

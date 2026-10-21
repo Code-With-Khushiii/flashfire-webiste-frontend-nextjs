@@ -34,8 +34,9 @@ countries/
 
 - **CA (Canada)**: `/en-ca` routes → uses `countries/ca/Home.tsx`
 - **UK**: `/en-gb` routes → uses `countries/uk/Home.tsx`
-- **EU (Ireland, Germany, Netherlands, France)**: `/en-ie`, `/en-de`, `/en-nl`, `/en-fr` routes → use `countries/eu/Home.tsx` with EUR checkouts. These form the hreflang cluster.
-- **Europe (pan-EU)**: `/en-eu` routes → same `countries/eu/Home.tsx` and EUR checkouts, for links and ads that say "Europe". Kept out of hreflang (`en-EU` is not a valid region) and out of the sitemap; each page canonicalizes to its `/en-ie` twin. `/eu` redirects here.
+- **Europe (41 countries, every European country except the UK, Russia and Belarus)**: `/en-ie`, `/en-de`, `/en-fr`, `/en-it`, `/en-no`, `/en-ch` and so on → all served by the single `app/[country]` folder, using `countries/eu/Home.tsx` with EUR checkouts.
+  The list lives in `EU_TREES` (`src/utils/locale.ts`); adding a country there adds its pages, hreflang tag, sitemap entries and geo redirect.
+  `/en-eu` and `/eu` redirect to `/en-ie` (`en-EU` is not a valid hreflang region).
 - **AU (Australia)**: `/en-au` routes → uses `countries/au/Home.tsx` (priced in USD, shown as US$)
 - **Default (US)**: `/` routes → uses `flashFireHome.tsx`
 

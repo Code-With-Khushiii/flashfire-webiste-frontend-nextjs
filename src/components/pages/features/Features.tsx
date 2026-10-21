@@ -33,7 +33,7 @@ import { questionsData } from "@/src/data/questionsData"
 import faqStyles from "@/src/components/homePageFAQ/homePageFAQ.module.css"
 import FlashfireLogo from "@/src/components/FlashfireLogo"
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking"
-import { getLocalePrefix, stripLocalePrefix, localizeHref } from "@/src/utils/locale";
+import { getEUCountryName, getLocalePrefix, stripLocalePrefix, localizeHref } from "@/src/utils/locale";
 
 type FeatureItem = {
   title: string
@@ -122,13 +122,15 @@ const steps = [
   },
 ]
 
+const MARKET_PERSONA_TITLE = "U.S., U.K., Europe, Canada & Australia Job Seekers"
+
 const personas = [
   {
     title: "International Students",
     desc: "Students and new graduates who need a faster way to reach relevant companies without spending every night filling out forms.",
   },
   {
-    title: "U.S., U.K., Europe, Canada & Australia Job Seekers",
+    title: MARKET_PERSONA_TITLE,
     desc: "Candidates targeting U.S., U.K., European, Canada & Australia-based roles across tech, business, and operations.",
   },
   {
@@ -156,6 +158,33 @@ function Features() {
   }
 
   const faqData = useMemo(() => questionsData.slice(0, 6), [])
+
+  // EU trees name their own country instead of the generic market list.
+  const euCountry = getEUCountryName(pathname)
+  const featureItems = useMemo(
+    () =>
+      euCountry
+        ? features.map((item) => ({
+            ...item,
+            description: item.description.replace("US, Canada, UK, Australia & Europe roles", `${euCountry} roles`),
+          }))
+        : features,
+    [euCountry]
+  )
+  const personaItems = useMemo(
+    () =>
+      euCountry
+        ? personas.map((item) =>
+            item.title === MARKET_PERSONA_TITLE
+              ? {
+                  title: `${euCountry} Job Seekers`,
+                  desc: `Candidates targeting ${euCountry}-based roles across tech, business, and operations.`,
+                }
+              : item
+          )
+        : personas,
+    [euCountry]
+  )
 
   const handleFaqToggle = (index: number) => {
     setActiveFaq(activeFaq === index ? null : index)
@@ -353,7 +382,7 @@ function Features() {
           </header>
 
           <div className="mx-auto max-w-5xl divide-y divide-black/10 border-y border-black/10">
-            {features.map((feature, index) => {
+            {featureItems.map((feature, index) => {
               const IconComponent = feature.icon
               return (
                 <Link
@@ -449,7 +478,7 @@ function Features() {
             </div>
 
             <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-2">
-              {personas.map((item, index) => {
+              {personaItems.map((item, index) => {
                 const PersonaIcon = personaIcons[index]
                 return (
                   <div

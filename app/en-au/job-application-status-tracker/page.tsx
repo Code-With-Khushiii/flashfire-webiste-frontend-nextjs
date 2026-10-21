@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/job-application-status-tracker/page";
 
@@ -9,16 +10,6 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-au/job-application-status-tracker",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/job-application-status-tracker",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/job-application-status-tracker",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/job-application-status-tracker",
-      "en-AU": "https://www.flashfirejobs.com/en-au/job-application-status-tracker",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/job-application-status-tracker",
-      "en-DE": "https://www.flashfirejobs.com/en-de/job-application-status-tracker",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/job-application-status-tracker",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/job-application-status-tracker",
-      "x-default": "https://www.flashfirejobs.com/job-application-status-tracker",
-    },
+    languages: hreflangLanguages("/job-application-status-tracker"),
   },
 };

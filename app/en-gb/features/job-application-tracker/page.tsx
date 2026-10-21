@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/features/job-application-tracker/page";
 
@@ -12,17 +13,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-gb/features/job-application-tracker",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/features/job-application-tracker",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/features/job-application-tracker",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/features/job-application-tracker",
-      "en-AU": "https://www.flashfirejobs.com/en-au/features/job-application-tracker",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/features/job-application-tracker",
-      "en-DE": "https://www.flashfirejobs.com/en-de/features/job-application-tracker",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/features/job-application-tracker",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/features/job-application-tracker",
-      "x-default": "https://www.flashfirejobs.com/features/job-application-tracker",
-    },
+    languages: hreflangLanguages("/features/job-application-tracker"),
   },
   openGraph: {
     title: "Job Application Tracker to Track Job Applications | Flashfire UK",

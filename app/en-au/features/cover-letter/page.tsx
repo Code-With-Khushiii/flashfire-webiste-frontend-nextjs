@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/features/cover-letter/page";
 
@@ -12,17 +13,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-au/features/cover-letter",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/features/cover-letter",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/features/cover-letter",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/features/cover-letter",
-      "en-AU": "https://www.flashfirejobs.com/en-au/features/cover-letter",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/features/cover-letter",
-      "en-DE": "https://www.flashfirejobs.com/en-de/features/cover-letter",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/features/cover-letter",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/features/cover-letter",
-      "x-default": "https://www.flashfirejobs.com/features/cover-letter",
-    },
+    languages: hreflangLanguages("/features/cover-letter"),
   },
   openGraph: {
     title: "AI Cover Letter Builder | Flashfire Australia",

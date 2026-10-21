@@ -204,17 +204,26 @@ const nextConfig: NextConfig = {
         destination: "/en-au/:path*",
         permanent: true,
       },
-      // /en-eu is a live tree (EUR pricing). It is kept out of hreflang because
-      // "en-EU" is not a valid region, and its pages canonicalize to /en-ie.
-      // Short /eu links land on it, same as /au does for /en-au.
+      // There is no pan-European tree ("en-EU" is not a valid hreflang
+      // region). /en-eu and short /eu links land on the default EU tree.
       {
         source: "/eu",
-        destination: "/en-eu",
+        destination: "/en-ie",
         permanent: true,
       },
       {
         source: "/eu/:path*",
-        destination: "/en-eu/:path*",
+        destination: "/en-ie/:path*",
+        permanent: true,
+      },
+      {
+        source: "/en-eu",
+        destination: "/en-ie",
+        permanent: true,
+      },
+      {
+        source: "/en-eu/:path*",
+        destination: "/en-ie/:path*",
         permanent: true,
       },
       // Legacy /en-uk/* prefix (renamed to /en-gb/* to match the ISO 3166-1 /

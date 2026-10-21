@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/take-home-pay-calculator/page";
 
@@ -8,17 +9,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-au/take-home-pay-calculator",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/take-home-pay-calculator",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/take-home-pay-calculator",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/take-home-pay-calculator",
-      "en-AU": "https://www.flashfirejobs.com/en-au/take-home-pay-calculator",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/take-home-pay-calculator",
-      "en-DE": "https://www.flashfirejobs.com/en-de/take-home-pay-calculator",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/take-home-pay-calculator",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/take-home-pay-calculator",
-      "x-default": "https://www.flashfirejobs.com/take-home-pay-calculator",
-    },
+    languages: hreflangLanguages("/take-home-pay-calculator"),
   },
   openGraph: {
     title: "Take Home Pay Calculator – Net Paycheck Estimator | Flashfire Australia",

@@ -1,19 +1,10 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.flashfirejobs.com/offer-and-salary-negotiation-advisor",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/offer-and-salary-negotiation-advisor",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/offer-and-salary",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/offer-and-salary",
-      "en-AU": "https://www.flashfirejobs.com/en-au/offer-and-salary",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/offer-and-salary",
-      "en-DE": "https://www.flashfirejobs.com/en-de/offer-and-salary",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/offer-and-salary",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/offer-and-salary",
-      "x-default": "https://www.flashfirejobs.com/offer-and-salary-negotiation-advisor",
-    },
+    languages: hreflangLanguages("/offer-and-salary", "/offer-and-salary-negotiation-advisor"),
   },
   twitter: {
     card: "summary_large_image",

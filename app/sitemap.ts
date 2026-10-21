@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { blogPosts } from '@/src/data/blogsData'
+import { EU_PREFIXES } from '@/src/utils/locale'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.flashfirejobs.com'
@@ -159,13 +160,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: route.url.replace(`${baseUrl}/en-ca`, `${baseUrl}/en-au`),
   }))
 
-  // Europe is listed per country. /en-eu stays live for "Europe" links but is
-  // left out: "en-EU" is not a valid hreflang region and its pages
-  // canonicalize to /en-ie.
-  const euRoutes: MetadataRoute.Sitemap = ['ie', 'de', 'nl', 'fr'].flatMap((cc) =>
+  // One entry per EU tree (EU_TREES); they share pages, but each country URL is indexed.
+  const euRoutes: MetadataRoute.Sitemap = EU_PREFIXES.flatMap((prefix) =>
     canadaRoutes.map((route) => ({
       ...route,
-      url: route.url.replace(`${baseUrl}/en-ca`, `${baseUrl}/en-${cc}`),
+      url: route.url.replace(`${baseUrl}/en-ca`, `${baseUrl}${prefix}`),
     }))
   )
 

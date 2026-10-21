@@ -2,6 +2,7 @@ import{Metadata} from "next";
 import RecentJobOpenings from "@/src/components/recentJobOpenings/recentJobOpenings";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata: Metadata = {
     title: "AI Job Search Assistant & Job Application Automation Tool",
     description: "FlashFire is an AI job search assistant that automates job applications, finds relevant roles, tailors resumes, and helps job seekers apply faster.",
@@ -11,17 +12,7 @@ export const metadata: Metadata = {
     },
     alternates: {
         canonical: "https://www.flashfirejobs.com/recent-job-openings",
-        languages: {
-            "en-US": "https://www.flashfirejobs.com/recent-job-openings",
-            "en-CA": "https://www.flashfirejobs.com/en-ca/recent-job-openings",
-            "en-GB": "https://www.flashfirejobs.com/en-gb/recent-job-openings",
-            "en-AU": "https://www.flashfirejobs.com/en-au/recent-job-openings",
-            "en-IE": "https://www.flashfirejobs.com/en-ie/recent-job-openings",
-            "en-DE": "https://www.flashfirejobs.com/en-de/recent-job-openings",
-            "en-NL": "https://www.flashfirejobs.com/en-nl/recent-job-openings",
-            "en-FR": "https://www.flashfirejobs.com/en-fr/recent-job-openings",
-            "x-default": "https://www.flashfirejobs.com/recent-job-openings",
-        },
+        languages: hreflangLanguages("/recent-job-openings"),
     },
     openGraph: {
         title: "AI Job Search Assistant & Job Application Automation Tool",
