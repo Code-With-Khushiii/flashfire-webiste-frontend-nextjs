@@ -105,10 +105,10 @@ export default function MeetingBookedModal({ onClose }: Props) {
             </button>
           )}
 
-          <h1 className="text-lg md:text-2xl font-extrabold text-slate-900 mb-2">
+          <p className="text-lg md:text-2xl font-extrabold text-slate-900 mb-2">
             <span className="text-[#ff4c00]">Thank you</span>{" "}
             <span>for scheduling a call!</span>
-          </h1>
+          </p>
 
           <p className="text-[11px] md:text-sm text-slate-700 mb-3 md:mb-3.5">
             🎉 You&apos;re one step closer to your next career move with

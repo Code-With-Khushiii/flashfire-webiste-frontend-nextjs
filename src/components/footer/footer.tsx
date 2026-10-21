@@ -52,7 +52,7 @@ export default function Footer() {
     "text-white text-[0.9rem] underline underline-offset-4 hover:opacity-80 transition max-[480px]:text-[0.85rem]";
 
   return (
-    <footer className="bg-[#f55d1d] text-white px-8 pt-12 pb-6 max-[768px]:px-6 max-[480px]:px-4">
+    <footer className="bg-[#c94a10] text-white px-8 pt-12 pb-6 max-[768px]:px-6 max-[480px]:px-4">
 
       {/* TOP SECTION: LOGO + LINKS (SAME ROW) */}
       <div className="flex flex-col max-[768px]:flex-col justify-between border-b border-white pb-8 mb-6 max-[768px]:pb-6 max-[768px]:mb-4">
@@ -62,6 +62,10 @@ export default function Footer() {
         <img
           src="/images/flashfire-logo-white.png"
           alt="Flashfire Logo"
+          width={40}
+          height={40}
+          loading="lazy"
+          decoding="async"
             className="w-10 h-10 object-contain max-[480px]:w-8 max-[480px]:h-8"
         />
           <span className="text-lg font-bold tracking-wide max-[480px]:text-base">
@@ -81,28 +85,28 @@ export default function Footer() {
           >
             {/* ADDRESS + FOLLOW US */}
             <div className="max-[480px]:mb-2">
-              <h2 className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
+              <p className="mb-3 text-sm font-bold tracking-widest text-white max-[480px]:mb-2 max-[480px]:text-xs">
                 ADDRESS
-              </h2>
-              <address className="not-italic text-[0.85rem] leading-relaxed opacity-90 max-[480px]:text-[0.8rem]">
+              </p>
+              <address className="not-italic text-[0.85rem] leading-relaxed max-[480px]:text-[0.8rem]">
                 Flashfire LLC.<br />
                 30 N Gould St, STE R<br />
                 Sheridan, WY 82801, USA
               </address>
 
               <div className="mt-5">
-                <h2 className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
+                <p className="mb-3 text-sm font-bold tracking-widest text-white max-[480px]:mb-2 max-[480px]:text-xs">
                   FOLLOW US
-                </h2>
+                </p>
                 <div className="flex items-center gap-3 max-[480px]:gap-4">
-                  <Link href="https://www.linkedin.com/company/flashfire-pvt-ltd/" target="_blank" rel="noopener noreferrer" className="text-xl hover:scale-110 transition max-[480px]:text-lg">
-                    <FaLinkedinIn />
+                  <Link href="https://www.linkedin.com/company/flashfire-pvt-ltd/" target="_blank" rel="noopener noreferrer" aria-label="Flashfire on LinkedIn" className="text-xl hover:scale-110 transition max-[480px]:text-lg">
+                    <FaLinkedinIn aria-hidden="true" />
                   </Link>
-                  <Link href="https://www.instagram.com/flashfirejobs/" target="_blank" rel="noopener noreferrer" className="text-xl hover:scale-110 transition max-[480px]:text-lg">
-                    <FaInstagram />
+                  <Link href="https://www.instagram.com/flashfirejobs/" target="_blank" rel="noopener noreferrer" aria-label="Flashfire on Instagram" className="text-xl hover:scale-110 transition max-[480px]:text-lg">
+                    <FaInstagram aria-hidden="true" />
                   </Link>
-                  <Link href="https://www.youtube.com/@flashfireindia" target="_blank" rel="noopener noreferrer" className="text-xl hover:scale-110 transition max-[480px]:text-lg">
-                    <FaYoutube />
+                  <Link href="https://www.youtube.com/@flashfireindia" target="_blank" rel="noopener noreferrer" aria-label="Flashfire on YouTube" className="text-xl hover:scale-110 transition max-[480px]:text-lg">
+                    <FaYoutube aria-hidden="true" />
                   </Link>
                 </div>
               </div>
@@ -110,9 +114,9 @@ export default function Footer() {
 
             {/* QUICK ACCESS */}
             <div className="max-[480px]:mb-2">
-              <h2 className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
+              <p className="mb-3 text-sm font-bold tracking-widest text-white max-[480px]:mb-2 max-[480px]:text-xs">
                 QUICK ACCESS
-              </h2>
+              </p>
               <div className="flex flex-col gap-1.5 max-[480px]:gap-1">
                 <Link href={getHref("/job-search")} className={linkClass}>Job Search</Link>
                 <Link href={getHref("/features")} className={linkClass}>Features</Link>
@@ -127,9 +131,9 @@ export default function Footer() {
 
             {/* PRODUCT */}
             <div className="max-[480px]:mb-2">
-              <h2 className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
+              <p className="mb-3 text-sm font-bold tracking-widest text-white max-[480px]:mb-2 max-[480px]:text-xs">
                 PRODUCT
-              </h2>
+              </p>
               <div className="flex flex-col gap-1.5 max-[480px]:gap-1">
                 <Link href={getHref("/features/ats-resume-optimizer")} className={linkClass}>
                   Resume Optimizer
@@ -166,9 +170,9 @@ export default function Footer() {
 
             {/* AI CAREER TOOLS */}
             <div className="max-[480px]:mb-2">
-              <h2 className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
+              <p className="mb-3 text-sm font-bold tracking-widest text-white max-[480px]:mb-2 max-[480px]:text-xs">
                 AI CAREER TOOLS
-              </h2>
+              </p>
               <div className="flex flex-col gap-1.5 max-[480px]:gap-1">
                 <Link href={getHref("/career-advisor")} className={linkClass}>
                   Career Advisor
@@ -209,9 +213,9 @@ export default function Footer() {
 
             {/* TOOLS */}
             <div className="max-[480px]:mb-2">
-              <h2 className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
+              <p className="mb-3 text-sm font-bold tracking-widest text-white max-[480px]:mb-2 max-[480px]:text-xs">
                 TOOLS
-              </h2>
+              </p>
               <div className="flex flex-col gap-1.5 max-[480px]:gap-1">
                 <Link href={getHref("/salary-calculator")} className={linkClass}>
                   Salary Calculator
@@ -242,9 +246,9 @@ export default function Footer() {
 
             {/* RESUME TOOLS */}
             <div className="max-[480px]:mb-2">
-              <h2 className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
+              <p className="mb-3 text-sm font-bold tracking-widest text-white max-[480px]:mb-2 max-[480px]:text-xs">
                 RESUME TOOLS
-              </h2>
+              </p>
               <div className="flex flex-col gap-1.5 max-[480px]:gap-1">
                 <Link href={getHref("/ats-score-checker")} className={linkClass}>ATS Score Checker</Link>
                 <Link href={getHref("/resume-parser")} className={linkClass}>Resume Parser</Link>
@@ -257,9 +261,9 @@ export default function Footer() {
 
             {/* COMPANY */}
             <div className="max-[480px]:mb-2">
-              <h2 className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
+              <p className="mb-3 text-sm font-bold tracking-widest text-white max-[480px]:mb-2 max-[480px]:text-xs">
                 COMPANY
-              </h2>
+              </p>
               <div className="flex flex-col gap-1.5 max-[480px]:gap-1">
                 <Link href={getHref("/refund-policy")} className={linkClass}>
                   Refund Policy
@@ -280,7 +284,7 @@ export default function Footer() {
       </div>
 
       {/* BOTTOM */}
-      <div className="flex justify-between text-sm opacity-90 max-[768px]:flex-col max-[768px]:gap-2 max-[768px]:items-center max-[480px]:text-xs max-[480px]:text-center">
+      <div className="flex justify-between text-sm max-[768px]:flex-col max-[768px]:gap-2 max-[768px]:items-center max-[480px]:text-xs max-[480px]:text-center">
         <p className="max-[480px]:mb-1">© Flashfire 2026. All Rights Reserved.</p>
         <p>Flashfire Pvt. Ltd.</p>
       </div>

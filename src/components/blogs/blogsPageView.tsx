@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef, useCallback } from "react";
+import Image, { getImageProps } from "next/image";
 import styles from "./blogsPage.module.css";
-import CachedBlogImage from "./CachedBlogImage";
 import {
   trackPageView,
   trackScrollDepth,
@@ -12,8 +12,10 @@ import posthog from "posthog-js";
 import Navbar from "../navbar/navbar";
 import Footer from "../footer/footer";
 import Link from "next/link";
-import { FaLinkedinIn, FaFacebookF, FaTwitter } from "react-icons/fa";
+import { FaLinkedinIn, FaFacebookF, FaTwitter, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { categoryToSlug, tagToSlug } from "@/src/utils/blogCategoryUtils";
+import { toIsoDate } from "@/src/utils/blogDates";
+import { classifyOrderedLists } from "@/src/utils/blogContent";
 
 type BlogPost = {
   id: number;
@@ -58,30 +60,16 @@ type TableOfContentsItem = {
 export default function BlogsPageView({
   post,
   relatedArticles,
-  recentPosts,
-  mostViewedPosts,
 }: {
   post: BlogPost;
   relatedArticles: RelatedPost[];
-  recentPosts: RelatedPost[];
-  mostViewedPosts: RelatedPost[];
 }) {
   const [activeSection, setActiveSection] = useState<string>("");
-  // Tags for this post - show default tags on every blog for UI consistency
-  // But filtering will only match blogs that actually have that tag in their data
-  const defaultDisplayTags = [
-    "Career Advice",
-    "Job Search Strategy",
-    "Success Stories",
-    "Visa & Immigration",
-    "Career Planning",
-    "International Students"
-  ];
-  const postTags = useMemo(() => {
-    // Always show default tags on every blog page for UI consistency
-    // The actual filtering in blogsClient.tsx will use the blog's real tags
-    return defaultDisplayTags;
-  }, []);
+  // The tags chosen for this post when it was published
+  const postTags = useMemo(
+    () => Array.from(new Set((post.tags || []).map((t) => t.trim()).filter(Boolean))),
+    [post.tags]
+  );
 
   const overviewText = post.excerpt || "";
 
@@ -115,12 +103,16 @@ export default function BlogsPageView({
   // <h1> authored inside the post body is demoted to <h2>.
   const demotedContent = useMemo(
     () => {
-      const html = (post?.content || "").replace(/<h1(\b[^>]*)>/gi, "<h2$1>").replace(/<\/h1>/gi, "</h2>");
+      const html = (post?.content || "")
+        .replace(/<h1(\b[^>]*)>/gi, "<h2$1>")
+        .replace(/<\/h1>/gi, "</h2>")
+        // Body images sit below the hero, so the browser fetches them only near the viewport
+        .replace(/<img\b(?![^>]*\bloading=)/gi, '<img loading="lazy"');
       // Never skip a heading level (e.g. H2 -> H4): the H1 is the post title, so
       // the first heading may be an H2 and each later one at most one level deeper.
       let prev = 1;
       const levels: number[] = [];
-      return html
+      const leveled = html
         .replace(/<(\/?)h([2-6])(\b[^>]*)>/gi, (_m, slash: string, lvl: string, rest: string) => {
           if (!slash) {
             const wanted = Number(lvl);
@@ -131,6 +123,10 @@ export default function BlogsPageView({
           }
           return `</h${levels[levels.length - 1] ?? lvl}>`;
         });
+      return classifyOrderedLists(leveled, {
+        selfNumbered: styles.selfNumbered,
+        qaList: styles.qaList,
+      });
     },
     [post?.content]
   );
@@ -172,19 +168,6 @@ export default function BlogsPageView({
         wrapper.className = styles.tableScroll;
         table.parentNode?.insertBefore(wrapper, table);
         wrapper.appendChild(table);
-      });
-
-      doc.querySelectorAll("ol").forEach((ol) => {
-        const items = Array.from(ol.children).filter((el) => el.tagName === "LI");
-        if (items.length === 0) return;
-        // Items whose text already starts with "1.", "2." etc. shouldn't get a second number
-        if (items.every((li) => /^\s*\d+[.)]/.test(li.textContent || ""))) {
-          ol.classList.add(styles.selfNumbered);
-        // Question/answer lists (each item opens with a heading) get the number inline
-        // with the heading so the answers can sit flush with the article text
-        } else if (items.every((li) => /^H[3-6]$/.test(li.firstElementChild?.tagName || ""))) {
-          ol.classList.add(styles.qaList);
-        }
       });
 
       // Add Overview at the top of the TOC if overview text exists
@@ -326,16 +309,9 @@ export default function BlogsPageView({
     }
   };
 
-  // Helper function to convert date to ISO format (YYYY-MM-DD)
-  const convertToISODate = (dateString: string): string => {
-    try {
-      const date = new Date(dateString);
-      if (isNaN(date.getTime())) return dateString; // Return original if invalid
-      return date.toISOString().split('T')[0];
-    } catch {
-      return dateString;
-    }
-  };
+  const lastUpdated = post.lastUpdated || post.date;
+  const publishedIso = toIsoDate(post.date);
+  const updatedIso = toIsoDate(lastUpdated);
 
   // Extract FAQ questions and answers from content. Done with plain string
   // parsing (no DOMParser) so the FAQ schema renders on the server with the
@@ -379,7 +355,7 @@ export default function BlogsPageView({
     image: post.image || post.coverImage || "",
     author: {
       "@type": "Person",
-      name: post.author?.name || "Arjun Sharma",
+      name: post.author?.name || "Flashfire",
       ...(post.author?.name && {
         url: `https://www.flashfirejobs.com/author/${post.author.name.toLowerCase().replace(/\s+/g, "-")}`,
       }),
@@ -389,11 +365,13 @@ export default function BlogsPageView({
       name: "FlashFire Jobs",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.flashfirejobs.com/favicon.ico",
+        url: "https://www.flashfirejobs.com/images/flashfire-logo.png",
+        width: 472,
+        height: 472,
       },
     },
-    datePublished: convertToISODate(post.date || ""),
-    dateModified: convertToISODate(post.lastUpdated || post.date || ""),
+    datePublished: publishedIso,
+    dateModified: updatedIso,
   };
 
   // Generate FAQ schema if FAQ items exist (use empty array to avoid hydration issues)
@@ -475,11 +453,24 @@ export default function BlogsPageView({
     </div>
   );
 
-  const renderTocList = () => (
-    <ol className={styles.tocList}>
+  // Keep the active item visible inside the sidebar TOC while the article scrolls
+  const sidebarTocRef = useRef<HTMLOListElement>(null);
+  useEffect(() => {
+    const list = sidebarTocRef.current;
+    const active = list?.querySelector<HTMLElement>('[data-toc-active="true"]');
+    if (!list || !active) return;
+    const top = active.offsetTop - list.offsetTop;
+    if (top < list.scrollTop || top + active.offsetHeight > list.scrollTop + list.clientHeight) {
+      list.scrollTo({ top: top - list.clientHeight / 3, behavior: "smooth" });
+    }
+  }, [activeSection]);
+
+  const renderTocList = (ref?: React.Ref<HTMLOListElement>) => (
+    <ol className={styles.tocList} ref={ref}>
       {tableOfContents.map((item, index) => (
         <li
           key={index}
+          data-toc-active={activeSection === item.anchor}
           className={`${styles.tocItem} ${
             activeSection === item.anchor ? styles.tocItemActive : ""
           }`}
@@ -495,37 +486,62 @@ export default function BlogsPageView({
     </ol>
   );
 
-  const renderPostList = (posts: RelatedPost[]) => (
-    <ul className={styles.recentPostsList}>
-      {posts.map((listPost) => (
-        <li key={listPost.id} className={styles.recentPostItem}>
-          <Link
-            href={`/blog/${listPost.slug}`}
-            className={styles.recentPostLink}
-          >
-            <div className={styles.recentPostImage}>
-              <CachedBlogImage
-                src={listPost.image || listPost.coverImage || ""}
-                alt={listPost.title}
-                width={80}
-                height={60}
-                className={styles.recentPostImg}
-                sizes="80px"
-              />
-            </div>
-            <div className={styles.recentPostContent}>
-              <h3 className={styles.recentPostTitle}>
-                {listPost.title}
-              </h3>
-              <span className={styles.recentPostDate}>
-                {listPost.date}
-              </span>
-            </div>
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
+  // Hero image is a real <img> in the server HTML. On desktop it is fetched with
+  // high priority; on phones the <source> swaps in a blank inline GIF, so the
+  // browser never requests the cover image at all.
+  const heroSrc = post.image || post.coverImage || "";
+  const heroImgProps = heroSrc
+    ? getImageProps({
+        src: heroSrc,
+        alt: post.title,
+        width: 1200,
+        height: 630,
+        quality: 85,
+        sizes: "(max-width: 1024px) 100vw, 600px",
+        loading: "eager",
+        fetchPriority: "high",
+      }).props
+    : null;
+
+  // Related articles carousel: 4 cards visible, arrows scroll through the rest
+  // The sticky sidebar sits below the sticky promo bar + navbar, whose height
+  // changes with the viewport, so it is measured rather than hard-coded
+  const pageRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const header = document.querySelector<HTMLElement>(".sticky.top-0");
+    const page = pageRef.current;
+    if (!header || !page) return;
+    const update = () => page.style.setProperty("--sticky-header", `${header.offsetHeight}px`);
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(header);
+    return () => observer.disconnect();
+  }, []);
+
+  const relatedTrackRef = useRef<HTMLDivElement>(null);
+  const [relatedScroll, setRelatedScroll] = useState({ prev: false, next: false });
+  const updateRelatedScroll = useCallback(() => {
+    const track = relatedTrackRef.current;
+    if (!track) return;
+    setRelatedScroll({
+      prev: track.scrollLeft > 4,
+      next: track.scrollLeft + track.clientWidth < track.scrollWidth - 4,
+    });
+  }, []);
+
+  useEffect(() => {
+    updateRelatedScroll();
+    window.addEventListener("resize", updateRelatedScroll);
+    return () => window.removeEventListener("resize", updateRelatedScroll);
+  }, [updateRelatedScroll, relatedArticles.length]);
+
+  const scrollRelated = (direction: 1 | -1) => {
+    const track = relatedTrackRef.current;
+    if (!track) return;
+    const card = track.firstElementChild as HTMLElement | null;
+    const step = card ? card.offsetWidth + parseFloat(getComputedStyle(track).columnGap || "0") : track.clientWidth;
+    track.scrollBy({ left: direction * step, behavior: "smooth" });
+  };
 
   return (
     <>
@@ -545,47 +561,56 @@ export default function BlogsPageView({
         />
       )}
       <Navbar />
-      <main className={styles.pageWrapper}>
+      <main ref={pageRef} className={styles.pageWrapper}>
         {/* === HERO: breadcrumb, date, title, author | cover image === */}
         <section className={styles.hero}>
           <div className={styles.heroInner}>
             <nav className={styles.breadcrumb} aria-label="Breadcrumb">
               <Link href="/">Home</Link>
-              <span className={styles.breadcrumbSeparator}> &gt; </span>
+              <span className={styles.breadcrumbSeparator} aria-hidden="true"> &gt; </span>
               <Link href="/blog">Blog</Link>
-              <span className={styles.breadcrumbSeparator}> &gt; </span>
+              <span className={styles.breadcrumbSeparator} aria-hidden="true"> &gt; </span>
               <Link href={`/blog/${categoryToSlug(post.category || "")}`}>{post.category}</Link>
-              <span className={styles.breadcrumbSeparator}> &gt; </span>
+              <span className={styles.breadcrumbSeparator} aria-hidden="true"> &gt; </span>
               <span className={styles.breadcrumbCurrent} title={post.title}>{post.title}</span>
             </nav>
 
             <div className={styles.heroGrid}>
               <div className={styles.heroText}>
                 <div className={styles.dateInfo}>
-                  <span className={styles.dateLabel}>Published:</span>
-                  <time dateTime={post.date} itemProp="datePublished">{post.date}</time>
-                  {post.lastUpdated && post.lastUpdated !== post.date && (
+                  <span className={styles.dateItem}>
+                    <span className={styles.dateLabel}>Published:</span>{" "}
+                    <time dateTime={publishedIso}>{post.date}</time>
+                  </span>
+                  {lastUpdated && (
                     <>
-                      <span className={styles.dateSeparator}>|</span>
-                      <span className={styles.dateLabel}>Updated:</span>
-                      <time dateTime={post.lastUpdated} itemProp="dateModified">{post.lastUpdated}</time>
+                      <span className={styles.dateSeparator} aria-hidden="true">|</span>
+                      <span className={styles.dateItem}>
+                        <span className={styles.dateLabel}>Last updated:</span>{" "}
+                        <time dateTime={updatedIso}>{lastUpdated}</time>
+                      </span>
                     </>
                   )}
-                  <span className={styles.readTime}>⏱️ {post.readTime}</span>
+                  {post.readTime && (
+                    <>
+                      <span className={styles.dateSeparator} aria-hidden="true">|</span>
+                      <span className={styles.readTime}>{post.readTime} read</span>
+                    </>
+                  )}
                 </div>
 
-                <h1 className={styles.title} itemProp="headline">{post.title}</h1>
+                <h1 className={styles.title}>{post.title}</h1>
 
                 {/* === AUTHOR === */}
-                <div className={styles.authorInfo} itemScope itemType="https://schema.org/Person">
+                <div className={styles.authorInfo}>
                   {post.author?.image && (
-                    <CachedBlogImage
+                    <Image
                       src={post.author.image}
                       alt={post.author.name}
                       width={40}
                       height={40}
+                      loading="eager"
                       className={styles.authorImage}
-                      itemProp="image"
                       sizes="40px"
                     />
                   )}
@@ -595,35 +620,32 @@ export default function BlogsPageView({
                         href={`/author/${post.author.name.replace(/\s+/g, "-").toLowerCase()}`}
                         className={styles.authorNameLink}
                       >
-                        <div className={styles.authorName} itemProp="name">
-                          By {post.author.name}
-                        </div>
+                        <span className={styles.authorName}>By {post.author.name}</span>
                       </Link>
                     ) : (
-                      <div className={styles.authorName} itemProp="name">
-                        By Debashri Mandal
-                      </div>
+                      <span className={styles.authorName}>By Debashri Mandal</span>
                     )}
                     {post.author?.bio && (
-                      <div className={styles.authorBio} itemProp="description">{post.author.bio}</div>
+                      <p className={styles.authorBio}>{post.author.bio}</p>
                     )}
                   </div>
                 </div>
               </div>
 
-              {/* === HERO IMAGE === */}
-              <div className={styles.imageWrapper}>
-                <CachedBlogImage
-                  src={post.image || post.coverImage || ""}
-                  alt={post.title}
-                  width={1200}
-                  height={630}
-                  className={styles.image}
-                  priority
-                  itemProp="image"
-                  sizes="(max-width: 1024px) 100vw, 600px"
-                />
-              </div>
+              {/* === HERO IMAGE (desktop/tablet only) === */}
+              {heroImgProps && (
+                <div className={styles.imageWrapper}>
+                  <picture>
+                    <source
+                      media="(max-width: 768px)"
+                      srcSet="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    />
+                    {/* alt comes from heroImgProps */}
+                    {/* eslint-disable-next-line jsx-a11y/alt-text */}
+                    <img {...heroImgProps} className={styles.image} />
+                  </picture>
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -673,24 +695,22 @@ export default function BlogsPageView({
             {tableOfContents.length > 0 && (
               <details className={styles.mobileToc}>
                 <summary className={styles.mobileTocSummary}>In this article</summary>
-                {renderTocList()}
+                <nav aria-label="In this article">{renderTocList()}</nav>
               </details>
             )}
 
             {/* === ARTICLE CONTENT === */}
             <article
               className={styles.content}
-              itemScope
-              itemType="https://schema.org/Article"
               dangerouslySetInnerHTML={{ __html: processedContent }}
             />
 
-            {/* === TAGS (clickable to filter blogs by tag) === */}
-            {postTags && postTags.length > 0 && (
+            {/* === TAGS (the post's own tags; each links to its tag listing) === */}
+            {postTags.length > 0 && (
               <div className={styles.tagsWrapper}>
-                {postTags.map((tag, index) => (
+                {postTags.map((tag) => (
                   <Link
-                    key={index}
+                    key={tag}
                     href={`/blog/tag/${tagToSlug(tag)}`}
                     className={styles.tag}
                   >
@@ -699,12 +719,6 @@ export default function BlogsPageView({
                 ))}
               </div>
             )}
-
-            {/* === BOTTOM SOCIAL SHARE === */}
-            <div className={styles.bottomShareSection}>
-              <span className={styles.shareLabel}>Share this article</span>
-              {renderShareButtons()}
-            </div>
           </div>
 
           {/* === RIGHT: STICKY SIDEBAR === */}
@@ -717,13 +731,13 @@ export default function BlogsPageView({
             {tableOfContents.length > 0 && (
               <nav className={styles.tableOfContents} aria-label="In this article">
                 <p className={styles.tocTitle}>In this article</p>
-                {renderTocList()}
+                {renderTocList(sidebarTocRef)}
               </nav>
             )}
 
             {/* === LEAD MAGNET === */}
             <div className={styles.leadMagnet}>
-              <h2 className={styles.leadMagnetTitle}>Free ATS Resume Check</h2>
+              <p className={styles.leadMagnetTitle}>Free ATS Resume Check</p>
               <p>See how your resume scores against applicant tracking systems before you apply.</p>
               <Link href="/ats-score-checker" className={styles.ctaButton}>
                 Check my resume
@@ -732,70 +746,87 @@ export default function BlogsPageView({
           </aside>
         </div>
 
-        {/* === RECENT + MOST VIEWED POSTS === */}
-        <div className={styles.moreSection}>
-          <div className={styles.sidebarSection}>
-            <h2 className={styles.sidebarTitle}>Recent Posts</h2>
-            {renderPostList(recentPosts)}
-          </div>
-          {mostViewedPosts.length > 0 && (
-            <div className={styles.sidebarSection}>
-              <h2 className={styles.sidebarTitle}>Most Viewed Blogs</h2>
-              {renderPostList(mostViewedPosts)}
-            </div>
-          )}
-        </div>
-
         {/* === RELATED ARTICLES === */}
         {relatedArticles.length > 0 && (
-          <section className={styles.relatedSection}>
-            <h2 className={styles.relatedTitle}>Related Articles</h2>
+          <aside className={styles.relatedSection} aria-label="Related articles">
+            <div className={styles.relatedHeader}>
+              <p className={styles.relatedTitle}>Related Articles</p>
+              {(relatedScroll.prev || relatedScroll.next) && (
+                <div className={styles.relatedArrows}>
+                  <button
+                    type="button"
+                    className={styles.relatedArrow}
+                    onClick={() => scrollRelated(-1)}
+                    disabled={!relatedScroll.prev}
+                    aria-label="Previous related articles"
+                  >
+                    <FaChevronLeft aria-hidden="true" />
+                  </button>
+                  <button
+                    type="button"
+                    className={styles.relatedArrow}
+                    onClick={() => scrollRelated(1)}
+                    disabled={!relatedScroll.next}
+                    aria-label="Next related articles"
+                  >
+                    <FaChevronRight aria-hidden="true" />
+                  </button>
+                </div>
+              )}
+            </div>
             <div
-              className={`${styles.relatedGrid} ${
-                relatedArticles.length > 3 ? styles.relatedGridScroll : ""
-              }`}
+              ref={relatedTrackRef}
+              className={styles.relatedTrack}
+              onScroll={updateRelatedScroll}
             >
               {relatedArticles.map((relatedPost) => (
-                <article key={relatedPost.id} className={styles.relatedCard}>
-                  <Link href={`/blog/${relatedPost.slug}`}>
-                    <div className={styles.relatedImage}>
-                      <CachedBlogImage
+                <Link
+                  key={relatedPost.id}
+                  href={`/blog/${relatedPost.slug}`}
+                  className={styles.relatedCard}
+                >
+                  <div className={styles.relatedImage}>
+                    {(relatedPost.image || relatedPost.coverImage) && (
+                      <Image
                         src={relatedPost.image || relatedPost.coverImage || ""}
                         alt={relatedPost.title}
                         width={400}
                         height={250}
+                        loading="lazy"
                         className={styles.relatedImg}
-                        sizes="(max-width: 768px) 85vw, 380px"
+                        sizes="(max-width: 640px) 85vw, (max-width: 1024px) 45vw, 300px"
                       />
-                    </div>
-                    <div className={styles.relatedContent}>
+                    )}
+                  </div>
+                  <div className={styles.relatedContent}>
+                    {relatedPost.category && (
                       <span className={styles.relatedCategory}>
                         {relatedPost.category}
                       </span>
-                      <h3 className={styles.relatedCardTitle}>
-                        {relatedPost.title}
-                      </h3>
-                      {relatedPost.excerpt && (
-                        <p className={styles.relatedExcerpt}>
-                          {relatedPost.excerpt}
-                        </p>
+                    )}
+                    <p className={styles.relatedCardTitle}>{relatedPost.title}</p>
+                    {relatedPost.excerpt && (
+                      <p className={styles.relatedExcerpt}>{relatedPost.excerpt}</p>
+                    )}
+                    <div className={styles.relatedMeta}>
+                      <span>{relatedPost.date}</span>
+                      {relatedPost.readTime && (
+                        <>
+                          <span aria-hidden="true">•</span>
+                          <span>{relatedPost.readTime}</span>
+                        </>
                       )}
-                      <div className={styles.relatedMeta}>
-                        <span>{relatedPost.date}</span>
-                        <span>•</span>
-                        <span>{relatedPost.readTime}</span>
-                      </div>
                     </div>
-                  </Link>
-                </article>
+                  </div>
+                </Link>
               ))}
             </div>
-          </section>
+          </aside>
         )}
 
         {/* === CTA === */}
-        <div className={styles.ctaBox}>
-          <h3>Ready to accelerate your job search?</h3>
+        <aside className={styles.ctaBox} aria-label="FlashFire Jobs">
+          <p className={styles.ctaTitle}>Ready to accelerate your job search?</p>
           <p>
             Join thousands of international students landing their dream jobs
             in the U.S.
@@ -806,10 +837,9 @@ export default function BlogsPageView({
           >
             Visit FlashFire Jobs
           </a>
-        </div>
+        </aside>
       </main>
       <Footer />
     </>
   );
 }
-

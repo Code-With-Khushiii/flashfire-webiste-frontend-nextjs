@@ -1,10 +1,13 @@
 import { blogPosts, type BlogPost } from "@/src/data/blogsData";
 import BlogsPageView, { type RelatedPost } from "./blogsPageView";
 
-// Server component: picks the related/recent/most-viewed posts here so the
-// full blog dataset (every post's HTML content) is never shipped to the browser.
+// Server component: picks the related posts here so the full blog dataset
+// (every post's HTML content) is never shipped to the browser.
 
-// Only the fields the sidebar and related cards render
+// Links rendered in the page HTML (4 visible, the rest reached with the arrows)
+const MAX_RELATED = 6;
+
+// Only the fields the related cards render
 function toRelatedPost(p: BlogPost): RelatedPost {
   return {
     id: p.id,
@@ -19,44 +22,44 @@ function toRelatedPost(p: BlogPost): RelatedPost {
   };
 }
 
-export default function BlogsPage({ post }: { post: BlogPost }) {
-  // Get related articles (same category preferred; allow more than 3 to enable scroll)
-  // Support both `category` (string) and `categories` (array) fields
-  const postCategories: string[] = post.categories || (post.category ? [post.category] : []);
+const postTime = (p: BlogPost) => new Date(p.date || 0).getTime() || 0;
+const newestFirst = (a: BlogPost, b: BlogPost) => postTime(b) - postTime(a);
 
-  const sameCategory = blogPosts.filter((p) => {
-    if (p.id === post.id) return false;
-    const pCategories: string[] = p.categories || (p.category ? [p.category] : []);
-    return postCategories.some((c) => pCategories.includes(c));
-  });
+// Posts sharing the most tags chosen at publish time come first (newest first on
+// ties). Same-category posts only fill the remaining slots.
+function getRelatedPosts(post: BlogPost): BlogPost[] {
+  const others = blogPosts.filter((p) => p && p.id !== post.id && p.slug);
 
-  // If none in same category, fall back to recent posts
-  const relatedArticles =
-    sameCategory.length === 0
-      ? blogPosts.filter((p) => p.id !== post.id).slice(-6).reverse()
-      : sameCategory;
+  const postTags = new Set((post.tags || []).map((t) => t.toLowerCase()));
+  const tagMatches = others
+    .map((p) => ({
+      p,
+      shared: (p.tags || []).filter((t) => postTags.has(t.toLowerCase())).length,
+    }))
+    .filter((m) => m.shared > 0)
+    .sort((a, b) => b.shared - a.shared || newestFirst(a.p, b.p))
+    .map((m) => m.p);
 
-  // Get recent posts (exclude current)
-  const recentPosts = blogPosts.filter((p) => p.id !== post.id).slice(0, 5);
+  if (tagMatches.length >= MAX_RELATED) return tagMatches.slice(0, MAX_RELATED);
 
-  // Get most viewed posts (exclude current and recent posts)
-  const excludeIds = new Set([post.id, ...recentPosts.map((p) => p.id)]);
-  const mostViewedPosts = blogPosts
-    .filter((p) => !excludeIds.has(p.id))
-    .sort((a, b) => {
-      // Sort by date descending (newer first) as a proxy for "most viewed"
-      const dateA = new Date(a.date || 0).getTime();
-      const dateB = new Date(b.date || 0).getTime();
-      return dateB - dateA;
+  const picked = new Set(tagMatches.map((p) => p.id));
+  const postCategories = post.categories || (post.category ? [post.category] : []);
+  const sameCategory = others
+    .filter((p) => {
+      if (picked.has(p.id)) return false;
+      const pCategories = p.categories || (p.category ? [p.category] : []);
+      return postCategories.some((c) => pCategories.includes(c));
     })
-    .slice(0, 5);
+    .sort(newestFirst);
 
+  return [...tagMatches, ...sameCategory].slice(0, MAX_RELATED);
+}
+
+export default function BlogsPage({ post }: { post: BlogPost }) {
   return (
     <BlogsPageView
       post={post}
-      relatedArticles={relatedArticles.map(toRelatedPost)}
-      recentPosts={recentPosts.map(toRelatedPost)}
-      mostViewedPosts={mostViewedPosts.map(toRelatedPost)}
+      relatedArticles={getRelatedPosts(post).map(toRelatedPost)}
     />
   );
 }
