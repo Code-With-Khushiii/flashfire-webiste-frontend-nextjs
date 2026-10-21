@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/interview-buddy/page";
 
@@ -12,17 +13,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-gb/interview-buddy",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/interview-buddy",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/interview-buddy",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/interview-buddy",
-      "en-AU": "https://www.flashfirejobs.com/en-au/interview-buddy",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/interview-buddy",
-      "en-DE": "https://www.flashfirejobs.com/en-de/interview-buddy",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/interview-buddy",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/interview-buddy",
-      "x-default": "https://www.flashfirejobs.com/interview-buddy",
-    },
+    languages: hreflangLanguages("/interview-buddy"),
   },
   openGraph: {
     title: "AI Interview Assistant for Real-Time Support | Flashfire UK",

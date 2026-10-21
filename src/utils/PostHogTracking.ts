@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import posthog from "posthog-js";
 import { apiUrl } from "./apiBase";
-import { getLocale, getLocaleCountryCode, getLocaleTag } from "./locale";
+import { EU_TREES, getLocale, getLocaleCountryCode, getLocaleTag } from "./locale";
 
 // Event naming convention: [action]_[object]_[context]
 // Examples: button_click_hero_cta, form_submit_signup, page_view_home
@@ -152,11 +152,7 @@ const getCountryContext = (): Partial<PostHogEventProperties> => {
     IN: "India",
     GB: "United Kingdom",
     AU: "Australia",
-    IE: "Ireland",
-    DE: "Germany",
-    NL: "Netherlands",
-    FR: "France",
-    EU: "Europe",
+    ...Object.fromEntries(EU_TREES.map((tree) => [tree.country, tree.name])),
   };
 
   return {

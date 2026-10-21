@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import HomePage from "@/src/components/pages/home/Home";
 import ScrollToSection from "@/src/utils/ui/scrollToSection";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export const metadata: Metadata = {
   title: "Watch Flashfire Live Demo & Product Tour",
@@ -12,17 +13,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-au/see-flashfire-in-action",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/see-flashfire-in-action",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/see-flashfire-in-action",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/see-flashfire-in-action",
-      "en-AU": "https://www.flashfirejobs.com/en-au/see-flashfire-in-action",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/see-flashfire-in-action",
-      "en-DE": "https://www.flashfirejobs.com/en-de/see-flashfire-in-action",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/see-flashfire-in-action",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/see-flashfire-in-action",
-      "x-default": "https://www.flashfirejobs.com/see-flashfire-in-action",
-    },
+    languages: hreflangLanguages("/see-flashfire-in-action"),
   },
   openGraph: {
     title: "Watch Flashfire Live Demo & Product Tour",

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/features/linkedin-profile-optimization-tool/page";
 
@@ -12,17 +13,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-gb/features/linkedin-profile-optimization-tool",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/features/linkedin-profile-optimization-tool",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/features/linkedin-profile-optimization-tool",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/features/linkedin-profile-optimization-tool",
-      "en-AU": "https://www.flashfirejobs.com/en-au/features/linkedin-profile-optimization-tool",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/features/linkedin-profile-optimization-tool",
-      "en-DE": "https://www.flashfirejobs.com/en-de/features/linkedin-profile-optimization-tool",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/features/linkedin-profile-optimization-tool",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/features/linkedin-profile-optimization-tool",
-      "x-default": "https://www.flashfirejobs.com/features/linkedin-profile-optimization-tool",
-    },
+    languages: hreflangLanguages("/features/linkedin-profile-optimization-tool"),
   },
   openGraph: {
     title: "LinkedIn Profile Optimization for Recruiter Visibility | Flashfire UK",

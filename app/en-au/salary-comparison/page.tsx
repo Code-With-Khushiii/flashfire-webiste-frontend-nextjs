@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/salary-comparison/page";
 
@@ -8,17 +9,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-au/salary-comparison",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/salary-comparison",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/salary-comparison",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/salary-comparison",
-      "en-AU": "https://www.flashfirejobs.com/en-au/salary-comparison",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/salary-comparison",
-      "en-DE": "https://www.flashfirejobs.com/en-de/salary-comparison",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/salary-comparison",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/salary-comparison",
-      "x-default": "https://www.flashfirejobs.com/salary-comparison",
-    },
+    languages: hreflangLanguages("/salary-comparison"),
   },
   openGraph: {
     title: "Salary Comparison – Compare Two Job Offers | Flashfire Australia",

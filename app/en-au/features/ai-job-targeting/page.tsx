@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/features/ai-job-targeting/page";
 
@@ -12,17 +13,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-au/features/ai-job-targeting",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/features/ai-job-targeting",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/features/ai-job-targeting",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/features/ai-job-targeting",
-      "en-AU": "https://www.flashfirejobs.com/en-au/features/ai-job-targeting",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/features/ai-job-targeting",
-      "en-DE": "https://www.flashfirejobs.com/en-de/features/ai-job-targeting",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/features/ai-job-targeting",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/features/ai-job-targeting",
-      "x-default": "https://www.flashfirejobs.com/features/ai-job-targeting",
-    },
+    languages: hreflangLanguages("/features/ai-job-targeting"),
   },
   openGraph: {
     title: "AI Precision Job Targeting for Faster Interview Calls | Flashfire Australia",

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import HowItWorks from "@/src/components/pages/howItWorks/HowItWorks";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export const metadata: Metadata = {
   title: "How It Works: Student Job Search Automation",
@@ -11,17 +12,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-au/how-flashfire-ai-job-automation-platform-works",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/how-flashfire-ai-job-automation-platform-works",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/how-flashfire-ai-job-automation-platform-works",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/how-flashfire-ai-job-automation-platform-works",
-      "en-AU": "https://www.flashfirejobs.com/en-au/how-flashfire-ai-job-automation-platform-works",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/how-flashfire-ai-job-automation-platform-works",
-      "en-DE": "https://www.flashfirejobs.com/en-de/how-flashfire-ai-job-automation-platform-works",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/how-flashfire-ai-job-automation-platform-works",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/how-flashfire-ai-job-automation-platform-works",
-      "x-default": "https://www.flashfirejobs.com/how-flashfire-ai-job-automation-platform-works",
-    },
+    languages: hreflangLanguages("/how-flashfire-ai-job-automation-platform-works"),
   },
   openGraph: {
     title: "How It Works: Student Job Search Automation",

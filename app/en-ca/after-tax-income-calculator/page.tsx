@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/after-tax-income-calculator/page";
 
@@ -8,17 +9,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-ca/after-tax-income-calculator",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/after-tax-income-calculator",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/after-tax-income-calculator",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/after-tax-income-calculator",
-      "en-AU": "https://www.flashfirejobs.com/en-au/after-tax-income-calculator",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/after-tax-income-calculator",
-      "en-DE": "https://www.flashfirejobs.com/en-de/after-tax-income-calculator",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/after-tax-income-calculator",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/after-tax-income-calculator",
-      "x-default": "https://www.flashfirejobs.com/after-tax-income-calculator",
-    },
+    languages: hreflangLanguages("/after-tax-income-calculator"),
   },
   openGraph: {
     title: "After Tax Income Calculator – Net Annual Income | Flashfire Canada",

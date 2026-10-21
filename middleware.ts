@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { AU_PREFIX, CANADA_PREFIX, EU_PREFIX, FRANCE_PREFIX, GERMANY_PREFIX, NETHERLANDS_PREFIX, UK_PREFIX, US_PREFIX, LOCALE_PREFIXES, UK_COUNTRY_CODES, EU_COUNTRY_CODES } from '@/src/utils/locale';
+import { AU_PREFIX, CANADA_PREFIX, EU_PREFIX, EU_PREFIX_BY_COUNTRY, UK_PREFIX, US_PREFIX, LOCALE_PREFIXES, UK_COUNTRY_CODES, EU_COUNTRY_CODES } from '@/src/utils/locale';
 import { localeHasRoute } from '@/src/utils/localeRoutes.generated';
 import { getCloudflareCountry, resolveClientIp } from '@/src/utils/clientIp';
 
@@ -94,9 +94,8 @@ function localePrefixFor(countryCode: string | null): string | null {
   if (countryCode === CANADA_CODE) return CANADA_PREFIX;
   if (countryCode === AUSTRALIA_CODE) return AU_PREFIX;
   if (UK_COUNTRY_CODES.has(countryCode)) return UK_PREFIX;
-  if (countryCode === 'DE') return GERMANY_PREFIX;
-  if (countryCode === 'NL') return NETHERLANDS_PREFIX;
-  if (countryCode === 'FR') return FRANCE_PREFIX;
+  const euTree = EU_PREFIX_BY_COUNTRY.get(countryCode);
+  if (euTree) return euTree;
   if (EU_COUNTRY_CODES.has(countryCode)) return EU_PREFIX;
   if (countryCode === US_CODE) return US_PREFIX;
   return null;
@@ -138,7 +137,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // If already inside a locale tree (/en-ca, /en-gb, /en-au, /en-ie, /en-de, /en-nl, /en-fr, /en-eu, /en-us), allow it
+  // If already inside a locale tree (/en-ca, /en-gb, /en-au, any EU tree, /en-us), allow it
   if (LOCALE_PREFIXES.some(prefix => pathname === prefix || pathname.startsWith(`${prefix}/`))) {
     return NextResponse.next();
   }

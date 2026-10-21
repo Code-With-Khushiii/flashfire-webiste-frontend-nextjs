@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/features/dashboard-analytics/page";
 
@@ -12,17 +13,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-ca/features/dashboard-analytics",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/features/dashboard-analytics",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/features/dashboard-analytics",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/features/dashboard-analytics",
-      "en-AU": "https://www.flashfirejobs.com/en-au/features/dashboard-analytics",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/features/dashboard-analytics",
-      "en-DE": "https://www.flashfirejobs.com/en-de/features/dashboard-analytics",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/features/dashboard-analytics",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/features/dashboard-analytics",
-      "x-default": "https://www.flashfirejobs.com/features/dashboard-analytics",
-    },
+    languages: hreflangLanguages("/features/dashboard-analytics"),
   },
   openGraph: {
     title: "Job Application Dashboard & Analytics | Flashfire CA",

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Navbar from "@/src/components/navbar/navbar";
 import Footer from "@/src/components/footer/footer";
 import Features from "@/src/components/pages/features/Features";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export const metadata: Metadata = {
   title: "AI-Powered Job Search & Job Search Automation",
@@ -9,17 +10,7 @@ export const metadata: Metadata = {
     "Flashfire offers AI-powered job search and job search automation to apply smarter, optimize resumes, and get interview calls faster.",
   alternates: {
     canonical: "https://www.flashfirejobs.com/features",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/features",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/features",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/features",
-      "en-AU": "https://www.flashfirejobs.com/en-au/features",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/features",
-      "en-DE": "https://www.flashfirejobs.com/en-de/features",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/features",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/features",
-      "x-default": "https://www.flashfirejobs.com/features",
-    },
+    languages: hreflangLanguages("/features"),
   },
   openGraph: {
     title: "AI-Powered Job Search & Job Search Automation",

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export { default } from "@/app/ai-remote-job-search-platform/page";
 
@@ -9,16 +10,6 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-au/ai-remote-job-search-platform",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/ai-remote-job-search-platform",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/ai-remote-job-search-platform",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/ai-remote-job-search-platform",
-      "en-AU": "https://www.flashfirejobs.com/en-au/ai-remote-job-search-platform",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/ai-remote-job-search-platform",
-      "en-DE": "https://www.flashfirejobs.com/en-de/ai-remote-job-search-platform",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/ai-remote-job-search-platform",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/ai-remote-job-search-platform",
-      "x-default": "https://www.flashfirejobs.com/ai-remote-job-search-platform",
-    },
+    languages: hreflangLanguages("/ai-remote-job-search-platform"),
   },
 };

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import AboutUs from "@/src/components/pages/aboutUs/AboutUs";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export const metadata: Metadata = {
   title: "About Flashfire — AI Job Search Automation Platform (UK)",
@@ -13,17 +14,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-gb/about-us",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/about-us",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/about-us",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/about-us",
-      "en-AU": "https://www.flashfirejobs.com/en-au/about-us",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/about-us",
-      "en-DE": "https://www.flashfirejobs.com/en-de/about-us",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/about-us",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/about-us",
-      "x-default": "https://www.flashfirejobs.com/about-us",
-    },
+    languages: hreflangLanguages("/about-us"),
   },
   openGraph: {
     title: "About Flashfire — AI Job Search Automation Platform (UK)",

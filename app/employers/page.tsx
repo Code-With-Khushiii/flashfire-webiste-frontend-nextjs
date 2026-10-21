@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import EmployerForm from "@/src/components/employers/employerForm";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
+import { hreflangLanguages } from "@/src/utils/locale";
 
 export const metadata: Metadata = {
   title: "Employers - Partner with Flashfire | Hire Top Talent Faster",
@@ -13,17 +14,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/employers",
-    languages: {
-      "en-US": "https://www.flashfirejobs.com/employers",
-      "en-CA": "https://www.flashfirejobs.com/en-ca/employers",
-      "en-GB": "https://www.flashfirejobs.com/en-gb/employers",
-      "en-AU": "https://www.flashfirejobs.com/en-au/employers",
-      "en-IE": "https://www.flashfirejobs.com/en-ie/employers",
-      "en-DE": "https://www.flashfirejobs.com/en-de/employers",
-      "en-NL": "https://www.flashfirejobs.com/en-nl/employers",
-      "en-FR": "https://www.flashfirejobs.com/en-fr/employers",
-      "x-default": "https://www.flashfirejobs.com/employers",
-    },
+    languages: hreflangLanguages("/employers"),
   },
   openGraph: {
     title: "Employers - Partner with Flashfire",
