@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { AU_PREFIX, CANADA_PREFIX, EU_PREFIX, EU_PREFIX_BY_COUNTRY, UK_PREFIX, US_PREFIX, LOCALE_PREFIXES, UK_COUNTRY_CODES, EU_COUNTRY_CODES } from '@/src/utils/locale';
+import { AU_PREFIX, CANADA_PREFIX, UK_PREFIX, US_PREFIX, LOCALE_PREFIXES, UK_COUNTRY_CODES } from '@/src/utils/locale';
 import { localeHasRoute } from '@/src/utils/localeRoutes.generated';
 import { getCloudflareCountry, resolveClientIp } from '@/src/utils/clientIp';
 
@@ -94,9 +94,8 @@ function localePrefixFor(countryCode: string | null): string | null {
   if (countryCode === CANADA_CODE) return CANADA_PREFIX;
   if (countryCode === AUSTRALIA_CODE) return AU_PREFIX;
   if (UK_COUNTRY_CODES.has(countryCode)) return UK_PREFIX;
-  const euTree = EU_PREFIX_BY_COUNTRY.get(countryCode);
-  if (euTree) return euTree;
-  if (EU_COUNTRY_CODES.has(countryCode)) return EU_PREFIX;
+  // No EU branch on purpose: the country trees (/en-de, /en-fr, ...) are reached
+  // by link, search result or the footer country selector, never by IP.
   if (countryCode === US_CODE) return US_PREFIX;
   return null;
 }

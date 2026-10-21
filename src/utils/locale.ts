@@ -77,9 +77,6 @@ export type EUPrefix = (typeof EU_TREES)[number]["prefix"];
 
 export const EU_PREFIXES: readonly EUPrefix[] = EU_TREES.map((tree) => tree.prefix);
 
-/** Where EU visitors from a country without a tree of its own land. */
-export const EU_PREFIX: EUPrefix = "/en-ie";
-
 /**
  * Every non-default locale prefix. Matching is on segment boundaries (see
  * getLocalePrefix), so order does not matter: `/en-ca` never matches `/en-cash`.
@@ -91,10 +88,7 @@ export type LocalePrefix = (typeof LOCALE_PREFIXES)[number] | "";
 /** Country codes served the UK tree (`/en-gb`). */
 export const UK_COUNTRY_CODES = new Set(["GB"]);
 
-/**
- * EU member states. Every one of them also has its own entry in EU_TREES, so
- * the middleware sends visitors there; EU_PREFIX is only a fallback.
- */
+/** EU member states. Every one of them also has its own entry in EU_TREES. */
 export const EU_COUNTRY_CODES = new Set([
   "AT", // Austria
   "BE", // Belgium
@@ -170,11 +164,6 @@ const COUNTRY_BY_PREFIX: Record<Exclude<LocalePrefix, "">, string> = {
   [AU_PREFIX]: "AU",
   ...(Object.fromEntries(EU_TREES.map((tree) => [tree.prefix, tree.country])) as Record<EUPrefix, string>),
 };
-
-/** EU tree for each country that has one, e.g. "DE" -> "/en-de". */
-export const EU_PREFIX_BY_COUNTRY: ReadonlyMap<string, EUPrefix> = new Map(
-  EU_TREES.map((tree) => [tree.country, tree.prefix])
-);
 
 /** Country name for the page copy of an EU tree ("France"), or null outside the EU trees. */
 export function getEUCountryName(pathname: string | null | undefined): string | null {
