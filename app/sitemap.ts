@@ -142,10 +142,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/en-ca/recent-job-openings`, lastModified: new Date('2025-11-01'), changeFrequency: 'weekly' as const, priority: 0.6 },
     { url: `${baseUrl}/en-ca/job-search`, lastModified: new Date('2025-11-01'), changeFrequency: 'weekly' as const, priority: 0.7 },
     { url: `${baseUrl}/en-ca/offer-and-salary`, lastModified: new Date('2025-11-01'), changeFrequency: 'monthly' as const, priority: 0.5 },
-    { url: `${baseUrl}/en-ca/image-testimonials`, lastModified: new Date('2025-11-01'), changeFrequency: 'monthly' as const, priority: 0.5 },
-    { url: `${baseUrl}/en-ca/see-flashfire-in-action`, lastModified: new Date('2025-11-01'), changeFrequency: 'monthly' as const, priority: 0.5 },
-    { url: `${baseUrl}/en-ca/talk-to-an-expert`, lastModified: new Date('2025-11-01'), changeFrequency: 'monthly' as const, priority: 0.5 },
     { url: `${baseUrl}/en-ca/product-demo`, lastModified: new Date('2026-08-13'), changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/en-ca/privacy-policy`, lastModified: new Date('2025-11-01'), changeFrequency: 'yearly' as const, priority: 0.3 },
+    { url: `${baseUrl}/en-ca/terms-of-service`, lastModified: new Date('2025-11-01'), changeFrequency: 'yearly' as const, priority: 0.3 },
+    { url: `${baseUrl}/en-ca/refund-policy`, lastModified: new Date('2025-11-01'), changeFrequency: 'yearly' as const, priority: 0.3 },
   ]
 
   // The UK, Australia and Europe trees mirror the Canada tree exactly, so derive them

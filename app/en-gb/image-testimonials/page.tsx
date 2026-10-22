@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Navbar from "@/src/components/navbar/navbar";
 import Footer from "@/src/components/footer/footer";
 import HappyUsersGalleryPage from "@/src/components/homePageHappyUsers/HappyUsersGalleryPage";
-import { hreflangLanguages } from "@/src/utils/locale";
 
 export const metadata: Metadata = {
   title: "Flashfire Reviews: Success Stories & Testimonials",
@@ -14,7 +13,6 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-gb/image-testimonials",
-    languages: hreflangLanguages("/image-testimonials"),
   },
   openGraph: {
     title: "Flashfire Reviews: Success Stories & Testimonials",

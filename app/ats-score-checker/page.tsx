@@ -2,11 +2,13 @@ import Navbar from "@/src/components/navbar/navbar";
 import Footer from "@/src/components/footer/footer";
 import ATSScoreChecker from "@/src/components/resumeTools/ATSScoreChecker";
 
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata = {
   title: "Free ATS Resume Score Checker | Flashfire",
   description: "Check your resume ATS score instantly. Get detailed feedback and improvement tips. Free ATS score checker.",
   alternates: {
     canonical: "https://www.flashfirejobs.com/ats-score-checker",
+    languages: hreflangLanguages("/ats-score-checker"),
   },
   openGraph: {
     title: "Free ATS Resume Score Checker | Flashfire",

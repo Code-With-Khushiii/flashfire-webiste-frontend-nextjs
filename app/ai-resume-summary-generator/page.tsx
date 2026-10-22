@@ -3,11 +3,13 @@ import ToolSeoContent from "@/src/components/toolSeo/ToolSeoContent";
 import Footer from "@/src/components/footer/footer";
 import AiResumeSummaryGenerator from "@/src/components/resumeTools/AiResumeSummaryGenerator";
 
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata = {
   title: "AI Resume Summary Generator | Flashfire",
   description: "Generate a compelling professional resume summary in seconds. Free AI resume summary generator.",
   alternates: {
     canonical: "https://www.flashfirejobs.com/ai-resume-summary-generator",
+    languages: hreflangLanguages("/ai-resume-summary-generator"),
   },
 };
 

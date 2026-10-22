@@ -3,6 +3,7 @@ import AboutUs from "@/src/components/pages/aboutUs/AboutUs";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata: Metadata = {
   title: "About Flashfire — AI Job Search Automation Platform",
   description:
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/about-us",
+    languages: hreflangLanguages("/about-us"),
   },
   openGraph: {
     title: "About Flashfire — AI Job Search Automation Platform",

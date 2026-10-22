@@ -3,6 +3,7 @@ import PrivacyPolicy from "@/src/components/legal/PrivacyPolicy";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata: Metadata = {
   title: "Privacy Policy - How We Protect Your Data | Flashfire",
   description:
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/privacy-policy",
+    languages: hreflangLanguages("/privacy-policy"),
   },
   openGraph: {
     title: "Privacy Policy - How We Protect Your Data",

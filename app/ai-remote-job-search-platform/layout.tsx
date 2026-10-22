@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata: Metadata = {
   title: "AI Remote Job Search Platform | Flashfire",
   description:
     "Discover remote jobs across US, Canada, and global markets with Flashfire's AI-powered remote job search platform.",
   alternates: {
     canonical: "https://www.flashfirejobs.com/ai-remote-job-search-platform",
+    languages: hreflangLanguages("/ai-remote-job-search-platform"),
   },
 };
 

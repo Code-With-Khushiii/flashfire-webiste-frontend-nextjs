@@ -4,11 +4,12 @@ import ToolSeoContent from "@/src/components/toolSeo/ToolSeoContent";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata: Metadata = {
     title: "Salary Estimator: Salary Range by Role | Flashfire",
     description: "Estimate a salary range based on role, experience, location, and skill premium. Great for job offer planning and negotiation.",
     robots: { index: true, follow: true },
-    alternates: { canonical: "https://www.flashfirejobs.com/salary-estimator" },
+    alternates: { canonical: "https://www.flashfirejobs.com/salary-estimator", languages: hreflangLanguages("/salary-estimator") },
     openGraph: {
         title: "Salary Estimator: Salary Range by Role | Flashfire",
         description: "Estimate a salary range based on role, experience, location, and skill premium. Great for job offer planning and negotiation.",
