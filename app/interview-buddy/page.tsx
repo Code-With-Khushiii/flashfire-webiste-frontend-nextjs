@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import InterviewBuddy from "@/src/components/interviewBuddy/interviewBuddy";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata: Metadata = {
     title: "AI Interview Assistant for Real-Time Support",
     description:
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
     },
     alternates: {
         canonical: "https://www.flashfirejobs.com/interview-buddy",
+      languages: hreflangLanguages("/interview-buddy"),
     },
     openGraph: {
         title: "AI Interview Assistant for Real-Time Support",

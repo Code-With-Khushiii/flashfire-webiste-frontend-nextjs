@@ -1,22 +1,17 @@
 /**
  * Locale routing helpers.
  *
- * `/` serves the default (US) content and stays the canonical, indexed URL —
- * it's what crawlers always see (middleware never geo-redirects bots) and
- * what any visitor whose country can't be determined lands on. `/en-us` is
- * an explicit mirror of the exact same content (every page re-exports its
- * root counterpart) for parity with `/en-ca`, `/en-gb`, `/en-au` and the EU trees, and real
- * US visitors ARE redirected there by the middleware, same as CA, UK/EU and
- * AU visitors get sent to their trees. Its pages still canonicalize back to the
- * root URL, so it never competes with `/` for search ranking even though it
- * now carries real traffic. Everything that needs to build a country-aware
+ * `/` serves the default (US) content and is the only US URL: it is the
+ * canonical, indexed page and the x-default. There is no `/en-us` tree;
+ * `next.config.ts` 308s `/en-us/*` to `/*`. CA, UK and AU visitors are
+ * geo-redirected to their trees by the middleware; the EU trees are never
+ * reached by IP. Everything that needs to build a country-aware
  * link or pick country-specific content should go through here rather than
  * hard-coding `"/en-ca"` checks, so adding a locale stays a one-line change.
  */
 
 export type Locale = "us" | "ca" | "uk" | "au" | "eu";
 
-export const US_PREFIX = "/en-us";
 export const CANADA_PREFIX = "/en-ca";
 export const UK_PREFIX = "/en-gb";
 export const AU_PREFIX = "/en-au";
@@ -77,24 +72,18 @@ export type EUPrefix = (typeof EU_TREES)[number]["prefix"];
 
 export const EU_PREFIXES: readonly EUPrefix[] = EU_TREES.map((tree) => tree.prefix);
 
-/** Where EU visitors from a country without a tree of its own land. */
-export const EU_PREFIX: EUPrefix = "/en-ie";
-
 /**
  * Every non-default locale prefix. Matching is on segment boundaries (see
  * getLocalePrefix), so order does not matter: `/en-ca` never matches `/en-cash`.
  */
-export const LOCALE_PREFIXES = [CANADA_PREFIX, UK_PREFIX, AU_PREFIX, ...EU_PREFIXES, US_PREFIX] as const;
+export const LOCALE_PREFIXES = [CANADA_PREFIX, UK_PREFIX, AU_PREFIX, ...EU_PREFIXES] as const;
 
 export type LocalePrefix = (typeof LOCALE_PREFIXES)[number] | "";
 
 /** Country codes served the UK tree (`/en-gb`). */
 export const UK_COUNTRY_CODES = new Set(["GB"]);
 
-/**
- * EU member states. Every one of them also has its own entry in EU_TREES, so
- * the middleware sends visitors there; EU_PREFIX is only a fallback.
- */
+/** EU member states. Every one of them also has its own entry in EU_TREES. */
 export const EU_COUNTRY_CODES = new Set([
   "AT", // Austria
   "BE", // Belgium
@@ -164,17 +153,11 @@ export function getLocaleTag(pathname: string | null | undefined): string {
 
 /** Country each tree serves. */
 const COUNTRY_BY_PREFIX: Record<Exclude<LocalePrefix, "">, string> = {
-  [US_PREFIX]: "US",
   [CANADA_PREFIX]: "CA",
   [UK_PREFIX]: "GB",
   [AU_PREFIX]: "AU",
   ...(Object.fromEntries(EU_TREES.map((tree) => [tree.prefix, tree.country])) as Record<EUPrefix, string>),
 };
-
-/** EU tree for each country that has one, e.g. "DE" -> "/en-de". */
-export const EU_PREFIX_BY_COUNTRY: ReadonlyMap<string, EUPrefix> = new Map(
-  EU_TREES.map((tree) => [tree.country, tree.prefix])
-);
 
 /** Country name for the page copy of an EU tree ("France"), or null outside the EU trees. */
 export function getEUCountryName(pathname: string | null | undefined): string | null {
@@ -202,10 +185,6 @@ export function isAUPath(pathname: string | null | undefined): boolean {
 
 export function isEUPath(pathname: string | null | undefined): boolean {
   return (EU_PREFIXES as readonly string[]).includes(getLocalePrefix(pathname));
-}
-
-export function isUSPath(pathname: string | null | undefined): boolean {
-  return getLocalePrefix(pathname) === US_PREFIX;
 }
 
 /** True for any non-default locale tree. */

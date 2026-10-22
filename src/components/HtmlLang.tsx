@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { EU_TREES, getLocalePrefix } from "@/src/utils/locale";
 
 const LANG_BY_PREFIX: Record<string, string> = {
-  "/en-us": "en-US",
   "/en-ca": "en-CA",
   "/en-gb": "en-GB",
   "/en-au": "en-AU",

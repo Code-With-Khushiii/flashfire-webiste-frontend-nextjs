@@ -4,11 +4,12 @@ import ToolSeoContent from "@/src/components/toolSeo/ToolSeoContent";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata: Metadata = {
     title: "Take Home Pay Calculator: Net Paycheck | Flashfire",
     description: "See your actual take-home pay after taxes and deductions. Enter gross pay, frequency, and state tax to get your net paycheck.",
     robots: { index: true, follow: true },
-    alternates: { canonical: "https://www.flashfirejobs.com/take-home-pay-calculator" },
+    alternates: { canonical: "https://www.flashfirejobs.com/take-home-pay-calculator", languages: hreflangLanguages("/take-home-pay-calculator") },
     openGraph: {
         title: "Take Home Pay Calculator: Net Paycheck | Flashfire",
         description: "See your actual take-home pay after taxes and deductions. Enter gross pay, frequency, and state tax to get your net paycheck.",
