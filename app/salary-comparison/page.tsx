@@ -4,11 +4,12 @@ import ToolSeoContent from "@/src/components/toolSeo/ToolSeoContent";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata: Metadata = {
     title: "Salary Comparison – Compare Two Job Offers | Flashfire",
     description: "Compare two job offers side by side including salary, bonus, benefits, and commute costs to find the better total value.",
     robots: { index: true, follow: true },
-    alternates: { canonical: "https://www.flashfirejobs.com/salary-comparison" },
+    alternates: { canonical: "https://www.flashfirejobs.com/salary-comparison", languages: hreflangLanguages("/salary-comparison") },
     openGraph: {
         title: "Salary Comparison – Compare Two Job Offers | Flashfire",
         description: "Compare two job offers side by side including salary, bonus, benefits, and commute costs to find the better total value.",

@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint . --ext ts,tsx --max-warnings=0",
     "type-check": "tsc --noEmit",
+    "audit:hreflang": "node scripts/audit-hreflang.mjs",
     "prepare": "husky"
   },
   "lint-staged": {

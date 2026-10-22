@@ -3,6 +3,7 @@ import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 import { euMetadata } from "@/src/utils/euTree";
 
+import { hreflangLanguages } from "@/src/utils/locale";
 export const generateMetadata = euMetadata((url) => ({
   title: "Refund Policy - Flashfire Guarantee & Eligibility",
   description:
@@ -13,6 +14,7 @@ export const generateMetadata = euMetadata((url) => ({
   },
   alternates: {
     canonical: url("/refund-policy"),
+    languages: hreflangLanguages("/refund-policy"),
   },
   openGraph: {
     title: "Refund Policy - Flashfire Guarantee & Eligibility",

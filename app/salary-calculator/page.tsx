@@ -4,11 +4,12 @@ import ToolSeoContent from "@/src/components/toolSeo/ToolSeoContent";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata: Metadata = {
     title: "Salary Calculator – Estimate Take-Home Pay | Flashfire",
     description: "Calculate your take-home pay from annual salary. Includes bonus, pre-tax deductions, federal and state tax estimates.",
     robots: { index: true, follow: true },
-    alternates: { canonical: "https://www.flashfirejobs.com/salary-calculator" },
+    alternates: { canonical: "https://www.flashfirejobs.com/salary-calculator", languages: hreflangLanguages("/salary-calculator") },
     openGraph: {
         title: "Salary Calculator – Estimate Take-Home Pay | Flashfire",
         description: "Calculate your take-home pay from annual salary. Includes bonus, pre-tax deductions, federal and state tax estimates.",

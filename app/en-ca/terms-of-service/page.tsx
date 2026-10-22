@@ -3,6 +3,7 @@ import TermsOfService from "@/src/components/legal/TermsOfService";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata: Metadata = {
   title: "Terms of Service - Flashfire User Agreement",
   description:
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-ca/terms-of-service",
+    languages: hreflangLanguages("/terms-of-service"),
   },
   openGraph: {
     title: "Terms of Service - Flashfire User Agreement",

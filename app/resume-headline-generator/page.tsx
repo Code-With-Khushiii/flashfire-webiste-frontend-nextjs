@@ -3,11 +3,13 @@ import ToolSeoContent from "@/src/components/toolSeo/ToolSeoContent";
 import Footer from "@/src/components/footer/footer";
 import ResumeHeadlineGenerator from "@/src/components/resumeTools/ResumeHeadlineGenerator";
 
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata = {
   title: "Resume Headline Generator | Flashfire",
   description: "Generate 5 AI-powered, recruiter-tested resume headlines instantly. Free resume headline generator.",
   alternates: {
     canonical: "https://www.flashfirejobs.com/resume-headline-generator",
+    languages: hreflangLanguages("/resume-headline-generator"),
   },
 };
 
