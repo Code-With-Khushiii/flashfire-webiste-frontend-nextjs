@@ -32,7 +32,8 @@ body {
     -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
+  /* clip, not hidden: hidden makes body a scroll container and breaks position: sticky */
+  overflow-x: clip;
 }
 
 @layer base {

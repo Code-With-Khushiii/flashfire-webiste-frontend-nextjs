@@ -4,6 +4,8 @@ export type BlogPost = {
   title: string;
   metaTitle?: string;
   excerpt?: string;
+  // On-page "Summary" box, written separately from the meta description (excerpt)
+  summary?: string;
   date?: string;
   lastUpdated?: string;
   readTime?: string;

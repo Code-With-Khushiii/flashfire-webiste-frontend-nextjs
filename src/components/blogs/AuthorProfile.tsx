@@ -15,16 +15,20 @@ type Author = {
 };
 
 /**
- * LinkedIn profile per author name. Fill in the real URLs here (or set
- * `author.linkedin` in blogsData); the icon is only shown when one exists.
+ * Personal LinkedIn profile per author name (or set `author.linkedin` in
+ * blogsData). Authors without one link to the Flashfire company page.
  */
 const AUTHOR_LINKEDIN_URLS: Record<string, string> = {
   // "Debashri Mandal": "https://www.linkedin.com/in/<profile>/",
 };
+const FLASHFIRE_LINKEDIN_URL = "https://www.linkedin.com/company/flashfire-pvt-ltd/";
 
 const DEFAULT_AUTHOR_IMAGES: Record<string, string> = {
   "Debashri Mandal": "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/1778226526974.png",
+  "Debashri": "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/1778226526974.png",
   "Riya": "/images/Riya.png",
+  "Riya Sharma": "/images/Riya.png",
+  "Riya Menon": "/images/Riya.png",
 };
 
 type BlogPost = {
@@ -93,17 +97,15 @@ export default function AuthorProfile({ author, posts }: AuthorProfileProps) {
             <div className={styles.authorHeaderInfo}>
               <h1 className={styles.authorName}>{author.name}</h1>
               <p className={styles.authorTitle}>Content Writer</p>
-              {(author.linkedin || AUTHOR_LINKEDIN_URLS[author.name]) && (
-                <a
-                  href={author.linkedin || AUTHOR_LINKEDIN_URLS[author.name]}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${author.name} on LinkedIn`}
-                  style={{ display: "inline-flex", marginTop: 8, fontSize: 20, color: "#0A66C2" }}
-                >
-                  <FaLinkedinIn />
-                </a>
-              )}
+              <a
+                href={author.linkedin || AUTHOR_LINKEDIN_URLS[author.name] || FLASHFIRE_LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${author.name} on LinkedIn`}
+                style={{ display: "inline-flex", marginTop: 8, fontSize: 20, color: "#0A66C2" }}
+              >
+                <FaLinkedinIn />
+              </a>
             </div>
           </div>
 

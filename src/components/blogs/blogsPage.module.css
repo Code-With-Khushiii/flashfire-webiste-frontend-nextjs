@@ -68,7 +68,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   font-size: 0.9375rem;
   color: #334155;
 }
@@ -97,7 +97,7 @@
   line-height: 1.15;
   letter-spacing: -0.03em;
   color: #0f172a;
-  margin: 0 0 2rem;
+  margin: 0 0 1rem;
   overflow-wrap: break-word;
 }
 
@@ -206,7 +206,18 @@
 
 /* === SIDEBAR === */
 .sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0;
+  /* Span the full height of the article column; the sticky block needs that room to travel */
+  align-self: stretch;
+}
+
+/* Share scrolls away with the page; only this block sticks below the header */
+.sidebarSticky {
   position: sticky;
+  /* Leaves the lead magnet visible below the TOC; the TOC takes the remaining height */
   top: calc(var(--sticky-header) + 1.5rem);
   /* Fits the viewport below the sticky header; only the TOC list shrinks and scrolls */
   max-height: calc(100vh - var(--sticky-header) - 3rem);
@@ -268,13 +279,16 @@
 .tableOfContents {
   display: flex;
   flex-direction: column;
-  flex: 0 1 auto;
-  min-height: 0;
+  flex: 1 1 auto;
+  /* Roomy box (title + ~8 entries). The minimum lives on the box, not the list, so the
+     box can never be squeezed smaller than its content and spill onto the lead magnet. */
+  min-height: calc(min(20rem, 35vh) + 3rem);
+  overflow: hidden;
 }
 
 .tableOfContents .tocList {
-  flex: 0 1 auto;
-  min-height: 4.5rem;
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
@@ -298,6 +312,7 @@
 
 .tocLink {
   display: block;
+  text-decoration: none;
   width: 100%;
   padding: 0.3rem 0 0.3rem 1rem;
   border: none;
@@ -333,8 +348,13 @@
   background: #fff7ed;
   border: 1px solid #fed7aa;
   border-radius: 16px;
-  padding: 1.5rem;
+  padding: 1.25rem 1.5rem;
   text-align: center;
+  /* Reserved box (title + 2-3 text lines + button) so a late font swap can't resize it */
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 12rem;
+  contain: layout;
 }
 
 .leadMagnet .leadMagnetTitle {
@@ -812,7 +832,7 @@
     padding: 2.5rem 1.5rem 1.5rem;
   }
 
-  .sidebar {
+  .sidebarSticky {
     position: static;
     max-height: none;
   }

@@ -53,3 +53,91 @@ export function classifyOrderedLists(
   }
   return html;
 }
+
+
+// Average adult silent-reading speed for web articles
+const WORDS_PER_MINUTE = 200;
+
+// "N min" from the real word count of the post's HTML. Posts without content keep
+// whatever label they were published with.
+export function getReadTime(content?: string, fallback?: string): string {
+  const text = (content || "")
+    .replace(/<(script|style)\b[\s\S]*?<\/\1>/gi, " ")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&[a-z]+;|&#\d+;/gi, " ");
+  const words = text.split(/\s+/).filter(Boolean).length;
+  if (words === 0) return fallback || "";
+  return `${Math.max(1, Math.ceil(words / WORDS_PER_MINUTE))} min`;
+}
+
+// Some posts write step headings as list items: <ol><li>Step title<p>…</p></li></ol>.
+// A list should only be a real list, so an <ol> whose every item is a short title
+// followed by block content (paragraphs, lists, tables) becomes <h3> + that content.
+export function headingListsToHeadings(html: string): string {
+  const open = /<ol\b[^>]*>/gi;
+  let out = "";
+  let last = 0;
+  let m: RegExpExecArray | null;
+
+  while ((m = open.exec(html))) {
+    if (m.index < last) continue;
+    // Find the matching </ol>, counting nested <ol>s
+    const tagRe = /<(\/?)ol\b[^>]*>/gi;
+    tagRe.lastIndex = m.index + m[0].length;
+    let depth = 1;
+    let end = -1;
+    let t: RegExpExecArray | null;
+    while ((t = tagRe.exec(html))) {
+      depth += t[1] ? -1 : 1;
+      if (depth === 0) {
+        end = t.index + t[0].length;
+        break;
+      }
+    }
+    if (end === -1) break;
+
+    const inner = html.slice(m.index + m[0].length, end - "</ol>".length);
+    const converted = convertItems(inner);
+    if (converted !== null) {
+      out += html.slice(last, m.index) + converted;
+      last = end;
+    }
+  }
+  return out + html.slice(last);
+}
+
+function convertItems(inner: string): string | null {
+  // Top-level <li>s only; items inside a nested <ul>/<ol> belong to their parent item
+  const tagRe = /<(\/?)(ul|ol|li)\b[^>]*>/gi;
+  const starts: { tagStart: number; bodyStart: number }[] = [];
+  let depth = 0;
+  let m: RegExpExecArray | null;
+  while ((m = tagRe.exec(inner))) {
+    if (m[2].toLowerCase() === "li") {
+      if (!m[1] && depth === 0) {
+        starts.push({ tagStart: m.index, bodyStart: m.index + m[0].length });
+      }
+    } else {
+      depth += m[1] ? -1 : 1;
+    }
+  }
+  if (starts.length === 0) return null;
+
+  const parts: string[] = [];
+  for (let i = 0; i < starts.length; i++) {
+    const raw = inner.slice(starts[i].bodyStart, starts[i + 1]?.tagStart ?? inner.length);
+    // Only top-level items: a nested <ol> inside an item makes the structure ambiguous
+    const body = raw.replace(/<\/li>\s*(<\/ol>)?\s*$/i, "");
+    const block = body.search(/<(p|ul|ol|table|div|blockquote)\b/i);
+    if (block <= 0) return null;
+    const title = body
+      .slice(0, block)
+      .replace(/<[^>]*>/g, "")
+      .replace(/&nbsp;/g, " ")
+      .trim();
+    if (!title || title.length > 150 || /[.:]$/.test(title)) return null;
+    parts.push(`<h3>${title}</h3>${body.slice(block)}`);
+  }
+  return parts.join("\n");
+}

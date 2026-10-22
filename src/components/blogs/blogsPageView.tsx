@@ -13,15 +13,17 @@ import Navbar from "../navbar/navbar";
 import Footer from "../footer/footer";
 import Link from "next/link";
 import { FaLinkedinIn, FaFacebookF, FaTwitter, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { categoryToSlug, tagToSlug } from "@/src/utils/blogCategoryUtils";
+import { tagToSlug } from "@/src/utils/blogCategoryUtils";
 import { toIsoDate } from "@/src/utils/blogDates";
-import { classifyOrderedLists } from "@/src/utils/blogContent";
+import { classifyOrderedLists, headingListsToHeadings } from "@/src/utils/blogContent";
+import { extractFaqItems, removeLeadingTitleHeading } from "@/src/utils/blogFaq";
 
 type BlogPost = {
   id: number;
   slug?: string;
   title: string;
   excerpt?: string;
+  summary?: string;
   image?: string;
   coverImage?: string;
   category?: string;
@@ -71,7 +73,8 @@ export default function BlogsPageView({
     [post.tags]
   );
 
-  const overviewText = post.excerpt || "";
+  // Written by the content team; posts published before that field existed fall back to the excerpt
+  const overviewText = post.summary?.trim() || post.excerpt || "";
 
   // Split overview into paragraphs for first 3 blogs (deterministic, no client-side checks)
   const overviewParagraphs = useMemo(() => {
@@ -103,7 +106,7 @@ export default function BlogsPageView({
   // <h1> authored inside the post body is demoted to <h2>.
   const demotedContent = useMemo(
     () => {
-      const html = (post?.content || "")
+      const html = removeLeadingTitleHeading(headingListsToHeadings(post?.content || ""), post.title)
         .replace(/<h1(\b[^>]*)>/gi, "<h2$1>")
         .replace(/<\/h1>/gi, "</h2>")
         // Body images sit below the hero, so the browser fetches them only near the viewport
@@ -128,68 +131,45 @@ export default function BlogsPageView({
         qaList: styles.qaList,
       });
     },
-    [post?.content]
+    [post?.content, post.title]
   );
 
-  // Process content and generate table of contents (client-side only)
-  const [processedContent, setProcessedContent] = useState<string>(demotedContent);
-  const [tableOfContents, setTableOfContents] = useState<TableOfContentsItem[]>([]);
+  // Anchor ids, the table of contents and the table wrappers are all computed on
+  // the HTML string, so they are in the server-rendered page. Building them after
+  // hydration made the sidebar TOC pop in and push the lead magnet down (CLS).
+  const { processedContent, tableOfContents } = useMemo(() => {
+    const toc: TableOfContentsItem[] = [];
+    if (!demotedContent) return { processedContent: demotedContent, tableOfContents: toc };
 
-  useEffect(() => {
-    if (!demotedContent || typeof window === "undefined") {
-      setProcessedContent(demotedContent);
-      return;
-    }
+    // Only H2 headings (main sections) go in the TOC; H3 sub-sections/questions stay out
+    let h2Count = 0;
+    let html = demotedContent.replace(
+      /<h2\b([^>]*)>([\s\S]*?)<\/h2>/gi,
+      (_m, attrs: string, inner: string) => {
+        h2Count += 1;
+        const anchor = `section-${h2Count}`;
+        const title = inner
+          .replace(/<[^>]*>/g, "")
+          .replace(/&nbsp;/g, " ")
+          .replace(/&amp;/g, "&")
+          .trim();
+        toc.push({ title, anchor, level: 2 });
+        const cleaned = attrs.replace(/\sid=("[^"]*"|'[^']*')/i, "");
+        return `<h2${cleaned} id="${anchor}">${inner}</h2>`;
+      }
+    );
 
-    try {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(demotedContent, "text/html");
-      // Only include H2 headings (main sections), exclude H3 (sub-sections, questions)
-      const headings = doc.querySelectorAll("h2");
-      const toc: TableOfContentsItem[] = [];
+    // Wrap tables so wide ones scroll horizontally on small screens
+    html = html.replace(
+      /<table\b[\s\S]*?<\/table>/gi,
+      (table) => `<div class="${styles.tableScroll}">${table}</div>`
+    );
 
-      headings.forEach((heading, index) => {
-        const text = heading.textContent || "";
-        const anchor = `section-${index + 1}`;
-        
-        // Add ID to heading for anchor links
-        heading.id = anchor;
-        
-        toc.push({
-          title: text,
-          anchor: anchor,
-          level: 2,
-        });
-      });
-
-      // Wrap tables so wide ones scroll horizontally on small screens
-      doc.querySelectorAll("table").forEach((table) => {
-        const wrapper = doc.createElement("div");
-        wrapper.className = styles.tableScroll;
-        table.parentNode?.insertBefore(wrapper, table);
-        wrapper.appendChild(table);
-      });
-
-      // Add Overview at the top of the TOC if overview text exists
-      const finalToc =
-        overviewText && overviewText.trim().length > 0
-          ? [
-              {
-                title: "Overview",
-                anchor: "overview-section",
-                level: 2,
-              },
-              ...toc,
-            ]
-          : toc;
-
-      setProcessedContent(doc.body.innerHTML);
-      setTableOfContents(finalToc);
-    } catch (error) {
-      // Fallback to original content if parsing fails
-      setProcessedContent(demotedContent);
-      setTableOfContents([]);
-    }
+    const withOverview =
+      overviewText && overviewText.trim().length > 0
+        ? [{ title: "Overview", anchor: "overview-section", level: 2 }, ...toc]
+        : toc;
+    return { processedContent: html, tableOfContents: withOverview };
   }, [demotedContent, overviewText]);
 
   // Track active section on scroll
@@ -313,34 +293,9 @@ export default function BlogsPageView({
   const publishedIso = toIsoDate(post.date);
   const updatedIso = toIsoDate(lastUpdated);
 
-  // Extract FAQ questions and answers from content. Done with plain string
-  // parsing (no DOMParser) so the FAQ schema renders on the server with the
-  // rest of the JSON-LD and is never injected a second time after hydration.
-  const extractFAQ = useMemo(() => {
-    const content = post?.content;
-    if (!content) return [] as Array<{ question: string; answer: string }>;
-    const strip = (html: string) =>
-      html.replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ").trim();
-    const faqItems: Array<{ question: string; answer: string }> = [];
-    const blocks = content.match(/<(h2|h3|p)\b[^>]*>[\s\S]*?<\/\1>/gi) || [];
-    const start = blocks.findIndex(
-      (b) => /^<h2/i.test(b) && strip(b).toLowerCase().includes("faq")
-    );
-    if (start === -1) return faqItems;
-    for (let i = start + 1; i < blocks.length; i++) {
-      const block = blocks[i];
-      if (/^<h2/i.test(block)) break;
-      if (/^<h3/i.test(block)) {
-        const question = strip(block).replace(/^\d+\.\s*/, "");
-        const next = blocks[i + 1];
-        if (question && next && /^<p/i.test(next)) {
-          const answer = strip(next);
-          if (answer) faqItems.push({ question, answer });
-        }
-      }
-    }
-    return faqItems;
-  }, [post?.content]);
+  // FAQs are parsed from the post HTML so the FAQPage schema matches what is
+  // visible, and it renders on the server with the rest of the JSON-LD.
+  const extractFAQ = useMemo(() => extractFaqItems(post?.content), [post?.content]);
 
   // Generate structured data for SEO
   const structuredData = {
@@ -388,8 +343,6 @@ export default function BlogsPageView({
     })),
   } : null;
 
-  const breadcrumbCategory = post.category || post.categories?.[0];
-
   const breadcrumbItems = [
     {
       "@type": "ListItem",
@@ -403,19 +356,9 @@ export default function BlogsPageView({
       name: "Blog",
       item: "https://www.flashfirejobs.com/blog",
     },
-    ...(breadcrumbCategory
-      ? [
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: breadcrumbCategory,
-            item: `https://www.flashfirejobs.com/blog/${categoryToSlug(breadcrumbCategory)}`,
-          },
-        ]
-      : []),
     {
       "@type": "ListItem",
-      position: breadcrumbCategory ? 4 : 3,
+      position: 3,
       name: post.title,
       item: `https://www.flashfirejobs.com/blog/${post.slug}`,
     },
@@ -454,36 +397,43 @@ export default function BlogsPageView({
   );
 
   // Keep the active item visible inside the sidebar TOC while the article scrolls
-  const sidebarTocRef = useRef<HTMLOListElement>(null);
+  const sidebarTocRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const list = sidebarTocRef.current;
     const active = list?.querySelector<HTMLElement>('[data-toc-active="true"]');
     if (!list || !active) return;
-    const top = active.offsetTop - list.offsetTop;
-    if (top < list.scrollTop || top + active.offsetHeight > list.scrollTop + list.clientHeight) {
-      list.scrollTo({ top: top - list.clientHeight / 3, behavior: "smooth" });
+    const listBox = list.getBoundingClientRect();
+    const itemBox = active.getBoundingClientRect();
+    if (itemBox.top < listBox.top || itemBox.bottom > listBox.bottom) {
+      const top = list.scrollTop + (itemBox.top - listBox.top) - list.clientHeight / 3;
+      list.scrollTo({ top, behavior: "smooth" });
     }
   }, [activeSection]);
 
-  const renderTocList = (ref?: React.Ref<HTMLOListElement>) => (
-    <ol className={styles.tocList} ref={ref}>
-      {tableOfContents.map((item, index) => (
-        <li
-          key={index}
+  // Plain divs and anchors, not <ol>/<li>: the TOC is navigation, not a list in the article
+  const renderTocList = (ref?: React.Ref<HTMLDivElement>) => (
+    <div className={styles.tocList} ref={ref}>
+      {tableOfContents.map((item) => (
+        <div
+          key={item.anchor}
           data-toc-active={activeSection === item.anchor}
           className={`${styles.tocItem} ${
             activeSection === item.anchor ? styles.tocItemActive : ""
           }`}
         >
-          <button
-            onClick={() => scrollToSection(item.anchor)}
+          <a
+            href={`#${item.anchor}`}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection(item.anchor);
+            }}
             className={styles.tocLink}
           >
             {item.title}
-          </button>
-        </li>
+          </a>
+        </div>
       ))}
-    </ol>
+    </div>
   );
 
   // Hero image is a real <img> in the server HTML. On desktop it is fetched with
@@ -570,13 +520,13 @@ export default function BlogsPageView({
               <span className={styles.breadcrumbSeparator} aria-hidden="true"> &gt; </span>
               <Link href="/blog">Blog</Link>
               <span className={styles.breadcrumbSeparator} aria-hidden="true"> &gt; </span>
-              <Link href={`/blog/${categoryToSlug(post.category || "")}`}>{post.category}</Link>
-              <span className={styles.breadcrumbSeparator} aria-hidden="true"> &gt; </span>
               <span className={styles.breadcrumbCurrent} title={post.title}>{post.title}</span>
             </nav>
 
             <div className={styles.heroGrid}>
               <div className={styles.heroText}>
+                <h1 className={styles.title}>{post.title}</h1>
+
                 <div className={styles.dateInfo}>
                   <span className={styles.dateItem}>
                     <span className={styles.dateLabel}>Published:</span>{" "}
@@ -598,8 +548,6 @@ export default function BlogsPageView({
                     </>
                   )}
                 </div>
-
-                <h1 className={styles.title}>{post.title}</h1>
 
                 {/* === AUTHOR === */}
                 <div className={styles.authorInfo}>
@@ -624,9 +572,6 @@ export default function BlogsPageView({
                       </Link>
                     ) : (
                       <span className={styles.authorName}>By Debashri Mandal</span>
-                    )}
-                    {post.author?.bio && (
-                      <p className={styles.authorBio}>{post.author.bio}</p>
                     )}
                   </div>
                 </div>
@@ -728,6 +673,8 @@ export default function BlogsPageView({
               {renderShareButtons()}
             </div>
 
+            {/* Only this block sticks, so the TOC gets the whole viewport height */}
+            <div className={styles.sidebarSticky}>
             {tableOfContents.length > 0 && (
               <nav className={styles.tableOfContents} aria-label="In this article">
                 <p className={styles.tocTitle}>In this article</p>
@@ -742,6 +689,7 @@ export default function BlogsPageView({
               <Link href="/ats-score-checker" className={styles.ctaButton}>
                 Check my resume
               </Link>
+            </div>
             </div>
           </aside>
         </div>

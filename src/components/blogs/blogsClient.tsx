@@ -1,5 +1,6 @@
 import { blogPosts } from "@/src/data/blogsData";
 import BlogsClientView, { type BlogListItem } from "./blogsClientView";
+import { getReadTime } from "@/src/utils/blogContent";
 
 // Server component: builds the slim post list here so the full blog dataset
 // (every post's HTML content) is never shipped to the browser.
@@ -84,7 +85,7 @@ function getBlogList(): BlogListItem[] {
         excerpt: blog.excerpt || "",
         date: blog.date || "",
         ...(blog.lastUpdated ? { lastUpdated: blog.lastUpdated } : {}),
-        readTime: blog.readTime || "",
+        readTime: getReadTime(blog.content, blog.readTime),
         category,
         tags,
         ...(blog.author?.name ? { author: { name: blog.author.name } } : {}),

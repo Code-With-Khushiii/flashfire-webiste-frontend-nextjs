@@ -1,5 +1,6 @@
 import { blogPosts, type BlogPost } from "@/src/data/blogsData";
 import BlogsPageView, { type RelatedPost } from "./blogsPageView";
+import { getReadTime } from "@/src/utils/blogContent";
 
 // Server component: picks the related posts here so the full blog dataset
 // (every post's HTML content) is never shipped to the browser.
@@ -18,7 +19,7 @@ function toRelatedPost(p: BlogPost): RelatedPost {
     coverImage: p.coverImage,
     category: p.category,
     date: p.date,
-    readTime: p.readTime,
+    readTime: getReadTime(p.content, p.readTime),
   };
 }
 
@@ -58,7 +59,7 @@ function getRelatedPosts(post: BlogPost): BlogPost[] {
 export default function BlogsPage({ post }: { post: BlogPost }) {
   return (
     <BlogsPageView
-      post={post}
+      post={{ ...post, readTime: getReadTime(post.content, post.readTime) }}
       relatedArticles={getRelatedPosts(post).map(toRelatedPost)}
     />
   );
