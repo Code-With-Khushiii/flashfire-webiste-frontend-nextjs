@@ -4,11 +4,12 @@ import ToolSeoContent from "@/src/components/toolSeo/ToolSeoContent";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata: Metadata = {
     title: "Hourly to Salary Calculator – Convert Hourly Pay | Flashfire",
     description: "Convert your hourly wage to annual salary instantly. Includes overtime and weeks-per-year inputs.",
     robots: { index: true, follow: true },
-    alternates: { canonical: "https://www.flashfirejobs.com/hourly-to-salary-calculator" },
+    alternates: { canonical: "https://www.flashfirejobs.com/hourly-to-salary-calculator", languages: hreflangLanguages("/hourly-to-salary-calculator") },
     openGraph: {
         title: "Hourly to Salary Calculator – Convert Hourly Pay | Flashfire",
         description: "Convert your hourly wage to annual salary instantly. Includes overtime and weeks-per-year inputs.",

@@ -3,6 +3,7 @@ import PaymentPolicy from "@/src/components/legal/PaymentPolicy";
 import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata: Metadata = {
   title: "Payment Policy - Payment Terms & Methods | Flashfire",
   description:
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/payment-policy",
+    languages: hreflangLanguages("/payment-policy"),
   },
   openGraph: {
     title: "Payment Policy - Payment Terms & Methods",

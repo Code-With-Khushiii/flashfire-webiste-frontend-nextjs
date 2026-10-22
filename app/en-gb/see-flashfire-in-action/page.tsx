@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import HomePage from "@/src/components/pages/home/Home";
 import ScrollToSection from "@/src/utils/ui/scrollToSection";
-import { hreflangLanguages } from "@/src/utils/locale";
 
 export const metadata: Metadata = {
   title: "Watch Flashfire Live Demo & Product Tour",
@@ -13,7 +12,6 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.flashfirejobs.com/en-gb/see-flashfire-in-action",
-    languages: hreflangLanguages("/see-flashfire-in-action"),
   },
   openGraph: {
     title: "Watch Flashfire Live Demo & Product Tour",

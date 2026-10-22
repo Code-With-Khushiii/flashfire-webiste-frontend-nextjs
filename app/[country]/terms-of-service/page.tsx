@@ -3,6 +3,7 @@ import Footer from "@/src/components/footer/footer";
 import Navbar from "@/src/components/navbar/navbar";
 import { euMetadata } from "@/src/utils/euTree";
 
+import { hreflangLanguages } from "@/src/utils/locale";
 export const generateMetadata = euMetadata((url) => ({
   title: "Terms of Service - Flashfire User Agreement",
   description:
@@ -13,6 +14,7 @@ export const generateMetadata = euMetadata((url) => ({
   },
   alternates: {
     canonical: url("/terms-of-service"),
+    languages: hreflangLanguages("/terms-of-service"),
   },
   openGraph: {
     title: "Terms of Service - Flashfire User Agreement",

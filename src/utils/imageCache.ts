@@ -195,7 +195,7 @@ class ImageCache {
     // Use requestIdleCallback for non-blocking preloading
     const runOnIdle = (callback: () => void) => {
       if ('requestIdleCallback' in window) {
-        (window as any).requestIdleCallback(callback, { timeout: 2000 });
+        window.requestIdleCallback(callback, { timeout: 2000 });
       } else {
         setTimeout(callback, 100);
       }

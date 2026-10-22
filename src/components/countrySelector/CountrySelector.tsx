@@ -22,12 +22,13 @@ const OPTIONS: ReadonlyArray<{ prefix: string; name: string }> = [
 export default function CountrySelector() {
   const pathname = usePathname();
   const current = getLocalePrefix(pathname);
-  const active = current === "/en-us" ? "" : current;
+  const active = current;
   const subPath = stripLocalePrefix(pathname);
   const label = OPTIONS.find((option) => option.prefix === active)?.name ?? "United States";
 
   const hrefFor = (prefix: string) => {
-    if (!localeHasRoute(prefix || "/en-us", subPath)) return prefix || "/";
+    // The root tree has every page; the others only the ones they mirror.
+    if (prefix && !localeHasRoute(prefix, subPath)) return prefix;
     return subPath === "/" ? prefix || "/" : `${prefix}${subPath}`;
   };
 

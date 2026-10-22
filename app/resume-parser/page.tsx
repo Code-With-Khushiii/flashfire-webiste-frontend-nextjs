@@ -2,11 +2,13 @@ import Navbar from "@/src/components/navbar/navbar";
 import Footer from "@/src/components/footer/footer";
 import ResumeParser from "@/src/components/resumeTools/ResumeParser";
 
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata = {
   title: "Free Online Resume Parser: Extract Data | Flashfire",
   description: "Extract structured data from your resume instantly. Free online resume parser.",
   alternates: {
     canonical: "https://www.flashfirejobs.com/resume-parser",
+    languages: hreflangLanguages("/resume-parser"),
   },
 };
 

@@ -1,10 +1,12 @@
 import { Metadata } from "next";
 
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata: Metadata = {
   title: "LinkedIn Profile Optimization for Job Seekers",
   description: "Optimize your LinkedIn profile for recruiter searches. Improve your headline, keywords, skills and positioning to get seen and land more interviews.",
   alternates: {
     canonical: "https://www.flashfirejobs.com/features/linkedin-profile-optimization-tool",
+    languages: hreflangLanguages("/features/linkedin-profile-optimization-tool"),
   },
 };
 

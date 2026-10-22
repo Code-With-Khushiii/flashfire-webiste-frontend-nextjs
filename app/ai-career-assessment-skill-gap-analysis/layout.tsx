@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 
+import { hreflangLanguages } from "@/src/utils/locale";
 export const metadata: Metadata = {
   title: "AI Career Assessment & Skill Gap Analysis Tool | Flashfire",
   description:
     "Run an AI-powered career assessment and skill gap analysis to understand your strengths, weaknesses, and best-fit roles.",
   alternates: {
     canonical: "https://www.flashfirejobs.com/ai-career-assessment-skill-gap-analysis",
+    languages: hreflangLanguages("/ai-career-assessment-skill-gap-analysis"),
   },
 };
 
