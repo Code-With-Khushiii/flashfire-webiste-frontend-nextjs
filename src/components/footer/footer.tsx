@@ -5,7 +5,6 @@ import Link from "next/link";
 import { FaLinkedinIn, FaInstagram, FaYoutube } from "react-icons/fa";
 import { smoothScrollToElement } from "@/src/utils/smoothScroll";
 import { getLocalePrefix, isLocaleHome } from "@/src/utils/locale";
-import CountrySelector from "@/src/components/countrySelector/CountrySelector";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -284,7 +283,6 @@ export default function Footer() {
         </div>
       </div>
 
-      <CountrySelector />
 
       {/* BOTTOM */}
       <div className="flex justify-between text-sm max-[768px]:flex-col max-[768px]:gap-2 max-[768px]:items-center max-[480px]:text-xs max-[480px]:text-center">
