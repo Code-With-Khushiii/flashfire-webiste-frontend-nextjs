@@ -4,6 +4,7 @@ import { blogPosts } from "@/src/data/blogsData";
 import AuthorProfile from "@/src/components/blogs/AuthorProfile";
 import Navbar from "@/src/components/navbar/navbar";
 import Footer from "@/src/components/footer/footer";
+import { getReadTime } from "@/src/utils/blogContent";
 
 type Props = {
   params: {
@@ -93,7 +94,20 @@ export default async function AuthorPage({ params }: Props) {
   return (
     <>
       <Navbar />
-      <AuthorProfile author={author} posts={authorPosts} />
+      <AuthorProfile
+        author={author}
+        posts={authorPosts.map((p) => ({
+          id: p.id,
+          slug: p.slug,
+          title: p.title,
+          excerpt: p.excerpt,
+          date: p.date,
+          readTime: getReadTime(p.content, p.readTime),
+          category: p.category,
+          image: p.image || p.coverImage,
+          author: p.author,
+        }))}
+      />
       <Footer />
     </>
   );

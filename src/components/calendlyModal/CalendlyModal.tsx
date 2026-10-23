@@ -283,27 +283,22 @@ export default function CalendlyModal({
     },
   } as CalendlyEventListenerOptions);
 
-  const calendlyUrl = `https://calendly.com/feedback-flashfire/15min?utm_source=${
-    typeof window !== "undefined"
-      ? localStorage.getItem("utm_source") || "webpage_visit"
-      : "webpage_visit"
-  }&utm_medium=${
-    typeof window !== "undefined"
-      ? localStorage.getItem("utm_medium") || "website"
-      : "website"
-  }${
-    typeof window !== "undefined" && localStorage.getItem("utm_campaign")
-      ? `&utm_campaign=${localStorage.getItem("utm_campaign")}`
-      : ""
-  }${
-    typeof window !== "undefined" && localStorage.getItem("utm_content")
-      ? `&utm_content=${localStorage.getItem("utm_content")}`
-      : ""
-  }${
-    typeof window !== "undefined" && localStorage.getItem("utm_term")
-      ? `&utm_term=${localStorage.getItem("utm_term")}`
-      : ""
-  }`;
+  // Built after mount: it reads the visitor's stored UTM values, which the server
+  // can't see. Building it during render made the SSR and client iframe src differ
+  // (a hydration error that also dropped the UTM params from the booking widget).
+  const [calendlyUrl, setCalendlyUrl] = useState<string | null>(null);
+  useEffect(() => {
+    const stored = (key: string) => localStorage.getItem(key);
+    const params = new URLSearchParams({
+      utm_source: stored("utm_source") || "webpage_visit",
+      utm_medium: stored("utm_medium") || "website",
+    });
+    for (const key of ["utm_campaign", "utm_content", "utm_term"]) {
+      const value = stored(key);
+      if (value) params.set(key, value);
+    }
+    setCalendlyUrl(`https://calendly.com/feedback-flashfire/15min?${params.toString()}`);
+  }, []);
 
   return (
     <div
@@ -334,9 +329,9 @@ max-w-5xl w-full max-h-[90vh] overflow-hidden rounded-xl shadow-2xl flex flex-co
                 <Calendar className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h2 className="text-lg font-bold">
+                <p className="text-lg font-bold">
                   Schedule Your Flashfire Consultation 
-                </h2>
+                </p>
                 <p className="text-orange-100 text-sm">15 Minutes • Free</p>
               </div>
             </div>
@@ -354,9 +349,9 @@ max-w-5xl w-full max-h-[90vh] overflow-hidden rounded-xl shadow-2xl flex flex-co
                   <Calendar className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold">
+                  <p className="text-2xl font-bold">
                     Schedule Your Flashfire Consultation
-                  </h2>
+                  </p>
                   <p className="text-orange-100">15 Minutes • Free</p>
                 </div>
               </div>
@@ -367,12 +362,12 @@ max-w-5xl w-full max-h-[90vh] overflow-hidden rounded-xl shadow-2xl flex flex-co
             </div>
 
             <div className="space-y-4 mb-6">
-              <h3 className="text-xl font-bold mb-4">What You&apos;ll Get:</h3>
+              <p className="text-xl font-bold mb-4">What You&apos;ll Get:</p>
 
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-5 h-5 text-green-300 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold">Personalized Strategy</h4>
+                  <p className="font-semibold">Personalized Strategy</p>
                   <p className="text-orange-100 text-sm">
                     Custom job search plan tailored to your goals
                   </p>
@@ -382,7 +377,7 @@ max-w-5xl w-full max-h-[90vh] overflow-hidden rounded-xl shadow-2xl flex flex-co
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-5 h-5 text-green-300 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold">Resume Review</h4>
+                  <p className="font-semibold">Resume Review</p>
                   <p className="text-orange-100 text-sm">
                     Expert feedback on your current resume
                   </p>
@@ -392,7 +387,7 @@ max-w-5xl w-full max-h-[90vh] overflow-hidden rounded-xl shadow-2xl flex flex-co
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-5 h-5 text-green-300 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold">AI Demo</h4>
+                  <p className="font-semibold">AI Demo</p>
                   <p className="text-orange-100 text-sm">
                     See our automation technology in action
                   </p>
@@ -402,7 +397,7 @@ max-w-5xl w-full max-h-[90vh] overflow-hidden rounded-xl shadow-2xl flex flex-co
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-5 h-5 text-green-300 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold">Q&A Session</h4>
+                  <p className="font-semibold">Q&A Session</p>
                   <p className="text-orange-100 text-sm">
                     Get all your questions answered by experts
                   </p>
@@ -433,6 +428,7 @@ max-w-5xl w-full max-h-[90vh] overflow-hidden rounded-xl shadow-2xl flex flex-co
             {!isCalendlyReady && isVisible && (
               <div className="absolute inset-0 bg-white z-10" />
             )}
+            {calendlyUrl && (
             <InlineWidget
               url={calendlyUrl}
               prefill={{
@@ -455,6 +451,7 @@ max-w-5xl w-full max-h-[90vh] overflow-hidden rounded-xl shadow-2xl flex flex-co
               //   textColor: "374151",
               // }}
             />
+            )}
           </div>
         </div>
       </div>

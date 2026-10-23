@@ -53,8 +53,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       `Explore expert ${tag} articles, practical tips and step-by-step guides on the Flashfire Blog to help you search smarter, apply faster and get hired.`,
       155
     ),
+    // Tag listings are thin, overlapping pages: keep them out of the index but let links be followed
     robots: {
-      index: true,
+      index: false,
       follow: true,
     },
     alternates: {

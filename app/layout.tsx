@@ -5,7 +5,6 @@ import { Space_Grotesk, Inter } from "next/font/google";
 import Script from "next/script";
 import { PHProvider } from "@/src/components/PostHogProvider";
 import WhatsAppButton from "@/src/components/WhatsAppButton/WhatsAppButton";
-import BlogImagePreloader from "@/src/components/BlogImagePreloader";
 import TestimonialImagePreloader from "@/src/components/homePageHappyUsers/TestimonialImagePreloader";
 
 const spaceGrotesk = Space_Grotesk({
@@ -42,14 +41,6 @@ export const metadata: Metadata = {
   title: "FLASHFIRE - AI-Powered Job Search Automation | Land Your Dream Job Faster",
   description:
     "We apply to 1000+ jobs on your behalf with tailored resumes for every role. Save 150+ hours, skip the grunt work, and stay in control with real-time updates. Your job hunt—automated.",
-  keywords: [
-    "job search automation",
-    "AI job application",
-    "automated job search",
-    "resume tailoring",
-    "job application service",
-    "career automation",
-  ],
   authors: [{ name: "Flashfire" }],
   creator: "Flashfire",
   publisher: "Flashfire",
@@ -187,7 +178,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <WhatsAppButton />
           </ClientLogicWrapper>
         </PHProvider>
-        <BlogImagePreloader />
         <TestimonialImagePreloader />
         {/* Meta Pixel - Load with afterInteractive strategy */}
         <Script
@@ -271,7 +261,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 js.async=1;
                 js.setAttribute('chat','false');
                 fjs.parentNode.insertBefore(js,fjs);
-              }(window,document,'script','fw','//in.fw-cdn.com/32537193/1404018.js'));
+              }(window,document,'script','fw','https://in.fw-cdn.com/32537193/1404018.js'));
             `,
           }}
         />
