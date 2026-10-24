@@ -1,7 +1,7 @@
 export default function HeroVideo() {
   return (
     <div id="demo" className="w-full">
-      <div className="relative aspect-[2074/998] w-full overflow-hidden border border-black bg-[#fff6f4] shadow-[8px_8px_0_#ff4c00]">
+      <div className="relative aspect-[2074/998] w-full overflow-hidden border border-black bg-[#fff6f4] shadow-[4px_4px_0_#ff4c00] sm:shadow-[8px_8px_0_#ff4c00]">
         <video
           className="absolute inset-0 h-full w-full object-contain"
           controls
@@ -16,7 +16,7 @@ export default function HeroVideo() {
           Your browser does not support the video tag.
         </video>
       </div>
-      <p className="mt-6 font-['Satoshi',sans-serif] text-[13px] text-[#6b625d]">
+      <p className="mt-4 font-['Satoshi',sans-serif] text-[12px] leading-[1.4] text-[#6b625d] sm:text-[13px]">
         Demo scope: preferences → matching → tailoring → applications → tracking
       </p>
     </div>

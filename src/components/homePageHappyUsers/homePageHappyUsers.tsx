@@ -525,10 +525,12 @@ export default function HomePageHappyUsers({
       className="w-full overflow-hidden font-['Space_Grotesk',sans-serif] scroll-mt-[90px] max-[768px]:scroll-mt-[70px]"
     >
       {/* === Top Orange Section === */}
-      <div className="relative border-t border-[#111] bg-[#fbf3ee] px-8 pb-20 pt-[90px] text-left text-[#111] max-[768px]:pt-[70px]">
-        <p className="mx-auto mb-3 w-full max-w-[1280px] text-[12px] font-bold uppercase tracking-[0.08em] text-[#f55d1d]">Flashfire / Customer feedback</p>
+      <div className="relative border-t border-[#111] bg-[#fbf3ee] px-8 pb-20 pt-[90px] text-left text-[#111] max-[768px]:pt-[56px] max-[768px]:pb-12 max-[600px]:px-4">
+        <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.3fr)] lg:gap-16">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+        <p className="mb-3 text-[12px] font-bold uppercase tracking-[0.08em] text-[#f55d1d]">Flashfire / Customer feedback</p>
         <h2
-          className="mx-auto mb-4 w-full max-w-[1280px] text-[44px] font-bold max-[600px]:text-[30px]"
+          className="mb-4 text-[44px] font-bold max-[600px]:text-[30px]"
           style={{
             fontFamily: "Space Grotesk, sans-serif",
             lineHeight: "110%",
@@ -538,7 +540,7 @@ export default function HomePageHappyUsers({
           Feedback from happy customers
         </h2>
         <p
-          className="mx-auto mb-12 w-full max-w-[1280px] max-[600px]:text-[1.125rem]"
+          className="mb-8 max-[600px]:!text-[15px]"
           style={{
             fontFamily: "Space Grotesk, sans-serif",
             fontWeight: 400,
@@ -550,11 +552,12 @@ export default function HomePageHappyUsers({
         >
           Conversations from 1000+ job seekers using our <span style={{ color: "#111", fontWeight: 600 }}>AI Job Search Platform</span>
         </p>
+        </div>
 
         {/* Masonry Layout */}
         <div
           id="happy-users-gallery"
-          className="columns-5 gap-4 max-w-[1100px] mx-auto max-[1200px]:columns-4 max-[900px]:columns-3 max-[600px]:columns-2 max-[400px]:columns-1"
+          className="columns-3 gap-4 max-[900px]:columns-3 max-[600px]:columns-2 max-[600px]:gap-3 max-[600px]:[&>div:nth-child(n+9)]:hidden"
         >
           {reviewImages.map((imageSrc, i) => {
             const isEager = i < 8; // First 8 images load eagerly
@@ -575,24 +578,25 @@ export default function HomePageHappyUsers({
                   height={600}
                   className="w-full h-auto object-contain block rounded-[0.4rem] transition-opacity duration-300"
                   priority={isEager}
-                  sizes="(max-width: 400px) 100vw, (max-width: 600px) 50vw, (max-width: 900px) 33vw, (max-width: 1200px) 25vw, 20vw"
+                  sizes="(max-width: 600px) 50vw, (max-width: 1024px) 33vw, 28vw"
                 />
               </div>
             );
           })}
         </div>
+        </div>
 
       </div>
 
       {/* === Bottom White Section === */}
-      <div id="video-testimonials" className="border-t border-[#111] bg-[#f5f5f2] py-24 px-8 pb-20 text-center max-[768px]:py-16 max-[768px]:px-4">
+      <div id="video-testimonials" className="border-t border-[#111] bg-[#f5f5f2] py-24 px-8 pb-20 text-center max-[768px]:py-12 max-[768px]:px-4">
         <p className="mb-2 text-[12px] font-bold uppercase tracking-[0.08em] text-[#5a524d]">Flashfire / Video testimonials</p>
         <h2 className="mb-3 text-[40px] font-bold leading-[1.1] text-[#111] max-[600px]:text-[28px]">Hear from Flashfire customers</h2>
-        <p className="mb-12 text-[16px] text-[#5a524d]">Customer stories about their job-search experience.</p>
-        <div className="mx-auto grid w-full max-w-[1280px] grid-cols-2 gap-6 text-left max-[768px]:grid-cols-1">
+        <p className="mb-8 text-[16px] text-[#5a524d]">Customer stories about their job-search experience.</p>
+        <div className="mx-auto grid w-full max-w-[760px] grid-cols-2 gap-8 text-left max-[768px]:max-w-[340px] max-[768px]:grid-cols-1">
           {videos.slice(0, 2).map((video, index) => (
             <div key={video.videoUrl}>
-              <div className="relative aspect-video w-full overflow-hidden border border-[#111]/40 bg-[#e8e2dd]">
+              <div className="relative aspect-[5/8] w-full overflow-hidden border border-[#111]/40 bg-[#e8e2dd]">
                 {playingIndex === index ? (
                   <>
                     <iframe
@@ -624,11 +628,11 @@ export default function HomePageHappyUsers({
                       alt={`${video.name} - Click to play video`}
                       width={800}
                       height={450}
-                      className="h-full w-full object-cover object-top"
+                      className="h-full w-full object-cover"
                       priority
-                      sizes="(max-width: 768px) 100vw, 640px"
+                      sizes="(max-width: 768px) 100vw, 340px"
                     />
-                    <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#111]/60 bg-[#f5f5f2] text-[22px] text-[#555] transition group-hover:scale-105">
+                    <span className="absolute bottom-3 right-3 flex h-12 w-12 items-center justify-center rounded-full border border-[#111]/60 bg-white text-[18px] text-[#111] shadow transition group-hover:scale-105 max-[600px]:h-10 max-[600px]:w-10 max-[600px]:text-[14px]">
                       ▶
                     </span>
                   </button>

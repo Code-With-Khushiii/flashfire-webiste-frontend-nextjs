@@ -19,7 +19,7 @@ export default function HomeStories() {
   const [playing, setPlaying] = useState(false);
 
   return (
-    <section className="w-full border-t border-[#111] bg-white px-5 py-20 font-['Space_Grotesk',sans-serif] md:px-8">
+    <section className="w-full border-t border-[#111] bg-white px-5 py-14 font-['Space_Grotesk',sans-serif] md:px-8 md:py-20">
       <div className="mx-auto max-w-[1280px]">
         <h2 className="text-[34px] font-bold leading-[1.1] text-black md:text-[44px]">
           Real people. Real job-search progress.
@@ -29,7 +29,7 @@ export default function HomeStories() {
           Individual outcomes vary.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-[5fr_6fr]">
+        <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-[600fr_648fr]">
           {/* Featured story */}
           <div className="flex flex-col border border-[#111] p-6">
             <p className="text-[12px] font-bold uppercase tracking-[0.06em] text-[#111]">
@@ -38,10 +38,11 @@ export default function HomeStories() {
             <p className="mt-3 text-[14px] text-[#111]">Customer story</p>
 
             <p className="mt-6 text-[28px] font-medium leading-[1.25] text-[#111] md:text-[32px]">
-              From job search to an offer at {featuredCustomer.company}.
+              From job search to an offer at{" "}
+              <span className="whitespace-nowrap">Skyworks Solutions.</span>
             </p>
 
-            <div className="mt-8 space-y-3 border-t border-[#111]/30 pt-5 text-[14px] text-[#111]">
+            <div className="mb-8 mt-8 space-y-3 border-t border-[#111]/30 pt-5 text-[14px] text-[#111]">
               <p>
                 <span className="text-[#6b625d]">Customer:</span>{" "}
                 <a
@@ -61,7 +62,7 @@ export default function HomeStories() {
               </p>
             </div>
 
-            <div className="mt-6 bg-[#fbf3ee] p-4">
+            <div className="mt-auto bg-[#fbf3ee] p-4">
               <p className="text-[14px] font-bold text-[#111]">Outcome</p>
               <p className="mt-1 text-[14px] text-[#111]">
                 Offer from {featuredCustomer.company}
@@ -98,7 +99,7 @@ export default function HomeStories() {
 
             <div className="border border-[#111]/60 bg-[#f8f0eb] p-5 sm:col-span-2">
               <p className="text-[14px] font-bold text-[#111]">Video testimonial</p>
-              <div className="relative mt-3 aspect-video w-full overflow-hidden border border-[#111]/30 bg-[#e8e2dd]">
+              <div className="relative mt-3 aspect-video w-full overflow-hidden border border-[#111]/30 bg-[#ff4c00]">
                 {playing ? (
                   <iframe
                     src={video.embedUrl}
@@ -118,10 +119,10 @@ export default function HomeStories() {
                     <img
                       src={video.thumbnail}
                       alt={`${video.name} video testimonial thumbnail`}
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-contain"
                       loading="lazy"
                     />
-                    <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-black bg-white text-[22px] transition group-hover:scale-105">
+                    <span className="absolute bottom-3 right-3 flex h-12 w-12 items-center justify-center rounded-full border border-black bg-white text-[18px] transition group-hover:scale-105">
                       ▶
                     </span>
                   </button>

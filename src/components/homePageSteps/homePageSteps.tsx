@@ -170,7 +170,13 @@ export default function HomePageSteps() {
           const number = String(index + 1).padStart(2, "0");
           return (
             <div key={stage.title}>
-              <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2 md:gap-16">
+              <div
+                className={`grid grid-cols-1 items-start gap-8 md:gap-20 ${
+                  reversed
+                    ? "md:grid-cols-[minmax(0,1.73fr)_minmax(0,1fr)]"
+                    : "md:grid-cols-[minmax(0,1fr)_minmax(0,1.73fr)]"
+                }`}
+              >
                 <div className={reversed ? "md:order-2" : ""}>
                   <div className="flex items-center gap-4">
                     <span

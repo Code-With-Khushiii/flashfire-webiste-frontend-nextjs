@@ -12,7 +12,7 @@ const stagger = ["md:mt-0", "md:mt-10", "md:mt-3", "md:mt-14"];
 
 export default function HomeOfferWall() {
   return (
-    <section className="w-full border-t border-[#111] bg-white px-5 py-20 font-['Space_Grotesk',sans-serif] md:px-8">
+    <section className="w-full border-t border-[#111] bg-white px-5 py-14 font-['Space_Grotesk',sans-serif] md:px-8 md:py-20">
       <div className="mx-auto max-w-[1280px]">
         <h2 className="text-[34px] font-bold leading-[1.1] text-black md:text-[44px]">
           60+ offer letters. Real career moves.

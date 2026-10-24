@@ -7,7 +7,7 @@ const rows = [
 
 export default function HomeDashboard() {
   return (
-    <section className="w-full border-t border-[#111] bg-[#fbf3ee] px-5 py-20 font-['Space_Grotesk',sans-serif] md:px-8">
+    <section className="w-full border-t border-[#111] bg-[#fbf3ee] px-5 py-14 font-['Space_Grotesk',sans-serif] md:px-8 md:py-20">
       <div className="mx-auto max-w-[1280px]">
         <h2 className="text-[34px] font-bold leading-[1.1] text-black md:text-[44px]">
           Know where your applications go.
@@ -17,8 +17,8 @@ export default function HomeDashboard() {
           record of submissions, all in one view.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_320px]">
-          <div className="grid grid-cols-1 border border-[#111] bg-white md:grid-cols-[170px_1fr]">
+        <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_308px]">
+          <div className="grid grid-cols-1 border border-[#111] bg-white md:grid-cols-[140px_1fr]">
             <aside className="hidden bg-[#f8f0eb] p-4 md:block">
               <p className="mb-6 text-[16px] font-bold text-[#111]">Flashfire</p>
               <ul className="space-y-4 text-[13px] text-[#111]">

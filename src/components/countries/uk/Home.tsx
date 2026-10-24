@@ -7,7 +7,6 @@ import HomePageFAQ from "@/src/components/homePageFAQ/homePageFAQ";
 import HomePageHappyUsers from "@/src/components/homePageHappyUsers/homePageHappyUsers";
 import HomePageResultStats from "@/src/components/homePageResultStats/homePageResultStats";
 import HomePageSteps from "@/src/components/homePageSteps/homePageSteps";
-import HomePageVideo from "@/src/components/homePageVideo/homePageVideo";
 import HomePageWhyChooseFF from "@/src/components/homePageWhyChooseFF/homePageWhyChooseFF";
 import HomeOfferWall from "@/src/components/homeOfferWall/homeOfferWall";
 import HomeDashboard from "@/src/components/homeDashboard/homeDashboard";
@@ -47,9 +46,6 @@ export default function UKHome() {
     <>
       <Navbar />
       <HeroSection />
-      <div className="lg:hidden">
-        <HomePageVideo />
-      </div>
       <HomePageResultStats />
       <HomeOfferWall />
       <HomePageWhyChooseFF />

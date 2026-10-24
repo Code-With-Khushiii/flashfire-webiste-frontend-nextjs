@@ -44,16 +44,16 @@ export default function HomePageWhyChooseFF() {
 
       {/* === Comparison table === */}
       <div className="mx-auto mb-4 w-full max-w-[80rem] overflow-x-auto text-left">
-        <table className="w-full min-w-[640px] border border-[#111] border-collapse">
+        <table className="w-full table-fixed border border-[#111] border-collapse">
           <thead>
             <tr>
-              <th className="w-[20%] bg-[#f8f0eb] p-6 text-[0.9rem] font-semibold text-[#111]">
+              <th className="w-[24%] bg-[#f8f0eb] p-2.5 text-left text-[0.7rem] font-semibold text-[#111] sm:w-[20%] sm:p-6 sm:text-[0.9rem]">
                 What matters
               </th>
-              <th className="w-[40%] bg-[#f8f0eb] p-6 text-[1.15rem] font-semibold text-[#111]">
+              <th className="w-[38%] bg-[#f8f0eb] p-2.5 text-left text-[0.75rem] font-semibold leading-tight text-[#111] sm:w-[40%] sm:p-6 sm:text-[1.15rem]">
                 Applying alone / generic auto-apply
               </th>
-              <th className="w-[40%] bg-[#111] p-6 text-[1.15rem] font-semibold text-white">
+              <th className="w-[38%] bg-[#111] p-2.5 text-left text-[0.75rem] font-semibold leading-tight text-white sm:w-[40%] sm:p-6 sm:text-[1.15rem]">
                 With Flashfire
               </th>
             </tr>
@@ -61,13 +61,13 @@ export default function HomePageWhyChooseFF() {
           <tbody>
             {comparisonRows.map((row) => (
               <tr key={row.label} className="border-t border-[#111]/60 align-top">
-                <th className="bg-[#fbf3ee] p-6 text-left text-[1rem] font-bold text-[#111]">
+                <th className="break-words bg-[#fbf3ee] p-2.5 text-left text-[0.75rem] font-bold text-[#111] sm:p-6 sm:text-[1rem]">
                   {row.label}
                 </th>
-                <td className="bg-[#fbf3ee] p-6 text-[1rem] leading-[1.5] text-[#5a524d]">
+                <td className="break-words bg-[#fbf3ee] p-2.5 text-[0.72rem] leading-[1.45] text-[#5a524d] sm:p-6 sm:text-[1rem] sm:leading-[1.5]">
                   {row.alone}
                 </td>
-                <td className="border-l border-[#111]/60 bg-white p-6 text-[1rem] leading-[1.5] text-[#111]">
+                <td className="break-words border-l border-[#111]/60 bg-white p-2.5 text-[0.72rem] leading-[1.45] text-[#111] sm:p-6 sm:text-[1rem] sm:leading-[1.5]">
                   {row.flashfire}
                 </td>
               </tr>
