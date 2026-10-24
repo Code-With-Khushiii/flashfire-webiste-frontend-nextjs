@@ -22,7 +22,7 @@ export const usPricingPlans: PricingPlan[] = [
     title: "IGNITE",
     subTitle: "250 Applications",
     description: "For senior professionals & executives",
-    price: "$139",
+    price: "$199",
     oldPrice: "$299",
     features: [
       { title:"No Time Constraint", description: "Until your applications are completed" },
@@ -32,14 +32,14 @@ export const usPricingPlans: PricingPlan[] = [
     ],
     addOn: true,
     highlight: false,
-    paymentLink: "https://buy.stripe.com/9B6fZj5deaD03M4goL3AY21",
+    paymentLink: "https://buy.stripe.com/bJe28t7lm12qaasa0n3AY02",
   },
   {
     title: "PROFESSIONAL",
     tag: "ECONOMICAL",
     subTitle: "500 Applications",
     description: "Best for mid-level professionals",
-    price: "$244",
+    price: "$349",
     oldPrice: "$449",
     inheritsFrom: "IGNITE",
     features: [
@@ -50,14 +50,14 @@ export const usPricingPlans: PricingPlan[] = [
     ],
     addOn: true,
     highlight: false,
-    paymentLink: "https://buy.stripe.com/00wcN7gVW5iG6Yg6Ob3AY22",
+    paymentLink: "https://buy.stripe.com/14A6oJcFGfXkgyQfkH3AY03",
   },
   {
     title: "EXECUTIVE",
     tag: "MOST POPULAR",
     subTitle: "1200 Applications",
     description: "For new grads & early professionals",
-    price: "$419",
+    price: "$599",
     oldPrice: "$699",
     inheritsFrom: "PROFESSIONAL",
     features: [
@@ -67,15 +67,15 @@ export const usPricingPlans: PricingPlan[] = [
     ],
     addOn: true,
     highlight: true,
-    paymentLink: "https://buy.stripe.com/bJe3cxgVW3ay0zS2xV3AY23",
+    paymentLink: "https://buy.stripe.com/eVq7sNfRS4eCciAgoL3AY04",
   },
 ];
 
 /** UK / EU checkout links, charged in GBP. */
 export const UK_STRIPE_LINKS = {
-  IGNITE: "https://buy.stripe.com/4gM28t7lm6mK6Yg1tR3AY1S",
-  PROFESSIONAL: "https://buy.stripe.com/cNi5kF356h1o6Ygc8v3AY1T",
-  EXECUTIVE: "https://buy.stripe.com/6oUfZj8pq5iGciA4G33AY1U",
+  IGNITE: "https://buy.stripe.com/dRm6oJ5dedPcdmEdcz3AY0P",
+  PROFESSIONAL: "https://buy.stripe.com/6oUeVffRS26ueqI0pN3AY0X",
+  EXECUTIVE: "https://buy.stripe.com/8x23cxfRS9yW6Yg0pN3AY12",
 } as const;
 
 export const ukPricingPlans: PricingPlan[] = [
@@ -83,7 +83,7 @@ export const ukPricingPlans: PricingPlan[] = [
     title: "IGNITE",
     subTitle: "250 Applications",
     description: "For senior professionals & executives",
-    price: "£104",
+    price: "£149",
     oldPrice: "£229",
     features: [
       { title:"No Time Constraint", description: "Until your applications are completed" },
@@ -100,7 +100,7 @@ export const ukPricingPlans: PricingPlan[] = [
     tag: "ECONOMICAL",
     subTitle: "500 Applications",
     description: "Best for mid-level professionals",
-    price: "£209",
+    price: "£299",
     oldPrice: "£339",
     inheritsFrom: "IGNITE",
     features: [
@@ -118,7 +118,7 @@ export const ukPricingPlans: PricingPlan[] = [
     tag: "MOST POPULAR",
     subTitle: "1200 Applications",
     description: "For new grads & early professionals",
-    price: "£349",
+    price: "£499",
     oldPrice: "£529",
     inheritsFrom: "PROFESSIONAL",
     features: [
@@ -137,7 +137,7 @@ export const canadaPricingPlans: PricingPlan[] = [
     title: "IGNITE",
     subTitle: "250 Applications",
     description: "For senior professionals & executives",
-    price: "CA$167",
+    price: "CA$239",
     oldPrice: "CA$389",
     features: [
       { title:"No Time Constraint", description: "Until your applications are completed" },
@@ -147,14 +147,14 @@ export const canadaPricingPlans: PricingPlan[] = [
     ],
     addOn: true,
     highlight: false,
-    paymentLink: "https://buy.stripe.com/cNidRb49a26u96ogoL3AY24",
+    paymentLink: "https://buy.stripe.com/fZubJ3eNO6mKaasfkH3AY0k",
   },
   {
     title: "PROFESSIONAL",
     tag: "ECONOMICAL",
     subTitle: "500 Applications",
     description: "Best for mid-level professionals",
-    price: "CA$286",
+    price: "CA$409",
     oldPrice: "CA$619",
     inheritsFrom: "IGNITE",
     features: [
@@ -165,14 +165,14 @@ export const canadaPricingPlans: PricingPlan[] = [
     ],
     addOn: true,
     highlight: false,
-    paymentLink: "https://buy.stripe.com/9B65kFcFG26ufuMegD3AY25",
+    paymentLink: "https://buy.stripe.com/8x28wReNOaD00zS7Sf3AY0l",
   },
   {
     title: "EXECUTIVE",
     tag: "MOST POPULAR",
     subTitle: "1200 Applications",
     description: "For new grads & early professionals",
-    price: "CA$559",
+    price: "CA$799",
     oldPrice: "CA$949",
     inheritsFrom: "PROFESSIONAL",
     features: [
@@ -182,28 +182,28 @@ export const canadaPricingPlans: PricingPlan[] = [
     ],
     addOn: true,
     highlight: true,
-    paymentLink: "https://buy.stripe.com/4gMeVfbBCbH43M44G33AY26",
+    paymentLink: "https://buy.stripe.com/7sY9AV3566mKgyQ0pN3AY0m",
   },
 ];
 
 /** Australia checkout links, charged in AUD. */
 export const AU_STRIPE_LINKS = {
-  IGNITE: "https://buy.stripe.com/bJebJ349afXk3M41tR3AY1V",
-  PROFESSIONAL: "https://buy.stripe.com/fZubJ33566mKeqIdcz3AY1W",
-  EXECUTIVE: "https://buy.stripe.com/eVq28tdJK9yW2I06Ob3AY1X",
+  IGNITE: "https://buy.stripe.com/14AfZj49a3aygyQdcz3AY1d",
+  PROFESSIONAL: "https://buy.stripe.com/eVqdRb8pq8uS0zSgoL3AY1e",
+  EXECUTIVE: "https://buy.stripe.com/5kQdRbfRS5iG3M42xV3AY1f",
 } as const;
 
 /** Europe (/en-eu) checkout links, charged in EUR. */
 export const EU_STRIPE_LINKS = {
-  IGNITE: "https://buy.stripe.com/dRm9AV49a6mK6Yg3BZ3AY1Y",
-  PROFESSIONAL: "https://buy.stripe.com/eVqfZj8pqbH482k4G33AY1Z",
-  EXECUTIVE: "https://buy.stripe.com/cNi9AV6hi6mK96oc8v3AY20",
+  IGNITE: "https://buy.stripe.com/14AeVf35612q82k8Wj3AY1k",
+  PROFESSIONAL: "https://buy.stripe.com/cNifZj21212qgyQgoL3AY1l",
+  EXECUTIVE: "https://buy.stripe.com/14A00lgVW8uS82kgoL3AY1m",
 } as const;
 
 const EU_PRICES: Record<string, { price: string; oldPrice: string; link: string }> = {
-  IGNITE: { price: "€118", oldPrice: "€249", link: EU_STRIPE_LINKS.IGNITE },
-  PROFESSIONAL: { price: "€209", oldPrice: "€399", link: EU_STRIPE_LINKS.PROFESSIONAL },
-  EXECUTIVE: { price: "€349", oldPrice: "€649", link: EU_STRIPE_LINKS.EXECUTIVE },
+  IGNITE: { price: "€169", oldPrice: "€249", link: EU_STRIPE_LINKS.IGNITE },
+  PROFESSIONAL: { price: "€299", oldPrice: "€399", link: EU_STRIPE_LINKS.PROFESSIONAL },
+  EXECUTIVE: { price: "€499", oldPrice: "€649", link: EU_STRIPE_LINKS.EXECUTIVE },
 };
 
 export const euPricingPlans: PricingPlan[] = ukPricingPlans.map((plan) => {
@@ -216,7 +216,7 @@ export const australiaPricingPlans: PricingPlan[] = [
     title: "IGNITE",
     subTitle: "250 Applications",
     description: "For senior professionals & executives",
-    price: "AUD$209",
+    price: "AUD$299",
     oldPrice: "AUD$399",
     features: [
       { title:"No Time Constraint", description: "Until your applications are completed" },
@@ -233,7 +233,7 @@ export const australiaPricingPlans: PricingPlan[] = [
     tag: "BEST VALUE",
     subTitle: "500 Applications",
     description: "Best for mid-level professionals",
-    price: "AUD$384",
+    price: "AUD$549",
     oldPrice: "AUD$699",
     inheritsFrom: "IGNITE",
     features: [
@@ -251,7 +251,7 @@ export const australiaPricingPlans: PricingPlan[] = [
     tag: "MOST POPULAR",
     subTitle: "1200 Applications",
     description: "For new grads & early professionals",
-    price: "AUD$629",
+    price: "AUD$899",
     oldPrice: "AUD$1,099",
     inheritsFrom: "PROFESSIONAL",
     features: [
