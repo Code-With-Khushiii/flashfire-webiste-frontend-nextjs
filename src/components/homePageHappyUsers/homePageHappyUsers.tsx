@@ -526,8 +526,8 @@ export default function HomePageHappyUsers({
     >
       {/* === Top Orange Section === */}
       <div className="relative border-t border-[#111] bg-[#fbf3ee] px-8 pb-20 pt-[90px] text-left text-[#111] max-[768px]:pt-[56px] max-[768px]:pb-12 max-[600px]:px-4">
-        <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.3fr)] lg:gap-16">
-        <div className="lg:sticky lg:top-28 lg:self-start">
+        <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-10 lg:grid-cols-[minmax(0,330px)_minmax(0,1fr)] lg:gap-[64px]">
+        <div className="lg:self-start">
         <p className="mb-3 text-[12px] font-bold uppercase tracking-[0.08em] text-[#f55d1d]">Flashfire / Customer feedback</p>
         <h2
           className="mb-4 text-[44px] font-bold max-[600px]:text-[30px]"
@@ -552,12 +552,18 @@ export default function HomePageHappyUsers({
         >
           Conversations from 1000+ job seekers using our <span style={{ color: "#111", fontWeight: 600 }}>AI Job Search Platform</span>
         </p>
+        <a
+          href={`${prefix}/testimonials`}
+          className="inline-block text-[14px] font-bold text-black underline"
+        >
+          See all customer feedback
+        </a>
         </div>
 
         {/* Masonry Layout */}
         <div
           id="happy-users-gallery"
-          className="columns-3 gap-4 max-[900px]:columns-3 max-[600px]:columns-2 max-[600px]:gap-3 max-[600px]:[&>div:nth-child(n+9)]:hidden"
+          className="grid grid-cols-3 items-start gap-6 max-[900px]:gap-4 max-[600px]:grid-cols-2 max-[600px]:gap-3 [&>div:nth-child(n+4)]:hidden max-[600px]:[&>div:nth-child(n+3)]:hidden"
         >
           {reviewImages.map((imageSrc, i) => {
             const isEager = i < 8; // First 8 images load eagerly
@@ -569,14 +575,14 @@ export default function HomePageHappyUsers({
                   imageRefs.current[i] = el;
                 }}
                 data-index={i}
-                className="inline-block w-full mb-4 [break-inside:avoid] rounded-[0.6rem] overflow-hidden bg-[#fffaf8] shadow-[0_3px_10px_rgba(0,0,0,0.25)]"
+                className="aspect-[283/399] w-full overflow-hidden rounded-[6px] border border-[#111]/30 bg-[#f3ece6] shadow-[0_1px_2px_rgba(0,0,0,0.08)]"
               >
                 <CachedTestimonialImage
                   src={imageSrc}
                   alt={`Flashfire user review ${i + 1}`}
                   width={400}
                   height={600}
-                  className="w-full h-auto object-contain block rounded-[0.4rem] transition-opacity duration-300"
+                  className="block h-full w-full object-cover object-top"
                   priority={isEager}
                   sizes="(max-width: 600px) 50vw, (max-width: 1024px) 33vw, 28vw"
                 />
@@ -593,10 +599,10 @@ export default function HomePageHappyUsers({
         <p className="mb-2 text-[12px] font-bold uppercase tracking-[0.08em] text-[#5a524d]">Flashfire / Video testimonials</p>
         <h2 className="mb-3 text-[40px] font-bold leading-[1.1] text-[#111] max-[600px]:text-[28px]">Hear from Flashfire customers</h2>
         <p className="mb-8 text-[16px] text-[#5a524d]">Customer stories about their job-search experience.</p>
-        <div className="mx-auto grid w-full max-w-[760px] grid-cols-2 gap-8 text-left max-[768px]:max-w-[340px] max-[768px]:grid-cols-1">
+        <div className="mx-auto grid w-full max-w-[1280px] grid-cols-2 gap-6 text-left max-[768px]:grid-cols-1">
           {videos.slice(0, 2).map((video, index) => (
             <div key={video.videoUrl}>
-              <div className="relative aspect-[5/8] w-full overflow-hidden border border-[#111]/40 bg-[#e8e2dd]">
+              <div className="relative aspect-video w-full overflow-hidden rounded-[6px] border border-[#111]/30 bg-[#e8e2dd]">
                 {playingIndex === index ? (
                   <>
                     <iframe
@@ -628,9 +634,9 @@ export default function HomePageHappyUsers({
                       alt={`${video.name} - Click to play video`}
                       width={800}
                       height={450}
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-contain"
                       priority
-                      sizes="(max-width: 768px) 100vw, 340px"
+                      sizes="(max-width: 768px) 100vw, 640px"
                     />
                     <span className="absolute bottom-3 right-3 flex h-12 w-12 items-center justify-center rounded-full border border-[#111]/60 bg-white text-[18px] text-[#111] shadow transition group-hover:scale-105 max-[600px]:h-10 max-[600px]:w-10 max-[600px]:text-[14px]">
                       ▶

@@ -5,7 +5,7 @@ const comparisonRows = [
   {
     label: "Job relevance",
     alone: "Self-managed search; automated filters and targeting vary by tool.",
-    flashfire: "Matching shaped by your target roles, pay and location preferences.",
+    flashfire: "Matching shaped by your target roles and location preferences.",
   },
   {
     label: "Resume tailoring",
@@ -20,7 +20,7 @@ const comparisonRows = [
   {
     label: "Application visibility",
     alone: "Records may be self-managed; tracking and updates vary by tool.",
-    flashfire: "A dashboard and WhatsApp updates make submitted work visible.",
+    flashfire: "Application monitoring and updates make submitted work visible.",
   },
 ];
 

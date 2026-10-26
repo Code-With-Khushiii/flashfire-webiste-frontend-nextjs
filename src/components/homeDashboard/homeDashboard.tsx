@@ -13,7 +13,7 @@ export default function HomeDashboard() {
           Know where your applications go.
         </h2>
         <p className="mt-4 max-w-[760px] text-[16px] text-[#545b65]">
-          A desktop dashboard: your preferences, the work in progress and a
+          A desktop dashboard schematic: your preferences, the work in progress and a
           record of submissions, all in one view.
         </p>
 

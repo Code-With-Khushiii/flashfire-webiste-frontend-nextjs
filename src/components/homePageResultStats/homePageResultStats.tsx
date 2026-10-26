@@ -32,32 +32,46 @@ export default function HomePageResultStats() {
       <div className={styles.inner}>
         <div className={styles.head}>
           <div>
-            <p className={styles.resultTagline}>RESULT THAT SPEAKS</p>
+            <p className={styles.resultTagline}>RESULTS AT A GLANCE / EARLY PROOF UNDER REVIEW</p>
             <h2 className={styles.resultHeading}>Results at a glance</h2>
           </div>
           <p className={styles.resultIntro}>
-            Get more interview calls with a dedicated job search team.
+            These are client-supplied claims, not verified facts. Evidence,
+            methodology and approval are required before publication.
             Individual outcomes vary; interviews and offers are not guaranteed.
           </p>
         </div>
 
         <div className={styles.resultStats}>
           <div className={styles.resultStatBox}>
+            <p className={styles.resultStatLabel}>Review only / unverified client claim</p>
             <h3 className={styles.resultStatNumber}>95%</h3>
             <p className={styles.resultStatText}>
-              Users land interview call within a month*
+              Users land an interview call within a month*
+            </p>
+            <p className={styles.resultStatNote}>
+              Client-supplied claim — approval required before publication.
             </p>
           </div>
           <div className={styles.resultStatBox}>
+            <p className={styles.resultStatLabel}>Review only / unverified client claim</p>
             <h3 className={styles.resultStatNumber}>90%</h3>
             <p className={styles.resultStatText}>
-              Users get job offer within 3 months*
+              Users get a job offer within 3 months*
+            </p>
+            <p className={styles.resultStatNote}>
+              Client-supplied claim — approval required before publication.
             </p>
           </div>
         </div>
 
         <div className={styles.resultBanner}>
           <p className={styles.resultBannerTitle}>60+ offer letters received</p>
+          <div className={styles.resultBannerSide}>
+          <p className={styles.resultBannerText}>
+            Across customers, not one person. Client claim pending verification
+            and publication approval.
+          </p>
           <button
             {...getButtonProps()}
             className={styles.resultButton}
@@ -109,6 +123,7 @@ export default function HomePageResultStats() {
           >
             Schedule a Free Career Call
           </button>
+          </div>
         </div>
 
         <p className={styles.resultNote}>

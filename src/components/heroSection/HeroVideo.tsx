@@ -1,4 +1,6 @@
-export default function HeroVideo() {
+"use client";
+
+function HeroVideo() {
   return (
     <div id="demo" className="w-full">
       <div className="relative aspect-[2074/998] w-full overflow-hidden border border-black bg-[#fff6f4] shadow-[4px_4px_0_#ff4c00] sm:shadow-[8px_8px_0_#ff4c00]">
@@ -22,3 +24,5 @@ export default function HeroVideo() {
     </div>
   );
 }
+
+export default HeroVideo;
