@@ -5,17 +5,18 @@ import { usePathname } from "next/navigation";
 import { isLocaleHome } from "@/src/utils/locale";
 import Footer from "@/src/components/footer/footer";
 import HeroSection from "@/src/components/heroSection/heroSection";
-import HomePageFAQ from "@/src/components/homePageFAQ/homePageFAQ";
 import HomePageHappyUsers from "@/src/components/homePageHappyUsers/homePageHappyUsers";
-import HomePageResultStats from "@/src/components/homePageResultStats/homePageResultStats";
-import HomePageSteps from "@/src/components/homePageSteps/homePageSteps";
-import HomePageWhyChooseFF from "@/src/components/homePageWhyChooseFF/homePageWhyChooseFF";
-import HomeOfferWall from "@/src/components/homeOfferWall/homeOfferWall";
-import HomeDashboard from "@/src/components/homeDashboard/homeDashboard";
 import HomeStories from "@/src/components/homeStories/homeStories";
-import HomeFinalCTA from "@/src/components/homeFinalCTA/homeFinalCTA";
 import Navbar from "@/src/components/navbar/navbar";
-import SalesPopUp from "@/src/components/SalesPopUp";
+import {
+  HomeDraftComparison,
+  HomeDraftDashboard,
+  HomeDraftFAQ,
+  HomeDraftFinalCTA,
+  HomeDraftJourney,
+  HomeDraftOfferWall,
+  HomeDraftResults,
+} from "./HomeDraftSections";
 
 const Home = () => {
   const pathname = usePathname();
@@ -48,21 +49,20 @@ const Home = () => {
     <>
       <Navbar />
       <HeroSection />
-      <HomePageResultStats />
-      <HomeOfferWall />
-      <HomePageWhyChooseFF />
-      <div id="how-it-works">
-        <HomePageSteps />
-      </div>
-      <HomeDashboard />
+      <HomeDraftResults />
+      <HomeDraftOfferWall />
+      <HomeDraftComparison />
+      <HomeDraftJourney />
+      <HomeDraftDashboard />
       <HomeStories />
-      <HomePageHappyUsers />
-      <HomePageFAQ />
-      <HomeFinalCTA />
-
+      <HomePageHappyUsers
+        variant="homepageDraft"
+        heading="Feedback from happy customers"
+        headingClassName="mb-4 max-w-[340px] text-[40px] font-black leading-[1.15] tracking-[-0.02em] text-[#242424] max-[768px]:mb-4 max-[768px]:max-w-full max-[768px]:text-[36px]"
+      />
+      <HomeDraftFAQ />
+      <HomeDraftFinalCTA />
       <Footer />
-
-      {/* <SalesPopUp /> */}
     </>
   );
 };

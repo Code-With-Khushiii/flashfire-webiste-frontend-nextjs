@@ -9,11 +9,6 @@ const nextConfig: NextConfig = {
     root: projectRoot,
   },
   compress: true,
-  // Render <title>/<meta> in the initial <head> for every visitor instead of
-  // streaming them into <body>. Lighthouse/PageSpeed (and some crawlers and link
-  // previewers) only read the head, so streamed metadata showed up as
-  // "Document does not have a meta description".
-  htmlLimitedBots: /.*/,
   
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -76,17 +71,6 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [
-      // Staging / preview deployments on *.vercel.app must never be indexed
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: '.*\\.vercel\\.app' }],
-        headers: [
-          {
-            key: 'X-Robots-Tag',
-            value: 'noindex, nofollow',
-          },
-        ],
-      },
       {
         source: '/:path*',
         headers: [
@@ -148,6 +132,11 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
+        // There is no /en-us tree: the US page is the root URL. Serve /en-us/*
+        // as a rewrite so the address bar keeps /en-us (a redirect would swap
+        // it for /). The specific /en-us redirects in redirects() still win.
+        { source: '/en-us', destination: '/' },
+        { source: '/en-us/:path*', destination: '/:path*' },
         // Proxy /register and all sub-routes to the register ads website
         {
           source: '/register',
@@ -372,10 +361,6 @@ const nextConfig: NextConfig = {
         destination: "/how-flashfire-ai-job-automation-platform-works",
         permanent: true,
       },
-      // There is no /en-us tree: the US page is the root URL. Keep this after
-      // the specific /en-us rules above so they avoid a second hop.
-      { source: "/en-us", destination: "/", permanent: true },
-      { source: "/en-us/:path*", destination: "/:path*", permanent: true },
       // NOTE: /en-uk redirects removed — /en-uk is a live indexed page with
       // its own canonical (flashfirejobs.com/en-uk). Redirecting it to /en-gb
       // caused Google to index /en-gb for UK traffic, blocking all UK organic.

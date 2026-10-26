@@ -29,23 +29,34 @@ export default function HomePageResultStats() {
 
   return (
     <section className={styles.resultSection}>
-      <div className={styles.inner}>
-        <div className={styles.head}>
-          <div>
-            <p className={styles.resultTagline}>RESULTS AT A GLANCE / EARLY PROOF UNDER REVIEW</p>
-            <h2 className={styles.resultHeading}>Results at a glance</h2>
-          </div>
-          <p className={styles.resultIntro}>
-            These are client-supplied claims, not verified facts. Evidence,
-            methodology and approval are required before publication.
-            Individual outcomes vary; interviews and offers are not guaranteed.
-          </p>
-        </div>
+      {/* Right Side (Image first in HTML so it appears on top on mobile) */}
+      <div className={styles.resultRight}>
+        <img
+          src="https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/heroResultImage.jpg"
+          alt="Interview illustration"
+          className={styles.resultImage}
+          width={700}
+          height={700}
+          loading="eager"
+          decoding="async"
+          suppressHydrationWarning
+        />
+      </div>
+
+
+      {/* Left Side */}
+      <div className={styles.resultLeft}>
+        <p className={styles.resultTagline}>RESULT THAT SPEAKS</p>
+
+        <h2 className={styles.resultHeading}>
+          Get More Interview Calls With a Dedicated Job Search Team
+        </h2>
 
         <div className={styles.resultStats}>
           <div className={styles.resultStatBox}>
             <p className={styles.resultStatLabel}>Review only / unverified client claim</p>
             <h3 className={styles.resultStatNumber}>95%</h3>
+            <hr className={styles.resultStatsHR} />
             <p className={styles.resultStatText}>
               Users land an interview call within a month*
             </p>
@@ -56,6 +67,7 @@ export default function HomePageResultStats() {
           <div className={styles.resultStatBox}>
             <p className={styles.resultStatLabel}>Review only / unverified client claim</p>
             <h3 className={styles.resultStatNumber}>90%</h3>
+            <hr className={styles.resultStatsHR} />
             <p className={styles.resultStatText}>
               Users get a job offer within 3 months*
             </p>
@@ -65,16 +77,13 @@ export default function HomePageResultStats() {
           </div>
         </div>
 
-        <div className={styles.resultBanner}>
-          <p className={styles.resultBannerTitle}>60+ offer letters received</p>
-          <div className={styles.resultBannerSide}>
-          <p className={styles.resultBannerText}>
-            Across customers, not one person. Client claim pending verification
-            and publication approval.
-          </p>
-          <button
-            {...getButtonProps()}
-            className={styles.resultButton}
+        <p className={styles.resultNote}>
+          *Based on verified user data from 2024-25 cohort.
+        </p>
+
+        <button
+          {...getButtonProps()}
+          className={styles.resultButton}
           onClick={() => {
             const utmSource =
               typeof window !== "undefined"
@@ -120,15 +129,9 @@ export default function HomePageResultStats() {
               window.dispatchEvent(new CustomEvent("showStrategyCallCard"));
             }
           }}
-          >
-            Schedule a Free Career Call
-          </button>
-          </div>
-        </div>
-
-        <p className={styles.resultNote}>
-          *Based on verified user data from 2024-25 cohort.
-        </p>
+        >
+          Schedule a Free Career Call
+        </button>
       </div>
     </section>
   );

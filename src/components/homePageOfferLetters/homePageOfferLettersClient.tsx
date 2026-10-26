@@ -441,10 +441,6 @@ export default function HomePageOfferLettersClient({
                       fill
                       sizes="260px"
                       className={styles.offerImage}
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = "/images/offer-placeholder.jpg";
-                      }}
                     />
                   </div>
 
@@ -513,10 +509,6 @@ export default function HomePageOfferLettersClient({
                     fill
                     sizes="260px"
                     className={styles.offerImage}
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = "/images/offer-placeholder.jpg";
-                    }}
                   />
                   {offer.offerDate && (
                     <span className={styles.offerDateBadge}>{offer.offerDate}</span>
