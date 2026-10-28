@@ -126,7 +126,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const rawMetaTitle = post.slug ? (metaTitleMap[post.slug] ?? post.metaTitle ?? post.title) : (post.metaTitle ?? post.title);
   // Keep search-result snippets inside Google's display limits.
   const metaTitle = fitText(rawMetaTitle, 60);
-  const metaDescription = fitText(post.excerpt || post.title, 155);
+  const metaDescription = fitText(post.metaDescription || post.excerpt || post.title, 155);
 
   return {
     title: metaTitle,
