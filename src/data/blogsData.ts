@@ -41,7 +41,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
     },
-    image: "https://www.flashfirejobs.com/images/og-image.png",
+    image: "/images/blog/enhancv-alternative.webp",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">FlashFire vs Enhancv at a glance</h2>
 <p style='margin-bottom:12px; line-height:1.7;'>FlashFire is better suited to job seekers who want application assistance, while Enhancv is a stronger fit for people prioritizing resume design and document customization.</p>
@@ -238,7 +238,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
     },
-    image: "https://www.flashfirejobs.com/images/og-image.png",
+    image: "/images/blog/rezi-alternative.webp",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">FlashFire vs Rezi at a glance</h2>
 <p style='margin-bottom:12px; line-height:1.7;'>Rezi and FlashFire address different parts of the hiring journey. Rezi focuses on resume creation and optimization, with additional job-search tools. FlashFire is designed to help manage more of the application workflow.</p>
@@ -428,7 +428,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
     },
-    image: "https://www.flashfirejobs.com/images/og-image.png",
+    image: "/images/blog/is-resume-worded-worth-it.webp",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Is Resume Worded worth it? Quick verdict</h2>
 <p style='margin-bottom:12px; line-height:1.7;'>Yes, Resume Worded is worth considering if you want structured feedback on your resume and LinkedIn profile. Its free tools are useful for identifying writing weaknesses, while Pro adds deeper analysis, AI rewriting, and job-description targeting. However, it is less compelling if your main challenge is managing a high volume of applications.</p>
@@ -619,7 +619,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
     },
-    image: "https://www.flashfirejobs.com/images/og-image.png",
+    image: "/images/blog/is-enhancv-worth-it.webp",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Is Enhancv worth it? Quick verdict</h2>
 <p style='margin-bottom:12px; line-height:1.7;'>Enhancv is worth considering if you want a visually polished resume, AI writing assistance, and tools to tailor your application to individual job descriptions. It is less compelling if you need extensive job-application automation or want to apply to a high volume of positions with minimal manual work.</p>
@@ -849,7 +849,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
     },
-    image: "https://www.flashfirejobs.com/images/og-image.png",
+    image: "/images/blog/is-rezi-worth-it.webp",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Is Rezi worth it? Quick verdict</h2>
 <p style='margin-bottom:12px; line-height:1.7;'>Verdict: Rezi is worth considering if you want structured resume writing, keyword optimization, and straightforward formatting. It is less compelling if you need highly creative designs or want to automate the entire job application process.</p>
@@ -1081,7 +1081,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
     },
-    image: "https://www.flashfirejobs.com/images/og-image.png",
+    image: "/images/blog/huntr-vs-teal-vs-flashfire.webp",
     categoryColor: "bg-green-100 text-green-600",
     content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Huntr vs Teal vs FlashFire at a glance</h2>
 <p style='margin-bottom:12px; line-height:1.7;'>Huntr is best known for job tracking and application autofill, Teal combines resume-building tools with job tracking, and FlashFire focuses on finding relevant opportunities and managing application execution.</p>
@@ -1285,7 +1285,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
     },
-    image: "https://www.flashfirejobs.com/images/og-image.png",
+    image: "/images/blog/novoresume-alternative.webp",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Novoresume vs FlashFire at a glance</h2>
 <p style='margin-bottom:12px; line-height:1.7;'>Novoresume is best suited to candidates who want to create a structured, professional resume, whereas FlashFire is designed for candidates who want to automate more of the job search and application process.</p>
@@ -1491,7 +1491,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
     },
-    image: "https://www.flashfirejobs.com/images/og-image.png",
+    image: "/images/blog/ats-friendly-cover-letter.webp",
     categoryColor: "bg-pink-100 text-pink-600",
     content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Do applicant tracking systems read cover letters?</h2>
 <p style='margin-bottom:12px; line-height:1.7;'>Yes, many applicant tracking systems can store, parse, and display cover letters, but how they process them depends on the employer’s configuration and application process. Some systems associate uploaded letters with candidate profiles, while others collect cover letter text through application fields. Not every employer uses cover letters for automated screening.</p>
