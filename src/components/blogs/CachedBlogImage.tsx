@@ -142,7 +142,7 @@ export default function CachedBlogImage({
     if (priority) {
       // Priority: load immediately but don't block
       if ('requestIdleCallback' in window) {
-        (window as any).requestIdleCallback(loadCachedImage, { timeout: 100 });
+        window.requestIdleCallback(loadCachedImage, { timeout: 100 });
       } else {
         setTimeout(loadCachedImage, 0);
       }

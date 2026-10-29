@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { FaLinkedinIn } from "react-icons/fa";
 import styles from "./AuthorProfile.module.css";
 import BlogCard from "./blogCard";
@@ -53,8 +52,6 @@ type AuthorProfileProps = {
 };
 
 export default function AuthorProfile({ author, posts }: AuthorProfileProps) {
-  // Generate author slug for URL
-  const authorSlug = author.name.replace(/\s+/g, "-").toLowerCase();
   const authorHeaderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

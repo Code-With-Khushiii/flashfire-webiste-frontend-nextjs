@@ -189,13 +189,6 @@
   scroll-margin-top: 150px;
 }
 
-.overviewTitle {
-  margin: 0 0 1rem;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #0f172a;
-}
-
 .overviewText,
 .overviewText p {
   margin: 0;
@@ -761,6 +754,104 @@
   color: #64748b;
 }
 
+/* === MORE POSTS (recent + same category) === */
+.moreSection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem 3rem;
+}
+
+.moreGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem;
+}
+
+.moreHeading {
+  margin: 0 0 1.25rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+
+.moreList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.moreLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.moreLink:hover {
+  border-color: #fdba74;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.07);
+}
+
+.moreThumb {
+  flex-shrink: 0;
+  width: 96px;
+  height: 64px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f1f5f9;
+}
+
+.moreImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.moreText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.moreTitle {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #0f172a;
+}
+
+.moreDate {
+  font-size: 0.8125rem;
+  color: #64748b;
+}
+
+@media (max-width: 768px) {
+  .moreSection {
+    padding: 0.5rem 1.5rem 2rem;
+  }
+
+  .moreGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+}
+
 /* === CTA === */
 .ctaBox {
   margin-top: 1rem;
@@ -925,10 +1016,6 @@
     padding: 1.5rem 1.375rem;
     margin-bottom: 2rem;
     border-radius: 12px;
-  }
-
-  .overviewTitle {
-    font-size: 1.125rem;
   }
 
   .overviewText,

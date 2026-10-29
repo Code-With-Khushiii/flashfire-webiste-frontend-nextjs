@@ -6,7 +6,7 @@ import Link from "next/link";
 import styles from "./blogs.module.css";
 import BlogCard from "./blogCard";
 import { FaSearch } from "react-icons/fa";
-import { categoryToSlug, slugToCategory, tagToSlug, slugToTag } from "@/src/utils/blogCategoryUtils";
+import { categoryToSlug, slugToCategory, slugToTag } from "@/src/utils/blogCategoryUtils";
 
 export type BlogListItem = {
   id: number;
@@ -56,7 +56,7 @@ export default function BlogsClientView({ posts, categorySlug, tagSlug, heading 
       const decoded = decodeURIComponent(categoryParam.replace(/\+/g, "%20"));
       const slug = decoded.toLowerCase().trim();
       return slugToCategory(slug);
-    } catch (error) {
+    } catch {
       return categoryParam.toLowerCase().trim();
     }
   }, [categorySlug, categoryParam]);
@@ -221,7 +221,7 @@ export default function BlogsClientView({ posts, categorySlug, tagSlug, heading 
             <>
               Learn how to outsmart hiring systems, stand out to recruiters, and
               stay ahead with{" "}
-              <span className={styles.highlight}>Flashfire's expert-backed</span>{" "}
+              <span className={styles.highlight}>Flashfire&apos;s expert-backed</span>{" "}
               tips.
             </>
           )}
