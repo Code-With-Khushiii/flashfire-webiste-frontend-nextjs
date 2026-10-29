@@ -53,6 +53,15 @@ export type RelatedPost = {
   readTime?: string;
 };
 
+export type LinkPost = {
+  id: number;
+  slug?: string;
+  title: string;
+  image?: string;
+  coverImage?: string;
+  date?: string;
+};
+
 type TableOfContentsItem = {
   title: string;
   anchor: string;
@@ -62,9 +71,15 @@ type TableOfContentsItem = {
 export default function BlogsPageView({
   post,
   relatedArticles,
+  recentArticles,
+  categoryArticles,
+  categoryName,
 }: {
   post: BlogPost;
   relatedArticles: RelatedPost[];
+  recentArticles: LinkPost[];
+  categoryArticles: LinkPost[];
+  categoryName?: string;
 }) {
   const [activeSection, setActiveSection] = useState<string>("");
   // The tags chosen for this post when it was published
@@ -106,7 +121,7 @@ export default function BlogsPageView({
   // <h1> authored inside the post body is demoted to <h2>.
   const demotedContent = useMemo(
     () => {
-      const html = removeLeadingTitleHeading(headingListsToHeadings(post?.content || ""), post.title)
+      const html = removeLeadingTitleHeading(headingListsToHeadings(post.content || ""), post.title)
         .replace(/<h1(\b[^>]*)>/gi, "<h2$1>")
         .replace(/<\/h1>/gi, "</h2>")
         // Body images sit below the hero, so the browser fetches them only near the viewport
@@ -115,23 +130,31 @@ export default function BlogsPageView({
       // the first heading may be an H2 and each later one at most one level deeper.
       let prev = 1;
       const levels: number[] = [];
-      const leveled = html
-        .replace(/<(\/?)h([2-6])(\b[^>]*)>/gi, (_m, slash: string, lvl: string, rest: string) => {
-          if (!slash) {
-            const wanted = Number(lvl);
-            const used = Math.min(wanted, prev + 1);
-            levels.push(used);
-            prev = used;
-            return `<h${used}${rest}>`;
-          }
-          return `</h${levels[levels.length - 1] ?? lvl}>`;
-        });
+      let leveled = "";
+      let last = 0;
+      const headingTag = /<(\/?)h([2-6])(\b[^>]*)>/gi;
+      let match: RegExpExecArray | null;
+      while ((match = headingTag.exec(html))) {
+        const [tag, slash, lvl, rest] = match;
+        let replacement: string;
+        if (!slash) {
+          const used = Math.min(Number(lvl), prev + 1);
+          levels.push(used);
+          prev = used;
+          replacement = `<h${used}${rest}>`;
+        } else {
+          replacement = `</h${levels[levels.length - 1] ?? lvl}>`;
+        }
+        leveled += html.slice(last, match.index) + replacement;
+        last = match.index + tag.length;
+      }
+      leveled += html.slice(last);
       return classifyOrderedLists(leveled, {
         selfNumbered: styles.selfNumbered,
         qaList: styles.qaList,
       });
     },
-    [post?.content, post.title]
+    [post.content, post.title]
   );
 
   // Anchor ids, the table of contents and the table wrappers are all computed on
@@ -601,7 +624,6 @@ export default function BlogsPageView({
             {/* === BLOG OVERVIEW === */}
             {overviewText && (
               <div id="overview-section" className={styles.overviewBox}>
-                <p className={styles.overviewTitle}>Summary:</p>
                 {overviewParagraphs ? (
                   <div className={styles.overviewText}>
                     <p
@@ -770,6 +792,49 @@ export default function BlogsPageView({
               ))}
             </div>
           </aside>
+        )}
+
+        {/* === MORE POSTS: plain links, rendered in the server HTML === */}
+        {(recentArticles.length > 0 || categoryArticles.length > 0) && (
+          <section className={styles.moreSection} aria-label="More posts">
+            <div className={styles.moreGrid}>
+              {[
+                { heading: "Recent Posts", posts: recentArticles },
+                { heading: categoryName ? `More in ${categoryName}` : "More Posts", posts: categoryArticles },
+              ]
+                .filter((group) => group.posts.length > 0)
+                .map((group) => (
+                  <div key={group.heading}>
+                    <h2 className={styles.moreHeading}>{group.heading}</h2>
+                    <ul className={styles.moreList}>
+                      {group.posts.map((item) => (
+                        <li key={item.id}>
+                          <Link href={`/blog/${item.slug}`} className={styles.moreLink}>
+                            <span className={styles.moreThumb}>
+                              {(item.image || item.coverImage) && (
+                                <Image
+                                  src={item.image || item.coverImage || ""}
+                                  alt=""
+                                  width={96}
+                                  height={64}
+                                  loading="lazy"
+                                  className={styles.moreImg}
+                                  sizes="96px"
+                                />
+                              )}
+                            </span>
+                            <span className={styles.moreText}>
+                              <span className={styles.moreTitle}>{item.title}</span>
+                              {item.date && <span className={styles.moreDate}>{item.date}</span>}
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+            </div>
+          </section>
         )}
 
         {/* === CTA === */}

@@ -1,5 +1,5 @@
 import { blogPosts, type BlogPost } from "@/src/data/blogsData";
-import BlogsPageView, { type RelatedPost } from "./blogsPageView";
+import BlogsPageView, { type LinkPost, type RelatedPost } from "./blogsPageView";
 import { getReadTime } from "@/src/utils/blogContent";
 
 // Server component: picks the related posts here so the full blog dataset
@@ -56,11 +56,37 @@ function getRelatedPosts(post: BlogPost): BlogPost[] {
   return [...tagMatches, ...sameCategory].slice(0, MAX_RELATED);
 }
 
+// Crawlable links below the article: the newest posts, and the newest posts in this
+// post's category. Both are plain <a> links in the server HTML.
+const MAX_MORE_LINKS = 5;
+
+function toLinkPost(p: BlogPost): LinkPost {
+  return { id: p.id, slug: p.slug, title: p.title, image: p.image, coverImage: p.coverImage, date: p.date };
+}
+
+function getMoreLinks(post: BlogPost) {
+  const others = blogPosts.filter((p) => p && p.id !== post.id && p.slug);
+  const recent = others.slice(0, MAX_MORE_LINKS);
+  const recentIds = new Set(recent.map((p) => p.id));
+  const category = post.category || post.categories?.[0];
+  const inCategory = category
+    ? others
+        .filter((p) => !recentIds.has(p.id) && (p.category === category || p.categories?.includes(category)))
+        .slice(0, MAX_MORE_LINKS)
+    : [];
+  return {
+    recentArticles: recent.map(toLinkPost),
+    categoryArticles: inCategory.map(toLinkPost),
+    categoryName: category,
+  };
+}
+
 export default function BlogsPage({ post }: { post: BlogPost }) {
   return (
     <BlogsPageView
       post={{ ...post, readTime: getReadTime(post.content, post.readTime) }}
       relatedArticles={getRelatedPosts(post).map(toRelatedPost)}
+      {...getMoreLinks(post)}
     />
   );
 }
