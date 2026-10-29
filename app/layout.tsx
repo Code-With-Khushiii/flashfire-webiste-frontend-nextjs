@@ -5,7 +5,6 @@ import { Space_Grotesk, Inter } from "next/font/google";
 import Script from "next/script";
 import { PHProvider } from "@/src/components/PostHogProvider";
 import WhatsAppButton from "@/src/components/WhatsAppButton/WhatsAppButton";
-import BlogImagePreloader from "@/src/components/BlogImagePreloader";
 import TestimonialImagePreloader from "@/src/components/homePageHappyUsers/TestimonialImagePreloader";
 
 const spaceGrotesk = Space_Grotesk({
@@ -187,7 +186,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <WhatsAppButton />
           </ClientLogicWrapper>
         </PHProvider>
-        <BlogImagePreloader />
         <TestimonialImagePreloader />
         {/* Meta Pixel - Load with afterInteractive strategy */}
         <Script
