@@ -53,8 +53,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       `Explore expert ${tag} articles, practical tips and step-by-step guides on the Flashfire Blog to help you search smarter, apply faster and get hired.`,
       155
     ),
+    // Tag archives are thin and overlap the categories, so keep them out of the index
+    // but let crawlers follow the post links on them.
     robots: {
-      index: true,
+      index: false,
       follow: true,
     },
     alternates: {

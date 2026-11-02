@@ -38,11 +38,4 @@ export function getPostsForTagSlug(slug: string): ListingPost[] {
   );
 }
 
-/** Keeps a string within [max] characters, cutting at a word boundary. */
-export function fitText(text: string, max: number): string {
-  const clean = text.replace(/\s+/g, " ").trim();
-  if (clean.length <= max) return clean;
-  const cut = clean.slice(0, max - 1);
-  const lastSpace = cut.lastIndexOf(" ");
-  return `${(lastSpace > max * 0.6 ? cut.slice(0, lastSpace) : cut).replace(/[\s,;:–-]+$/, "")}…`;
-}
+export { fitText } from "@/src/utils/blogSeo";

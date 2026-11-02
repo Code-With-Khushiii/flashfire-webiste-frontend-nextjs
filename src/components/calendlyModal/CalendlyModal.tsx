@@ -56,10 +56,21 @@ export default function CalendlyModal({
   user,
 }: CalendlyModalProps) {
   const router = useRouter();
+  // Restore the invitee profile saved by an earlier booking. It is only read inside
+  // the booking handler, never rendered, so reading storage lazily is hydration-safe.
   const [profileInvitee, setProfileInvitee] = useState<{
     email?: string;
     name?: string;
-  } | null>(null);
+  } | null>(() => {
+    if (typeof window === "undefined") return null;
+    try {
+      const name = localStorage.getItem("cal_invitee_name") || undefined;
+      const email = localStorage.getItem("cal_invitee_email") || undefined;
+      return name || email ? { name, email } : null;
+    } catch {
+      return null;
+    }
+  });
   const [isCalendlyReady, setIsCalendlyReady] = useState(false);
 
   useEffect(() => {
@@ -92,19 +103,6 @@ export default function CalendlyModal({
     });
 
     return () => observer.disconnect();
-  }, []);
-
-  // Restore invitee profile info on mount
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    
-    try {
-      const savedName = localStorage.getItem("cal_invitee_name") || undefined;
-      const savedEmail = localStorage.getItem("cal_invitee_email") || undefined;
-      if (savedName || savedEmail) {
-        setProfileInvitee({ name: savedName, email: savedEmail });
-      }
-    } catch {}
   }, []);
 
   // Listen for Calendly scheduled events and capture to analytics/CRM
@@ -166,8 +164,9 @@ export default function CalendlyModal({
           ? crypto.randomUUID()
           : `lead-${Date.now()}`;
         if (typeof window !== "undefined") {
-          if ((window as any).rdt) {
-            (window as any).rdt('track', 'Lead', { transactionId: rdtLeadEventId });
+          const rdt = (window as Window & { rdt?: (...args: unknown[]) => void }).rdt;
+          if (rdt) {
+            rdt('track', 'Lead', { transactionId: rdtLeadEventId });
             console.log('[Reddit Pixel] Lead fired, transactionId:', rdtLeadEventId);
           }
           // Read rdt_cid cookie and send CAPI Lead event server-side for deduplication
@@ -263,7 +262,6 @@ export default function CalendlyModal({
           );
 
           if (response.ok) {
-            const result = await response.json();
             // Booking saved to backend
           } else {
             console.warn(
@@ -325,7 +323,8 @@ max-w-5xl w-full max-h-[90vh] overflow-hidden rounded-xl shadow-2xl flex flex-co
           <X className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
-        {/* Mobile Header */}
+        {/* Info panels are only mounted while the modal is open, so their headings are not in the page HTML when it is closed. */}
+        {isVisible && (
         <div className="block lg:hidden h-full w-full">
           {/* Header */}
           <div className="bg-gradient-to-br from-orange-500 to-red-600 p-4 text-white">
@@ -343,10 +342,12 @@ max-w-5xl w-full max-h-[90vh] overflow-hidden rounded-xl shadow-2xl flex flex-co
           </div>
 
         </div>
+        )}
 
         {/* Desktop Layout */}
         <div className="flex w-full h-[90vh]">
-          {/* Orange Section (Info) */}
+          {/* Orange Section (Info), mounted only while the modal is open */}
+          {isVisible && (
           <div className="hidden lg:block w-2/5 bg-gradient-to-br from-orange-500 to-red-600 p-8 text-white overflow-y-hidden rounded-l-xl">
             <div className="mb-6">
               <div className="flex items-center space-x-3 mb-4">
@@ -427,6 +428,7 @@ max-w-5xl w-full max-h-[90vh] overflow-hidden rounded-xl shadow-2xl flex flex-co
               </div>
             </div>
           </div>
+          )}
 
           {/* Calendar Section */}
           <div className="w-full lg:w-3/5 bg-white overflow-hidden lg:rounded-r-xl relative">
