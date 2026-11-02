@@ -9,3 +9,10 @@ export function toIsoDate(dateString?: string): string | undefined {
   const pad = (n: number) => String(n).padStart(2, "0");
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 }
+
+// Blog dates carry no time of day. Schema.org and article meta want a full timestamp
+// with a timezone, so posts are stamped 09:00 IST, e.g. "2026-10-30T09:00:00+05:30".
+export function toIsoDateTime(dateString?: string): string | undefined {
+  const day = toIsoDate(dateString);
+  return day ? `${day}T09:00:00+05:30` : undefined;
+}

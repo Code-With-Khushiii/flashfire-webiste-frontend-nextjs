@@ -7,7 +7,9 @@ import BlogsClient from "@/src/components/blogs/blogsClient";
 import Navbar from "@/src/components/navbar/navbar";
 import Footer from "@/src/components/footer/footer";
 import { slugToCategory, getAllCategorySlugs } from "@/src/utils/blogCategoryUtils";
-import { fitText, getPostsForCategorySlug, getPostsForTagSlug } from "@/src/utils/blogListing";
+import { getPostsForCategorySlug, getPostsForTagSlug } from "@/src/utils/blogListing";
+import { fitText, getBlogImageAlt, getBlogImageUrl, getBlogMetaDescription } from "@/src/utils/blogSeo";
+import { toIsoDateTime } from "@/src/utils/blogDates";
 import BlogListingSeo from "@/src/components/blogs/BlogListingSeo";
 
 export const dynamicParams = true;
@@ -126,7 +128,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const rawMetaTitle = post.slug ? (metaTitleMap[post.slug] ?? post.metaTitle ?? post.title) : (post.metaTitle ?? post.title);
   // Keep search-result snippets inside Google's display limits.
   const metaTitle = fitText(rawMetaTitle, 60);
-  const metaDescription = fitText(post.metaDescription || post.excerpt || post.title, 155);
+  const metaDescription = getBlogMetaDescription(post);
+  // One image, one alt text: used by og:image, twitter:image and the BlogPosting schema.
+  const imageUrl = getBlogImageUrl(post);
+  const imageAlt = getBlogImageAlt(post);
 
   return {
     title: metaTitle,
@@ -143,24 +148,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: metaDescription,
       url: `https://www.flashfirejobs.com/blog/${post.slug}`,
       type: "article",
-      images: post.image
-        ? [
-            {
-              url: post.image,
-              width: 1200,
-              height: 630,
-              alt: post.title,
-            },
-          ]
-        : [
-            {
-              url: "https://www.flashfirejobs.com/images/og-image.png",
-              width: 1200,
-              height: 630,
-              alt: "FLASHFIRE Logo",
-            },
-          ],
-      publishedTime: post.date,
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: imageAlt }],
+      publishedTime: toIsoDateTime(post.date),
+      modifiedTime: toIsoDateTime(post.lastUpdated || post.date),
       authors: ["Flashfire"],
       section: post.category,
     },
@@ -168,8 +158,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: metaTitle,
       description: metaDescription,
-      images: post.image ? [post.image] : ["https://www.flashfirejobs.com/images/og-image.png"],
-      },
+      images: [{ url: imageUrl, alt: imageAlt }],
+    },
     };
   }
 

@@ -141,3 +141,34 @@ function convertItems(inner: string): string | null {
   }
   return parts.join("\n");
 }
+
+// Links inside a post: internal links open in the same tab, external links open in a
+// new one with rel="noopener noreferrer". Done on the HTML string so it is already in
+// the server-rendered page and covers every post, whatever the author typed.
+const INTERNAL_HOSTS = new Set(["flashfirejobs.com", "www.flashfirejobs.com"]);
+
+function isInternalHref(href: string): boolean {
+  if (href.startsWith("/") && !href.startsWith("//")) return true;
+  if (href.startsWith("#")) return true;
+  try {
+    return INTERNAL_HOSTS.has(new URL(href).hostname.toLowerCase());
+  } catch {
+    return false;
+  }
+}
+
+export function normalizeLinkTargets(html: string): string {
+  return html.replace(/<a\b([^>]*)>/gi, (tag, attrs: string) => {
+    const hrefMatch = attrs.match(/\shref\s*=\s*(?:"([^"]*)"|'([^']*)')/i);
+    if (!hrefMatch) return tag;
+    const href = (hrefMatch[1] ?? hrefMatch[2] ?? "").trim();
+    // mailto:, tel: and similar are not pages, leave them alone
+    if (/^(mailto|tel|sms|javascript):/i.test(href)) return tag;
+    const rest = attrs
+      .replace(/\starget\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, "")
+      .replace(/\srel\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, "");
+    return isInternalHref(href)
+      ? `<a${rest}>`
+      : `<a${rest} target="_blank" rel="noopener noreferrer">`;
+  });
+}

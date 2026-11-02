@@ -14,8 +14,8 @@ import Footer from "../footer/footer";
 import Link from "next/link";
 import { FaLinkedinIn, FaFacebookF, FaTwitter, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { tagToSlug } from "@/src/utils/blogCategoryUtils";
-import { toIsoDate } from "@/src/utils/blogDates";
-import { classifyOrderedLists, headingListsToHeadings } from "@/src/utils/blogContent";
+import { toIsoDate, toIsoDateTime } from "@/src/utils/blogDates";
+import { classifyOrderedLists, headingListsToHeadings, normalizeLinkTargets } from "@/src/utils/blogContent";
 import { extractFaqItems, removeLeadingTitleHeading } from "@/src/utils/blogFaq";
 
 type BlogPost = {
@@ -53,15 +53,6 @@ export type RelatedPost = {
   readTime?: string;
 };
 
-export type LinkPost = {
-  id: number;
-  slug?: string;
-  title: string;
-  image?: string;
-  coverImage?: string;
-  date?: string;
-};
-
 type TableOfContentsItem = {
   title: string;
   anchor: string;
@@ -71,15 +62,12 @@ type TableOfContentsItem = {
 export default function BlogsPageView({
   post,
   relatedArticles,
-  recentArticles,
-  categoryArticles,
-  categoryName,
+  seo,
 }: {
   post: BlogPost;
   relatedArticles: RelatedPost[];
-  recentArticles: LinkPost[];
-  categoryArticles: LinkPost[];
-  categoryName?: string;
+  /** Resolved on the server so og:image and the schema use identical values. */
+  seo: { description: string; imageUrl: string; imageAlt: string };
 }) {
   const [activeSection, setActiveSection] = useState<string>("");
   // The tags chosen for this post when it was published
@@ -121,7 +109,7 @@ export default function BlogsPageView({
   // <h1> authored inside the post body is demoted to <h2>.
   const demotedContent = useMemo(
     () => {
-      const html = removeLeadingTitleHeading(headingListsToHeadings(post.content || ""), post.title)
+      const html = normalizeLinkTargets(removeLeadingTitleHeading(headingListsToHeadings(post.content || ""), post.title))
         .replace(/<h1(\b[^>]*)>/gi, "<h2$1>")
         .replace(/<\/h1>/gi, "</h2>")
         // Body images sit below the hero, so the browser fetches them only near the viewport
@@ -329,8 +317,8 @@ export default function BlogsPageView({
       "@id": `https://www.flashfirejobs.com/blog/${post.slug}`,
     },
     headline: post.title,
-    description: post.excerpt || post.title,
-    image: post.image || post.coverImage || "",
+    description: seo.description,
+    image: seo.imageUrl,
     author: {
       "@type": "Person",
       name: post.author?.name || "Flashfire",
@@ -348,8 +336,8 @@ export default function BlogsPageView({
         height: 472,
       },
     },
-    datePublished: publishedIso,
-    dateModified: updatedIso,
+    datePublished: toIsoDateTime(post.date),
+    dateModified: toIsoDateTime(lastUpdated),
   };
 
   // Generate FAQ schema if FAQ items exist (use empty array to avoid hydration issues)
@@ -466,7 +454,7 @@ export default function BlogsPageView({
   const heroImgProps = heroSrc
     ? getImageProps({
         src: heroSrc,
-        alt: post.title,
+        alt: seo.imageAlt,
         width: 1200,
         height: 630,
         quality: 85,
@@ -792,49 +780,6 @@ export default function BlogsPageView({
               ))}
             </div>
           </aside>
-        )}
-
-        {/* === MORE POSTS: plain links, rendered in the server HTML === */}
-        {(recentArticles.length > 0 || categoryArticles.length > 0) && (
-          <section className={styles.moreSection} aria-label="More posts">
-            <div className={styles.moreGrid}>
-              {[
-                { heading: "Recent Posts", posts: recentArticles },
-                { heading: categoryName ? `More in ${categoryName}` : "More Posts", posts: categoryArticles },
-              ]
-                .filter((group) => group.posts.length > 0)
-                .map((group) => (
-                  <div key={group.heading}>
-                    <h2 className={styles.moreHeading}>{group.heading}</h2>
-                    <ul className={styles.moreList}>
-                      {group.posts.map((item) => (
-                        <li key={item.id}>
-                          <Link href={`/blog/${item.slug}`} className={styles.moreLink}>
-                            <span className={styles.moreThumb}>
-                              {(item.image || item.coverImage) && (
-                                <Image
-                                  src={item.image || item.coverImage || ""}
-                                  alt=""
-                                  width={96}
-                                  height={64}
-                                  loading="lazy"
-                                  className={styles.moreImg}
-                                  sizes="96px"
-                                />
-                              )}
-                            </span>
-                            <span className={styles.moreText}>
-                              <span className={styles.moreTitle}>{item.title}</span>
-                              {item.date && <span className={styles.moreDate}>{item.date}</span>}
-                            </span>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-            </div>
-          </section>
         )}
 
         {/* === CTA === */}

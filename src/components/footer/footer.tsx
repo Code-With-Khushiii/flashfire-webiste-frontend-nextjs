@@ -82,9 +82,9 @@ export default function Footer() {
           >
             {/* ADDRESS + FOLLOW US */}
             <div className="max-[480px]:mb-2">
-              <h2 className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
+              <p className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
                 ADDRESS
-              </h2>
+              </p>
               <address className="not-italic text-[0.85rem] leading-relaxed opacity-90 max-[480px]:text-[0.8rem]">
                 Flashfire LLC.<br />
                 30 N Gould St, STE R<br />
@@ -92,9 +92,9 @@ export default function Footer() {
               </address>
 
               <div className="mt-5">
-                <h2 className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
+                <p className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
                   FOLLOW US
-                </h2>
+                </p>
                 <div className="flex items-center gap-3 max-[480px]:gap-4">
                   <Link href="https://www.linkedin.com/company/flashfire-pvt-ltd/" target="_blank" rel="noopener noreferrer" className="text-xl hover:scale-110 transition max-[480px]:text-lg">
                     <FaLinkedinIn />
@@ -111,9 +111,9 @@ export default function Footer() {
 
             {/* QUICK ACCESS */}
             <div className="max-[480px]:mb-2">
-              <h2 className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
+              <p className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
                 QUICK ACCESS
-              </h2>
+              </p>
               <div className="flex flex-col gap-1.5 max-[480px]:gap-1">
                 <Link href={getHref("/job-search")} className={linkClass}>Job Search</Link>
                 <Link href={getHref("/features")} className={linkClass}>Features</Link>
@@ -128,9 +128,9 @@ export default function Footer() {
 
             {/* PRODUCT */}
             <div className="max-[480px]:mb-2">
-              <h2 className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
+              <p className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
                 PRODUCT
-              </h2>
+              </p>
               <div className="flex flex-col gap-1.5 max-[480px]:gap-1">
                 <Link href={getHref("/features/ats-resume-optimizer")} className={linkClass}>
                   Resume Optimizer
@@ -167,9 +167,9 @@ export default function Footer() {
 
             {/* AI CAREER TOOLS */}
             <div className="max-[480px]:mb-2">
-              <h2 className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
+              <p className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
                 AI CAREER TOOLS
-              </h2>
+              </p>
               <div className="flex flex-col gap-1.5 max-[480px]:gap-1">
                 <Link href={getHref("/career-advisor")} className={linkClass}>
                   Career Advisor
@@ -210,9 +210,9 @@ export default function Footer() {
 
             {/* TOOLS */}
             <div className="max-[480px]:mb-2">
-              <h2 className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
+              <p className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
                 TOOLS
-              </h2>
+              </p>
               <div className="flex flex-col gap-1.5 max-[480px]:gap-1">
                 <Link href={getHref("/salary-calculator")} className={linkClass}>
                   Salary Calculator
@@ -243,9 +243,9 @@ export default function Footer() {
 
             {/* RESUME TOOLS */}
             <div className="max-[480px]:mb-2">
-              <h2 className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
+              <p className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
                 RESUME TOOLS
-              </h2>
+              </p>
               <div className="flex flex-col gap-1.5 max-[480px]:gap-1">
                 <Link href={getHref("/ats-score-checker")} className={linkClass}>ATS Score Checker</Link>
                 <Link href={getHref("/resume-parser")} className={linkClass}>Resume Parser</Link>
@@ -258,9 +258,9 @@ export default function Footer() {
 
             {/* COMPANY */}
             <div className="max-[480px]:mb-2">
-              <h2 className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
+              <p className="mb-3 text-sm font-bold tracking-widest text-[#fff7f4] max-[480px]:mb-2 max-[480px]:text-xs">
                 COMPANY
-              </h2>
+              </p>
               <div className="flex flex-col gap-1.5 max-[480px]:gap-1">
                 <Link href={getHref("/refund-policy")} className={linkClass}>
                   Refund Policy
