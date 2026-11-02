@@ -17,6 +17,8 @@ export type BlogPost = {
     image?: string;
   };
   image?: string;
+  /** Alt text for the featured image (also used for og:image); falls back to the title. */
+  imageAlt?: string;
   coverImage?: string;
   categories?: string[];
   categoryColor?: string;
@@ -42,6 +44,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
     },
     image: "/images/blog/reverse-recruiter-cost.webp",
+    imageAlt: "Man in a navy blazer smiling across a table from a woman, with a calculator and laptop on the desk",
     categoryColor: "bg-green-100 text-green-600",
     content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Reverse recruiter cost at a glance</h2>
 <p style='margin-bottom:12px; line-height:1.7;'>Reverse recruiter cost depends on whether you pay for ongoing human support, a fixed package, or application automation. Full-service agencies can cost thousands of dollars before any success fee, while application services and software offer lower-cost ways to outsource parts of your search.</p>
@@ -303,6 +306,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
     },
     image: "/images/blog/is-kickresume-worth-it.webp",
+    imageAlt: "Woman resting her chin on her hand while looking at a laptop at a cafe window table",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Is Kickresume worth it? quick verdict</h2>
 <p style='margin-bottom:12px; line-height:1.7;'>Kickresume is worth considering for students, recent graduates, and professionals who want attractive resumes, AI writing assistance, and customisable templates. However, it is not the best choice for everyone. If your priority is applying to hundreds of relevant jobs and tracking applications, a job application automation platform such as Flashfire may be more useful.</p>
@@ -550,6 +554,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
     },
     image: "/images/blog/simplify-vs-jobright-vs-flashfire.webp",
+    imageAlt: "Man typing on a laptop at a sunlit desk with a phone and notebook nearby",
     categoryColor: "bg-green-100 text-green-600",
     content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Simplify vs Jobright vs Flashfire at a glance</h2>
 <p style='margin-bottom:12px; line-height:1.7;'>Simplify, Jobright, and FlashFire serve different job-search needs, even though their features overlap. This comparison uses official product documentation and pricing pages checked on October 29, 2026. Features and access can vary by plan, application site, and account.</p>
@@ -742,6 +747,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
     },
     image: "/images/blog/jobscan-vs-teal-vs-flashfire.webp",
+    imageAlt: "Woman highlighting a printed resume with a yellow marker beside a laptop",
     categoryColor: "bg-green-100 text-green-600",
     content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Jobscan vs Teal vs FlashFire at a glance</h2>
 <p style='margin-bottom:12px; line-height:1.7;'>Jobscan, Teal, and FlashFire serve different parts of the job search. Jobscan emphasizes resume matching, Teal combines resume creation with job tracking, and FlashFire focuses on executing applications at scale.</p>
@@ -941,7 +947,8 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
     },
-    image: "https://www.flashfirejobs.com/images/og-image.png",
+    image: "/images/blog/rezi-vs-teal-vs-flashfire.webp",
+    imageAlt: "Woman resting her chin on her hand while reading a laptop at a library table",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Rezi vs Teal vs FlashFire at a glance</h2>
 <p style='margin-bottom:12px; line-height:1.7;'>Rezi and Teal help you prepare and manage your job search, but their strengths differ. FlashFire focuses on helping candidates move from resume preparation to application submission.</p>
@@ -1148,7 +1155,8 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
     },
-    image: "https://www.flashfirejobs.com/images/og-image.png",
+    image: "/images/blog/sonara-alternatives.webp",
+    imageAlt: "Person seen from behind reviewing a laptop at a sunlit desk beside an open notebook",
     categoryColor: "bg-green-100 text-green-600",
     content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">What happened to Sonara, and is it still running?</h2>
 <p style='margin-bottom:12px; line-height:1.7;'>Sonara shut down its original service on February 1, 2024, but the website is live again under BOLD ownership. As of October 2026, the sign-up page and terms are accessible. However, a live website does not prove that every feature works as expected, and current pricing remains difficult to verify publicly.</p>
@@ -1342,7 +1350,8 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
     },
-    image: "https://www.flashfirejobs.com/images/og-image.png",
+    image: "/images/blog/jobright-alternatives.webp",
+    imageAlt: "Two people reviewing printed resumes together at a cafe table",
     categoryColor: "bg-green-100 text-green-600",
     content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Jobright Alternatives at a glance</h2>
 <p style='margin-bottom:12px; line-height:1.7;'>The best Jobright alternatives serve different needs, from automating submissions to improving resumes and speeding up manual applications. Compare their main capabilities before choosing a platform.</p>
@@ -23569,7 +23578,8 @@ Sincerely,<br>
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
     image:
-      "https://res.cloudinary.com/drcka8x04/image/upload/v1767125016/blog_thumbnails-50_1_d7cwbf.jpg",
+      "/images/blog/how-to-write-a-good-resume.webp",
+    imageAlt: "Woman wearing headphones on a video call at a bright desk with a resume beside her",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
         
@@ -23808,7 +23818,8 @@ Sincerely,<br>
       bio: "Career coach specializing in job search strategies for international students and new graduates.",
     },
     image:
-      "https://res.cloudinary.com/drcka8x04/image/upload/v1767125164/blog_thumbnails-51_ga1fa6.jpg",
+      "/images/blog/why-is-it-so-hard-to-find-a-job-in-us.webp",
+    imageAlt: "Person resting a hand on their chin and looking at a laptop beside an open notebook",
     categoryColor: "bg-green-100 text-green-600",
     content: `
 
@@ -23964,7 +23975,8 @@ Sincerely,<br>
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
     image:
-      "https://res.cloudinary.com/drcka8x04/image/upload/v1767125218/blog_thumbnails-52_dxp73c.jpg",
+      "/images/blog/how-to-get-your-first-job-in-the-us.webp",
+    imageAlt: "Woman with a tote bag walking into an office lobby toward a smiling receptionist",
     categoryColor: "bg-purple-100 text-purple-600",
     content: `
 
@@ -24469,7 +24481,8 @@ Sincerely,<br>
       name: "Vikram Mehta",
       bio: "Job search strategist helping international students navigate the U.S. job market successfully.",
     },
-    image: "https://res.cloudinary.com/dcrj8p79e/image/upload/v1767448871/blog_thumbnails-55_xyihoj.jpg",
+    image: "/images/blog/best-us-job-portals-for-international-students.webp",
+    imageAlt: "Student working on a laptop on a campus lawn bench",
     categoryColor: "bg-green-100 text-green-600",
     content: `
         <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Overview</h2>
@@ -26696,7 +26709,8 @@ Sincerely,<br>
       bio: "Career coach specializing in job search strategies for international students and new graduates.",
     },
     image:
-      "https://res.cloudinary.com/dbjop20tw/image/upload/v1759953226/skills_article_banner_3_wi2cw3.png",
+      "/images/blog/demand-skills-for-international-students-2026.webp",
+    imageAlt: "Two people talking across a table with a laptop in the foreground",
     categoryColor: "bg-purple-100 text-purple-600",
     content: `
     <h2>Introduction: Why 2025 Is a Pivotal Year for International Students</h2>
@@ -26822,7 +26836,8 @@ Sincerely,<br>
       bio: "Job search strategist helping international students navigate the U.S. job market successfully.",
     },
     image:
-      "https://res.cloudinary.com/dbjop20tw/image/upload/v1759953595/ChatGPT_Image_Oct_4_2025_06_12_17_PM_e1bjl6.png",
+      "/images/blog/best-time-to-visit-us-for-students.webp",
+    imageAlt: "Woman looking out at a city skyline with a suitcase and a laptop nearby",
     categoryColor: "bg-indigo-100 text-indigo-600",
     content: `
     <h2>A Strategic Guide for Students and Professionals Dreaming of America</h2>
@@ -27002,7 +27017,8 @@ Sincerely,<br>
       bio: "Product manager and career mentor sharing insights on breaking into tech roles in the U.S.",
     },
     image:
-      "https://res.cloudinary.com/dbjop20tw/image/upload/v1759953814/WhatsApp_Image_2025-10-08_at_18.28.03_zy9l1t.jpg",
+      "/images/blog/h1b-lottery-system-explained-2026.webp",
+    imageAlt: "Man smiling at a standing desk with a laptop and notebook beside a window",
     categoryColor: "bg-red-100 text-red-600",
     content: `
     <h2>Introduction: The Visa That Shapes International Careers</h2>
@@ -27191,7 +27207,8 @@ Sincerely,<br>
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
     image:
-      "https://res.cloudinary.com/dbjop20tw/image/upload/v1760403793/WhatsApp_Image_2025-10-13_at_11.19.28_fiucet.jpg",
+      "/images/blog/does-studying-at-a-top-university-really-make-a-difference-in-landing-a-job.webp",
+    imageAlt: "Hand signing a document beside a graduation cap and diploma",
     categoryColor: "bg-purple-100 text-purple-600",
     content: `
     <h1>Does Studying at a Top University Really Make a Difference in Landing a Job?</h1>
@@ -27266,7 +27283,8 @@ Sincerely,<br>
       bio: "Career coach specializing in job search strategies for international students and new graduates.",
     },
     image:
-      "https://res.cloudinary.com/dbjop20tw/image/upload/v1760403936/Screenshot_2025-10-14_at_6.35.23_AM_nzxhgn.png",
+      "/images/blog/should-you-go-to-the-us-right-after-12th-or-after-gaining-work-experience-in-india.webp",
+    imageAlt: "Three students talking around a table with laptops, sticky notes and a small globe",
     categoryColor: "bg-indigo-100 text-indigo-600",
     content: `
     <h1>Should You Go to the U.S. Right After 12th — or After Gaining Work Experience in India?</h1>
@@ -27501,7 +27519,8 @@ Sincerely,<br>
       bio: "Job search strategist helping international students navigate the U.S. job market successfully.",
     },
     image:
-      "https://res.cloudinary.com/dbjop20tw/image/upload/v1760404035/Flashfire_design_concepts_8_jqduza.png",
+      "/images/blog/are-student-loan-worth-it.webp",
+    imageAlt: "Student at a library table with a laptop, calculator and papers",
     categoryColor: "bg-green-100 text-green-600",
     content: `
     <h1>Is Taking a Student Loan for a U.S. Degree Worth the Long-Term Payoff?</h1>
@@ -27767,7 +27786,8 @@ Sincerely,<br>
       bio: "Career advisor specializing in visa pathways and career planning for international professionals.",
     },
     image:
-      "https://res.cloudinary.com/dbjop20tw/image/upload/v1761120200/Screenshot_2025-10-22_at_1.29.45_PM_o932nz.png",
+      "/images/blog/career-fairs-2026.webp",
+    imageAlt: "Woman at a desk with a tote bag, lanyard badge and laptop",
     categoryColor: "bg-green-100 text-green-600",
     content: `
     <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">The Career Fair Dilemma in 2025</h2>
@@ -27919,7 +27939,8 @@ Sincerely,<br>
       bio: "Product manager and career mentor sharing insights on breaking into tech roles in the U.S.",
     },
     image:
-      "https://res.cloudinary.com/dbjop20tw/image/upload/v1761120333/Screenshot_2025-10-22_at_1.35.12_PM_bsddgu.png",
+      "/images/blog/how-i-balanced-studies-and-extracurriculars-in-12th-grade-and-built-the-foundation-to-study-and-work-abroad-faster.webp",
+    imageAlt: "Two students looking over papers together at a cafe table with a globe",
     categoryColor: "bg-purple-100 text-purple-600",
     content: `
     <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">The Pressure That Defines 12th Grade</h2>
@@ -28095,7 +28116,8 @@ Sincerely,<br>
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
     image:
-      "https://res.cloudinary.com/dbjop20tw/image/upload/v1761120428/Screenshot_2025-10-22_at_1.36.49_PM_cyzlzw.png",
+      "/images/blog/when-plans-fall-through-how-international-students-can-build-their-own-backup-plan.webp",
+    imageAlt: "Woman with headphones studying at a desk with notebooks and a laptop",
     categoryColor: "bg-red-100 text-red-600",
     content: `
     <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">The Reality: Even the Best Plans Can Collapse</h2>
@@ -28254,7 +28276,8 @@ Sincerely,<br>
       bio: "Career coach specializing in job search strategies for international students and new graduates.",
     },
     image:
-      "https://res.cloudinary.com/dbjop20tw/image/upload/v1761120510/Screenshot_2025-10-22_at_1.38.17_PM_ftkmbt.png",
+      "/images/blog/before-you-book-that-one-way-ticket-home-read-this.webp",
+    imageAlt: "Hand writing in a notebook beside a packed travel bag, passport and laptop",
     categoryColor: "bg-red-100 text-red-600",
     content: `
     <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">The Countdown Begins</h2>
@@ -28359,7 +28382,8 @@ Sincerely,<br>
       bio: "Job search strategist helping international students navigate the U.S. job market successfully.",
     },
     image:
-      "https://res.cloudinary.com/dbjop20tw/image/upload/v1761120583/Screenshot_2025-10-22_at_1.39.30_PM_n6rzvq.png",
+      "/images/blog/power-of-referrals-us-jobs.webp",
+    imageAlt: "Woman with a tote bag chatting with two professionals in a bright office",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
     <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">The Hidden Job Market Reality</h2>
@@ -28545,7 +28569,8 @@ Sincerely,<br>
       bio: "Career advisor specializing in visa pathways and career planning for international professionals.",
     },
     image:
-      "https://res.cloudinary.com/dbjop20tw/image/upload/v1761120681/Screenshot_2025-10-22_at_1.41.07_PM_bhqgt1.png",
+      "/images/blog/high-growth-us-careers.webp",
+    imageAlt: "Woman reading a book with a laptop on a park bench",
     categoryColor: "bg-indigo-100 text-indigo-600",
     content: `
     <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">Introduction</h2>
@@ -31365,7 +31390,8 @@ Best regards,
       bio: "Career expert and resume strategist helping job seekers create winning resumes for the US job market.",
     },
     image:
-      "https://res.cloudinary.com/dcrj8p79e/image/upload/v1767448871/blog_thumbnails-53_ptlae2.jpg",
+      "/images/blog/best-resume-tips-2026.webp",
+    imageAlt: "Man smiling across a desk while reviewing a resume with a job candidate",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
     <p style='margin-bottom:12px; line-height:1.7;'>It's not the same to write a resume for the US job market as it is for other countries. Many people who apply for jobs get turned down not because they don't have the right skills, but because their resume doesn't follow US standards. Therefore it's essential to know some useful resume tips before you apply.</p>
@@ -31481,7 +31507,8 @@ Best regards,
       bio: "Career expert and job search strategist helping job seekers navigate US job portals effectively.",
     },
     image:
-      "https://res.cloudinary.com/dcrj8p79e/image/upload/v1767448871/blog_thumbnails-54_o0ylwo.jpg",
+      "/images/blog/us-job-portals-guide-and-how-they-work.webp",
+    imageAlt: "Woman holding a mug at a window overlooking a city with a laptop on the desk",
     categoryColor: "bg-purple-100 text-purple-600",
     content: `
     <p style='margin-bottom:12px; line-height:1.7;'>In today's competitive job market, finding the perfect job is more than just a good resume—proper guidance on where to look is also required. Job portals in the USA have quickly become the primary gateway for connecting millions of job seekers and employers, making the hiring process quicker and more user-friendly than ever before. One's knowledge about a job portal and its primary purpose may facilitate using these platforms in a strategic manner and obtaining one's next role quickly. This guide covers everything from what job portals are to how modern platforms use AI, including a list of job portals and strategies to ensure your success.</p>
@@ -31670,7 +31697,8 @@ Best regards,
       bio: "Career expert and internship strategist helping students and recent graduates land their dream internships.",
     },
     image:
-      "https://res.cloudinary.com/dcrj8p79e/image/upload/v1767448871/blog_thumbnails-56_boqfmr.jpg",
+      "/images/blog/how-to-land-an-us-internship-in-2026.webp",
+    imageAlt: "Woman working at a standing desk with a laptop and a backpack nearby",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
     <p style='margin-bottom:12px; line-height:1.7;'>Getting an internship in the US can provide you opportunities for full-time roles, networking, and hands-on experience. However, it is necessary to understand what is an internship, where to find one, and how to land an internship, especially if you are an international student or a fresher.</p>
@@ -31799,7 +31827,8 @@ Best regards,
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
     image:
-      "https://res.cloudinary.com/drcka8x04/image/upload/v1767125016/blog_thumbnails-50_1_d7cwbf.jpg",
+      "/images/blog/how-ai-is-transforming-job-search-in-2026.webp",
+    imageAlt: "Person writing on a printed document next to a laptop",
     categoryColor: "bg-green-100 text-green-600",
     content: `
     <p style='margin-bottom:12px; line-height:1.7;'>According to LinkedIn, the number of job applications has increased by more than 45% year over year, averaging about 11,000 applications per minute, with generative AI helping to fuel the surge.</p>
@@ -32166,7 +32195,8 @@ Best regards,
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
     image:
-      "https://res.cloudinary.com/dcrj8p79e/image/upload/v1768220882/ChatGPT_Image_Jan_12_2026_05_27_30_PM_zd1x0q.png",
+      "/images/blog/flashfire-ai-career-advisor.webp",
+    imageAlt: "Three people gathered around a laptop with sticky notes on the table",
     categoryColor: "bg-orange-100 text-orange-600",
     content: `
    
@@ -32817,7 +32847,8 @@ Structured automation + consistent execution beats spam automation.
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
     image:
-      "https://res.cloudinary.com/dcrj8p79e/image/upload/v1768644568/ChatGPT_Image_Jan_16_2026_04_47_01_PM_tjiigy.png",
+      "/images/blog/how-to-get-an-interview-call-from-amazon.webp",
+    imageAlt: "Woman taking notes at a library table with a laptop",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
      
@@ -33090,7 +33121,8 @@ The answer is yes, of course! You can easily hire professionals or use specializ
     date: "Jan 17, 2026",
     readTime: "15 min",
     image:
-      "https://res.cloudinary.com/dcrj8p79e/image/upload/v1768644568/ChatGPT_Image_Jan_17_2026_11_58_20_AM_ejkjj1.png",
+      "/images/blog/can-i-pay-someone-to-optimize-my-linkedin-profile.webp",
+    imageAlt: "Person on a video call on a laptop beside a notebook and printed profile photos",
     category: "Career Advice",
     categoryColor: "bg-orange-100 text-orange-600",
     content: `
@@ -33380,7 +33412,8 @@ In practical terms, AI now acts not only as a 24/7 searching tab but has also be
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
     image:
-      "https://res.cloudinary.com/dcrj8p79e/image/upload/v1768644568/ChatGPT_Image_Jan_17_2026_11_59_18_AM_xu8rpp.png",
+      "/images/blog/the-future-of-job-search-in-the-usa.webp",
+    imageAlt: "Two people reviewing a document together over a laptop at a cafe table",
     categoryColor: "bg-orange-100 text-orange-600",
     content: `
           
@@ -33529,7 +33562,8 @@ author:{
   name:"Debashri Mandal",
     bio:"Career expert and resume strategist helping job seekers land their dream roles.",
 },
-image:"https://res.cloudinary.com/dcrj8p79e/image/upload/v1768907360/ChatGPT_Image_Jan_19_2026_11_13_52_AM_xxp93h.png",
+image:"/images/blog/how-one-click-job-applications-increase-your-chances-of-getting-hired.webp",
+imageAlt: "Woman wearing headphones on a video call at a desk",
 categoryColor:"bg-green-100 text-green-600",
 content:`
 
@@ -33786,7 +33820,8 @@ author:{
   name:"Debashri Mandal",
   bio:"Career expert and resume strategist helping job seekers land their dream roles.",
 },
-image:"https://res.cloudinary.com/dcrj8p79e/image/upload/v1768907360/ChatGPT_Image_Jan_19_2026_11_15_18_AM_k4tovn.png",
+image:"/images/blog/why-traditional-job-applications-fail-and-how-ai-job-automation-fixes-it.webp",
+imageAlt: "Person writing in a notebook next to a laptop and a stack of papers",
 categoryColor:"bg-blue-100 text-blue-600",
 content:`
 
@@ -34684,7 +34719,8 @@ author:{
   name:"Debashri Mandal",
   bio:"Career expert and resume strategist helping job seekers land their dream roles.",
 },
-image:"https://res.cloudinary.com/dcrj8p79e/image/upload/v1768907361/ChatGPT_Image_Jan_19_2026_11_28_28_AM_axrw6k.png",
+image:"/images/blog/from-application-to-interview-how-ai-job-search-tools-boost-hiring-success.webp",
+imageAlt: "Woman with a bag walking through a lobby toward a seated person",
 categoryColor:"bg-green-100 text-green-600",
 content:`
 
@@ -34876,7 +34912,8 @@ author:{
   name:"Debashri Mandal",
   bio:"Career expert and resume strategist helping job seekers land their dream roles.",
 },
-image:"https://res.cloudinary.com/dcrj8p79e/image/upload/v1768907361/ChatGPT_Image_Jan_20_2026_01_56_38_PM_rins8o.png",
+image:"/images/blog/stop-wasting-time-applying-manually-try-using-ai-powered-job-search-tools.webp",
+imageAlt: "Woman working on a laptop on a park bench",
 categoryColor:"bg-purple-100 text-purple-600",
 content:`
 
@@ -35100,7 +35137,8 @@ author:{
   name:"Debashri Mandal",
   bio:"Career expert and resume strategist helping job seekers land their dream roles.",
 },
-image:"https://res.cloudinary.com/dcrj8p79e/image/upload/v1768907363/ChatGPT_Image_Jan_20_2026_01_58_35_PM_is0pby.png",
+image:"/images/blog/auto-apply-to-multiple-jobs-in-a-single-click-the-smart-way-to-job-hunt.webp",
+imageAlt: "Man smiling across a table from a person using a laptop",
 categoryColor:"bg-pink-100 text-pink-600",
 content:`
 
@@ -35346,7 +35384,8 @@ author:{
   name:"Debashri Mandal",
   bio:"Career expert and resume strategist helping job seekers land their dream roles.",
 },
-image:"https://res.cloudinary.com/dcrj8p79e/image/upload/v1768907361/ChatGPT_Image_Jan_20_2026_01_55_11_PM_t0z1uj.png",
+image:"/images/blog/how-ai-automation-can-highlight-your-job-application-to-recruiters.webp",
+imageAlt: "Woman holding a mug near a window with a laptop on the desk",
 categoryColor:"",
 content:`
 
@@ -35722,7 +35761,8 @@ Your success also depends on understanding visa rules, choosing the right indust
     name:"Debashri Mandal",
     bio:"Career expert and resume strategist helping job seekers land their dream roles.",
   },
-  image:"https://res.cloudinary.com/drcka8x04/image/upload/v1769200104/Screenshot_2026-01-24_at_1.57.35_AM_wmtobr.png",
+  image:"/images/blog/us-job-market-for-international-students.webp",
+  imageAlt: "Man in a light shirt thinking beside a laptop at a standing desk",
   categoryColor:"",
   content:`
 
@@ -36292,7 +36332,8 @@ FAQs
     name:"Debashri Mandal",
     bio:"Career expert and resume strategist helping job seekers land their dream roles.",
   },
-  image:"https://res.cloudinary.com/drcka8x04/image/upload/v1769460571/How_to_Optimize_Your_Resume_for_ATS_Applicant_Tracking_Systems_oary0h.png",
+  image:"/images/blog/how-to-optimize-resume-for-ats.webp",
+  imageAlt: "Hand holding a pen over a resume next to a laptop",
   categoryColor:"",
   content:`
 
@@ -36730,7 +36771,8 @@ FAQs
     name:"Debashri Mandal",
     bio:"Career expert and resume strategist helping job seekers land their dream roles.",
   },
-  image:"https://res.cloudinary.com/drcka8x04/image/upload/v1769198019/Screenshot_2026-01-24_at_1.23.32_AM_nf5crg.png",
+  image:"/images/blog/how-to-search-for-a-new-job.webp",
+  imageAlt: "Three colleagues at a table with a laptop and sticky notes",
   categoryColor:"bg-blue-100 text-blue-600",
   content:`
 
@@ -37138,7 +37180,8 @@ FAQs
     name:"Debashri Mandal",
     bio:"Career expert and resume strategist helping job seekers land their dream roles.",
   },
-  image:"https://res.cloudinary.com/drcka8x04/image/upload/v1769199240/Screenshot_2026-01-24_at_1.43.53_AM_kfdj0h.png",
+  image:"/images/blog/how-to-automate-job-applications.webp",
+  imageAlt: "Woman with a mug using a laptop in a library",
   categoryColor:"bg-blue-100 text-blue-600",
   content:`
 
@@ -37614,7 +37657,8 @@ FAQs
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1769632070/best-ai-job-application-tools-to-automate-your-job-search_nf6nqr.jpg",
+    image: "/images/blog/best-ai-job-application-tools.webp",
+    imageAlt: "Person seen from behind at a laptop with a notebook and coffee",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
 <p style='margin-bottom:12px; line-height:1.7;'>
@@ -38174,7 +38218,8 @@ FAQs
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1769632414/how-to-make-your-linkedin-profile-attractive-to-recruiters_jbmjor.jpg",
+    image: "/images/blog/linkedin-profile-attractive-to-recruiters.webp",
+    imageAlt: "Two people reviewing a resume over coffee",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
 <p style="margin:0 0 1.125rem 0; font-size:0.9375rem; line-height:1.75; color:#374151;">
@@ -38595,7 +38640,8 @@ FAQs
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers leverage AI tools effectively for better job search outcomes.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1769702781/can-you-use-ai-for-job-applications_ksadd2.jpg",
+    image: "/images/blog/can-you-use-ai-for-job-applications.webp",
+    imageAlt: "Woman with headphones on a video call at a laptop",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
 <p style='margin-bottom:12px; line-height:1.7;'>
@@ -38902,7 +38948,8 @@ For more information, you can visit <a href="https://www.flashfirejobs.com" rel=
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers leverage AI tools effectively for better job search outcomes.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1769703010/ai-job-search-tools_adwmp8.jpg",
+    image: "/images/blog/ai-job-search-tools.webp",
+    imageAlt: "Person using a laptop while writing in a notebook with index tabs",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
 <p style='margin-bottom:12px; line-height:1.7;'>
@@ -39360,7 +39407,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers optimize their resumes for ATS systems.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1769880188/check-if-resume-is-ats-friendly_pmcoao.jpg",
+    image: "/images/blog/check-if-resume-is-ats-friendly.webp",
+    imageAlt: "Woman in a blazer carrying a folder through an office lobby",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
         <p style='margin-bottom:12px; line-height:1.7;'>If you're applying for jobs online and not hearing back, you've probably asked yourself, 'Is my resume ATS-friendly?' or 'How do I check if my resume is ATS format or not?' In 2026, most companies use Applicant Tracking Systems (ATS) to screen resumes before recruiters even see them. So, how do you know whether your resume can pass ATS parsing or get rejected silently?</p>
@@ -39604,7 +39652,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers beat ATS systems and land interviews.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1769880353/how-to-beat-ats-systems_zu0zlf.jpg",
+    image: "/images/blog/how-to-beat-ats-systems.webp",
+    imageAlt: "Woman reading a resume on a campus bench with a laptop",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
         <p style='margin-bottom:12px; line-height:1.7;'>If you're applying for jobs online and not getting interview calls, you're probably wondering how to beat ATS or even how to beat ATS systems altogether. In today's hiring process, your resume rarely reaches a recruiter before it passes through an Applicant Tracking System (ATS). So the real question isn't "Am I qualified?"; it's "Can my resume survive ATS screening?"</p>
@@ -39923,7 +39972,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers navigate the job search process.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1770053316/job-application-rejection_x6opp9.jpg",
+    image: "/images/blog/job-application-rejection.webp",
+    imageAlt: "Two people talking across a table in a bright room",
     categoryColor: "bg-green-100 text-green-600",
     content: `
         <h1>Job Application Rejection: Common Reasons and Next Steps</h1>
@@ -40176,7 +40226,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers write effective cover letters.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1770053800/how-to-write-a-cover-letter-for-a-job-application_hqce4a.jpg",
+    image: "/images/blog/how-to-write-a-cover-letter-for-a-job-application.webp",
+    imageAlt: "Woman holding a mug by a window with a laptop on the desk",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
         <h1>How to Write a Cover Letter for a Job Application</h1>
@@ -40399,7 +40450,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers understand resume and cover letter differences.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1770054791/cover-letter-vs-resume_xrd9is.jpg",
+    image: "/images/blog/cover-letter-vs-resume.webp",
+    imageAlt: "Woman standing at a desk comparing two printed documents",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
         <h1>Cover Letter vs Resume: What's the Difference?</h1>
@@ -40687,7 +40739,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri Mandal",
       bio: "Career expert and LinkedIn strategist helping professionals optimize their profiles for better visibility.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1770054989/optimize-linkedin-profile_fwf8d7.jpg",
+    image: "/images/blog/optimize-linkedin-profile.webp",
+    imageAlt: "Hand holding a pen over a printed profile next to a laptop",
     categoryColor: "bg-purple-100 text-purple-600",
     content: `
         <h1>How to Optimize Your LinkedIn Profile for Better Visibility</h1>
@@ -40914,7 +40967,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers choose the best resume file formats.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1770055143/best-file-format-for-resume_pw9kiw.jpg",
+    image: "/images/blog/best-file-format-for-resume.webp",
+    imageAlt: "Three people reviewing printed resumes at a table",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
         <h1>Best File Format for Resume: ATS-Friendly Options Explained</h1>
@@ -41150,7 +41204,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Rachna Jain",
       bio: "Career expert helping job seekers navigate the AI-powered job market.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1770064927/ai-job-search-2026-tools-trends-tips_tuykmg.jpg",
+    image: "/images/blog/how-ai-is-transforming-job-search-2026.webp",
+    imageAlt: "Woman working at a laptop with index cards on the desk",
     categoryColor: "bg-purple-100 text-purple-600",
     content: `
         <h1>How AI Is Transforming Job Search in 2026: Tools, Trends, and Tips</h1>
@@ -41590,7 +41645,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Rachna Jain",
       bio: "Career expert helping international students navigate the Canadian job market.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1770065332/how-to-get-a-job-in-canada-international-student-2026_1_lazr8i.jpg",
+    image: "/images/blog/how-to-get-a-job-in-canada-international-student-2026.webp",
+    imageAlt: "Woman at a desk with a laptop and a globe by a window overlooking a city",
     categoryColor: "bg-green-100 text-green-600",
     content: `
         <h1>How to Get a Job in Canada as an International Student (2026 Guide)</h1>
@@ -41949,7 +42005,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1770139022/highest-paying-software-engineering-jobs_bf7osl.jpg",
+    image: "/images/blog/highest-paying-software-engineering-jobs.webp",
+    imageAlt: "Two people comparing charts on paper at a cafe table",
     categoryColor: "bg-purple-100 text-purple-600",
     content: `
         <h1>Highest Paying Software Engineering Jobs</h1>
@@ -42178,7 +42235,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1770139167/how-to-get-a-job-as-a-software-engineer_fiwqhr.jpg",
+    image: "/images/blog/how-to-get-a-job-as-a-software-engineer.webp",
+    imageAlt: "Woman with headphones at a laptop beside a mug",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
         <h1>How to Get a Job as a Software Engineer</h1>
@@ -42482,7 +42540,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1770487873/find-job-after-graduation_fk6ded.jpg",
+    image: "/images/blog/find-job-after-graduation.webp",
+    imageAlt: "Hand writing in a notebook beside a laptop and a graduation cap",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
         <h1>How to Find a Job After Graduation (How Long It Takes & Tips)</h1>
@@ -42754,7 +42813,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1770488748/how-to-change-careers_m4we6w.jpg",
+    image: "/images/blog/how-to-change-careers.webp",
+    imageAlt: "Woman with a bag walking through an office entrance",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
         <h1>How to Change Careers: How Do I Change Careers Successfully?</h1>
@@ -43056,7 +43116,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1770488997/devops-engineer-job-responsibilities_abosob.jpg",
+    image: "/images/blog/devops-engineer-job-responsibilities.webp",
+    imageAlt: "Woman coding on a laptop on a bench outside an office building",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
         <h1>DevOps Engineer Job Responsibilities, Duties, and Job Profile</h1>
@@ -43306,7 +43367,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1770489100/best-paying-jobs-in-the-us_jbg3ik.jpg",
+    image: "/images/blog/best-paying-jobs-in-the-us.webp",
+    imageAlt: "Woman smiling in conversation across a table",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
         <h1>Best Paying Jobs in the US | Top 10 High-Salary Careers</h1>
@@ -43691,7 +43753,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1770928020/digital-marketing-roles-and-responsibilities_f9dgsh.jpg",
+    image: "/images/blog/digital-marketing-roles-and-responsibilities.webp",
+    imageAlt: "Woman standing at a desk with a laptop and photo prints, looking at a city view",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
         <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">1. What Are Digital Marketing Roles and Responsibilities?</h2>
@@ -43760,7 +43823,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1770928530/Screenshot_2026-02-13_at_2.05.23_AM_mygesu.png",
+    image: "/images/blog/full-stack-developer-responsibilities.webp",
+    imageAlt: "Woman standing at a desk with a laptop and a large monitor",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
         <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">1. What Are Business Analyst Roles and Responsibilities?</h2>
@@ -43798,7 +43862,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1770928270/Screenshot_2026-02-13_at_2.01.03_AM_oe7bfw.png",
+    image: "/images/blog/how-to-prepare-for-a-job-interview.webp",
+    imageAlt: "Person writing notes on a printed document beside a laptop",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
         <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">What Does Job Interview Preparation Actually Involve?</h2>
@@ -43851,7 +43916,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1770928200/business-analyst-roles-and-responsibilities_v8obmr.jpg",
+    image: "/images/blog/business-analyst-roles-and-responsibilities.webp",
+    imageAlt: "Three colleagues at a table with laptops and sticky notes",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
         <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">1. What Are Business Analyst Roles and Responsibilities?</h2>
@@ -43893,7 +43959,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri Mandal",
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1770928669/highest-paying-coding-jobs_bfe46d.jpg",
+    image: "/images/blog/highest-paying-coding-jobs.webp",
+    imageAlt: "Woman coding on a laptop in a library with a circuit board on the desk",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
         <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">What Are the Highest Paying Coding Jobs?</h2>
@@ -44882,7 +44949,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri",
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1771869782/software-engineer-career-outlook_d0n6xb.jpg",
+    image: "/images/blog/software-engineer-career-outlook.webp",
+    imageAlt: "Person at a desk with a laptop and a monitor showing a bar chart",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
         <h1 class="text-3xl font-bold text-gray-900 mt-6 mb-4">Software Engineer Career Outlook: Job Growth & Future Trends</h1>
@@ -45285,7 +45353,8 @@ Use AI as your assistant, not your replacement. For more information, visit <a h
       name: "Debashri",
       bio: "Career expert and resume strategist helping job seekers land their dream roles.",
     },
-    image: "https://res.cloudinary.com/drcka8x04/image/upload/v1771870042/is-software-engineering-a-good-career_1_arwa9n.jpg",
+    image: "/images/blog/is-software-engineering-a-good-career.webp",
+    imageAlt: "Two people looking at charts on paper at a table",
     categoryColor: "bg-blue-100 text-blue-600",
     content: `
         <h1 class="text-3xl font-bold text-gray-900 mt-6 mb-4">Is Software Engineering a Good Career? Salary, Demand & Future Scope</h1>
