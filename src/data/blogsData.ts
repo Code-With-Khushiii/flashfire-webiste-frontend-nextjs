@@ -3372,7 +3372,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
     },
-    image: "/images/blog/day-1-cpt-universities.webp",
+    image: "/images/blog/day-1-cpt-universities-cover.webp",
     imageAlt: "Student with a backpack and laptop bag walking along a tree-lined path toward a brick university building",
     categoryColor: "bg-purple-100 text-purple-600",
     content: `<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-3">What is Day 1 CPT?</h2>
