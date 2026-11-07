@@ -1,40 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Space_Grotesk, Inter } from "next/font/google";
 import Script from "next/script";
 import { PHProvider } from "@/src/components/PostHogProvider";
 import WhatsAppButton from "@/src/components/WhatsAppButton/WhatsAppButton";
 import TestimonialImagePreloader from "@/src/components/homePageHappyUsers/TestimonialImagePreloader";
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-  preload: true,
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-  preload: true,
-});
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-  preload: true,
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.flashfirejobs.com"),
@@ -148,6 +117,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
         {/* Satoshi Font - Preconnect and load with display=swap */}
         <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
         <link
@@ -167,7 +140,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </head>
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${inter.variable} antialiased`}
+        className="antialiased"
       >
         {/* Google Tag Manager (noscript) — immediately after opening <body> */}
         <noscript>

@@ -3,6 +3,10 @@
 :root {
   --background: #ffffff;     /* pure white */
   --foreground: #0b0b0b;     /* true black text */
+  --font-space-grotesk: "Space Grotesk";
+  --font-inter: "Inter";
+  --font-geist-sans: "Geist";
+  --font-geist-mono: "Geist Mono", ui-monospace, monospace;
 }
 
 @theme inline {
