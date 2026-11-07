@@ -38,7 +38,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "15 min",
     category: "Job Search",
-    tags: ["Job Search"],
+    tags: ["Job Search", "Job Interview", "Hiring Timeline", "Job Application"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -284,7 +284,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "15 min",
     category: "Job Search",
-    tags: ["Job Search"],
+    tags: ["Job Search", "Job Application", "Hiring Timeline", "Follow Up"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -503,7 +503,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "17 min",
     category: "Job Search",
-    tags: ["Job Search"],
+    tags: ["Job Search", "Application Status", "ATS", "Workday"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -783,7 +783,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "16 min",
     category: "Job Search",
-    tags: ["Job Search"],
+    tags: ["Job Search", "Application Status", "ATS", "Hiring Timeline"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -1028,7 +1028,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "16 min",
     category: "Interview Tips",
-    tags: ["Interview Tips"],
+    tags: ["Interview Tips", "Job Interview", "Follow Up", "Hiring Timeline"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -1290,7 +1290,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "15 min",
     category: "Visa & Immigration",
-    tags: ["Visa & Immigration"],
+    tags: ["Visa & Immigration", "H1B", "Visa Sponsorship", "Work Visa", "Email Templates"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -1546,7 +1546,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "15 min",
     category: "Networking",
-    tags: ["Networking"],
+    tags: ["Networking", "Recruiter", "Recruitment", "Job Search"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -1811,7 +1811,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "13 min",
     category: "Job Search",
-    tags: ["Job Search"],
+    tags: ["Job Search", "AI Tools", "Job Application Automation", "Job Search Safety"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -2068,7 +2068,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "14 min",
     category: "Networking",
-    tags: ["Networking"],
+    tags: ["Networking", "Recruiter", "Email Templates", "Job Application"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -2339,7 +2339,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "12 min",
     category: "Networking",
-    tags: ["Networking"],
+    tags: ["Networking", "LinkedIn", "Recruiter", "Message Templates"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -2579,7 +2579,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "15 min",
     category: "Networking",
-    tags: ["Networking"],
+    tags: ["Networking", "Hiring Manager", "LinkedIn", "Email Templates", "Job Application"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -2832,7 +2832,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "18 min",
     category: "Job Search",
-    tags: ["Job Search"],
+    tags: ["Job Search", "Startup Jobs", "Career Growth", "Networking"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -3099,7 +3099,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "16 min",
     category: "Job Search",
-    tags: ["Job Search"],
+    tags: ["Job Search", "Relocation", "Job Market", "US Job Market"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -3367,7 +3367,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "29 min",
     category: "Visa & Immigration",
-    tags: ["Visa & Immigration"],
+    tags: ["Visa & Immigration", "CPT", "F1 Visa", "International Students", "Day 1 CPT"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -3858,7 +3858,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "12 min",
     category: "Resume Writing",
-    tags: ["Resume Writing"],
+    tags: ["Resume Writing", "Resume Services", "Resume Advice", "Resume Review"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -4071,7 +4071,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "13 min",
     category: "Resume Writing",
-    tags: ["Resume Writing"],
+    tags: ["Resume Writing", "Resume Services", "Resume Pricing", "Resume Advice"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -4325,7 +4325,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "16 min",
     category: "Career Advice",
-    tags: ["Career Advice"],
+    tags: ["Career Advice", "Career Coaching", "Career Planning", "Job Search"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -4636,7 +4636,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "16 min",
     category: "Job Search",
-    tags: ["Job Search"],
+    tags: ["Job Search", "Job Application Automation", "Reverse Recruiting", "Job Search Tools"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -4929,7 +4929,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "14 min",
     category: "Networking",
-    tags: ["Networking"],
+    tags: ["Networking", "Recruiter", "Email Templates", "Job Search"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
@@ -5156,7 +5156,7 @@ export const blogPosts: BlogPost[] = (([] as any[]).concat([
     lastUpdated: "Nov 7, 2026",
     readTime: "17 min",
     category: "Resume Writing",
-    tags: ["Resume Writing"],
+    tags: ["Resume Writing", "Resume Builder", "Tool Reviews", "Zety Review"],
     author: {
       name: "Riya Sharma",
       bio: "Job search coach and career writer with a passion for helping freshers break into top companies.",
