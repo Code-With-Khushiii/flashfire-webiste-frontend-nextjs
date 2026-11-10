@@ -30,7 +30,7 @@ const offerLetters: OfferLetterData[] = [
     linkedinUrl: "#",
     imagePath: "/images/wendy-offer.png",
     profileImagePath:"https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/WENDY.png",
-    offerDate: "Nov 10, 2026",
+    offerDate: "Nov 9, 2026",
   },
   {
     name: "Sejal",
