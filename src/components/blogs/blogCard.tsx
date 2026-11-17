@@ -4,7 +4,7 @@ import { FaRegClock } from "react-icons/fa";
 import { BsCalendarEvent } from "react-icons/bs";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import CachedBlogImage from "./CachedBlogImage";
+import Image from "next/image";
 
 type Blog = {
   id: number;
@@ -25,7 +25,7 @@ type Blog = {
   };
 };
 
-export default function BlogCard({ blog }: { blog: Blog }) {
+export default function BlogCard({ blog, priority = false }: { blog: Blog; priority?: boolean }) {
   const router = useRouter();
 
   // Ensure slug exists before rendering link
@@ -52,11 +52,12 @@ export default function BlogCard({ blog }: { blog: Blog }) {
       >
         {/* === Image === */}
         <div className="w-full aspect-video overflow-hidden relative bg-[#f9f9f9] max-[768px]:aspect-[16/10]">
-          <CachedBlogImage
-            src={blog.image || blog.coverImage || ""}
+          <Image
+            src={blog.image || blog.coverImage || "/images/blogImg.jpg"}
             alt={blog.title}
             width={400}
             height={250}
+            priority={priority}
             className="w-full h-full object-cover transition-transform duration-300 block"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
