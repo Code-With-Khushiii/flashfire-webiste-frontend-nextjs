@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import styles from "./blogs.module.css";
@@ -31,11 +31,16 @@ type BlogsClientViewProps = {
   heading?: string;
 };
 
+const PAGE_SIZE = 12;
+
 export default function BlogsClientView({ posts, categorySlug, tagSlug, heading }: BlogsClientViewProps) {
   const searchParams = useSearchParams();
   const tagParam = searchParams.get("tag");
   const categoryParam = searchParams.get("category");
   const [searchQuery, setSearchQuery] = useState("");
+  // Render posts in pages: mounting all ~440 cards at once froze the page.
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const isFirstRender = useRef(true);
   
   // Decode and normalize tag from URL (prioritize tagSlug prop over query param)
   const decodedTag = useMemo(() => {
@@ -166,8 +171,19 @@ export default function BlogsClientView({ posts, categorySlug, tagSlug, heading 
     return sorted;
   }, [decodedCategory, decodedTag, searchQuery, blogsWithTags]);
 
+  // Reset pagination whenever the filter changes
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [decodedCategory, decodedTag, searchQuery]);
+
   // Scroll to header title when category or tag changes
   useEffect(() => {
+    // Skip the initial mount: forcing a scroll on first load made the page jump
+    // (looked like a refresh) and is unnecessary.
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     const scrollToHeader = () => {
       const headerElement = document.querySelector(`.${styles.header}`);
       if (headerElement) {
@@ -280,11 +296,24 @@ export default function BlogsClientView({ posts, categorySlug, tagSlug, heading 
       )}
 
       {filteredBlogs.length > 0 ? (
+        <>
         <div className={styles.blogGrid}>
-          {filteredBlogs.map((blog) => (
-            <BlogCard key={blog.id} blog={blog} />
+          {filteredBlogs.slice(0, visibleCount).map((blog, i) => (
+            <BlogCard key={blog.id} blog={blog} priority={i < 3} />
           ))}
         </div>
+        {visibleCount < filteredBlogs.length && (
+          <div style={{ textAlign: "center", margin: "2rem 0" }}>
+            <button
+              type="button"
+              className={styles.categoryChip}
+              onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
+            >
+              Load more ({filteredBlogs.length - visibleCount} remaining)
+            </button>
+          </div>
+        )}
+        </>
       ) : (
         (decodedTag || decodedCategory || searchQuery) && (
           <div className={styles.noResults}>
