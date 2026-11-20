@@ -3,78 +3,82 @@
 export default function BeforeAfterComparison() {
   const rows = [
     {
-      topic: "Job relevance",
-      alone: "Self-managed search; automated filters and targeting vary by tool and effort.",
-      flashfire: "Matching shaped by your target roles and location, with every application reviewed by an expert.",
+      topic: "Finding the right jobs",
+      alone: "You scroll through listings for hours, and filters only get you so far.",
+      flashfire: "We match roles to what you told us you want, and an expert looks over every application.",
     },
     {
-      topic: "Resume quality",
-      alone: "One generic resume sent to every role, often missing ATS keywords.",
-      flashfire: "A recruiter-ready resume tailored for every role to improve ATS and recruiter visibility.",
+      topic: "Your resume",
+      alone: "One resume goes to every job, and ATS systems often skip right past it.",
+      flashfire: "A fresh, recruiter-ready resume for each role, so the right keywords show up.",
     },
     {
-      topic: "Application strategy",
-      alone: "Random listings and mass applications with little focus on fit.",
-      flashfire: "We apply to 1,200+ carefully selected jobs that match your skills and career goals.",
+      topic: "How you apply",
+      alone: "Lots of applications sent fast, with little thought about whether you fit.",
+      flashfire: "We apply to 1,200+ carefully chosen jobs that fit your skills and where you want to go.",
     },
     {
-      topic: "Time and effort",
-      alone: "Hours every week spent searching, filling forms and re-applying.",
-      flashfire: "Spend less time applying and more time preparing for interviews.",
+      topic: "Your time",
+      alone: "Evenings and weekends go to searching, filling forms and applying again.",
+      flashfire: "You get that time back to prepare for interviews and just live your life.",
     },
     {
-      topic: "Tracking and transparency",
-      alone: "Scattered spreadsheets and no clear view of what was sent.",
-      flashfire: "Monitor every application with real-time updates and transparent progress.",
+      topic: "Knowing what's happening",
+      alone: "A messy spreadsheet, and no clear idea what actually went out.",
+      flashfire: "See every application and its progress as it happens. No guessing.",
     },
     {
-      topic: "Interview opportunities",
-      alone: "Slow, unpredictable response rates.",
-      flashfire: "A smarter job search strategy helps you get interview calls faster.",
+      topic: "Getting interviews",
+      alone: "Replies are slow and hard to predict, which can wear you down.",
+      flashfire: "A focused strategy helps you reach more interview calls, sooner.",
     },
   ]
 
   return (
     <section
-      className="py-16 md:py-24 bg-[#f4f4f4]"
+      className="py-14 md:py-16 lg:py-20 bg-[#fffbf9]"
       style={{ fontFamily: "var(--font-space-grotesk)" }}
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
 
         {/* Heading */}
         <div className="grid md:grid-cols-2 gap-4 md:gap-16 items-start mb-8 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
-            Why Flashfire Is a Smarter Job Matching Platform
+          <h2 className="text-[30px] md:text-[42px] font-extrabold text-[#080b10] leading-[1.08]">
+            Why Flashfire is a{" "}
+            <span className="bg-gradient-to-r from-[#d84a22] via-[#f05a23] to-[#ff7a2a] bg-clip-text text-transparent">
+              smarter way
+            </span>{" "}
+            to find your next job
           </h2>
 
-          <p className="md:pt-2 text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
-            See how <span className="font-semibold">expert guidance and smart technology</span>{" "}
-            help you land <span className="text-[#ff4c00] font-medium">more interviews, faster.</span>{" "}
-            More applications are not the same as more relevant applications. Flashfire organizes
-            matching, tailoring and tracking around your goals, rather than a random
-            mass-application approach.
+          <p className="md:pt-2 text-[13px] md:text-[14px] font-bold text-[#545b65] leading-[1.6]">
+            Sending more applications isn't the same as sending better ones. We
+            pair <span className="text-[#080b10]">expert guidance with smart technology</span>{" "}
+            so your effort goes toward roles that fit, with a resume that fits
+            too, and a clear view of how it's all going. The result is{" "}
+            <span className="text-[#ff5a1f]">more interviews, sooner.</span>
           </p>
         </div>
 
         {/* Desktop Table */}
-        <div className="hidden md:block border border-gray-400 bg-white">
-          <div className="grid grid-cols-[1fr_1.5fr_1.5fr]">
-            <div className="px-6 py-6 text-sm font-semibold text-gray-900 bg-gray-200">
+        <div className="hidden md:block border-[6px] border-[#f8f0eb] bg-[#f8f0eb]">
+          <div className="grid grid-cols-[1fr_1.5fr_1.5fr] gap-[6px]">
+            <div className="px-6 py-5 text-sm font-bold text-[#545b65] bg-white">
               What matters
             </div>
-            <div className="px-6 py-6 text-lg font-semibold text-gray-900 bg-gray-200">
-              Applying alone / generic auto-apply
+            <div className="px-6 py-5 text-lg font-extrabold text-[#24272d] bg-white">
+              Going it alone
             </div>
-            <div className="px-6 py-6 text-lg font-semibold text-white bg-gray-900 border-b-4 border-[#ff4c00]">
+            <div className="px-6 py-5 text-lg font-extrabold text-white bg-[#ff5a1f]">
               With Flashfire
             </div>
           </div>
 
           {rows.map((row) => (
-            <div key={row.topic} className="grid grid-cols-[1fr_1.5fr_1.5fr] border-t border-gray-300">
-              <div className="px-6 py-6 text-sm font-bold text-gray-900">{row.topic}</div>
-              <div className="px-6 py-6 text-sm text-gray-600 leading-relaxed bg-gray-50">{row.alone}</div>
-              <div className="px-6 py-6 text-sm text-gray-900 leading-relaxed bg-white">{row.flashfire}</div>
+            <div key={row.topic} className="grid grid-cols-[1fr_1.5fr_1.5fr] gap-[6px] mt-[6px]">
+              <div className="px-6 py-5 text-sm font-extrabold text-[#080b10] bg-white">{row.topic}</div>
+              <div className="px-6 py-5 text-sm font-bold text-[#545b65] leading-relaxed bg-white">{row.alone}</div>
+              <div className="px-6 py-5 text-sm font-bold text-[#24272d] leading-relaxed bg-[#fff4ee]">{row.flashfire}</div>
             </div>
           ))}
         </div>
@@ -82,16 +86,16 @@ export default function BeforeAfterComparison() {
         {/* Mobile Cards */}
         <div className="md:hidden space-y-4">
           {rows.map((row) => (
-            <div key={row.topic} className="border border-gray-400 bg-white">
-              <h3 className="px-4 py-3 text-base font-bold text-gray-900 bg-gray-200">{row.topic}</h3>
-              <div className="px-4 py-3 text-sm text-gray-600">
-                <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-1">
-                  Applying alone / generic auto-apply
+            <div key={row.topic} className="border-[6px] border-[#f8f0eb] bg-[#f8f0eb]">
+              <h3 className="px-4 py-3 text-base font-extrabold text-[#080b10] bg-white">{row.topic}</h3>
+              <div className="mt-[6px] px-4 py-3 text-sm font-bold text-[#545b65] bg-white">
+                <p className="text-xs font-bold uppercase tracking-wide text-[#8a817a] mb-1">
+                  Going it alone
                 </p>
                 {row.alone}
               </div>
-              <div className="px-4 py-3 text-sm text-gray-900 border-t-4 border-[#ff4c00] bg-white">
-                <p className="text-xs font-semibold uppercase tracking-wide text-[#ff4c00] mb-1">
+              <div className="mt-[6px] px-4 py-3 text-sm font-bold text-[#24272d] bg-[#fff4ee]">
+                <p className="text-xs font-bold uppercase tracking-wide text-[#ff5a1f] mb-1">
                   With Flashfire
                 </p>
                 {row.flashfire}
@@ -102,8 +106,9 @@ export default function BeforeAfterComparison() {
 
         {/* Bottom Line */}
         <div className="text-center mt-12 md:mt-16">
-          <p className="text-base sm:text-lg md:text-xl font-semibold text-gray-900">
-            Stop applying blindly. Start getting interviews strategically.
+          <p className="text-base sm:text-lg md:text-xl font-extrabold text-[#080b10]">
+            Stop applying blindly.{" "}
+            <span className="text-[#ff5a1f]">Start getting interviews on purpose.</span>
           </p>
         </div>
 
