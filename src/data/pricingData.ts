@@ -19,6 +19,19 @@ export interface PricingPlan {
 
 export const usPricingPlans: PricingPlan[] = [
   {
+    title: "PRIME",
+    subTitle: "Get started with Flashfire",
+    description: "Entry plan to start your job search",
+    price: "$99",
+    features: [
+      { title:"No Time Constraint", description: "Until your applications are completed" },
+      { title:"We Find Jobs", description: "We find & apply to jobs for you" },
+    ],
+    addOn: true,
+    highlight: false,
+    paymentLink: "https://buy.stripe.com/28EeVfbBC7qO82k5K73AY2w",
+  },
+  {
     title: "IGNITE",
     subTitle: "250 Applications",
     description: "For senior professionals & executives",
@@ -73,12 +86,26 @@ export const usPricingPlans: PricingPlan[] = [
 
 /** UK / EU checkout links, charged in GBP. */
 export const UK_STRIPE_LINKS = {
+  PRIME: "https://buy.stripe.com/aFa7sNeNOfXk0zS1tR3AY2x",
   IGNITE: "https://buy.stripe.com/dRm6oJ5dedPcdmEdcz3AY0P",
   PROFESSIONAL: "https://buy.stripe.com/6oUeVffRS26ueqI0pN3AY0X",
   EXECUTIVE: "https://buy.stripe.com/8x23cxfRS9yW6Yg0pN3AY12",
 } as const;
 
 export const ukPricingPlans: PricingPlan[] = [
+  {
+    title: "PRIME",
+    subTitle: "Get started with Flashfire",
+    description: "Entry plan to start your job search",
+    price: "£82",
+    features: [
+      { title:"No Time Constraint", description: "Until your applications are completed" },
+      { title:"We Find Jobs", description: "We find & apply to jobs for you" },
+    ],
+    addOn: true,
+    highlight: false,
+    paymentLink: UK_STRIPE_LINKS.PRIME,
+  },
   {
     title: "IGNITE",
     subTitle: "250 Applications",
@@ -195,12 +222,14 @@ export const AU_STRIPE_LINKS = {
 
 /** Europe (/en-eu) checkout links, charged in EUR. */
 export const EU_STRIPE_LINKS = {
+  PRIME: "https://buy.stripe.com/aFa4gBgVW3ay0zSegD3AY2y",
   IGNITE: "https://buy.stripe.com/14AeVf35612q82k8Wj3AY1k",
   PROFESSIONAL: "https://buy.stripe.com/cNifZj21212qgyQgoL3AY1l",
   EXECUTIVE: "https://buy.stripe.com/14A00lgVW8uS82kgoL3AY1m",
 } as const;
 
 const EU_PRICES: Record<string, { price: string; oldPrice: string; link: string }> = {
+  PRIME: { price: "€99", oldPrice: "", link: EU_STRIPE_LINKS.PRIME },
   IGNITE: { price: "€169", oldPrice: "€249", link: EU_STRIPE_LINKS.IGNITE },
   PROFESSIONAL: { price: "€299", oldPrice: "€399", link: EU_STRIPE_LINKS.PROFESSIONAL },
   EXECUTIVE: { price: "€499", oldPrice: "€649", link: EU_STRIPE_LINKS.EXECUTIVE },
