@@ -83,8 +83,8 @@ const stages: {
     tag: "Profile",
     icon: UserRound,
     stage: "STEP 01",
-    title: "Tell us what you actually want",
-    text: "Start with a quick chat about the roles you're after, where you'd like to work, your experience and any visa needs. No two people want the same job, so your search shouldn't look the same either.",
+    title: "Tell us what you're looking for",
+    text: "Every job search starts with understanding your goals. Share your preferred roles, locations, work experience, salary expectations, target companies, and visa requirements. Our dedicated team carefully reviews your preferences to find relevant job opportunities and personally applies to positions that match your career goals.",
     card: (
       <Card
         title="Your search profile"
@@ -103,8 +103,8 @@ const stages: {
     tag: "Resume",
     icon: FileText,
     stage: "STEP 02",
-    title: "We find the roles and shape your resume for each one",
-    text: "We look for openings that genuinely fit, then tailor your resume to each job description. It's built from your real experience, so it sounds like you and nothing gets made up.",
+    title: "We find the right jobs and tailor your resume",
+    text: "Our dedicated team searches for relevant job openings across LinkedIn, Indeed, Glassdoor, company career pages, and other job portals based on your preferred roles, experience, salary expectations, and locations. For each opportunity, we tailor your resume to the job description, highlighting your actual skills, qualifications, and achievements without adding inaccurate or misleading information.",
     card: (
       <Card
         title="One role, one tailored resume"
@@ -131,8 +131,8 @@ const stages: {
     tag: "Apply",
     icon: Send,
     stage: "STEP 03",
-    title: "Reviewed, then sent",
-    text: "AI handles the heavy lifting on matching and drafts. Where your plan includes it, a real person looks everything over before suitable applications go out, within the scope you agreed.",
+    title: "Every application reviewed and submitted manually",
+    text: "Our dedicated team carefully reviews each job opportunity and manually applies to every relevant position on your behalf. Each application is individually completed using your tailored resume, professional details, and job preferences to ensure accuracy and alignment with the employer's requirements. We handle the entire application process so you can focus on preparing for interviews.",
     card: (
       <Card
         title="Application record"
@@ -151,8 +151,8 @@ const stages: {
     tag: "Track",
     icon: Activity,
     stage: "STEP 04",
-    title: "Watch it move, and tweak as you go",
-    text: "See where every application stands, check what's been done, and talk to us whenever you want to adjust your preferences. Your search can change as you learn what's working.",
+    title: "Track every job application in one place",
+    text: "Stay updated with our dedicated Job Tracker, where you can view every application submitted on your behalf, including job links, job descriptions, tailored resumes, and application details. Our team keeps your application records organised and up to date, while you can connect with our team anytime to update your job preferences, explore new opportunities, or adjust your job search strategy.",
     card: (
       <Card
         title="Activity and support"
