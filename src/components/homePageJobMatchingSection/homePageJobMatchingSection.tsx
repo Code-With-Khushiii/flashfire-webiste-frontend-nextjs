@@ -369,10 +369,10 @@ export default function JobMatchingSection() {
             <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[2.6fr_1fr]">
               <div className="self-start overflow-hidden border border-[#eadfd8] bg-white">
                 <Image
-                  src="/images/dashboard.png"
+                  src="/images/dashboard-1.png"
                   alt="Flashfire dashboard showing total applications, active interviews and recent activity"
-                  width={1899}
-                  height={822}
+                  width={2940}
+                  height={1598}
                   className="h-auto w-full"
                   sizes="(min-width: 1024px) 800px, 100vw"
                 />
