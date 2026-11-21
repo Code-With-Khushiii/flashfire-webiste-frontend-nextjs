@@ -23,6 +23,7 @@ export const usPricingPlans: PricingPlan[] = [
     subTitle: "160 Applications",
     description: "Entry plan to start your job search",
     price: "$99",
+    oldPrice: "$159",
     features: [
       { title:"No Time Constraint", description: "Until your applications are completed" },
       { title:"We Find Jobs", description: "We find & apply to jobs for you" },
@@ -100,6 +101,7 @@ export const ukPricingPlans: PricingPlan[] = [
     subTitle: "160 Applications",
     description: "Entry plan to start your job search",
     price: "£82",
+    oldPrice: "£129",
     features: [
       { title:"No Time Constraint", description: "Until your applications are completed" },
       { title:"We Find Jobs", description: "We find & apply to jobs for you" },
@@ -233,7 +235,7 @@ export const EU_STRIPE_LINKS = {
 } as const;
 
 const EU_PRICES: Record<string, { price: string; oldPrice: string; link: string }> = {
-  PRIME: { price: "€99", oldPrice: "", link: EU_STRIPE_LINKS.PRIME },
+  PRIME: { price: "€99", oldPrice: "€159", link: EU_STRIPE_LINKS.PRIME },
   IGNITE: { price: "€169", oldPrice: "€249", link: EU_STRIPE_LINKS.IGNITE },
   PROFESSIONAL: { price: "€299", oldPrice: "€399", link: EU_STRIPE_LINKS.PROFESSIONAL },
   EXECUTIVE: { price: "€499", oldPrice: "€649", link: EU_STRIPE_LINKS.EXECUTIVE },
