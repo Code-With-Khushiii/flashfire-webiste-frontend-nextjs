@@ -36,14 +36,14 @@ export default function BeforeAfterComparison() {
 
   return (
     <section
-      className="py-14 md:py-16 lg:py-20 bg-[#fffbf9]"
-      style={{ fontFamily: "var(--font-space-grotesk)" }}
+      className="py-14 md:py-16 lg:py-20 bg-[#fffefd]"
+      style={{ fontFamily: "Satoshi, sans-serif" }}
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
 
         {/* Heading */}
         <div className="grid md:grid-cols-2 gap-4 md:gap-16 items-start mb-8 md:mb-12">
-          <h2 className="text-[30px] md:text-[42px] font-extrabold text-[#080b10] leading-[1.08]">
+          <h2 className="font-bold tracking-[-0.03em] leading-[110%] text-[#02060A] text-[1.8rem] min-[769px]:text-[2.4rem] min-[1025px]:text-[50.84px]">
             Why Flashfire is a{" "}
             <span className="bg-gradient-to-r from-[#d84a22] via-[#f05a23] to-[#ff7a2a] bg-clip-text text-transparent">
               smarter way
@@ -51,7 +51,7 @@ export default function BeforeAfterComparison() {
             to find your next job
           </h2>
 
-          <p className="md:pt-2 text-[13px] md:text-[14px] font-bold text-[#545b65] leading-[1.6]">
+          <p className="md:pt-2 text-base md:text-[20px] font-medium text-[#02060A] tracking-[-0.03em] leading-[139%]">
             Sending more applications isn't the same as sending better ones. We
             pair <span className="text-[#080b10]">expert guidance with smart technology</span>{" "}
             so your effort goes toward roles that fit, with a resume that fits
@@ -61,24 +61,24 @@ export default function BeforeAfterComparison() {
         </div>
 
         {/* Desktop Table */}
-        <div className="hidden md:block border-[6px] border-[#f8f0eb] bg-[#f8f0eb]">
+        <div className="hidden md:block border-[6px] border-[#fcf9f7] bg-[#fcf9f7]">
           <div className="grid grid-cols-[1fr_1.5fr_1.5fr] gap-[6px]">
-            <div className="px-6 py-5 text-sm font-bold text-[#545b65] bg-white">
+            <div className="px-6 py-5 text-sm font-medium text-[#545b65] bg-white">
               What matters
             </div>
-            <div className="px-6 py-5 text-lg font-extrabold text-[#24272d] bg-white">
+            <div className="px-6 py-5 text-lg font-bold text-[#24272d] bg-white">
               Going it alone
             </div>
-            <div className="px-6 py-5 text-lg font-extrabold text-white bg-[#ff5a1f]">
+            <div className="px-6 py-5 text-lg font-bold text-white bg-[#ff5a1f]">
               With Flashfire
             </div>
           </div>
 
           {rows.map((row) => (
             <div key={row.topic} className="grid grid-cols-[1fr_1.5fr_1.5fr] gap-[6px] mt-[6px]">
-              <div className="px-6 py-5 text-sm font-extrabold text-[#080b10] bg-white">{row.topic}</div>
-              <div className="px-6 py-5 text-sm font-bold text-[#545b65] leading-relaxed bg-white">{row.alone}</div>
-              <div className="px-6 py-5 text-sm font-bold text-[#24272d] leading-relaxed bg-[#fff4ee]">{row.flashfire}</div>
+              <div className="px-6 py-5 text-sm font-medium text-[#080b10] bg-white">{row.topic}</div>
+              <div className="px-6 py-5 text-sm font-medium text-[#545b65] leading-relaxed bg-white">{row.alone}</div>
+              <div className="px-6 py-5 text-sm font-medium text-[#24272d] leading-relaxed bg-[#fffaf7]">{row.flashfire}</div>
             </div>
           ))}
         </div>
@@ -86,16 +86,16 @@ export default function BeforeAfterComparison() {
         {/* Mobile Cards */}
         <div className="md:hidden space-y-4">
           {rows.map((row) => (
-            <div key={row.topic} className="border-[6px] border-[#f8f0eb] bg-[#f8f0eb]">
-              <h3 className="px-4 py-3 text-base font-extrabold text-[#080b10] bg-white">{row.topic}</h3>
-              <div className="mt-[6px] px-4 py-3 text-sm font-bold text-[#545b65] bg-white">
-                <p className="text-xs font-bold uppercase tracking-wide text-[#8a817a] mb-1">
+            <div key={row.topic} className="border-[6px] border-[#fcf9f7] bg-[#fcf9f7]">
+              <h3 className="px-4 py-3 text-base font-bold text-[#080b10] bg-white">{row.topic}</h3>
+              <div className="mt-[6px] px-4 py-3 text-sm font-medium text-[#545b65] bg-white">
+                <p className="text-xs font-semibold uppercase tracking-wide text-[#8a817a] mb-1">
                   Going it alone
                 </p>
                 {row.alone}
               </div>
-              <div className="mt-[6px] px-4 py-3 text-sm font-bold text-[#24272d] bg-[#fff4ee]">
-                <p className="text-xs font-bold uppercase tracking-wide text-[#ff5a1f] mb-1">
+              <div className="mt-[6px] px-4 py-3 text-sm font-medium text-[#24272d] bg-[#fffaf7]">
+                <p className="text-xs font-semibold uppercase tracking-wide text-[#ff5a1f] mb-1">
                   With Flashfire
                 </p>
                 {row.flashfire}
@@ -106,7 +106,7 @@ export default function BeforeAfterComparison() {
 
         {/* Bottom Line */}
         <div className="text-center mt-12 md:mt-16">
-          <p className="text-base sm:text-lg md:text-xl font-extrabold text-[#080b10]">
+          <p className="text-base sm:text-lg md:text-xl font-bold text-[#080b10]">
             Stop applying blindly.{" "}
             <span className="text-[#ff5a1f]">Start getting interviews on purpose.</span>
           </p>

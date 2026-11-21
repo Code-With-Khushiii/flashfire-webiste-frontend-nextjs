@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import Image from "next/image";
 import { Activity, FileText, Send, UserRound } from "lucide-react";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
@@ -30,7 +30,7 @@ function Card({
   note: string;
 }) {
   return (
-    <div className="w-full border-[6px] border-[#f8f0eb] bg-[#f8f0eb]">
+    <div className="w-full border-[6px] border-[#fcf9f7] bg-[#fcf9f7]">
       <div className="bg-white p-5 sm:p-6">
         <p className="text-[10px] font-bold uppercase tracking-wide text-[#ff5a1f]">
           {SAMPLE}
@@ -199,6 +199,27 @@ export default function JobMatchingSection() {
     },
   });
 
+  const stickyRef = useRef<HTMLElement>(null);
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const el = stickyRef.current;
+      if (!el) return;
+      const total = el.offsetHeight - window.innerHeight;
+      if (total <= 0) return;
+      const progress = Math.min(1, Math.max(0, -el.getBoundingClientRect().top / total));
+      setActive(Math.min(stages.length - 1, Math.floor(progress * stages.length)));
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
   const handleStartAIJobSearch = () => {
     try {
       const utmSource =
@@ -244,17 +265,83 @@ export default function JobMatchingSection() {
 
   return (
     <>
-    <section className="w-full bg-[#fffbf9] px-4 py-14 font-['Space_Grotesk',sans-serif] sm:px-6 md:px-12 md:py-16 lg:py-20">
-      <div className="mx-auto max-w-5xl">
+    <section
+      ref={stickyRef}
+      className="relative z-10 hidden h-[400vh] w-full bg-[#fffefd] font-['Satoshi',sans-serif] md:block"
+    >
+      <div className="sticky top-0 flex h-screen items-center overflow-hidden bg-[#fffefd] px-12 pb-6 pt-24">
+        <div className="mx-auto w-full max-w-5xl">
         {/* Process */}
-        <div className="max-w-3xl">
-          <h2 className="text-[30px] font-extrabold leading-[1.08] text-[#080b10] md:text-[42px]">
+        <div className="max-w-4xl">
+          <h2 className="font-bold tracking-[-0.03em] leading-[110%] text-[#02060A] text-[1.8rem] min-[769px]:text-[2.4rem] min-[1025px]:text-[44px]">
             From your career goals to a{" "}
             <span className="bg-gradient-to-r from-[#d84a22] via-[#f05a23] to-[#ff7a2a] bg-clip-text text-transparent">
               more focused job search.
             </span>
           </h2>
-          <p className="mt-5 max-w-[600px] text-[13px] font-bold leading-[1.55] text-[#545b65] md:text-[14px]">
+          <p className="mt-3 max-w-[640px] text-base font-medium leading-[139%] tracking-[-0.03em] text-[#02060A] md:text-[20px]">
+            Job hunting feels better when someone has a plan. Here's how we take
+            what you want and turn it into applications you can actually follow.
+          </p>
+        </div>
+
+          <div className="relative mt-6 h-[360px]">
+            {stages.map((st, i) => (
+              <div
+                key={st.stage}
+                aria-hidden={i !== active}
+                className={`absolute inset-0 grid grid-cols-2 items-center gap-12 transition-all duration-500 ${
+                  i === active
+                    ? "translate-y-0 opacity-100"
+                    : "pointer-events-none translate-y-6 opacity-0"
+                }`}
+              >
+                <div className={`flex flex-col justify-center ${i % 2 ? "order-2" : ""}`}>
+                  <div className="flex items-center gap-4">
+                    <span
+                      aria-label={st.tag}
+                      className="inline-flex h-10 w-10 items-center justify-center bg-[#ff5a1f]"
+                    >
+                      <st.icon className="h-5 w-5 text-white" strokeWidth={2} />
+                    </span>
+                    <div className="h-px flex-1 bg-[#f0d5c8]" />
+                  </div>
+                  <p className="mt-4 text-[11px] font-bold tracking-wide text-[#ff5a1f]">{st.stage}</p>
+                  <h3 className="mt-2 text-[24px] font-bold leading-[1.15] tracking-[-0.02em] text-[#02060A]">
+                    {st.title}
+                  </h3>
+                  <p className="mt-4 text-[15px] font-medium leading-[1.6] text-[#545b65]">{st.text}</p>
+                </div>
+                <div className={i % 2 ? "order-1" : ""}>{st.card}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 flex items-center gap-2">
+            {stages.map((st, i) => (
+              <span
+                key={st.stage}
+                className={`h-1.5 flex-1 transition-colors duration-300 ${
+                  i <= active ? "bg-[#ff5a1f]" : "bg-[#f0d5c8]"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="md:hidden w-full bg-[#fffefd] px-4 py-14 font-['Satoshi',sans-serif] sm:px-6 md:px-12 md:py-16 lg:py-20">
+      <div className="mx-auto max-w-5xl">
+        {/* Process */}
+        <div className="max-w-3xl">
+          <h2 className="font-bold tracking-[-0.03em] leading-[110%] text-[#02060A] text-[1.8rem] min-[769px]:text-[2.4rem] min-[1025px]:text-[50.84px]">
+            From your career goals to a{" "}
+            <span className="bg-gradient-to-r from-[#d84a22] via-[#f05a23] to-[#ff7a2a] bg-clip-text text-transparent">
+              more focused job search.
+            </span>
+          </h2>
+          <p className="mt-5 max-w-[640px] text-base font-medium leading-[139%] tracking-[-0.03em] text-[#02060A] md:text-[20px]">
             Job hunting feels better when someone has a plan. Here's how we take
             what you want and turn it into applications you can actually follow.
           </p>
@@ -276,10 +363,10 @@ export default function JobMatchingSection() {
                 <p className="mt-4 text-[11px] font-bold tracking-wide text-[#ff5a1f]">
                   {st.stage}
                 </p>
-                <h3 className="mt-2 text-[20px] font-extrabold leading-[1.15] text-[#24272d] md:text-[24px]">
+                <h3 className="mt-2 text-[20px] font-bold tracking-[-0.02em] leading-[1.15] text-[#02060A] md:text-[24px]">
                   {st.title}
                 </h3>
-                <p className="mt-4 text-[13px] font-bold leading-[1.6] text-[#545b65]">
+                <p className="mt-4 text-[15px] font-medium leading-[1.6] text-[#545b65]">
                   {st.text}
                 </p>
               </div>
@@ -315,17 +402,17 @@ export default function JobMatchingSection() {
     </section>
 
     {/* Dashboard */}
-    <section className="w-full bg-[#f8f0eb] px-4 py-14 font-['Space_Grotesk',sans-serif] sm:px-6 md:px-12 md:py-16 lg:py-20">
+    <section className="w-full bg-[#fcf9f7] px-4 py-14 font-['Satoshi',sans-serif] sm:px-6 md:px-12 md:py-16 lg:py-20">
       <div className="mx-auto max-w-6xl">
         <div className="border-[6px] border-white bg-white">
           <div className="p-5 sm:p-8 lg:p-10">
             <p className="text-[11px] font-bold uppercase tracking-wide text-[#ff5a1f]">
               Once you're on board
             </p>
-            <h2 className="mt-3 text-[28px] font-extrabold leading-[1.1] text-[#080b10] md:text-[36px]">
+            <h2 className="mt-3 font-bold tracking-[-0.03em] leading-[110%] text-[#02060A] text-[1.8rem] min-[769px]:text-[2.4rem] min-[1025px]:text-[50.84px]">
               Always know where your applications stand.
             </h2>
-            <p className="mt-3 max-w-[600px] text-[13px] font-bold leading-[1.55] text-[#545b65]">
+            <p className="mt-3 max-w-[640px] text-base font-medium leading-[139%] tracking-[-0.03em] text-[#02060A] md:text-[20px]">
               No chasing for updates. Your preferences, the roles in progress and
               everything that's been submitted live in one place.
             </p>
@@ -343,10 +430,10 @@ export default function JobMatchingSection() {
               </div>
 
               <div>
-                <h3 className="text-[22px] font-extrabold leading-tight text-[#080b10] md:text-2xl">
+                <h3 className="text-[22px] font-bold tracking-[-0.02em] leading-tight text-[#02060A] md:text-2xl">
                   Nothing hidden after you sign up.
                 </h3>
-                <p className="mt-4 text-[13px] font-bold leading-[1.6] text-[#545b65]">
+                <p className="mt-4 text-[15px] font-medium leading-[1.6] text-[#545b65]">
                   We confirm your goals and what your plan covers. After that, you
                   can see which roles we're working on and where applications have
                   gone.
@@ -362,7 +449,7 @@ export default function JobMatchingSection() {
                     <span className="mr-2 text-[#ff5a1f]">03 /</span>Catch up on recent updates
                   </li>
                 </ul>
-                <div className="mt-6 border-[6px] border-[#f8f0eb] bg-[#f8f0eb]">
+                <div className="mt-6 border-[6px] border-[#fcf9f7] bg-[#fcf9f7]">
                   <div className="bg-white p-4">
                     <p className="text-sm font-extrabold text-[#080b10]">
                       Questions along the way?
