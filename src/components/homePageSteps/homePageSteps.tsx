@@ -53,14 +53,14 @@ export default function HomePageSteps() {
   };
 
   return (
-    <section className="bg-[#fffbf9] py-14 font-['Space_Grotesk',sans-serif] md:py-16 lg:py-20">
-      <div className="mx-auto max-w-[1350px] px-5 md:px-8">
+    <section className="bg-[#fffefd] py-12 font-['Satoshi',sans-serif] md:py-16 lg:py-20">
+      <div className="mx-auto max-w-[1350px] px-5 sm:px-6 md:px-8">
         {/* Header */}
         <div className="mb-12 text-center md:mb-14">
-          <h2 className="mx-auto max-w-[700px] text-[30px] font-extrabold leading-[1.08] text-[#080b10] md:text-[42px]">
+          <h2 className="mx-auto max-w-[800px] font-bold leading-[110%] tracking-[-0.03em] text-[#02060A] text-[1.75rem] min-[769px]:text-[2.4rem] min-[1025px]:text-[50.84px]">
             How Our Team Helps You Land Interviews Faster
           </h2>
-          <p className="mx-auto mt-5 max-w-[600px] text-[12px] font-bold leading-[1.55] text-[#545b65] md:text-[13px]">
+          <p className="mx-auto mt-4 max-w-[640px] text-[15px] font-medium leading-[145%] tracking-[-0.02em] text-[#02060A] md:mt-5 md:text-[20px] md:leading-[139%] md:tracking-[-0.03em]">
             Our team helps optimize your profile, apply to the right jobs, and track every application, so you can focus on interviews.
           </p>
           <button
@@ -77,23 +77,23 @@ export default function HomePageSteps() {
           {steps.map((step) => (
             <div
               key={step.number}
-              className="flex min-h-[330px] flex-col border-[6px] border-[#f8f0eb] bg-[#f8f0eb]"
+              className="flex min-h-[330px] flex-col border-[6px] border-[#fcf9f7] bg-[#fcf9f7]"
             >
               <div className="min-h-[172px] bg-white px-5 pb-5 pt-5 md:min-h-[196px] md:px-6 md:pb-6">
-                <p className="mb-4 text-[26px] font-extrabold leading-none md:text-[32px]">
+                <p className="mb-4 text-[22px] font-bold leading-none tracking-[-0.02em] md:text-[28px]">
                   <span className="bg-gradient-to-r from-[#d84a22] via-[#f05a23] to-[#ff7a2a] bg-clip-text text-transparent">
                     \\ STEP {step.number}
                   </span>
                 </p>
-                <h3 className="mb-2 text-[20px] font-extrabold leading-[1.08] text-[#24272d] md:text-[24px]">
+                <h3 className="mb-2 text-[20px] font-bold leading-[1.15] tracking-[-0.02em] text-[#02060A] md:text-[24px]">
                   {step.title}
                 </h3>
-                <p className="max-w-[420px] text-[12px] font-bold leading-[1.42] text-[#232933] md:text-[13px]">
+                <p className="max-w-[440px] text-[15px] font-medium leading-[1.6] text-[#545b65]">
                   {step.detail}
                 </p>
               </div>
 
-              <div className="flex flex-1 items-center justify-center bg-[#f8f0eb] px-6 py-9">
+              <div className="flex flex-1 items-center justify-center bg-[#fcf9f7] px-6 py-9">
                 <Image
                   src={step.image}
                   alt={`Step ${step.number}: ${step.title}`}
