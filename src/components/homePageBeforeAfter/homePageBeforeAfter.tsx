@@ -60,44 +60,32 @@ export default function BeforeAfterComparison() {
           </p>
         </div>
 
-        {/* Desktop Table */}
-        <div className="hidden md:block border-[6px] border-[#fcf9f7] bg-[#fcf9f7]">
-          <div className="grid grid-cols-[1fr_1.5fr_1.5fr] gap-[6px]">
-            <div className="px-6 py-5 text-sm font-medium text-[#545b65] bg-white">
+        {/* Table (all screen sizes) */}
+        <div className="border-[4px] border-[#fcf9f7] bg-[#fcf9f7] md:border-[6px]">
+          <div className="grid grid-cols-[0.8fr_1.1fr_1.1fr] gap-[3px] md:grid-cols-[1fr_1.5fr_1.5fr] md:gap-[6px]">
+            <div className="bg-white px-2 py-3 text-[10px] font-medium text-[#545b65] md:px-6 md:py-5 md:text-sm">
               What matters
             </div>
-            <div className="px-6 py-5 text-lg font-bold text-[#24272d] bg-white">
+            <div className="bg-white px-2 py-3 text-[12px] font-bold leading-tight text-[#24272d] md:px-6 md:py-5 md:text-lg">
               Going it alone
             </div>
-            <div className="px-6 py-5 text-lg font-bold text-white bg-[#ff5a1f]">
+            <div className="bg-[#ff5a1f] px-2 py-3 text-[12px] font-bold leading-tight text-white md:px-6 md:py-5 md:text-lg">
               With Flashfire
             </div>
           </div>
 
           {rows.map((row) => (
-            <div key={row.topic} className="grid grid-cols-[1fr_1.5fr_1.5fr] gap-[6px] mt-[6px]">
-              <div className="px-6 py-5 text-sm font-medium text-[#080b10] bg-white">{row.topic}</div>
-              <div className="px-6 py-5 text-sm font-medium text-[#545b65] leading-relaxed bg-white">{row.alone}</div>
-              <div className="px-6 py-5 text-sm font-medium text-[#24272d] leading-relaxed bg-[#fffaf7]">{row.flashfire}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Mobile Cards */}
-        <div className="md:hidden space-y-4">
-          {rows.map((row) => (
-            <div key={row.topic} className="border-[6px] border-[#fcf9f7] bg-[#fcf9f7]">
-              <h3 className="px-4 py-3 text-base font-bold text-[#080b10] bg-white">{row.topic}</h3>
-              <div className="mt-[6px] px-4 py-3 text-sm font-medium text-[#545b65] bg-white">
-                <p className="text-xs font-semibold uppercase tracking-wide text-[#8a817a] mb-1">
-                  Going it alone
-                </p>
+            <div
+              key={row.topic}
+              className="mt-[3px] grid grid-cols-[0.8fr_1.1fr_1.1fr] gap-[3px] md:mt-[6px] md:grid-cols-[1fr_1.5fr_1.5fr] md:gap-[6px]"
+            >
+              <div className="bg-white px-2 py-3 text-[11px] font-bold leading-snug text-[#080b10] md:px-6 md:py-5 md:text-sm md:font-medium">
+                {row.topic}
+              </div>
+              <div className="bg-white px-2 py-3 text-[11px] font-medium leading-[1.45] text-[#545b65] md:px-6 md:py-5 md:text-sm md:leading-relaxed">
                 {row.alone}
               </div>
-              <div className="mt-[6px] px-4 py-3 text-sm font-medium text-[#24272d] bg-[#fffaf7]">
-                <p className="text-xs font-semibold uppercase tracking-wide text-[#ff5a1f] mb-1">
-                  With Flashfire
-                </p>
+              <div className="bg-[#fffaf7] px-2 py-3 text-[11px] font-medium leading-[1.45] text-[#24272d] md:px-6 md:py-5 md:text-sm md:leading-relaxed">
                 {row.flashfire}
               </div>
             </div>

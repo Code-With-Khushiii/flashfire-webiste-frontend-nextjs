@@ -60,7 +60,7 @@ export default function EUHome() {
       <HomePageMilestones />
       <HomePageSteps />
       <HomePageOfferLetters
-        heading="60+ Offer letters received"
+        heading="100+ Offer letters received"
         enableLoopControls
         buttonOnlyScroll
       />

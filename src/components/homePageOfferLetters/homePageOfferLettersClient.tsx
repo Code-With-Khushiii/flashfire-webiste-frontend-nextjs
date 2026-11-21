@@ -265,7 +265,7 @@ const jumpCarouselWithoutAnimation = (
 
 
 export default function HomePageOfferLettersClient({
-  heading = "60+ Offer letters received",
+  heading = "100+ Offer letters received",
   variant = "split",
   autoScroll = false,
   enableLoopControls = false,
