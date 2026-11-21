@@ -14,6 +14,7 @@ import HomePageMilestones from "@/src/components/homePageMilestones/homePageMile
 import HomePageOfferLetters from "@/src/components/homePageOfferLetters/homePageOfferLetters";
 import HomePagePTNote from "@/src/components/homePagePTNote/homePagePTNote";
 import HomePageResultStats from "@/src/components/homePageResultStats/homePageResultStats";
+import HomePageGlobalReach from "@/src/components/homePageGlobalReach/homePageGlobalReach";
 import HomePageStatsCards from "@/src/components/homePageStatsCards/homePageStatsCards";
 import HomePageSteps from "@/src/components/homePageSteps/homePageSteps";
 import HomePageJobMatchingSection from "@/src/components/homePageJobMatchingSection/homePageJobMatchingSection";
@@ -56,6 +57,7 @@ const Home = () => {
       <HeroSection />
       <HomePageVideo />
       <HomePageResultStats />
+      <HomePageGlobalReach />
       <HomePageStatsCards />
       <HomePageMilestones />
       <HomePageSteps /> 

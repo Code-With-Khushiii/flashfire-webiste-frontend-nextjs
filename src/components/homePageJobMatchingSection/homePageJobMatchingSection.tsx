@@ -71,15 +71,6 @@ function ComparePane({
   );
 }
 
-function Arrow() {
-  return (
-    <div className="flex flex-col items-center py-4 text-[#ff5a1f]">
-      <div className="h-6 w-px bg-[#f0d5c8]" />
-      <span className="text-sm leading-none">↓</span>
-    </div>
-  );
-}
-
 const stages: {
   tag: string;
   icon: typeof UserRound;
@@ -199,17 +190,23 @@ export default function JobMatchingSection() {
     },
   });
 
-  const stickyRef = useRef<HTMLElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
+  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [active, setActive] = useState(0);
+  const [lineProgress, setLineProgress] = useState(0);
 
   useEffect(() => {
     const onScroll = () => {
-      const el = stickyRef.current;
-      if (!el) return;
-      const total = el.offsetHeight - window.innerHeight;
-      if (total <= 0) return;
-      const progress = Math.min(1, Math.max(0, -el.getBoundingClientRect().top / total));
-      setActive(Math.min(stages.length - 1, Math.floor(progress * stages.length)));
+      const list = listRef.current;
+      if (!list) return;
+      const mark = window.innerHeight * 0.5;
+      const rect = list.getBoundingClientRect();
+      setLineProgress(Math.min(1, Math.max(0, (mark - rect.top) / rect.height)));
+      let current = 0;
+      stepRefs.current.forEach((el, i) => {
+        if (el && el.getBoundingClientRect().top <= mark) current = i;
+      });
+      setActive(current);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -265,89 +262,31 @@ export default function JobMatchingSection() {
 
   return (
     <>
-    <section
-      ref={stickyRef}
-      className="relative z-10 hidden h-[400vh] w-full bg-[#fffefd] font-['Satoshi',sans-serif] md:block"
-    >
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden bg-[#fffefd] px-12 pb-6 pt-24">
-        <div className="mx-auto w-full max-w-5xl">
-        {/* Process */}
-        <div className="max-w-4xl">
-          <h2 className="font-bold tracking-[-0.03em] leading-[110%] text-[#02060A] text-[1.8rem] min-[769px]:text-[2.4rem] min-[1025px]:text-[44px]">
-            From your career goals to a{" "}
-            <span className="bg-gradient-to-r from-[#d84a22] via-[#f05a23] to-[#ff7a2a] bg-clip-text text-transparent">
-              more focused job search.
-            </span>
-          </h2>
-          <p className="mt-3 max-w-[640px] text-base font-medium leading-[139%] tracking-[-0.03em] text-[#02060A] md:text-[20px]">
-            Job hunting feels better when someone has a plan. Here's how we take
-            what you want and turn it into applications you can actually follow.
-          </p>
-        </div>
-
-          <div className="relative mt-6 h-[360px]">
-            {stages.map((st, i) => (
-              <div
-                key={st.stage}
-                aria-hidden={i !== active}
-                className={`absolute inset-0 grid grid-cols-2 items-center gap-12 transition-all duration-500 ${
-                  i === active
-                    ? "translate-y-0 opacity-100"
-                    : "pointer-events-none translate-y-6 opacity-0"
-                }`}
-              >
-                <div className={`flex flex-col justify-center ${i % 2 ? "order-2" : ""}`}>
-                  <div className="flex items-center gap-4">
-                    <span
-                      aria-label={st.tag}
-                      className="inline-flex h-10 w-10 items-center justify-center bg-[#ff5a1f]"
-                    >
-                      <st.icon className="h-5 w-5 text-white" strokeWidth={2} />
-                    </span>
-                    <div className="h-px flex-1 bg-[#f0d5c8]" />
-                  </div>
-                  <p className="mt-4 text-[11px] font-bold tracking-wide text-[#ff5a1f]">{st.stage}</p>
-                  <h3 className="mt-2 text-[24px] font-bold leading-[1.15] tracking-[-0.02em] text-[#02060A]">
-                    {st.title}
-                  </h3>
-                  <p className="mt-4 text-[15px] font-medium leading-[1.6] text-[#545b65]">{st.text}</p>
-                </div>
-                <div className={i % 2 ? "order-1" : ""}>{st.card}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-6 flex items-center gap-2">
-            {stages.map((st, i) => (
-              <span
-                key={st.stage}
-                className={`h-1.5 flex-1 transition-colors duration-300 ${
-                  i <= active ? "bg-[#ff5a1f]" : "bg-[#f0d5c8]"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section className="md:hidden w-full bg-[#fffefd] px-4 py-14 font-['Satoshi',sans-serif] sm:px-6 md:px-12 md:py-16 lg:py-20">
+    <section className="w-full bg-[#fffefd] px-5 py-12 font-['Satoshi',sans-serif] sm:px-6 md:px-12 md:py-16 lg:py-20">
       <div className="mx-auto max-w-5xl">
         {/* Process */}
         <div className="max-w-3xl">
-          <h2 className="font-bold tracking-[-0.03em] leading-[110%] text-[#02060A] text-[1.8rem] min-[769px]:text-[2.4rem] min-[1025px]:text-[50.84px]">
+          <h2 className="font-bold tracking-[-0.03em] leading-[110%] text-[#02060A] text-[1.75rem] min-[769px]:text-[2.4rem] min-[1025px]:text-[50.84px]">
             From your career goals to a{" "}
             <span className="bg-gradient-to-r from-[#d84a22] via-[#f05a23] to-[#ff7a2a] bg-clip-text text-transparent">
               more focused job search.
             </span>
           </h2>
-          <p className="mt-5 max-w-[640px] text-base font-medium leading-[139%] tracking-[-0.03em] text-[#02060A] md:text-[20px]">
+          <p className="mt-4 max-w-[640px] text-[15px] font-medium leading-[145%] tracking-[-0.02em] text-[#02060A] md:mt-5 md:text-[20px] md:leading-[139%] md:tracking-[-0.03em]">
             Job hunting feels better when someone has a plan. Here's how we take
             what you want and turn it into applications you can actually follow.
           </p>
         </div>
 
-        <div className="mt-12">
+        <div ref={listRef} className="relative mt-10 pl-9 md:mt-12 md:pl-14">
+          {/* Progress line: grey track + orange fill that grows as you scroll */}
+          <div className="absolute bottom-0 left-[11px] top-0 w-[2px] bg-[#f0d5c8] md:left-[15px]" aria-hidden="true">
+            <div
+              className="w-full bg-[#ff5a1f]"
+              style={{ height: `${lineProgress * 100}%` }}
+            />
+          </div>
+
           {stages.map((st, i) => {
             const text = (
               <div className="flex flex-col justify-center">
@@ -373,13 +312,24 @@ export default function JobMatchingSection() {
             );
 
             return (
-              <div key={st.stage}>
-                {i > 0 && (
-                  <>
-                    <Arrow />
-                    <div className="h-6" />
-                  </>
-                )}
+              <div
+                key={st.stage}
+                ref={(el) => {
+                  stepRefs.current[i] = el;
+                }}
+                className={`relative ${i > 0 ? "mt-12 md:mt-20" : ""}`}
+              >
+                {/* Step marker on the line */}
+                <span
+                  aria-hidden="true"
+                  className={`absolute -left-9 top-2 flex h-6 w-6 items-center justify-center rounded-full border-2 text-[10px] font-bold transition-colors duration-300 md:-left-14 md:h-8 md:w-8 md:text-xs ${
+                    i <= active
+                      ? "border-[#ff5a1f] bg-[#ff5a1f] text-white"
+                      : "border-[#f0d5c8] bg-white text-[#b9aea6]"
+                  }`}
+                >
+                  {i + 1}
+                </span>
                 <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12">
                   {i % 2 === 0 ? (
                     <>
@@ -397,7 +347,6 @@ export default function JobMatchingSection() {
             );
           })}
         </div>
-
       </div>
     </section>
 
@@ -472,7 +421,7 @@ export default function JobMatchingSection() {
             onClick={handleStartAIJobSearch}
             className="inline-flex min-h-12 items-center justify-center bg-[#ff5a1f] px-8 py-3 text-[15px] font-bold text-white transition-colors hover:bg-[#e04d18] focus:outline-none focus:ring-2 focus:ring-[#ff5a1f] focus:ring-offset-2"
           >
-            Start AI-Powered Job Search
+            Get Started
           </button>
         </div>
       </div>

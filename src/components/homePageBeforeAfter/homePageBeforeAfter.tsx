@@ -36,14 +36,14 @@ export default function BeforeAfterComparison() {
 
   return (
     <section
-      className="py-14 md:py-16 lg:py-20 bg-[#fffefd]"
+      className="py-12 md:py-16 lg:py-20 bg-[#fffefd]"
       style={{ fontFamily: "Satoshi, sans-serif" }}
     >
-      <div className="max-w-6xl mx-auto px-5 sm:px-6">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 md:px-12">
 
         {/* Heading */}
         <div className="grid md:grid-cols-2 gap-4 md:gap-16 items-start mb-8 md:mb-12">
-          <h2 className="font-bold tracking-[-0.03em] leading-[110%] text-[#02060A] text-[1.8rem] min-[769px]:text-[2.4rem] min-[1025px]:text-[50.84px]">
+          <h2 className="font-bold tracking-[-0.03em] leading-[110%] text-[#02060A] text-[1.75rem] min-[769px]:text-[2.4rem] min-[1025px]:text-[50.84px]">
             Why Flashfire is a{" "}
             <span className="bg-gradient-to-r from-[#d84a22] via-[#f05a23] to-[#ff7a2a] bg-clip-text text-transparent">
               smarter way
@@ -51,7 +51,7 @@ export default function BeforeAfterComparison() {
             to find your next job
           </h2>
 
-          <p className="md:pt-2 text-base md:text-[20px] font-medium text-[#02060A] tracking-[-0.03em] leading-[139%]">
+          <p className="md:pt-2 text-[15px] md:text-[20px] font-medium text-[#02060A] tracking-[-0.02em] md:tracking-[-0.03em] leading-[145%] md:leading-[139%]">
             Sending more applications isn't the same as sending better ones. We
             pair <span className="text-[#080b10]">expert guidance with smart technology</span>{" "}
             so your effort goes toward roles that fit, with a resume that fits
@@ -105,7 +105,7 @@ export default function BeforeAfterComparison() {
         </div>
 
         {/* Bottom Line */}
-        <div className="text-center mt-12 md:mt-16">
+        <div className="text-center mt-10 md:mt-16">
           <p className="text-base sm:text-lg md:text-xl font-bold text-[#080b10]">
             Stop applying blindly.{" "}
             <span className="text-[#ff5a1f]">Start getting interviews on purpose.</span>
