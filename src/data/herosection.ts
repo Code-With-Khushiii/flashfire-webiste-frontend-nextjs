@@ -5,7 +5,7 @@ export const heroSectionData: HeroSectionData = {
   headlineHighlight: "Flashfire",
   headlineSuffix: "AI Copilot",
   description: [
-    "A dedicated team of real people applies to 1,200 US jobs for you in 60 days, with your resume tailored to every role.",
+    "A dedicated team of real people applies to 1,200  jobs for you in 60 days, with your resume tailored to every role.",
     
   ],
   cta: { label: "Get Started →", href: "/contact-us" },
