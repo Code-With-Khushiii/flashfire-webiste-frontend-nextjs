@@ -504,7 +504,8 @@ export default function NavbarClient({ links, ctas }: Props) {
                   href={getHref(ctas.primary.href)}
                   className={styles.navPrimaryButton}
                   {...getButtonProps()}
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
                     trackButtonClick(ctas.primary.label, "navigation", "cta", {
                       button_location: "navbar",
                       navigation_type: "primary_cta",
@@ -931,7 +932,8 @@ export default function NavbarClient({ links, ctas }: Props) {
                 href={getHref("/book-a-demo")}
                 className={styles.navMobilePrimary}
                 {...getButtonProps()}
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   const utmSource =
                     typeof window !== "undefined"
                       ? localStorage.getItem("utm_source") || "WEBSITE"

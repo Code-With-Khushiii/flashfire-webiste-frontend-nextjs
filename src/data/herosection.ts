@@ -1,11 +1,11 @@
 import { HeroSectionData } from "../types/heroSectionData";
 export const heroSectionData: HeroSectionData = {
-  badges: ["HELPING YOU LAND INTERVIEWS FASTER", "50 USERS LANDED JOB"],
+  badges: ["GET HIRED IN 90 DAYS", "50 USERS LANDED JOB"],
   headlineMain: "Land 15+ Interview Calls with",
   headlineHighlight: "Flashfire",
   headlineSuffix: "AI Copilot",
   description: [
-    "We apply to 1200 USA job applications & track everything while you focus on winning the interview.",
+    "A dedicated team of real people applies to 1,200  jobs for you in 60 days, with your resume tailored to every role.",
     
   ],
   cta: { label: "Get Started →", href: "/contact-us" },
@@ -31,12 +31,12 @@ export const heroSectionData: HeroSectionData = {
 };
 
 export const heroSectionDataUK: HeroSectionData = {
-  badges: ["HELPING YOU LAND INTERVIEWS FASTER", "50 USERS LANDED JOB"],
+  badges: ["GET HIRED IN 90 DAYS", "50 USERS LANDED JOB"],
   headlineMain: "Land 15+ Interview Calls with",
   headlineHighlight: "Flashfire",
   headlineSuffix: "AI Copilot",
   description: [
-    "We apply to 1200 UK job applications & track everything while you focus on winning the interview.",
+    "A dedicated team of real people applies to 1,200 UK jobs for you in 60 days, with your resume tailored to every role.",
   ],
   cta: { label: "Get Started →", href: "/contact-us" },
   trustText: "Trusted by 1000+ Users",
@@ -61,12 +61,12 @@ export const heroSectionDataUK: HeroSectionData = {
 };
 
 export const heroSectionDataEU: HeroSectionData = {
-  badges: ["HELPING YOU LAND INTERVIEWS FASTER", "50 USERS LANDED JOB"],
+  badges: ["GET HIRED IN 90 DAYS", "50 USERS LANDED JOB"],
   headlineMain: "Land 15+ Interview Calls with",
   headlineHighlight: "Flashfire",
   headlineSuffix: "AI Copilot",
   description: [
-    "We apply to 1200 European job applications & track everything while you focus on winning the interview.",
+    "A dedicated team of real people applies to 1,200 European jobs for you in 60 days, with your resume tailored to every role.",
   ],
   cta: { label: "Get Started →", href: "/contact-us" },
   trustText: "Trusted by 1000+ Users",
@@ -91,12 +91,12 @@ export const heroSectionDataEU: HeroSectionData = {
 };
 
 export const heroSectionDataCA: HeroSectionData = {
-  badges: ["HELPING YOU LAND INTERVIEWS FASTER", "50 USERS LANDED JOB"],
+  badges: ["GET HIRED IN 90 DAYS", "50 USERS LANDED JOB"],
   headlineMain: "Land 15+ Interview Calls with",
   headlineHighlight: "Flashfire",
   headlineSuffix: "AI Copilot",
   description: [
-    "We apply to 1200 Canada job applications & track everything while you focus on winning the interview.",
+    "A dedicated team of real people applies to 1,200 Canada jobs for you in 60 days, with your resume tailored to every role.",
   ],
   cta: { label: "Get Started →", href: "/contact-us" },
   trustText: "Trusted by 1000+ Users",
@@ -121,12 +121,12 @@ export const heroSectionDataCA: HeroSectionData = {
 };
 
 export const heroSectionDataAU: HeroSectionData = {
-  badges: ["HELPING YOU LAND INTERVIEWS FASTER", "50 USERS LANDED JOB"],
+  badges: ["GET HIRED IN 90 DAYS", "50 USERS LANDED JOB"],
   headlineMain: "Land 15+ Interview Calls with",
   headlineHighlight: "Flashfire",
   headlineSuffix: "AI Copilot",
   description: [
-    "We apply to 1200 Australian job applications & track everything while you focus on winning the interview.",
+    "A dedicated team of real people applies to 1,200 Australian jobs for you in 60 days, with your resume tailored to every role.",
   ],
   cta: { label: "Get Started →", href: "/contact-us" },
   trustText: "Trusted by 1000+ Users",

@@ -415,24 +415,29 @@
 
 /* Primary Button */
 .navPrimaryButton {
-  background-color: #ff4c00;
+  background-color: #0b0b0b;
   color: #fff;
   border: none;
-  padding: 1rem 1rem;
-  box-shadow: 0 0.3rem 0 black;
+  border-radius: 9999px;
+  padding: 0 1.5rem;
+  width: auto;
+  min-width: 130px;
+  height: 44px;
+  font-size: 15px;
+  box-shadow: none;
   cursor: pointer;
   user-select: none;
 }
 
 .navPrimaryButton:hover {
-  background-color: #ff5a0f;
+  background-color: #262626;
   transform: translateY(-1px);
-  box-shadow: 0 0.4rem 0 black;
+  box-shadow: none;
 }
 
 .navPrimaryButton:active {
-  transform: translateY(1px);
-  box-shadow: 0 0.2rem 0 black;
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 /* === Mobile Menu Icon === */

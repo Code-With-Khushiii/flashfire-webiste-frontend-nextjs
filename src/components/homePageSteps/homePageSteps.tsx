@@ -53,7 +53,7 @@ export default function HomePageSteps() {
   };
 
   return (
-    <section className="bg-[#fffefd] py-12 font-['Satoshi',sans-serif] md:py-16 lg:py-20">
+    <section id="how-it-works" className="bg-[#fffefd] py-12 font-['Satoshi',sans-serif] md:py-16 lg:py-20">
       <div className="mx-auto max-w-[1350px] px-5 sm:px-6 md:px-8">
         {/* Header */}
         <div className="mb-12 text-center md:mb-14">

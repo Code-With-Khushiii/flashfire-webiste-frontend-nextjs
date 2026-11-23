@@ -46,9 +46,6 @@ export default function AnniversaryBar() {
           </span>
         ))}
       </div>
-      <a href="/pricing" className="shrink-0 rounded-[7px] bg-[#f15a24] px-3 py-2 text-xs font-bold text-white no-underline shadow-[0_3px_0_#a93812] transition-colors hover:bg-[#d94a19] sm:px-5 sm:text-sm">
-        Book Now
-      </a>
     </div>
   );
 }
