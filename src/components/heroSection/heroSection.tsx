@@ -29,7 +29,7 @@ export default function HeroSection({ country }: Props) {
     ? {
         ...data,
         description: [
-          `We apply to 1200 ${euCountry} job applications & track everything while you focus on winning the interview.`,
+          `A dedicated team of real people applies to 1,200 ${euCountry} jobs for you in 60 days, with your resume tailored to every role.`,
         ],
       }
     : data;

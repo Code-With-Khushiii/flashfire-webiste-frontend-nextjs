@@ -5,7 +5,7 @@ export const heroSectionData: HeroSectionData = {
   headlineHighlight: "Flashfire",
   headlineSuffix: "AI Copilot",
   description: [
-    "We apply to 1200 USA job applications & track everything while you focus on winning the interview.",
+    "A dedicated team of real people applies to 1,200 US jobs for you in 60 days, with your resume tailored to every role.",
     
   ],
   cta: { label: "Get Started →", href: "/contact-us" },
@@ -36,7 +36,7 @@ export const heroSectionDataUK: HeroSectionData = {
   headlineHighlight: "Flashfire",
   headlineSuffix: "AI Copilot",
   description: [
-    "We apply to 1200 UK job applications & track everything while you focus on winning the interview.",
+    "A dedicated team of real people applies to 1,200 UK jobs for you in 60 days, with your resume tailored to every role.",
   ],
   cta: { label: "Get Started →", href: "/contact-us" },
   trustText: "Trusted by 1000+ Users",
@@ -66,7 +66,7 @@ export const heroSectionDataEU: HeroSectionData = {
   headlineHighlight: "Flashfire",
   headlineSuffix: "AI Copilot",
   description: [
-    "We apply to 1200 European job applications & track everything while you focus on winning the interview.",
+    "A dedicated team of real people applies to 1,200 European jobs for you in 60 days, with your resume tailored to every role.",
   ],
   cta: { label: "Get Started →", href: "/contact-us" },
   trustText: "Trusted by 1000+ Users",
@@ -96,7 +96,7 @@ export const heroSectionDataCA: HeroSectionData = {
   headlineHighlight: "Flashfire",
   headlineSuffix: "AI Copilot",
   description: [
-    "We apply to 1200 Canada job applications & track everything while you focus on winning the interview.",
+    "A dedicated team of real people applies to 1,200 Canada jobs for you in 60 days, with your resume tailored to every role.",
   ],
   cta: { label: "Get Started →", href: "/contact-us" },
   trustText: "Trusted by 1000+ Users",
@@ -126,7 +126,7 @@ export const heroSectionDataAU: HeroSectionData = {
   headlineHighlight: "Flashfire",
   headlineSuffix: "AI Copilot",
   description: [
-    "We apply to 1200 Australian job applications & track everything while you focus on winning the interview.",
+    "A dedicated team of real people applies to 1,200 Australian jobs for you in 60 days, with your resume tailored to every role.",
   ],
   cta: { label: "Get Started →", href: "/contact-us" },
   trustText: "Trusted by 1000+ Users",

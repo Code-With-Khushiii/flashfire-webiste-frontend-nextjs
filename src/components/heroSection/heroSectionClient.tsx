@@ -2,33 +2,16 @@
 
 import Image from "next/image";
 import { useRef, type SyntheticEvent } from "react";
-import FlashfireLogo from "@/src/components/FlashfireLogo";
 import { HeroSectionData } from "@/src/types/heroSectionData";
 import { GTagUTM } from "@/src/utils/GTagUTM";
 import { trackButtonClick, trackSignupIntent } from "@/src/utils/PostHogTracking";
 import { useGeoBypass } from "@/src/utils/useGeoBypass";
-import styles from "./heroSection.module.css";
 
 type Props = {
   data: HeroSectionData;
   heroImageSrc?: string;
   shiftHeroImageLeft?: boolean;
 };
-
-const heroStats = [
-  {
-    value: "1,200",
-    label: "Applications are submitted in 2 months",
-  },
-  {
-    value: "15+",
-    label: "Average Interview calls",
-  },
-  {
-    value: "60+",
-    label: "Users landed jobs",
-  },
-];
 
 const trustedUniversities = [
   {
@@ -78,53 +61,10 @@ const getUniversityLineClass = (universityName: string, lineIndex: number) => {
   return "text-[20px] font-bold leading-[0.9] tracking-[-0.025em] xl:text-[22px]";
 };
 
-function PlaneTrailScene({
-  priority = false,
-  position = "topRight",
-}: {
-  priority?: boolean;
-  position?: "topRight" | "bottomLeft";
-}) {
-  const isBottomLeft = position === "bottomLeft";
-
-  return (
-    <div
-      className={`absolute inset-0 h-[200px] w-[200px] origin-center ${
-        isBottomLeft ? "rotate-180" : ""
-      }`}
-    >
-      <Image
-        src="/images/element4.png"
-        alt="Paper plane illustration"
-        width={117}
-        height={90}
-        priority={priority}
-        className={`absolute h-auto w-[300px] ${
-          isBottomLeft ? "left-[0px] top-[10px]" : "left-0 top-0"
-        }`}
-      />
-    </div>
-  );
-}
-
 export default function HeroSectionClient({
   data,
-  heroImageSrc = "/images/usa-img.png",
-  shiftHeroImageLeft = false,
+  heroImageSrc = "/images/landingpageImg.png",
 }: Props) {
-  const mobileHeroFrameClass = shiftHeroImageLeft
-    ? "w-[105vw] max-w-[460px]"
-    : "w-[105vw] max-w-[460px]";
-  const mobileHeroHeightClass = shiftHeroImageLeft
-    ? "h-[300px] min-[340px]:h-[320px]"
-    : "h-[300px] min-[340px]:h-[320px]";
-  const mobileHeroOffsetClass = shiftHeroImageLeft ? "mt-16" : "mt-16";
-  const mobileHeroImageClass = shiftHeroImageLeft
-    ? "origin-bottom scale-[1.0]"
-    : "origin-bottom scale-[1.0]";
-  const desktopHeroHeightClass = "top-16 bottom-0";
-  const desktopHeroBottomClass = "";
-  const desktopHeroImagePositionClass = styles.desktopUsHeroImage;
   const { getButtonProps } = useGeoBypass({
     onBypass: () => {
       if (typeof window !== "undefined") {
@@ -175,267 +115,88 @@ export default function HeroSectionClient({
   };
 
   return (
-    <section
-      className="relative w-full overflow-hidden bg-white font-['Space_Grotesk',sans-serif] text-black"
-    >
-      {/* Mobile-only hero section */}
-      <div className="lg:hidden">
-        <div className="relative overflow-hidden bg-[#f7e6df] px-6 pb-0 pt-6 text-left">
-          <div className="relative z-20 mx-auto max-w-[430px]">
-            <div className="mb-5 inline-flex h-[26px] max-w-full items-center justify-center rounded-full bg-white px-3.5 text-[9px] font-bold uppercase leading-none tracking-[0.08em] text-[#f55d1d] shadow-sm">
-              {data.badges[0]}
-            </div>
-
-            <p role="heading" aria-level={1} className="max-w-full text-[26px] font-bold leading-[1.1] tracking-[-0.02em] text-black min-[375px]:text-[28px] min-[430px]:text-[32px]">
-              <span className="block">Land More Interview Calls</span>
-              <span className="block">
-                With a Dedicated{" "}
-                <FlashfireLogo
-                  width={58}
-                  height={58}
-                  className="-my-3 -ml-1 inline-block h-[2em] w-auto align-middle"
-                />{" "}
-                <span className="whitespace-nowrap text-[#f55d1d]">Job Search Team</span>
-              </span>
-            </p>
-
-            <p className="mt-4 max-w-[338px] font-['Satoshi',sans-serif] text-[13.5px] font-medium leading-[1.55] text-[#3a3a3a]">
-              {data.description[0]} {data.description[1]} {data.description[2]}
-            </p>
-
-            <div className="mt-6 flex justify-center">
-              <button
-                type="button"
-                {...getButtonProps()}
-                onPointerUp={handleGetStartedClick}
-                onClick={handleGetStartedClick}
-                className="inline-flex h-[46px] w-full max-w-[283px] touch-manipulation items-center justify-center rounded-[10px] bg-[#ff4c00] px-6 text-[16px] font-bold text-white shadow-[0_6px_0_#000] outline-none transition duration-200 hover:-translate-y-0.5 hover:bg-[#ff5a1f] hover:shadow-[0_6px_0_#000] focus-visible:ring-2 focus-visible:ring-[#ff5a1f] focus-visible:ring-offset-2"
-              >
-                Get Started →
-              </button>
-            </div>
+    <section className="relative w-full overflow-hidden bg-[#fffefd] font-['Satoshi',sans-serif] text-[#0b0b0b]">
+      <div className="mx-auto grid max-w-[1350px] items-center gap-10 px-5 pb-12 pt-10 md:px-8 md:pb-16 md:pt-14 lg:grid-cols-2 lg:gap-14">
+        <div className="text-left">
+          <div className="inline-flex h-[30px] items-center justify-center rounded-full border border-[#f3eeea] bg-white px-4 text-[11px] font-bold uppercase leading-none tracking-[0.08em] text-[#ff5a1f]">
+            {data.badges[0]}
           </div>
 
-          {/* Image + decorative elements — outer wrapper is the positioning context */}
-          <div className="relative mt-4 flex justify-center">
-            {/* Paper plane — above top-right of image */}
-            <Image
-              src="/images/element4.png"
-              alt="Paper plane illustration"
-              width={117}
-              height={90}
-              priority
-              className="pointer-events-none absolute right-[-5%] top-[6px] z-0 h-auto w-[160px] select-none"
-            />
-            {/* Small spark — left edge, mid-height */}
-            <Image
-              src="/images/element1.png"
-              alt="Spark illustration"
-              width={83}
-              height={99}
-              className="pointer-events-none absolute left-[12%] top-[18%] z-20 h-auto w-[29px] select-none"
-            />
-            {/* Cross — upper-left, inside image area */}
-            <Image
-              src="/images/element3.png"
-              alt="Cross sparkle illustration"
-              width={207}
-              height={213}
-              className="pointer-events-none absolute left-[60%] top-[100px] z-20 h-auto w-[25px] select-none"
-            />
-            {/* Hero image — overflow-hidden crops the bottom (feet) */}
-            <div className="relative z-10 h-[300px] min-[340px]:h-[320px] mt-8 w-[82vw] max-w-[360px] overflow-hidden">
-              <Image
-                src={heroImageSrc}
-                alt="Students celebrating career success with Flashfire"
-                fill
-                priority
-                sizes="82vw"
-                className="object-cover object-top"
-              />
-            </div>
-          </div>
-        </div>
+          <h1 className="mt-5 font-bold leading-[1.08] tracking-[-0.035em] text-[#0b0b0b] text-[2.4rem] min-[480px]:text-[3rem] md:text-[4rem] xl:text-[4.5rem]">
+            <span className="block">We apply to jobs.</span>
+            <span className="block">
+              You get the <span className="text-[#ff5a1f]">interviews.</span>
+            </span>
+          </h1>
 
-        <div className="relative z-30 overflow-visible bg-white px-6 pb-10 text-center">
-          <div className="-mx-6 bg-[#f7e6df] px-6 py-9">
-            <div className="mx-auto grid w-full max-w-[318px] grid-cols-3 gap-0 rounded-[10px] bg-[#f7e6df] px-2 py-4 text-left">
-              {heroStats.map((stat) => (
-                <div
-                  key={stat.value}
-                  className="min-h-[78px] border-r border-[#bcb3ae] px-2.5 last:border-r-0"
-                >
-                  <strong className="block text-[21px] font-black leading-none tracking-[-0.02em] text-black">
-                    {stat.value}
-                  </strong>
-                  <span className="mt-2.5 block font-['Satoshi',sans-serif] text-[9.5px] font-bold leading-[1.15] text-[#777]">
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="pointer-events-none absolute left-[-24px] top-[-48px] z-50 hidden aspect-[394/296] w-[180px] origin-center select-none">
-            <PlaneTrailScene position="bottomLeft" />
-          </div>
-          <p className="mx-auto mt-16 max-w-[290px] font-['Satoshi',sans-serif] text-[14px] font-medium leading-[1.45] text-[#9d9d9d]">
-            {data.universityHeading}
+          <p className="mt-6 max-w-[520px] text-[15px] font-medium leading-[1.6] text-[#4a4a4a] md:text-[18px]">
+            {data.description[0]}
           </p>
 
-          <div className="mx-auto mt-8 grid max-w-[300px] grid-cols-2 items-center gap-x-8 gap-y-8 text-[#a7a7a7]">
-            {trustedUniversities.map((university) => (
-              <div
-                key={university.name}
-                className="flex min-h-[34px] min-w-0 items-center justify-center gap-2 whitespace-nowrap opacity-90 last:col-span-2 last:justify-self-center"
-                style={{ color: university.color }}
-              >
-                <Image
-                  src={getUniversityLogo(university.domain)}
-                  alt=""
-                  width={28}
-                  height={28}
-                  className="h-6 w-6 object-contain opacity-90"
-                  unoptimized
-                />
-                <span className="flex flex-col items-start font-serif">
-                  {university.wordmark.map((line, lineIndex) => (
-                    <span
-                      key={line}
-                      className={
-                        university.name === "Berkeley" && lineIndex === 1
-                          ? "text-[6px] font-bold leading-none tracking-[0.02em]"
-                          : university.name === "University of Michigan" &&
-                              lineIndex === 0
-                            ? "text-[7px] font-bold leading-none tracking-[0.03em]"
-                            : "text-[16px] font-bold leading-[0.9] tracking-[-0.02em]"
-                      }
-                    >
-                      {line}
-                    </span>
-                  ))}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="relative isolate hidden overflow-visible lg:block">
-        <div className="relative z-0 min-h-[720px] overflow-hidden bg-[#f7e6df]">
-        <div className="pointer-events-none absolute right-[-15vw] top-[-19px] z-10 aspect-[394/296] w-[310px] origin-center select-none xl:right-[-11vw] xl:top-[-12px] xl:w-[326px]">
-          <PlaneTrailScene priority />
-        </div>
-        <Image
-          src="/images/element1.png"
-          alt="Spark illustration"
-          width={83}
-          height={99}
-          priority
-          className="pointer-events-none absolute z-10 h-auto w-[60px] select-none xl:left-[55.8%] xl:top-[130px]"
-        />
-        <Image
-          src="/images/element3.png"
-          alt="Cross sparkle illustration"
-          width={207}
-          height={213}
-          priority
-          className="pointer-events-none absolute  z-10 h-auto w-[48px] select-none xl:left-[42.6%] xl:top-[386px]"
-        />
-        <Image
-          src="/images/element3.png"
-          alt="Cross sparkle illustration"
-          width={207}
-          height={213}
-          className="pointer-events-none absolute  z-10 h-auto w-[48px] select-none xl:right-[25.2%] xl:top-[190px]"
-        />
-        <Image
-          src="/images/element3.png"
-          alt="Cross sparkle illustration"
-          width={207}
-          height={213}
-          className="pointer-events-none absolute  z-10 h-auto w-[35px] select-none xl:right-[23.8%] xl:top-[238px]"
-        />
-
-        <div className="relative z-20 mx-auto flex min-h-[720px] w-full max-w-[1536px] flex-row items-start px-[5.4vw] pb-8 pt-16">
-          <div className="relative z-20 max-w-[700px] mt-7 text-left xl:max-w-[880px] 2xl:max-w-[1080px]">
-            <div className="mb-4 inline-flex h-[26px] items-center justify-center rounded-full bg-white px-4 text-[11px] font-bold uppercase leading-none tracking-[0.06em] text-[#f55d1d] shadow-sm">
-              {data.badges[0]}
-            </div>
-
-            <h1 className="text-[44px] font-bold leading-[1.1] tracking-[-0.02em] text-black xl:text-[60px] 2xl:text-[68px]">
-              <span className="block whitespace-nowrap">Land More Interview Calls</span>
-              <span className="mt-1 flex flex-wrap items-center gap-x-3">
-                <span className="inline-flex shrink-0 items-center gap-x-1 whitespace-nowrap">
-                  <span>With a Dedicated</span>
-                  <FlashfireLogo
-                    width={58}
-                    height={58}
-                    className="-ml-2 inline-block h-[1.5em] w-auto align-middle"
-                  />
-                </span>
-                <span className="shrink-0 whitespace-nowrap text-[#f55d1d] ">
-                  Job Search Team
-                </span>
-              </span>
-            </h1>
-
-            <p className="mt-5 max-w-[500px] font-['Satoshi',sans-serif] text-[16px] font-medium leading-[1.6] text-[#3a3a3a]">
-              {data.description[0]} {data.description[1]} {data.description[2]}
-            </p>
-
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <button
               type="button"
               {...getButtonProps()}
+              onPointerUp={handleGetStartedClick}
               onClick={handleGetStartedClick}
-              className="mt-6 inline-flex h-[54px] min-w-[174px] touch-manipulation items-center justify-center rounded-[10px] bg-[#ff4c00] px-7 text-[18px] font-bold text-white shadow-[0_6px_0_#000] outline-none transition duration-200 hover:-translate-y-0.5 hover:bg-[#ff5a1f] hover:shadow-[0_6px_0_#000] focus-visible:ring-2 focus-visible:ring-[#ff5a1f] focus-visible:ring-offset-2"
+              className="inline-flex h-[48px] min-w-[170px] touch-manipulation items-center justify-center gap-2 rounded-[6px] bg-[#ff5a1f] px-7 text-[15px] font-bold text-white outline-none transition duration-200 hover:bg-[#e84e15] focus-visible:ring-2 focus-visible:ring-[#ff5a1f] focus-visible:ring-offset-2"
             >
-              Get Started →
+              Book a free call <span aria-hidden>→</span>
             </button>
-
-            <div className="mt-8 grid w-full -ml-6 max-w-[560px] grid-cols-3 gap-0">
-              {heroStats.map((stat) => (
-                <div
-                  key={stat.value}
-                  className="min-h-[82px] border-r border-[#b8afa9] px-6 text-left last:border-r-0"
-                >
-                  <strong className="block text-[33px] font-black leading-none tracking-[-0.03em] text-black">
-                    {stat.value}
-                  </strong>
-                  <span className="mt-3 block max-w-[116px] font-['Satoshi',sans-serif] text-[13px] font-bold leading-[1.08] text-[#78716d]">
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
-            </div>
+            <a
+              href="#how-it-works"
+              className="inline-flex h-[48px] items-center justify-center gap-2 rounded-[6px] border border-[#0b0b0b] bg-white px-6 text-[15px] font-semibold text-[#0b0b0b] transition hover:border-[#ff5a1f] hover:text-[#ff5a1f]"
+            >
+              How it works <span aria-hidden>→</span>
+            </a>
           </div>
+        </div>
 
-          <div className={`absolute ${desktopHeroHeightClass} ${desktopHeroBottomClass} ${desktopHeroImagePositionClass}`}>
-            <Image
-              src={heroImageSrc}
-              alt="Students celebrating career success with Flashfire"
-              fill
-              priority
-              sizes="58vw"
-              className="object-contain object-right-bottom"
-            />
+        <div className="relative">
+          <div
+            aria-hidden
+            className="absolute -inset-3 rounded-[28px] bg-gradient-to-br from-[#ffe3d6] via-[#fff1ea] to-transparent md:-inset-5"
+          />
+          <div className="relative overflow-hidden rounded-[16px] border border-[#ece6e2] bg-white shadow-[0_24px_60px_rgba(255,90,31,0.16),0_4px_14px_rgba(0,0,0,0.06)]">
+            <div className="flex h-10 items-center gap-3 border-b border-[#f0ebe8] bg-[#fcf9f7] px-4">
+              <div className="flex gap-1.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+              </div>
+              <div className="mx-auto flex h-6 w-full max-w-[260px] items-center justify-center rounded-md border border-[#f0ebe8] bg-white px-3 text-[11px] font-medium text-[#8a8480]">
+                flashfirejobs.com/dashboard
+              </div>
+              <div className="w-[42px]" />
+            </div>
+            <div className="relative aspect-video w-full bg-[#fcf9f7]">
+              <video
+                className="absolute inset-0 h-full w-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                preload="metadata"
+                poster="/images/dashboard-1.png"
+                aria-label="Flashfire dashboard walkthrough"
+              >
+                <source src="/videos/ii.mp4" type="video/mp4" />
+              </video>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="relative z-20 mx-auto w-full max-w-[1536px] overflow-visible px-[5.4vw] py-[52px] text-center">
-        <div className="pointer-events-none absolute left-[12px] top-[-104px] z-50 aspect-[394/296] w-[292px] origin-center select-none">
-          <PlaneTrailScene position="bottomLeft" />
-        </div>
-        <p className="font-['Satoshi',sans-serif] text-[20px] font-medium leading-[1.4] text-[#9d9d9d]">
+      <div className="mx-auto w-full max-w-[1350px] px-5 pb-12 text-center md:px-8 md:pb-16">
+        <p className="text-[14px] font-medium leading-[1.4] text-[#9d9d9d] md:text-[18px]">
           {data.universityHeading}
         </p>
-
-        <div className="mt-7 grid grid-cols-5 items-center gap-x-10 gap-y-6 text-[#a7a7a7]">
+        <div className="mt-7 grid grid-cols-2 items-center gap-x-8 gap-y-6 md:grid-cols-5">
           {trustedUniversities.map((university) => (
             <div
               key={university.name}
-              className="flex min-h-[48px] items-center justify-center gap-2 whitespace-nowrap opacity-90"
+              className="flex min-h-[40px] items-center justify-center gap-2 whitespace-nowrap opacity-90 last:col-span-2 md:last:col-span-1"
               style={{ color: university.color }}
             >
               <Image
@@ -443,18 +204,12 @@ export default function HeroSectionClient({
                 alt=""
                 width={32}
                 height={32}
-                className="h-8 w-8 object-contain opacity-90"
+                className="h-7 w-7 object-contain opacity-90"
                 unoptimized
               />
               <span className="flex flex-col items-start font-serif">
                 {university.wordmark.map((line, lineIndex) => (
-                  <span
-                    key={line}
-                    className={getUniversityLineClass(
-                      university.name,
-                      lineIndex
-                    )}
-                  >
+                  <span key={line} className={getUniversityLineClass(university.name, lineIndex)}>
                     {line}
                   </span>
                 ))}
@@ -462,7 +217,6 @@ export default function HeroSectionClient({
             </div>
           ))}
         </div>
-      </div>
       </div>
     </section>
   );
