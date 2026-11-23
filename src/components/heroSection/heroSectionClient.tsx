@@ -127,8 +127,8 @@ export default function HeroSectionClient({
           </span>
         </h1>
 
-        <p className="mt-6 max-w-[620px] text-[15px] font-medium leading-[1.6] text-[#4a4a4a] md:text-[20px]">
-          {data.description[0]}
+        <p className="mt-6 max-w-[680px] text-[15px] font-medium leading-[1.6] text-[#4a4a4a] md:text-[20px]">
+          {data.description[0]} You track it all and focus on interviewing.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-5">
@@ -137,7 +137,7 @@ export default function HeroSectionClient({
             {...getButtonProps()}
             onPointerUp={handleGetStartedClick}
             onClick={handleGetStartedClick}
-            className="inline-flex h-[50px] min-w-[170px] touch-manipulation items-center justify-center gap-2 rounded-[10px] bg-[#ff5a1f] px-7 text-[16px] font-bold text-white shadow-[0_4px_0_#1a1a1a] outline-none transition duration-200 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-[#ff5a1f] focus-visible:ring-offset-2"
+            className="inline-flex h-[56px] min-w-[200px] touch-manipulation items-center justify-center gap-2.5 rounded-full bg-[#f05a20] px-9 text-[17px] font-medium text-white outline-none transition duration-200 hover:bg-[#dd4e16] focus-visible:ring-2 focus-visible:ring-[#ff5a1f] focus-visible:ring-offset-2"
           >
             Book a free call <span aria-hidden>→</span>
           </button>
@@ -150,7 +150,7 @@ export default function HeroSectionClient({
         </div>
       </div>
 
-      <div className="mx-auto w-full max-w-[1350px] px-5 pb-12 text-center md:px-8 md:pb-16">
+      <div className="mx-auto w-full max-w-[1350px] px-5 pb-12 pt-32 text-center md:px-8 md:pb-16 md:pt-64">
         <p className="text-[14px] font-medium leading-[1.4] text-[#9d9d9d] md:text-[18px]">
           {data.universityHeading}
         </p>

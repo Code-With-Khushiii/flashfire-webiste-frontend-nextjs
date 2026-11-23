@@ -1,6 +1,6 @@
 import { HeroSectionData } from "../types/heroSectionData";
 export const heroSectionData: HeroSectionData = {
-  badges: ["HELPING YOU LAND INTERVIEWS FASTER", "50 USERS LANDED JOB"],
+  badges: ["GET HIRED IN 90 DAYS", "50 USERS LANDED JOB"],
   headlineMain: "Land 15+ Interview Calls with",
   headlineHighlight: "Flashfire",
   headlineSuffix: "AI Copilot",
@@ -31,7 +31,7 @@ export const heroSectionData: HeroSectionData = {
 };
 
 export const heroSectionDataUK: HeroSectionData = {
-  badges: ["HELPING YOU LAND INTERVIEWS FASTER", "50 USERS LANDED JOB"],
+  badges: ["GET HIRED IN 90 DAYS", "50 USERS LANDED JOB"],
   headlineMain: "Land 15+ Interview Calls with",
   headlineHighlight: "Flashfire",
   headlineSuffix: "AI Copilot",
@@ -61,7 +61,7 @@ export const heroSectionDataUK: HeroSectionData = {
 };
 
 export const heroSectionDataEU: HeroSectionData = {
-  badges: ["HELPING YOU LAND INTERVIEWS FASTER", "50 USERS LANDED JOB"],
+  badges: ["GET HIRED IN 90 DAYS", "50 USERS LANDED JOB"],
   headlineMain: "Land 15+ Interview Calls with",
   headlineHighlight: "Flashfire",
   headlineSuffix: "AI Copilot",
@@ -91,7 +91,7 @@ export const heroSectionDataEU: HeroSectionData = {
 };
 
 export const heroSectionDataCA: HeroSectionData = {
-  badges: ["HELPING YOU LAND INTERVIEWS FASTER", "50 USERS LANDED JOB"],
+  badges: ["GET HIRED IN 90 DAYS", "50 USERS LANDED JOB"],
   headlineMain: "Land 15+ Interview Calls with",
   headlineHighlight: "Flashfire",
   headlineSuffix: "AI Copilot",
@@ -121,7 +121,7 @@ export const heroSectionDataCA: HeroSectionData = {
 };
 
 export const heroSectionDataAU: HeroSectionData = {
-  badges: ["HELPING YOU LAND INTERVIEWS FASTER", "50 USERS LANDED JOB"],
+  badges: ["GET HIRED IN 90 DAYS", "50 USERS LANDED JOB"],
   headlineMain: "Land 15+ Interview Calls with",
   headlineHighlight: "Flashfire",
   headlineSuffix: "AI Copilot",
