@@ -424,9 +424,9 @@ export default function HomePageHappyUsers({
                       href={video.linkedinUrl !== "#" ? video.linkedinUrl : "#"}
                       target={video.linkedinUrl !== "#" ? "_blank" : undefined}
                       rel={video.linkedinUrl !== "#" ? "noopener noreferrer" : undefined}
-                      className={`flex-shrink-0 w-7 h-7 bg-white rounded flex items-center justify-center transition-colors ${
+                      className={`group flex-shrink-0 w-7 h-7 bg-white rounded flex items-center justify-center transition-colors ${
                         video.linkedinUrl !== "#"
-                          ? "hover:bg-[#ff4c00] cursor-pointer"
+                          ? "hover:bg-black cursor-pointer"
                           : "cursor-default opacity-50"
                       }`}
                       aria-label="LinkedIn Profile"
@@ -437,7 +437,7 @@ export default function HomePageHappyUsers({
                       }}
                     >
                       <svg
-                        className="w-4 h-4 text-black"
+                        className="w-4 h-4 text-black group-hover:text-white"
                         viewBox="0 0 24 24"
                         fill="currentColor"
                       >
@@ -693,8 +693,8 @@ export default function HomePageHappyUsers({
                           ? "noopener noreferrer"
                           : undefined
                       }
-                      className={`flex-shrink-0 w-6 h-6 bg-white rounded flex items-center justify-center transition-colors ${video.linkedinUrl !== "#"
-                          ? "hover:bg-[#ff4c00] cursor-pointer"
+                      className={`group flex-shrink-0 w-6 h-6 bg-white rounded flex items-center justify-center transition-colors ${video.linkedinUrl !== "#"
+                          ? "hover:bg-black cursor-pointer"
                           : "cursor-default opacity-50"
                         }`}
                       aria-label="LinkedIn Profile"
@@ -705,7 +705,7 @@ export default function HomePageHappyUsers({
                       }}
                     >
                       <svg
-                        className="w-4 h-4 text-black"
+                        className="w-4 h-4 text-black group-hover:text-white"
                         viewBox="0 0 24 24"
                         fill="currentColor"
                       >

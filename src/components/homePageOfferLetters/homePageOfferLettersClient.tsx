@@ -416,6 +416,7 @@ export default function HomePageOfferLettersClient({
           {!isAutoVariant && (
             <div className={styles.arrowControls} aria-label="Offer letter navigation">
               <button
+                id="offer-letter-prev"
                 type="button"
                 className={styles.arrowButton}
                 data-offer-control
@@ -425,6 +426,7 @@ export default function HomePageOfferLettersClient({
                 &larr;
               </button>
               <button
+                id="offer-letter-next"
                 type="button"
                 className={styles.arrowButton}
                 data-offer-control

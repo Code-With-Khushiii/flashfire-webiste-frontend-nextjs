@@ -150,7 +150,7 @@ export default function HeroSectionClient({
         </div>
       </div>
 
-      <div className="mx-auto w-full max-w-[1350px] px-5 pb-12 pt-0 text-center md:px-8 md:pb-16 md:pt-0">
+      <div className="mx-auto w-full max-w-[1350px] px-5 pb-12 pt-8 text-center md:px-8 md:pb-16 md:pt-10">
         <p className="text-[14px] font-medium leading-[1.4] text-[#9d9d9d] md:text-[18px]">
           {data.universityHeading}
         </p>
