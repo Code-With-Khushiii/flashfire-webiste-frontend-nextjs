@@ -76,9 +76,10 @@
 
 .arrowButton {
   align-items: center;
-  background: #050505;
+  background: #050505 !important;
   border: 0;
-  color: #fff;
+  border-radius: 50%;
+  color: #fff !important;
   cursor: pointer;
   display: inline-flex;
   font-size: 34px;
@@ -98,7 +99,7 @@ section.offerSection .arrowControls button.arrowButton:hover {
 }
 
 .arrowButton:hover {
-  background: #1c1c1c;
+  background: #1c1c1c !important;
   transform: translateY(-1px);
 }
 

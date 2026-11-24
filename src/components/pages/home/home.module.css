@@ -34,7 +34,7 @@
   letter-spacing: -0.035em;
 }
 
-.homeSections button:not(.ff-faq-question):not([data-faq-question]):not([data-story-play]),
+.homeSections button:not(.ff-faq-question):not([data-faq-question]):not([data-story-play]):not([data-home-cta="career-call"]):not([data-offer-control]),
 .homeSections a[role="button"],
 .homeSections a[class*="bg-"]:not([aria-label="LinkedIn Profile"]) {
   border: 1px solid var(--home-orange) !important;
@@ -46,26 +46,12 @@
   transition: background-color 180ms ease, transform 180ms ease !important;
 }
 
-.homeSections button:not(.ff-faq-question):not([data-faq-question]):not([data-story-play]):hover,
+.homeSections button:not(.ff-faq-question):not([data-faq-question]):not([data-story-play]):not([data-home-cta="career-call"]):not([data-offer-control]):hover,
 .homeSections a[role="button"]:hover,
 .homeSections a[class*="bg-"]:not([aria-label="LinkedIn Profile"]):hover {
   background: #dd4e16 !important;
   border-color: #dd4e16 !important;
   transform: translateY(-2px);
-}
-
-.homeSections button[data-home-cta="career-call"],
-.homeSections button[data-home-cta="career-call"]:hover {
-  border: 0 !important;
-  border-radius: 999px !important;
-  background: #0b0b0b !important;
-  color: #fff !important;
-  box-shadow: none !important;
-}
-
-.homeSections button[data-home-cta="career-call"]:hover {
-  background: #262626 !important;
-  transform: translateY(-1px);
 }
 
 /* Use the navbar's black CTA treatment only when the button sits on orange. */
@@ -76,7 +62,7 @@
     [class~="bg-[#f55d1d]"],
     [class~="bg-[#f05a20]"],
     [class*="resultLeft"]
-  ) :is(button, a[role="button"], a[class*="bg-"]:not([aria-label="LinkedIn Profile"])):not(.ff-faq-question),
+  ) :is(button:not([data-home-cta="career-call"]):not([data-offer-control]), a[role="button"], a[class*="bg-"]:not([aria-label="LinkedIn Profile"])):not(.ff-faq-question),
 .homeSections :is(button, a[role="button"], a[class*="bg-"]:not([aria-label="LinkedIn Profile"])):is(
     [class~="bg-[#ff5a18]"],
     [class~="bg-[#ff5a1f]"],
@@ -97,7 +83,7 @@
     [class~="bg-[#f55d1d]"],
     [class~="bg-[#f05a20]"],
     [class*="resultLeft"]
-  ) :is(button, a[role="button"], a[class*="bg-"]:not([aria-label="LinkedIn Profile"])):not(.ff-faq-question):hover,
+  ) :is(button:not([data-home-cta="career-call"]):not([data-offer-control]), a[role="button"], a[class*="bg-"]:not([aria-label="LinkedIn Profile"])):not(.ff-faq-question):hover,
 .homeSections :is(button, a[role="button"], a[class*="bg-"]:not([aria-label="LinkedIn Profile"])):is(
     [class~="bg-[#ff5a18]"],
     [class~="bg-[#ff5a1f]"],
@@ -119,7 +105,7 @@
 .homeSections button[data-offer-control],
 .homeSections button[data-offer-control]:hover {
   border: 0 !important;
-  border-radius: 0 !important;
+  border-radius: 50% !important;
   background: #0b0b0b !important;
   color: #fff !important;
   box-shadow: none !important;
@@ -130,7 +116,7 @@
 #offer-letter-prev:hover,
 #offer-letter-next:hover {
   border: 0 !important;
-  border-radius: 0 !important;
+  border-radius: 50% !important;
   background: #050505 !important;
   color: #fff !important;
   box-shadow: none !important;
