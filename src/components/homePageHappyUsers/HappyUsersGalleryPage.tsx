@@ -310,6 +310,7 @@ export default function HappyUsersGalleryPage({
                           ? "noopener noreferrer"
                           : undefined
                       }
+                      data-linkedin-icon
                       className={`group flex-shrink-0 w-6 h-6 bg-white rounded flex items-center justify-center transition-colors ${
                         video.linkedinUrl !== "#"
                           ? "hover:bg-black cursor-pointer"

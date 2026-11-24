@@ -34,7 +34,7 @@
   letter-spacing: -0.035em;
 }
 
-.homeSections button:not(.ff-faq-question):not([data-faq-question]),
+.homeSections button:not(.ff-faq-question):not([data-faq-question]):not([data-story-play]),
 .homeSections a[role="button"],
 .homeSections a[class*="bg-"]:not([aria-label="LinkedIn Profile"]) {
   border: 1px solid var(--home-orange) !important;
@@ -46,7 +46,7 @@
   transition: background-color 180ms ease, transform 180ms ease !important;
 }
 
-.homeSections button:not(.ff-faq-question):not([data-faq-question]):hover,
+.homeSections button:not(.ff-faq-question):not([data-faq-question]):not([data-story-play]):hover,
 .homeSections a[role="button"]:hover,
 .homeSections a[class*="bg-"]:not([aria-label="LinkedIn Profile"]):hover {
   background: #dd4e16 !important;
@@ -139,6 +139,27 @@
 .homeSections button[data-offer-control]:hover {
   background: #1c1c1c !important;
   transform: translateY(-1px);
+}
+
+.homeSections a[data-linkedin-icon] {
+  border: 1px solid #fff !important;
+  border-radius: 4px !important;
+  background: #fff !important;
+  color: #050505 !important;
+}
+
+.homeSections a[data-linkedin-icon] svg {
+  color: #050505 !important;
+}
+
+.homeSections a[data-linkedin-icon]:hover {
+  border-color: #050505 !important;
+  background: #050505 !important;
+  color: #fff !important;
+}
+
+.homeSections a[data-linkedin-icon]:hover svg {
+  color: #fff !important;
 }
 
 @media (max-width: 640px) {
