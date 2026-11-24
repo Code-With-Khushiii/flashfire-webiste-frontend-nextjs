@@ -418,6 +418,7 @@ export default function HomePageOfferLettersClient({
               <button
                 type="button"
                 className={styles.arrowButton}
+                data-offer-control
                 aria-label="Previous offer letter"
                 onClick={() => scrollOffers("left")}
               >
@@ -426,6 +427,7 @@ export default function HomePageOfferLettersClient({
               <button
                 type="button"
                 className={styles.arrowButton}
+                data-offer-control
                 aria-label="Next offer letter"
                 onClick={() => scrollOffers("right")}
               >

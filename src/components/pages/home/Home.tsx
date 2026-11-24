@@ -23,6 +23,7 @@ import HomePageWhyChooseFF from "@/src/components/homePageWhyChooseFF/homePageWh
 import Navbar from "@/src/components/navbar/navbar";
 import SalesPopUp from "@/src/components/SalesPopUp";
 import HomePageBeforeAfter from "../../homePageBeforeAfter/homePageBeforeAfter";
+import styles from "./home.module.css";
 
 const Home = () => {
   const pathname = usePathname();
@@ -55,6 +56,7 @@ const Home = () => {
     <>
       <Navbar />
       <HeroSection />
+      <main className={styles.homeSections}>
       <HomePageVideo />
       <HomePageResultStats />
       <HomePageGlobalReach />
@@ -75,6 +77,7 @@ const Home = () => {
       <HomePageDemoCTA />
       <HomePageFoundersNote variant="pricing" />
       <HomePageCareerCTA />
+      </main>
       
      
 

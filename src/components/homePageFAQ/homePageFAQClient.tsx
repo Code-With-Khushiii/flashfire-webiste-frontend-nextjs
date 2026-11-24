@@ -33,6 +33,7 @@ export default function HomePageFAQClient() {
           >
             <button
               className={styles.faqQuestion}
+              data-faq-question
               onClick={() => {
                 handleToggle(index);
                 trackButtonClick(`FAQ ${index + 1}`, "faq_item", "link", {

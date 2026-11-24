@@ -1,0 +1,138 @@
+.homeSections {
+  --home-ink: #0b0b0b;
+  --home-orange: #f05a20;
+  width: 100%;
+  overflow: hidden;
+  background: #fffefd;
+  color: var(--home-ink);
+  font-family: "Satoshi", var(--font-space-grotesk), sans-serif;
+}
+
+.homeSections > section {
+  position: relative;
+  isolation: isolate;
+  background-color: #fffefd !important;
+}
+
+.homeSections > section:nth-child(even) {
+  background-color: #fffefd !important;
+}
+
+.homeSections > section + section::before {
+  position: absolute;
+  top: 0;
+  left: max(1.5rem, calc((100% - 76rem) / 2));
+  right: max(1.5rem, calc((100% - 76rem) / 2));
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #f4e6df 16%, #f4e6df 84%, transparent);
+  content: "";
+  pointer-events: none;
+}
+
+.homeSections h2,
+.homeSections h3 {
+  letter-spacing: -0.035em;
+}
+
+.homeSections button:not(.ff-faq-question):not([data-faq-question]),
+.homeSections a[role="button"],
+.homeSections a[class*="bg-"] {
+  border: 1px solid var(--home-orange) !important;
+  border-radius: 999px !important;
+  background: var(--home-orange) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  font-weight: 650 !important;
+  transition: background-color 180ms ease, transform 180ms ease !important;
+}
+
+.homeSections button:not(.ff-faq-question):not([data-faq-question]):hover,
+.homeSections a[role="button"]:hover,
+.homeSections a[class*="bg-"]:hover {
+  background: #dd4e16 !important;
+  border-color: #dd4e16 !important;
+  transform: translateY(-2px);
+}
+
+.homeSections button[data-home-cta="career-call"],
+.homeSections button[data-home-cta="career-call"]:hover {
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: #0b0b0b !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+.homeSections button[data-home-cta="career-call"]:hover {
+  background: #262626 !important;
+  transform: translateY(-1px);
+}
+
+/* Use the navbar's black CTA treatment only when the button sits on orange. */
+.homeSections :is(
+    [class~="bg-[#ff5a18]"],
+    [class~="bg-[#ff5a1f]"],
+    [class~="bg-[#ff4c00]"],
+    [class~="bg-[#f55d1d]"],
+    [class~="bg-[#f05a20]"],
+    [class*="resultLeft"]
+  ) :is(button, a[role="button"], a[class*="bg-"]):not(.ff-faq-question),
+.homeSections :is(button, a[role="button"], a[class*="bg-"]):is(
+    [class~="bg-[#ff5a18]"],
+    [class~="bg-[#ff5a1f]"],
+    [class~="bg-[#ff4c00]"],
+    [class~="bg-[#f55d1d]"],
+    [class~="bg-[#f05a20]"]
+  ) {
+  border-color: #0b0b0b !important;
+  background: #0b0b0b !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+.homeSections :is(
+    [class~="bg-[#ff5a18]"],
+    [class~="bg-[#ff5a1f]"],
+    [class~="bg-[#ff4c00]"],
+    [class~="bg-[#f55d1d]"],
+    [class~="bg-[#f05a20]"],
+    [class*="resultLeft"]
+  ) :is(button, a[role="button"], a[class*="bg-"]):not(.ff-faq-question):hover,
+.homeSections :is(button, a[role="button"], a[class*="bg-"]):is(
+    [class~="bg-[#ff5a18]"],
+    [class~="bg-[#ff5a1f]"],
+    [class~="bg-[#ff4c00]"],
+    [class~="bg-[#f55d1d]"],
+    [class~="bg-[#f05a20]"]
+  ):hover {
+  border-color: #262626 !important;
+  background: #262626 !important;
+}
+
+.homeSections button:not(.ff-faq-question):not([data-faq-question]):focus-visible,
+.homeSections a[role="button"]:focus-visible,
+.homeSections a[class*="bg-"]:focus-visible {
+  outline: 3px solid rgb(240 90 32 / 32%);
+  outline-offset: 3px;
+}
+
+.homeSections button[data-offer-control],
+.homeSections button[data-offer-control]:hover {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #0b0b0b !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+.homeSections button[data-offer-control]:hover {
+  background: #262626 !important;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .homeSections > section + section::before {
+    left: 1rem;
+    right: 1rem;
+  }
+}

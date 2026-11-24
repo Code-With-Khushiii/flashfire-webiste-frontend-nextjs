@@ -88,6 +88,7 @@ export default function HomePageDemoCTA() {
               <button 
                 {...getButtonProps()}
                 className={styles.demoButton}
+                data-home-cta="career-call"
                 onClick={(e) => {
                   try {
                     e.preventDefault();
