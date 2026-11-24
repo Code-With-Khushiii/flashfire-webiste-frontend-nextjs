@@ -416,16 +416,20 @@ export default function HomePageOfferLettersClient({
           {!isAutoVariant && (
             <div className={styles.arrowControls} aria-label="Offer letter navigation">
               <button
+                id="offer-letter-prev"
                 type="button"
                 className={styles.arrowButton}
+                data-offer-control
                 aria-label="Previous offer letter"
                 onClick={() => scrollOffers("left")}
               >
                 &larr;
               </button>
               <button
+                id="offer-letter-next"
                 type="button"
                 className={styles.arrowButton}
+                data-offer-control
                 aria-label="Next offer letter"
                 onClick={() => scrollOffers("right")}
               >

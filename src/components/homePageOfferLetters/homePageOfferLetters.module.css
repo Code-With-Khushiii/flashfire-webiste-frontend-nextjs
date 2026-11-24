@@ -76,9 +76,10 @@
 
 .arrowButton {
   align-items: center;
-  background: #050505;
+  background: #050505 !important;
   border: 0;
-  color: #fff;
+  border-radius: 50%;
+  color: #fff !important;
   cursor: pointer;
   display: inline-flex;
   font-size: 34px;
@@ -91,8 +92,14 @@
   width: 56px;
 }
 
+section.offerSection .arrowControls button.arrowButton,
+section.offerSection .arrowControls button.arrowButton:hover {
+  background: #050505 !important;
+  color: #fff !important;
+}
+
 .arrowButton:hover {
-  background: #1c1c1c;
+  background: #1c1c1c !important;
   transform: translateY(-1px);
 }
 
@@ -232,7 +239,7 @@
 }
 
 .offerCard.autoOfferCard .linkedinIcon {
-  border-radius: 3px;
+  border-radius: 50%;
   font-size: 18px;
   height: 33px;
   width: 33px;
@@ -346,19 +353,21 @@
 .linkedinIcon {
   align-items: center;
   border: 1px solid #fff;
+  background: #050505;
   color: #fff;
   display: inline-flex;
   flex: 0 0 auto;
   font-size: 10px;
   font-weight: 800;
-  height: 14px;
+  border-radius: 50%;
+  height: 34px;
   justify-content: center;
   line-height: 1;
   text-decoration: none;
   transition:
     background-color 0.2s ease,
     color 0.2s ease;
-  width: 14px;
+  width: 34px;
 }
 
 .linkedinIcon:hover {

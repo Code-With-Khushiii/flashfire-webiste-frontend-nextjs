@@ -1,0 +1,156 @@
+.homeSections {
+  --home-ink: #0b0b0b;
+  --home-orange: #f05a20;
+  width: 100%;
+  overflow: hidden;
+  background: #fffefd;
+  color: var(--home-ink);
+  font-family: "Satoshi", var(--font-space-grotesk), sans-serif;
+}
+
+.homeSections > section {
+  position: relative;
+  isolation: isolate;
+  background-color: #fffefd !important;
+}
+
+.homeSections > section:nth-child(even) {
+  background-color: #fffefd !important;
+}
+
+.homeSections > section + section::before {
+  position: absolute;
+  top: 0;
+  left: max(1.5rem, calc((100% - 76rem) / 2));
+  right: max(1.5rem, calc((100% - 76rem) / 2));
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #f4e6df 16%, #f4e6df 84%, transparent);
+  content: "";
+  pointer-events: none;
+}
+
+.homeSections h2,
+.homeSections h3 {
+  letter-spacing: -0.035em;
+}
+
+.homeSections button:not(.ff-faq-question):not([data-faq-question]):not([data-story-play]):not([data-home-cta="career-call"]):not([data-offer-control]),
+.homeSections a[role="button"],
+.homeSections a[class*="bg-"]:not([aria-label="LinkedIn Profile"]) {
+  border: 1px solid var(--home-orange) !important;
+  border-radius: 999px !important;
+  background: var(--home-orange) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  font-weight: 650 !important;
+  transition: background-color 180ms ease, transform 180ms ease !important;
+}
+
+.homeSections button:not(.ff-faq-question):not([data-faq-question]):not([data-story-play]):not([data-home-cta="career-call"]):not([data-offer-control]):hover,
+.homeSections a[role="button"]:hover,
+.homeSections a[class*="bg-"]:not([aria-label="LinkedIn Profile"]):hover {
+  background: #dd4e16 !important;
+  border-color: #dd4e16 !important;
+  transform: translateY(-2px);
+}
+
+/* Use the navbar's black CTA treatment only when the button sits on orange. */
+.homeSections :is(
+    [class~="bg-[#ff5a18]"],
+    [class~="bg-[#ff5a1f]"],
+    [class~="bg-[#ff4c00]"],
+    [class~="bg-[#f55d1d]"],
+    [class~="bg-[#f05a20]"],
+    [class*="resultLeft"]
+  ) :is(button:not([data-home-cta="career-call"]):not([data-offer-control]), a[role="button"], a[class*="bg-"]:not([aria-label="LinkedIn Profile"])):not(.ff-faq-question),
+.homeSections :is(button, a[role="button"], a[class*="bg-"]:not([aria-label="LinkedIn Profile"])):is(
+    [class~="bg-[#ff5a18]"],
+    [class~="bg-[#ff5a1f]"],
+    [class~="bg-[#ff4c00]"],
+    [class~="bg-[#f55d1d]"],
+    [class~="bg-[#f05a20]"]
+  ) {
+  border-color: #0b0b0b !important;
+  background: #0b0b0b !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+.homeSections :is(
+    [class~="bg-[#ff5a18]"],
+    [class~="bg-[#ff5a1f]"],
+    [class~="bg-[#ff4c00]"],
+    [class~="bg-[#f55d1d]"],
+    [class~="bg-[#f05a20]"],
+    [class*="resultLeft"]
+  ) :is(button:not([data-home-cta="career-call"]):not([data-offer-control]), a[role="button"], a[class*="bg-"]:not([aria-label="LinkedIn Profile"])):not(.ff-faq-question):hover,
+.homeSections :is(button, a[role="button"], a[class*="bg-"]:not([aria-label="LinkedIn Profile"])):is(
+    [class~="bg-[#ff5a18]"],
+    [class~="bg-[#ff5a1f]"],
+    [class~="bg-[#ff4c00]"],
+    [class~="bg-[#f55d1d]"],
+    [class~="bg-[#f05a20]"]
+  ):hover {
+  border-color: #262626 !important;
+  background: #262626 !important;
+}
+
+.homeSections button:not(.ff-faq-question):not([data-faq-question]):focus-visible,
+.homeSections a[role="button"]:focus-visible,
+.homeSections a[class*="bg-"]:not([aria-label="LinkedIn Profile"]):focus-visible {
+  outline: 3px solid rgb(240 90 32 / 32%);
+  outline-offset: 3px;
+}
+
+.homeSections button[data-offer-control],
+.homeSections button[data-offer-control]:hover {
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: #0b0b0b !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+#offer-letter-prev,
+#offer-letter-next,
+#offer-letter-prev:hover,
+#offer-letter-next:hover {
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: #050505 !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+.homeSections button[data-offer-control]:hover {
+  background: #1c1c1c !important;
+  transform: translateY(-1px);
+}
+
+.homeSections a[data-linkedin-icon] {
+  border: 1px solid #fff !important;
+  border-radius: 4px !important;
+  background: #fff !important;
+  color: #050505 !important;
+}
+
+.homeSections a[data-linkedin-icon] svg {
+  color: #050505 !important;
+}
+
+.homeSections a[data-linkedin-icon]:hover {
+  border-color: #050505 !important;
+  background: #050505 !important;
+  color: #fff !important;
+}
+
+.homeSections a[data-linkedin-icon]:hover svg {
+  color: #fff !important;
+}
+
+@media (max-width: 640px) {
+  .homeSections > section + section::before {
+    left: 1rem;
+    right: 1rem;
+  }
+}
