@@ -605,35 +605,35 @@ export default function HomePageHappyUsers({
       )}
 
       {/* === Bottom White Section === */}
-      <div className="bg-[#fffaf8] py-20 px-8 max-[768px]:py-14 max-[768px]:px-5">
-        <div className="grid grid-cols-[minmax(190px,0.78fr)_repeat(3,minmax(0,1fr))] items-stretch gap-5 w-full max-w-[1440px] mx-auto max-[960px]:grid-cols-2 max-[960px]:max-w-[900px] max-[960px]:gap-4 max-[640px]:grid-cols-1">
-          <div className="flex flex-col items-start justify-center pr-3 text-left max-[960px]:col-span-2 max-[640px]:col-span-1 max-[640px]:pb-2">
-            <span className="mb-3 text-[0.7rem] font-extrabold uppercase tracking-[0.12em] text-[#d5633b]">
+      <div className="border-t border-[#f1e8e3] bg-[linear-gradient(180deg,#fffaf8_0%,#fff_100%)] py-20 px-8 max-[768px]:py-14 max-[768px]:px-5">
+        <div className="grid grid-cols-[minmax(220px,0.95fr)_repeat(3,minmax(0,1fr))] items-stretch gap-5 w-full max-w-[1440px] mx-auto max-[960px]:grid-cols-2 max-[960px]:max-w-[900px] max-[960px]:gap-4 max-[640px]:grid-cols-1">
+          <div className="flex flex-col items-start justify-center pr-4 text-left max-[960px]:col-span-2 max-[640px]:col-span-1 max-[640px]:pb-2">
+            <span className="mb-4 text-[0.8rem] font-extrabold uppercase tracking-[0.12em] text-[#d5633b]">
               Flashfire / Customer feedback
             </span>
-            <h3 className="mb-4 max-w-[15rem] text-[clamp(1.8rem,3vw,2.65rem)] font-bold leading-[1.08] tracking-[-0.045em] text-[#171717]">
+            <h3 className="mb-5 max-w-[19rem] text-[clamp(2.2rem,3.5vw,3.25rem)] font-bold leading-[1.04] tracking-[-0.05em] text-[#171717]">
               Feedback from happy customers
             </h3>
-            <p className="mb-4 max-w-[18rem] text-[0.95rem] leading-relaxed text-[#6f6966]">
+            <p className="mb-5 max-w-[21rem] text-[1.08rem] leading-[1.65] text-[#6f6966]">
               Conversations and reviews from the Flashfire job-search experience.
             </p>
-            <p className="m-0 text-[0.78rem] leading-relaxed text-[#8a827e]">
+            <p className="m-0 text-[0.9rem] leading-relaxed text-[#8a827e]">
               Real feedback shared by Flashfire users.
             </p>
           </div>
           {videos.map((video, index) => (
             <div
               key={index}
-              className="relative w-full h-[32rem] rounded-none overflow-hidden bg-[#fffaf8] p-2 shadow-[0_8px_20px_rgba(0,0,0,0.18)] transition-all duration-300 hover:shadow-[0_14px_28px_rgba(0,0,0,0.24)] max-[960px]:h-[30rem] max-[640px]:h-[min(40rem,85vh)]"
+              className="group relative w-full h-[32rem] overflow-hidden rounded-[1.25rem] border border-[#f0e4de] bg-white p-2 shadow-[0_8px_24px_rgba(45,25,16,0.10)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(45,25,16,0.16)] max-[960px]:h-[30rem] max-[640px]:h-[min(40rem,85vh)]"
             >
-              <div className="relative w-full h-full rounded-none overflow-hidden">
+              <div className="relative w-full h-full overflow-hidden rounded-[0.9rem] bg-[#ff5a18]">
                 {/* YouTube Video Embed - Show when playing */}
                 {playingIndex === index && (
                   <>
                     <iframe
                       id={`userVideo-${index}`}
                       src={`${video.videoUrl}?autoplay=1&rel=0`}
-                      className="w-full h-full object-cover block rounded-none"
+                      className="block h-full w-full rounded-[0.9rem] object-cover"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                       frameBorder="0"
@@ -641,7 +641,7 @@ export default function HomePageHappyUsers({
                     {/* Close Button */}
                     <button
                       onClick={() => setPlayingIndex(null)}
-                      className="absolute top-2 right-2 w-8 h-8 bg-black/70 hover:bg-black/90 text-white rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 z-30"
+                      className="absolute right-3 top-3 z-30 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white/30 bg-black/75 text-white shadow-lg transition-colors hover:bg-[#ff5a18]"
                       aria-label="Close video"
                     >
                       ✕
@@ -665,26 +665,29 @@ export default function HomePageHappyUsers({
                         alt={`${video.name} - Click to play video`}
                         width={800}
                         height={1280}
-                        className="w-full h-full object-cover rounded-none cursor-pointer"
+                        className="h-full w-full cursor-pointer rounded-[0.9rem] object-cover transition-transform duration-500 group-hover:scale-[1.025]"
                         onClick={() => handlePlay(index)}
+                        fit="cover"
                         priority
                         sizes="(max-width: 768px) 100vw, 320px"
                       />
                     </div>
                     {/* Play Button Overlay */}
-                    <div
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70px] h-[70px] rounded-full bg-black/60 text-white text-[2rem] font-bold flex justify-center items-center cursor-pointer transition-all duration-250 backdrop-blur-[2px] hover:bg-black/75 hover:scale-105 z-10"
+                    <button
+                      type="button"
                       onClick={() => handlePlay(index)}
+                      aria-label={`Play ${video.name}'s customer story`}
+                      className="absolute left-1/2 top-[44%] z-10 flex h-[4.25rem] w-[4.25rem] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[3px] border-white/80 bg-black/70 pl-1 text-[1.8rem] font-bold text-white shadow-xl backdrop-blur-sm transition duration-300 hover:scale-110 hover:bg-[#ff5a18]"
                     >
                       ▶
-                    </div>
+                    </button>
                   </>
                 )}
 
                 {/* User Info - Always visible, overlaid on video */}
-                <div className="absolute bottom-2 left-2 right-2 h-[5.5rem] bg-black border border-[#ff4c00] text-white text-left py-3 px-4 flex items-center z-20">
+                <div className="absolute bottom-3 left-3 right-3 z-20 flex h-[5.25rem] items-center rounded-xl border border-[#ff5a18] bg-black/95 px-3 py-3 text-left text-white shadow-[0_8px_20px_rgba(0,0,0,0.28)] sm:px-4">
                   <div className="flex items-center gap-3 w-full h-full">
-                    <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-white/50">
+                    <div className="relative h-10 w-10 flex-shrink-0 overflow-hidden rounded-full ring-2 ring-[#ff7b45]">
                       <Image
                         src={video.smallProfileImage}
                         alt={video.name}
@@ -699,10 +702,10 @@ export default function HomePageHappyUsers({
                       />
                     </div>
                     <div className="flex-1 min-w-0 flex flex-col justify-center">
-                      <p className="text-xl font-semibold m-0 text-white leading-tight truncate drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                      <p className="m-0 truncate text-[1.05rem] font-bold leading-tight text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                         {video.name}
                       </p>
-                      <p className="text-sm m-0 text-white/90 leading-tight mt-0.5 truncate drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                      <p className="m-0 mt-1 truncate text-xs leading-tight text-white/80 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                         {video.company}
                       </p>
                     </div>
@@ -714,8 +717,8 @@ export default function HomePageHappyUsers({
                           ? "noopener noreferrer"
                           : undefined
                       }
-                      className={`group flex-shrink-0 w-6 h-6 bg-white rounded flex items-center justify-center transition-colors ${video.linkedinUrl !== "#"
-                          ? "hover:bg-black cursor-pointer"
+                      className={`group flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md bg-white transition-colors ${video.linkedinUrl !== "#"
+                        ? "cursor-pointer hover:bg-[#ff5a18]"
                           : "cursor-default opacity-50"
                         }`}
                       aria-label="LinkedIn Profile"
