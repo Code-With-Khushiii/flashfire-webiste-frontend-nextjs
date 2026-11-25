@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import React from "react";
 import CachedTestimonialImage from "./CachedTestimonialImage";
+import HomePageFeaturedCustomerStories from "./HomePageFeaturedCustomerStories";
 import styles from "./homePageHappyUsers.module.css";
 import { getLocalePrefix } from "@/src/utils/locale";
 
@@ -86,6 +87,7 @@ interface HomePageHappyUsersProps {
   heading?: string;
   headingClassName?: string;
   ctaLabel?: string;
+  includeFeaturedStories?: boolean;
 }
 
 const DEFAULT_PRICING_HEADING_CLASS =
@@ -96,6 +98,7 @@ export default function HomePageHappyUsers({
   heading = "1000+ Happy User’s Love",
   headingClassName = DEFAULT_PRICING_HEADING_CLASS,
   ctaLabel = "Book a Demo",
+  includeFeaturedStories = false,
 }: HomePageHappyUsersProps) {
   const pathname = usePathname();
   const prefix = getLocalePrefix(pathname);
@@ -597,13 +600,31 @@ export default function HomePageHappyUsers({
         />
       </div>
 
+      {includeFeaturedStories && (
+        <HomePageFeaturedCustomerStories reviewImages={reviewImages} />
+      )}
+
       {/* === Bottom White Section === */}
-      <div className="bg-[#fffaf8] py-32 px-8 pb-20 text-center max-[768px]:py-16 max-[768px]:px-4">
-        <div className="flex justify-center items-stretch flex-nowrap gap-6 w-full max-[768px]:flex-col max-[768px]:items-center max-[768px]:gap-6">
+      <div className="bg-[#fffaf8] py-20 px-8 max-[768px]:py-14 max-[768px]:px-5">
+        <div className="grid grid-cols-[minmax(190px,0.78fr)_repeat(3,minmax(0,1fr))] items-stretch gap-5 w-full max-w-[1440px] mx-auto max-[960px]:grid-cols-2 max-[960px]:max-w-[900px] max-[960px]:gap-4 max-[640px]:grid-cols-1">
+          <div className="flex flex-col items-start justify-center pr-3 text-left max-[960px]:col-span-2 max-[640px]:col-span-1 max-[640px]:pb-2">
+            <span className="mb-3 text-[0.7rem] font-extrabold uppercase tracking-[0.12em] text-[#d5633b]">
+              Flashfire / Customer feedback
+            </span>
+            <h3 className="mb-4 max-w-[15rem] text-[clamp(1.8rem,3vw,2.65rem)] font-bold leading-[1.08] tracking-[-0.045em] text-[#171717]">
+              Feedback from happy customers
+            </h3>
+            <p className="mb-4 max-w-[18rem] text-[0.95rem] leading-relaxed text-[#6f6966]">
+              Conversations and reviews from the Flashfire job-search experience.
+            </p>
+            <p className="m-0 text-[0.78rem] leading-relaxed text-[#8a827e]">
+              Real feedback shared by Flashfire users.
+            </p>
+          </div>
           {videos.map((video, index) => (
             <div
               key={index}
-              className="relative w-80 h-[32rem] rounded-none overflow-hidden bg-[#fffaf8] p-2 shadow-[0_8px_20px_rgba(0,0,0,0.25)] transition-all duration-300 flex-shrink-0 hover:shadow-[0_14px_28px_rgba(0,0,0,0.3)] max-[768px]:w-full max-[768px]:max-w-[30rem] max-[768px]:h-[calc(100vh-8rem)] max-[480px]:max-w-full"
+              className="relative w-full h-[32rem] rounded-none overflow-hidden bg-[#fffaf8] p-2 shadow-[0_8px_20px_rgba(0,0,0,0.18)] transition-all duration-300 hover:shadow-[0_14px_28px_rgba(0,0,0,0.24)] max-[960px]:h-[30rem] max-[640px]:h-[min(40rem,85vh)]"
             >
               <div className="relative w-full h-full rounded-none overflow-hidden">
                 {/* YouTube Video Embed - Show when playing */}
