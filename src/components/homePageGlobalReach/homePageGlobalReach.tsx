@@ -49,13 +49,13 @@ export default function HomePageGlobalReach() {
       style={{ fontFamily: "Satoshi, sans-serif" }}
     >
       <div className="mx-auto max-w-6xl">
-        <p className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-wide text-[#545b65]">
+        <p className="flex items-center gap-3 text-[12px] font-bold uppercase tracking-wide text-[#545b65] md:text-[13px]">
           <span className="h-[2px] w-6 bg-[#ff5a1f]" />
           Ambition has no single address
         </p>
 
         <div className="mt-4 grid items-start gap-4 md:grid-cols-2 md:gap-16">
-          <h2 className="font-bold leading-[110%] tracking-[-0.03em] text-[#02060A] text-[1.75rem] min-[769px]:text-[2.4rem] min-[1025px]:text-[50.84px]">
+          <h2 className="font-bold leading-[110%] tracking-[-0.03em] text-[#02060A] text-[2.5rem] min-[480px]:text-[3.6rem] min-[769px]:text-[2.75rem] min-[1025px]:text-[50.84px]">
             Your next chapter.
             <br />
             <span className="bg-gradient-to-r from-[#d84a22] via-[#f05a23] to-[#ff7a2a] bg-clip-text text-transparent">
@@ -63,10 +63,10 @@ export default function HomePageGlobalReach() {
             </span>
           </h2>
           <div className="md:pt-2">
-            <p className="text-[1.4rem] font-bold leading-tight tracking-[-0.02em] text-[#02060A] md:text-[28px]">
+            <p className="text-[1.8rem] font-bold leading-tight tracking-[-0.02em] text-[#02060A] md:text-[30px]">
               Across 50 countries
             </p>
-            <p className="mt-3 text-[15px] font-medium leading-[145%] tracking-[-0.02em] text-[#02060A] md:text-base">
+            <p className="mt-3 text-[19px] font-medium leading-[150%] tracking-[-0.02em] text-[#02060A] md:text-[18px]">
               Bring your goals and preferred destinations into one focused
               search. Featured locations below reflect the markets supplied by
               Flashfire, not confirmed availability.
@@ -133,7 +133,7 @@ export default function HomePageGlobalReach() {
             </svg>
             </div>
 
-            <p className="mt-3 flex items-start gap-2 text-[11px] font-medium leading-relaxed text-[#545b65] sm:items-center">
+            <p className="mt-3 flex items-start gap-2 text-[13px] font-medium leading-relaxed text-[#545b65] sm:items-center">
               <span className="h-1.5 w-1.5 rounded-full bg-[#ff5a1f]" />
               <span><span className="sm:hidden">Swipe to explore · </span>Featured locations only · Illustrative geography, not a verified coverage map</span>
             </p>
