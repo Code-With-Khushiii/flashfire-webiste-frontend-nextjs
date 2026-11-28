@@ -123,7 +123,7 @@ export default function HomePageHappyUsers({
       name: "Anjali Shah",
       company: "Skyworks Solutions, Inc.",
       linkedinUrl: "https://www.linkedin.com/in/anjalishah6198/",
-      profileImage: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/website_thumbnails-19.jpg",
+      profileImage: "/images/thumbnail-anjali.png",
       smallProfileImage: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/anjali.jpeg"
     },
     {
@@ -131,7 +131,7 @@ export default function HomePageHappyUsers({
       name: "Rijul Jain",
       company: "Wise",
       linkedinUrl: "https://www.linkedin.com/in/-rijuljain-/",
-      profileImage: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/website_thumbnails-20.jpg",
+      profileImage: "/images/thumbnail-rijul.png",
       smallProfileImage: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/rijul.jpg"
     },
     {
@@ -139,7 +139,7 @@ export default function HomePageHappyUsers({
       name: "Aryan Gupta",
       company: "IBM",
       linkedinUrl: "#",
-      profileImage: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/website_thumbnails-18.jpg",
+      profileImage: "/images/thumbnail-aryan.png",
       smallProfileImage: "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/aryan.jpg"
     },
   ];
@@ -623,13 +623,13 @@ export default function HomePageHappyUsers({
               Real job seekers share their experience with Flashfire.
             </p>
           </div>
-          <div className="grid grid-cols-3 items-stretch gap-4 max-[900px]:grid-cols-2 max-[900px]:gap-3 max-[640px]:grid-cols-1">
-          {videos.map((video, index) => (
+          <div className="grid grid-cols-2 items-stretch gap-4 max-[900px]:gap-3 max-[640px]:grid-cols-1">
+          {videos.slice(1).map((video, index) => (
             <div
               key={index}
               className="group relative w-full overflow-hidden rounded-[0.9rem] border border-[#eee7e2] bg-white shadow-[0_5px_18px_rgba(45,25,16,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_28px_rgba(45,25,16,0.14)]"
             >
-              <div className="relative aspect-[0.78] w-full overflow-hidden bg-[#c94312] max-[640px]:aspect-[0.95]">
+              <div className="relative aspect-video w-full overflow-hidden bg-[#c94312]">
                 {/* YouTube Video Embed - Show when playing */}
                 {playingIndex === index && (
                   <>

@@ -232,7 +232,7 @@
 
 .reviewImageFrame {
   position: relative;
-  height: clamp(95px, 12vw, 145px);
+  height: clamp(150px, 18vw, 210px);
   margin-top: 0.65rem;
   overflow: hidden;
   border: 1px solid #f0ecea;
@@ -241,7 +241,8 @@
 }
 
 .reviewImage {
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .reviewCard p {
@@ -370,7 +371,7 @@
   }
 
   .reviewImageFrame {
-    height: 100px;
+    height: 145px;
   }
 
   .videoFrame {

@@ -16,6 +16,13 @@ type Props = {
 const getUniversityLogo = (domain: string) =>
   `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
 
+const getUniversityInitials = (name: string) => {
+  const words = name
+    .split(/\s+/)
+    .filter((word) => !["university", "of", "the", "and", "in", "at"].includes(word.toLowerCase()));
+  return words.slice(0, 2).map((word) => word[0]).join("").toUpperCase() || name.slice(0, 2).toUpperCase();
+};
+
 const universityBranding: Record<string, { lines: string[]; color: string }> = {
   "Harvard University": { lines: ["HARVARD", "UNIVERSITY"], color: "#a7a7a7" },
   "Stanford University": { lines: ["Stanford", "University"], color: "#8c1515" },
@@ -131,23 +138,40 @@ export default function HeroSectionClient({
           {data.universityHeading}
         </p>
         <div className="mt-7 grid grid-cols-2 items-center gap-x-8 gap-y-6 md:grid-cols-5">
-          {data.universities.slice(0, 5).map((university, index) => (
-            (() => {
-              const branding = getUniversityBranding(university.name, index);
-              return (
+          {data.universities.slice(0, 5).map((university, index) => {
+            const branding = getUniversityBranding(university.name, index);
+            return (
             <div
               key={university.name}
               className="flex min-h-[48px] items-center justify-center gap-2 whitespace-nowrap opacity-90 last:col-span-2 md:last:col-span-1"
               style={{ color: branding.color }}
             >
-              <Image
-                src={getUniversityLogo(university.domain)}
-                alt=""
-                width={32}
-                height={32}
-                className="h-7 w-7 object-contain opacity-90"
-                unoptimized
-              />
+              <span className="relative flex h-7 w-7 shrink-0 items-center justify-center">
+                <Image
+                  src={getUniversityLogo(university.domain)}
+                  alt=""
+                  width={32}
+                  height={32}
+                  className="relative z-[1] h-7 w-7 object-contain opacity-90"
+                  unoptimized
+                  onError={(event) => {
+                    if (event.currentTarget.dataset.fallback !== "true") {
+                      event.currentTarget.dataset.fallback = "true";
+                      event.currentTarget.src = `https://icons.duckduckgo.com/ip3/${university.domain}.ico`;
+                      return;
+                    }
+                    event.currentTarget.style.display = "none";
+                    const fallback = event.currentTarget.nextElementSibling as HTMLElement | null;
+                    if (fallback) fallback.style.display = "flex";
+                  }}
+                />
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-0 hidden items-center justify-center rounded-full bg-[#f7eee9] font-sans text-[9px] font-bold uppercase text-[#545b65]"
+                >
+                  {getUniversityInitials(university.name)}
+                </span>
+              </span>
               <span className="flex flex-col items-start font-serif text-[15px] font-bold leading-[0.95] tracking-[-0.025em] md:text-[18px]">
                 {branding.lines.map((line, lineIndex) => (
                   <span
@@ -159,9 +183,8 @@ export default function HeroSectionClient({
                 ))}
               </span>
             </div>
-              );
-            })()
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

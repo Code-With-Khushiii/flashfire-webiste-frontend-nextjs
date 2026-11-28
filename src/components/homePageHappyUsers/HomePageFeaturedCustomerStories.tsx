@@ -5,7 +5,8 @@ import Image from "next/image";
 import styles from "./homePageFeaturedCustomerStories.module.css";
 
 const FEATURED_VIDEO = "https://www.youtube.com/embed/p41OvikonKo?autoplay=1&rel=0";
-const FEATURED_THUMBNAIL = "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/website_thumbnails-19.jpg";
+const FEATURED_THUMBNAIL = "/images/thumbnail-anjali.png";
+const REVIEW_ASSETS_BASE = "https://pub-4518f8276e4445ffb4ae9629e58c26af.r2.dev/happy-users-sc%20copy";
 
 type Props = {
   reviewImages: string[];
@@ -13,6 +14,10 @@ type Props = {
 
 export default function HomePageFeaturedCustomerStories({ reviewImages }: Props) {
   const [isPlaying, setIsPlaying] = useState(false);
+  const reviewCards = [
+    `${REVIEW_ASSETS_BASE}/image9.png`,
+    `${REVIEW_ASSETS_BASE}/image10.jpg`,
+  ];
 
   return (
     <section className={styles.section} aria-labelledby="customer-stories-title">
@@ -53,23 +58,23 @@ export default function HomePageFeaturedCustomerStories({ reviewImages }: Props)
           <div className={styles.supportNote}>
             <span className={styles.sparkle} aria-hidden="true">✦</span>
             <div>
-              <strong>A dedicated team, with AI working behind the scenes</strong>
-              <span>Human guidance and smart tools support your search at every step.</span>
+              <strong>A dedicated team supporting your search</strong>
+              <span>Personal guidance helps you move forward at every step.</span>
             </div>
           </div>
         </article>
 
         <div className={styles.mediaColumn}>
           <div className={styles.reviewGrid}>
-            {[0, 1].map((index) => (
+            {reviewCards.map((imageSrc, index) => (
               <article className={styles.reviewCard} key={index}>
                 <div className={styles.cardTopline}>
-                  <strong>{index === 0 ? "Customer review" : "Job-seeker feedback"}</strong>
+                  <strong>{index % 2 === 0 ? "Customer review" : "Job-seeker feedback"}</strong>
                   <span className={styles.number}>{String(index + 1).padStart(2, "0")}</span>
                 </div>
                 <div className={styles.reviewImageFrame}>
                   <Image
-                    src={reviewImages[index + 2]}
+                    src={imageSrc}
                     alt={`Flashfire customer feedback ${index + 1}`}
                     fill
                     sizes="(max-width: 760px) 90vw, 25vw"
