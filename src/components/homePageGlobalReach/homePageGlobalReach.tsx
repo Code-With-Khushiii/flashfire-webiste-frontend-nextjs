@@ -45,7 +45,7 @@ function arcPath(a: City, b: City) {
 export default function HomePageGlobalReach() {
   return (
     <section
-      className="w-full bg-[#fffefd] px-5 py-12 sm:px-6 md:px-12 md:py-16 lg:py-20"
+      className="w-full bg-[#fffefd] px-5 py-8 sm:px-6 sm:py-12 md:px-12 md:py-16 lg:py-20"
       style={{ fontFamily: "Satoshi, sans-serif" }}
     >
       <div className="mx-auto max-w-6xl">
@@ -74,13 +74,14 @@ export default function HomePageGlobalReach() {
           </div>
         </div>
 
-        <div className="mt-8 border-[6px] border-[#fcf9f7] bg-[#fcf9f7] md:mt-12">
+        <div className="mt-6 border-[6px] border-[#fcf9f7] bg-[#fcf9f7] sm:mt-8 md:mt-12">
           <div className="bg-white p-3 sm:p-6">
+            <div className="-mx-1 overflow-x-auto overscroll-x-contain px-1 sm:mx-0 sm:overflow-visible sm:px-0">
             <svg
               viewBox="0 0 1000 380"
               role="img"
               aria-label="Illustrative world map with featured locations connected by arcs"
-              className="h-auto w-full"
+              className="h-auto w-full min-w-[680px] sm:min-w-0"
             >
               {[95, 190, 285].map((y) => (
                 <line key={y} x1="0" x2="1000" y1={y} y2={y} stroke="#f0d5c8" strokeWidth="1" />
@@ -130,11 +131,11 @@ export default function HomePageGlobalReach() {
                   );
                 })}
             </svg>
+            </div>
 
-            <p className="mt-3 flex items-center gap-2 text-[11px] font-medium text-[#545b65]">
+            <p className="mt-3 flex items-start gap-2 text-[11px] font-medium leading-relaxed text-[#545b65] sm:items-center">
               <span className="h-1.5 w-1.5 rounded-full bg-[#ff5a1f]" />
-              Featured locations only · Illustrative geography, not a verified
-              coverage map
+              <span><span className="sm:hidden">Swipe to explore · </span>Featured locations only · Illustrative geography, not a verified coverage map</span>
             </p>
           </div>
         </div>

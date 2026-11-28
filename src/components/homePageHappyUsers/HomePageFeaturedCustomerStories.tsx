@@ -99,6 +99,7 @@ export default function HomePageFeaturedCustomerStories({ reviewImages }: Props)
                 <button
                   className={styles.videoButton}
                   type="button"
+                  data-story-play
                   onClick={() => setIsPlaying(true)}
                   aria-label="Play Anjali Shah’s customer story"
                 >
