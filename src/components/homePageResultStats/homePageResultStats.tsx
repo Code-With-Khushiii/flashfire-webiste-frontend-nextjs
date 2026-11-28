@@ -76,6 +76,7 @@ export default function HomePageResultStats() {
         <button
           {...getButtonProps()}
           className={styles.resultButton}
+          data-result-cta
           onClick={() => {
             const utmSource =
               typeof window !== "undefined"
